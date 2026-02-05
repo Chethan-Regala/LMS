@@ -193,14 +193,15 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
               
               <p><strong>Think of it like building with blocks:</strong> You can't just throw blocks together randomly. There are rules about which blocks connect and in what order. Similarly, words must be arranged in specific patterns to make sense.</p>
               
-              <div className="video-container">
+              
                 <iframe 
                   src="https://www.youtube.com/embed/tZTGglxxS7A?si=kYXwE5408XcFxEjw" 
                   title="Introduction to Syntax"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+            
 
               <h4>Why Syntax Matters</h4>
               <ul>
@@ -380,14 +381,15 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
               
               <p><strong>Simple definition:</strong> Semantics is about what words and sentences MEAN, not just what they look like or sound like.</p>
               
-              <div className="video-container">
+              
                 <iframe 
                   src="https://www.youtube.com/embed/6geQjY8b7sA?si=m65NZ_9EzFu-hJzK" 
                   title="Introduction to Semantics"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+            
 
               <h4>Types of Meaning</h4>
               
@@ -622,14 +624,15 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
               
               <p><strong>Why it matters:</strong> By comparing languages, we discover universal patterns in human language and understand what makes each language unique.</p>
               
-              <div className="video-container">
+              
                 <iframe 
                   src="https://www.youtube.com/embed/2_nsXrTr7bA?si=qNB_xRV5ZteXNCBq" 
                   title="Language Typology"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+             
 
               <h4>Word Order Typology - How Languages Arrange Words</h4>
               <p>Different languages put Subject (S), Verb (V), and Object (O) in different orders:</p>

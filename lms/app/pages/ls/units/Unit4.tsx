@@ -72,14 +72,15 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
               
               <p>Sociolinguistics studies the fascinating relationship between language and society - how social factors like age, gender, class, and region influence the way we speak.</p>
               
-              <div className="video-container">
+              
                 <iframe 
                   src="https://www.youtube.com/embed/PBGlHNDdBbo?si=teX8vXKZNCBq2_ns" 
                   title="Sociolinguistics"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+             
 
               <h4>What is Sociolinguistics?</h4>
               <p>Sociolinguistics examines how language varies and changes in social contexts. It answers questions like:</p>
@@ -277,14 +278,15 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
               <h3>Who Decides How We Should Speak?</h3>
               <p>Should English be the official language? Should schools teach in minority languages? How do we save endangered languages? These are questions of language policy and planning!</p>
               
-              <div className="video-container">
+             
                 <iframe 
                   src="https://www.youtube.com/embed/5NyYnogUJ8o?si=NCBq2_ns8vXKZteX" 
                   title="Language Policy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+              
 
               <h4>Language Planning - Three Types</h4>
               
@@ -380,14 +382,15 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
               <h3>Language is Who You Are!</h3>
               <p>Your language isn't just how you communicate - it's part of your identity! The way you speak tells others where you're from, what groups you belong to, and who you are.</p>
               
-              <div className="video-container">
+              
                 <iframe 
                   src="https://www.youtube.com/embed/lkWfkic_qeM?si=8vXKZteXNCBq2_ns" 
                   title="Language and Identity"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+              
 
               <h4>Language as Identity Marker</h4>
               <ul>
@@ -453,14 +456,15 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
               <h3>Language in the Digital Age!</h3>
               <p>From Siri to Google Translate, technology is transforming how we use and study language. Welcome to computational linguistics!</p>
               
-              <div className="video-container">
+             
                 <iframe 
                   src="https://www.youtube.com/embed/fOvTtapxa9c?si=NCBq2_ns8vXKZteX" 
                   title="Language and Technology"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+              
 
               <h4>Natural Language Processing (NLP)</h4>
               <p>Teaching computers to understand and process human language.</p>
