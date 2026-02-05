@@ -64,14 +64,15 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
               
               <p>Language acquisition is one of the most fascinating abilities humans have. Let's explore how we acquire our first language (L1) and additional languages (L2).</p>
               
-              <div className="video-container">
+             
                 <iframe 
                   src="https://www.youtube.com/embed/Ccsf0yX7ECg?si=mOkqudif2VtWr5Q9" 
                   title="Language Acquisition"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+             
 
               <h4>First Language Acquisition (L1) - Your Mother Tongue</h4>
               <p>First language acquisition is the natural, unconscious process by which children learn their native language. It's automatic, universal, and happens without formal instruction!</p>
@@ -281,14 +282,15 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
               
               <p>Let's explore how and why languages change, and what happens when different languages come into contact.</p>
               
-              <div className="video-container">
+             
                 <iframe 
                   src="https://www.youtube.com/embed/UmvOgW6iV2s?si=NCBq2_ns8vXKZteX" 
                   title="Language Change"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+             
 
               <h4>Types of Language Change</h4>
               
@@ -528,14 +530,15 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
               
               <p>Historical linguists are like archaeologists of language - they dig through old texts, compare languages, and reconstruct languages that haven't been spoken for millennia.</p>
               
-              <div className="video-container">
+         
                 <iframe 
                   src="https://www.youtube.com/embed/YEaSxhcns7Y?si=teX8vXKZNCBq2_ns" 
                   title="Historical Linguistics"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+             
 
               <h4>What is Historical Linguistics?</h4>
               <p>Historical linguistics studies how languages change over time and how languages are related to each other.</p>

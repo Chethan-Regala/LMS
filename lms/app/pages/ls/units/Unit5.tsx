@@ -80,14 +80,15 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
               
               <p>Language and culture are inseparable - language reflects cultural values, transmits cultural knowledge, and even shapes how we think about the world.</p>
 
-              <div className="video-container">
+           
                 <iframe 
                   src="https://www.youtube.com/embed/RKK7wGAYP6k" 
                   title="Language and Culture"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+          
 
               <h4>Understanding Language-Culture Relationships</h4>
               <p>Language and culture are intimately connected in multiple ways:</p>
@@ -309,14 +310,15 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
               <h3>How Gender Shapes Language (and Vice Versa!)</h3>
               <p>Do men and women speak differently? How does language construct gender identity? Can language be sexist? Let's explore the complex relationship between language and gender!</p>
 
-              <div className="video-container">
+             
                 <iframe 
                   src="https://www.youtube.com/embed/OPbMFt0sCbI?si=s-iwQ9UrF089NIUe" 
                   title="Language and Gender"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+            
 
               <h4>Understanding Language-Gender Relationships</h4>
               <p>The relationship between language and gender involves:</p>
@@ -542,14 +544,15 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
               <h3>Language: The Tool of Power and Resistance</h3>
               <p>Who decides what's "proper" English? Why do some accents have more prestige? How can language be used to control or liberate? Welcome to the politics of language!</p>
 
-              <div className="video-container">
+             
                 <iframe 
                   src="https://www.youtube.com/embed/hrbIGlIQzok?si=ms27WJ9eDF44aALf" 
                   title="Language and Power"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+           
 
               <h4>Understanding Language-Power Relationships</h4>
               <p>Language and power are intrinsically linked. Those with institutional power often control language policies and practices, while language can also be a tool of resistance and empowerment.</p>
@@ -768,14 +771,15 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
               <h3>Language in a Globalized World</h3>
               <p>English everywhere! Languages dying! New varieties emerging! Globalization is transforming the linguistic landscape of our world. Let's explore how!</p>
 
-              <div className="video-container">
+           
                 <iframe 
                   src="https://www.youtube.com/embed/VQRjouwKDlU" 
                   title="Language and Globalization"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+         
 
               <h4>Understanding Language in Global Contexts</h4>
               <p>Globalization has profound effects on language use, including the spread of certain languages, language endangerment, and the emergence of new varieties adapted for global communication.</p>
@@ -1012,14 +1016,15 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
               <h3>How Do We Study Language?</h3>
               <p>From recording conversations to brain scans, linguists use diverse methods to understand language. Let's explore the tools of linguistic research and where the field is heading!</p>
 
-              <div className="video-container">
+            
                 <iframe 
                   src="https://www.youtube.com/embed/nS13_oAUlQM?si=mZiMeGnKNI-g2itz" 
                   title="Research Methods in Linguistics"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
+                   style={{width: '550px', height: '325px'}}
                 ></iframe>
-              </div>
+             
 
               <h4>Understanding Linguistic Research Methodologies</h4>
               <p>Linguistic research employs various methodological approaches depending on the research question and theoretical framework. Researchers use both qualitative and quantitative methods.</p>

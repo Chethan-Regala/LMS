@@ -244,6 +244,14 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  text-align: center;
+}
+
+.module-content .content-section,
+.module-content .lesson-header,
+.module-content .navigation-buttons,
+.module-content .reference-section {
+  text-align: left;
 }
 
 .lesson-progress-bar {
