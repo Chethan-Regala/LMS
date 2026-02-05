@@ -53,12 +53,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
             </div>
             
             <section className="content-section">
-              <h3>🌍 Foundations of Environmental Studies</h3>
+              <h3>Foundations of Environmental Studies</h3>
               <div className="theory-box">
                 <p><strong>Environmental studies</strong> is like the ultimate interdisciplinary team project! It brings together scientists, economists, policymakers, and engineers to tackle our planet's biggest challenges. Think of it as the "Avengers" of academic fields – each discipline contributes its unique superpowers to save the environment.</p>
                 
                 <div className="performance-metrics">
-                  <h4>🔍 What Exactly is "Environment"?</h4>
+                  <h4>What Exactly is "Environment"?</h4>
                   <p>Imagine you're sitting in your room right now. Your environment includes:</p>
                   <ul>
                     <li><strong>Living things around you:</strong> That spider in the corner, your pet, plants on your windowsill</li>
@@ -69,18 +69,18 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 </div>
               </div>
               
-              <h4>🎯 Scope of Environmental Studies</h4>
+              <h4>Scope of Environmental Studies</h4>
               <div className="example-box">
                 <p>Environmental studies is like a Swiss Army knife – it has tools for every situation:</p>
                 <ul>
-                  <li><strong>🔬 Science & Technology:</strong> Developing cool gadgets to clean up pollution and monitor ecosystems</li>
-                  <li><strong>⚖️ Ethics & Policy:</strong> Deciding what's right and wrong, and making rules everyone can follow</li>
-                  <li><strong>💰 Economics & Management:</strong> Figuring out how to save the planet without going broke</li>
-                  <li><strong>📚 Education & Awareness:</strong> Teaching people (like you!) why this stuff matters</li>
+                  <li><strong>Science & Technology:</strong> Developing cool gadgets to clean up pollution and monitor ecosystems</li>
+                  <li><strong>Ethics & Policy:</strong> Deciding what's right and wrong, and making rules everyone can follow</li>
+                  <li><strong>Economics & Management:</strong> Figuring out how to save the planet without going broke</li>
+                  <li><strong>Education & Awareness:</strong> Teaching people (like you!) why this stuff matters</li>
                 </ul>
               </div>
 
-              <h4>🚨 Why Should You Care?</h4>
+              <h4>Why Should You Care?</h4>
               <div className="theory-box">
                 <h5>Real Talk: Environmental Problems Affect Your Daily Life</h5>
                 <ul>
@@ -94,7 +94,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <p>Every environmental engineer, policy maker, and aware citizen started by learning these basics. Today's knowledge becomes tomorrow's breakthrough solutions.</p>
               </div>
 
-              <h4>🤝 The Interdisciplinary Dream Team</h4>
+              <h4>The Interdisciplinary Dream Team</h4>
               <div className="comparison-table">
                 <h5>Physical Sciences Squad</h5>
                 <ul>
@@ -122,7 +122,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <div className="example-box">
-                <h4>💡 Fun Fact Corner</h4>
+                <h4>Fun Fact Corner</h4>
                 <p><strong>Did you know?</strong> The term "environment" comes from the French word "environ," meaning "around." So environmental science literally studies everything "around" us – pretty cool, right?</p>
               </div>
             </section>
@@ -130,6 +130,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
             <div className="video-embed">
               <h4>Introduction to Environmental Science</h4>
               <p>Understanding the interdisciplinary nature and importance of environmental studies.</p>
+              
               <iframe
                 width="50%"
                 height="300"
@@ -156,12 +157,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
             </div>
             
             <section className="content-section">
-              <h3>🌏 Understanding Ecosystems</h3>
+              <h3>Understanding Ecosystems</h3>
               <div className="theory-box">
                 <p>Think of an ecosystem as <strong>nature's ultimate social network</strong> – where every living thing is connected to every other living thing, and they're all constantly posting updates about what they're eating, where they're living, and how they're feeling about the weather!</p>
                 
                 <div className="performance-metrics">
-                  <h4>✨ What Makes an Ecosystem Tick?</h4>
+                  <h4>What Makes an Ecosystem Tick?</h4>
                   <p>An ecosystem is basically a <strong>biological community</strong> where living organisms (the "users") interact with their physical environment (the "platform"). Here's what makes it special:</p>
                   <ul>
                     <li><strong>Self-sustaining:</strong> Like a well-designed app that runs itself – no external maintenance needed!</li>
@@ -172,9 +173,9 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 </div>
               </div>
               
-              <h4>🧩 The Two Main Components</h4>
+              <h4>The Two Main Components</h4>
               <div className="example-box">
-                <h5>🌿 Biotic Components (The Living Squad)</h5>
+                <h5>Biotic Components (The Living Squad)</h5>
                 <p>These are all the living things in the ecosystem – the "active users" of nature's network:</p>
                 <ul>
                   <li><strong>Producers:</strong> The content creators (plants, algae) who make their own food using sunlight</li>
@@ -182,7 +183,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                   <li><strong>Decomposers:</strong> The cleanup crew (bacteria, fungi) who recycle everything</li>
                 </ul>
                 
-                <h5>🌊 Abiotic Components (The Platform Infrastructure)</h5>
+                <h5>Abiotic Components (The Platform Infrastructure)</h5>
                 <p>These are the non-living things that provide the "hardware" for life to run on:</p>
                 <ul>
                   <li><strong>Air:</strong> The oxygen you're breathing right now</li>
@@ -193,14 +194,14 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 </ul>
               </div>
 
-              <h4>🏢 Structure vs Function: The Architecture of Life</h4>
+              <h4>Structure vs Function: The Architecture of Life</h4>
               <div className="theory-box">
                 <h5>Think of it Like Building a House</h5>
                 <p><strong>Structure</strong> is what you can see and count – like the rooms, furniture, and people in a house. <strong>Function</strong> is what actually happens – like cooking, sleeping, and family conversations.</p>
               </div>
 
               <div className="comparison-table">
-                <h5>📊 Ecosystem Structure (What's There)</h5>
+                <h5>Ecosystem Structure (What's There)</h5>
                 <ul>
                   <li><strong>Species diversity:</strong> How many different types of organisms live there (like counting different apps on your phone)</li>
                   <li><strong>Trophic levels:</strong> The "food hierarchy" – who eats whom</li>
@@ -208,7 +209,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                   <li><strong>Biomass distribution:</strong> How much living stuff is at each level</li>
                 </ul>
 
-                <h5>⚙️ Ecosystem Function (What Happens)</h5>
+                <h5>Ecosystem Function (What Happens)</h5>
                 <ul>
                   <li><strong>Energy flow:</strong> How energy moves from the sun through all living things</li>
                   <li><strong>Nutrient cycling:</strong> How essential elements like carbon and nitrogen get recycled</li>
@@ -218,7 +219,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <div className="example-box">
-                <h4>💡 Real-World Example: Your School Campus</h4>
+                <h4>Real-World Example: Your School Campus</h4>
                 <p>Your campus is actually a mini-ecosystem! <strong>Biotic components:</strong> students, teachers, plants, birds, insects. <strong>Abiotic components:</strong> buildings, air, water fountains, sunlight. <strong>Energy flow:</strong> You eat food (energy) to study and move around. <strong>Interactions:</strong> You affect the environment, and it affects you back!</p>
               </div>
             </section>
