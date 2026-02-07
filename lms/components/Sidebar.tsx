@@ -26,7 +26,7 @@ export default function Sidebar() {
 
   return (
     <aside className="fixed left-0 top-0 h-screen w-14 bg-white border-r-2 border-gray-700 flex flex-col justify-between py-4 overflow-hidden">
-      {/* Home at top */}
+     
       <div className="flex flex-col items-center">
         <button onClick={handleHomeClick} className="p-3 hover:bg-gray-100    cursor-pointer">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,7 +35,7 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/* Profile at bottom */}
+      
       <div ref={profileRef} className="relative flex flex-col items-center">
         <button onClick={() => setShowProfile(!showProfile)} className="p-2 hover:bg-gray-100 rounded cursor-pointer">
           <svg className="w-8 h-8" fill="#000000" viewBox="0 0 24 24">
