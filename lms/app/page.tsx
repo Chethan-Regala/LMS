@@ -12,9 +12,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    if (session?.user?.isAdmin) {
-      router.push("/pages/adminDashboard");
-    }
+    // Never auto-redirect to admin dashboard from home page
   }, [session, router]);
 
   const options = [
@@ -63,7 +61,7 @@ export default function Home() {
       <div className="flex-1 bg-transparent pt-20 relative" style={{
         backgroundImage: 'radial-gradient(circle, #D8D8D8 1px, transparent 1px)',
         backgroundSize: '20px 20px',
-        backgroundColor: '#F8F8F8'
+        backgroundColor: '#FFFFFF'
       }}><Sidebar />
         {/* Dotted background pattern */}
         {/* tighter container like image */}

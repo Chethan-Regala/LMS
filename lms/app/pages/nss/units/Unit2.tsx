@@ -66,7 +66,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/Iz-8CSa9xj8" 
+                    src="https://www.youtube.com/embed/CrngKvTJagk?si=7X6AYUDmIZG-FI94" 
                     title="Best Out of Waste - Creative Ideas"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -176,7 +176,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/2KqUvIIzIqg" 
+                    src="https://www.youtube.com/embed/ZwiTqrVfDFU?si=fNaVyCy8kfbJgPzX"
                     title="Environmental Poster Design Tips"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -213,7 +213,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/2KqUvIIzIqg" 
+                    src="https://www.youtube.com/embed/u8ovqhjpRKA?si=kBLklVTIFzUKgcod" 
                     title="Environmental Poster Design Workshop"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -406,7 +406,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/HQTUWK7CM-Y" 
+                    src="https://www.youtube.com/embed/LjZpG2GIlQk?si=IeO37QlJBQmLT27W" 
                     title="Environmental Pollution Documentary"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -545,7 +545,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/bFqNubeuRy4" 
+                    src="https://www.youtube.com/embed/2LtfEz2jimA?si=cTLRwe3oeKh5bop9"
                     title="Rainwater Harvesting Setup Guide"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -667,7 +667,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/nrIHxklHBdg" 
+                    src="https://www.youtube.com/embed/a3csa3vfbzc?si=rnBKxoO4cxPzFcXK"
                     title="Making Eco-Friendly Products at Home"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -715,7 +715,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/nrIHxklHBdg" 
+                    src="https://www.youtube.com/embed/JCbzH1uy7SA?si=wJKw1HoEu3tQyglb"  
                     title="DIY Natural Products Tutorial"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

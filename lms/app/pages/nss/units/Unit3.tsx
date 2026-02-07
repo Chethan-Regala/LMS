@@ -154,7 +154,7 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/kQX4VHrxBps" 
+                    src="https://www.youtube.com/embed/0aoParwdiHo?si=CpYBEpQjUB2VAmC9"
                     title="NSS Village Development Activities"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -336,7 +336,7 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/3QIfkeA6HBY" 
+                    src="https://www.youtube.com/embed/GfCWUX9gnDc?si=N3i6EiNWFNGOITQb"
                     title="Mental Health Awareness for Students"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

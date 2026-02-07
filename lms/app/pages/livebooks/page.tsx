@@ -38,7 +38,7 @@ const page = () => {
       <div className="flex-1 bg-transparent relative ml-16 overflow-hidden" style={{
         backgroundImage: 'radial-gradient(circle, #D8D8D8 1px, transparent 1px)',
         backgroundSize: '20px 20px',
-        backgroundColor: '#F8F8F8'
+        backgroundColor: '#FFFFFF'
       }}>
 
       {/* Top Navigation Bar */}

@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainSidebar from '@/components/Sidebar';
 
 interface CourseOverviewProps {
@@ -9,6 +9,19 @@ interface CourseOverviewProps {
 const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
   const [activeTab, setActiveTab] = useState('learning-path');
   const [expandedUnit, setExpandedUnit] = useState<number | null>(1);
+  const [dynamicModules, setDynamicModules] = useState([]);
+
+  useEffect(() => {
+    fetchModules();
+  }, []);
+
+  const fetchModules = async () => {
+    const res = await fetch('/api/modules?subject=ls');
+    const data = await res.json();
+    if (data.ok) {
+      setDynamicModules(data.data);
+    }
+  };
 
   const units = [
     {
@@ -149,6 +162,34 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
               )}
             </div>
           ))}
+          {dynamicModules.length > 0 && (
+            <div className="unit-block">
+              <div className="unit-header-block" onClick={() => setExpandedUnit(expandedUnit === 6 ? null : 6)}>
+                <div className="module-badge">
+                  <div className="badge-label">Unit</div>
+                  <div className="badge-number">6</div>
+                </div>
+                <div className="unit-description">
+                  <h2 className="unit-title">Additional Resources</h2>
+                  <p className="unit-desc">Uploaded modules and resources</p>
+                </div>
+                <div className="expand-indicator">{expandedUnit === 6 ? '▼' : '▶'}</div>
+              </div>
+              {expandedUnit === 6 && (
+                <div className="lessons-timeline">
+                  {dynamicModules.map((module: any, idx) => (
+                    <div key={idx} className="lesson-item" onClick={() => window.open(module.fileUrl, '_blank')}>
+                      <div className="lesson-badge">6.{idx + 1}</div>
+                      <div className="lesson-content">
+                        <h3 className="lesson-title">{module.moduleName}</h3>
+                        <p className="lesson-desc">{module.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
         </div>
       </div>

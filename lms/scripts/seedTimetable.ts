@@ -42,6 +42,22 @@ const timetableData = {
       { time: "01:15 - 02:15", subject: "LS: PPHC", description: "" },
       { time: "02:15 - 03:15", subject: "OS", description: "" },
       { time: "03:15 - 04:15", subject: "OS", description: "" }
+    ],
+    SAT: [
+      { time: "09:30 - 10:30", subject: "Self Study", description: "" },
+      { time: "10:30 - 11:30", subject: "Project Work", description: "" },
+      { time: "11:30 - 12:30", subject: "Lab Practice", description: "" },
+      { time: "01:15 - 02:15", subject: "Extra Classes", description: "" },
+      { time: "02:15 - 03:15", subject: "Sports/Activities", description: "" },
+      { time: "03:15 - 04:15", subject: "Library", description: "" }
+    ],
+    SUN: [
+      { time: "09:30 - 10:30", subject: "Revision", description: "" },
+      { time: "10:30 - 11:30", subject: "Assignment Work", description: "" },
+      { time: "11:30 - 12:30", subject: "Online Courses", description: "" },
+      { time: "01:15 - 02:15", subject: "Group Study", description: "" },
+      { time: "02:15 - 03:15", subject: "Hobby/Recreation", description: "" },
+      { time: "03:15 - 04:15", subject: "Free Time", description: "" }
     ]
   }
 };

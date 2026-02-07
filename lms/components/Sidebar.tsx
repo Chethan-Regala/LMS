@@ -21,11 +21,7 @@ export default function Sidebar() {
   }, []);
 
   const handleHomeClick = () => {
-    if (session?.user?.isAdmin) {
-      router.push("/pages/adminDashboard");
-    } else {
-      router.push("/");
-    }
+    router.push("/");
   };
 
   return (
@@ -42,13 +38,9 @@ export default function Sidebar() {
       {/* Profile at bottom */}
       <div ref={profileRef} className="relative flex flex-col items-center">
         <button onClick={() => setShowProfile(!showProfile)} className="p-2 hover:bg-gray-100 rounded cursor-pointer">
-          {session?.user?.image ? (
-            <img src={session.user.image} alt="" className="w-8 h-8 rounded-full" />
-          ) : (
-            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-            </svg>
-          )}
+          <svg className="w-8 h-8" fill="#000000" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
         </button>
         
         {showProfile && (

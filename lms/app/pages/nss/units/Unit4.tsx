@@ -47,7 +47,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/jqxENMKaeCU" 
+                    src="https://www.youtube.com/embed/WMrpByDbHZE?si=CalOc6HND_0cnvXL" 
                     title="Sustainable Living Tips and Practices"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -419,18 +419,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               <h3>Go Green Initiatives</h3>
               <p>Go Green activities promote environmental conservation and encourage sustainable practices in communities.</p>
               
-              <h4>Tree Plantation Drive Photos:</h4>
-              
-              <div className="plantation-gallery">
-                <div className="plantation-image">
-                  <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tree plantation activity" className="plantation-photo" />
-                  <p>NSS students planting trees</p>
-                </div>
-                <div className="plantation-image">
-                  <img src="https://images.unsplash.com/photo-1574263867128-a3d5c1b1deaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sapling care" className="plantation-photo" />
-                  <p>Caring for newly planted saplings</p>
-                </div>
-              </div>
+           
               
               <div className="video-section">
                 <h6>How to Plant Trees Properly</h6>
@@ -438,7 +427,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/tJnWo5Jx3pU" 
+                    src="https://www.youtube.com/embed/-k6j8lqQgTk?si=5eEwf0nr4QREwztf"
                     title="Tree Plantation Guide - Step by Step"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

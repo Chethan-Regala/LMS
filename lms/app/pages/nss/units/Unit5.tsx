@@ -41,21 +41,6 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule }) => {
                 </div>
               </div>
               
-              <div className="video-section">
-                <h6>Creating Effective Environmental Campaigns</h6>
-                <div className="video-container">
-                  <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://www.youtube.com/embed/RlBr2fyqn9g" 
-                    title="Digital Environmental Awareness Campaign"
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
-              
               <h4>Social Media Platforms for Awareness:</h4>
               <ul>
                 <li><strong>Facebook:</strong> Create pages, groups, events</li>
@@ -439,21 +424,6 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule }) => {
                 <div className="cyber-image">
                   <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Digital citizenship class" className="cyber-photo" />
                   <p>Digital citizenship education</p>
-                </div>
-              </div>
-              
-              <div className="video-section">
-                <h6>Internet Safety for Students</h6>
-                <div className="video-container">
-                  <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://www.youtube.com/embed/Qy9Ka_rjoNs" 
-                    title="Internet Safety Tips for Students"
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                  ></iframe>
                 </div>
               </div>
               

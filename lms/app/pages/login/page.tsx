@@ -184,7 +184,7 @@ const login = () => {
         </p>
         
         <button 
-          onClick={() => signIn("google", { callbackUrl: "/" })} 
+          onClick={() => signIn("google", { callbackUrl: "/?student=true" })} 
           className="border border-gray-400 bg-white px-6 py-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition-colors mb-6"
           style={{borderRadius: '4px'}}
         >

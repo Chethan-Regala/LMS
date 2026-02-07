@@ -335,7 +335,7 @@ export default function AdminDashboard() {
                   <div className="bg-blue-50 p-6 rounded-lg mb-8 border border-blue-200">
                     <h3 className="text-sm font-semibold text-blue-900 mb-4">Add New Student</h3>
                     <div className="flex gap-3">
-                      <input type="email" placeholder="Email (@ggu.edu.in)" value={newUserEmail} onChange={(e) => setNewUserEmail(e.target.value)} className="border border-blue-300 p-2.5 rounded-lg flex-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                      <input type="email" placeholder="Student Email" value={newUserEmail} onChange={(e) => setNewUserEmail(e.target.value)} className="border border-blue-300 p-2.5 rounded-lg flex-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400" />
                       <button onClick={addUser} className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition text-sm font-medium">+ Add</button>
                     </div>
                   </div>
@@ -343,7 +343,7 @@ export default function AdminDashboard() {
                   <div className="bg-purple-50 p-6 rounded-lg mb-8 border border-purple-200">
                     <h3 className="text-sm font-semibold text-purple-900 mb-4">Add New Admin</h3>
                     <div className="flex gap-3">
-                      <input type="email" placeholder="Email (@ggu.edu.in)" value={newAdminEmail} onChange={(e) => setNewAdminEmail(e.target.value)} className="border border-purple-300 p-2.5 rounded-lg flex-1 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400" />
+                      <input type="email" placeholder="Admin Email" value={newAdminEmail} onChange={(e) => setNewAdminEmail(e.target.value)} className="border border-purple-300 p-2.5 rounded-lg flex-1 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400" />
                       <button onClick={addAdmin} className="bg-purple-600 text-white px-6 py-2.5 rounded-lg hover:bg-purple-700 transition text-sm font-medium">+ Add Admin</button>
                     </div>
                   </div>
@@ -366,7 +366,7 @@ export default function AdminDashboard() {
                         </div>
                         <div className="flex gap-2">
                           <button onClick={() => openEditModal(user)} className="flex-1 text-white px-3 py-2 rounded-lg transition text-sm font-medium" style={{backgroundColor: '#9CCFFF', color: '#000'}}>Edit</button>
-                          {!user.isAdmin && <button onClick={() => deleteUser(user.email)} className="flex-1 text-white px-3 py-2 rounded-lg transition text-sm font-medium" style={{backgroundColor: '#FF5B5B'}}>Delete</button>}
+                          <button onClick={() => deleteUser(user.email)} className="flex-1 text-white px-3 py-2 rounded-lg transition text-sm font-medium" style={{backgroundColor: '#FF5B5B'}}>Delete</button>
                         </div>
                       </div>
                     ))}
