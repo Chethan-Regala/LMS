@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../components/Quiz';
 
 interface Unit5Props {
   currentModule: number;
@@ -7,6 +8,170 @@ interface Unit5Props {
 }
 
 const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule }) => {
+  const module1Quiz = [
+    {
+      question: "What is the purpose of digital environmental awareness campaigns?",
+      options: ["Waste time", "Spread awareness and inspire action", "Create confusion", "Ignore environment"],
+      correctAnswer: 1,
+      explanation: "Digital environmental awareness campaigns use social media and digital platforms to spread awareness about environmental issues and inspire people to take action."
+    },
+    {
+      question: "Which platform is best for visual environmental content?",
+      options: ["Email only", "Instagram with stories and reels", "Fax", "Telephone"],
+      correctAnswer: 1,
+      explanation: "Instagram is ideal for visual environmental content through photos, stories, reels, and infographics that engage audiences effectively."
+    },
+    {
+      question: "What is an effective environmental hashtag?",
+      options: ["#WasteMore", "#ClimateAction", "#IgnoreNature", "#PollutionGood"],
+      correctAnswer: 1,
+      explanation: "#ClimateAction is an effective hashtag that promotes environmental awareness and connects people working on climate issues globally."
+    },
+    {
+      question: "Which tool can be used to create environmental graphics?",
+      options: ["Canva", "Calculator", "Notepad", "Paint only"],
+      correctAnswer: 0,
+      explanation: "Canva is a user-friendly design tool perfect for creating environmental graphics, posters, and infographics for awareness campaigns."
+    },
+    {
+      question: "How should campaign impact be measured?",
+      options: ["Never measure", "Track reach, engagement, and behavioral changes", "Ignore results", "Only count likes"],
+      correctAnswer: 1,
+      explanation: "Campaign impact should be measured through reach, impressions, engagement (likes, shares, comments), follower growth, and reported behavioral changes."
+    }
+  ];
+
+  const module2Quiz = [
+    {
+      question: "What does zero-waste philosophy encourage?",
+      options: ["Create more waste", "Reuse all products with no trash to landfills", "Burn everything", "Ignore waste"],
+      correctAnswer: 1,
+      explanation: "Zero-waste philosophy encourages redesigning resource life cycles so all products are reused, with no trash sent to landfills or incinerators."
+    },
+    {
+      question: "What are the 5 R's of zero-waste?",
+      options: ["Run, Race, Rest, Relax, Repeat", "Refuse, Reduce, Reuse, Recycle, Rot", "Read, Write, Review, Revise, Remember", "Random words"],
+      correctAnswer: 1,
+      explanation: "The 5 R's of zero-waste are: Refuse (say no to unnecessary items), Reduce (minimize consumption), Reuse (use again), Recycle (process materials), and Rot (compost organic waste)."
+    },
+    {
+      question: "What should be included in a zero-waste kit?",
+      options: ["Plastic bags", "Reusable water bottle and cloth bags", "Disposable items", "Single-use plastics"],
+      correctAnswer: 1,
+      explanation: "A zero-waste kit includes reusable water bottle, cloth shopping bags, steel/bamboo straws, reusable food containers, cloth napkins, and reusable cutlery."
+    },
+    {
+      question: "What is the first step in zero-waste living?",
+      options: ["Buy more", "Refuse unnecessary items", "Accept all freebies", "Use more plastic"],
+      correctAnswer: 1,
+      explanation: "The first step in zero-waste living is to Refuse - say no to single-use plastics, unnecessary packaging, disposable items, and unwanted freebies."
+    },
+    {
+      question: "What is a benefit of zero-waste living?",
+      options: ["Increases waste", "Reduces landfill waste and saves money", "Creates pollution", "Wastes resources"],
+      correctAnswer: 1,
+      explanation: "Zero-waste living reduces landfill waste, conserves natural resources, saves money long-term, reduces pollution, and promotes mindful consumption."
+    }
+  ];
+
+  const module3Quiz = [
+    {
+      question: "What is the Women Helpline number in India?",
+      options: ["100", "181", "911", "1234"],
+      correctAnswer: 1,
+      explanation: "The Women Helpline number in India is 181, providing 24/7 support for women in distress and emergency situations."
+    },
+    {
+      question: "What does POSH Act stand for?",
+      options: ["Public Office Safety Handbook", "Prevention of Sexual Harassment at Workplace", "Police Officer Safety Handbook", "Private Office Security Handbook"],
+      correctAnswer: 1,
+      explanation: "POSH Act stands for Prevention of Sexual Harassment at Workplace, providing legal framework to prevent and address workplace harassment."
+    },
+    {
+      question: "What is an important aspect of adolescent health?",
+      options: ["Ignoring nutrition", "Menstrual hygiene and balanced diet", "Avoiding exercise", "Skipping sleep"],
+      correctAnswer: 1,
+      explanation: "Important aspects of adolescent health include menstrual hygiene, balanced nutrition with iron supplements, regular exercise, and adequate sleep."
+    },
+    {
+      question: "What should women do if facing harassment?",
+      options: ["Stay silent", "Speak up and report to authorities", "Ignore it", "Blame themselves"],
+      correctAnswer: 1,
+      explanation: "Women facing harassment should speak up, document incidents, report to authorities, seek support from trusted people, and know their legal rights."
+    },
+    {
+      question: "What is population education about?",
+      options: ["Ignoring family planning", "Family planning and responsible parenthood", "Increasing population", "Avoiding education"],
+      correctAnswer: 1,
+      explanation: "Population education covers family planning, contraception methods, responsible parenthood, understanding population dynamics, gender equality, and child rights."
+    }
+  ];
+
+  const module4Quiz = [
+    {
+      question: "What is the Cyber Crime Helpline number?",
+      options: ["100", "181", "1930", "108"],
+      correctAnswer: 2,
+      explanation: "The Cyber Crime Helpline number in India is 1930, where citizens can report cybercrimes and seek assistance."
+    },
+    {
+      question: "What is cyberbullying?",
+      options: ["Helping online", "Harassment or threats online", "Making friends", "Sharing knowledge"],
+      correctAnswer: 1,
+      explanation: "Cyberbullying is harassment, threats, or humiliation conducted online through trolling, doxing, impersonation, or exclusion, causing emotional harm."
+    },
+    {
+      question: "What should you do if cyberbullied?",
+      options: ["Respond angrily", "Block, document, and report", "Delete everything", "Ignore and suffer"],
+      correctAnswer: 1,
+      explanation: "If cyberbullied, don't respond, document evidence with screenshots, block the bully, report to platform and authorities, and seek support from trusted adults."
+    },
+    {
+      question: "What is the 20-20-20 rule for screen time?",
+      options: ["Work 20 hours", "Every 20 min, look 20 feet away for 20 sec", "Sleep 20 hours", "Use phone 20 hours"],
+      correctAnswer: 1,
+      explanation: "The 20-20-20 rule for healthy screen time: Every 20 minutes, look at something 20 feet away for 20 seconds to reduce eye strain."
+    },
+    {
+      question: "What is digital footprint?",
+      options: ["Shoe size", "Trace of online activity", "Walking distance", "Physical footprint"],
+      correctAnswer: 1,
+      explanation: "Digital footprint is the trace of your online activity - everything you post, share, or do online leaves a permanent record that can affect your future."
+    }
+  ];
+
+  const module5Quiz = [
+    {
+      question: "How many elements are in digital citizenship?",
+      options: ["3", "5", "9", "12"],
+      correctAnswer: 2,
+      explanation: "There are 9 elements of digital citizenship: Access, Commerce, Communication, Literacy, Etiquette, Law, Rights & Responsibilities, Health & Wellness, and Security."
+    },
+    {
+      question: "What is digital etiquette?",
+      options: ["Ignoring others", "Standards of online behavior and netiquette", "Being rude online", "Spamming"],
+      correctAnswer: 1,
+      explanation: "Digital etiquette refers to standards of online behavior, netiquette rules, and respectful online interactions with others."
+    },
+    {
+      question: "What does AUP stand for in schools?",
+      options: ["Always Use Phones", "Acceptable Use Policy", "Avoid Using Programs", "All Users Participate"],
+      correctAnswer: 1,
+      explanation: "AUP stands for Acceptable Use Policy, which outlines rules and guidelines for appropriate use of technology and internet in schools."
+    },
+    {
+      question: "What is a key component of digital literacy?",
+      options: ["Believing everything online", "Evaluating online information critically", "Sharing without thinking", "Ignoring sources"],
+      correctAnswer: 1,
+      explanation: "Digital literacy includes teaching and learning with technology, evaluating online information critically, and using digital tools effectively and responsibly."
+    },
+    {
+      question: "What should students pledge as digital citizens?",
+      options: ["Use technology irresponsibly", "Use technology responsibly and ethically", "Cyberbully others", "Share private information"],
+      correctAnswer: 1,
+      explanation: "Digital citizens should pledge to use technology responsibly and ethically, respect others, protect privacy, think critically, be kind, and balance digital and real-world life."
+    }
+  ];
   const renderModule = () => {
     switch (currentModule) {
       case 1:
@@ -133,6 +298,8 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule }) => {
               </ul>
             </section>
 
+            <Quiz title="Module 5.1: Digital Environmental Awareness" questions={module1Quiz} subject="NSS" unitId={5} moduleId={1} />
+
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="next-module-btn">Zero-Waste Day →</button>
             </div>
@@ -257,6 +424,8 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule }) => {
                 <li>Promotes mindful consumption</li>
               </ul>
             </section>
+
+            <Quiz title="Module 5.2: Zero-Waste Day" questions={module2Quiz} subject="NSS" unitId={5} moduleId={2} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(1)} className="prev-module-btn">← Digital Awareness</button>
@@ -392,6 +561,8 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule }) => {
                 <li>Celebrate women achievers</li>
               </ul>
             </section>
+
+            <Quiz title="Module 5.3: Women Empowerment" questions={module3Quiz} subject="NSS" unitId={5} moduleId={3} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="prev-module-btn">← Zero-Waste Day</button>
@@ -546,6 +717,8 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule }) => {
                 <li>Google yourself periodically</li>
               </ul>
             </section>
+
+            <Quiz title="Module 5.4: Internet Safety" questions={module4Quiz} subject="NSS" unitId={5} moduleId={4} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← Women Empowerment</button>
@@ -734,6 +907,8 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule }) => {
                 <li>Parent satisfaction</li>
               </ul>
             </section>
+
+            <Quiz title="Module 5.5: Digital Citizenship" questions={module5Quiz} subject="NSS" unitId={5} moduleId={5} />
 
             <div className="reference-section">
               <h3>Reference Materials</h3>

@@ -9,6 +9,143 @@ interface Unit5Props {
   onBack?: () => void;
 }
 
+// Quiz for Module 1: Searching Techniques
+const searchingQuizQuestions = [
+  {
+    question: "What is the time complexity of binary search in the worst case?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    correctAnswer: 1,
+    explanation: "Binary search divides the search space in half with each comparison, resulting in O(log n) time complexity."
+  },
+  {
+    question: "What is the prerequisite for binary search to work?",
+    options: ["Array must be sorted", "Array must be unsorted", "Array must have unique elements", "Array must be of even size"],
+    correctAnswer: 0,
+    explanation: "Binary search requires the array to be sorted in ascending order to work correctly."
+  },
+  {
+    question: "What is the time complexity of linear search?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n²)"],
+    correctAnswer: 2,
+    explanation: "Linear search examines each element sequentially, resulting in O(n) time complexity."
+  },
+  {
+    question: "Which search algorithm is more efficient for large sorted datasets?",
+    options: ["Linear Search", "Binary Search", "Both are equal", "Depends on data"],
+    correctAnswer: 1,
+    explanation: "Binary search is significantly more efficient with O(log n) complexity compared to linear search's O(n)."
+  },
+  {
+    question: "What is the space complexity of iterative binary search?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    correctAnswer: 0,
+    explanation: "Iterative binary search uses constant space O(1) as it only needs a few variables."
+  }
+];
+
+// Quiz for Module 2: Basic Sorting Algorithms
+const basicSortingQuizQuestions = [
+  {
+    question: "Which sorting algorithm is stable?",
+    options: ["Selection Sort", "Quick Sort", "Bubble Sort", "Heap Sort"],
+    correctAnswer: 2,
+    explanation: "Bubble Sort is stable as it preserves the relative order of equal elements."
+  },
+  {
+    question: "What is the best case time complexity of insertion sort?",
+    options: ["O(1)", "O(n)", "O(n log n)", "O(n²)"],
+    correctAnswer: 1,
+    explanation: "Insertion sort has O(n) best case complexity when the array is already sorted."
+  },
+  {
+    question: "Which sorting algorithm performs the minimum number of swaps?",
+    options: ["Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort"],
+    correctAnswer: 2,
+    explanation: "Selection sort performs only O(n) swaps, making it efficient in terms of write operations."
+  },
+  {
+    question: "What is the average case time complexity of bubble sort?",
+    options: ["O(n)", "O(n log n)", "O(n²)", "O(2^n)"],
+    correctAnswer: 2,
+    explanation: "Bubble sort has O(n²) average case complexity due to nested iterations."
+  },
+  {
+    question: "Which basic sorting algorithm is most efficient for nearly sorted data?",
+    options: ["Bubble Sort", "Selection Sort", "Insertion Sort", "All are equal"],
+    correctAnswer: 2,
+    explanation: "Insertion sort performs best on nearly sorted data with O(n) complexity in such cases."
+  }
+];
+
+// Quiz for Module 3: Divide and Conquer Sorting
+const divideConquerQuizQuestions = [
+  {
+    question: "What is the space complexity of merge sort?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n²)"],
+    correctAnswer: 2,
+    explanation: "Merge Sort requires O(n) additional space for the temporary arrays used during the merge process."
+  },
+  {
+    question: "Which sorting algorithm is guaranteed to have O(n log n) time complexity in all cases?",
+    options: ["Quick Sort", "Merge Sort", "Heap Sort", "Both B and C"],
+    correctAnswer: 3,
+    explanation: "Both Merge Sort and Heap Sort guarantee O(n log n) time complexity in all cases."
+  },
+  {
+    question: "Is merge sort a stable sorting algorithm?",
+    options: ["Yes", "No", "Depends on implementation", "Only for small arrays"],
+    correctAnswer: 0,
+    explanation: "Merge sort is stable as it preserves the relative order of equal elements during merging."
+  },
+  {
+    question: "What is the main disadvantage of merge sort?",
+    options: ["Time complexity", "Space complexity", "Not stable", "Difficult to implement"],
+    correctAnswer: 1,
+    explanation: "Merge sort's main disadvantage is its O(n) space complexity requirement."
+  },
+  {
+    question: "In merge sort, what happens in the 'divide' phase?",
+    options: ["Elements are sorted", "Array is split into halves", "Elements are merged", "Pivot is selected"],
+    correctAnswer: 1,
+    explanation: "In the divide phase, the array is recursively split into two halves until single elements remain."
+  }
+];
+
+// Quiz for Module 4: Quick Sort Implementation
+const quickSortQuizQuestions = [
+  {
+    question: "What is the worst-case time complexity of Quick Sort?",
+    options: ["O(n)", "O(n log n)", "O(n²)", "O(2^n)"],
+    correctAnswer: 2,
+    explanation: "Quick Sort's worst case occurs when the pivot is always the smallest or largest element, resulting in O(n²) complexity."
+  },
+  {
+    question: "Which pivot selection strategy helps avoid worst-case scenarios?",
+    options: ["Always first element", "Always last element", "Random selection", "Always middle element"],
+    correctAnswer: 2,
+    explanation: "Random pivot selection helps avoid worst-case scenarios by preventing consistently poor partitions."
+  },
+  {
+    question: "What is the average case time complexity of Quick Sort?",
+    options: ["O(n)", "O(n log n)", "O(n²)", "O(log n)"],
+    correctAnswer: 1,
+    explanation: "Quick Sort has O(n log n) average-case time complexity with good pivot selection."
+  },
+  {
+    question: "Is Quick Sort a stable sorting algorithm?",
+    options: ["Yes", "No", "Depends on implementation", "Only with random pivot"],
+    correctAnswer: 1,
+    explanation: "Quick Sort is not stable as it may change the relative order of equal elements during partitioning."
+  },
+  {
+    question: "What is the space complexity of Quick Sort in the average case?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    correctAnswer: 1,
+    explanation: "Quick Sort has O(log n) average space complexity due to the recursive call stack."
+  }
+];
+
+// Main comprehensive quiz
 const dsQuizQuestions = [
   {
     question: "What is the time complexity of binary search in the worst case?",
@@ -186,6 +323,8 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
                 title="Binary Search Implementation"
               ></iframe>
             </div>
+
+            <Quiz title="Searching Techniques Quiz" questions={searchingQuizQuestions} subject="DS" unitId={5} moduleId={1} />
           </section>
 
           <div className="navigation-buttons">
@@ -340,6 +479,8 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
                 title="Basic Sorting Algorithms"
               ></iframe>
             </div>
+
+            <Quiz title="Basic Sorting Algorithms Quiz" questions={basicSortingQuizQuestions} subject="DS" unitId={5} moduleId={2} />
           </section>
 
           <div className="navigation-buttons">
@@ -505,6 +646,8 @@ void merge(int arr[], int left, int mid, int right) {
                 title="Merge Sort Implementation"
               ></iframe>
             </div>
+
+            <Quiz title="Divide and Conquer Sorting Quiz" questions={divideConquerQuizQuestions} subject="DS" unitId={5} moduleId={3} />
           </section>
 
           <div className="navigation-buttons">
@@ -660,6 +803,8 @@ int partition(int arr[], int low, int high) {
                 title="Quick Sort Implementation"
               ></iframe>
             </div>
+
+            <Quiz title="Quick Sort Implementation Quiz" questions={quickSortQuizQuestions} subject="DS" unitId={5} moduleId={4} />
           </section>
 
           <div className="navigation-buttons">
@@ -725,10 +870,7 @@ int partition(int arr[], int low, int high) {
               </ul>
             </div>
 
-            <Quiz 
-              title="Data Structures Assessment Quiz"
-              questions={dsQuizQuestions}
-            />
+            <Quiz title="Data Structures Assessment Quiz" questions={dsQuizQuestions} subject="DS" unitId={5} moduleId={5} />
 
             <div className="video-section">
               <h5>Supplemental Video Resources</h5>

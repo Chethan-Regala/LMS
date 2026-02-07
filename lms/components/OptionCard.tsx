@@ -23,7 +23,7 @@ export default function OptionCard({ item }) {
       onMouseLeave={handleMouseUp}
       className="relative border overflow-hidden cursor-pointer w-full transition-all duration-100"
       style={{
-        backgroundColor: "#ffffff",
+        backgroundColor: "#BBBEC3",
         boxShadow: isPressed
           ? "inset 2px 2px 4px rgba(0,0,0,0.6), inset -1px -1px 2px rgba(0,0,0,0.5)"
           : "4px 4px 0px 0px rgba(0,0,0,0.7)",
@@ -70,7 +70,7 @@ export default function OptionCard({ item }) {
       </div>
 
       {/* BOTTOM PART */}
-      <div className="flex items-center justify-center py-2 bg-white">
+      <div className="flex items-center justify-center py-2 bg-white border-t-[0.8]">
         <p className="font-medium text-sm">{item.name}</p>
       </div>
     </div>

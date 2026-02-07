@@ -32,7 +32,8 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
         { id: '1.1', title: 'Overview of Linguistics', description: 'Introduction to linguistics and its major sub-fields' },
         { id: '1.2', title: 'Phonetics', description: 'Study of speech sounds and their physical properties' },
         { id: '1.3', title: 'Phonology', description: 'Sound patterns and phonological processes' },
-        { id: '1.4', title: 'Morphology', description: 'Word structure and formation processes' }
+        { id: '1.4', title: 'Morphology', description: 'Word structure and formation processes' },
+        { id: '1.5', title: 'Unit 1 Quiz', description: 'Test your knowledge of Unit 1 concepts' }
       ]
     },
     {
@@ -42,7 +43,8 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       modules: [
         { id: '2.1', title: 'Syntax and Syntactic Structures', description: 'Rules governing sentence formation' },
         { id: '2.2', title: 'Semantics and Semantic Structures', description: 'Meaning in language and semantic relations' },
-        { id: '2.3', title: 'Language Typology', description: 'Classification and comparison of languages' }
+        { id: '2.3', title: 'Language Typology', description: 'Classification and comparison of languages' },
+        { id: '2.4', title: 'Unit 2 Quiz', description: 'Test your knowledge of Unit 2 concepts' }
       ]
     },
     {
@@ -52,7 +54,8 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       modules: [
         { id: '3.1', title: 'First and Second Language Acquisition', description: 'Processes of learning native and additional languages' },
         { id: '3.2', title: 'Language Change and Contact', description: 'How languages evolve and influence each other' },
-        { id: '3.3', title: 'Historical Linguistics', description: 'Study of language evolution and reconstruction' }
+        { id: '3.3', title: 'Historical Linguistics', description: 'Study of language evolution and reconstruction' },
+        { id: '3.4', title: 'Unit 3 Quiz', description: 'Test your knowledge of Unit 3 concepts' }
       ]
     },
     {
@@ -63,7 +66,8 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
         { id: '4.1', title: 'Sociolinguistics and Variation', description: 'Language variation across social contexts' },
         { id: '4.2', title: 'Language Policy and Planning', description: 'Government and institutional language decisions' },
         { id: '4.3', title: 'Language and Identity', description: 'How language shapes and reflects identity' },
-        { id: '4.4', title: 'Language and Technology', description: 'Computational linguistics and NLP applications' }
+        { id: '4.4', title: 'Language and Technology', description: 'Computational linguistics and NLP applications' },
+        { id: '4.5', title: 'Unit 4 Quiz', description: 'Test your knowledge of Unit 4 concepts' }
       ]
     },
     {
@@ -75,7 +79,8 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
         { id: '5.2', title: 'Language and Gender', description: 'Gender differences in language use' },
         { id: '5.3', title: 'Language and Power', description: 'Language as a tool of power and control' },
         { id: '5.4', title: 'Language and Globalization', description: 'Impact of globalization on languages' },
-        { id: '5.5', title: 'Research Methods in Linguistics', description: 'Approaches to linguistic research and analysis' }
+        { id: '5.5', title: 'Research Methods in Linguistics', description: 'Approaches to linguistic research and analysis' },
+        { id: '5.6', title: 'Unit 5 Quiz', description: 'Test your knowledge of Unit 5 concepts' }
       ]
     }
   ];

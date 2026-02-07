@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../components/Quiz';
 
 interface Unit1Props {
   currentModule: number;
@@ -7,6 +8,170 @@ interface Unit1Props {
 }
 
 const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
+  const module1Quiz = [
+    {
+      question: "What is the primary objective of career orientation programs?",
+      options: ["To assign jobs to students", "To help students identify career goals and create roadmaps", "To teach technical skills only", "To conduct exams"],
+      correctAnswer: 1,
+      explanation: "Career orientation programs help students identify their career goals, understand their strengths, and create structured plans for skill development and learning."
+    },
+    {
+      question: "Which component is essential in creating a career roadmap?",
+      options: ["Only academic grades", "Setting milestones and timelines", "Avoiding challenges", "Ignoring personal interests"],
+      correctAnswer: 1,
+      explanation: "A career roadmap requires setting clear milestones and timelines to track progress toward career goals effectively."
+    },
+    {
+      question: "What should be included in future plans and activities?",
+      options: ["Only entertainment", "Academic excellence and skill development", "Avoiding community service", "Ignoring certifications"],
+      correctAnswer: 1,
+      explanation: "Future plans should include academic excellence, skill development, internships, certifications, networking, and community service through NSS activities."
+    },
+    {
+      question: "Which skill is crucial for career success?",
+      options: ["Avoiding teamwork", "Communication and leadership", "Working in isolation", "Ignoring feedback"],
+      correctAnswer: 1,
+      explanation: "Communication skills, leadership abilities, teamwork, problem-solving, and adaptability are crucial for career success."
+    },
+    {
+      question: "What is the purpose of self-assessment in career planning?",
+      options: ["To compare with others", "To understand personal strengths and interests", "To avoid challenges", "To limit options"],
+      correctAnswer: 1,
+      explanation: "Self-assessment helps students understand their personal strengths, weaknesses, interests, and talents to make informed career decisions."
+    }
+  ];
+
+  const module2Quiz = [
+    {
+      question: "What is the main purpose of ice breaking activities?",
+      options: ["To waste time", "To reduce anxiety and foster team bonding", "To create competition", "To test knowledge"],
+      correctAnswer: 1,
+      explanation: "Ice breaking activities help reduce anxiety, foster team bonding, encourage open communication, and create an inclusive atmosphere."
+    },
+    {
+      question: "Which activity involves sharing two true statements and one false statement?",
+      options: ["Human Bingo", "Two Truths and a Lie", "Speed Networking", "Name Game"],
+      correctAnswer: 1,
+      explanation: "Two Truths and a Lie is an ice breaking activity where participants share three statements about themselves - two true and one false."
+    },
+    {
+      question: "What do students expect from NSS courses?",
+      options: ["Only certificates", "Skill development and social impact", "No learning", "Avoiding community work"],
+      correctAnswer: 1,
+      explanation: "Students expect skill development, social impact opportunities, personal growth, networking, hands-on experience, and recognition from NSS courses."
+    },
+    {
+      question: "Which type of talent falls under creative talents?",
+      options: ["Data analysis", "Art, music, writing, design", "Programming only", "Management only"],
+      correctAnswer: 1,
+      explanation: "Creative talents include art, music, writing, and design, which involve artistic expression and innovation."
+    },
+    {
+      question: "How can you develop your skills effectively?",
+      options: ["Avoid practice", "Practice regularly and seek feedback", "Work alone always", "Ignore failures"],
+      correctAnswer: 1,
+      explanation: "Skills are developed through regular practice, seeking feedback, taking on challenges, learning from failures, and collaborating with others."
+    }
+  ];
+
+  const module3Quiz = [
+    {
+      question: "Why are success stories important for students?",
+      options: ["To create pressure", "To inspire and demonstrate that success is possible", "To discourage efforts", "To compare negatively"],
+      correctAnswer: 1,
+      explanation: "Success stories inspire students, provide real-life examples of achievement, demonstrate overcoming obstacles, and offer practical lessons."
+    },
+    {
+      question: "Which movie depicts overcoming homelessness to achieve success?",
+      options: ["3 Idiots", "The Pursuit of Happyness", "Dangal", "Lagaan"],
+      correctAnswer: 1,
+      explanation: "The Pursuit of Happyness is a biographical film about overcoming homelessness and adversity to achieve professional success."
+    },
+    {
+      question: "What lesson does the movie 'Dangal' teach?",
+      options: ["Avoiding sports", "Breaking gender barriers in sports", "Giving up easily", "Following only traditions"],
+      correctAnswer: 1,
+      explanation: "Dangal teaches about breaking gender barriers in sports, determination, and challenging societal norms."
+    },
+    {
+      question: "Which key lesson is common in most success stories?",
+      options: ["Giving up quickly", "Persistence and never giving up", "Avoiding hard work", "Limiting vision"],
+      correctAnswer: 1,
+      explanation: "Persistence and never giving up despite failures is a common lesson in success stories, along with vision, hard work, and resilience."
+    },
+    {
+      question: "What should be included when creating a success story presentation?",
+      options: ["Only achievements", "Background, challenges, turning points, and lessons", "Just photos", "No research"],
+      correctAnswer: 1,
+      explanation: "A success story presentation should include the person's background, challenges faced, key turning points, lessons learned, and actionable insights."
+    }
+  ];
+
+  const module4Quiz = [
+    {
+      question: "What is the primary objective of talent shows?",
+      options: ["To create competition only", "To encourage self-expression and build confidence", "To judge harshly", "To limit participation"],
+      correctAnswer: 1,
+      explanation: "Talent shows encourage self-expression, build confidence, celebrate diverse talents, and create a sense of community."
+    },
+    {
+      question: "Which is India's national song?",
+      options: ["Jana Gana Mana", "Vande Mataram", "Ae Mere Watan Ke Logo", "Maa Tujhe Salaam"],
+      correctAnswer: 1,
+      explanation: "Vande Mataram is the national song of India, while Jana Gana Mana is the national anthem."
+    },
+    {
+      question: "What benefit does singing patriotic songs provide?",
+      options: ["Creates division", "Develops sense of national identity and unity", "Promotes conflict", "Limits creativity"],
+      correctAnswer: 1,
+      explanation: "Singing patriotic songs develops a sense of national identity, promotes unity, preserves cultural heritage, and inspires civic responsibility."
+    },
+    {
+      question: "Which theme is suitable for NSS painting competitions?",
+      options: ["Only abstract art", "Environmental conservation and social issues", "Commercial products", "Personal portraits only"],
+      correctAnswer: 1,
+      explanation: "NSS painting themes include environmental conservation, social issues, national pride, community service, and sustainable living."
+    },
+    {
+      question: "What should be considered when organizing a talent show?",
+      options: ["Only one category", "Multiple categories, judging criteria, and recognition", "No planning needed", "Limiting participants"],
+      correctAnswer: 1,
+      explanation: "Organizing a talent show requires planning categories (singing, dancing, painting, etc.), setting judging criteria, promotion, and providing recognition."
+    }
+  ];
+
+  const module5Quiz = [
+    {
+      question: "What is the importance of environmental literature?",
+      options: ["Entertainment only", "Raises awareness and provides solutions for ecological issues", "No practical value", "Only for scientists"],
+      correctAnswer: 1,
+      explanation: "Environmental literature raises awareness about challenges, provides scientific understanding, inspires action, and offers sustainable solutions."
+    },
+    {
+      question: "Which book exposed the harmful effects of pesticides?",
+      options: ["The Lorax", "Silent Spring", "Walden", "The Sixth Extinction"],
+      correctAnswer: 1,
+      explanation: "Silent Spring by Rachel Carson exposed the harmful effects of pesticides on the environment and sparked the modern environmental movement."
+    },
+    {
+      question: "What should be included in a book summary introduction?",
+      options: ["Only personal opinions", "Book title, author, publication year, and theme overview", "Just the ending", "No context needed"],
+      correctAnswer: 1,
+      explanation: "A book summary introduction should include the book title, author, publication year, brief theme overview, and context/relevance."
+    },
+    {
+      question: "Which environmental theme addresses species extinction?",
+      options: ["Pollution only", "Biodiversity and conservation", "Energy only", "Water management only"],
+      correctAnswer: 1,
+      explanation: "Biodiversity and conservation themes address species extinction, habitat loss, and wildlife protection."
+    },
+    {
+      question: "What is a key tip for writing environmental book summaries?",
+      options: ["Copy directly from book", "Read actively, take notes, and use your own words", "Skip the analysis", "Ignore quotes"],
+      correctAnswer: 1,
+      explanation: "Effective book summaries require active reading, note-taking, using your own words, including relevant quotes, and connecting to real-world examples."
+    }
+  ];
   const renderModule = () => {
     switch (currentModule) {
       case 1:
@@ -92,6 +257,8 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <li>Adaptability and continuous learning mindset</li>
               </ul>
             </section>
+
+            <Quiz title="Module 1.1: Career Orientation" questions={module1Quiz} subject="NSS" unitId={1} moduleId={1} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="next-module-btn">Ice Breaking & Personal Skills →</button>
@@ -202,6 +369,8 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <li>Continuously improve and adapt</li>
               </ul>
             </section>
+
+            <Quiz title="Module 1.2: Ice Breaking & Personal Skills" questions={module2Quiz} subject="NSS" unitId={1} moduleId={2} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(1)} className="prev-module-btn">← Career Orientation & Future Planning</button>
@@ -362,6 +531,8 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <li>Inspire others through your actions</li>
               </ul>
             </section>
+
+            <Quiz title="Module 1.3: Success Stories & Motivation" questions={module3Quiz} subject="NSS" unitId={1} moduleId={3} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="prev-module-btn">← Ice Breaking & Personal Skills</button>
@@ -539,6 +710,8 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
               </ul>
             </section>
 
+            <Quiz title="Module 1.4: Talent Show Activities" questions={module4Quiz} subject="NSS" unitId={1} moduleId={4} />
+
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← Success Stories & Motivation</button>
               <button onClick={() => setCurrentModule(5)} className="next-module-btn">Environmental Literature →</button>
@@ -694,6 +867,8 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <li>Be prepared to present key insights to the class</li>
               </ul>
             </section>
+
+            <Quiz title="Module 1.5: Environmental Literature" questions={module5Quiz} subject="NSS" unitId={1} moduleId={5} />
 
             <div className="reference-section">
               <h3>Reference Materials</h3>

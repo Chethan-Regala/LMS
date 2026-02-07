@@ -55,10 +55,16 @@ export default function Home() {
       id: 6,
       name: "AI Assistance",
       link: "/pages/ai",
-      color: "#C6B7F2",
+      color: "#8CAAAF",
       img: "https://res.cloudinary.com/dwr6mvypn/image/upload/v1770459544/augmnet-removebg-preview_o6i4sh.png",
     },
-    
+    {
+      id: 7,
+      name: "F&S",
+      link: "/pages/feedback",
+      color: "#FFA07A",
+      img: "https://storage.googleapis.com/nucleus_public_assets_community/assets/livebooksV2/kalvi_support_icon.svg",
+    },
   ];
 
   return (

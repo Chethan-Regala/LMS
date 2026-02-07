@@ -8,61 +8,168 @@ interface Unit3Props {
 }
 
 const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
-  const quizQuestions = [
+  const module1Quiz = [
     {
       question: "What are the three main levels of biodiversity?",
-      options: [
-        "Genetic, Species, and Ecosystem diversity",
-        "Plant, Animal, and Microbial diversity",
-        "Terrestrial, Aquatic, and Aerial diversity",
-        "Local, National, and Global diversity"
-      ],
+      options: ["Genetic, Species, and Ecosystem", "Plant, Animal, and Microbial", "Terrestrial, Aquatic, and Aerial", "Local, National, and Global"],
       correctAnswer: 0,
       explanation: "Biodiversity is organized into three hierarchical levels: genetic diversity (variation within species), species diversity (variety of different species), and ecosystem diversity (variety of habitats and ecological processes)."
     },
     {
-      question: "Which type of biodiversity value involves direct use of biological resources without market transactions?",
-      options: [
-        "Productive use values",
-        "Consumptive use values",
-        "Social values",
-        "Option values"
-      ],
+      question: "What percentage of DNA do humans share, yet still show significant differences?",
+      options: ["95%", "99.9%", "98%", "100%"],
       correctAnswer: 1,
-      explanation: "Consumptive use values refer to direct benefits from biological resources that are used without going through markets, such as wild foods, medicinal plants, firewood, and fresh water from natural sources."
+      explanation: "Humans share 99.9% of their DNA, but the remaining 0.1% creates all the genetic diversity we see in human populations, demonstrating the power of genetic variation."
     },
+    {
+      question: "Which level of biodiversity is like 'source code' in software?",
+      options: ["Ecosystem diversity", "Species diversity", "Genetic diversity", "Habitat diversity"],
+      correctAnswer: 2,
+      explanation: "Genetic diversity represents the fundamental 'code' level of biodiversity, containing the DNA variations that determine traits and enable adaptation, similar to source code in software."
+    },
+    {
+      question: "How many species are estimated to exist globally?",
+      options: ["1-2 million", "8-10 million", "20-30 million", "50 million"],
+      correctAnswer: 1,
+      explanation: "Scientists estimate 8-10 million species exist globally, though we've only cataloged about 1.2 million, meaning most of Earth's biodiversity remains undiscovered."
+    },
+    {
+      question: "Which engineering field uses biomimicry to create innovations?",
+      options: ["Only robotics", "Only materials science", "Multiple fields including robotics and materials", "None"],
+      correctAnswer: 2,
+      explanation: "Biomimicry is used across multiple engineering fields including robotics (animal locomotion), materials science (spider silk), structural engineering (honeycomb structures), and algorithms (genetic algorithms)."
+    }
+  ];
+
+  const module2Quiz = [
+    {
+      question: "What percentage of drugs come from plant sources?",
+      options: ["10%", "25%", "50%", "75%"],
+      correctAnswer: 1,
+      explanation: "Approximately 25% of pharmaceutical drugs are derived from plant sources, representing a $40 billion market and highlighting the medicinal value of biodiversity."
+    },
+    {
+      question: "Which type of biodiversity value involves direct use without market transactions?",
+      options: ["Productive use values", "Consumptive use values", "Social values", "Option values"],
+      correctAnswer: 1,
+      explanation: "Consumptive use values refer to direct benefits from biological resources used without going through markets, such as wild foods, medicinal plants, firewood, and fresh water."
+    },
+    {
+      question: "What is the estimated annual value of global ecosystem services?",
+      options: ["$25 trillion", "$50 trillion", "$125 trillion", "$200 trillion"],
+      correctAnswer: 2,
+      explanation: "Global ecosystem services are valued at approximately $125 trillion annually, demonstrating the enormous economic importance of biodiversity to human society."
+    },
+    {
+      question: "Which biodiversity value represents potential future benefits we haven't discovered yet?",
+      options: ["Aesthetic values", "Option values", "Social values", "Ethical values"],
+      correctAnswer: 1,
+      explanation: "Option values represent the potential for future discoveries and applications from biodiversity, like undiscovered medicines or biotechnology applications we haven't thought of yet."
+    },
+    {
+      question: "What is the expected market size of biomimicry by 2030?",
+      options: ["$5 billion", "$18 billion", "$50 billion", "$100 billion"],
+      correctAnswer: 1,
+      explanation: "The biomimicry market is expected to reach $18 billion by 2030, reflecting growing interest in nature-inspired engineering solutions."
+    }
+  ];
+
+  const module3Quiz = [
     {
       question: "India is considered a mega-diverse country because it contains:",
-      options: [
-        "5% of world's species in 1% of land area",
-        "8% of world's species in 2.4% of land area",
-        "12% of world's species in 3% of land area",
-        "15% of world's species in 4% of land area"
-      ],
+      options: ["5% of world's species in 1% of land", "8% of world's species in 2.4% of land", "12% of world's species in 3% of land", "15% of world's species in 4% of land"],
       correctAnswer: 1,
-      explanation: "India is one of 17 mega-diverse countries globally, containing approximately 8% of the world's known species in just 2.4% of the world's land area, making it exceptionally species-rich."
+      explanation: "India is one of 17 mega-diverse countries globally, containing approximately 8% of the world's known species in just 2.4% of the world's land area."
     },
+    {
+      question: "How many biodiversity hotspots exist globally?",
+      options: ["12", "24", "36", "48"],
+      correctAnswer: 2,
+      explanation: "There are 36 biodiversity hotspots globally, regions with exceptional species concentration that contain approximately 60% of the world's plant species."
+    },
+    {
+      question: "What percentage of ocean species remain undiscovered?",
+      options: ["30%", "50%", "80%", "95%"],
+      correctAnswer: 2,
+      explanation: "Approximately 80% of ocean species remain undiscovered, making marine biodiversity one of the greatest unexplored frontiers on Earth."
+    },
+    {
+      question: "What percentage of Indian flora is endemic (found nowhere else)?",
+      options: ["10%", "33%", "50%", "75%"],
+      correctAnswer: 1,
+      explanation: "Approximately 33% of Indian flora is endemic, meaning these plant species are found nowhere else on Earth, highlighting India's unique biodiversity."
+    },
+    {
+      question: "Which region shows the highest biodiversity globally?",
+      options: ["Polar regions", "Temperate zones", "Equatorial/tropical regions", "Desert regions"],
+      correctAnswer: 2,
+      explanation: "Equatorial and tropical regions harbor the highest biodiversity, with 50% of species found in just 7% of Earth's land area near the equator."
+    }
+  ];
+
+  const module4Quiz = [
     {
       question: "What is the primary threat to 85% of endangered species?",
-      options: [
-        "Climate change",
-        "Pollution",
-        "Habitat loss",
-        "Invasive species"
-      ],
+      options: ["Climate change", "Pollution", "Habitat loss", "Invasive species"],
       correctAnswer: 2,
-      explanation: "Habitat loss is the primary threat to 85% of endangered species. This includes deforestation, urbanization, agricultural conversion, and habitat fragmentation that destroy or degrade natural environments."
+      explanation: "Habitat loss is the primary threat to 85% of endangered species, including deforestation, urbanization, agricultural conversion, and habitat fragmentation."
     },
     {
-      question: "Which conservation approach maintains species in their natural habitats with all ecological relationships intact?",
-      options: [
-        "Ex-situ conservation",
-        "In-situ conservation",
-        "Captive breeding",
-        "Seed banking"
-      ],
+      question: "How much faster is the current extinction rate compared to natural background rate?",
+      options: ["10-100x faster", "100-500x faster", "1,000-10,000x faster", "100,000x faster"],
+      correctAnswer: 2,
+      explanation: "The current extinction rate is 1,000-10,000 times faster than the natural background rate, indicating an unprecedented biodiversity crisis."
+    },
+    {
+      question: "What is the estimated annual value of the illegal wildlife trade?",
+      options: ["$2 billion", "$20 billion", "$50 billion", "$100 billion"],
       correctAnswer: 1,
-      explanation: "In-situ conservation protects species in their natural habitats, maintaining all ecological relationships, evolutionary potential, and ecosystem functions. Examples include national parks, wildlife sanctuaries, and biosphere reserves."
+      explanation: "The illegal wildlife trade is estimated at $20 billion annually, making it one of the most lucrative forms of organized crime globally."
+    },
+    {
+      question: "Which threat to biodiversity is compared to 'malicious code injection'?",
+      options: ["Pollution", "Climate change", "Invasive species", "Habitat loss"],
+      correctAnswer: 2,
+      explanation: "Invasive species are like malicious code injection - they enter ecosystems where they don't belong and cause chaos by outcompeting natives, spreading diseases, and altering ecosystem functions."
+    },
+    {
+      question: "How many species could be affected by climate change by 2050?",
+      options: ["100,000", "500,000", "1 million", "5 million"],
+      correctAnswer: 2,
+      explanation: "Climate change could affect approximately 1 million species by 2050 through habitat shifts, phenology changes, and ecosystem disruption."
+    }
+  ];
+
+  const module5Quiz = [
+    {
+      question: "Which conservation approach maintains species in their natural habitats?",
+      options: ["Ex-situ conservation", "In-situ conservation", "Captive breeding", "Seed banking"],
+      correctAnswer: 1,
+      explanation: "In-situ conservation protects species in their natural habitats, maintaining all ecological relationships, evolutionary potential, and ecosystem functions through national parks and wildlife sanctuaries."
+    },
+    {
+      question: "What is an example of ex-situ conservation?",
+      options: ["National parks", "Wildlife sanctuaries", "Zoos and botanical gardens", "Biosphere reserves"],
+      correctAnswer: 2,
+      explanation: "Ex-situ conservation involves protecting species outside their natural habitats, such as in zoos, botanical gardens, seed banks, and captive breeding programs."
+    },
+    {
+      question: "Which technology helps combat poaching?",
+      options: ["Virtual reality", "Drones and AI sensors", "3D printing", "Blockchain only"],
+      correctAnswer: 1,
+      explanation: "Drones equipped with sensors and AI are used for anti-poaching efforts, providing real-time surveillance and early detection of illegal activities in protected areas."
+    },
+    {
+      question: "What is the main advantage of in-situ conservation over ex-situ?",
+      options: ["Lower cost", "Maintains ecological relationships", "Easier to implement", "Better for tourism"],
+      correctAnswer: 1,
+      explanation: "In-situ conservation maintains all ecological relationships and evolutionary processes intact, allowing species to continue adapting naturally within their ecosystems."
+    },
+    {
+      question: "Which career field develops tools for biodiversity monitoring?",
+      options: ["Only biology", "Only computer science", "Conservation technology (interdisciplinary)", "Only environmental science"],
+      correctAnswer: 2,
+      explanation: "Conservation technology is an interdisciplinary field combining biology, computer science, engineering, and environmental science to develop monitoring and protection tools."
     }
   ];
   const renderModule = () => {
@@ -160,6 +267,8 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               <h4>Biodiversity and Conservation</h4>
               <p>Understanding the importance of biodiversity and conservation strategies.</p>
               <iframe width="50%" height="300" src="https://www.youtube.com/embed/7G3eXI_DPn8?si=FaulseZDH7cEFppZ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>            </div>
+
+            <Quiz title="Module 3.1: Biodiversity Levels" questions={module1Quiz} subject="ES" unitId={3} moduleId={1} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="next-module-btn">Biodiversity Values →</button>
@@ -297,6 +406,8 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               <p>Exploring India's exceptional biodiversity and conservation challenges.</p>
               <iframe width="50%" height="300" src="https://www.youtube.com/embed/xcHZFuq270g?si=IV3buww5Zff-Gs73&amp;start=4" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
+
+            <Quiz title="Module 3.2: Biodiversity Values" questions={module2Quiz} subject="ES" unitId={3} moduleId={2} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(1)} className="prev-module-btn">← Biodiversity Definition</button>
@@ -438,6 +549,8 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               <p>Comparing different approaches to biodiversity conservation.</p>
               <iframe width="50%" height="300" src="https://www.youtube.com/embed/jnz2Xq9T0dk?si=U8jX29I_FpF01Nka&amp;start=4" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
+
+            <Quiz title="Module 3.3: Biodiversity Distribution" questions={module3Quiz} subject="ES" unitId={3} moduleId={3} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="prev-module-btn">← Biodiversity Values</button>
@@ -582,6 +695,8 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               <iframe width="50%" height="300" src="https://www.youtube.com/embed/705DHheuG6w?si=kjpwXjBu5-kKRUYw&amp;start=4" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
 
+            <Quiz title="Module 3.4: Threats to Biodiversity" questions={module4Quiz} subject="ES" unitId={3} moduleId={4} />
+
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← Biodiversity Levels</button>
               <button onClick={() => setCurrentModule(5)} className="next-module-btn">Conservation Strategies →</button>
@@ -599,7 +714,42 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               </div>
             </div>
             
-            <Quiz questions={quizQuestions} />
+            <section className="content-section">
+              <h3>Conservation of Biodiversity: Protecting Nature's Systems 🛡️</h3>
+              <div className="theory-box">
+                <p>Conservation is like system backup and disaster recovery - we need both on-site protection (in-situ) and off-site backups (ex-situ) to ensure biodiversity survives! Just like you wouldn't trust a single backup strategy for critical data, we can't rely on just one conservation approach.</p>
+              </div>
+              
+              <h4>In-Situ Conservation - On-Site Protection 🏞️</h4>
+              <div className="example-box">
+                <p>Protecting species in their natural habitats with all ecological relationships intact.</p>
+                <ul>
+                  <li><strong>National Parks:</strong> Large protected areas for ecosystem conservation</li>
+                  <li><strong>Wildlife Sanctuaries:</strong> Protected areas focusing on specific species</li>
+                  <li><strong>Biosphere Reserves:</strong> UNESCO sites balancing conservation and development</li>
+                  <li><strong>Sacred Groves:</strong> Traditional community-protected forests</li>
+                </ul>
+              </div>
+
+              <h4>Ex-Situ Conservation - Off-Site Backup 🏛️</h4>
+              <div className="example-box">
+                <p>Protecting species outside their natural habitats as insurance against extinction.</p>
+                <ul>
+                  <li><strong>Zoos:</strong> Captive breeding programs for endangered animals</li>
+                  <li><strong>Botanical Gardens:</strong> Living collections of rare plants</li>
+                  <li><strong>Seed Banks:</strong> Long-term storage of plant genetic material</li>
+                  <li><strong>Gene Banks:</strong> Cryopreservation of genetic resources</li>
+                </ul>
+              </div>
+            </section>
+
+            <div className="video-embed">
+              <h4>Conservation Strategies</h4>
+              <p>Learn about different approaches to protecting biodiversity.</p>
+              <iframe width="50%" height="300" src="https://www.youtube.com/embed/jnz2Xq9T0dk?si=U8jX29I_FpF01Nka" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            </div>
+
+            <Quiz title="Module 3.5: Conservation Strategies" questions={module5Quiz} subject="ES" unitId={3} moduleId={5} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(4)} className="prev-module-btn">← Threats to Biodiversity</button>

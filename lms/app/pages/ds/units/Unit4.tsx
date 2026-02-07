@@ -1,11 +1,177 @@
 'use client';
 import React from 'react';
+import Quiz from '../components/Quiz';
 
 interface Unit4Props {
   currentModule: number;
   setCurrentModule: (module: number) => void;
   onBack?: () => void;
 }
+
+const module1Quiz = [
+  {
+    question: "What is the maximum number of edges in a simple undirected graph with n vertices?",
+    options: ["n", "n(n-1)", "n(n-1)/2", "n²"],
+    correctAnswer: 2,
+    explanation: "A simple undirected graph with n vertices can have at most n(n-1)/2 edges, as each pair of vertices can be connected by at most one edge."
+  },
+  {
+    question: "Which graph property indicates that a path exists between every pair of vertices?",
+    options: ["Complete", "Connected", "Bipartite", "Planar"],
+    correctAnswer: 1,
+    explanation: "A connected graph has a path between every pair of vertices. A complete graph is a special case where every vertex is directly connected to every other vertex."
+  },
+  {
+    question: "What is the degree of a vertex in a graph?",
+    options: ["Number of adjacent vertices", "Number of incident edges", "Distance from root", "Number of paths"],
+    correctAnswer: 1,
+    explanation: "The degree of a vertex is the number of edges incident to it, which equals the number of adjacent vertices in a simple graph."
+  },
+  {
+    question: "In a directed graph, what is the difference between in-degree and out-degree?",
+    options: ["In-degree counts incoming edges, out-degree counts outgoing edges", "They are always equal", "In-degree is for weighted graphs only", "Out-degree is always greater"],
+    correctAnswer: 0,
+    explanation: "In-degree counts edges coming into a vertex, while out-degree counts edges going out from a vertex in a directed graph."
+  },
+  {
+    question: "What type of graph can be drawn on a plane without edge crossings?",
+    options: ["Complete graph", "Bipartite graph", "Planar graph", "Directed graph"],
+    correctAnswer: 2,
+    explanation: "A planar graph can be drawn on a plane without any edges crossing each other."
+  }
+];
+
+const module2Quiz = [
+  {
+    question: "What is the space complexity of an adjacency matrix for a graph with V vertices?",
+    options: ["O(V)", "O(V²)", "O(V + E)", "O(E)"],
+    correctAnswer: 1,
+    explanation: "An adjacency matrix requires O(V²) space as it stores a V × V matrix regardless of the number of edges."
+  },
+  {
+    question: "Which graph representation is more space-efficient for sparse graphs?",
+    options: ["Adjacency matrix", "Adjacency list", "Edge list", "Incidence matrix"],
+    correctAnswer: 1,
+    explanation: "Adjacency list uses O(V + E) space, which is more efficient than O(V²) for sparse graphs where E << V²."
+  },
+  {
+    question: "What is the time complexity to check if an edge exists between two vertices using an adjacency matrix?",
+    options: ["O(1)", "O(V)", "O(E)", "O(log V)"],
+    correctAnswer: 0,
+    explanation: "Adjacency matrix provides O(1) edge existence checking through direct array access at matrix[i][j]."
+  },
+  {
+    question: "Which representation is best for iterating through all neighbors of a vertex?",
+    options: ["Adjacency matrix", "Adjacency list", "Edge list", "Both matrix and list are equal"],
+    correctAnswer: 1,
+    explanation: "Adjacency list allows O(degree) iteration through neighbors, while adjacency matrix requires O(V) to check all possible connections."
+  },
+  {
+    question: "What is the space complexity of an adjacency list for a graph with V vertices and E edges?",
+    options: ["O(V)", "O(E)", "O(V + E)", "O(V²)"],
+    correctAnswer: 2,
+    explanation: "Adjacency list requires O(V + E) space: O(V) for the array of lists and O(E) for storing all edges."
+  }
+];
+
+const module3Quiz = [
+  {
+    question: "What data structure does BFS use for graph traversal?",
+    options: ["Stack", "Queue", "Priority Queue", "Array"],
+    correctAnswer: 1,
+    explanation: "BFS uses a queue (FIFO) to process vertices level by level, ensuring shortest path in unweighted graphs."
+  },
+  {
+    question: "What is the time complexity of BFS and DFS for a graph with V vertices and E edges?",
+    options: ["O(V)", "O(E)", "O(V + E)", "O(V²)"],
+    correctAnswer: 2,
+    explanation: "Both BFS and DFS visit each vertex once and explore each edge once, resulting in O(V + E) time complexity."
+  },
+  {
+    question: "Which traversal algorithm guarantees finding the shortest path in an unweighted graph?",
+    options: ["DFS", "BFS", "Both DFS and BFS", "Neither"],
+    correctAnswer: 1,
+    explanation: "BFS explores vertices level by level, guaranteeing the shortest path in unweighted graphs by visiting closer vertices first."
+  },
+  {
+    question: "What is the space complexity of recursive DFS in the worst case?",
+    options: ["O(1)", "O(V)", "O(E)", "O(V + E)"],
+    correctAnswer: 1,
+    explanation: "Recursive DFS uses O(V) space for the recursion stack in the worst case (linear graph), plus O(V) for the visited array."
+  },
+  {
+    question: "Which application is best suited for DFS rather than BFS?",
+    options: ["Shortest path finding", "Level-order processing", "Cycle detection", "Minimum hops calculation"],
+    correctAnswer: 2,
+    explanation: "DFS is well-suited for cycle detection as it can track the recursion stack to identify back edges indicating cycles."
+  }
+];
+
+const module4Quiz = [
+  {
+    question: "What is the time complexity of Kruskal's MST algorithm?",
+    options: ["O(V log V)", "O(E log E)", "O(V + E)", "O(V²)"],
+    correctAnswer: 1,
+    explanation: "Kruskal's algorithm is dominated by edge sorting which takes O(E log E) time. Union-Find operations are nearly constant with optimizations."
+  },
+  {
+    question: "Which data structure is essential for Kruskal's algorithm to detect cycles?",
+    options: ["Stack", "Queue", "Union-Find (Disjoint Set)", "Priority Queue"],
+    correctAnswer: 2,
+    explanation: "Union-Find (Disjoint Set) is used in Kruskal's algorithm to efficiently detect cycles by checking if two vertices are in the same set."
+  },
+  {
+    question: "What is the constraint for Dijkstra's algorithm to work correctly?",
+    options: ["Graph must be connected", "All edge weights must be non-negative", "Graph must be acyclic", "Graph must be undirected"],
+    correctAnswer: 1,
+    explanation: "Dijkstra's algorithm requires non-negative edge weights. For graphs with negative weights, Bellman-Ford algorithm should be used."
+  },
+  {
+    question: "What is the time complexity of Dijkstra's algorithm using a binary heap?",
+    options: ["O(V²)", "O(E log V)", "O(V + E)", "O(E log E)"],
+    correctAnswer: 1,
+    explanation: "Dijkstra's algorithm with binary heap has O((V + E) log V) complexity, which simplifies to O(E log V) for connected graphs."
+  },
+  {
+    question: "Which algorithm can detect negative weight cycles in a graph?",
+    options: ["Dijkstra's", "Prim's", "Bellman-Ford", "Kruskal's"],
+    correctAnswer: 2,
+    explanation: "Bellman-Ford algorithm can detect negative weight cycles by checking if distances can still be reduced after V-1 iterations."
+  }
+];
+
+const module5Quiz = [
+  {
+    question: "What is the purpose of maintaining a recursion stack in DFS for cycle detection?",
+    options: ["To track visited vertices", "To identify back edges", "To calculate distances", "To store path weights"],
+    correctAnswer: 1,
+    explanation: "The recursion stack in DFS helps identify back edges (edges to ancestors in DFS tree), which indicate the presence of cycles."
+  },
+  {
+    question: "What is the time complexity of topological sorting using DFS?",
+    options: ["O(V)", "O(E)", "O(V + E)", "O(V log V)"],
+    correctAnswer: 2,
+    explanation: "Topological sorting using DFS visits each vertex and edge once, resulting in O(V + E) time complexity."
+  },
+  {
+    question: "Which algorithm is used to find strongly connected components in a directed graph?",
+    options: ["Dijkstra's", "Prim's", "Kosaraju's or Tarjan's", "Kruskal's"],
+    correctAnswer: 2,
+    explanation: "Kosaraju's algorithm (two DFS passes) or Tarjan's algorithm (single DFS with low-link values) are used to find strongly connected components."
+  },
+  {
+    question: "What is an articulation point in a graph?",
+    options: ["A vertex with maximum degree", "A vertex whose removal increases connected components", "A vertex in a cycle", "A vertex with minimum degree"],
+    correctAnswer: 1,
+    explanation: "An articulation point (cut vertex) is a vertex whose removal increases the number of connected components in the graph."
+  },
+  {
+    question: "What is the space complexity of finding strongly connected components using Kosaraju's algorithm?",
+    options: ["O(1)", "O(V)", "O(E)", "O(V + E)"],
+    correctAnswer: 3,
+    explanation: "Kosaraju's algorithm requires O(V + E) space for the graph representation, visited arrays, and stack for storing vertices."
+  }
+];
 
 const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }) => {
   const renderModule = () => {
@@ -142,6 +308,14 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz 
+              title="Module 4.1 Quiz: Graph Types and Terminology"
+              questions={module1Quiz}
+              subject="DS"
+              unitId={4}
+              moduleId={1}
+            />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="next-module-btn">Graph Representations →</button>
@@ -306,6 +480,14 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz 
+              title="Module 4.2 Quiz: Graph Representations"
+              questions={module2Quiz}
+              subject="DS"
+              unitId={4}
+              moduleId={2}
+            />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(1)} className="prev-module-btn">← Graph Types</button>
@@ -479,6 +661,14 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz 
+              title="Module 4.3 Quiz: Graph Traversals - BFS and DFS"
+              questions={module3Quiz}
+              subject="DS"
+              unitId={4}
+              moduleId={3}
+            />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="prev-module-btn">← Graph Representations</button>
@@ -667,6 +857,14 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
             </section>
 
+            <Quiz 
+              title="Module 4.4 Quiz: Graph Applications - MST and Shortest Path"
+              questions={module4Quiz}
+              subject="DS"
+              unitId={4}
+              moduleId={4}
+            />
+
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← BFS and DFS</button>
               <button onClick={() => setCurrentModule(5)} className="next-module-btn">Practical Experiments →</button>
@@ -845,6 +1043,14 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
                 </ul>
               </div>
             </section>
+
+            <Quiz 
+              title="Module 4.5 Quiz: Practical Experiments"
+              questions={module5Quiz}
+              subject="DS"
+              unitId={4}
+              moduleId={5}
+            />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(4)} className="prev-module-btn">← Graph Applications</button>

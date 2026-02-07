@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../components/Quiz';
 
 interface Unit2Props {
   currentModule: number;
@@ -8,6 +9,172 @@ interface Unit2Props {
 }
 
 const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }) => {
+  
+  const module1Quiz = [
+    {
+      question: "What is the main advantage of a singly linked list over an array?",
+      options: ["Random access", "Dynamic size", "Cache locality", "Less memory usage"],
+      correctAnswer: 1,
+      explanation: "Singly linked lists have dynamic size and can grow/shrink at runtime without predetermined size limitations, unlike arrays which have fixed size."
+    },
+    {
+      question: "What is the time complexity of inserting a node at the beginning of a singly linked list?",
+      options: ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+      correctAnswer: 0,
+      explanation: "Inserting at the beginning requires only updating the head pointer and the new node's next pointer, which is O(1) constant time."
+    },
+    {
+      question: "What does the 'next' pointer of the last node in a singly linked list point to?",
+      options: ["First node", "NULL", "Previous node", "Itself"],
+      correctAnswer: 1,
+      explanation: "In a singly linked list, the last node's next pointer points to NULL to indicate the end of the list."
+    },
+    {
+      question: "What is the time complexity of deleting a node from the end of a singly linked list?",
+      options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+      correctAnswer: 1,
+      explanation: "Deleting from the end requires traversing to the second-to-last node, which takes O(n) time in a singly linked list."
+    },
+    {
+      question: "Which operation is more efficient in a linked list compared to an array?",
+      options: ["Random access", "Insertion at beginning", "Binary search", "Cache performance"],
+      correctAnswer: 1,
+      explanation: "Insertion at the beginning is O(1) in linked lists but O(n) in arrays due to shifting elements. Arrays are better for random access and cache performance."
+    }
+  ];
+
+  const module2Quiz = [
+    {
+      question: "In a linked list implementation of a stack, where should push and pop operations occur?",
+      options: ["At the tail", "At the head", "In the middle", "At random positions"],
+      correctAnswer: 1,
+      explanation: "Push and pop operations should occur at the head for O(1) time complexity, as accessing the head is immediate in a linked list."
+    },
+    {
+      question: "What is the main advantage of implementing a queue using a linked list?",
+      options: ["Fixed size", "No size limitations", "Faster access", "Less memory"],
+      correctAnswer: 1,
+      explanation: "Linked list implementation eliminates the fixed size limitation of array-based queues, allowing dynamic growth as needed."
+    },
+    {
+      question: "For efficient queue operations, what pointers should be maintained?",
+      options: ["Only head", "Only tail", "Both head and tail", "Head, tail, and middle"],
+      correctAnswer: 2,
+      explanation: "Maintaining both head and tail pointers allows O(1) enqueue (at tail) and dequeue (at head) operations."
+    },
+    {
+      question: "What is the time complexity of push operation in a linked list-based stack?",
+      options: ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+      correctAnswer: 0,
+      explanation: "Push operation at the head of a linked list is O(1) as it only involves creating a new node and updating the head pointer."
+    },
+    {
+      question: "Which data structure benefits most from linked list implementation?",
+      options: ["Array", "Stack with unknown size", "Binary search", "Sorting algorithms"],
+      correctAnswer: 1,
+      explanation: "Stacks with unknown or varying sizes benefit most from linked list implementation due to dynamic memory allocation."
+    }
+  ];
+
+  const module3Quiz = [
+    {
+      question: "What is the main advantage of a doubly linked list over a singly linked list?",
+      options: ["Less memory", "Bidirectional traversal", "Faster insertion", "Simpler implementation"],
+      correctAnswer: 1,
+      explanation: "Doubly linked lists allow bidirectional traversal (forward and backward) through both next and previous pointers."
+    },
+    {
+      question: "In a circular linked list, what does the last node's next pointer point to?",
+      options: ["NULL", "First node", "Previous node", "Itself"],
+      correctAnswer: 1,
+      explanation: "In a circular linked list, the last node's next pointer points back to the first node, creating a circular structure."
+    },
+    {
+      question: "What is the time complexity of deleting a given node in a doubly linked list?",
+      options: ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+      correctAnswer: 0,
+      explanation: "With a reference to the node, deletion in a doubly linked list is O(1) as we can directly access both previous and next nodes."
+    },
+    {
+      question: "Which problem is best solved using a circular linked list?",
+      options: ["Binary search", "Josephus problem", "Sorting", "Matrix multiplication"],
+      correctAnswer: 1,
+      explanation: "The Josephus problem (eliminating every k-th person in a circle) is naturally solved using a circular linked list."
+    },
+    {
+      question: "What is the memory overhead of a doubly linked list compared to a singly linked list?",
+      options: ["Same", "One extra pointer per node", "Two extra pointers per node", "Half the memory"],
+      correctAnswer: 1,
+      explanation: "Doubly linked lists require one additional pointer (previous) per node compared to singly linked lists, increasing memory by approximately 33%."
+    }
+  ];
+
+  const module4Quiz = [
+    {
+      question: "Which data structure uses linked lists for collision resolution?",
+      options: ["Array", "Hash table with chaining", "Binary tree", "Heap"],
+      correctAnswer: 1,
+      explanation: "Hash tables use linked lists in separate chaining method to handle collisions where multiple keys hash to the same bucket."
+    },
+    {
+      question: "How are adjacency lists in graphs typically implemented?",
+      options: ["Using arrays only", "Using linked lists", "Using matrices", "Using stacks"],
+      correctAnswer: 1,
+      explanation: "Adjacency lists use linked lists to store neighbors of each vertex, providing space-efficient graph representation."
+    },
+    {
+      question: "Which application uses doubly linked lists for efficient operations?",
+      options: ["Stack", "Queue", "LRU Cache", "Binary search"],
+      correctAnswer: 2,
+      explanation: "LRU (Least Recently Used) Cache uses doubly linked lists for O(1) insertion, deletion, and moving elements to maintain access order."
+    },
+    {
+      question: "What is the primary use of linked lists in operating systems?",
+      options: ["File storage", "Process scheduling", "Memory allocation", "All of the above"],
+      correctAnswer: 3,
+      explanation: "Operating systems use linked lists for process scheduling queues, memory management (free block lists), and file system structures."
+    },
+    {
+      question: "How are polynomials efficiently represented using linked lists?",
+      options: ["Store all coefficients", "Store only non-zero terms", "Store only exponents", "Store in array"],
+      correctAnswer: 1,
+      explanation: "Linked lists efficiently represent sparse polynomials by storing only non-zero terms with their coefficients and exponents."
+    }
+  ];
+
+  const module5Quiz = [
+    {
+      question: "What is the best approach to reverse a singly linked list?",
+      options: ["Use recursion", "Use iteration with three pointers", "Use a stack", "All of the above"],
+      correctAnswer: 3,
+      explanation: "All three approaches work: recursion uses call stack, iteration uses three pointers (prev, curr, next), and explicit stack stores nodes."
+    },
+    {
+      question: "What is the time complexity of removing duplicates from an unsorted linked list using a hash table?",
+      options: ["O(1)", "O(n)", "O(n²)", "O(n log n)"],
+      correctAnswer: 1,
+      explanation: "Using a hash table to track seen values allows O(n) time complexity for duplicate removal with single traversal."
+    },
+    {
+      question: "In a priority queue implemented with a linked list, where should insertion occur?",
+      options: ["Always at head", "Always at tail", "Based on priority", "Random position"],
+      correctAnswer: 2,
+      explanation: "Elements are inserted based on priority to maintain sorted order, ensuring highest priority element is always accessible."
+    },
+    {
+      question: "What is the space complexity of displaying a linked list in reverse using recursion?",
+      options: ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+      correctAnswer: 1,
+      explanation: "Recursive approach uses O(n) space on the call stack as each node requires a recursive call until the end is reached."
+    },
+    {
+      question: "Which algorithm is most efficient for detecting a cycle in a linked list?",
+      options: ["Brute force", "Floyd's cycle detection", "Using hash table", "Sorting"],
+      correctAnswer: 1,
+      explanation: "Floyd's cycle detection (tortoise and hare) uses two pointers at different speeds with O(n) time and O(1) space complexity."
+    }
+  ];
+  
   const renderModule = () => {
     switch (currentModule) {
       case 1:
@@ -161,6 +328,8 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz title="Module 2.1 Quiz: Singly Linked Lists" questions={module1Quiz} subject="DS" unitId={2} moduleId={1} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="next-module-btn">Stack & Queue Implementation →</button>
@@ -320,6 +489,8 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz title="Module 2.2 Quiz: Stack & Queue Implementation" questions={module2Quiz} subject="DS" unitId={2} moduleId={2} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(1)} className="prev-module-btn">← Singly Linked Lists</button>
@@ -525,6 +696,8 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz title="Module 2.3 Quiz: Doubly & Circular Lists" questions={module3Quiz} subject="DS" unitId={2} moduleId={3} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="prev-module-btn">← Stack & Queue Implementation</button>
@@ -739,6 +912,8 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
             </section>
 
+            <Quiz title="Module 2.4 Quiz: Linked List Applications" questions={module4Quiz} subject="DS" unitId={2} moduleId={4} />
+
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← Doubly & Circular Lists</button>
               <button onClick={() => setCurrentModule(5)} className="next-module-btn">Practical Experiments →</button>
@@ -862,6 +1037,8 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz title="Module 2.5 Quiz: Practical Experiments" questions={module5Quiz} subject="DS" unitId={2} moduleId={5} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(4)} className="prev-module-btn">← Applications</button>

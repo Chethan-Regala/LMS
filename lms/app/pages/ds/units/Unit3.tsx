@@ -1,11 +1,177 @@
 'use client';
 import React from 'react';
+import Quiz from '../components/Quiz';
 
 interface Unit3Props {
   currentModule: number;
   setCurrentModule: (module: number) => void;
   onBack?: () => void;
 }
+
+const module1Quiz = [
+  {
+    question: "What is the maximum number of edges in a tree with n nodes?",
+    options: ["n", "n-1", "n+1", "2n"],
+    correctAnswer: 1,
+    explanation: "A tree with n nodes always has exactly n-1 edges, as it is a connected acyclic graph."
+  },
+  {
+    question: "In a complete binary tree with height h, what is the maximum number of nodes?",
+    options: ["2^h", "2^h - 1", "2^(h+1) - 1", "2^(h+1)"],
+    correctAnswer: 2,
+    explanation: "A complete binary tree with height h has a maximum of 2^(h+1) - 1 nodes when all levels are completely filled."
+  },
+  {
+    question: "Which tree representation uses mathematical index relationships for parent-child connections?",
+    options: ["Pointer-based", "Array representation", "Adjacency list", "First child/next sibling"],
+    correctAnswer: 1,
+    explanation: "Array representation uses mathematical formulas: parent at i/2, left child at 2i, right child at 2i+1."
+  },
+  {
+    question: "What is the degree of a node in a tree?",
+    options: ["Number of ancestors", "Number of children", "Height of node", "Depth of node"],
+    correctAnswer: 1,
+    explanation: "The degree of a node is the number of children it has. The degree of a tree is the maximum degree among all nodes."
+  },
+  {
+    question: "In a k-ary tree, what is the relationship between leaf nodes and internal nodes?",
+    options: ["Leaves = Internal nodes", "Leaves = (k-1) × Internal + 1", "Leaves = k × Internal", "No fixed relationship"],
+    correctAnswer: 1,
+    explanation: "In a k-ary tree, the number of leaf nodes equals (k-1) times the number of internal nodes plus 1."
+  }
+];
+
+const module2Quiz = [
+  {
+    question: "What is the time complexity of searching in a balanced Binary Search Tree?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    correctAnswer: 1,
+    explanation: "In a balanced BST, search operations take O(log n) time as the tree height is logarithmic."
+  },
+  {
+    question: "Which case is most complex when deleting a node from a BST?",
+    options: ["Leaf node", "Node with one child", "Node with two children", "Root node"],
+    correctAnswer: 2,
+    explanation: "Deleting a node with two children requires finding the inorder successor or predecessor to replace it, making it the most complex case."
+  },
+  {
+    question: "What property distinguishes a full binary tree?",
+    options: ["All levels filled", "Every node has 0 or 2 children", "Height is minimum", "All leaves at same level"],
+    correctAnswer: 1,
+    explanation: "A full binary tree has the property that every node has either 0 children (leaf) or exactly 2 children."
+  },
+  {
+    question: "In a skewed BST with n nodes, what is the worst-case search time?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n²)"],
+    correctAnswer: 2,
+    explanation: "A skewed BST degenerates into a linked list structure, resulting in O(n) search time in the worst case."
+  },
+  {
+    question: "Which self-balancing BST uses color-based balancing rules?",
+    options: ["AVL tree", "Red-Black tree", "Splay tree", "Treap"],
+    correctAnswer: 1,
+    explanation: "Red-Black trees use color properties (red and black nodes) with specific rules to maintain balance."
+  }
+];
+
+const module3Quiz = [
+  {
+    question: "What is the time complexity of inserting an element into a heap?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    correctAnswer: 1,
+    explanation: "Heap insertion involves adding at the end and bubbling up, which takes O(log n) time in the worst case."
+  },
+  {
+    question: "In a B-tree of order m, what is the minimum number of children for non-root internal nodes?",
+    options: ["m/2", "⌈m/2⌉", "m-1", "⌊m/2⌋"],
+    correctAnswer: 1,
+    explanation: "Non-root internal nodes in a B-tree of order m must have at least ⌈m/2⌉ children to maintain balance."
+  },
+  {
+    question: "What advantage does a B+ tree have over a regular B-tree?",
+    options: ["Faster insertion", "Less memory usage", "Better sequential access", "Simpler implementation"],
+    correctAnswer: 2,
+    explanation: "B+ trees store all data in leaf nodes with links between leaves, enabling efficient sequential access and range queries."
+  },
+  {
+    question: "What is the time complexity of building a heap from an unsorted array (heapify)?",
+    options: ["O(n)", "O(n log n)", "O(log n)", "O(n²)"],
+    correctAnswer: 0,
+    explanation: "Building a heap from an array using bottom-up heapify takes O(n) time, which is more efficient than inserting elements one by one."
+  },
+  {
+    question: "Which tree structure is optimal for database indexing with disk-based storage?",
+    options: ["Binary Search Tree", "AVL Tree", "B+ Tree", "Heap"],
+    correctAnswer: 2,
+    explanation: "B+ trees are optimal for database indexing as they minimize disk I/O operations with high fan-out and sequential leaf access."
+  }
+];
+
+const module4Quiz = [
+  {
+    question: "Which traversal of a BST produces elements in sorted order?",
+    options: ["Preorder", "Inorder", "Postorder", "Level-order"],
+    correctAnswer: 1,
+    explanation: "Inorder traversal (Left-Root-Right) of a BST visits nodes in ascending sorted order due to the BST property."
+  },
+  {
+    question: "Which two traversals are sufficient to uniquely reconstruct a binary tree?",
+    options: ["Preorder and Postorder", "Preorder and Inorder", "Postorder and Level-order", "Preorder and Level-order"],
+    correctAnswer: 1,
+    explanation: "Preorder and Inorder (or Postorder and Inorder) are sufficient to uniquely reconstruct a binary tree."
+  },
+  {
+    question: "What collision resolution technique uses linked lists at each hash table slot?",
+    options: ["Linear probing", "Quadratic probing", "Separate chaining", "Double hashing"],
+    correctAnswer: 2,
+    explanation: "Separate chaining handles collisions by maintaining a linked list of all elements that hash to the same slot."
+  },
+  {
+    question: "What is the average time complexity of hash table operations with good hash function?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    correctAnswer: 0,
+    explanation: "With a good hash function and proper load factor, hash table operations (insert, search, delete) have O(1) average time complexity."
+  },
+  {
+    question: "Which traversal uses a queue data structure for implementation?",
+    options: ["Preorder", "Inorder", "Postorder", "Level-order"],
+    correctAnswer: 3,
+    explanation: "Level-order (breadth-first) traversal uses a queue to process nodes level by level from left to right."
+  }
+];
+
+const module5Quiz = [
+  {
+    question: "When converting a binary tree to a doubly linked list in-place, which pointers are reused?",
+    options: ["Parent pointers", "Left and right pointers", "Data pointers", "New allocated pointers"],
+    correctAnswer: 1,
+    explanation: "The left and right pointers of tree nodes are reused as prev and next pointers in the doubly linked list for in-place conversion."
+  },
+  {
+    question: "What is the condition for a binary tree to be height-balanced?",
+    options: ["All leaves at same level", "Height difference ≤ 1 for all nodes", "Perfect binary tree", "Complete binary tree"],
+    correctAnswer: 1,
+    explanation: "A tree is height-balanced if for every node, the height difference between left and right subtrees is at most 1."
+  },
+  {
+    question: "What is the space complexity of checking if a BST is balanced using recursion?",
+    options: ["O(1)", "O(log n)", "O(h)", "O(n)"],
+    correctAnswer: 2,
+    explanation: "The recursive balance checking algorithm uses O(h) space for the recursion stack, where h is the height of the tree."
+  },
+  {
+    question: "Which traversal order should be maintained when converting a binary tree to a doubly linked list?",
+    options: ["Preorder", "Inorder", "Postorder", "Level-order"],
+    correctAnswer: 1,
+    explanation: "Inorder traversal order is typically maintained when converting a binary tree to a doubly linked list to preserve sorted order in BSTs."
+  },
+  {
+    question: "What is the time complexity of finding the lowest common ancestor (LCA) in a BST?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    correctAnswer: 1,
+    explanation: "Finding LCA in a BST takes O(log n) time in a balanced tree by utilizing the BST property to navigate efficiently."
+  }
+];
 
 const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }) => {
   const renderModule = () => {
@@ -139,6 +305,14 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz 
+              title="Module 3.1 Quiz: Tree Terminology and Representations"
+              questions={module1Quiz}
+              subject="DS"
+              unitId={3}
+              moduleId={1}
+            />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="next-module-btn">Binary Trees & BST →</button>
@@ -282,6 +456,14 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz 
+              title="Module 3.2 Quiz: Binary Trees and Binary Search Trees"
+              questions={module2Quiz}
+              subject="DS"
+              unitId={3}
+              moduleId={2}
+            />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(1)} className="prev-module-btn">← Tree Terminology</button>
@@ -439,6 +621,14 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
             </section>
 
+            <Quiz 
+              title="Module 3.3 Quiz: Advanced Tree Types - Heaps, B-Trees, and N-ary Trees"
+              questions={module3Quiz}
+              subject="DS"
+              unitId={3}
+              moduleId={3}
+            />
+
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="prev-module-btn">← Binary Trees & BST</button>
               <button onClick={() => setCurrentModule(4)} className="next-module-btn">Traversals & Applications →</button>
@@ -594,6 +784,14 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
                 ></iframe>
               </div>
             </section>
+
+            <Quiz 
+              title="Module 3.4 Quiz: Tree Traversals, Applications, and Hashing"
+              questions={module4Quiz}
+              subject="DS"
+              unitId={3}
+              moduleId={4}
+            />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← Advanced Tree Types</button>
@@ -757,6 +955,14 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
                 </ul>
               </div>
             </section>
+
+            <Quiz 
+              title="Module 3.5 Quiz: Practical Experiments"
+              questions={module5Quiz}
+              subject="DS"
+              unitId={3}
+              moduleId={5}
+            />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(4)} className="prev-module-btn">← Traversals & Applications</button>

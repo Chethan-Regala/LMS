@@ -1166,6 +1166,27 @@
   color: #616161;
 }
 
+.previous-attempt-badge {
+  background: #E3F2FD;
+  color: #1976D2;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.previous-score-info {
+  background: #FFF3E0;
+  color: #E65100;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
 .quiz-progress {
   background: #f5f5f5;
   padding: 9px 14px;

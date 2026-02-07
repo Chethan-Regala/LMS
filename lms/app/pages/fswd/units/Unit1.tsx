@@ -434,7 +434,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               <iframe width="50%" height="300" src="https://www.youtube.com/embed/KCrXgy8qtjM" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
 
-            <Quiz title="Vite Introduction Quiz" questions={unit1Quiz} />
+            <Quiz title="Vite Introduction Quiz" questions={unit1Quiz} subject="FSWD" unitId={1} moduleId={1} />
 
             <div className="navigation-buttons">
               <button onClick={onBack} className="prev-module-btn">← Back to Overview</button>
@@ -521,7 +521,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               <iframe width="50%" height="300" src="https://www.youtube.com/embed/89NJdbYTgJ8" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
 
-            <Quiz title="Vite Setup Quiz" questions={setupQuiz} />
+            <Quiz title="Vite Setup Quiz" questions={setupQuiz} subject="FSWD" unitId={1} moduleId={2} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(1)} className="prev-module-btn">← An introduction</button>
@@ -586,7 +586,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               <iframe width="50%" height="300" src="https://www.youtube.com/embed/VAeRhmpcWEQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
 
-            <Quiz title="Vite Configuration Quiz" questions={configQuiz} />
+            <Quiz title="Vite Configuration Quiz" questions={configQuiz} subject="FSWD" unitId={1} moduleId={3} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(2)} className="prev-module-btn">← Deep-dive Part #1</button>
@@ -640,7 +640,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
             </section>
 
-            <Quiz title="Practice Assignment #1 Quiz" questions={practiceQuiz1} />
+            <Quiz title="Practice Assignment #1 Quiz" questions={practiceQuiz1} subject="FSWD" unitId={1} moduleId={4} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← Deep-dive Part #2</button>
@@ -683,7 +683,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
             </section>
 
-            <Quiz title="Practice Assignment #2 Quiz" questions={practiceQuiz2} />
+            <Quiz title="Practice Assignment #2 Quiz" questions={practiceQuiz2} subject="FSWD" unitId={1} moduleId={5} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(4)} className="prev-module-btn">← Practice Assignment #1</button>
@@ -720,7 +720,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
             </section>
 
-            <Quiz title="Milestone #15 Quiz" questions={milestoneQuiz1} />
+            <Quiz title="Milestone #15 Quiz" questions={milestoneQuiz1} subject="FSWD" unitId={1} moduleId={6} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(5)} className="prev-module-btn">← Practice Assignment #2</button>
@@ -756,7 +756,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
             </section>
 
-            <Quiz title="Milestone #16 Quiz" questions={milestoneQuiz2} />
+            <Quiz title="Milestone #16 Quiz" questions={milestoneQuiz2} subject="FSWD" unitId={1} moduleId={7} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(6)} className="prev-module-btn">← Follow-along Milestone #15</button>
@@ -811,7 +811,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
             </section>
 
-            <Quiz title="ASAP Project Quiz" questions={asapQuiz} />
+            <Quiz title="ASAP Project Quiz" questions={asapQuiz} subject="FSWD" unitId={1} moduleId={8} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(7)} className="prev-module-btn">← Follow-along Milestone #16</button>
@@ -860,7 +860,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
             </section>
 
-            <Quiz title="Module 1 Review Quiz" questions={reviewQuiz} />
+            <Quiz title="Module 1 Review Quiz" questions={reviewQuiz} subject="FSWD" unitId={1} moduleId={9} />
 
             <div className="navigation-buttons">
               <button onClick={() => setCurrentModule(8)} className="prev-module-btn">← ASAP Project</button>
