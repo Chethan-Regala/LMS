@@ -50,7 +50,9 @@ export default function OptionCard({ item }: OptionCardProps) {
                 d="M 3 0 L 0 0 0 3"
                 fill="none"
                 stroke={item.color}
+
                 strokeWidth="1.3"
+
               />
             </pattern>
           </defs>
