@@ -4,7 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import clientPromise from "@/lib/db"
 
 const handler = NextAuth({
-    trustHost: true,
     providers:[
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
