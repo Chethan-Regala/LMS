@@ -12,10 +12,6 @@ import Module2_9 from './unit2-modules/Module2_9';
 import Module2_10 from './unit2-modules/Module2_10';
 import Module2_11 from './unit2-modules/Module2_11';
 import Module2_12 from './unit2-modules/Module2_12';
-import Module2_13 from './unit2-modules/Module2_13';
-import Module2_14 from './unit2-modules/Module2_14';
-import Module2_15 from './unit2-modules/Module2_15';
-import Module2_16 from './unit2-modules/Module2_16';
 
 interface Unit2Props {
   currentModule: number;
@@ -69,14 +65,6 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
         return <Module2_11 />;
       case 12:
         return <Module2_12 />;
-      case 13:
-        return <Module2_13 />;
-      case 14:
-        return <Module2_14 />;
-      case 15:
-        return <Module2_15 />;
-      case 16:
-        return <Module2_16 />;
       default:
         return <div>Module not found</div>;
     }
@@ -91,7 +79,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
             ← {moduleNames[currentModule - 2]}
           </button>
         )}
-        {currentModule < 16 && (
+        {currentModule < 13 && (
           <button onClick={() => setCurrentModule(currentModule + 1)} className="next-module-btn" style={{ fontWeight: 'bold' }}>
             {moduleNames[currentModule]} →
           </button>

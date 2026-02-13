@@ -12,8 +12,6 @@ import Module5_9 from './unit5-modules/Module5_9';
 import Module5_10 from './unit5-modules/Module5_10';
 import Module5_11 from './unit5-modules/Module5_11';
 import Module5_12 from './unit5-modules/Module5_12';
-import Module5_13 from './unit5-modules/Module5_13';
-import Module5_14 from './unit5-modules/Module5_14';
 
 interface Unit5Props {
   currentModule: number;
@@ -34,9 +32,7 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
     'Getting Started with Linux: Desktop, Terminal, and Basics',
     'Working with directories in Linux',
     'Working with Files and Exploring the Linux Directory Structure',
-    'Mastering Linux Basics: System Info, Networking, Packages & Text Editing (Optional)',
     'Mini Project: System Resource Monitor & Process Analyzer',
-    'Storage Management & Linux | Practice Assignment (Optional)'
   ];
 
   const renderModule = () => {
@@ -53,8 +49,6 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
       case 10: return <Module5_10 />;
       case 11: return <Module5_11 />;
       case 12: return <Module5_12 />;
-      case 13: return <Module5_13 />;
-      case 14: return <Module5_14 />;
       default: return <div>Module not found</div>;
     }
   };

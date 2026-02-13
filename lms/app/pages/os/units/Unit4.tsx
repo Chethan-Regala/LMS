@@ -13,10 +13,6 @@ import Module4_10 from './unit4-modules/Module4_10';
 import Module4_11 from './unit4-modules/Module4_11';
 import Module4_12 from './unit4-modules/Module4_12';
 import Module4_13 from './unit4-modules/Module4_13';
-import Module4_14 from './unit4-modules/Module4_14';
-import Module4_15 from './unit4-modules/Module4_15';
-import Module4_16 from './unit4-modules/Module4_16';
-import Module4_17 from './unit4-modules/Module4_17';
 
 interface Unit4Props {
   currentModule: number;
@@ -27,8 +23,6 @@ interface Unit4Props {
 const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }) => {
   const moduleNames = [
     'Introduction to Memory Management',
-    'Main Memory and Virtual Memory (Optional)',
-    'Dynamic Storage Management (Optional)',
     'Fixed and Variable Partitioning',
     'Partition Allocation Techniques (Best fit)',
     'Partition Allocation Techniques (Worst fit)',
@@ -41,8 +35,6 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
     'Optimal Page replacement',
     'Least Recently Used',
     'Solved Problems on Page Replacement',
-    'Other page replacement algorithms (Optional)',
-    'Memory Management | Practice Assignment (Optional)'
   ];
 
   const renderModule = () => {
@@ -60,10 +52,6 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
       case 11: return <Module4_11 />;
       case 12: return <Module4_12 />;
       case 13: return <Module4_13 />;
-      case 14: return <Module4_14 />;
-      case 15: return <Module4_15 />;
-      case 16: return <Module4_16 />;
-      case 17: return <Module4_17 />;
       default: return <div>Module not found</div>;
     }
   };
