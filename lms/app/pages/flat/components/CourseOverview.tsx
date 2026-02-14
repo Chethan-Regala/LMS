@@ -33,12 +33,6 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
     }
   };
 
-  const completedModules = studentProgress.length;
-  const masteryModules = studentProgress.filter(p => p.percentage >= 80).length;
-  const totalModules = 30;
-  const completedPercentage = Math.round((completedModules / totalModules) * 100);
-  const masteryPercentage = Math.round((masteryModules / totalModules) * 100);
-
   const units = [
     {
       id: 1,
@@ -107,6 +101,12 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
     }
   ];
 
+  const completedModules = studentProgress.length;
+  const masteryModules = studentProgress.filter(p => p.percentage >= 80).length;
+  const totalModules = units.reduce((acc, unit) => acc + unit.modules.length, 0);
+  const completedPercentage = totalModules > 0 ? Math.round((completedModules / totalModules) * 100) : 0;
+  const masteryPercentage = totalModules > 0 ? Math.round((masteryModules / totalModules) * 100) : 0;
+
   return (
     <div className="flex">
       <div className="fixed left-0 top-0 h-screen overflow-hidden">
@@ -115,105 +115,104 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       <div className="flex-1">
         <div className="lms-dashboard">
           <div className="lms-container">
-        <div className="lms-header">
-          <div className="header-left">
-            <svg className="megaphone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="#667eea" strokeWidth="2" fill="none"/>
-            </svg>
-            <h1 className="course-title">Formal Languages & Automata Theory</h1>
-          </div>
-          <div className="header-right">
-            <div className="progress-bar-container">
-              <div className="progress-segments">
-                {[...Array(20)].map((_, i) => {
-                  const segmentThreshold = (i + 1) * 5;
-                  return (
-                    <div 
-                      key={i} 
-                      className={`segment ${
-                        completedPercentage >= segmentThreshold ? 'completed' : 
-                        masteryPercentage >= segmentThreshold ? 'mastery' : ''
-                      }`}
-                    ></div>
-                  );
-                })}
+            <div className="lms-header">
+              <div className="header-left">
+                <svg className="megaphone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="#667eea" strokeWidth="2" fill="none" />
+                </svg>
+                <h1 className="course-title">Formal Languages & Automata Theory</h1>
               </div>
-              <div className="progress-text">{completedPercentage}% Completed • {masteryPercentage}% Mastery</div>
+              <div className="header-right">
+                <div className="progress-bar-container">
+                  <div className="progress-segments">
+                    {[...Array(20)].map((_, i) => {
+                      const segmentThreshold = (i + 1) * 5;
+                      return (
+                        <div
+                          key={i}
+                          className={`segment ${completedPercentage >= segmentThreshold ? 'completed' :
+                              masteryPercentage >= segmentThreshold ? 'mastery' : ''
+                            }`}
+                        ></div>
+                      );
+                    })}
+                  </div>
+                  <div className="progress-text">{completedPercentage}% Completed • {masteryPercentage}% Mastery</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <nav className="tab-navigation">
-          <button className={`tab ${activeTab === 'learning-path' ? 'active' : ''}`} onClick={() => setActiveTab('learning-path')}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M2 3h12M2 8h12M2 13h12" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-            </svg>
-            Learning Path
-          </button>
-          <button className={`tab ${activeTab === 'sessions' ? 'active' : ''}`} onClick={() => setActiveTab('sessions')}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <rect x="3" y="3" width="10" height="10" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-            </svg>
-            Sessions
-          </button>
-          <button className={`tab ${activeTab === 'assessments' ? 'active' : ''}`} onClick={() => setActiveTab('assessments')}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5"/>
-            </svg>
-            Assessments
-          </button>
-          <button className={`tab ${activeTab === 'about' ? 'active' : ''}`} onClick={() => setActiveTab('about')}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-            </svg>
-            About
-          </button>
-          <button className="tab" onClick={() => window.location.href = '/pages/livebooks'} style={{ marginLeft: 'auto' }}>
-            Go to Livebooks
-          </button>
-        </nav>
+            <nav className="tab-navigation">
+              <button className={`tab ${activeTab === 'learning-path' ? 'active' : ''}`} onClick={() => setActiveTab('learning-path')}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M2 3h12M2 8h12M2 13h12" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                </svg>
+                Learning Path
+              </button>
+              <button className={`tab ${activeTab === 'sessions' ? 'active' : ''}`} onClick={() => setActiveTab('sessions')}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <rect x="3" y="3" width="10" height="10" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                </svg>
+                Sessions
+              </button>
+              <button className={`tab ${activeTab === 'assessments' ? 'active' : ''}`} onClick={() => setActiveTab('assessments')}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+                Assessments
+              </button>
+              <button className={`tab ${activeTab === 'about' ? 'active' : ''}`} onClick={() => setActiveTab('about')}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                </svg>
+                About
+              </button>
+              <button className="tab" onClick={() => window.location.href = '/pages/livebooks'} style={{ marginLeft: 'auto' }}>
+                Go to Livebooks
+              </button>
+            </nav>
 
-        <div className="timeline-content">
-          {units.map((unit) => (
-            <div key={unit.id} className="unit-block">
-              <div className="unit-header-block" onClick={() => setExpandedUnit(expandedUnit === unit.id ? null : unit.id)}>
-                <div className="module-badge">
-                  <div className="badge-label">Module</div>
-                  <div className="badge-number">{unit.id}</div>
-                </div>
-                <div className="unit-description">
-                  <h2 className="unit-title">{unit.title}</h2>
-                  <p className="unit-desc">{unit.description}</p>
-                </div>
-                <div className="expand-indicator">{expandedUnit === unit.id ? '▼' : '▶'}</div>
-              </div>
-
-              {expandedUnit === unit.id && (
-                <div className="lessons-timeline">
-                  {unit.modules.map((module, idx) => (
-                    <div 
-                      key={module.id} 
-                      className="lesson-item" 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onModuleSelect(unit.id, idx + 1);
-                      }}
-                    >
-                      <div className="lesson-badge">{module.id}</div>
-                      <div className="lesson-content">
-                        <h3 className="lesson-title">{module.title}</h3>
-                        <p className="lesson-desc">{module.description}</p>
-                      </div>
+            <div className="timeline-content">
+              {units.map((unit) => (
+                <div key={unit.id} className="unit-block">
+                  <div className="unit-header-block" onClick={() => setExpandedUnit(expandedUnit === unit.id ? null : unit.id)}>
+                    <div className="module-badge">
+                      <div className="badge-label">Module</div>
+                      <div className="badge-number">{unit.id}</div>
                     </div>
-                  ))}
+                    <div className="unit-description">
+                      <h2 className="unit-title">{unit.title}</h2>
+                      <p className="unit-desc">{unit.description}</p>
+                    </div>
+                    <div className="expand-indicator">{expandedUnit === unit.id ? '▼' : '▶'}</div>
+                  </div>
+
+                  {expandedUnit === unit.id && (
+                    <div className="lessons-timeline">
+                      {unit.modules.map((module, idx) => (
+                        <div
+                          key={module.id}
+                          className="lesson-item"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onModuleSelect(unit.id, idx + 1);
+                          }}
+                        >
+                          <div className="lesson-badge">{module.id}</div>
+                          <div className="lesson-content">
+                            <h3 className="lesson-title">{module.title}</h3>
+                            <p className="lesson-desc">{module.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
