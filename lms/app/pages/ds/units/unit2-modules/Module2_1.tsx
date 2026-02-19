@@ -55,7 +55,8 @@ const Module2_1: React.FC = () => {
           <li>Time complexity</li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mb-4">Recursion</h2>
+        <h3 className="text-2xl font-semibold mb-4">Recursion</h3>
+        <img src="https://kq-storage.s3.ap-south-1.amazonaws.com/PSUP+-+Revision/PSUP-recursion-1.webp" alt="" />
         <p className="mb-6">
           Recursion is a programming technique where a function calls itself to solve smaller instances of a problem. It's like breaking down a big task into smaller, manageable tasks that follow the same logic.
         </p>
@@ -69,7 +70,7 @@ const Module2_1: React.FC = () => {
         </p>
 
         <div className="mb-6">
-          <img src="https://kq-storage.s3.ap-south-1.amazonaws.com/Github/dsa-content/recursion-1.png" alt="Box with key problem" />
+          <img src="https://kq-storage.s3.ap-south-1.amazonaws.com/PSUP+-+Revision/PSUP-revision-recursion-2.webp" alt="" />
           <p className="text-sm text-gray-600 mt-2">Image Credits: Grokkings Algorithms Book</p>
         </div>
 
@@ -89,14 +90,11 @@ const Module2_1: React.FC = () => {
         <p className="mb-6">
           Recursion can take different forms depending on how and where the recursive function calls itself. Understanding these types helps in choosing the right approach for solving a problem efficiently.
         </p>
+        <br />
 
-        <h2 className="text-2xl font-semibold mb-4">Types of Recursion</h2>
+        <h3 className="text-2xl font-semibold mb-4">Types of Recursion</h3>
         <p className="mb-4">
           Recursion is an essential concept that occurs when a function calls itself to solve smaller instances of a problem. Depending on how functions interact during these calls, recursion can be categorized into Direct Recursion and Indirect Recursion. Let's explore each type, their subtypes, and examples.
-        </p>
-
-        <p className="mb-6">
-          Take a look at the contents of this link to explore the various types of recursion with examples.
         </p>
 
         <h2 className="text-2xl font-semibold mb-4">Calculating time complexity for recursive functions</h2>
@@ -165,7 +163,7 @@ const Module2_1: React.FC = () => {
         </p>
 
         <div className="mb-6">
-          <img src="https://kq-storage.s3.ap-south-1.amazonaws.com/Github/dsa-content/recursion-mindmap.png" alt="Recursion mind map" />
+          <img src="https://kq-storage.kalvium.community/Problem%20solving%20using%20Programming%2FIntro_to_rec.svg" alt="Recursion mind map" />
         </div>
 
         <h2 className="text-2xl font-semibold mb-4">So, What's Next?</h2>

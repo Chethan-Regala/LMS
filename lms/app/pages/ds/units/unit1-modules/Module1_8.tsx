@@ -12,7 +12,7 @@ const Module1_8: React.FC = () => {
       </div>
 
       <section className="content-section">
-        <p>Hey Kalvians, Welcome! to the lesson Revisiting Arrays!</p>
+        <p>, Welcome! to the lesson Revisiting Arrays!</p>
         <p>
           This lesson might seem very substantial because we have given examples for both the languages i.e, C++ and Java, so you can choose the language you prefer and follow along the examples of that same language throughout the session.
         </p>
