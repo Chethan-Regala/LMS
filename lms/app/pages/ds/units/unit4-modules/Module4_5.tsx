@@ -12,7 +12,6 @@ const Module4_5: React.FC = () => {
       </div>
 
       <section className="content-section">
-        <p>Hey Kalvians! Welcome back to the lesson on Binary Trees!</p>
         <p>
           Remember the concept you've learned from the previous lesson? Do you recall the properties of Trees and Forests?
         </p>
