@@ -12,9 +12,6 @@ const Module3_17: React.FC = () => {
       </div>
 
       <section className="content-section">
-        <p className="mb-6">
-          Hey Kalvians! Welcome back to the lesson slow and fast pointers in linked lists.
-        </p>
 
         <div className="mb-6 flex flex-col items-center">
           <img src="https://media.tenor.com/QgC0rQXsYjEAAAAi/penguin-pudgy.gif" alt="Slow and Fast Pointers" className="w-full max-w-md h-auto rounded-lg shadow-md" />

@@ -12,9 +12,6 @@ const Module3_2: React.FC = () => {
       </div>
 
       <section className="content-section">
-        <p className="mb-4">
-          Hey Kalvians! Welcome back to the lesson Queues and Deques.
-        </p>
 
         <p className="mb-6">
           Think about waiting in line at a movie theater or a coffee shop.
