@@ -141,24 +141,46 @@
 
 .unit-button {
   width: 100%;
-  padding: 10px 12px;
+  padding: 12px;
   background: transparent;
   color: #2B2B2B;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 500;
   text-align: left;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.unit-number {
+  width: 32px;
+  height: 32px;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.unit-title-text {
+  flex: 1;
 }
 
 .unit-button:hover {
   background: #F0F0F0;
 }
 
-.unit-button.active {
+.unit-button.active .unit-number {
   background: #E8F5E9;
+  border-color: #4CAF50;
   color: #2B2B2B;
 }
 
@@ -174,43 +196,59 @@
 
 .module-button {
   width: 100%;
-  padding: 8px 12px 8px 24px;
+  padding: 10px 12px;
   background: transparent;
-  color: #757575;
+  color: #616161;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   text-align: left;
   transition: all 0.2s ease;
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.module-button::before {
-  content: '';
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 4px;
-  background: #BDBDBD;
-  border-radius: 50%;
-}
-
-.module-button:hover {
-  background: #F5F5F5;
+.module-number {
+  width: 40px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
   color: #2B2B2B;
 }
 
-.module-button.active {
-  background: #F0F0F0;
+.module-title-text {
+  flex: 1;
   color: #2B2B2B;
-  font-weight: 500;
 }
 
-.module-button.active::before {
+.module-arrow {
+  color: #BDBDBD;
+  font-size: 1rem;
+  margin-left: auto;
+}
+
+.module-button:hover .module-number {
+  border-color: #4CAF50;
+}
+
+.module-button.active .module-number {
+  background: #E8F5E9;
+  border-color: #4CAF50;
+}
+
+.module-button.completed .module-number {
   background: #4CAF50;
+  border-color: #4CAF50;
+  color: #FFFFFF;
 }
 
 .ds-content {

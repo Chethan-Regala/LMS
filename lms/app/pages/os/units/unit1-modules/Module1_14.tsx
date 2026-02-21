@@ -1,6 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import Quiz from '../../components/Quiz';
+=======
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
 
 const RPCFlowAnimation: React.FC = () => {
   const [step, setStep] = useState(0);
@@ -24,8 +27,14 @@ const RPCFlowAnimation: React.FC = () => {
     <div className={`border-4 border-${current.color}-500 bg-${current.color}-50 p-6 rounded-lg`}>
       <div className="flex justify-center items-center gap-4 mb-4">
         {steps.map((s, i) => (
+<<<<<<< HEAD
           <div key={i} className={`w-16 h-16 flex items-center justify-center rounded-full font-bold text-white transition-all ${step === i ? `bg-${s.color}-600 scale-110` : `bg-${s.color}-300`
             }`}>
+=======
+          <div key={i} className={`w-16 h-16 flex items-center justify-center rounded-full font-bold text-white transition-all ${
+            step === i ? `bg-${s.color}-600 scale-110` : `bg-${s.color}-300`
+          }`}>
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
             {i + 1}
           </div>
         ))}
@@ -119,7 +128,11 @@ const Module1_14: React.FC = () => {
       <section className="content-section">
         <h3>How RPC Works</h3>
         <RPCFlowAnimation />
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
         <div className="mt-6">
           <h4>Quick Steps (1–6)</h4>
           <ol className="list-decimal list-inside space-y-2 mt-2">
@@ -160,29 +173,49 @@ const Module1_14: React.FC = () => {
       <section className="content-section">
         <h3>Issues in RPC & How They're Resolved</h3>
         <p>While RPCs simplify distributed communication, they introduce several challenges that need to be handled carefully.</p>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
         <h4 className="mt-6 mb-4">Common Issues in RPC</h4>
         <div className="space-y-4">
           <div className="border-4 border-red-500 bg-red-50 p-4 rounded-lg">
             <h4 className="font-bold text-red-800 mb-2">⚙️ Latency</h4>
             <p className="text-red-700"><strong>Solution:</strong> Use caching, asynchronous RPC, and load balancing.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-orange-500 bg-orange-50 p-4 rounded-lg">
             <h4 className="font-bold text-orange-800 mb-2">⚙️ Network Failures</h4>
             <p className="text-orange-700"><strong>Solution:</strong> Implement retry logic, acknowledgments, and fault-tolerant designs.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-purple-500 bg-purple-50 p-4 rounded-lg">
             <h4 className="font-bold text-purple-800 mb-2">⚙️ Security Concerns</h4>
             <p className="text-purple-700"><strong>Solution:</strong> Use encryption (SSL/TLS) and authentication mechanisms.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-indigo-500 bg-indigo-50 p-4 rounded-lg">
             <h4 className="font-bold text-indigo-800 mb-2">⚙️ Data Consistency</h4>
             <p className="text-indigo-700"><strong>Solution:</strong> Use two-phase commit or synchronization protocols.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-pink-500 bg-pink-50 p-4 rounded-lg">
             <h4 className="font-bold text-pink-800 mb-2">⚙️ Heterogeneity</h4>
             <p className="text-pink-700"><strong>Solution:</strong> Standardize communication using JSON, XML, or Protocol Buffers (gRPC).</p>
@@ -202,7 +235,11 @@ const Module1_14: React.FC = () => {
             </div>
             <p className="text-blue-700">Allows seamless execution of remote functions as if they were local.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-green-500 bg-green-50 p-4 rounded-lg">
             <div className="flex items-center mb-2">
               <span className="text-2xl mr-3">⚙️</span>
@@ -210,7 +247,11 @@ const Module1_14: React.FC = () => {
             </div>
             <p className="text-green-700">Developers can build networked applications without handling low-level socket programming.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-purple-500 bg-purple-50 p-4 rounded-lg">
             <div className="flex items-center mb-2">
               <span className="text-2xl mr-3">📈</span>
@@ -218,7 +259,11 @@ const Module1_14: React.FC = () => {
             </div>
             <p className="text-purple-700">Tasks can be distributed across multiple servers for improved performance.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-orange-500 bg-orange-50 p-4 rounded-lg">
             <div className="flex items-center mb-2">
               <span className="text-2xl mr-3">🧩</span>
@@ -226,7 +271,11 @@ const Module1_14: React.FC = () => {
             </div>
             <p className="text-orange-700">Components can reside on different machines while maintaining logical consistency.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-red-500 bg-red-50 p-4 rounded-lg">
             <div className="flex items-center mb-2">
               <span className="text-2xl mr-3">♻️</span>
@@ -234,7 +283,11 @@ const Module1_14: React.FC = () => {
             </div>
             <p className="text-red-700">RPC enables reusing existing services remotely across multiple clients.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-indigo-500 bg-indigo-50 p-4 rounded-lg">
             <div className="flex items-center mb-2">
               <span className="text-2xl mr-3">🔄</span>
@@ -253,22 +306,38 @@ const Module1_14: React.FC = () => {
             <h4 className="font-bold text-red-800 mb-2">🌐 Network Dependency</h4>
             <p className="text-red-700">Performance relies heavily on network stability and speed.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-orange-500 bg-orange-50 p-4 rounded-lg">
             <h4 className="font-bold text-orange-800 mb-2">🐛 Complex Debugging</h4>
             <p className="text-orange-700">Tracing distributed errors can be difficult and time-consuming.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-purple-500 bg-purple-50 p-4 rounded-lg">
             <h4 className="font-bold text-purple-800 mb-2">⚠️ Security Risks</h4>
             <p className="text-purple-700">Unsecured communication can lead to data interception or modification.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-yellow-500 bg-yellow-50 p-4 rounded-lg">
             <h4 className="font-bold text-yellow-800 mb-2">🔄 Version Mismatch</h4>
             <p className="text-yellow-700">Different service versions may lead to compatibility issues.</p>
           </div>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           <div className="border-4 border-gray-500 bg-gray-50 p-4 rounded-lg">
             <h4 className="font-bold text-gray-800 mb-2">💥 Partial Failures</h4>
             <p className="text-gray-700">Failure in one machine can affect the entire RPC chain.</p>
@@ -309,7 +378,11 @@ const Module1_14: React.FC = () => {
             </tr>
           </tbody>
         </table>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
         <div className="border-4 border-blue-500 bg-blue-50 p-4 rounded-lg mt-4">
           <p className="font-semibold text-blue-800">
             Every time you access cloud storage, stream media, or use collaborative tools like Google Docs — an RPC mechanism is silently enabling that interaction across networks.
@@ -364,6 +437,7 @@ const Module1_14: React.FC = () => {
         </div>
         <p className="text-center font-bold text-lg mt-2">Great job understanding RPC!</p>
       </section>
+<<<<<<< HEAD
 
       <Quiz
         title="Module 1.14 Quiz: Remote Procedure Calls"
@@ -403,6 +477,8 @@ const Module1_14: React.FC = () => {
         unitId={1}
         moduleId={8}
       />
+=======
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
     </div>
   );
 };

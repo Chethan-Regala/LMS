@@ -1,6 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import Quiz from '../../components/Quiz';
+=======
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
 
 const RAIDAnimation: React.FC = () => {
   const [active, setActive] = useState(0);
@@ -15,8 +18,14 @@ const RAIDAnimation: React.FC = () => {
     <div className="border-4 border-blue-500 bg-blue-50 p-6 rounded-lg">
       <div className="flex justify-center items-center gap-4">
         {disks.map((disk, i) => (
+<<<<<<< HEAD
           <div key={i} className={`w-24 h-24 flex items-center justify-center rounded-lg font-bold text-white transition-all ${active >= i ? 'bg-blue-600 scale-110' : 'bg-blue-400'
             }`}>
+=======
+          <div key={i} className={`w-24 h-24 flex items-center justify-center rounded-lg font-bold text-white transition-all ${
+            active >= i ? 'bg-blue-600 scale-110' : 'bg-blue-400'
+          }`}>
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
             {disk}
           </div>
         ))}
@@ -134,7 +143,11 @@ const Module5_7: React.FC = () => {
       <section className="content-section">
         <h3>Types of RAID</h3>
         <RAIDTypeAnimation />
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
         <h4>RAID 0 - Striping</h4>
         <p>
           <strong>Pure speed, no protection.</strong> Data is split into chunks and spread across multiple drives for maximum performance.
@@ -191,9 +204,12 @@ const Module5_7: React.FC = () => {
         <p>
           <strong>Enhanced reliability.</strong> Uses dual parity for protection against two simultaneous drive failures.
         </p>
+<<<<<<< HEAD
         <div className="flex justify-center my-4">
           <img src="https://kq-storage.s3.ap-south-1.amazonaws.com/Operating%2BSystems/OS_raid6.png" alt="RAID 6" className="rounded-lg shadow-lg max-w-md" />
         </div>
+=======
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
         <ul>
           <li>✅ Can survive two drive failures</li>
           <li>✅ Higher fault tolerance</li>
@@ -317,6 +333,7 @@ const Module5_7: React.FC = () => {
           <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Great Job" className="rounded-lg shadow-lg max-w-sm" />
         </div>
         <p className="text-center font-bold text-lg mt-2">Great job mastering RAID!</p>
+<<<<<<< HEAD
 
         <Quiz
           title="Module 5.7 Quiz: RAID Depth"
@@ -356,6 +373,8 @@ const Module5_7: React.FC = () => {
           unitId={5}
           moduleId={7}
         />
+=======
+>>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
       </section>
     </div>
   );
