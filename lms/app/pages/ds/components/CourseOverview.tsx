@@ -36,62 +36,123 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
   const units = [
     {
       id: 1,
-      title: 'Introduction to Data Structures',
-      description: 'Master fundamental data structures including arrays, sparse matrices, stacks, queues, and their practical applications.',
+      title: 'Foundations of DSA',
       modules: [
-        { id: '1.1', title: 'Arrays Fundamentals and Representations', description: 'Array basics, memory representation, and fundamental operations' },
-        { id: '1.2', title: 'Sparse Matrices', description: 'Efficient representation and operations on sparse matrices' },
-        { id: '1.3', title: 'Stack Operations and Applications', description: 'LIFO operations, infix to postfix conversion, Tower of Hanoi' },
-        { id: '1.4', title: 'Queue Operations and Types', description: 'FIFO operations, circular queues, and priority queues' },
-        { id: '1.5', title: 'Practical Experiments', description: 'Two stacks in array, queue implementation, expression evaluation' }
+        'Introduction to DSA & Orientation',
+        'Foundational Mathematics for DSA',
+        'Foundational Mathematics for DSA - II',
+        'Power of Two',
+        'Fizz Buzz',
+        'Time and space Complexity',
+        'Deep Dive into Complexity Analysis',
+        'Revisiting Arrays and Strings',
+        'Running Sum of 1d Array',
+        'Richest Customer Wealth',
+        'Contains Duplicate',
+        'Valid Palindrome',
+        'Reverse String',
+        'Longest Common Prefix',
+        'Assignment | Sieve of Eratosthenes',
+        'Count Primes'
       ]
     },
     {
       id: 2,
-      title: 'Linked Lists',
-      description: 'Explore dynamic linear data structures with flexible memory allocation and efficient insertion/deletion operations.',
+      title: 'Algorithm Essentials',
       modules: [
-        { id: '2.1', title: 'Singly/Linear Linked Lists', description: 'Node structure, pointers, and singly linked list operations' },
-        { id: '2.2', title: 'Linked List Implementation of Stacks and Queues', description: 'Dynamic stack and queue implementations using linked lists' },
-        { id: '2.3', title: 'Doubly and Circular Linked Lists', description: 'Bidirectional and circular linked list structures' },
-        { id: '2.4', title: 'Linked List Applications', description: 'Real-world applications and advanced linked list operations' },
-        { id: '2.5', title: 'Practical Experiments', description: 'Stack using linked list, priority queue, reverse display, duplicate removal' }
+        'Introduction to Recursion',
+        'Deep Dive into Recursion',
+        'Letter combination of phone number',
+        'Fibonacci Number',
+        'Pow(x, n)',
+        'Hands-On | File Directory Scanner',
+        'Subsequence Patterns in Recursion',
+        'Introduction to Sorting & Merge Sort',
+        'Sort an Array',
+        'Merge Sorted Array',
+        'Assignment | Kth largest element in an array',
+        'Assignment | Merge Sort',
+        'Quick Sort Algorithm',
+        'Assignment | Quick Sort',
+        'Assignment | Sorting Algorithm Optimization',
+        'The Two-Pointer Approach | Collision Pattern',
+        'Two Sum II - Input Array Is Sorted',
+        'Container With Most Water',
+        '3 sum',
+        'The Sliding Window Pattern',
+        'Longest Substring Without Repeating Characters',
+        'Assignment | Maximum Sum Subarray of Size K',
+        'Clash of Codes #1 | Algorithm Essentials'
       ]
     },
     {
       id: 3,
-      title: 'Trees and Binary Trees',
-      description: 'Master hierarchical data structures for efficient searching, sorting, and organizing data.',
+      title: 'Stacks, Queues & Linked lists',
       modules: [
-        { id: '3.1', title: 'Tree Terminology and Representations', description: 'Tree terminology, properties, and representation methods' },
-        { id: '3.2', title: 'Binary Trees and Binary Search Trees', description: 'Binary tree operations, BST properties, and search algorithms' },
-        { id: '3.3', title: 'Advanced Tree Types: Heaps, B-Trees, and N-ary Trees', description: 'Specialized tree structures for optimal performance' },
-        { id: '3.4', title: 'Tree Traversals, Applications, and Hashing', description: 'Traversal algorithms, tree applications, and hash techniques' },
-        { id: '3.5', title: 'Practical Experiments', description: 'Binary tree to DLL conversion, BST balance verification' }
+        'Introduction to Stacks',
+        'Introduction to Queues & Deques',
+        'Assignment | Infix to Postfix Conversion',
+        'Assignment | Infix to Prefix Conversion',
+        'Evaluate Reverse Polish Notation',
+        'Assignment | Infix to Postfix Conversion',
+        'Basic Calculator',
+        'Assignment | Valid Parentheses',
+        'Valid Parentheses',
+        'Next Greater Element I',
+        'Tower of Hanoi',
+        'Introduction to Singly Linked list',
+        'Assignment | Design a Linked List',
+        'Merge Two Sorted Lists',
+        'Palindrome Linked List',
+        'Assignment | Reverse a Linked List',
+        'The Slow & Fast Pointer Pattern',
+        'Middle of the Linked List',
+        'Remove Nth Node From End of List',
+        'Assignment | Linked List Cycle Detection',
+        'Hands-on | GPS Navigation',
+        'Clash of Codes #2 | Stacks, Queues & Linked Lists'
       ]
     },
     {
       id: 4,
-      title: 'Advanced Trees and Heaps',
-      description: 'Learn graph theory and advanced algorithms for modeling relationships and network analysis.',
+      title: 'Trees and Hash Maps',
       modules: [
-        { id: '4.1', title: 'Graph Types and Terminology', description: 'Graph fundamentals, types, and mathematical properties' },
-        { id: '4.2', title: 'Graph Representations', description: 'Adjacency matrix, adjacency list, and storage methods' },
-        { id: '4.3', title: 'Graph Traversals: BFS and DFS', description: 'Breadth-first and depth-first search algorithms' },
-        { id: '4.4', title: 'Graph Applications: MST and Shortest Path', description: 'Minimum spanning trees and shortest path algorithms' },
-        { id: '4.5', title: 'Practical Experiments', description: 'Directed graph DFS traversal and advanced graph algorithms' }
+        'Introduction to trees',
+        'Assignment | Level Order Traversal',
+        'Assignment | Inorder, Preorder and Postorder Traversal',
+        'Assignment | Tree traversals using recursion',
+        'Introduction to Binary Trees',
+        'Assignment | Binary Tree Operations - I',
+        'Assignment | Binary Tree Operations Part - II',
+        'Assignment | Find Maximum Depth of Binary Tree',
+        'Assignment | Invert Binary Tree',
+        'Introduction to Hash Maps and Hash Tables',
+        'Assignment | Design HashMap',
+        'Assignment | Two Sum using Hash Map',
+        'Hands-on | Semantic Keyword Analyzer',
+        'Clash of Codes #3 | Trees and Hash Maps'
       ]
     },
     {
       id: 5,
-      title: 'Graphs and Hashing',
-      description: 'Master searching and sorting algorithms with complexity analysis and optimization techniques.',
+      title: 'BSTs, & Graphs',
       modules: [
-        { id: '5.1', title: 'Searching Techniques: Linear and Binary Search', description: 'Sequential and divide-and-conquer search algorithms' },
-        { id: '5.2', title: 'Basic Sorting Algorithms: Bubble, Insertion, Selection Sort', description: 'Fundamental comparison-based sorting techniques' },
-        { id: '5.3', title: 'Divide and Conquer Sorting: Merge Sort and Quick Sort', description: 'Advanced sorting algorithms with optimal complexity' },
-        { id: '5.4', title: 'Quick Sort Implementation and Optimization', description: 'Advanced quick sort techniques and performance optimization' },
-        { id: '5.5', title: 'Assessment, Resources, and Advanced Topics', description: 'Comprehensive assessment and learning resources' }
+        'Introduction to Binary Search Trees (BSTs)',
+        'Search in a Binary Search Tree',
+        'Assignment | Validate Binary Search Tree',
+        'Assignment | Quest for the Hidden Integer',
+        'Assignment | BST Pair Sum Check',
+        'Introduction to Graphs and Representation',
+        'Graph Traversal Algorithms (BFS & DFS)',
+        'Assignment | BFS and DFS on a Graph',
+        'Find if Path Exists in Graph',
+        'Clone Graph',
+        'Assignment | Number of Islands',
+        'Cycle Detection in Graphs',
+        'Assignment | Detect Cycle in a Graph',
+        'Assignment | Social Network Clique Finder',
+        'Hands-on | Task Dependency Manager',
+        'Clash of Codes #4 | BSTs & Graphs'
       ]
     }
   ];
@@ -171,35 +232,34 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
               {units.map((unit) => (
                 <div key={unit.id} className="unit-block">
                   <div className="unit-header-block" onClick={() => setExpandedUnit(expandedUnit === unit.id ? null : unit.id)}>
-                    <div className="module-badge">
-                      <div className="badge-label">Module</div>
-                      <div className="badge-number">{unit.id}</div>
-                    </div>
-                    <div className="unit-description">
-                      <h2 className="unit-title">{unit.title}</h2>
-                      <p className="unit-desc">{unit.description}</p>
-                    </div>
+                    <div className="unit-number-badge">{unit.id}</div>
+                    <div className="unit-title-text">{unit.title}</div>
                     <div className="expand-indicator">{expandedUnit === unit.id ? '▼' : '▶'}</div>
                   </div>
 
                   {expandedUnit === unit.id && (
                     <div className="lessons-timeline">
-                      {unit.modules.map((module, idx) => (
-                        <div
-                          key={module.id}
-                          className="lesson-item"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onModuleSelect(unit.id, idx + 1);
-                          }}
-                        >
-                          <div className="lesson-badge">{module.id}</div>
-                          <div className="lesson-content">
-                            <h3 className="lesson-title">{module.title}</h3>
-                            <p className="lesson-desc">{module.description}</p>
+                      {unit.modules.map((module, idx) => {
+                        const isCompleted = studentProgress.some(
+                          p => p.unitId === unit.id && p.moduleId === idx + 1 && p.completed
+                        );
+                        return (
+                          <div
+                            key={idx}
+                            className="lesson-item"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onModuleSelect(unit.id, idx + 1);
+                            }}
+                          >
+                            <div className={`lesson-number-badge ${isCompleted ? 'completed' : ''}`}>{unit.id}.{idx + 1}</div>
+                            <div className="lesson-content">
+                              <h3 className="lesson-title">{module}</h3>
+                            </div>
+                            <div className="lesson-arrow">→</div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   )}
                 </div>
