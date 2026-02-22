@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_12: React.FC = () => {
   return (
@@ -88,9 +89,9 @@ const Module4_12: React.FC = () => {
         <h4 className="font-semibold mt-4">LeetCode</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://leetcode.com/problems/two-sum/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/two-sum/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -98,9 +99,9 @@ const Module4_12: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -108,9 +109,9 @@ const Module4_12: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/subarray-sum-equals-k/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/subarray-sum-equals-k/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -122,9 +123,9 @@ const Module4_12: React.FC = () => {
         <h4 className="font-semibold mt-4">HackerRank</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/ctci-ransom-note" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/ctci-ransom-note"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -132,9 +133,9 @@ const Module4_12: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/icecream-parlor" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/icecream-parlor"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -148,9 +149,9 @@ const Module4_12: React.FC = () => {
         <h3>Additional Reference Material</h3>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://www.geeksforgeeks.org/hashing-data-structure/" 
-              target="_blank" 
+            <a
+              href="https://www.geeksforgeeks.org/hashing-data-structure/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -158,9 +159,9 @@ const Module4_12: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.programiz.com/dsa/hash-table" 
-              target="_blank" 
+            <a
+              href="https://www.programiz.com/dsa/hash-table"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -197,6 +198,47 @@ const Module4_12: React.FC = () => {
         <p>
           Now that you know how to use HashMaps for fast lookups, it's time to explore something exciting: Can a computer understand what a user really means, even without exact keywords?
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.12 Quiz: Two Sum Using Hash Map"
+          questions={[
+            {
+              question: "In the Two Sum problem, what key insight makes a HashMap the optimal approach?",
+              options: ["HashMaps sort the numbers automatically", "We can check in O(1) if the complement (target - nums[i]) was seen before", "HashMaps allow storing duplicate values", "HashMaps reduce the size of the array"],
+              correctAnswer: 1,
+              explanation: "By storing each number as a key, we can instantly check if the needed complement (target - current) already exists, turning O(n²) to O(n)."
+            },
+            {
+              question: "For array [2, 7, 11, 15] and target = 9, what is the expected output?",
+              options: ["[0, 1]", "[1, 2]", "[2, 3]", "[0, 3]"],
+              correctAnswer: 0,
+              explanation: "2 + 7 = 9. Index of 2 is 0 and index of 7 is 1, so the answer is [0, 1]."
+            },
+            {
+              question: "What does the HashMap store in the Two Sum algorithm?",
+              options: ["Each number's value as key and target as value", "Each number as key and its index as value", "Index as key and target as value", "Only the complement values"],
+              correctAnswer: 1,
+              explanation: "We store { number → index } so that when we find the complement, we can immediately return both indices."
+            },
+            {
+              question: "What is the time complexity of the HashMap-based Two Sum solution?",
+              options: ["O(n^2)", "O(n log n)", "O(n)", "O(1)"],
+              correctAnswer: 2,
+              explanation: "We do a single pass through the array, performing O(1) HashMap operations at each step, giving an overall O(n) time complexity."
+            },
+            {
+              question: "At what step do we check if the complement exists in the HashMap?",
+              options: ["After processing all elements", "Before the loop starts", "For each element, before storing it in the map", "Only for even-indexed elements"],
+              correctAnswer: 2,
+              explanation: "For each element nums[i], we first compute diff = target - nums[i] and check if diff is already in the map. If yes, we found our pair; if not, we add nums[i] to the map."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={12}
+        />
       </section>
     </div>
   );

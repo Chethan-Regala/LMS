@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_8: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Module3_8: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">Understanding "Valid Parentheses": A Lesson in Stacks</h3>
-        
+
         <p className="mb-6">
           Welcome to today's lesson! We'll be tackling a classic coding problem that's a great introduction to a fundamental data structure: the stack. Before we dive in, let's get in the right mindset with a little coding humor.
         </p>
@@ -40,13 +41,13 @@ const Module3_8: React.FC = () => {
 
         <h3 className="text-lg font-semibold mb-3">The Brute Force Method (And Why We Can Do Better)</h3>
         <p className="mb-4">
-          A straightforward, but less efficient, way to solve this is to repeatedly find and remove valid pairs of parentheses, (), [], {} from the string until no more pairs can be found. If the string is empty at the end, the original string was valid.
+          A straightforward, but less efficient, way to solve this is to repeatedly find and remove valid pairs of parentheses, (), [], { } from the string until no more pairs can be found. If the string is empty at the end, the original string was valid.
         </p>
 
         <p className="mb-3 font-semibold">Here's the thinking process:</p>
         <ol className="list-decimal ml-6 mb-6 space-y-2">
           <li>Start with the input string.</li>
-          <li>Scan the string for any occurrences of (), [], or {}.</li>
+          <li>Scan the string for any occurrences of (), [], or { }.</li>
           <li>If you find a pair, remove it from the string.</li>
           <li>Repeat this process until you can no longer find any valid pairs.</li>
           <li>After the loop, check if the string is empty.
@@ -88,6 +89,44 @@ const Module3_8: React.FC = () => {
           </li>
         </ol>
 
+        <Quiz
+          title="Module 3.8 Quiz: Balancing Symbols"
+          questions={[
+            {
+              question: "In the 'Valid Parentheses' problem, what do you do when you encounter an opening bracket '(', '[', or '{'?",
+              options: ["Pop from the stack", "Push it onto the stack", "Ignore it", "Add it to the result string"],
+              correctAnswer: 1,
+              explanation: "Opening brackets are pushed onto the stack to keep track of what needs to be closed later."
+            },
+            {
+              question: "If you encounter a closing bracket and the stack is empty, what does this indicate?",
+              options: ["The string is halfway valid", "The string is definitely invalid (Underflow)", "You should start a new stack", "The string is perfectly balanced"],
+              correctAnswer: 1,
+              explanation: "If you have a closing bracket with nothing to match it on the stack, the brackets are unbalanced."
+            },
+            {
+              question: "What is the final condition to confirm the entire string is valid after processing all characters?",
+              options: ["The stack should have at least one element", "The stack must be completely empty", "The stack should contain only '('", "The string length must be prime"],
+              correctAnswer: 1,
+              explanation: "An empty stack at the end means every opening bracket was correctly matched and closed."
+            },
+            {
+              question: "Why is the LIFO (Last-In, First-Out) property of stacks critical here?",
+              options: ["It ensures brackets are closed in the reverse order they were opened", "It makes the code run in O(1) time", "It sorts the brackets alphabetically", "It allows us to skip the middle brackets"],
+              correctAnswer: 0,
+              explanation: "Correct nesting requires that the most recently opened bracket is the first one to be closed."
+            },
+            {
+              question: "What is the time complexity of the stack-based approach for a string of length 'n'?",
+              options: ["O(n^2)", "O(log n)", "O(n)", "O(1)"],
+              correctAnswer: 2,
+              explanation: "We traverse the string once, and each push/pop operation is O(1)."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={8}
+        />
       </section>
     </div>
   );

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_4: React.FC = () => {
   return (
@@ -163,6 +163,39 @@ F(1)   F(0)`}</code>
           <img src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif" alt="Coding time" />
           <p className="text-sm text-gray-600 mt-2">Image Credit: Giphy</p>
         </div>
+
+        <Quiz
+          title="Module 2.4 Quiz: Fibonacci & Recursion"
+          questions={[
+            {
+              question: "What is the time complexity of a naive recursive Fibonacci algorithm?",
+              options: ["O(n)", "O(n^2)", "O(2^n)", "O(log n)"],
+              correctAnswer: 2,
+              explanation: "Each call generates two more calls until the base case is reached, resulting in exponential growth O(2^n)."
+            },
+            {
+              question: "Why is naive recursion considered inefficient for calculating Fibonacci numbers?",
+              options: ["It uses too many loops", "It basicly performs 'overlapping subproblems' multiple times (re-calculating the same values)", "It doesn't support decimal numbers", "It is only for even numbers"],
+              correctAnswer: 1,
+              explanation: "For example, F(4) calls F(3) and F(2), and F(3) also calls F(2). F(2) is calculated multiple times unnecessarily."
+            },
+            {
+              question: "What are the base cases for the Fibonacci sequence?",
+              options: ["F(0)=0 and F(1)=1", "F(1)=1 and F(2)=1", "F(n) = F(n-1) + F(n-2)", "F(0)=1 and F(1)=1"],
+              correctAnswer: 0,
+              explanation: "The standard sequence starts with 0 and 1 as the 0th and 1st terms respectively."
+            },
+            {
+              question: "What is the maximum depth of the recursion tree (Space Complexity) for F(n)?",
+              options: ["O(1)", "O(log n)", "O(n)", "O(2^n)"],
+              correctAnswer: 2,
+              explanation: "The recursion stack grows linearly with 'n' as we dive down to the base cases."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={4}
+        />
       </section>
     </div>
   );

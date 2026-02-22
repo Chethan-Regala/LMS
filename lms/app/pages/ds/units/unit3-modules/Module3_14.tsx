@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_14: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Module3_14: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">Merge Two Sorted Lists – LeetCode Problem #21</h3>
-        
+
         <p className="mb-6">
           If you've been working with Linked Lists, this is the quintessential "Bread and Butter" problem. It's the logical next step after learning how to traverse a list. Merge Two Sorted Lists tests your ability to manipulate pointers and manage memory without losing track of your data.
         </p>
@@ -40,7 +41,7 @@ const Module3_14: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-semibold mb-4">Step-by-Step Approach</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">The "Dummy Node" Trick</p>
@@ -82,6 +83,45 @@ const Module3_14: React.FC = () => {
         <p className="mb-6 text-center font-semibold">
           Ready to merge? Let's code! 🚀
         </p>
+
+        <Quiz
+          title="Module 3.14 Quiz: Merging Sorted Lists"
+          questions={[
+            {
+              question: "What is the 'Dummy Node' technique Primarily used for?",
+              options: ["To store actual data", "To avoid special 'if' logic for the empty initial result list", "To speed up the computer's CPU", "To reverse the list"],
+              correctAnswer: 1,
+              explanation: "A dummy node provides a fixed starting point, so you don't have to check if the result list is empty every time you add a new node."
+            },
+            {
+              question: "If List A has 5 nodes and List B has 3 nodes, what is the Maximum number of comparisons needed to merge them?",
+              options: ["15", "8", "3", "5"],
+              correctAnswer: 1,
+              explanation: "In the worst case, you compare elements from both lists until one is exhausted. The number of steps scales linearly with the total number of nodes (m + n)."
+            },
+            {
+              question: "What happens when one list becomes empty during the merging process?",
+              options: ["The algorithm stops and deletes the other list", "The remaining nodes of the non-empty list are attached as a block to the end of the result", "An error is thrown", "The result list is reversed"],
+              correctAnswer: 1,
+              explanation: "Since both input lists were already sorted, any leftover nodes are guaranteed to be larger than everything already in the merged list."
+            },
+            {
+              question: "What is the time complexity of merging two sorted linked lists of size M and N?",
+              options: ["O(M * N)", "O(M + N)", "O(log(M+N))", "O(1)"],
+              correctAnswer: 1,
+              explanation: "The algorithm traverses each node exactly once, resulting in linear time complexity."
+            },
+            {
+              question: "If you used a dummy node to build your list, what should the function return?",
+              options: ["The dummy node itself", "NULL", "The next pointer of the dummy node", "The tail of the list"],
+              correctAnswer: 2,
+              explanation: "The dummy node is just a placeholder; the actual starting data of your merged list begins at dummy->next."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={14}
+        />
       </section>
     </div>
   );

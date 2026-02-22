@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_6: React.FC = () => {
   return (
@@ -169,7 +170,7 @@ static void addEdge(ArrayList<ArrayList<Integer>> adj, int u, int v) {
         <p>
           In an adjacency matrix, we use a 2D table (grid) to represent the graph. If there is a connection, we mark the cell with 1; otherwise, it remains 0.
         </p>
-        
+
         <h4 className="font-semibold mt-4">Step 1: Defining the structure</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>We need a grid with V rows and V columns.</li>
@@ -433,6 +434,47 @@ int main() {
         </ul>
       </section>
       <img src="https://storage.googleapis.com/kq-storage.kalvium.community/Data%20Structures%20and%20Algorithms%2FMindmaps%2FIntroduction%20to%20Graphs%20and%20Representation%20-%20Mindmap.png" alt="Mind map" />
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.6 Quiz: Introduction to Graphs"
+          questions={[
+            {
+              question: "What is the key structural difference between a Tree and a Graph?",
+              options: ["Trees have nodes; graphs do not", "Graphs can have cycles and arbitrary connections; trees are acyclic with a single root", "Trees use edges; graphs use pointers", "Graphs are always directed; trees are not"],
+              correctAnswer: 1,
+              explanation: "A tree is a special, restricted type of graph: it is acyclic (no cycles), connected, and has a designated root. General graphs can have cycles, disconnected components, and no root."
+            },
+            {
+              question: "In an ADJACENCY MATRIX for n nodes, what is the space complexity?",
+              options: ["O(n)", "O(n + E)", "O(n²)", "O(E)"],
+              correctAnswer: 2,
+              explanation: "An adjacency matrix uses an n×n grid, allocating space for every possible edge, whether it exists or not. This gives O(n²) space regardless of actual edge count."
+            },
+            {
+              question: "Which graph representation is more SPACE-EFFICIENT for SPARSE graphs (few edges)?",
+              options: ["Adjacency Matrix", "Adjacency List", "Both are equivalent", "Edge List only"],
+              correctAnswer: 1,
+              explanation: "For sparse graphs, an adjacency list uses O(V + E) space — only storing actual edges. An adjacency matrix wastes O(V²) space on empty cells."
+            },
+            {
+              question: "In a DIRECTED graph, does edge A→B imply B→A?",
+              options: ["Yes, always", "No, directed edges are one-way", "Only in weighted graphs", "Only for self-loops"],
+              correctAnswer: 1,
+              explanation: "In a directed (digraph) graph, edges have a specific direction. A→B only means you can travel from A to B, not from B to A unless B→A is also explicitly added."
+            },
+            {
+              question: "Which data structure is commonly used by BFS for graph traversal?",
+              options: ["Stack", "Priority Queue", "Queue", "Linked List"],
+              correctAnswer: 2,
+              explanation: "BFS explores nodes level by level. A Queue (FIFO) ensures nodes discovered first are processed first, which naturally achieves level-by-level traversal."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={6}
+        />
+      </section>
     </div>
   );
 };

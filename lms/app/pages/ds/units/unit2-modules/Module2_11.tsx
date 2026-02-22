@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_11: React.FC = () => {
   return (
@@ -50,6 +51,33 @@ const Module2_11: React.FC = () => {
             </a>
           </li>
         </ul>
+
+        <Quiz
+          title="Module 2.11 Quiz: Heaps & Kth Largest"
+          questions={[
+            {
+              question: "Why are heaps efficient for finding the Kth largest element?",
+              options: ["They sort the array automatically", "They provide O(1) access to the minimum/maximum element", "They use less memory than arrays", "They convert recursion into loops"],
+              correctAnswer: 1,
+              explanation: "Max-heaps give immediate access to the largest element, and Min-heaps of size K can track the largest K elements efficiently."
+            },
+            {
+              question: "What is the Time Complexity of building a heap from an array of size 'n'?",
+              options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+              correctAnswer: 2,
+              explanation: "Building a heap (Heapify) using the bottom-up approach takes linear time, O(n)."
+            },
+            {
+              question: "In a Min-Heap used to find the Kth largest element, what does the root represent after processing all elements?",
+              options: ["The largest element", "The smallest element in the original array", "The Kth largest element", "The average of all elements"],
+              correctAnswer: 2,
+              explanation: "In a min-heap of size K, the root is the smallest of the K largest elements, which is the Kth largest element overall."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={11}
+        />
       </section>
     </div>
   );

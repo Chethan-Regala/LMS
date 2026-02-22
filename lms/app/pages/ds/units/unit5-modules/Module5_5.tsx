@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_5: React.FC = () => {
   return (
@@ -35,9 +36,9 @@ const Module5_5: React.FC = () => {
         </p>
         <ul className="list-disc ml-6 space-y-2 mt-4">
           <li>
-            <a 
-              href="https://leetcode.com/problems/two-sum-iv-input-is-a-bst/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/two-sum-iv-input-is-a-bst/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -45,9 +46,9 @@ const Module5_5: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/find-mode-in-binary-search-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/find-mode-in-binary-search-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -55,9 +56,9 @@ const Module5_5: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -65,6 +66,47 @@ const Module5_5: React.FC = () => {
             </a>
           </li>
         </ul>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.5 Quiz: Pair Sum in BST"
+          questions={[
+            {
+              question: "What is the goal of the 'Pair Sum in BST' problem?",
+              options: ["Find the sum of all nodes", "Check if two nodes exist that sum to a target k", "Find the maximum pair", "Find the minimum path sum"],
+              correctAnswer: 1,
+              explanation: "The problem asks whether there exist two distinct nodes in the BST whose values add up to a given target k."
+            },
+            {
+              question: "Which approach efficiently solves the pair sum problem using the BST inorder property?",
+              options: ["BFS + brute force", "Inorder traversal to get sorted array, then two-pointer technique", "DFS with backtracking", "Binary search on random pairs"],
+              correctAnswer: 1,
+              explanation: "Inorder traversal of BST gives a sorted array. Applying two pointers (left at start, right at end) on this sorted array finds the pair in O(n) time."
+            },
+            {
+              question: "In the two-pointer approach for pair sum, when should the LEFT pointer move RIGHT?",
+              options: ["When sum > k", "When sum < k", "When sum == k", "When both pointers are equal"],
+              correctAnswer: 1,
+              explanation: "If the current sum is less than k, we need a larger value. Moving the left pointer right increases the sum."
+            },
+            {
+              question: "What is the time complexity of pairing BST inorder traversal with two-pointer search?",
+              options: ["O(n²)", "O(log n)", "O(n)", "O(n log n)"],
+              correctAnswer: 2,
+              explanation: "Inorder traversal takes O(n), and the two-pointer scan also takes O(n). Combined, the total complexity is O(n)."
+            },
+            {
+              question: "What auxiliary space does the inorder + two-pointer approach require?",
+              options: ["O(1)", "O(log n)", "O(n) for the sorted array", "O(n²)"],
+              correctAnswer: 2,
+              explanation: "We store the inorder traversal result in a separate array, which requires O(n) auxiliary space proportional to the number of nodes."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={5}
+        />
       </section>
     </div>
   );

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_8: React.FC = () => {
   return (
@@ -194,6 +194,39 @@ function merge(left, right)
         <p className="mb-6">
           Think of sorting a deck of cards. With Merge Sort, you split the deck in half, then split each half, and so on until you have piles of single cards (which are already sorted). Then, you merge the piles back together in order.
         </p>
+
+        <Quiz
+          title="Module 2.8 Quiz: Sorting Fundamentals & Merge Sort"
+          questions={[
+            {
+              question: "What does it mean for a sorting algorithm to be 'Stable'?",
+              options: ["It always runs in O(n) time", "It preserves the relative order of elements with equal values", "It doesn't require extra memory", "It only works on integers"],
+              correctAnswer: 1,
+              explanation: "Stability means if two elements have the same value, their original order from the input is maintained in the sorted output."
+            },
+            {
+              question: "What is the Time Complexity of Merge Sort in its worst case?",
+              options: ["O(n)", "O(n^2)", "O(n log n)", "O(log n)"],
+              correctAnswer: 2,
+              explanation: "Merge Sort consistently performs at O(n log n) regardless of the initial order of elements, due to its balanced divide-and-conquer approach."
+            },
+            {
+              question: "Merge Sort is typically NOT an 'in-place' algorithm because:",
+              options: ["It is too slow", "It requires O(n) extra space to perform the merge operation", "It uses recursion", "It only sorts strings"],
+              correctAnswer: 1,
+              explanation: "During the merge step, a temporary array (or extra space) is usually required to combine the sorted halves."
+            },
+            {
+              question: "Which algorithmic paradigm does Merge Sort follow?",
+              options: ["Greedy approach", "Dynamic Programming", "Divide and Conquer", "Backtracking"],
+              correctAnswer: 2,
+              explanation: "Merge Sort divides the problem into smaller sub-problems (halves), solves them recursively, and combines (merges) the results."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={8}
+        />
 
         <h3 className="text-xl font-semibold mb-4">How to choose the best algorithm</h3>
         <p className="mb-4">

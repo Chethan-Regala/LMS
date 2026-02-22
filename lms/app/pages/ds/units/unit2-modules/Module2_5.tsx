@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_5: React.FC = () => {
   return (
@@ -25,7 +25,7 @@ const Module2_5: React.FC = () => {
         </p>
 
         <h2 className="text-2xl font-semibold mb-4">Key Concepts</h2>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">1. Naive Approach (O(n))</p>
@@ -113,6 +113,39 @@ END FUNCTION`}</code>
           </ul>
         </div>
 
+        <Quiz
+          title="Module 2.5 Quiz: Efficient Power Calculation"
+          questions={[
+            {
+              question: "What is the Time Complexity of implementing Pow(x, n) using recursive binary exponentiation?",
+              options: ["O(n)", "O(n^2)", "O(log n)", "O(1)"],
+              correctAnswer: 2,
+              explanation: "Binary exponentiation reduces the exponent by half in each recursive call, leading to a logarithmic time complexity."
+            },
+            {
+              question: "How should a negative exponent 'n' be handled according to the lesson?",
+              options: ["Return 0", "Ignore the negative sign", "Change x to 1/x and treat n as positive", "Subtract x from n"],
+              correctAnswer: 2,
+              explanation: "Mathematically, x^-n = (1/x)^n. This allows us to reuse the same logic for positive exponents."
+            },
+            {
+              question: "If 'n' is even, what is the core optimization step?",
+              options: ["half = power(x, n/2); return half * half", "return x * power(x, n-1)", "return x + x", "return 1"],
+              correctAnswer: 0,
+              explanation: "By calculating x^(n/2) once and squaring it, we avoid re-calculating the same half, saving nearly half the work."
+            },
+            {
+              question: "What is the result of any (non-zero) number raised to the power of 0?",
+              options: ["0", "1", "The number itself", "Infinity"],
+              correctAnswer: 1,
+              explanation: "This is the classic base case for power functions: x^0 = 1 for any x ≠ 0."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={5}
+        />
+
         <h2 className="text-2xl font-semibold mb-4">Similar Problems</h2>
         <p className="mb-4">
           Practice these related problems to strengthen your understanding:
@@ -142,7 +175,7 @@ END FUNCTION`}</code>
         </ul>
 
         <h2 className="text-2xl font-semibold mb-4">Reference Materials</h2>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">Articles &amp; Tutorials:</p>

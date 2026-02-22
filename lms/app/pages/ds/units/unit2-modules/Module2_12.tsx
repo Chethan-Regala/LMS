@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_12: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Module2_12: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">Divide &amp; Conquer in Action: Sorting with Merge Sort</h3>
-        
+
         <p className="mb-6">
           Sorting isn't just about putting numbers in order — it's about understanding patterns that scale, optimize, and make your code smarter. In this assignment, you'll implement one of the most classic and powerful sorting techniques ever invented — Merge Sort.
         </p>
@@ -148,6 +149,33 @@ const Module2_12: React.FC = () => {
           <li>1 ≤ n ≤ 10⁵</li>
           <li>-10⁹ ≤ arr[i] ≤ 10⁹</li>
         </ul>
+
+        <Quiz
+          title="Module 2.12 Quiz: Merge Sort Mastery"
+          questions={[
+            {
+              question: "Why is the Space Complexity of Merge Sort O(n)?",
+              options: ["Because of the recursion stack", "Because it requires an auxiliary array to hold the elements while merging", "Because the input array itself is counted", "Because the algorithm is unstable"],
+              correctAnswer: 1,
+              explanation: "The merging step creates a result array (or copies into one) that is as large as the combined size of the two halves being merged."
+            },
+            {
+              question: "What is the result of dividing an array of size 1?",
+              options: ["Two arrays of size 0.5", "Recursion stops because it's the base case", "An error occurs", "It is divided into 0 and 1"],
+              correctAnswer: 1,
+              explanation: "In Merge Sort, a single element is already sorted. This is the base case where we stop dividing and start merging."
+            },
+            {
+              question: "Is Merge Sort faster for sorted arrays or unsorted arrays?",
+              options: ["Faster for sorted arrays", "Faster for reversed arrays", "It takes exactly the same time O(n log n) for all inputs", "It depends on the first element"],
+              correctAnswer: 2,
+              explanation: "Merge Sort's structure of splitting and merging is identical regardless of the values, making its performance O(n log n) in all scenarios."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={12}
+        />
       </section>
     </div>
   );

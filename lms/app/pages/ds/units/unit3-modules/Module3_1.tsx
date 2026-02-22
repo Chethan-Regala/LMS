@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_1: React.FC = () => {
   return (
@@ -349,6 +350,45 @@ print s.peek()`}</code>
         <p className="mb-6">
           Now, for a quick task to reinforce what we've covered today, consider a simple scenario: You have a stack of integers. Write down the steps to reverse the order of the elements in the stack using only the basic stack operations (push, pop, peek, isEmpty). Then, discuss your approach with a nearby peer.
         </p>
+
+        <Quiz
+          title="Module 3.1 Quiz: Introduction to Stacks"
+          questions={[
+            {
+              question: "What is the defining principle of a Stack data structure?",
+              options: ["First-In, First-Out (FIFO)", "Last-In, First-Out (LIFO)", "Random Access", "Priority-based Access"],
+              correctAnswer: 1,
+              explanation: "Stacks follow the LIFO principle, where the last element added is the first one to be removed."
+            },
+            {
+              question: "Which operation is used to add an element to the top of the stack?",
+              options: ["pop", "peek", "push", "isEmpty"],
+              correctAnswer: 2,
+              explanation: "The 'push' operation adds a new element to the top of the stack."
+            },
+            {
+              question: "What happens when you attempt to perform a 'pop' operation on an empty stack?",
+              options: ["Stack Overflow", "Stack Underflow", "Memory Leak", "Infinite Loop"],
+              correctAnswer: 1,
+              explanation: "Popping from an empty stack is called underflow and typically results in an error or exception."
+            },
+            {
+              question: "In a fixed-size array implementation, what condition defines 'Stack Overflow'?",
+              options: ["When the top index is -1", "When the top index is equal to capacity - 1", "When the stack is empty", "When memory is exhausted"],
+              correctAnswer: 1,
+              explanation: "Overflow occurs in static stacks when you try to push into an already full array (top reached max capacity)."
+            },
+            {
+              question: "Which of the following is a common real-world application of a Stack?",
+              options: ["Printing jobs in a queue", "Web browser 'Back' button history", "Finding the shortest path in a map", "Storing contacts in a phone book alphabetically"],
+              correctAnswer: 1,
+              explanation: "Browser history uses a stack to keep track of visited pages so you can return to the last-visited page first."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={1}
+        />
       </section>
     </div>
   );

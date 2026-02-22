@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_4: React.FC = () => {
   return (
@@ -54,9 +55,9 @@ const Module4_4: React.FC = () => {
         <h3>Practice Links</h3>
         <p><strong>LeetCode — Construct Binary Tree from Level Order</strong></p>
         <p>
-          <a 
-            href="https://leetcode.com/problems/maximum-binary-tree/" 
-            target="_blank" 
+          <a
+            href="https://leetcode.com/problems/maximum-binary-tree/"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
@@ -65,9 +66,9 @@ const Module4_4: React.FC = () => {
         </p>
         <p className="mt-4"><strong>GeeksForGeeks — Build Tree from Level Order</strong></p>
         <p>
-          <a 
-            href="https://www.geeksforgeeks.org/construct-a-binary-tree-from-parent-array-representation/" 
-            target="_blank" 
+          <a
+            href="https://www.geeksforgeeks.org/construct-a-binary-tree-from-parent-array-representation/"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
@@ -76,9 +77,9 @@ const Module4_4: React.FC = () => {
         </p>
         <p className="mt-4"><strong>HackerRank — Tree Traversals</strong></p>
         <p>
-          <a 
-            href="https://www.hackerrank.com/challenges/tree-preorder-traversal/problem" 
-            target="_blank" 
+          <a
+            href="https://www.hackerrank.com/challenges/tree-preorder-traversal/problem"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
@@ -91,9 +92,9 @@ const Module4_4: React.FC = () => {
         <h3>Additional References</h3>
         <p><strong>Understanding recursive tree traversals</strong></p>
         <p>
-          <a 
-            href="https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/" 
-            target="_blank" 
+          <a
+            href="https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
@@ -102,9 +103,9 @@ const Module4_4: React.FC = () => {
         </p>
         <p className="mt-4"><strong>Level order traversal concepts</strong></p>
         <p>
-          <a 
-            href="https://www.programiz.com/dsa/level-order-traversal" 
-            target="_blank" 
+          <a
+            href="https://www.programiz.com/dsa/level-order-traversal"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
@@ -128,6 +129,47 @@ const Module4_4: React.FC = () => {
         <p className="mt-4">
           You can start the assignment now and Happy coding!
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.4 Quiz: Tree Traversals Using Recursion"
+          questions={[
+            {
+              question: "What does a value of -1 in the level-order array input typically represent?",
+              options: ["A node with value -1", "A missing/null node", "The root node", "End of input"],
+              correctAnswer: 1,
+              explanation: "In level-order input formats, -1 (or 'null') conventionally means that no node exists at that position in the tree structure."
+            },
+            {
+              question: "Which function must be built FIRST before running any traversal?",
+              options: ["printInorder()", "deleteTree()", "createTree()", "sortTree()"],
+              correctAnswer: 2,
+              explanation: "You must first construct the tree from the input array using createTree() before any traversal (preorder, inorder, postorder) can be applied."
+            },
+            {
+              question: "In what order should traversals be printed for this assignment?",
+              options: ["Inorder, Postorder, Preorder", "Postorder, Inorder, Preorder", "Preorder, Inorder, Postorder", "Level Order, Inorder, Preorder"],
+              correctAnswer: 2,
+              explanation: "The assignment requires printing in the order: Preorder first, then Inorder, then Postorder."
+            },
+            {
+              question: "What is the 'base case' in the recursive traversal functions?",
+              options: ["When the node has two children", "When the node value is 0", "When the node pointer is NULL", "When the tree has one level"],
+              correctAnswer: 2,
+              explanation: "The recursion stops (base case) when the current node pointer is NULL, meaning we have gone past a leaf node."
+            },
+            {
+              question: "What is the main skill being practiced in this assignment?",
+              options: ["Sorting algorithms", "Converting raw level-order data into a tree structure and traversing it", "Graph shortest path", "Dynamic programming"],
+              correctAnswer: 1,
+              explanation: "The core skill is reading level-order input and constructing a real binary tree from it, then applying recursive traversals — the most fundamental tree-building skill."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={4}
+        />
       </section>
     </div>
   );

@@ -683,65 +683,74 @@
   position: relative;
 }
 
-.unit-number-badge {
-  width: 48px;
-  height: 48px;
-  background: #FFFFFF;
-  border: 1px solid #E0E0E0;
+.module-badge {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #2B2B2B;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border: 1px solid #E0E0E0;
   flex-shrink: 0;
 }
 
-.unit-title-text {
-  flex: 1;
-  font-size: 1.1rem;
+.badge-label {
+  font-size: 0.7rem;
+  color: #9E9E9E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.badge-number {
+  font-size: 2rem;
   font-weight: 600;
   color: #2B2B2B;
+  line-height: 1;
 }
 
-.unit-header-block {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  position: relative;
-  padding: 16px;
-  background: transparent;
-  border: 1px solid transparent;
-  transition: all 0.2s;
+.unit-description {
+  flex: 1;
 }
 
-.unit-header-block:hover {
-  border-color: #E0E0E0;
+.unit-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2B2B2B;
+  margin: 0 0 12px 0;
 }
 
-.expand-indicator {
-  margin-left: auto;
-  color: #9E9E9E;
-  font-size: 0.9rem;
-  transition: transform 0.2s;
+.unit-desc {
+  font-size: 0.95rem;
+  color: #616161;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .lessons-timeline {
   position: relative;
-  padding-left: 0;
-  margin-left: 64px;
+  padding-left: 40px;
+}
+
+.lessons-timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-image: linear-gradient(to bottom, #D0D0D0 50%, transparent 50%);
+  background-size: 1px 8px;
 }
 
 .lesson-item {
   position: relative;
   display: flex;
-  align-items: center;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   cursor: pointer;
-  padding: 12px 16px;
+  padding: 16px;
   background: transparent;
   border: 1px solid transparent;
   transition: all 0.2s;
@@ -749,15 +758,15 @@
 
 .lesson-item:hover {
   border-color: #E0E0E0;
-  background: #FAFAFA;
 }
 
-.lesson-number-badge {
-  width: 48px;
-  height: 48px;
-  background: #FFFFFF;
-  border: 1px solid #E0E0E0;
-  color: #2B2B2B;
+.lesson-badge {
+  position: absolute;
+  left: -28px;
+  width: 40px;
+  height: 40px;
+  background: #4CAF50;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -766,28 +775,33 @@
   flex-shrink: 0;
 }
 
-.lesson-number-badge.completed {
-  background: #4CAF50;
-  border-color: #4CAF50;
-  color: #FFFFFF;
-}
-
 .lesson-content {
   flex: 1;
 }
 
 .lesson-title {
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   color: #2B2B2B;
+  margin: 0 0 6px 0;
+}
+
+.lesson-desc {
+  font-size: 0.875rem;
+  color: #757575;
+  line-height: 1.5;
   margin: 0;
 }
 
-.lesson-arrow {
-  color: #BDBDBD;
-  font-size: 1rem;
-  margin-left: auto;
+.expand-indicator {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  color: #9E9E9E;
+  font-size: 0.9rem;
+  transition: transform 0.2s;
 }
+
 
 /* Compiler Section Styles */
 .compiler-section {

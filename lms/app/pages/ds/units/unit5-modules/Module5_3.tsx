@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_3: React.FC = () => {
   return (
@@ -93,9 +94,9 @@ const Module5_3: React.FC = () => {
         <p>Practice these problems during your leisure time to improve your understanding of these types of problems.</p>
         <ul className="list-disc ml-6 space-y-2 mt-4">
           <li>
-            <a 
-              href="https://leetcode.com/problems/validate-binary-search-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/validate-binary-search-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -103,9 +104,9 @@ const Module5_3: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -113,9 +114,9 @@ const Module5_3: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/is-binary-search-tree/problem" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/is-binary-search-tree/problem"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -137,6 +138,47 @@ const Module5_3: React.FC = () => {
         <p>
           The next session will be a pair programming session where you will voyage your way to a Quest for the Hidden Integer with your programming buddy.
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.3 Quiz: Validate Binary Search Tree"
+          questions={[
+            {
+              question: "Why is simply checking left < root < right for each node insufficient to validate a BST?",
+              options: ["It works perfectly for all cases", "It doesn't check the height of the tree", "A node in the right subtree of an ancestor could violate the ancestor's constraint", "It ignores null nodes"],
+              correctAnswer: 2,
+              explanation: "Consider root=10, right child=15, and 15's left child=6. 6 < 15 locally looks valid, but 6 < 10 violates the root's BST constraint. You must propagate min/max bounds through the tree."
+            },
+            {
+              question: "In the bounds-checking approach isBST(node, minVal, maxVal), what bounds are passed for the RIGHT child of a node?",
+              options: ["(minVal, node.val)", "(node.val, maxVal)", "(minVal, maxVal)", "(node.val, node.val)"],
+              correctAnswer: 1,
+              explanation: "The right child must be GREATER than the current node, so node.val becomes the new minimum. The maximum bound remains unchanged."
+            },
+            {
+              question: "Is an empty tree (null root) a valid BST?",
+              options: ["No, it has no root", "No, it violates the BST property", "Yes, by definition", "Only if height is 0"],
+              correctAnswer: 2,
+              explanation: "An empty tree trivially satisfies all BST constraints (there's nothing to violate them). It is considered a valid BST by definition."
+            },
+            {
+              question: "What is the time complexity of validating a BST using the bounds-checking approach?",
+              options: ["O(log n)", "O(n)", "O(n log n)", "O(n²)"],
+              correctAnswer: 1,
+              explanation: "Every node is visited exactly once, making the time complexity O(n)."
+            },
+            {
+              question: "Which traversal technique, when applied to a valid BST, always produces a SORTED sequence?",
+              options: ["Preorder", "Postorder", "Inorder", "Level Order"],
+              correctAnswer: 2,
+              explanation: "Inorder traversal (Left → Root → Right) on any valid BST visits nodes in ascending sorted order. This can also be used as an alternative BST validation method."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={3}
+        />
       </section>
     </div>
   );

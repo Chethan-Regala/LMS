@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_3: React.FC = () => {
   return (
@@ -27,6 +27,33 @@ const Module2_3: React.FC = () => {
         <p className="mb-4">
           We advise you to understand the logic of the problem before starting the assignment.
         </p>
+
+        <Quiz
+          title="Module 2.3 Quiz: Phone Number Combinations"
+          questions={[
+            {
+              question: "What is the primary recursive objective in the 'Letter Combinations of a Phone Number' problem?",
+              options: ["To multiply the digits together", "To iterate through the keypad and find all possible paths from the first digit to the last", "To sort the digits in ascending order", "To find the sum of all letters"],
+              correctAnswer: 1,
+              explanation: "The problem asks for all possible letter combinations, which requires exploring every possible letter for each digit recursively."
+            },
+            {
+              question: "If the input string has 'n' digits, and each digit corresponds to at most 4 letters, what is the approximate time complexity?",
+              options: ["O(n)", "O(n^2)", "O(4^n)", "O(log n)"],
+              correctAnswer: 2,
+              explanation: "For each of the 'n' digits, you have up to 4 choices, leading to an exponential complexity of O(4^n)."
+            },
+            {
+              question: "When does the recursion reach its base case in this problem?",
+              options: ["When the input string is empty", "When the current combination's length equals the input string's length", "When we encounter the digit '1'", "When the result list is full"],
+              correctAnswer: 1,
+              explanation: "Once the length of the string we are building matches the length of the input digits, we have a valid combination and can stop the current recursive path."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={3}
+        />
       </section>
     </div>
   );

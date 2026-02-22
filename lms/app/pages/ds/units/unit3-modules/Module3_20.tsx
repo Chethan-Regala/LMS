@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_20: React.FC = () => {
   return (
@@ -44,7 +45,7 @@ const Module3_20: React.FC = () => {
         <p className="text-sm text-gray-600 mb-6 text-center">Credits: Nick White</p>
 
         <h3 className="text-xl font-semibold mb-4">Step-by-Step Approach to Solving the Problem</h3>
-        
+
         <p className="mb-4">
           The most efficient way to solve this is using Floyd's Tortoise and Hare algorithm, which involves two pointers moving at different speeds.
         </p>
@@ -150,6 +151,45 @@ const Module3_20: React.FC = () => {
         <p className="mb-6 text-center font-semibold">
           Happy pair programming! 🚀
         </p>
+
+        <Quiz
+          title="Module 3.20 Quiz: Detecting Cycles"
+          questions={[
+            {
+              question: "In Floyd's Cycle-Finding Algorithm, how many nodes does the 'Fast' pointer jump per iteration?",
+              options: ["1 node", "2 nodes", "3 nodes", "It jumps to the end"],
+              correctAnswer: 1,
+              explanation: "The fast pointer moves at twice the speed of the slow pointer to eventually lap any slow pointer caught in a loop."
+            },
+            {
+              question: "Which of these conditions implies that the list is definitely NOT circular?",
+              options: ["Slow pointer equals Fast pointer", "Fast pointer reaches a NULL node", "Head node points to the second node", "The list has more than 100 nodes"],
+              correctAnswer: 1,
+              explanation: "If you reach NULL, it means the path has a literal end, which is impossible in a closed loop."
+            },
+            {
+              question: "What is the best-case time complexity for detecting a cycle if it exists very early in the list?",
+              options: ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+              correctAnswer: 2,
+              explanation: "Regardless of where the cycle is, the time complexity is considered linear, O(n), because we check nodes proportionally to the size of the list."
+            },
+            {
+              question: "Why is Floyd's algorithm considered more space-efficient than using a Hash Map for cycle detection?",
+              options: ["It works faster", "It uses O(1) extra space because it only uses pointer variables", "It uses less CPU", "It doesn't need C++"],
+              correctAnswer: 1,
+              explanation: "A hash map stores every visited node (O(n) space), whereas pointers use a constant amount of memory (O(1))."
+            },
+            {
+              question: "What should be returned if the input list is empty or has only one node?",
+              options: ["true", "false", "NULL", "An error"],
+              correctAnswer: 1,
+              explanation: "A cycle requires at least one node pointing to another. Empty or single-node lists cannot form a loop in the standard definition."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={20}
+        />
       </section>
     </div>
   );

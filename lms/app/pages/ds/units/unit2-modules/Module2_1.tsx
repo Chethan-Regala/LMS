@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_1: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -117,7 +118,7 @@ const Module2_1: React.FC = () => {
         </p>
 
         <div className="mb-6">
-          <button 
+          <button
             onClick={() => setIsExpanded(!isExpanded)}
             className="font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-2"
           >
@@ -126,10 +127,10 @@ const Module2_1: React.FC = () => {
             </span>
             Click to expand the checklist
           </button>
-          
-          <div 
+
+          <div
             className="overflow-hidden transition-all duration-500 ease-in-out"
-            style={{ 
+            style={{
               maxHeight: isExpanded ? '1500px' : '0',
               opacity: isExpanded ? 1 : 0
             }}
@@ -245,9 +246,49 @@ const Module2_1: React.FC = () => {
         <p className="mb-4 font-semibold">
           You will be using recursion to solve sorting algorithms in the upcoming assignments. Buckle up!!
         </p>
+
+        <Quiz
+          title="Module 2.1 Quiz: Recursion Foundations"
+          questions={[
+            {
+              question: "What is the defining characteristic of a recursive function?",
+              options: ["It uses a 'for' loop", "It calls itself", "It always returns a string", "It runs in O(1) time"],
+              correctAnswer: 1,
+              explanation: "Recursion happens when a function calls itself to solve smaller instances of the same problem."
+            },
+            {
+              question: "In the nested boxes analogy, what represents the hidden treasure?",
+              options: ["The function call", "The base case (the smallest box containing the key)", "The loop variable", "The stack overflow"],
+              correctAnswer: 1,
+              explanation: "The base case is the condition where the problem becomes trivially solvable and the recursion stops."
+            },
+            {
+              question: "What happens if a recursive function lacks a base case?",
+              options: ["It runs faster", "It creates an infinite loop/Stack Overflow", "It returns 'undefined'", "It automatically converts to a loop"],
+              correctAnswer: 1,
+              explanation: "Without a stopping condition (base case), the function will keep calling itself until the computer runs out of memory (Stack Overflow)."
+            },
+            {
+              question: "According to the lesson, the Factorial of 'n' can be defined as...",
+              options: ["n + (n-1)", "n * factorial(n-1)", "n^2", "factorial(n) / n"],
+              correctAnswer: 1,
+              explanation: "Factorial is a natural recursive problem where n! = n * (n-1)!"
+            },
+            {
+              question: "Which of these is a real-world application of stacks/recursion mentioned in the bonus sections?",
+              options: ["Cooking a recipe", "Web browser 'Back' button history", "Driving a car", "Watching television"],
+              correctAnswer: 1,
+              explanation: "Browser history and 'Undo' operations are classic examples of LIFO structures managed through stacks, often implemented recursively."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={1}
+        />
       </section>
     </div>
   );
 };
+
 
 export default Module2_1;

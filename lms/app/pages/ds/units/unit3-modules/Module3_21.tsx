@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_21: React.FC = () => {
   return (
@@ -141,6 +142,45 @@ const Module3_21: React.FC = () => {
         <p className="mb-6 text-center font-semibold">
           Happy debugging! 🚀
         </p>
+
+        <Quiz
+          title="Module 3.21 Quiz: GPS Navigation - Finding the Loop Entrance"
+          questions={[
+            {
+              question: "What is the very first step in solving the 'Find Cycle Start' problem?",
+              options: ["Move slow to the head immediately", "Detect if a cycle even exists using Floyd's Tortoise and Hare", "Reverse the linked list", "Delete the head node"],
+              correctAnswer: 1,
+              explanation: "You cannot find the start of a cycle if you aren't sure one exists. Phase 1 is always detection."
+            },
+            {
+              question: "After confirming a cycle, if you move one pointer starting from the 'head' and another starting from the 'meeting point' at the SAME speed, where will they first meet?",
+              options: ["At the tail", "At the middle of the list", "At the starting node of the cycle", "They will never meet again"],
+              correctAnswer: 2,
+              explanation: "Mathematically, the distances align such that moving both at 1x speed from these specific points leads them to collide exactly at the entrance of the loop."
+            },
+            {
+              question: "Why does the delivery driver problem represent a Linked List Cycle?",
+              options: ["Because roads are like pointers connecting intersections (nodes)", "Because GPS uses an array", "Because cars always move in circles", "It doesn't; it's just an analogy"],
+              correctAnswer: 0,
+              explanation: "An intersection is a node, and the path to the next intersection is the 'next' pointer. If you end up back at an intersection you already visited, you've hit a loop."
+            },
+            {
+              question: "What should your function return if the fast pointer reaches NULL during the detection phase?",
+              options: ["The head node", "The middle node", "NULL (no loop found)", "A negative number"],
+              correctAnswer: 2,
+              explanation: "Reaching NULL means the 'route' has a definite end-point, so no cycles were detected."
+            },
+            {
+              question: "What is the combined time complexity of Phase 1 and Phase 2?",
+              options: ["O(log n)", "O(n)", "O(n^2)", "O(2^n)"],
+              correctAnswer: 1,
+              explanation: "Even though there are two phases, each phase makes at most a constant number of passes over the list, so the complexity remains linear."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={21}
+        />
       </section>
     </div>
   );

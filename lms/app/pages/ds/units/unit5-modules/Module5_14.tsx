@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_14: React.FC = () => {
   return (
@@ -46,7 +47,7 @@ const Module5_14: React.FC = () => {
       <section className="content-section">
         <h3>Basic Concept</h3>
         <p>Let's keep it simple.</p>
-        
+
         <h4 className="font-semibold mt-4">What is a Clique?</h4>
         <ul className="list-disc ml-6 space-y-2 mt-2">
           <li>A clique is a set of vertices in an undirected graph</li>
@@ -78,7 +79,7 @@ const Module5_14: React.FC = () => {
         <p>
           There are multiple versions of this problem. Today, we focus on the decision version, because it's clear and practical.
         </p>
-        
+
         <h4 className="font-semibold mt-4">Problem Statement</h4>
         <p className="mt-2">Given:</p>
         <ul className="list-disc ml-6 space-y-2 mt-2">
@@ -112,7 +113,7 @@ const Module5_14: React.FC = () => {
       <section className="content-section">
         <h3>In-Class Assignment Flow</h3>
         <p>During the class, you will:</p>
-        
+
         <details className="bg-gray-50 p-4 rounded mt-4">
           <summary className="cursor-pointer font-semibold">Click to Expand</summary>
           <div className="mt-4 space-y-4">
@@ -124,21 +125,21 @@ const Module5_14: React.FC = () => {
                 <li>Value of k</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">2. Identify all possible vertex subsets</h4>
               <ul className="list-disc ml-6 mt-2">
                 <li>Focus only on subsets of size k</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">3. Check connectivity</h4>
               <ul className="list-disc ml-6 mt-2">
                 <li>For each subset, verify whether every pair of vertices has an edge</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">4. Decide</h4>
               <ul className="list-disc ml-6 mt-2">
@@ -174,6 +175,47 @@ const Module5_14: React.FC = () => {
             Today's session focuses on groups with complete connectivity. The next lesson will shift to dependencies and ordering using directed graphs and real-world scheduling logic. This progression builds a foundation for system design problems.
           </p>
         </div>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.14 Quiz: Social Network Clique Finder"
+          questions={[
+            {
+              question: "What is a CLIQUE in graph theory?",
+              options: ["A set of nodes where no edges exist", "A set of nodes where every pair of nodes has an edge between them", "A connected component of the graph", "A directed cycle"],
+              correctAnswer: 1,
+              explanation: "A clique is a fully connected subgraph — every pair of vertices within the set is directly connected by an edge. It represents maximum mutual connectivity."
+            },
+            {
+              question: "If vertices A, B, C form a clique of size 3, what is the minimum number of edges required?",
+              options: ["1", "2", "3", "4"],
+              correctAnswer: 2,
+              explanation: "A clique of size 3 requires edges A-B, B-C, and A-C — exactly 3 edges for every pair to be connected. More generally, a clique of size k needs k(k-1)/2 edges."
+            },
+            {
+              question: "The Clique Problem belongs to which complexity class?",
+              options: ["P (polynomial time)", "NP-Complete", "O(log n)", "Linear time"],
+              correctAnswer: 1,
+              explanation: "The Clique Problem is NP-Complete. No known polynomial-time algorithm can solve it for all cases, making brute force very slow for large graphs."
+            },
+            {
+              question: "To check if a subset of k vertices is a clique, how do you verify it?",
+              options: ["Run BFS from each vertex", "Check that every pair of vertices in the subset has an edge between them", "Check that the subset forms a tree", "Check that every vertex has degree k"],
+              correctAnswer: 1,
+              explanation: "A subset is a clique if and only if every pair (u, v) in the subset has an edge u-v. You must verify all k(k-1)/2 pairs."
+            },
+            {
+              question: "Which real-world scenario does the Clique Problem model?",
+              options: ["Finding the shortest delivery route", "Identifying groups where every member knows every other member in a social network", "Sorting a list of contacts", "Counting website visits"],
+              correctAnswer: 1,
+              explanation: "In social networks, a clique represents a group where everyone knows everyone else — like a tight friend group or a fully-connected professional team."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={14}
+        />
       </section>
     </div>
   );

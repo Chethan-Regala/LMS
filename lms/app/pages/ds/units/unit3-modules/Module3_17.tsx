@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_17: React.FC = () => {
   return (
@@ -334,6 +335,45 @@ function findIntersection(headA, headB):
         <p className="mb-6 text-center font-semibold">
           Keep practicing and you'll master linked lists! 🚀
         </p>
+
+        <Quiz
+          title="Module 3.17 Quiz: The Slow & Fast Pointer Pattern"
+          questions={[
+            {
+              question: "In Floyd's Cycle Detection, what is the 'meeting point' condition that confirms a loop?",
+              options: ["The fast pointer reaches NULL", "The slow pointer and fast pointer refer to the same node", "The slow pointer finishes before the fast pointer", "The data in the nodes is the same"],
+              correctAnswer: 1,
+              explanation: "If a loop exists, the faster pointer will eventually lap the slower one and they will meet at some node within the cycle."
+            },
+            {
+              question: "To find the STARTING node of a cycle after detecting it, what is the next logical step?",
+              options: ["Reverse the entire list", "Move the slow pointer to the head and move both pointers one step at a time until they meet again", "Move the fast pointer to the end and wait", "Delete the meeting node"],
+              correctAnswer: 1,
+              explanation: "Math shows that the distance from the head to the loop-start is the same as the distance from the meeting point to the loop-start (counting around the circle)."
+            },
+            {
+              question: "How do you position pointers to find the n-th node from the END in one pass?",
+              options: ["Move slow n nodes ahead of fast", "Move fast n nodes ahead of slow, then move both at the same speed", "Move both at the same speed from the start", "Reverse the list twice"],
+              correctAnswer: 1,
+              explanation: "Maintaining a gap of 'n' nodes between fast and slow ensures that when fast reaches the end, slow is at the correct position from the back."
+            },
+            {
+              question: "Why is the Slow/Fast pointer pattern preferred over using a Hash Set for cycle detection in interviews?",
+              options: ["It is easier to understand", "It uses O(1) extra space instead of O(n)", "It always finds the cycle faster", "It works only for singly linked lists"],
+              correctAnswer: 1,
+              explanation: "Space optimization is a key goal in many algorithm problems; avoid using extra structures when pointers alone can solve the issue."
+            },
+            {
+              question: "When finding the intersection of two lists with lengths L1 and L2, why do we move the longer list's pointer ahead by |L1 - L2|?",
+              options: ["To skip the intersection", "To align the remaining distance to the intersection point for both lists", "Because the computer requires equal length inputs", "To find the middle element"],
+              correctAnswer: 1,
+              explanation: "By aligning the end-points of our search, we ensure that if there is a common node, both pointers will land on it at the exact same step."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={17}
+        />
       </section>
     </div>
   );

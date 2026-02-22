@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_2: React.FC = () => {
   return (
@@ -334,6 +334,39 @@ int main() {
         <div className="mb-6">
           <img src="https://kq-storage.kalvium.community/mmdeepdive.png" alt="Quiz time" />
         </div>
+
+        <Quiz
+          title="Module 2.2 Quiz: Deep Dive into Recursion"
+          questions={[
+            {
+              question: "What differentiates Indirect Recursion from Direct Recursion?",
+              options: ["Indirect recursion doesn't use a base case", "In indirect recursion, a function calls another function which eventually calls the first one back", "Indirect recursion is always faster", "Direct recursion uses more memory"],
+              correctAnswer: 1,
+              explanation: "Direct recursion is a function calling itself. Indirect recursion is a circular chain of function calls (A -> B -> A)."
+            },
+            {
+              question: "In Tail Recursion, why can the compiler optimize memory usage?",
+              options: ["It skips the base case", "The recursive call is the very last operation, so the current stack frame can be reused", "It converts the code to assembly", "It ignores local variables"],
+              correctAnswer: 1,
+              explanation: "Since no work remains after the recursive call returns, the current function's state doesn't need to be preserved, allowing for 'Tail Call Optimization'."
+            },
+            {
+              question: "What is the typical Space Complexity of Non-Tail Recursion due to the call stack?",
+              options: ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+              correctAnswer: 2,
+              explanation: "Non-tail recursion must keep every function call on the stack until the base case is reached, leading to linear space usage proportional to the recursion depth."
+            },
+            {
+              question: "Which of these is an example of Direct Recursion?",
+              options: ["A function A calling function B", "A function A calling itself", "A loop that never ends", "A function that returns a value"],
+              correctAnswer: 1,
+              explanation: "Direct recursion occurs when a function calls itself within its own body."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={2}
+        />
 
         <h2 className="text-2xl font-semibold mb-4">So, what's next?</h2>
         <p className="mb-4">

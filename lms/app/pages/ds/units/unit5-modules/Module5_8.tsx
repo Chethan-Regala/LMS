@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_8: React.FC = () => {
   return (
@@ -109,9 +110,9 @@ const Module5_8: React.FC = () => {
         </p>
         <ul className="list-disc ml-6 space-y-2 mt-4">
           <li>
-            <a 
-              href="https://leetcode.com/problems/find-if-path-exists-in-graph/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/find-if-path-exists-in-graph/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -119,9 +120,9 @@ const Module5_8: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/bfsshortreach/problem" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/bfsshortreach/problem"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -129,9 +130,9 @@ const Module5_8: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/find-the-town-judge/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/find-the-town-judge/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -139,6 +140,47 @@ const Module5_8: React.FC = () => {
             </a>
           </li>
         </ul>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.8 Quiz: BFS & DFS on Server Networks"
+          questions={[
+            {
+              question: "In the server network problem, what does BFS compute from a source server?",
+              options: ["Number of servers total", "Shortest distance (fewest hops) to every reachable server", "The longest path", "Total bandwidth"],
+              correctAnswer: 1,
+              explanation: "BFS on an unweighted graph computes the minimum number of hops (edges) from the source to every reachable node, which equals the shortest distance."
+            },
+            {
+              question: "In the server network problem, what does DFS count from a source server?",
+              options: ["The shortest path", "Number of edges", "All reachable nodes (total servers accessible)", "Disconnected components"],
+              correctAnswer: 2,
+              explanation: "DFS explores as far as possible along each branch, marking all reachable nodes. Counting these visited nodes gives the total number of accessible servers."
+            },
+            {
+              question: "Which initialization step is CRITICAL before starting BFS or DFS on a graph?",
+              options: ["Sort the adjacency list", "Mark all nodes as visited", "Initialize a visited array/set (all false)", "Count total edges"],
+              correctAnswer: 2,
+              explanation: "You must initialize a visited array with all values set to false/unvisited before traversal begins. This prevents infinite loops and ensures correct counting."
+            },
+            {
+              question: "What adjacency list entry do you add when building an UNDIRECTED graph edge between servers A and B?",
+              options: ["Only adj[A].add(B)", "Only adj[B].add(A)", "Both adj[A].add(B) and adj[B].add(A)", "adj[A].add(A) and adj[B].add(B)"],
+              correctAnswer: 2,
+              explanation: "For undirected graphs, every edge is bidirectional. Adding just one direction would make it directed. You must add both A→B and B→A in the adjacency list."
+            },
+            {
+              question: "If a server is disconnected from the network source, what will BFS/DFS report for it?",
+              options: ["Distance = 0", "Distance = -1 or unreachable", "It gets visited automatically", "Distance = infinity always"],
+              correctAnswer: 1,
+              explanation: "Disconnected nodes are never reached by BFS/DFS starting from the source. They remain unvisited, and their distance is typically reported as -1 or marked as unreachable."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={8}
+        />
       </section>
     </div>
   );

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module1_5: React.FC = () => {
   return (
@@ -16,105 +17,112 @@ const Module1_5: React.FC = () => {
         <p>
           If you've ever explored coding challenges, you've probably come across FizzBuzz, one of the simplest yet most classic problems in programming. It's often used to check your understanding of loops, conditional statements, and basic logic building.
         </p>
-        <p>In this task, you'll generate a list of numbers from 1 to n, but with a twist:</p>
-        <ul>
-          <li>Replace numbers divisible by 3 with "Fizz",</li>
-          <li>Numbers divisible by 5 with "Buzz",</li>
-          <li>And numbers divisible by both 3 and 5 with "FizzBuzz".</li>
-        </ul>
-        <p>
-          It might sound like a beginner-level challenge, but don't underestimate it! FizzBuzz is a gateway problem. Solving it helps you think logically and structure your conditions cleanly.
-        </p>
-        <p>
-          And the best part? You can practice this problem right here and also on LeetCode, strengthening both your logic and your LeetCode profile at the same time.
-        </p>
-        <div className="flex justify-center my-4">
-          <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="funny fizzbuzz gif" />
+        <div className="bg-emerald-50 p-6 rounded-2xl border-l-4 border-emerald-500 my-8 shadow-sm">
+          <p className="text-gray-700 leading-relaxed font-medium">
+            Generate a list of strings from 1 to n, where:
+          </p>
+          <ul className="list-disc pl-6 mt-2 space-y-1 text-emerald-900">
+            <li>Divisible by 3 → <span className="font-bold">"Fizz"</span></li>
+            <li>Divisible by 5 → <span className="font-bold">"Buzz"</span></li>
+            <li>Divisible by both 3 and 5 → <span className="font-bold">"FizzBuzz"</span></li>
+          </ul>
         </div>
-        <p>Let's quickly look at how we can approach it.</p>
+        <div className="image-container flex justify-center my-6">
+          <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Thinking Process" className="rounded-xl shadow-lg h-48" />
+        </div>
       </section>
 
       <section className="content-section">
-        <h3>Watch this before coding</h3>
-        <p>Here's a short video that visually walks you through the logic and common mistakes developers make with FizzBuzz.</p>
-        <div className="flex justify-center my-4">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/QPZ0pIK_wsc" title="FizzBuzz Explanation" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        <h3>Logic Visualization</h3>
+        <p>Watch this visual walkthrough of the logic and common pitfalls with conditional ordering.</p>
+        <div className="video-embed my-6">
+          <div className="video-container shadow-2xl rounded-2xl overflow-hidden">
+            <iframe src="https://www.youtube.com/embed/QPZ0pIK_wsc" title="FizzBuzz Explanation" allowFullScreen></iframe>
+          </div>
         </div>
       </section>
 
       <section className="content-section">
         <h3>Step-by-Step Approach</h3>
-        <details className="border border-gray-300 rounded p-4">
-          <summary className="font-semibold cursor-pointer">Click to expand the step-by-step explanation</summary>
-          <div className="mt-4 space-y-4">
+        <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-md space-y-6">
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
             <div>
-              <h4>Understand the Problem</h4>
-              <p>You need to print all numbers from 1 to n, but with special words replacing some of them based on divisibility rules.</p>
-            </div>
-            
-            <div>
-              <h4>The Logic</h4>
-              <ul>
-                <li>If the number is divisible by both 3 and 5 → output "FizzBuzz".</li>
-                <li>Else if divisible by only 3 → output "Fizz".</li>
-                <li>Else if divisible by only 5 → output "Buzz".</li>
-                <li>Else → output the number itself.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4>Implementation Steps</h4>
-              <ul>
-                <li>Create an empty vector (or list) of strings.</li>
-                <li>Loop through numbers from 1 to n.</li>
-                <li>Apply the above conditions.</li>
-                <li>Store each result in the vector.</li>
-              </ul>
-            </div>
-
-            <div>
-              <p><strong>Time Complexity:</strong> O(n) You're looping once from 1 to n.</p>
-              <p><strong>Space Complexity:</strong> O(n) The vector stores n string values.</p>
+              <h4 className="font-bold text-gray-800">Condition Ordering</h4>
+              <p className="text-gray-600 text-sm">Always check for divisibility by <span className="font-bold">both (15)</span> first, otherwise the separate conditions for 3 or 5 will trigger early.</p>
             </div>
           </div>
-        </details>
+
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+            <div>
+              <h4 className="font-bold text-gray-800">Iteration</h4>
+              <p className="text-gray-600 text-sm">Loop through numbers from 1 to n. Use the modulo operator <code className="bg-gray-100 px-1 rounded text-rose-500">%</code> to check remainders.</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+            <div>
+              <h4 className="font-bold text-gray-800">Storage</h4>
+              <p className="text-gray-600 text-sm">Convert numbers to strings before adding them to your result list/vector.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="content-section">
         <h3>Practice Problems</h3>
-        <p>Once you're done, try these related problems to build stronger logical flow:</p>
-        
-        <h4>LeetCode:</h4>
-        <ul>
-          <li><a href="#" className="text-blue-600 hover:underline">412. Fizz Buzz</a></li>
-          <li><a href="#" className="text-blue-600 hover:underline">728. Self Dividing Numbers</a></li>
-          <li><a href="#" className="text-blue-600 hover:underline">258. Add Digits</a></li>
-        </ul>
-
-        <h4>HackerRank:</h4>
-        <ul>
-          <li><a href="#" className="text-blue-600 hover:underline">FizzBuzz Challenge</a></li>
-          <li><a href="#" className="text-blue-600 hover:underline">Conditional Statements Practice</a></li>
-        </ul>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <a href="https://leetcode.com/problems/fizz-buzz/" target="_blank" className="p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-emerald-500 hover:bg-emerald-50 transition-all group">
+            <h4 className="font-bold text-gray-800 group-hover:text-emerald-600">412. Fizz Buzz</h4>
+            <p className="text-xs text-gray-500">LeetCode • Easy</p>
+          </a>
+          <a href="https://leetcode.com/problems/add-digits/" target="_blank" className="p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-emerald-500 hover:bg-emerald-50 transition-all group">
+            <h4 className="font-bold text-gray-800 group-hover:text-emerald-600">258. Add Digits</h4>
+            <p className="text-xs text-gray-500">LeetCode • Easy</p>
+          </a>
+        </div>
       </section>
 
-      <section className="content-section">
-        <h3>Additional Reference Material</h3>
-        <ul>
-          <li><a href="#" className="text-blue-600 hover:underline">GeeksforGeeks – FizzBuzz in C++</a></li>
-          <li><a href="#" className="text-blue-600 hover:underline">Wster University - Understanding Modulo and Divisibility</a></li>
-        </ul>
-      </section>
-
-      <section className="content-section">
-        <h3>Where It's Asked</h3>
-        <p>FizzBuzz is famously used in interviews by companies like: Google, Amazon, Microsoft, Meta, and Atlassian</p>
-        <p>It's often an ice-breaker or warm-up question to test your basic problem-solving, loop control, and clean coding habits.</p>
-      </section>
-
-      <section className="content-section">
-        <p>Every coder starts somewhere, and this problem is a great place to begin! Take this challenge with confidence — write your logic clearly, test it, and see your program come to life. Each solved problem like this builds the foundation for tackling tougher coding interviews ahead.</p>
-      </section>
+      <Quiz
+        title="Module 1.5 Quiz: Fizz Buzz"
+        questions={[
+          {
+            question: "Why must you check if a number is divisible by 15 (both 3 and 5) *before* checking if it's divisible by 3?",
+            options: ["It saves memory", "To ensure 'FizzBuzz' is printed instead of just 'Fizz' for such numbers", "Because 15 is larger than 3", "It's a requirement of the C++ compiler"],
+            correctAnswer: 1,
+            explanation: "In an if-else structure, the first true condition executes. If you check %3 first, numbers like 15 will print 'Fizz' and skip the 'FizzBuzz' check."
+          },
+          {
+            question: "What is the result for n = 5 in the FizzBuzz sequence?",
+            options: ["['1', '2', 'Fizz', '4', 'Buzz']", "['1', '2', '3', '4', '5']", "['Fizz', 'Buzz']", "['1', '2', 'Buzz', '4', 'Fizz']"],
+            correctAnswer: 0,
+            explanation: "1, 2 are normal, 3 is %3 (Fizz), 4 is normal, 5 is %5 (Buzz)."
+          },
+          {
+            question: "What is the Time Complexity of generating the FizzBuzz sequence for 'n' numbers?",
+            options: ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+            correctAnswer: 2,
+            explanation: "We iterate through the list exactly once, making the work proportional to 'n'."
+          },
+          {
+            question: "Which operator is used to determine if a number 'x' is divisible by 'y'?",
+            options: ["x / y", "x * y", "x % y == 0", "x ^ y"],
+            correctAnswer: 2,
+            explanation: "The modulo operator (%) returns the remainder. If (x % y) is 0, then x is divisible by y."
+          },
+          {
+            question: "What is the Space Complexity of the solution if you store the results in a list of strings?",
+            options: ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+            correctAnswer: 1,
+            explanation: "We store 'n' strings in memory, so the space used grows linearly with the input size 'n'."
+          }
+        ]}
+        subject="DS"
+        unitId={1}
+        moduleId={5}
+      />
     </div>
   );
 };

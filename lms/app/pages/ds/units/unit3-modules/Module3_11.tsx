@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_11: React.FC = () => {
   return (
@@ -225,6 +226,45 @@ T(4) = 2 * T(3) + 1 = 2*7 + 1 = 15`}</code>
         <p className="mb-6">
           For your upcoming assignment, you will be required to implement a solution to this problem. Refer back to the pseudocode and the step-by-step examples in this lesson. They will be your guide to building a functional and efficient program. Good luck!
         </p>
+
+        <Quiz
+          title="Module 3.11 Quiz: Tower of Hanoi"
+          questions={[
+            {
+              question: "What is the minimum number of moves required to move 'n' disks from the source to the destination rod?",
+              options: ["n^2", "2n + 1", "2^n - 1", "n!"],
+              correctAnswer: 2,
+              explanation: "The recurrence T(n) = 2T(n-1) + 1 resolves to the exponential formula 2^n - 1."
+            },
+            {
+              question: "Which of the following is an absolute rule in the Tower of Hanoi puzzle?",
+              options: ["A larger disk can never be placed on a smaller disk", "You must use all three rods for every move", "Only the bottom disk can be moved first", "Disks must be moved in pairs"],
+              correctAnswer: 0,
+              explanation: "The core constraint of the puzzle is that a disk can only be placed on an empty rod or on a disk that is strictly larger than itself."
+            },
+            {
+              question: "What is the Time Complexity of the recursive Tower of Hanoi algorithm?",
+              options: ["O(n)", "O(n^2)", "O(2^n)", "O(log n)"],
+              correctAnswer: 2,
+              explanation: "Since the number of moves doubles (plus one) for each additional disk, the complexity is exponential."
+            },
+            {
+              question: "In the recursive step 'move n-1 disks from source to auxiliary', what is the role of the 'destination' rod?",
+              options: ["It is not used at all", "It acts as the temporary auxiliary for that specific sub-problem", "It is the target of that sub-problem", "It is ignored until the very end"],
+              correctAnswer: 1,
+              explanation: "In recursion, the roles of rods (Source, Auxiliary, Destination) swap depending on which sub-set of disks is being moved."
+            },
+            {
+              question: "How many moves are required to solve the puzzle with 4 disks?",
+              options: ["7", "15", "16", "31"],
+              correctAnswer: 1,
+              explanation: "Using the formula 2^4 - 1, we get 16 - 1 = 15 moves."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={11}
+        />
       </section>
     </div>
   );

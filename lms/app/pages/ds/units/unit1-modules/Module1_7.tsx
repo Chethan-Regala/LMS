@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module1_7: React.FC = () => {
   return (
@@ -12,112 +13,122 @@ const Module1_7: React.FC = () => {
       </div>
 
       <section className="content-section">
-        <p>Hi there,</p>
-        <img src="https://media.tenor.com/4EhUju6UJtEAAAAi/grrr-rawr.gif" alt="" />
+        <h3>Moving Beyond Basics</h3>
         <p>
-          In the previous lesson, we explored Big O notation and its significance in understanding the time complexity of algorithms. We touched upon how Big O helps in exressing the upper bound of the number of operations an algorithm performs, enabling us to analyze how the performance of an algorithm scales with increasing input sizes.
+          In the previous lesson, we explored the concept of complexity. But how do we actually express it mathematically? This lead us to the world of <strong>Asymptotic Notations</strong>.
         </p>
-        <p>What if I told you that there are algorithms with the same Big O time complexity, but one is much faster than the other? How could that be possible?</p>
-        <p>
-          This question leads us to the concept of constant factors and lower-order terms that affect performance, even when two algorithms share the same Big O notation. In complexity analysis, it's not just about understanding how algorithms behave as input grows, but also how efficiently they handle practical, real-world data.
-        </p>
-        <p>We'll begin with the essential tools for analyzing algorithms: Asymptotic Notations, such as Big O, Big Omega, and Big Theta.</p>
-      </section>
-
-      <section className="content-section">
-        <h3>What Are Asymptotic Notations?</h3>
-        <p>
-          Asymptotic notations are a set of mathematical tools used to describe the behavior of algorithms in terms of their performance as the input size grows towards infinity. They help us express the scalability of an algorithm and give us a way to compare algorithms independent of machine-dependent factors like hardware or compiler optimization.
-        </p>
-        <p>The three main asymptotic notations are:</p>
-      </section>
-
-      <section className="content-section">
-        <h3>Big O Notation (O):</h3>
-        <p>
-          Represents the upper bound of an algorithm's running time. It gives the worst-case scenario, ensuring that the algorithm will never take more time than the specified limit.
-        </p>
-        <p>
-          In the image below, the function g(n) represents an upper bound for f(n), meaning g(n) grows faster or at the same rate as f(n) for large input sizes.
-        </p>
-        <img src="https://kq-storage.kalvium.community/bigo.png" alt="" />
-        <p>
-          Example: If an algorithm has a time complexity of O(n^2), it means that the algorithm's execution time will grow at a rate proportional to the square of the input size in the worst case.
-        </p>
-        <p>Watch this video to understand how the Big O Notation works.</p>
-        <div className="flex justify-center my-4">
-         <iframe width="407" height="360" src="https://www.youtube.com/embed/XMUe3zFhM5c" title="Learn Big O notation in 6 minutes 📈" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        <div className="bg-amber-50 p-6 rounded-2xl border-l-4 border-amber-500 my-8 shadow-sm">
+          <p className="text-gray-700 leading-relaxed italic">
+            "What if I told you that there are algorithms with the same Big O time complexity, but one is much faster than the other? How could that be possible?"
+          </p>
         </div>
-        <p>Now you can look at some code examples to clearly understand Big O Notation.</p>
-        <iframe width="407" height="360" src="https://www.youtube.com/embed/CB8JPjg_3cM" title="Big O Notation - Code Examples" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-      </section>
-
-      <section className="content-section">
-        <h3>Big Omega Notation (Ω):</h3>
         <p>
-          Represents the lower bound of an algorithm's running time. It gives the best-case scenario, ensuring that the algorithm will take at least the specified amount of time for any input.
-        </p>
-        <p>
-          In the image below, g(n) is a lower bound for f(n). This means that after a certain value of n, the function f(n) will never fall below g(n).
-        </p>
-        <img src="https://kq-storage.kalvium.community/bigomega.png" alt="" />
-        <p>
-          Example: If an algorithm has a time complexity of Ω(n), it means that, in the best case, the algorithm will take at least linear time.
+          We'll begin with the essential tools for analyzing algorithms: Asymptotic Notations, such as Big O, Big Omega, and Big Theta.
         </p>
       </section>
 
       <section className="content-section">
-        <h3>Big Theta Notation (Θ):</h3>
-        <p>
-          Represents the tight bound of an algorithm's running time. It gives an exact characterization of the algorithm's performance, stating that the running time will grow at the same rate as the input size, both in the worst and best cases.
-        </p>
-        <p>
-          In the image below, g(n) tightly bounds f(n) from above and below, meaning f(n) grows at the same rate as g(n) for large values of n.
-        </p>
-        <img src="https://kq-storage.kalvium.community/bigtheta.png" alt="" />
-        <p>
-          Example: If an algorithm has a time complexity of Θ(nlogn), it means that the algorithm will take time proportional to nlognn for all input sizes, both in the worst and best cases.
-        </p>
-      </section>
+        <h3>The Three Pillars of Notation</h3>
 
-      <section className="content-section">
-        <h3>Logarithmic Time complexity</h3>
-        <p>Let's spend some time to explore how to calculate logarithmic time complexities.</p>
-        <div className="flex justify-center my-4">
-         <iframe width="407" height="360" src="https://www.youtube.com/embed/M4ubFru2O80" title="Deeply Understanding Logarithms In Time Complexities &amp; Their Role In Computer Science" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        <div className="space-y-8 my-8">
+          <div className="bg-white border-2 border-rose-100 rounded-3xl p-6 shadow-sm">
+            <h4 className="font-black text-rose-600 text-xl mb-3">1. Big O Notation (O) - The Upper Bound</h4>
+            <p className="text-gray-600 text-sm mb-4">Represents the <strong>worst-case scenario</strong>. It ensures the algorithm will never take more time than this limit.</p>
+            <div className="image-container flex justify-center bg-gray-50 rounded-xl p-4">
+              <img src="https://kq-storage.kalvium.community/bigo.png" alt="Big O" className="h-40" />
+            </div>
+          </div>
+
+          <div className="bg-white border-2 border-blue-100 rounded-3xl p-6 shadow-sm">
+            <h4 className="font-black text-blue-600 text-xl mb-3">2. Big Omega Notation (Ω) - The Lower Bound</h4>
+            <p className="text-gray-600 text-sm mb-4">Represents the <strong>best-case scenario</strong>. It guarantees the algorithm will take at least this much time.</p>
+            <div className="image-container flex justify-center bg-gray-50 rounded-xl p-4">
+              <img src="https://kq-storage.kalvium.community/bigomega.png" alt="Big Omega" className="h-40" />
+            </div>
+          </div>
+
+          <div className="bg-white border-2 border-emerald-100 rounded-3xl p-6 shadow-sm">
+            <h4 className="font-black text-emerald-600 text-xl mb-3">3. Big Theta Notation (Θ) - The Tight Bound</h4>
+            <p className="text-gray-600 text-sm mb-4">Represents the <strong>exact bound</strong>. It describes a situation where the best and worst cases are functionally the same.</p>
+            <div className="image-container flex justify-center bg-gray-50 rounded-xl p-4">
+              <img src="https://kq-storage.kalvium.community/bigtheta.png" alt="Big Theta" className="h-40" />
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="content-section">
-        <p>Now that you have understood different complexity analysis</p>
-        <p>Solve this</p>
+        <h3>Practical Learning</h3>
+        <p>Watch these videos to understand how to apply Big O notation to actual code examples and how logarithmic complexity works.</p>
+        <div className="grid md:grid-cols-2 gap-6 my-6">
+          <div className="video-embed">
+            <div className="video-container shadow-xl rounded-xl overflow-hidden">
+              <iframe src="https://www.youtube.com/embed/XMUe3zFhM5c" title="Big O in 6 Min" allowFullScreen></iframe>
+            </div>
+          </div>
+          <div className="video-embed">
+            <div className="video-container shadow-xl rounded-xl overflow-hidden">
+              <iframe src="https://www.youtube.com/embed/CB8JPjg_3cM" title="Code Examples" allowFullScreen></iframe>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="content-section">
-        <h3>Summary</h3>
-        <p>1. Time Complexity Beyond Big O:</p>
-        <ul>
-          <li><strong>Big O Notation:</strong> Describes the upper bound of an algorithm's runtime.</li>
-          <li><strong>Big Omega (Ω):</strong> Represents the best-case scenario or lower bound.</li>
-          <li><strong>Big Theta (Θ):</strong> Provides a precise average-case measure when an algorithm's upper and lower bounds coincide.</li>
-        </ul>
-        <p>2. Types of Big O Notations:</p>
-        <ul>
-          <li><strong>O(1):</strong> Constant time, independent of input size.</li>
-          <li><strong>O(log n):</strong> Logarithmic, reducing input size exponentially in each step.</li>
-          <li><strong>O(n):</strong> Linear, processing each input element once.</li>
-          <li><strong>O(n²):</strong> Quadratic, comparing every pair of input elements.</li>
-          <li><strong>O(2^n):</strong> Exponential, doubling operations with each additional input.</li>
-        </ul>
-        <p>
-          Now that you've explored how to evaluate an algorithm's efficiency in Deep Dive into Complexity Analysis, it's time to see those principles in action. In the next lesson, Revisiting Arrays and Strings, we'll apply what you've learned about time and space complexity to real data structures.
-        </p>
-        <p>
-          You'll analyze how arrays and strings store, access, and manipulate data, and how their internal behavior directly impacts an algorithm's performance.
-        </p>
-        <p>Here is a mind map on the key points covered in this lesson.</p>
-        <img src="https://kq-storage.kalvium.community/deepdivetc.png" alt="" />
+        <h3>Logarithmic Time Complexity</h3>
+        <p>Understanding log(n) is crucial because it represents some of the most efficient algorithms in existence, like Binary Search.</p>
+        <div className="video-embed my-6">
+          <div className="video-container shadow-2xl rounded-2xl overflow-hidden">
+            <iframe src="https://www.youtube.com/embed/M4ubFru2O80" title="Logarithms in DSA" allowFullScreen></iframe>
+          </div>
+        </div>
       </section>
+
+      <section className="content-section">
+        <h3>Summary Mind Map</h3>
+        <div className="image-container flex justify-center my-8">
+          <img src="https://kq-storage.kalvium.community/deepdivetc.png" alt="Complexity Mindmap" className="rounded-xl shadow-lg border border-gray-100" />
+        </div>
+      </section>
+
+      <Quiz
+        title="Module 1.7 Quiz: Asymptotic Notation"
+        questions={[
+          {
+            question: "Which notation is used to describe the 'Worst Case' scenario of an algorithm?",
+            options: ["Big Omega (Ω)", "Big Theta (Θ)", "Big O (O)", "Little o (o)"],
+            correctAnswer: 2,
+            explanation: "Big O notation provides the upper bound, ensuring that the algorithm will perform no worse than the specified limit."
+          },
+          {
+            question: "What does Big Theta (Θ) notation represent?",
+            options: ["Worst case only", "Best case only", "A tight bound where upper and lower bounds meet", "A random selection of time"],
+            correctAnswer: 2,
+            explanation: "Big Theta describes a precise rate of growth by bounding the function from both above and below."
+          },
+          {
+            question: "If an algorithm's work is halved at every step, what is its likely Time Complexity?",
+            options: ["O(n)", "O(n^2)", "O(log n)", "O(1)"],
+            correctAnswer: 2,
+            explanation: "Repeatedly halving the input size (like in Binary Search) leads to logarithmic growth, O(log n)."
+          },
+          {
+            question: "What is O(1) commonly called?",
+            options: ["Linear Time", "Exponential Time", "Constant Time", "Infinite Time"],
+            correctAnswer: 2,
+            explanation: "O(1) means the execution time is constant and does not change regardless of the input size."
+          },
+          {
+            question: "Which of these growth rates is the SLOWEST (Fastest for the computer)?",
+            options: ["O(n^2)", "O(2^n)", "O(n)", "O(log n)"],
+            correctAnswer: 3,
+            explanation: "O(log n) grows much slower than O(n), O(n^2), or O(2^n), making it the most efficient of the options provided."
+          }
+        ]}
+        subject="DS"
+        unitId={1}
+        moduleId={7}
+      />
     </div>
   );
 };

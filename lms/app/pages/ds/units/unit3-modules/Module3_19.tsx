@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_19: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Module3_19: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">Welcome Back</h3>
-        
+
         <p className="mb-6">
           So far, you have explored multiple linked list patterns such as merging two sorted linked lists, where you learned how pointer movement can help you build an output list efficiently without extra traversal. But here is the important realization: linked list problems are not about memorizing code. They are about learning how to control node connections carefully.
         </p>
@@ -212,6 +213,45 @@ const Module3_19: React.FC = () => {
         <p className="mb-6 text-center font-semibold">
           Master this pattern and ace your linked list interviews! 🚀
         </p>
+
+        <Quiz
+          title="Module 3.19 Quiz: Removing Nodes from the End"
+          questions={[
+            {
+              question: "Why is the two-pointer approach called a 'one-pass' solution?",
+              options: ["It only moves pointers forward", "It calculates the length of the list first", "It finds the target node and reconnects the list in a single traversal", "It uses only one pointer"],
+              correctAnswer: 2,
+              explanation: "Unlike brute force (which counts length first and then traverses again), the two-pointer method finds the deletion point during the very first walk through the list."
+            },
+            {
+              question: "If 'n' is equal to the length of the list, which node are you removing?",
+              options: ["The tail node", "The middle node", "The head node", "No node is removed"],
+              correctAnswer: 2,
+              explanation: "The n-th node from the end, where n is the total length, is the first node (the head)."
+            },
+            {
+              question: "What is the purpose of the initial 'gap' of n nodes between the fast and slow pointers?",
+              options: ["To slow down the algorithm", "To ensure that when the fast pointer reaches the end, the slow pointer is at the correct relative position from the back", "To skip the first n nodes", "To reverse the list"],
+              correctAnswer: 1,
+              explanation: "By maintaining a constant distance 'n', the trailing pointer (slow) will always be 'n' steps behind the leading pointer (fast)."
+            },
+            {
+              question: "In your implementation, why do you typically want the 'slow' pointer to stop PREVIOUS to the node being deleted?",
+              options: ["To save the data of that node", "Because you need the previous node to bridge the gap (slow.next = slow.next.next)", "To avoid NULL pointer errors", "To print the list"],
+              correctAnswer: 1,
+              explanation: "To remove a node, you must update the 'next' reference of its predecessor to 'skip' the target node."
+            },
+            {
+              question: "What is the Time and Space complexity of the optimized removal algorithm?",
+              options: ["O(n) Time, O(n) Space", "O(n^2) Time, O(1) Space", "O(n) Time, O(1) Space", "O(1) Time, O(1) Space"],
+              correctAnswer: 2,
+              explanation: "The list is traversed once (linear time) and only a few extra pointer variables are used (constant space)."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={19}
+        />
       </section>
     </div>
   );

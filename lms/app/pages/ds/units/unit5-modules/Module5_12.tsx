@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_12: React.FC = () => {
   return (
@@ -30,9 +31,9 @@ const Module5_12: React.FC = () => {
         </p>
         <p className="mt-4">The diagram below shows how a cycle looks in a graph.</p>
         <div className="flex flex-col items-center my-6">
-          <img 
-            src="https://kq-storage.s3.ap-south-1.amazonaws.com/Data+Structures+and+Algorithms/cycle+in+graph.png" 
-            alt="Cycle in Graph" 
+          <img
+            src="https://kq-storage.s3.ap-south-1.amazonaws.com/Data+Structures+and+Algorithms/cycle+in+graph.png"
+            alt="Cycle in Graph"
             className="max-w-2xl rounded-lg shadow-md"
           />
           <p className="text-sm text-gray-600 mt-2">Credits: favtutor</p>
@@ -87,9 +88,9 @@ const Module5_12: React.FC = () => {
           The animation below visually demonstrates this process of cycle detection in an undirected graph using the Breadth-First Search algorithm.
         </p>
         <div className="flex flex-col items-center my-6">
-          <img 
-            src="https://kq-storage.s3.ap-south-1.amazonaws.com/Data+Structures+and+Algorithms/bfs+cycle+detection.gif" 
-            alt="BFS Cycle Detection Animation" 
+          <img
+            src="https://kq-storage.s3.ap-south-1.amazonaws.com/Data+Structures+and+Algorithms/bfs+cycle+detection.gif"
+            alt="BFS Cycle Detection Animation"
             className="max-w-2xl rounded-lg shadow-md"
           />
           <img src="https://kq-storage.s3.ap-south-1.amazonaws.com/Data+Structures+and+Algorithms/adjacency+list+for+bfs+diagram.png" alt="" />
@@ -107,44 +108,44 @@ const Module5_12: React.FC = () => {
               <p>All nodes are unvisited → Visited array = [0, 0, 0, 0, 0, 0, 0]</p>
               <p>Queue is empty at the beginning.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 2: Start BFS from node 1</h4>
               <p>Node 1 is marked as visited → Update Visited array.</p>
               <p>Add (1, -1) to the queue (node 1 has no parent, so we use -1).</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 3: Explore neighbors of 1</h4>
               <p>Node 1 has neighbors: 2 and 3.</p>
               <p>Both are unvisited: Mark 2 and 3 as visited. Add (2, 1) and (3, 1) to the queue.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 4: Explore node 2</h4>
               <p>Pop (2, 1) from queue. Neighbors of 2: 1 and 5.</p>
               <p>1 is already visited and it's the parent, so it's okay.</p>
               <p>5 is unvisited → mark visited and add (5, 2) to queue.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 5: Explore node 3</h4>
               <p>Pop (3, 1) from queue. Neighbors: 1, 4, 6.</p>
               <p>1 is already visited and is the parent → okay.</p>
               <p>4 and 6 are unvisited → mark visited and add (4, 3) and (6, 3) to queue.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 6: Explore node 5</h4>
               <p>Pop (5, 2) from queue. Neighbors: 2 and 7.</p>
               <p>2 is the parent → okay. 7 is unvisited → mark visited and add (7, 5) to queue.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 7: Explore node 4</h4>
               <p>Pop (4, 3) → Neighbor is 3 (already visited and parent) → okay.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 8: Explore node 6</h4>
               <p>Pop (6, 3) → Neighbors: 3 and 7.</p>
@@ -201,9 +202,9 @@ const Module5_12: React.FC = () => {
         </p>
         <p className="mt-4">Let's understand this better using the animation given below.</p>
         <div className="flex flex-col items-center my-6">
-          <img 
-            src="https://kq-storage.s3.ap-south-1.amazonaws.com/Data+Structures+and+Algorithms/cycle+detection+using+DFS.gif" 
-            alt="DFS Cycle Detection Animation" 
+          <img
+            src="https://kq-storage.s3.ap-south-1.amazonaws.com/Data+Structures+and+Algorithms/cycle+detection+using+DFS.gif"
+            alt="DFS Cycle Detection Animation"
             className="max-w-2xl rounded-lg shadow-md"
           />
           <img src="https://kq-storage.s3.ap-south-1.amazonaws.com/Data+Structures+and+Algorithms/adjacency+list+for+DFS.png" alt="" />
@@ -219,32 +220,32 @@ const Module5_12: React.FC = () => {
               <h4 className="font-semibold">Step 1: Start DFS from Node 1</h4>
               <p>We begin the DFS at Node 1. Mark Node 1 as visited by setting Visited[1] = 1. Since Node 1 is the starting point, we designate its parent as -1.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 2: Move to neighbor Node 2 (from 1)</h4>
               <p>From Node 1, we move to its neighbor, Node 2, which has not been visited yet. Mark Node 2 as visited by setting Visited[2] = 1 and record its parent as Node 1.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 3: Move to neighbor Node 5 (from 2)</h4>
               <p>Next, we proceed from Node 2 to its unvisited neighbor, Node 5. Mark Node 5 as visited by setting Visited[5] = 1, and set its parent to Node 2.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 4: Move to neighbor Node 7 (from 5)</h4>
               <p>From Node 5, the DFS advances to Node 7, which has not been visited. Mark Node 7 as visited by setting Visited[7] = 1 and assign Node 5 as its parent.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 5: Move to neighbor Node 6 (from 7)</h4>
               <p>Then, we move from Node 7 to its unvisited neighbor, Node 6. Mark Node 6 as visited by setting Visited[6] = 1, and record Node 7 as its parent.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 6: Move to neighbor Node 3 (from 6)</h4>
               <p>From Node 6, we continue the traversal by moving to Node 3, which has not yet been visited. Mark Node 3 as visited by setting Visited[3] = 1 and record its parent as Node 6.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 7: Move to neighbor Node 1 (from 3)</h4>
               <p>Finally, we attempt to move from Node 3 to its neighbor, Node 1. However, Node 1 has already been visited, and importantly, it is not the parent of Node 3. This situation confirms that a cycle exists in the graph because encountering a visited node that is not the parent indicates a back edge.</p>
@@ -342,9 +343,9 @@ const Module5_12: React.FC = () => {
         <p>This section is optional and if you would like to explore further, you can use the following resources:</p>
         <ul className="list-disc ml-6 space-y-2 mt-4">
           <li>
-            <a 
-              href="https://www.youtube.com/watch?v=9twcmtQj4DU" 
-              target="_blank" 
+            <a
+              href="https://www.youtube.com/watch?v=9twcmtQj4DU"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -352,9 +353,9 @@ const Module5_12: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://medium.com/@vignesh_waran/graph-algorithm-cycle-detection-in-undirected-graph-using-bfs-9f692bf7c2e6" 
-              target="_blank" 
+            <a
+              href="https://medium.com/@vignesh_waran/graph-algorithm-cycle-detection-in-undirected-graph-using-bfs-9f692bf7c2e6"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -362,9 +363,9 @@ const Module5_12: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.w3schools.com/dsa/dsa_algo_graphs_cycledetection.php" 
-              target="_blank" 
+            <a
+              href="https://www.w3schools.com/dsa/dsa_algo_graphs_cycledetection.php"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -381,9 +382,9 @@ const Module5_12: React.FC = () => {
         </p>
         <ul className="list-disc ml-6 space-y-2 mt-4">
           <li>
-            <a 
-              href="https://leetcode.com/problems/find-if-path-exists-in-graph/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/find-if-path-exists-in-graph/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -391,9 +392,9 @@ const Module5_12: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/redundant-connection/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/redundant-connection/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -401,9 +402,9 @@ const Module5_12: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/graph-valid-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/graph-valid-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -412,6 +413,47 @@ const Module5_12: React.FC = () => {
           </li>
         </ul>
         <p className="mt-4">Over to the next lesson now.</p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.12 Quiz: Cycle Detection in Graphs"
+          questions={[
+            {
+              question: "In BFS cycle detection for an undirected graph, how is a cycle identified?",
+              options: ["When the queue becomes empty", "When a visited neighbor is found that is NOT the current node's parent", "When two nodes have the same value", "When the graph has more edges than nodes"],
+              correctAnswer: 1,
+              explanation: "In BFS, if we encounter an already-visited neighbor that is not the parent of the current node, it means we've found an alternative path back — a cycle."
+            },
+            {
+              question: "Why do we track the PARENT node during BFS/DFS cycle detection in an undirected graph?",
+              options: ["To find the root", "To avoid falsely reporting the reverse edge of the same edge as a cycle", "To count edges", "To compute depth"],
+              correctAnswer: 1,
+              explanation: "In an undirected graph, every edge A-B appears as both A→B and B→A. Without tracking the parent, going back to A from B would falsely trigger as a cycle. The parent check prevents this false positive."
+            },
+            {
+              question: "How does DFS cycle detection differ from BFS in undirected graphs?",
+              options: ["DFS uses a queue; BFS uses recursion", "DFS implicitly tracks paths via the recursion stack instead of an explicit parent queue", "DFS cannot detect cycles", "BFS checks the parent; DFS does not"],
+              correctAnswer: 1,
+              explanation: "DFS uses the recursion stack to implicitly track the current path. A cycle is detected when a neighbor is visited AND present in the current recursion path (excluding the immediate parent)."
+            },
+            {
+              question: "In a triangle graph (nodes 1-2-3-1), starting BFS from node 1, at which step is the cycle detected?",
+              options: ["When node 1 is first visited", "When node 3 is first visited", "When processing node 2 and finding node 3 is visited and not its parent", "When the queue empties"],
+              correctAnswer: 2,
+              explanation: "From node 1, BFS visits 2 and 3. When processing node 2, it checks neighbor 3 — 3 is already visited and is not 2's parent, so a cycle (1-2-3-1) is detected."
+            },
+            {
+              question: "Which of these graphs would NOT contain a cycle?",
+              options: ["A triangle (3 nodes, 3 edges)", "A path graph (3 nodes, 2 edges in a line)", "A complete graph K4", "A graph where every node has degree ≥ 2"],
+              correctAnswer: 1,
+              explanation: "A simple path graph (1-2-3) has no cycle: you can't return to a starting node without reusing an edge. All other options either are or typically contain cycles."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={12}
+        />
       </section>
     </div>
   );

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_1: React.FC = () => {
   return (
@@ -237,6 +238,47 @@ const Module5_1: React.FC = () => {
           <li>The deletion is straightforward as 0012 was a leaf node.</li>
           <li>The parent node (0015) no longer has a left child.</li>
         </ul>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.1 Quiz: Introduction to BSTs"
+          questions={[
+            {
+              question: "In a BST, where are all values SMALLER than a node stored?",
+              options: ["In the right subtree", "In the left subtree", "At the root", "At the deepest level"],
+              correctAnswer: 1,
+              explanation: "The core BST property: every value in the LEFT subtree is smaller than the current node's value."
+            },
+            {
+              question: "What is the average time complexity for search, insert, and delete in a balanced BST?",
+              options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+              correctAnswer: 2,
+              explanation: "A balanced BST eliminates half the remaining nodes at each step, giving O(log n) for all three major operations."
+            },
+            {
+              question: "When deleting a BST node that has TWO children, which node is used as the replacement?",
+              options: ["The root", "The leftmost node of the left subtree", "The inorder successor (smallest node in right subtree)", "The rightmost node of the right subtree"],
+              correctAnswer: 2,
+              explanation: "The inorder successor (smallest value in the right subtree) maintains the BST property after deletion because it is larger than all left-subtree values and smaller than all other right-subtree values."
+            },
+            {
+              question: "BST does NOT allow which of the following?",
+              options: ["Cycles", "Duplicate values", "More than two children", "Both B and C"],
+              correctAnswer: 3,
+              explanation: "A BST prohibits duplicate values (to maintain strict ordering) and each node can have at most two children (binary). Both constraints are fundamental to BST definition."
+            },
+            {
+              question: "Inserting values 10, 5, 15, 3 in order — where does 3 land?",
+              options: ["Left child of 10", "Right child of 5", "Left child of 5", "Left child of 15"],
+              correctAnswer: 2,
+              explanation: "10 is root. 5 < 10 → left of 10. 15 > 10 → right of 10. 3 < 10 → go left to 5; 3 < 5 → left child of 5."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={1}
+        />
       </section>
     </div>
   );

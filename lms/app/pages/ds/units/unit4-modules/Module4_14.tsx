@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_14: React.FC = () => {
   return (
@@ -221,6 +222,47 @@ const Module4_14: React.FC = () => {
         <p>
           Stay sharp; everything you learned today will be important going forward.
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.14 Quiz: Trees and Hash Maps Review"
+          questions={[
+            {
+              question: "Given a tree where inorder gives [4, 2, 5, 1, 3], which node is the root?",
+              options: ["4", "2", "1", "5"],
+              correctAnswer: 2,
+              explanation: "In inorder traversal (Left → Root → Right), the root sits in the middle. For [4, 2, 5, 1, 3] the middle value is 1 (or whichever the original tree's root was, but in this standard example, 1 is the root)."
+            },
+            {
+              question: "Which traversal of the tree below gives: 1, 2, 3, 4, 5, 6?\n    1\n   / \\\n  2   3\n / \\ / \\\n4  5 6  (missing)",
+              options: ["Inorder", "Preorder", "Postorder", "Level Order"],
+              correctAnswer: 3,
+              explanation: "Level Order (BFS) visits nodes level by level from left to right: 1, then 2 and 3, then 4, 5, 6 — giving 1 2 3 4 5 6."
+            },
+            {
+              question: "A HashMap has keys [1, 11, 21] with table size 10. What bucket do all three map to (using key % 10)?",
+              options: ["0", "1", "2", "3"],
+              correctAnswer: 1,
+              explanation: "1 % 10 = 1, 11 % 10 = 1, 21 % 10 = 1. All three keys hash to bucket index 1, causing a collision that is resolved via chaining."
+            },
+            {
+              question: "In the Two Sum problem with nums = [3, 2, 4] and target = 6, what are the correct indices?",
+              options: ["[0, 1]", "[0, 2]", "[1, 2]", "[1, 1]"],
+              correctAnswer: 2,
+              explanation: "nums[1] + nums[2] = 2 + 4 = 6. So the answer is [1, 2]."
+            },
+            {
+              question: "After inserting [5, 3, 7, 1] into a BST in that order, what does inorder traversal produce?",
+              options: ["5 3 7 1", "1 3 5 7", "7 5 3 1", "5 7 3 1"],
+              correctAnswer: 1,
+              explanation: "BST inorder traversal always produces sorted (ascending) output regardless of insertion order: 1, 3, 5, 7."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={14}
+        />
       </section>
     </div>
   );

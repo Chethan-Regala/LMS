@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_7: React.FC = () => {
   return (
@@ -99,6 +99,39 @@ const Module2_7: React.FC = () => {
         <p className="mb-6">
           They're foundational for problems like finding subsets, solving combinatorial puzzles, and optimizing operations in dynamic programming.
         </p>
+
+        <Quiz
+          title="Module 2.7 Quiz: Subsequences & Recursion"
+          questions={[
+            {
+              question: "If a string has length 'n', how many total subsequences (including the empty string) can be generated?",
+              options: ["n", "n^2", "2^n", "n!"],
+              correctAnswer: 2,
+              explanation: "For each of the 'n' elements, you have 2 binary choices: either include it in the current subsequence or exclude it. This results in 2 * 2 * ... (n times) = 2^n combinations."
+            },
+            {
+              question: "What is the primary recursive pattern used to generate all subsequences of a string?",
+              options: ["Picking the first and last elements only", "Making two recursive calls: one including the current element and one excluding it", "Sorting the string and then removing duplicates", "Using a single loop with a base case"],
+              correctAnswer: 1,
+              explanation: "The 'include/exclude' or 'pick/skip' strategy is the standard recursive approach for power set and subsequence problems."
+            },
+            {
+              question: "Is the empty string ('') considered a valid subsequence of any string?",
+              options: ["No, it must contain at least one character", "Yes, it represents the case where every element was 'skipped'", "Only if the original string was empty", "Only in Tail Recursion"],
+              correctAnswer: 1,
+              explanation: "A subsequence is formed by deleting zero or more elements. Deleting all elements leaves the empty string."
+            },
+            {
+              question: "What differentiates a subsequence from a substring?",
+              options: ["Subsequences must be contiguous", "Substrings must be contiguous, but subsequences don't have to be", "They are the same thing", "Subsequences are only used for numbers"],
+              correctAnswer: 1,
+              explanation: "A substring is a contiguous slice of a string. A subsequence maintains the relative order of elements but doesn't require them to be next to each other in the original string."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={7}
+        />
 
         <div className="mb-6 bg-yellow-50 p-4 rounded border-l-4 border-yellow-500">
           <p className="font-semibold mb-2">[OPTIONAL CONTENT]</p>

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_4: React.FC = () => {
   return (
@@ -34,9 +35,9 @@ const Module5_4: React.FC = () => {
         </p>
         <ul className="list-disc ml-6 space-y-2 mt-4">
           <li>
-            <a 
-              href="https://leetcode.com/problems/search-in-a-binary-search-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/search-in-a-binary-search-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -44,9 +45,9 @@ const Module5_4: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/minimum-distance-between-bst-nodes/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/minimum-distance-between-bst-nodes/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -54,9 +55,9 @@ const Module5_4: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/two-sum-iv-input-is-a-bst/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/two-sum-iv-input-is-a-bst/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -82,6 +83,47 @@ const Module5_4: React.FC = () => {
         <p className="mt-4">
           The objective of this activity is to encourage collaboration, logical thinking, and peer learning while maintaining academic integrity.
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.4 Quiz: Quest for the Hidden Integer"
+          questions={[
+            {
+              question: "When searching for a value in a BST and the target equals the current node's value, what do you do?",
+              options: ["Continue searching left", "Continue searching right", "Return the current node", "Go back to root"],
+              correctAnswer: 2,
+              explanation: "When the target matches the current node, you have found the hidden integer! Return the current node immediately."
+            },
+            {
+              question: "In pair programming, what is the typical role of the 'navigator'?",
+              options: ["Types the code", "Reviews code and guides direction", "Runs the tests", "Manages the git repository"],
+              correctAnswer: 1,
+              explanation: "In pair programming, the navigator reviews code, looks ahead for problems, and guides the driver (who types). Both roles should periodically swap."
+            },
+            {
+              question: "If a BST search keeps going right at every node, what does that imply about the target?",
+              options: ["Target is smaller than all nodes", "Target is larger than all nodes", "Target is the root", "Target doesn't exist"],
+              correctAnswer: 1,
+              explanation: "Going right at every node means the target is larger than every visited node. The target is likely the largest value or beyond the rightmost node."
+            },
+            {
+              question: "Why is pair programming particularly effective for BST problems?",
+              options: ["It doubles the typing speed", "One person tracks position in the tree while the other traces logic", "BST code is too long for one person", "Pair programming avoids bugs completely"],
+              correctAnswer: 1,
+              explanation: "BST traversal requires tracking both the current node and the decision path. With pair programming, one person can track the position while the other focuses on the comparison logic."
+            },
+            {
+              question: "What should you return if the target value is NOT found in the BST?",
+              options: ["0", "The last visited node", "null", "The root node"],
+              correctAnswer: 2,
+              explanation: "If traversal reaches a null pointer (past a leaf node) without finding the target, the BST search must return null to indicate the value is not present."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={4}
+        />
       </section>
     </div>
   );

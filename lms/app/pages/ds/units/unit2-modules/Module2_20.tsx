@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_20: React.FC = () => {
   return (
@@ -222,6 +223,39 @@ const Module2_20: React.FC = () => {
           <iframe width="560" height="315" src="https://www.youtube.com/embed/jM2dhDPYMQM?end=373" title="Sliding Window Technique Detailed" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
           <p className="text-sm text-gray-600 mt-2">Note: The video is set to end at 6 minutes and 13 seconds.</p>
         </div>
+
+        <Quiz
+          title="Module 2.20 Quiz: Sliding Window Pattern"
+          questions={[
+            {
+              question: "What is the main advantage of the Sliding Window technique?",
+              options: ["It reduces memory usage to zero", "It transforms O(n^2) or O(nk) problems into O(n) by avoiding redundant calculations", "It only works for strings", "It makes recursion faster"],
+              correctAnswer: 1,
+              explanation: "Sliding window 'slides' over the data, updating the result based on elements entering and leaving, which is much faster than recalculating from scratch for every segment."
+            },
+            {
+              question: "In a fixed-size window of size 'k', what are the two basic operations performed when moving the window to the next position?",
+              options: ["Add two elements", "Subtract the outgoing (leftmost) element and add the incoming (rightmost) element", "Sort the window", "Double the window size"],
+              correctAnswer: 1,
+              explanation: "This maintain-and-update approach ensures that each transition takes O(1) time instead of O(k)."
+            },
+            {
+              question: "When should you use a 'Variable-Size' sliding window?",
+              options: ["When the length of the ideal subarray is not fixed and depends on a specific condition (like a target sum)", "When the array size is unknown", "When the window size is always 1", "When you want to use more memory"],
+              correctAnswer: 0,
+              explanation: "Variable-size windows grow to meet a condition and shrink to find the 'best' or 'smallest' version of that condition."
+            },
+            {
+              question: "What is the typical time complexity of a sliding window problem where each element enters and leaves the window at most once?",
+              options: ["O(log n)", "O(n)", "O(n log n)", "O(n^2)"],
+              correctAnswer: 1,
+              explanation: "Even with the 'while' loop inside for variable windows, each element is pushed and popped exactly once, leading to O(2n) which is O(n)."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={20}
+        />
 
         <p className="mb-6">
           To summarize, the sliding window technique boosts efficiency by eliminating redundant calculations. Instead of recalculating sums entirely, we update them dynamically by removing the outgoing element and adding the incoming one. This reduces the time complexity from O(n multiplied k) to O(n), (where n is total number of elements and k is the window size) making it highly efficient for large datasets.

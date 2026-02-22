@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_22: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -41,9 +42,9 @@ const Module2_22: React.FC = () => {
         </p>
 
         <h3 className="text-xl font-semibold mb-4">The Sliding Window Approach</h3>
-        
+
         <div className="mb-6">
-          <button 
+          <button
             onClick={() => setIsExpanded(!isExpanded)}
             className="font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-2"
           >
@@ -52,10 +53,10 @@ const Module2_22: React.FC = () => {
             </span>
             Click for a Step-by-Step Breakdown
           </button>
-          
-          <div 
+
+          <div
             className="overflow-hidden transition-all duration-500 ease-in-out"
-            style={{ 
+            style={{
               maxHeight: isExpanded ? '3000px' : '0',
               opacity: isExpanded ? 1 : 0
             }}
@@ -120,6 +121,39 @@ const Module2_22: React.FC = () => {
           <p className="font-semibold mb-2">Did you know?</p>
           <p>The sliding window technique is not just for arrays! It's widely used in problems involving strings (like finding the longest substring with no repeating characters) and in real-world applications like network data analysis to calculate moving averages of traffic.</p>
         </div>
+
+        <Quiz
+          title="Module 2.22 Quiz: Maximum Sum Subarray of Size K"
+          questions={[
+            {
+              question: "What is the time complexity of the optimized Sliding Window approach for this problem?",
+              options: ["O(k)", "O(n)", "O(n * k)", "O(log n)"],
+              correctAnswer: 1,
+              explanation: "The window slides once over the array, doing O(1) work per step, resulting in O(n) total time."
+            },
+            {
+              question: "How do you calculate the sum of the current window using the sum of the previous window (size K)?",
+              options: ["Re-add all K elements", "Add the new element only", "Subtract the element that left and add the new element that entered", "Multiply by K"],
+              correctAnswer: 2,
+              explanation: "This is the 'sliding' part: `newSum = oldSum - arr[i-k] + arr[i]`."
+            },
+            {
+              question: "What is the space complexity of this sliding window implementation?",
+              options: ["O(1)", "O(k)", "O(n)", "O(n^2)"],
+              correctAnswer: 0,
+              explanation: "We only store a few variables (maxSum, currentSum, indices), regardless of the size of the input array."
+            },
+            {
+              question: "If k = 3 and the array is [1, 2, 3, 4, 5], what is the sum of the second window (starting from index 1)?",
+              options: ["6", "9", "12", "7"],
+              correctAnswer: 1,
+              explanation: "The first window (0-2) is [1, 2, 3] = 6. The second window (1-3) is [2, 3, 4] = 9."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={22}
+        />
       </section>
     </div>
   );

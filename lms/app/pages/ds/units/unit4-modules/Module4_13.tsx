@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_13: React.FC = () => {
   return (
@@ -161,9 +162,9 @@ const Module4_13: React.FC = () => {
         <h4 className="font-semibold mt-4">LeetCode</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://leetcode.com/problems/group-anagrams/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/group-anagrams/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -171,9 +172,9 @@ const Module4_13: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/valid-anagram/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/valid-anagram/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -185,9 +186,9 @@ const Module4_13: React.FC = () => {
         <h4 className="font-semibold mt-4">HackerRank</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/ctci-ransom-note" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/ctci-ransom-note"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -195,9 +196,9 @@ const Module4_13: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/icecream-parlor" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/icecream-parlor"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -211,9 +212,9 @@ const Module4_13: React.FC = () => {
         <h3>Additional Reference Material</h3>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://www.geeksforgeeks.org/hashmap-in-cpp/" 
-              target="_blank" 
+            <a
+              href="https://www.geeksforgeeks.org/hashmap-in-cpp/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -221,9 +222,9 @@ const Module4_13: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.programiz.com/dsa/hash-table" 
-              target="_blank" 
+            <a
+              href="https://www.programiz.com/dsa/hash-table"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -231,9 +232,9 @@ const Module4_13: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://monkeylearn.com/text-similarity/" 
-              target="_blank" 
+            <a
+              href="https://monkeylearn.com/text-similarity/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -252,6 +253,47 @@ const Module4_13: React.FC = () => {
         <p>
           This is real engineering. Keep building, keep exploring.
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.13 Quiz: Semantic Keyword Analyzer"
+          questions={[
+            {
+              question: "In the Semantic Keyword Analyzer, what is a 'signature' used for?",
+              options: ["To store the original word unchanged", "A canonical form (e.g., sorted letters) shared by all anagrams of a word", "The length of the word", "The first letter of the word"],
+              correctAnswer: 1,
+              explanation: "A signature is a normalized key (like alphabetically sorted letters) that is identical for all anagrams. Words sharing a signature belong to the same group."
+            },
+            {
+              question: "What is the signature for 'eat', 'tea', and 'ate'?",
+              options: ["eat", "aet", "tea", "ate"],
+              correctAnswer: 1,
+              explanation: "Sorting the letters of eat, tea, or ate all produce 'aet'. This shared signature groups them together as anagrams."
+            },
+            {
+              question: "Why is the brute-force O(n²) approach prohibited in this system?",
+              options: ["It uses too many variables", "It is too slow for large datasets with thousands of keywords", "It sorts the wrong way", "It doesn't work with HashMaps"],
+              correctAnswer: 1,
+              explanation: "Comparing every word with every other word is O(n²), which becomes extremely slow for large keyword sets. The signature + HashMap approach runs in O(n log k) where k is the max word length."
+            },
+            {
+              question: "In the HashMap used by the Semantic Analyzer, what is stored as the VALUE?",
+              options: ["The signature string", "A list/group of all words matching that signature", "The index of first occurrence", "The length of each word"],
+              correctAnswer: 1,
+              explanation: "The HashMap maps each signature (key) to a list (value) of all original words that share that signature, accumulating the group."
+            },
+            {
+              question: "Which real-world application uses the same group-anagrams logic as the Semantic Keyword Analyzer?",
+              options: ["Dijkstra's shortest path", "Binary search in a sorted array", "Search engine query clustering and SEO keyword grouping", "Merge sort"],
+              correctAnswer: 2,
+              explanation: "Grouping semantically related search terms, clustering similar tags, and SEO keyword grouping all use the same signature-based HashMap technique."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={13}
+        />
       </section>
     </div>
   );

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_12: React.FC = () => {
   return (
@@ -207,7 +208,7 @@ cout << numbers[2];  // Output: 30`}</code>
           <div>
             <p className="font-semibold mb-3">Traversal:</p>
             <p className="mb-3">Visiting all the nodes one by one to read or display their data is called traversal. Imagine starting at the first house and following all the signboards to see each house.</p>
-            
+
             <p className="mb-2 font-semibold">Pseudocode:</p>
             <pre className="bg-gray-100 p-4 rounded overflow-x-auto mb-3">
               <code>{`FUNCTION traverse(head):
@@ -233,7 +234,7 @@ END FUNCTION`}</code>
           <div>
             <p className="font-semibold mb-3">Insertion:</p>
             <p className="mb-3">Adding a new node to the list can be done at the beginning, end, or in the middle. It's like placing a new house on the street and updating the signboards to point to it.</p>
-            
+
             <p className="mb-2 font-semibold">Pseudocode for Insertion at Beginning:</p>
             <pre className="bg-gray-100 p-4 rounded overflow-x-auto mb-3">
               <code>{`FUNCTION insertAtBeginning(head, value):
@@ -264,7 +265,7 @@ END FUNCTION`}</code>
           <div>
             <p className="font-semibold mb-3">Deletion:</p>
             <p className="mb-3">Removing a node involves updating the pointers of the previous node to skip the one being removed.</p>
-            
+
             <p className="mb-2 font-semibold">Pseudocode:</p>
             <pre className="bg-gray-100 p-4 rounded overflow-x-auto mb-3">
               <code>{`FUNCTION deleteNode(head, key):
@@ -321,7 +322,7 @@ END FUNCTION`}</code>
           <div>
             <p className="font-semibold mb-3">Searching:</p>
             <p className="mb-3">Finding a node involves checking each node's data while traversing.</p>
-            
+
             <p className="mb-2 font-semibold">Pseudocode:</p>
             <pre className="bg-gray-100 p-4 rounded overflow-x-auto mb-3">
               <code>{`FUNCTION search(head, key):
@@ -350,7 +351,7 @@ END FUNCTION`}</code>
           <div>
             <p className="font-semibold mb-3">Reversing:</p>
             <p className="mb-3">Reversing a linked list changes the direction of the pointers so that the last node becomes the head.</p>
-            
+
             <p className="mb-2 font-semibold">Pseudocode:</p>
             <pre className="bg-gray-100 p-4 rounded overflow-x-auto mb-3">
               <code>{`FUNCTION reverseList(head):
@@ -381,7 +382,7 @@ END FUNCTION`}</code>
         </div>
 
         <h3 className="text-xl font-semibold mb-4">[Optional content] Watch these videos to expand your knowledge even more.</h3>
-        
+
         <p className="mb-3">Watch this video to gain a basic understanding of what a linked list is.</p>
         <div className="mb-6 flex justify-center">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/N6dOwBde7-M" title="Linked List Basics" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="rounded-lg shadow-md"></iframe>
@@ -400,7 +401,47 @@ END FUNCTION`}</code>
         <p className="mb-6">
           You must be clear with the understanding of how singly linked lists work. We will dive deeper in the upcoming lessons.
         </p>
-        <img src="https://storage.googleapis.com/kq-storage.kalvium.community/Data%20Structures%20and%20Algorithms%2FMindmaps%2FIntro%20to%20linked%20list%20-%20mindmap.png" alt="" />
+
+        <img src="https://storage.googleapis.com/kq-storage.kalvium.community/Data%20Structures%20and%20Algorithms%2FMindmaps%2FIntro%20to%20linked%20list%20-%20mindmap.png" alt="" className="w-full h-auto mb-6" />
+
+        <Quiz
+          title="Module 3.12 Quiz: Linked List Foundations"
+          questions={[
+            {
+              question: "What differentiates the memory storage of an array from a linked list?",
+              options: ["Arrays are non-contiguous, linked lists are contiguous", "Arrays are contiguous, linked lists are non-contiguous", "Linked lists use less memory than arrays", "Arrays cannot store integers"],
+              correctAnswer: 1,
+              explanation: "Arrays store elements in a continuous block, while linked list nodes can be scattered throughout memory, connected by pointers."
+            },
+            {
+              question: "What are the two essential parts of a node in a Singly Linked List?",
+              options: ["An index and a value", "Data and a pointer to the next node", "Two pointers pointing back and forth", "A name and a size"],
+              correctAnswer: 1,
+              explanation: "Each node contains its own data and the address (pointing) to the next element in the chain."
+            },
+            {
+              question: "Which of these is a major advantage of linked lists over standard arrays?",
+              options: ["Faster access to the middle element", "Dynamic size adjustment during runtime", "Less total memory usage", "Simpler implementation"],
+              correctAnswer: 1,
+              explanation: "Linked lists can grow or shrink as needed, whereas arrays typically have a fixed size decided at declaration."
+            },
+            {
+              question: "In a Singly Linked List, what is the time complexity to access the 'n-th' element?",
+              options: ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+              correctAnswer: 2,
+              explanation: "To find the n-th element, you must start at the 'head' and follow pointers through all previous nodes."
+            },
+            {
+              question: "What does the last node in a linear Singly Linked List point to?",
+              options: ["The head node", "The previous node", "NULL", "Itself"],
+              correctAnswer: 2,
+              explanation: "A NULL pointer signifies that there are no more nodes in the sequence."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={12}
+        />
       </section>
     </div>
   );

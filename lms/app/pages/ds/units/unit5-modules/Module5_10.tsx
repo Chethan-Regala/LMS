@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_10: React.FC = () => {
   return (
@@ -89,7 +90,7 @@ const Module5_10: React.FC = () => {
 
       <section className="content-section">
         <h3>Step-by-Step Approach</h3>
-        
+
         <details className="bg-gray-50 p-4 rounded mt-4">
           <summary className="cursor-pointer font-semibold">Click to Expand</summary>
           <div className="mt-4 space-y-4">
@@ -97,7 +98,7 @@ const Module5_10: React.FC = () => {
               <h4 className="font-semibold">Step 1: Handle the base case</h4>
               <p>If the given node is null, return null. There is nothing to clone.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 2: Create a map</h4>
               <p>Use a map to store:</p>
@@ -106,12 +107,12 @@ const Module5_10: React.FC = () => {
               </ul>
               <p className="mt-2">This ensures each node is cloned only once.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 3: Start traversal</h4>
               <p>Use BFS or DFS starting from the given node to explore the graph.</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 4: Clone neighbors</h4>
               <p>For every neighbor:</p>
@@ -120,7 +121,7 @@ const Module5_10: React.FC = () => {
                 <li>Add the cloned neighbor to the current node's neighbor list</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 5: Return the cloned graph</h4>
               <p>Once traversal is complete, return the cloned version of the starting node.</p>
@@ -131,7 +132,7 @@ const Module5_10: React.FC = () => {
 
       <section className="content-section">
         <h3>Implementation</h3>
-        
+
         <details className="bg-gray-50 p-4 rounded mt-4">
           <summary className="cursor-pointer font-semibold">C++ Solution (DFS)</summary>
           <div className="bg-gray-100 p-4 rounded overflow-x-auto mt-2">
@@ -202,9 +203,9 @@ const Module5_10: React.FC = () => {
       <section className="content-section">
         <h3>Practice Problem</h3>
         <p>
-          <a 
-            href="https://leetcode.com/problems/clone-graph/" 
-            target="_blank" 
+          <a
+            href="https://leetcode.com/problems/clone-graph/"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
@@ -222,6 +223,47 @@ const Module5_10: React.FC = () => {
           In the next lesson, you'll explore how BFS and DFS help count connected regions—also known as islands.
         </p>
         <p className="mt-4">See you in the next session! 🌊🏝️</p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.10 Quiz: Clone Graph"
+          questions={[
+            {
+              question: "What does a 'deep copy' of a graph mean?",
+              options: ["Copying only the node values", "Every node and connection is new — no cloned node references the original", "Copying only the adjacency list", "Making a backup of the root node"],
+              correctAnswer: 1,
+              explanation: "A deep copy means completely independent new nodes and edges. No pointer in the clone should point back to the original graph — the two graphs are fully isolated."
+            },
+            {
+              question: "Why do we use a HashMap (original → clone) when cloning a graph?",
+              options: ["To sort the nodes", "To store edge weights", "To track which nodes have already been cloned and avoid duplicates", "To count total edges"],
+              correctAnswer: 2,
+              explanation: "A HashMap maps each original node to its clone. When we encounter a node during traversal, we check the map first — if already cloned, reuse it rather than creating a duplicate."
+            },
+            {
+              question: "What should you return immediately when the input node is null in Clone Graph?",
+              options: ["An empty graph", "null", "A new Node(0)", "The original node"],
+              correctAnswer: 1,
+              explanation: "If the given node is null, there is nothing to clone. Return null immediately as the base case."
+            },
+            {
+              question: "In the DFS clone approach, what happens when we visit a node that is ALREADY in the cloned map?",
+              options: ["We skip it and continue", "We delete it from the map", "We return the existing clone from the map directly", "We create a new clone anyway"],
+              correctAnswer: 2,
+              explanation: "If a node is already in the map, it has been cloned. We return the existing clone immediately to ensure the same clone node is reused wherever it is referenced."
+            },
+            {
+              question: "Which real-world scenario is similar to the Clone Graph problem?",
+              options: ["Sorting a database", "Creating a backup of a social network without affecting the original", "Searching for a user in a list", "Encrypting a message"],
+              correctAnswer: 1,
+              explanation: "Cloning a graph is analogous to creating an independent replica of a network (e.g., social graph, server topology) where changes to the copy don't affect the original."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={10}
+        />
       </section>
     </div>
   );

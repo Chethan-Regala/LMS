@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_3: React.FC = () => {
   return (
@@ -181,6 +182,47 @@ const Module4_3: React.FC = () => {
         <p className="mt-4">
           The objective of this activity is to encourage collaboration, logical thinking, and peer learning while maintaining academic integrity.
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.3 Quiz: DFS Tree Traversals"
+          questions={[
+            {
+              question: "In which traversal order does the ROOT node get visited FIRST?",
+              options: ["Inorder", "Preorder", "Postorder", "Level Order"],
+              correctAnswer: 1,
+              explanation: "In Preorder traversal the sequence is Root → Left → Right. The root is processed before any of its subtrees."
+            },
+            {
+              question: "Inorder traversal on a Binary Search Tree (BST) produces nodes in which order?",
+              options: ["Random order", "Reverse sorted (descending) order", "Sorted (ascending) order", "Level-by-level order"],
+              correctAnswer: 2,
+              explanation: "Inorder (Left → Root → Right) on a BST visits nodes from the smallest to the largest value, producing sorted ascending output."
+            },
+            {
+              question: "Postorder traversal is most useful for which of the following tasks?",
+              options: ["Printing a BST alphabetically", "Creating a copy of the tree", "Finding the shortest path", "Deleting a tree safely"],
+              correctAnswer: 3,
+              explanation: "In Postorder (Left → Right → Root), children are visited before their parent. This ensures child nodes are deleted before the parent, preventing dangling references."
+            },
+            {
+              question: "For the tree: A at root, B as left child, C as right child — what is the Preorder result?",
+              options: ["B → A → C", "B → C → A", "A → B → C", "C → B → A"],
+              correctAnswer: 2,
+              explanation: "Preorder is Root → Left → Right, so we visit A first, then B (left), then C (right): A → B → C."
+            },
+            {
+              question: "All three DFS traversals (Inorder, Preorder, Postorder) share which time complexity?",
+              options: ["O(log n)", "O(n log n)", "O(n)", "O(n^2)"],
+              correctAnswer: 2,
+              explanation: "Each DFS traversal visits every node exactly once, giving a linear O(n) time complexity regardless of the visit order."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={3}
+        />
       </section>
     </div>
   );

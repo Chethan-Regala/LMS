@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_7: React.FC = () => {
   return (
@@ -54,9 +55,9 @@ const Module4_7: React.FC = () => {
         </p>
         <ul className="list-disc ml-6 space-y-2 mt-4">
           <li>
-            <a 
-              href="https://leetcode.com/problems/minimum-depth-of-binary-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/minimum-depth-of-binary-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -64,9 +65,9 @@ const Module4_7: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/binary-tree-right-side-view/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/binary-tree-right-side-view/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -74,9 +75,9 @@ const Module4_7: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/maximum-depth-of-binary-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -84,6 +85,47 @@ const Module4_7: React.FC = () => {
             </a>
           </li>
         </ul>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.7 Quiz: Binary Tree Operations Part II"
+          questions={[
+            {
+              question: "What is the minimum height of a binary tree with N nodes?",
+              options: ["N - 1", "N / 2", "log2(N+1) - 1", "sqrt(N)"],
+              correctAnswer: 2,
+              explanation: "The minimum height is achieved by a perfect/complete binary tree: log2(N+1) - 1, since each level doubles the nodes."
+            },
+            {
+              question: "What is the maximum height of a binary tree with N nodes?",
+              options: ["log2(N)", "N - 1", "N / 2", "2N"],
+              correctAnswer: 1,
+              explanation: "Maximum height is achieved when every node has exactly one child (degenerate/skewed tree), which gives height of N - 1."
+            },
+            {
+              question: "The right-side view of a binary tree shows which nodes?",
+              options: ["All rightmost leaf nodes only", "The last node visible at each level from the right", "The nodes on the right subtree only", "Nodes with the highest values"],
+              correctAnswer: 1,
+              explanation: "The right-side view includes the last visible node at each level when viewed from the right, which is what level-order traversal with right-to-left processing captures."
+            },
+            {
+              question: "Which LeetCode problem specifically asks you to find the minimum depth of a binary tree?",
+              options: ["Problem 104", "Problem 559", "Problem 111", "Problem 226"],
+              correctAnswer: 2,
+              explanation: "LeetCode 111: Minimum Depth of Binary Tree asks for the length of the shortest root-to-leaf path."
+            },
+            {
+              question: "The maximum depth and maximum height of a binary tree are:",
+              options: ["Always different", "Maximum depth = height of the tree", "Maximum height is always 0", "Only equal in a perfect tree"],
+              correctAnswer: 1,
+              explanation: "The maximum depth (longest root-to-leaf path in terms of nodes) equals the height + 1 in some definitions, but LeetCode defines maximum depth as the number of nodes on the longest path, which equals height + 1."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={7}
+        />
       </section>
     </div>
   );

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module1_14: React.FC = () => {
   return (
@@ -12,62 +13,79 @@ const Module1_14: React.FC = () => {
       </div>
 
       <section className="content-section">
-        <p>Welcome to this lesson of Practice problems on Problem solving.</p>
-        <p>Let's look at the problem to solve in this lesson.</p>
-      </section>
+        <h3>Finding Common Ground</h3>
+        <p>Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string <code className="bg-gray-100 px-1 rounded text-rose-500">""</code>.</p>
 
-      <section className="content-section">
-        <h3>Problem statement</h3>
-        <p>Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string "".</p>
-        
-        <h4>Input 1:</h4>
-        <div className="bg-gray-100 p-4 rounded font-mono text-sm">
-          <p>[flower, flight, flow]</p>
-        </div>
-        
-        <h4>Output:</h4>
-        <div className="bg-gray-100 p-4 rounded font-mono text-sm">
-          <p>fl</p>
-        </div>
-        
-        <h4>Input 2:</h4>
-        <div className="bg-gray-100 p-4 rounded font-mono text-sm">
-          <p>[race, dog, car]</p>
-        </div>
-        
-        <h4>Output:</h4>
-        <div className="bg-gray-100 p-4 rounded font-mono text-sm">
-          <p>""</p>
+        <div className="grid md:grid-cols-2 gap-6 my-8">
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all hover:shadow-md">
+            <h4 className="font-bold text-gray-800 mb-2">Example 1</h4>
+            <p className="text-xs font-mono text-blue-600 mb-2">Input: ["flower", "flow", "flight"]</p>
+            <p className="text-sm text-emerald-600 font-bold">Output: "fl"</p>
+          </div>
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all hover:shadow-md">
+            <h4 className="font-bold text-gray-800 mb-2">Example 2</h4>
+            <p className="text-xs font-mono text-rose-600 mb-2">Input: ["dog", "racecar", "car"]</p>
+            <p className="text-sm text-rose-600 font-bold">Output: ""</p>
+          </div>
         </div>
       </section>
 
       <section className="content-section">
-        <h3>Approach</h3>
-        <p>In this assignment, we will be using a built in function called "sort()". This function will sort the string array alphabetically. For example,</p>
-        
-        <div className="bg-gray-100 p-4 rounded font-mono text-sm">
-          <p>arr = [flower, flow, flight, flew]</p>
+        <h3>The "Sorting" Strategy</h3>
+        <p>A clever way to solve this is to sort the array alphabetically. Why? Because the most different strings will end up at the <strong>first</strong> and <strong>last</strong> positions of the array.</p>
+        <div className="bg-gray-900 rounded-2xl p-6 font-mono text-sm shadow-xl my-6">
+          <p className="text-gray-500">// Unsorted:</p>
+          <p className="text-white">["flower", "flow", "flight", "flew"]</p>
+          <p className="text-emerald-400 mt-2">// Sorted Alphabetically:</p>
+          <p className="text-white">["flew", "flight", "flow", "flower"]</p>
+          <p className="text-blue-300 mt-2">// Compare 'flew' vs 'flower':</p>
+          <p className="text-gray-400">Match: f, l, e ... (w != o) -&gt; "fle"</p>
         </div>
-        
-        <p>After sorting,</p>
-        <div className="bg-gray-100 p-4 rounded font-mono text-sm">
-          <p>arr = [flew, flight, flow, flower]</p>
+        <div className="bg-amber-50 p-6 rounded-2xl border-l-4 border-amber-500">
+          <p className="text-sm text-amber-900 leading-relaxed font-medium">
+            <strong>Key Insight:</strong> Once sorted, you only need to compare the first string and the last string. Any character common to both of them must be common to everything in between.
+          </p>
         </div>
       </section>
 
-      <section className="content-section">
-        <h3>Check this out</h3>
-        <p>Define a function that does the following.</p>
-        
-        <ul>
-          <li>Sort the array using sort().</li>
-          <li>Initialize two string variables, s1 and s2, to the first and last strings of the sorted array, respectively. These will be used to compare the characters of the strings and find the common prefix.</li>
-          <li>Initialize an empty string variable ans to store the longest common prefix that will be found.</li>
-          <li>A variable i is initialized to 0. The loop runs until i remains less than the length of both s1 and s2 strings.</li>
-          <li>Inside the loop, the function compares the ith character of s1 and s2. If they are equal, it means that the character is present in the common prefix. So, add the character to the ans string. If the characters are not equal, it means that the common prefix has ended, so the loop breaks out.</li>
-          <li>The loop increments the i variable after each comparison to move to the next character. After the loop ends, the function returns the longest common prefix found so far, stored in the ans variable.</li>
-        </ul>
-      </section>
+      <Quiz
+        title="Module 1.14 Quiz: Prefix Analysis"
+        questions={[
+          {
+            question: "What is a 'Common Prefix' in a set of strings?",
+            options: ["The longest string in the set", "A substring that appears anywhere in all strings", "The shared sequence of characters at the beginning of all strings", "The last character shared by all strings"],
+            correctAnswer: 2,
+            explanation: "Prefixes must start from the very first character (index 0) of the strings."
+          },
+          {
+            question: "Why does sorting the array alphabetically help find the common prefix?",
+            options: ["It removes all strings without a prefix", "It puts the strings with the most differences at the first and last positions", "It makes all strings the same length", "It's just a required step on LeetCode"],
+            correctAnswer: 1,
+            explanation: "Alphabetical sorting ensures that if a prefix exists for all strings, it must be the shared prefix between the 'lexicographically' smallest and largest strings."
+          },
+          {
+            question: "Given ['apple', 'ape', 'april'], what is the longest common prefix?",
+            options: ["a", "app", "ap", "apple"],
+            correctAnswer: 2,
+            explanation: "All three start with 'ap'. The next characters ('p', 'e', 'r') don't match."
+          },
+          {
+            question: "In the sorting approach, which two strings do you compare after the array is sorted?",
+            options: ["The first and second", "The last two", "The first and last", "All of them simultaneously"],
+            correctAnswer: 2,
+            explanation: "Comparing the first and last strings is sufficient because they are the most 'distant' in alphabetical order."
+          },
+          {
+            question: "What should the function return if the strings have nothing in common (e.g., ['abc', 'xyz'])?",
+            options: ["null", "0", "an empty string \"\"", "undefined"],
+            correctAnswer: 2,
+            explanation: "The problem statement specifies returning an empty string \"\" when no common prefix is found."
+          }
+        ]}
+        subject="DS"
+        unitId={1}
+        moduleId={14}
+      />
     </div>
   );
 };

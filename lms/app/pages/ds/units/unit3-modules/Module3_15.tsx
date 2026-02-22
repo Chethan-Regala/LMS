@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_15: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Module3_15: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">Palindrome Linked List – LeetCode Problem #234</h3>
-        
+
         <p className="mb-6">
           Is it the same forward as it is backward? While checking if a string like "RACECAR" is a palindrome is straightforward, doing the same for a Linked List is a classic interview favorite. Why? Because unlike an array, you can't just "index" into the back of a linked list or walk through it backward easily.
         </p>
@@ -46,7 +47,7 @@ const Module3_15: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-semibold mb-4">Step-by-Step Approach</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">Find the Middle</p>
@@ -91,6 +92,45 @@ const Module3_15: React.FC = () => {
         <p className="mb-6 text-center font-semibold">
           Master this pattern and you'll ace linked list interviews! 🎯
         </p>
+
+        <Quiz
+          title="Module 3.15 Quiz: Palindrome Linked List"
+          questions={[
+            {
+              question: "What is the result of the 'Slow and Fast Pointer' technique when the fast pointer reaches the end of the list?",
+              options: ["The list is reversed", "The slow pointer is at the middle of the list", "The list is deleted", "The list is confirmed to be a palindrome"],
+              correctAnswer: 1,
+              explanation: "Since the fast pointer moves at twice the speed of the slow pointer, it covers the whole list while the slow pointer covers exactly half."
+            },
+            {
+              question: "Why do we reverse the second half of the linked list in the optimized solution?",
+              options: ["To make the list shorter", "To allow us to compare values starting from the 'back' of the original list by walking 'forward' through the reversed section", "Because linked lists must always be reversed", "To sort the elements"],
+              correctAnswer: 1,
+              explanation: "In a singly linked list, we can only move forward. By reversing the second half, the 'forward' direction of that section now effectively moves toward the middle of the original list."
+            },
+            {
+              question: "What is the Time Complexity of checking for a palindrome using the middle-reversal method?",
+              options: ["O(log n)", "O(1)", "O(n)", "O(n^2)"],
+              correctAnswer: 2,
+              explanation: "The algorithm makes a few passes (finding middle, reversing, comparing), each taking O(n) or O(n/2) time, which simplifies to O(n)."
+            },
+            {
+              question: "What is the Space Complexity of the optimized solution compared to a solution that copies the list into an array?",
+              options: ["O(n) vs O(n)", "O(1) vs O(n)", "O(n) vs O(1)", "O(1) vs O(log n)"],
+              correctAnswer: 1,
+              explanation: "Copying to an array takes O(n) extra space, while reversing the list in-place uses only a few pointers, giving O(1) extra space."
+            },
+            {
+              question: "True or False: If the linked list has an odd number of elements, the 'Slow and Fast Pointer' technique still works to find the middle.",
+              options: ["True", "False"],
+              correctAnswer: 0,
+              explanation: "The logic holds for both even and odd lengths; the slow pointer will correctly identify the starting point for the second half."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={15}
+        />
       </section>
     </div>
   );

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_13: React.FC = () => {
   return (
@@ -165,7 +165,7 @@ pivot_index = partition(list, low, high)
 stack.append((low, pivot_index - 1))
 stack.append((pivot_index + 1, high))
 return list
-
+ 
 def partition(list, low, high):
 pivot = list[high]
 i = low - 1
@@ -192,7 +192,7 @@ print("Sorted list:", sorted_list)`}</code>
         </ul>
 
         <h3 className="text-xl font-semibold mb-4">Analyzing Efficiency: Time and Space Complexity</h3>
-        
+
         <div className="mb-6">
           <p className="font-semibold mb-2">Time Complexity:</p>
           <ul className="list-disc ml-6 space-y-2">
@@ -257,6 +257,39 @@ print("Sorted list:", sorted_list)`}</code>
         <p className="mb-6">
           <strong>Merge Sort:</strong> It also divides and conquers, but in a different way. It is known for its stability and guaranteed O(n log n) time complexity.
         </p>
+
+        <Quiz
+          title="Module 2.13 Quiz: Quick Sort Algorithm"
+          questions={[
+            {
+              question: "Which of the following describes the average time complexity of Quick Sort?",
+              options: ["O(n)", "O(n^2)", "O(n log n)", "O(log n)"],
+              correctAnswer: 2,
+              explanation: "Quick Sort generally performs O(n log n) in the average case, making it very efficient for practical use."
+            },
+            {
+              question: "What is a 'pivot' in the context of Quick Sort?",
+              options: ["The smallest element in the list", "The largest element in the list", "An element chosen to partition the array into smaller and larger elements", "The number of times the function calls itself"],
+              correctAnswer: 2,
+              explanation: "The pivot is the reference point used to rearrange elements into two sub-arrays during the partitioning step."
+            },
+            {
+              question: "In which scenario does Quick Sort hit its worst-case time complexity, O(n^2)?",
+              options: ["When the list is already sorted and the first or last element is consistently picked as the pivot", "When the list is randomized", "When the pivot is always the median element", "When the array size is a power of 2"],
+              correctAnswer: 0,
+              explanation: "Unbalanced partitioning (picking extremes as pivots in sorted/reverse-sorted data) leads to O(n^2) performance."
+            },
+            {
+              question: "What is a key advantage of Quick Sort over Merge Sort in terms of resources?",
+              options: ["It is always stable", "It is an in-place sorting algorithm (uses less extra memory)", "It never hits O(n^2)", "It doesn't use recursion"],
+              correctAnswer: 1,
+              explanation: "Quick Sort is in-place (O(log n) space for recursion stack), whereas Merge Sort requires O(n) extra space for merging."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={13}
+        />
 
         <p className="mb-6">
           You've now seen the theory behind Quick Sort, how it uses a pivot to partition data, and how that choice impacts its efficiency. You've also compared it to Merge Sort and understand the trade-offs between them.

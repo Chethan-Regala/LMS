@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_18: React.FC = () => {
   return (
@@ -21,7 +22,7 @@ const Module2_18: React.FC = () => {
         </p>
 
         <h3 className="text-xl font-semibold mb-4">What You'll Do (and Why It Helps You)</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">1. Solve one LeetCode problem</p>
@@ -45,7 +46,7 @@ const Module2_18: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-semibold mb-4">How to Complete It (Simple Steps)</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">Step 1: Open the LeetCode problem</p>
@@ -82,9 +83,38 @@ const Module2_18: React.FC = () => {
           <li>(Optional) LinkedIn post link/screenshot</li>
         </ul>
 
-        <p className="mb-6">
-          This milestone isn't about perfection. It's about showing up, practicing, and building small habits that compound into something big — stronger skills, a better GitHub, and a more confident you.
-        </p>
+        <Quiz
+          title="Module 2.18 Quiz: Container With Most Water"
+          questions={[
+            {
+              question: "In the 'Container With Most Water' problem, how is the area of water between two bars calculated?",
+              options: ["length * height", "distance between bars * height of the taller bar", "distance between bars * height of the shorter bar", "average height * distance between bars"],
+              correctAnswer: 2,
+              explanation: "The volume of water is limited by the shorter bar (height) and the distance between the two bars (width)."
+            },
+            {
+              question: "When using Two-Pointers for this problem, why do we move the pointer pointing to the SHORTER bar?",
+              options: ["To decrease the width faster", "Because moving the taller bar's pointer can never result in a larger area (height is still limited by the same or even shorter bar)", "To find the middle bar", "It doesn't matter which one we move"],
+              correctAnswer: 1,
+              explanation: "Moving the taller bar's pointer reduces the width while the height remains capped by the shorter bar, so the area can only decrease or stay the same."
+            },
+            {
+              question: "What is the time complexity of the Two-Pointer approach for this problem?",
+              options: ["O(n log n)", "O(n^2)", "O(n)", "O(1)"],
+              correctAnswer: 2,
+              explanation: "We traverse the array once from both ends until the pointers meet, resulting in linear time complexity."
+            },
+            {
+              question: "What is the brute force approach for this problem, and what is its complexity?",
+              options: ["Sorting the bars, O(n log n)", "Checking every possible pair of bars, O(n^2)", "Using a stack, O(n)", "Binary search, O(log n)"],
+              correctAnswer: 1,
+              explanation: "The brute force approach uses two nested loops to calculate the area for every possible pair of lines."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={18}
+        />
 
         <p className="mb-6 font-semibold">
           You've got this. 🚀

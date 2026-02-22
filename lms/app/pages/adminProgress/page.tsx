@@ -19,11 +19,127 @@ export default function AdminProgress() {
       name: "Data Structures",
       color: "#EC4899",
       units: [
-        { id: 1, name: "Introduction to Data Structures", modules: ["Arrays Fundamentals and Representations", "Sparse Matrices", "Stack Operations and Applications", "Queue Operations and Types", "Practical Experiments"] },
-        { id: 2, name: "Linked Lists", modules: ["Singly/Linear Linked Lists", "Linked List Implementation of Stacks and Queues", "Doubly and Circular Linked Lists", "Linked List Applications", "Practical Experiments"] },
-        { id: 3, name: "Trees and Binary Trees", modules: ["Tree Terminology and Representations", "Binary Trees and Binary Search Trees", "Advanced Tree Types: Heaps, B-Trees, and N-ary Trees", "Tree Traversals, Applications, and Hashing", "Practical Experiments"] },
-        { id: 4, name: "Advanced Trees and Heaps", modules: ["Graph Types and Terminology", "Graph Representations", "Graph Traversals: BFS and DFS", "Graph Applications: MST and Shortest Path", "Practical Experiments"] },
-        { id: 5, name: "Graphs and Hashing", modules: ["Searching Techniques: Linear and Binary Search", "Basic Sorting Algorithms: Bubble, Insertion, Selection Sort", "Divide and Conquer Sorting: Merge Sort and Quick Sort", "Quick Sort Implementation and Optimization", "Assessment, Resources, and Advanced Topics"] }
+        {
+          id: 1,
+          name: "Foundations of DSA",
+          modules: [
+            "Introduction to DSA & Orientation",
+            "Foundational Mathematics for DSA",
+            "Foundational Mathematics for DSA - II",
+            "Power of Two",
+            "Fizz Buzz",
+            "Time and space Complexity",
+            "Deep Dive into Complexity Analysis",
+            "Revisiting Arrays and Strings",
+            "Running Sum of 1d Array",
+            "Richest Customer Wealth",
+            "Contains Duplicate",
+            "Valid Palindrome",
+            "Reverse String",
+            "Longest Common Prefix",
+            "Assignment | Sieve of Eratosthenes",
+            "Count Primes"
+          ]
+        },
+        {
+          id: 2,
+          name: "Algorithm Essentials",
+          modules: [
+            "Introduction to Recursion",
+            "Deep Dive into Recursion",
+            "Letter combination of phone number",
+            "Fibonacci Number",
+            "Pow(x, n)",
+            "Hands-On | File Directory Scanner",
+            "Subsequence Patterns in Recursion",
+            "Introduction to Sorting & Merge Sort",
+            "Sort an Array",
+            "Merge Sorted Array",
+            "Assignment | Kth largest element in an array",
+            "Assignment | Merge Sort",
+            "Quick Sort Algorithm",
+            "Assignment | Quick Sort",
+            "Assignment | Sorting Algorithm Optimization",
+            "The Two-Pointer Approach | Collision Pattern",
+            "Two Sum II - Input Array Is Sorted",
+            "Container With Most Water",
+            "3 sum",
+            "The Sliding Window Pattern",
+            "Longest Substring Without Repeating Characters",
+            "Assignment | Maximum Sum Subarray of Size K",
+            "Clash of Codes #1 | Algorithm Essentials"
+          ]
+        },
+        {
+          id: 3,
+          name: "Stacks, Queues & Linked lists",
+          modules: [
+            "Introduction to Stacks",
+            "Introduction to Queues & Deques",
+            "Assignment | Infix to Postfix Conversion",
+            "Assignment | Infix to Prefix Conversion",
+            "Evaluate Reverse Polish Notation",
+            "Assignment | Infix to Postfix Conversion",
+            "Basic Calculator",
+            "Assignment | Valid Parentheses",
+            "Valid Parentheses",
+            "Next Greater Element I",
+            "Tower of Hanoi",
+            "Introduction to Singly Linked list",
+            "Assignment | Design a Linked List",
+            "Merge Two Sorted Lists",
+            "Palindrome Linked List",
+            "Assignment | Reverse a Linked List",
+            "The Slow & Fast Pointer Pattern",
+            "Middle of the Linked List",
+            "Remove Nth Node From End of List",
+            "Assignment | Linked List Cycle Detection",
+            "Hands-on | GPS Navigation",
+            "Clash of Codes #2 | Stacks, Queues & Linked Lists"
+          ]
+        },
+        {
+          id: 4,
+          name: "Trees and Hash Maps",
+          modules: [
+            "Introduction to trees",
+            "Assignment | Level Order Traversal",
+            "Assignment | Inorder, Preorder and Postorder Traversal",
+            "Assignment | Tree traversals using recursion",
+            "Introduction to Binary Trees",
+            "Assignment | Binary Tree Operations - I",
+            "Assignment | Binary Tree Operations Part - II",
+            "Assignment | Find Maximum Depth of Binary Tree",
+            "Assignment | Invert Binary Tree",
+            "Introduction to Hash Maps and Hash Tables",
+            "Assignment | Design HashMap",
+            "Assignment | Two Sum using Hash Map",
+            "Hands-on | Semantic Keyword Analyzer",
+            "Clash of Codes #3 | Trees and Hash Maps"
+          ]
+        },
+        {
+          id: 5,
+          name: "BSTs & Graphs",
+          modules: [
+            "Introduction to Binary Search Trees (BSTs)",
+            "Search in a Binary Search Tree",
+            "Assignment | Validate Binary Search Tree",
+            "Assignment | Quest for the Hidden Integer",
+            "Assignment | BST Pair Sum Check",
+            "Introduction to Graphs and Representation",
+            "Graph Traversal Algorithms (BFS & DFS)",
+            "Assignment | BFS and DFS on a Graph",
+            "Find if Path Exists in Graph",
+            "Clone Graph",
+            "Assignment | Number of Islands",
+            "Cycle Detection in Graphs",
+            "Assignment | Detect Cycle in a Graph",
+            "Assignment | Social Network Clique Finder",
+            "Hands-on | Task Dependency Manager",
+            "Clash of Codes #4 | BSTs & Graphs"
+          ]
+        }
       ]
     },
     OS: {

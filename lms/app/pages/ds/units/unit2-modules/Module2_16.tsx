@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_16: React.FC = () => {
   return (
@@ -105,6 +106,39 @@ const Module2_16: React.FC = () => {
             </tbody>
           </table>
         </div>
+
+        <Quiz
+          title="Module 2.16 Quiz: Two-Pointer Collision Pattern"
+          questions={[
+            {
+              question: "What is the prerequisite for using the Two-Pointer Collision Pattern to find pairs with a specific sum?",
+              options: ["The array must be empty", "The array must be sorted", "The array must contain only positive numbers", "The array must be unsorted"],
+              correctAnswer: 1,
+              explanation: "The collision pattern relies on the sorted property to decide which pointer to move based on whether the current sum is too small or too large."
+            },
+            {
+              question: "If 'left' and 'right' are your two pointers and `arr[left] + arr[right]` is LESS than the target, what should you do?",
+              options: ["Decrement 'right'", "Increment 'left'", "Stop the search", "Increment both pointers"],
+              correctAnswer: 1,
+              explanation: "Since the array is sorted, incrementing the left pointer increases the total sum."
+            },
+            {
+              question: "If `arr[left] + arr[right]` is GREATER than the target, what should you do?",
+              options: ["Increment 'left'", "Decrement 'right'", "Swap the elements", "Decrement both pointers"],
+              correctAnswer: 1,
+              explanation: "Since the array is sorted, decrementing the right pointer decreases the total sum."
+            },
+            {
+              question: "What is the time complexity of the two-pointer approach compared to a nested loop (brute force) for finding a pair sum?",
+              options: ["O(n) vs O(n^2)", "O(n^2) vs O(n)", "O(log n) vs O(n)", "O(n log n) vs O(n^2)"],
+              correctAnswer: 0,
+              explanation: "The two-pointer approach traverses the array at most once (O(n)), while a nested loop checks all possible pairs (O(n^2))."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={16}
+        />
 
         <h3 className="text-xl font-semibold mb-4">Instructions</h3>
         <p className="mb-4">

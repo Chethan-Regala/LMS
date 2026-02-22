@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_2: React.FC = () => {
   return (
@@ -59,7 +60,7 @@ const Module4_2: React.FC = () => {
           Depth-First Search (DFS) explores as far as possible along each branch before backtracking. Imagine a maze runner who touches the wall and follows it all the way to a dead-end before turning back.
         </p>
         <p>There are three standard ways to do this (don't worry about the code for these right now, just focus on the flow):</p>
-        
+
         <h4 className="font-semibold mt-4">Inorder Traversal (Left -&gt; Root -&gt; Right):</h4>
         <p>
           Great for Binary Search Trees (BST) because it retrieves data in sorted (ascending) order. Like listing words in a dictionary alphabetically.
@@ -265,6 +266,47 @@ int main() {
         <p>
           So, let's transition from the theory to the IDE. Open up your editors, and let's start the live code along!
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.2 Quiz: Level Order Traversal (BFS)"
+          questions={[
+            {
+              question: "Which data structure does BFS (Level Order Traversal) rely on to process nodes?",
+              options: ["Stack", "Queue", "Array", "Linked List"],
+              correctAnswer: 1,
+              explanation: "BFS uses a Queue (First-In, First-Out). By enqueuing children at the back, we guarantee all nodes at the current level are visited before moving to the next."
+            },
+            {
+              question: "Both BFS and DFS have the same time complexity. What is it?",
+              options: ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+              correctAnswer: 2,
+              explanation: "Both algorithms visit every node exactly once, resulting in O(n) time complexity regardless of the direction of traversal."
+            },
+            {
+              question: "When is BFS preferred over DFS?",
+              options: ["When memory is tight and the tree is very wide", "When looking for a deep node in a very tall tree", "When searching for the shortest path or a node near the root", "When the tree has no children"],
+              correctAnswer: 2,
+              explanation: "BFS explores level by level, so it naturally finds the shortest path and is ideal when the solution is expected to be close to the root."
+            },
+            {
+              question: "What is the first step in the BFS (Level Order) algorithm?",
+              options: ["Dequeue the root", "Enqueue the root node", "Visit all leaf nodes", "Sort the nodes by value"],
+              correctAnswer: 1,
+              explanation: "BFS begins by placing the root into the queue. Everything that follows is driven by the queue's FIFO processing order."
+            },
+            {
+              question: "Which approach mitigates BFS's high memory usage while still finding shortest paths?",
+              options: ["Recursive DFS", "Iterative DFS with a stack", "Iterative Deepening DFS (IDDFS)", "Preorder traversal"],
+              correctAnswer: 2,
+              explanation: "IDDFS is a hybrid technique: it runs DFS with increasing depth limits, achieving BFS-like shortest-path guarantees with DFS-like memory efficiency."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={2}
+        />
       </section>
     </div>
   );

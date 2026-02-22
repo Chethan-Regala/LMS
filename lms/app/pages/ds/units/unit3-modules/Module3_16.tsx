@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_16: React.FC = () => {
   return (
@@ -82,7 +83,7 @@ const Module3_16: React.FC = () => {
 
           <div>
             <p className="font-semibold mb-3">3. Step-by-Step Pointer Movement</p>
-            
+
             <div className="space-y-4">
               <div>
                 <p className="font-semibold mb-2">Step 1: Initialize</p>
@@ -158,6 +159,45 @@ const Module3_16: React.FC = () => {
         <p className="mb-6 text-center font-semibold">
           Happy pair programming! 🚀
         </p>
+
+        <Quiz
+          title="Module 3.16 Quiz: Reversing Linked Lists"
+          questions={[
+            {
+              question: "In the iterative reversal algorithm, what does the 'prev' pointer represent at any given step?",
+              options: ["The node that was processed just before the current one", "The node that will be processed next", "The original head of the list", "The current node's data"],
+              correctAnswer: 0,
+              explanation: "As we move through the list, 'prev' keeps track of the neighbor to the left, which becomes the new 'next' neighbor for the current node."
+            },
+            {
+              question: "Why do we store 'curr.next' in a temporary 'next' variable BEFORE changing 'curr.next'?",
+              options: ["To save memory", "To avoid losing access to the rest of the list", "To sort the nodes", "To print the data later"],
+              correctAnswer: 1,
+              explanation: "Once you set curr.next = prev, you break the link to the next element. The temporary variable preserves that link so you can continue the traversal."
+            },
+            {
+              question: "What is the Time Complexity of reversing a list with N nodes?",
+              options: ["O(1)", "O(log N)", "O(N)", "O(N^2)"],
+              correctAnswer: 2,
+              explanation: "The algorithm visits each node exactly once to update its pointer, resulting in a linear time complexity."
+            },
+            {
+              question: "When the loop finishes (curr becomes NULL), which pointer should you return as the new head?",
+              options: ["head", "next", "curr", "prev"],
+              correctAnswer: 3,
+              explanation: "At the end of the loop, 'prev' is pointing to the last node that was successfully re-wired, which is the start of our reversed list."
+            },
+            {
+              question: "If the list has only one node, what happens in the reversal algorithm?",
+              options: ["The algorithm crashes", "The node is deleted", "The node's next pointer remains NULL and the node itself is returned", "An infinite loop occurs"],
+              correctAnswer: 2,
+              explanation: "The algorithm handles the single-node case gracefully: next becomes NULL, curr.next becomes NULL (again), and the node is returned as the new head."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={16}
+        />
       </section>
     </div>
   );

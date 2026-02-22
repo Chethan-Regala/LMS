@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_15: React.FC = () => {
   return (
@@ -193,6 +194,39 @@ END FUNCTION`}</code>
             </tbody>
           </table>
         </div>
+
+        <Quiz
+          title="Module 2.15 Quiz: Sorting Algorithm Optimization"
+          questions={[
+            {
+              question: "Why is a fixed pivot (like the first or last element) problematic for Quick Sort on sorted data?",
+              options: ["It leads to O(n log n) performance", "It causes highly unbalanced partitions, leading to O(n^2) time", "The algorithm becomes unstable", "It uses too much memory"],
+              correctAnswer: 1,
+              explanation: "If the data is already sorted, picking an extreme as the pivot results in one partition being empty and the other containing nearly all elements, maximizing recursive depth."
+            },
+            {
+              question: "What is the core idea of 'Randomized Pivot Selection'?",
+              options: ["Sorting the array randomly first", "Picking a random element as the pivot for each partition to break the predictability of input patterns", "Using a random number of recursions", "Picking three random elements and sorting them"],
+              correctAnswer: 1,
+              explanation: "Randomization decouples the performance from any specific input order, making the O(n^2) worst-case statistically negligible."
+            },
+            {
+              question: "Does Randomized Quick Sort improve the theoretical worst-case time complexity?",
+              options: ["Yes, it becomes O(n log n)", "No, it remains O(n^2), but it becomes nearly impossible to trigger in practice", "Yes, it becomes O(n)", "No, it stays O(n^3)"],
+              correctAnswer: 1,
+              explanation: "The theoretical worst case is still O(n^2), but since pivots are random, no specific input can consistently force that outcome."
+            },
+            {
+              question: "What is the 'Median-of-Three' strategy?",
+              options: ["Picking the first three elements", "Choosing the median of the first, middle, and last elements as the pivot", "Dividing the array into three equal parts", "Running Quick Sort three times"],
+              correctAnswer: 1,
+              explanation: "Median-of-Three is a deterministic way to find a better pivot than just the first or last, reducing the chance of bad partitions."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={15}
+        />
 
         <h3 className="text-xl font-semibold mb-4">Summary of the Comparison</h3>
         <p className="mb-4">

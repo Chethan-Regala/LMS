@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_22: React.FC = () => {
   return (
@@ -214,6 +215,45 @@ Node* reverseAndFindMid(Node* head) {
         <p className="mb-6 text-center font-semibold text-lg">
           Good luck, debug detectives! 🔍
         </p>
+
+        <Quiz
+          title="Module 3.22 Quiz: Clash of Codes Prep - Debugging Brainteasers"
+          questions={[
+            {
+              question: "In Snippet 1 (Bracket Balancer), why is 'st.pop()' on line 124 a critical logic error?",
+              options: ["Opening brackets should be PUSHED to the stack to be matched later", "The stack is already empty", "Opening brackets should be ignored", "The function should return false immediately"],
+              correctAnswer: 0,
+              explanation: "When we see '(' or '{', we need to remember it so we can check if it's closed correctly. That means pushing it onto the stack."
+            },
+            {
+              question: "In Snippet 2 (Circular Queue), what happens if you call enqueue() when front is 0 and rear is size-1?",
+              options: ["It prints 'Queue Overflow' correctly", "It overwrites the data at index 0 and potential errors occur", "It clears the queue", "The size doubles"],
+              correctAnswer: 1,
+              explanation: "The check (rear + 1) % size == front accurately detects a full queue, but if the code continues to execute 'rear = (rear + 1) % size' without returning, it will wrap around and overwrite data."
+            },
+            {
+              question: "In Snippet 3 (Linked List Reversal), why is 'while (curr->next != NULL)' a bug?",
+              options: ["It causes an infinite loop", "It skips the reversal logic for the very last node in the list", "It should be curr != NULL", "Both B and C"],
+              correctAnswer: 3,
+              explanation: "If we stop at the last node, that node's 'next' pointer is never redirected, and it never becomes the new head. We should iterate until curr itself is NULL."
+            },
+            {
+              question: "In Snippet 3, line 185 says 'prev = curr->next;'. Why is this a mistake after line 184 'curr->next = prev;'?",
+              options: ["It doesn't update prev at all", "It sets prev to its own current value, essentially losing 'curr'", "It deletes the head node", "It creates a circular link"],
+              correctAnswer: 1,
+              explanation: "Because the previous line changed curr->next, assigning it to prev doesn't accomplish anything useful. You need to capture the CURRENT node in 'prev' before moving to the next one."
+            },
+            {
+              question: "What is the primary skill being tested in a 'Clash of Codes' debugging session?",
+              options: ["Typing speed", "Structural and logical code tracing without a compiler", "Memorizing sorting algorithms", "Creating UI designs"],
+              correctAnswer: 1,
+              explanation: "Being able to 'dry-run' code in your head or on paper is a vital skill for identifying subtle logic bugs."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={22}
+        />
       </section>
     </div>
   );

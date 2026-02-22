@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_6: React.FC = () => {
   return (
@@ -74,6 +75,45 @@ const Module3_6: React.FC = () => {
         <p className="mb-6">
           Try converting five expressions by hand first (including nested parentheses and the ^ operator), then implement the code and test those same expressions programmatically. After that, solve the LeetCode RPN evaluation problem to reinforce how postfix is executed. You are doing great — take the assessment, trust your stack, and remember that every tough expression becomes simple once you follow the steps. Go for it!
         </p>
+
+        <Quiz
+          title="Module 3.6 Quiz: Advanced Infix to Postfix"
+          questions={[
+            {
+              question: "During infix to postfix conversion, when is an operator 'popped' from the stack while scanning a new operator?",
+              options: ["Only when the stack is full", "When the operator at the top has strictly lower precedence", "When the operator at the top has higher or equal precedence (and is left-associative)", "Only when a closing parenthesis is found"],
+              correctAnswer: 2,
+              explanation: "To maintain correct order, existing operators with higher or equal priority must be moved to the output before a new, lower-priority operator is pushed."
+            },
+            {
+              question: "What is the role of the opening parenthesis '(' in the operator stack?",
+              options: ["It is added to the output immediately", "It acts as a temporary boundary; no operators are popped past it until ')' is found", "It is used only for prefix conversion", "It has the highest precedence in all comparisons"],
+              correctAnswer: 1,
+              explanation: "An opening parenthesis stays on the stack and prevents operators inside the group from leaking out until the matching closing bracket 'pops' them."
+            },
+            {
+              question: "True or False: In Postfix notation, the relative order of operands (A, B, C...) is different from the original Infix expression.",
+              options: ["True", "False"],
+              correctAnswer: 1,
+              explanation: "The order of operands remains the same in Infix, Prefix, and Postfix; only the positions of the operators change."
+            },
+            {
+              question: "What is the space complexity of the infix-to-postfix algorithm for an expression of length 'n'?",
+              options: ["O(log n)", "O(1)", "O(n)", "O(n^2)"],
+              correctAnswer: 2,
+              explanation: "In the worst case (e.g., all operators), the stack can store up to O(n) elements."
+            },
+            {
+              question: "Which data structure is essential for implementing the Shunting-yard algorithm?",
+              options: ["Queue", "Hash Map", "Linked List (Circular)", "Stack"],
+              correctAnswer: 3,
+              explanation: "A stack is required to store operators and manage precedence dynamically."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={6}
+        />
       </section>
     </div>
   );

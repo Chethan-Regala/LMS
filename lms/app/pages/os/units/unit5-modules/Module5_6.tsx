@@ -1,9 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import Quiz from '../../components/Quiz';
-=======
->>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
 
 const Module5_6: React.FC = () => {
   const [showIntro, setShowIntro] = useState(false);
@@ -23,11 +20,7 @@ const Module5_6: React.FC = () => {
         <p className="text-lg font-semibold mb-3">How does an operating system know where new files can be stored?</p>
         <p className="mb-4">It's like managing thousands of empty parking spots but on a disk with no humans watching!</p>
 
-<<<<<<< HEAD
         <button
-=======
-        <button 
->>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
           onClick={() => setShowIntro(!showIntro)}
           className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 mb-4"
         >
@@ -173,7 +166,6 @@ const Module5_6: React.FC = () => {
         <ul className="list-disc pl-6">
           <li>The first free block in this method, keeps account of other free blocks. Thus, due to that one block the space requirement is more.</li>
         </ul>
-<<<<<<< HEAD
 
         <Quiz
           title="Module 5.6 Quiz: Free Space Management"
@@ -213,8 +205,6 @@ const Module5_6: React.FC = () => {
           unitId={5}
           moduleId={6}
         />
-=======
->>>>>>> c7b3bdd7c0421e4d5074f81e4d474d0a64f6deba
       </section>
     </div>
   );

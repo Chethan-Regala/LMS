@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_7: React.FC = () => {
   return (
@@ -294,6 +295,47 @@ void bfs(vector<vector<int>>& graph, int startNode) {
           See you there!
         </p>
         <img src="https://storage.googleapis.com/kq-storage.kalvium.community/Data%20Structures%20and%20Algorithms%2FMindmaps%2FGraph%20traversal%20-%20Mindmap.png" alt="Mind map" />
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.7 Quiz: Graph Traversal - BFS & DFS"
+          questions={[
+            {
+              question: "What data structure does BFS use to track nodes to visit?",
+              options: ["Stack", "Queue", "Heap", "Array"],
+              correctAnswer: 1,
+              explanation: "BFS uses a Queue (FIFO). Nodes discovered at the current level are enqueued and processed before going deeper, ensuring level-by-level traversal."
+            },
+            {
+              question: "What data structure does DFS use (either explicitly or via recursion)?",
+              options: ["Queue", "Priority Queue", "Stack", "Deque"],
+              correctAnswer: 2,
+              explanation: "DFS uses a Stack — either an explicit stack in iterative implementation, or the call stack implicitly via recursion. This enables deep-first exploration."
+            },
+            {
+              question: "Why must we track VISITED nodes in graph traversal (unlike tree traversal)?",
+              options: ["To count edges", "Graphs can have cycles which would cause infinite loops without visited tracking", "To determine the height", "For sorting purposes"],
+              correctAnswer: 1,
+              explanation: "Unlike trees, graphs can have cycles. Without marking visited nodes, traversal might loop endlessly through cyclic paths. A visited set/array prevents revisiting."
+            },
+            {
+              question: "BFS is preferred over DFS when the goal is to find the:",
+              options: ["Deepest node", "Shortest path in an unweighted graph", "All nodes in a component", "Topological ordering"],
+              correctAnswer: 1,
+              explanation: "BFS explores layer by layer, so the first time it reaches the destination node is guaranteed to be via the shortest path (fewest edges) in an unweighted graph."
+            },
+            {
+              question: "For BFS on a graph with V vertices and E edges, what is the time complexity?",
+              options: ["O(V)", "O(E)", "O(V + E)", "O(V × E)"],
+              correctAnswer: 2,
+              explanation: "BFS visits each vertex once (O(V)) and processes each edge once (O(E)), giving a total time complexity of O(V + E)."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={7}
+        />
       </section>
     </div>
   );

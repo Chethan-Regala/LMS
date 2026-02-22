@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_19: React.FC = () => {
   return (
@@ -49,6 +50,39 @@ const Module2_19: React.FC = () => {
         <div className="mb-6">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/jzZsG8n2R9A" title="3 Sum Problem" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
         </div>
+
+        <Quiz
+          title="Module 2.19 Quiz: 3Sum Problem"
+          questions={[
+            {
+              question: "What is the common first step for the optimized 3Sum solution using Two-Pointers?",
+              options: ["Reverse the array", "Sort the array", "Search for zeros", "Copy to a new array"],
+              correctAnswer: 1,
+              explanation: "Sorting the array allows us to use the Two-Pointer technique and efficiently avoid duplicate triplets by skipping identical values."
+            },
+            {
+              question: "What is the time complexity of the optimized 3Sum algorithm (sorting + two pointers loop)?",
+              options: ["O(n)", "O(n log n)", "O(n^2)", "O(n^3)"],
+              correctAnswer: 2,
+              explanation: "Sorting takes O(n log n) and the nested loop (one for each element + a two-pointer pass) takes O(n^2), making the overall complexity O(n^2)."
+            },
+            {
+              question: "How do you ensure triplets are 'unique' in the 3Sum output?",
+              options: ["Use a Set for all results", "Skip the current element if it's the same as the previous one", "Filter the list at the end", "Both A and B are valid, but skipping duplicates during the loop is more efficient"],
+              correctAnswer: 3,
+              explanation: "While a Set works, skipping duplicates during the iteration (by checking `arr[i] == arr[i-1]`) avoids unnecessary calculations."
+            },
+            {
+              question: "If we find a triplet that sums to zero, what do we do next with the two pointers (left and right)?",
+              options: ["Stop the search", "Increment left and decrement right while skipping duplicates", "Reset both to middle", "Only increment left"],
+              correctAnswer: 1,
+              explanation: "To find more potential triplets for the same fixed element, we move both pointers towards the center, ensuring we skip any identical values to keep the results unique."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={19}
+        />
       </section>
     </div>
   );

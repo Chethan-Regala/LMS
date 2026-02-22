@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_11: React.FC = () => {
   return (
@@ -170,9 +171,9 @@ get(2)   → -1`}</pre>
         <h4 className="font-semibold mt-4">LeetCode:</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://leetcode.com/problems/design-hashmap/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/design-hashmap/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -180,9 +181,9 @@ get(2)   → -1`}</pre>
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/design-hashset/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/design-hashset/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -190,9 +191,9 @@ get(2)   → -1`}</pre>
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/design-linked-list/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/design-linked-list/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -204,9 +205,9 @@ get(2)   → -1`}</pre>
         <h4 className="font-semibold mt-4">HackerRank:</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/30-dictionaries-and-maps/problem" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/30-dictionaries-and-maps/problem"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -214,9 +215,9 @@ get(2)   → -1`}</pre>
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/icecream-parlor/problem" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/icecream-parlor/problem"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -230,9 +231,9 @@ get(2)   → -1`}</pre>
         <h3>Additional reference material</h3>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://algo.monster/liteproblems/706" 
-              target="_blank" 
+            <a
+              href="https://algo.monster/liteproblems/706"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -240,9 +241,9 @@ get(2)   → -1`}</pre>
             </a>
           </li>
           <li>
-            <a 
-              href="https://medium.com/@AlexanderObregon/daily-leetcode-problems-706-design-hashmap-9c8e3e5e5e5e" 
-              target="_blank" 
+            <a
+              href="https://medium.com/@AlexanderObregon/daily-leetcode-problems-706-design-hashmap-9c8e3e5e5e5e"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -250,9 +251,9 @@ get(2)   → -1`}</pre>
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-does-a-HashMap-work-in-Java" 
-              target="_blank" 
+            <a
+              href="https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-does-a-HashMap-work-in-Java"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -268,6 +269,47 @@ get(2)   → -1`}</pre>
             You're not just solving one LeetCode problem; you're learning how one of the most powerful data structures in coding actually works. Give this assessment an honest try, even if you feel unsure. Struggling here is exactly how you become strong later.
           </p>
         </div>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.11 Quiz: Design HashMap"
+          questions={[
+            {
+              question: "In your custom HashMap implementation, what is the purpose of the hash function (key % SIZE)?",
+              options: ["To sort the keys", "To map a key to a bucket index", "To check for duplicate keys", "To find the maximum key"],
+              correctAnswer: 1,
+              explanation: "The hash function converts any key into an array index (bucket), allowing near-constant time access to the stored value."
+            },
+            {
+              question: "In the put(key, value) operation, what happens if the key already exists in the bucket?",
+              options: ["A new entry is added alongside the old one", "The existing value is updated (overwritten)", "An error is thrown", "The key is deleted first"],
+              correctAnswer: 1,
+              explanation: "put() checks the bucket for an existing entry with the same key. If found, it updates (overwrites) the value rather than adding a duplicate."
+            },
+            {
+              question: "What does get(key) return if the key does NOT exist in the HashMap?",
+              options: ["0", "null", "-1", "An empty string"],
+              correctAnswer: 2,
+              explanation: "By convention (matching LeetCode 706), get() returns -1 when the requested key is not found in the HashMap."
+            },
+            {
+              question: "After: put(1,1), put(2,2), get(3), put(2,1), get(2), what does the last get(2) return?",
+              options: ["2", "-1", "1", "0"],
+              correctAnswer: 2,
+              explanation: "put(2,1) updates the value for key 2 from 2 to 1. So get(2) returns 1."
+            },
+            {
+              question: "Why is a bucket size like 10,000 chosen for the custom HashMap?",
+              options: ["To waste memory on purpose", "To reduce the chance of collisions with typical LeetCode inputs", "Because arrays can only be size 10,000", "To match Java's default size"],
+              correctAnswer: 1,
+              explanation: "A larger bucket size distributes keys more evenly across buckets, reducing collision chains and keeping average operations close to O(1)."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={11}
+        />
       </section>
     </div>
   );

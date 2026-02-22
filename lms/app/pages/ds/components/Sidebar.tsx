@@ -25,7 +25,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedModule, onModuleSelect, isOpe
       const res = await fetch(`/api/progress?userEmail=${session?.user?.email}&subject=DS`);
       const data = await res.json();
       if (data.success) {
-        const completed = new Set(
+        const completed = new Set<string>(
           data.data
             .filter((p: any) => p.completed)
             .map((p: any) => `${p.unitId}.${p.moduleId}`)

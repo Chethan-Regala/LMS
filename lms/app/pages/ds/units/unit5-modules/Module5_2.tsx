@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_2: React.FC = () => {
   return (
@@ -102,9 +103,9 @@ const Module5_2: React.FC = () => {
         <h4 className="font-semibold mt-4">LeetCode</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://leetcode.com/problems/search-in-a-binary-search-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/search-in-a-binary-search-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -118,9 +119,9 @@ const Module5_2: React.FC = () => {
         <h3>📚 Additional Reference Material</h3>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://visualgo.net/en/bst" 
-              target="_blank" 
+            <a
+              href="https://visualgo.net/en/bst"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -128,9 +129,9 @@ const Module5_2: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.geeksforgeeks.org/search-a-node-in-binary-search-tree/" 
-              target="_blank" 
+            <a
+              href="https://www.geeksforgeeks.org/search-a-node-in-binary-search-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -138,9 +139,9 @@ const Module5_2: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.freecodecamp.org/news/binary-search-tree-what-is-it/" 
-              target="_blank" 
+            <a
+              href="https://www.freecodecamp.org/news/binary-search-tree-what-is-it/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -177,6 +178,47 @@ const Module5_2: React.FC = () => {
         <p className="mt-4">
           See you there! 🚀
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.2 Quiz: Search in a BST"
+          questions={[
+            {
+              question: "When searching for a value that is LESS than the current node in a BST, which direction do you move?",
+              options: ["Right subtree", "Left subtree", "Stay at the current node", "Start over from the root"],
+              correctAnswer: 1,
+              explanation: "The BST property guarantees all smaller values are in the left subtree. Moving left eliminates the right half of the search space instantly."
+            },
+            {
+              question: "What does the BST search return when the value is NOT found in the tree?",
+              options: ["The root node", "The closest node", "null (or the null subtree)", "-1"],
+              correctAnswer: 2,
+              explanation: "When traversal reaches a null pointer (no more nodes to check), the search concludes that the value does not exist and returns null."
+            },
+            {
+              question: "In a BST with root 8 and the following structure: left=3 (left=1, right=6), right=10 — searching for 6 takes how many comparisons?",
+              options: ["1", "2", "3", "4"],
+              correctAnswer: 2,
+              explanation: "Step 1: Compare 6 with root 8 → go left. Step 2: Compare 6 with 3 → go right. Step 3: Compare 6 with 6 → found! That's 3 comparisons."
+            },
+            {
+              question: "What is the FIRST step before comparing values in a BST search?",
+              options: ["Sort the tree values", "Check if the tree is empty", "Find the height", "Count the nodes"],
+              correctAnswer: 1,
+              explanation: "Before any comparison, you must check if the BST is empty. An empty tree immediately returns null — searching it would crash the program."
+            },
+            {
+              question: "BST search is most efficient when the tree is:",
+              options: ["Skewed (all nodes on one side)", "Balanced (equal depth on both sides)", "A single-node tree", "An empty tree"],
+              correctAnswer: 1,
+              explanation: "A balanced BST achieves O(log n) search time. A skewed BST degrades to O(n) because every comparison only eliminates one node instead of half."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={2}
+        />
       </section>
     </div>
   );

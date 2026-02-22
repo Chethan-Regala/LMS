@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_10: React.FC = () => {
   return (
@@ -25,7 +26,7 @@ const Module2_10: React.FC = () => {
         </p>
 
         <h3 className="text-xl font-semibold mb-4">What You'll Do (and Why It Helps You)</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">1. Solve one LeetCode problem</p>
@@ -49,7 +50,7 @@ const Module2_10: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-semibold mb-4">How to Complete It (Simple Steps)</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">Step 1: Open the LeetCode problem</p>
@@ -89,6 +90,39 @@ const Module2_10: React.FC = () => {
         <p className="mb-6">
           This milestone isn't about perfection. It's about showing up, practicing, and building small habits that compound into something big — stronger skills, a better GitHub, and a more confident you.
         </p>
+
+        <Quiz
+          title="Module 2.10 Quiz: Merge Sorted Array Challenge"
+          questions={[
+            {
+              question: "What is the optimal time complexity to merge two sorted arrays of size 'm' and 'n'?",
+              options: ["O(m * n)", "O(m + n)", "O(log(m + n))", "O( (m+n) log (m+n) )"],
+              correctAnswer: 1,
+              explanation: "By using two pointers (one for each array), we can merge them by traversing each element exactly once."
+            },
+            {
+              question: "If you are merging in-place into the first array (which has extra space at the end), which pointers strategy is safest to avoid overwriting?",
+              options: ["Start from the beginning (index 0) of both arrays", "Start from the end of both arrays and fill from the back", "Sort the first array after appending the second", "Use a temporary third array only"],
+              correctAnswer: 1,
+              explanation: "Filling from the back ensures that we don't overwrite the elements in the first array that haven't been compared yet."
+            },
+            {
+              question: "What is the benefit of using the LeetHub extension as mentioned in the lesson?",
+              options: ["It solves the problem for you", "It automatically synchronizes your LeetCode solutions to a GitHub repository", "It increases your LeetCode rank", "It provides hints for difficult problems"],
+              correctAnswer: 1,
+              explanation: "LeetHub is a tool specifically designed to help developers build a portfolio by auto-pushing their successful LeetCode submissions to GitHub."
+            },
+            {
+              question: "In the 'Merge Sorted Array' problem, if one array becomes empty, what should happen to the remaining elements of the other array?",
+              options: ["They should be discarded", "They should be sorted again", "They should be copied directly into the result", "Return an error"],
+              correctAnswer: 2,
+              explanation: "Since the input arrays are already sorted, any remaining elements are also sorted and can be moved directly into the merged result."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={10}
+        />
 
         <p className="mb-6 font-semibold">
           You've got this. 🚀

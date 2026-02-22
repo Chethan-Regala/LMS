@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_6: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ const Module2_6: React.FC = () => {
         </p>
 
         <h2 className="text-2xl font-semibold mb-4">Simulating a File Directory Scanner</h2>
-        
+
         <h3 className="text-xl font-semibold mb-4">Recursive Traversal</h3>
         <p className="mb-6">
           Imagine opening a folder on your computer. Inside, you find other folders and files. Each of those folders might contain more folders and files. This kind of nested structure is best handled using recursion, where a function can call itself to dive deeper into subfolders.
@@ -119,6 +119,39 @@ Notes.txt file`}</code>
         <p className="mb-6 font-semibold text-lg">
           This is a bit Tricky question try to solve it !!
         </p>
+
+        <Quiz
+          title="Module 2.6 Quiz: File System Traversal"
+          questions={[
+            {
+              question: "Recursive traversal of a file system is most similar to which graph traversal algorithm?",
+              options: ["Breadth-First Search (BFS)", "Depth-First Search (DFS)", "Dijkstra's Algorithm", "Binary Search"],
+              correctAnswer: 1,
+              explanation: "Recursion naturally explores one path (subfolder) as deep as possible before backtracking to the sibling paths, which is characteristic of DFS."
+            },
+            {
+              question: "What determines the Space Complexity of a recursive file scanner?",
+              options: ["The total number of files", "The size of the largest file", "The maximum depth of the nested folders", "The speed of the hard drive"],
+              correctAnswer: 2,
+              explanation: "The space complexity is determined by the maximum number of activation records on the call stack, which corresponds to the deepest nesting level."
+            },
+            {
+              question: "In the context of this assignment, what represents the 'base case'?",
+              options: ["Opening a new folder", "Encountering a 'file' (which has no further sub-items)", "The root directory", "Print statement"],
+              correctAnswer: 1,
+              explanation: "Files are the terminal points in the hierarchy. When we encounter one, the recursion for that branch stops and returns."
+            },
+            {
+              question: "Why might you avoid recursion for a file system with millions of nested levels?",
+              options: ["It would be too fast", "It could cause a 'Stack Overflow' error", "Folders can't be listed", "Recursion only works for numbers"],
+              correctAnswer: 1,
+              explanation: "Every recursive call consumes stack memory. Extremely deep trees can exceed the stack limit of the environment."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={6}
+        />
       </section>
     </div>
   );

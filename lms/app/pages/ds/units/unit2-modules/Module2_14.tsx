@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_14: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Module2_14: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">Divide &amp; Conquer in Action: Sorting with Quick Sort</h3>
-        
+
         <p className="mb-6">
           Sorting isn't just an algorithm — it's a rite of passage for every coder. And Quick Sort? It's like the fast-talking genius of the sorting world — unpredictable in worst cases, but blazing fast on average. In this assignment, you'll dive deep into how Quick Sort uses the divide and conquer strategy to bring order to chaos.
         </p>
@@ -148,6 +149,39 @@ const Module2_14: React.FC = () => {
           <li>1 ≤ n ≤ 10⁵</li>
           <li>-10⁹ ≤ arr[i] ≤ 10⁹</li>
         </ul>
+
+        <Quiz
+          title="Module 2.14 Quiz: Quick Sort Assignment Prep"
+          questions={[
+            {
+              question: "What is the primary function of the 'partition' step in Quick Sort?",
+              options: ["To divide the array exactly in half", "To find the median element", "To place the chosen pivot in its final sorted position and separate elements less than and greater than it", "To merge two sorted arrays"],
+              correctAnswer: 2,
+              explanation: "Partitioning is the 'conquer' part of the logic where we rearrange elements relative to the pivot."
+            },
+            {
+              question: "What is the standard base case for a recursive `quickSort(arr, low, high)` implementation?",
+              options: ["low == high", "low >= high", "arr.length == 0", "pivot == 0"],
+              correctAnswer: 1,
+              explanation: "If low is equal to or greater than high, the subarray has zero or one element, and it is already sorted."
+            },
+            {
+              question: "If we always choose the last element as the pivot in a reverse-sorted array, what happens to the performance?",
+              options: ["It remains O(n log n)", "It improves to O(n)", "It degrades to the worst case O(n^2)", "It remains O(log n)"],
+              correctAnswer: 2,
+              explanation: "Consistent choosing of an extreme (smallest or largest) in sorted or reverse-sorted data leads to highly unbalanced partitions and O(n^2) behavior."
+            },
+            {
+              question: "In the partition logic, once an element 'j' is found to be smaller than the pivot, what is the usual next step?",
+              options: ["Remove the element", "Swap it with the element at the 'smaller elements boundary' index and increment that index", "Place it at the end of the array", "Recursive call"],
+              correctAnswer: 1,
+              explanation: "The standard Lomuto partition scheme uses a pointer 'i' to track the boundary of elements smaller than the pivot and swaps found elements into that region."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={14}
+        />
 
         <h3 className="text-xl font-semibold mb-4">Resources to Learn the Concept</h3>
         <p className="mb-4">

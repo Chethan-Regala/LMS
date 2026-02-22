@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_2: React.FC = () => {
   return (
@@ -296,6 +297,45 @@ print(q.peek())`}</code>
         <p className="mb-6">
           Now, for a quick task to reinforce what we've covered today, consider a scenario: You are tasked with managing a print queue. Write down the steps to add print jobs, process them in order, and handle priority jobs using the queue operations we discussed. Then, discuss your approach with a nearby peer.
         </p>
+
+        <Quiz
+          title="Module 3.2 Quiz: Queues and Deques"
+          questions={[
+            {
+              question: "Which principle governs the behavior of a standard Queue?",
+              options: ["Last-In, First-Out (LIFO)", "First-In, First-Out (FIFO)", "Highest Priority First", "Random Access"],
+              correctAnswer: 1,
+              explanation: "Queues follow the FIFO principle, where the first element added is the first one to be removed."
+            },
+            {
+              question: "What is the standard operation name for adding an element to the back of a queue?",
+              options: ["push", "pop", "enqueue", "dequeue"],
+              correctAnswer: 2,
+              explanation: "Adding an element to a queue is called 'enqueueing' (or push_back in some contexts)."
+            },
+            {
+              question: "A Deque (Double-Ended Queue) is unique because...",
+              options: ["It can only be implemented with a library", "It allows insertion and deletion from both the front and the rear", "It automatically sorts elements", "It is twice as fast as a regular queue"],
+              correctAnswer: 1,
+              explanation: "A Deque is versatile because it allows operations at both ends, combining features of stacks and queues."
+            },
+            {
+              question: "Which graph algorithm primarily utilizes a Queue?",
+              options: ["Depth-First Search (DFS)", "Binary Search", "Breadth-First Search (BFS)", "Merge Sort"],
+              correctAnswer: 2,
+              explanation: "BFS uses a queue to visit vertices layer-by-layer (level-order traversal)."
+            },
+            {
+              question: "In a circular array implementation of a queue, how is the 'next' position for the rear pointer calculated?",
+              options: ["rear + 1", "(rear + 1) % capacity", "rear - 1", "capacity / 2"],
+              correctAnswer: 1,
+              explanation: "The modulo operator (%) allows the pointer to wrap around to the beginning of the array, enabling efficient reuse of empty space."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={2}
+        />
       </section>
     </div>
   );

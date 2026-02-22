@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_23: React.FC = () => {
   return (
@@ -119,7 +120,7 @@ Result: true (because 2 + 8 = 10)`}</code>
         </div>
 
         <h3 className="text-xl font-semibold mb-4">Presentation &amp; Debate Rules</h3>
-        
+
         <div className="mb-6">
           <p className="font-semibold mb-2">What to Prepare (in the 15-minute Prep Time):</p>
           <ul className="list-disc ml-6 space-y-2">
@@ -143,6 +144,39 @@ Result: true (because 2 + 8 = 10)`}</code>
         <p className="mb-6">
           Remember, the goal isn't about finding the single "correct" answer. It's about understanding the trade-offs between different solutions.
         </p>
+
+        <Quiz
+          title="Module 2.23 Quiz: Clash of Codes Prep"
+          questions={[
+            {
+              question: "What is the time complexity of the 'Brute Force' Two Sum approach where you check every pair?",
+              options: ["O(n)", "O(n log n)", "O(n^2)", "O(1)"],
+              correctAnswer: 2,
+              explanation: "Checking every pair requires two nested loops, each running 'n' times, leading to O(n^2)."
+            },
+            {
+              question: "If Team 2 uses 'Sort & Scan', what is their overall time complexity?",
+              options: ["O(n)", "O(n log n)", "O(n^2)", "O(log n)"],
+              correctAnswer: 1,
+              explanation: "Sorting the array takes O(n log n), and a single two-pointer pass take O(n). The bottleneck is the sorting step, so it is O(n log n)."
+            },
+            {
+              question: "In algorithm design, what does a 'trade-off' typically refer to?",
+              options: ["Changing the data type", "Trading speed for memory or simplicity (and vice versa)", "Deleting code to make it run faster", "Updating the compiler"],
+              correctAnswer: 1,
+              explanation: "Trade-offs are the choices made between competing priorities like execution time, memory usage, and development ease."
+            },
+            {
+              question: "Which of these is a valid point for defending Brute Force in a debate?",
+              options: ["It is the most complex", "It uses the most memory", "It is the simplest to implement and understand for small datasets", "It is usually the fastest for millions of records"],
+              correctAnswer: 2,
+              explanation: "For very small datasets, Brute Force is extremely easy to write, test, and maintain, even if it's theoretically slower."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={23}
+        />
 
         <p className="mb-6 font-semibold">
           Good luck, and may the best argument win!

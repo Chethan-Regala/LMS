@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_21: React.FC = () => {
   return (
@@ -48,6 +49,39 @@ const Module2_21: React.FC = () => {
         <p className="mb-6">
           To solve this problem, you will need knowledge of unordered_sets(for C++) and sets (for python). By using maps in C++, you can store each character and it's frequency. Frequency of each letter is the number of times it occurs in a string. This way you can keep track of frequencies of each character in a window. If the frequency of any character increases more than 1, then shift the window until that character.
         </p>
+
+        <Quiz
+          title="Module 2.21 Quiz: Longest Substring Without Repeating Characters"
+          questions={[
+            {
+              question: "Which sliding window type is best for finding the longest substring with unique characters?",
+              options: ["Fixed-size sliding window", "Variable-size sliding window", "Circular sliding window", "Static window"],
+              correctAnswer: 1,
+              explanation: "Since the length of the longest unique substring isn't known and can vary, we use a variable-size window that expands/shrinks based on uniqueness."
+            },
+            {
+              question: "If the right pointer 'j' encounters a character that is ALREADY present in the window, what should the left pointer 'i' do?",
+              options: ["Stop the program", "Jump to the end", "Move forward (shrink the window) until the repeating character is no longer in the window", "Stay at the same position"],
+              correctAnswer: 2,
+              explanation: "To restore the 'unique character' property of the window, we must remove characters from the left until the duplicate is gone."
+            },
+            {
+              question: "What is the most efficient way to check if a character already exists in the current window?",
+              options: ["Iterate through the entire window every time", "Use a Set or a Hash Map to store characters in the window", "Sort the string first", "Use nested loops"],
+              correctAnswer: 1,
+              explanation: "A Hash Map or Set provides O(1) average time complexity for lookups, keeping the overall algorithm efficient."
+            },
+            {
+              question: "What is the overall time complexity of this sliding window approach?",
+              options: ["O(n^2)", "O(n log n)", "O(n)", "O(2^n)"],
+              correctAnswer: 2,
+              explanation: "Even though there's a loop inside the main loop to move the left pointer, each character is 'visited' by the pointers at most twice, resulting in O(n)."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={21}
+        />
       </section>
     </div>
   );

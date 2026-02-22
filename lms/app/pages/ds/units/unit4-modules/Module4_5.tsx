@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_5: React.FC = () => {
   return (
@@ -354,6 +355,47 @@ class Solution {
           <li>Perform Post-order</li>
           <li>Observe how each of the traversals takes place and how the final output gets affected by that.</li>
         </ul>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.5 Quiz: Introduction to Binary Trees"
+          questions={[
+            {
+              question: "What is the maximum number of children a node in a binary tree can have?",
+              options: ["1", "2", "3", "Unlimited"],
+              correctAnswer: 1,
+              explanation: "By definition, a binary tree restricts each node to at most two children: a left child and a right child."
+            },
+            {
+              question: "Which type of binary tree has every level completely filled, with the last level filled from left to right?",
+              options: ["Full Binary Tree", "Perfect Binary Tree", "Complete Binary Tree", "Degenerate Binary Tree"],
+              correctAnswer: 2,
+              explanation: "A Complete Binary Tree fills every level except possibly the last, and nodes in the last level are placed as far left as possible."
+            },
+            {
+              question: "What is the maximum number of nodes at level 3 of a binary tree (where level starts at 0)?",
+              options: ["4", "6", "8", "16"],
+              correctAnswer: 2,
+              explanation: "The max nodes at level l is 2^l. Level 3 = 2^3 = 8 nodes."
+            },
+            {
+              question: "In a degenerate (pathological) binary tree, performance degrades to match which structure?",
+              options: ["A balanced tree", "A complete tree", "A linked list", "A hash table"],
+              correctAnswer: 2,
+              explanation: "A degenerate tree has every internal node with only one child, making it essentially a linear structure with O(n) search time, just like a linked list."
+            },
+            {
+              question: "Which traversal method is used to search a BST so that nodes are visited in sorted order?",
+              options: ["Preorder", "Postorder", "Level Order", "Inorder"],
+              correctAnswer: 3,
+              explanation: "Inorder traversal (Left → Root → Right) on a BST visits nodes in ascending sorted order because smaller values are always in the left subtree."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={5}
+        />
       </section>
     </div>
   );

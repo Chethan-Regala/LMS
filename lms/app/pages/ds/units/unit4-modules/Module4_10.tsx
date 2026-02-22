@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_10: React.FC = () => {
   return (
@@ -159,7 +160,7 @@ for (auto pair : studentGrades) {
 
       <section className="content-section">
         <p>Here's a code snippet that you can try running in your IDE and see how the code executes</p>
-        
+
         <details className="bg-gray-50 p-4 rounded my-4">
           <summary className="font-semibold cursor-pointer">Click to see the full runnable C++ Code Example</summary>
           <div className="bg-gray-100 p-4 rounded overflow-x-auto mt-4">
@@ -354,7 +355,7 @@ public class HashMapDemo {
       <section className="content-section">
         <h3>hashMap VS Hashtables</h3>
         <p>In C++, you will often see two types of maps. It is crucial to know the difference for interviews:</p>
-        
+
         <h4 className="font-semibold mt-4">std::unordered_map (The Hash Map):</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li><strong>Underlying Data Structure:</strong> Hash Table.</li>
@@ -438,12 +439,12 @@ public class HashMapDemo {
         <p>
           To truly master Hash Maps and stand out in interviews, you should explore how they are used in real-world distributed systems and understand the deep C++ specifics.
         </p>
-        
+
         <h4 className="font-semibold mt-4">1. Standard C++ Documentation (cppreference)</h4>
         <p>
-          <a 
-            href="https://en.cppreference.com/w/cpp/container/unordered_map" 
-            target="_blank" 
+          <a
+            href="https://en.cppreference.com/w/cpp/container/unordered_map"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
@@ -453,9 +454,9 @@ public class HashMapDemo {
 
         <h4 className="font-semibold mt-4">2. Visualgo.net - Hash Table Animation</h4>
         <p>
-          <a 
-            href="https://visualgo.net/en/hashtable" 
-            target="_blank" 
+          <a
+            href="https://visualgo.net/en/hashtable"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
@@ -468,15 +469,56 @@ public class HashMapDemo {
 
         <h4 className="font-semibold mt-4">3. Consistent Hashing - The Key to Scalability</h4>
         <p>
-          <a 
-            href="https://www.toptal.com/big-data/consistent-hashing" 
-            target="_blank" 
+          <a
+            href="https://www.toptal.com/big-data/consistent-hashing"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
             https://www.toptal.com/big-data/consistent-hashing
           </a>
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.10 Quiz: Hash Maps and Hash Tables"
+          questions={[
+            {
+              question: "What is the average time complexity for a search operation in a HashMap?",
+              options: ["O(n)", "O(log n)", "O(1)", "O(n^2)"],
+              correctAnswer: 2,
+              explanation: "HashMaps use hashing to compute a direct index for any key, enabling O(1) average-case lookup without searching through the data."
+            },
+            {
+              question: "What happens in a HashMap when two different keys hash to the same index?",
+              options: ["The second key overwrites the first", "A collision occurs and is resolved (e.g., via chaining)", "The program crashes", "The key is ignored"],
+              correctAnswer: 1,
+              explanation: "A collision occurs when two keys map to the same bucket. Chaining resolves this by storing a linked list at that bucket containing all colliding key-value pairs."
+            },
+            {
+              question: "In C++, which STL class is the standard HashMap (unordered, O(1) average)?",
+              options: ["std::map", "std::set", "std::unordered_map", "std::multimap"],
+              correctAnswer: 2,
+              explanation: "std::unordered_map uses hashing for O(1) average operations. std::map uses a Red-Black Tree for O(log n) but keeps keys sorted."
+            },
+            {
+              question: "What is the default load factor threshold in Java's HashMap that triggers resizing?",
+              options: ["0.5", "0.75", "1.0", "0.9"],
+              correctAnswer: 1,
+              explanation: "Java's HashMap resizes (rehashes to double capacity) when it becomes 75% full (load factor = 0.75) to maintain O(1) average performance."
+            },
+            {
+              question: "What is the worst-case time complexity for a HashMap lookup (when collisions are severe)?",
+              options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+              correctAnswer: 2,
+              explanation: "If all keys hash to the same bucket, the HashMap degrades to a linked list search at that bucket, giving O(n) worst-case performance."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={10}
+        />
       </section>
     </div>
   );

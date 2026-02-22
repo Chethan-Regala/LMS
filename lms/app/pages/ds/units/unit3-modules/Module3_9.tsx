@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_9: React.FC = () => {
   return (
@@ -45,7 +46,7 @@ const Module3_9: React.FC = () => {
         </ol>
 
         <h3 className="text-xl font-semibold mb-4">How to Complete It (Simple Steps)</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">Step 1: Open the LeetCode problem</p>
@@ -98,8 +99,47 @@ const Module3_9: React.FC = () => {
         </p>
 
         <div className="mb-6 flex flex-col items-center">
-          <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="You Got This" className="w-full max-w-md h-auto rounded-lg shadow-md" />
+          <img src="https://media.giphy.com/media/media/v1.Y2lkPTc5MGI3NjExM3o3YWJLaE9wdTBOd2VuSDNPJmVwPXYxX2dpZnNfc2VhcmNoJmN0PWc/3o7abKhOpu0NwenH3O/giphy.webp" alt="You Got This" className="w-full max-w-md h-auto rounded-lg shadow-md" />
         </div>
+
+        <Quiz
+          title="Module 3.9 Quiz: Milestone Check-in"
+          questions={[
+            {
+              question: "What is the primary objective of this LeetCode milestone?",
+              options: ["To find the shortest possible solution", "To build coding habits and professional visibility", "To compete with other students on speed", "To learn new programming languages"],
+              correctAnswer: 1,
+              explanation: "The milestone focuses on strengthening logic through practice and building a portfolio using tools like GitHub and LinkedIn."
+            },
+            {
+              question: "What does the 'Accepted' status on LeetCode signify?",
+              options: ["Your code is stylish", "Your solution passed all hidden test cases and performance constraints", "You have finished the course", "Your code was reviewed by a human"],
+              correctAnswer: 1,
+              explanation: "Accepted means the code is logically correct and efficient enough to pass all the platform's tests."
+            },
+            {
+              question: "How does the LeetHub extension (optional) help with your GitHub profile?",
+              options: ["It deletes old files", "It automatically pushes your accepted solutions to a GitHub repository", "It writes documentation for you", "It makes your code run faster"],
+              correctAnswer: 1,
+              explanation: "LeetHub synchronizes your LeetCode activity with GitHub, helping recruiters see your consistent coding practice."
+            },
+            {
+              question: "Which of the following is a mandatory part of the submission for this module?",
+              options: ["A video of you coding", "A screenshot of your Accepted solution", "Your resume", "A 500-word essay"],
+              correctAnswer: 1,
+              explanation: "A screenshot of the Accepted status is required to verify completion of the exercise."
+            },
+            {
+              question: "If you get a 'Time Limit Exceeded' (TLE) error, what should you do?",
+              options: ["Give up", "Refresh the page", "Optimize the logic (e.g., look for unnecessary loops) and try again", "Buy a faster computer"],
+              correctAnswer: 2,
+              explanation: "TLE means your algorithm is too slow for the input size. You need to rethink the approach (e.g., using a more efficient data structure like a Stack)."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={9}
+        />
       </section>
     </div>
   );

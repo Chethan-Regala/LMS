@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_3: React.FC = () => {
   return (
@@ -78,6 +79,45 @@ const Module3_3: React.FC = () => {
         <p className="mb-6">
           Try converting five expressions by hand first (including nested parentheses and the ^ operator), then implement the code and test those same expressions programmatically. After that, solve the LeetCode RPN evaluation problem to reinforce how postfix is executed. You are doing great — take the assessment, trust your stack, and remember that every tough expression becomes simple once you follow the steps. Go for it!
         </p>
+
+        <Quiz
+          title="Module 3.3 Quiz: Infix to Postfix Conversion"
+          questions={[
+            {
+              question: "What is Postfix notation also commonly known as?",
+              options: ["Polish Notation", "Reverse Polish Notation (RPN)", "Parenthetical Notation", "Stack-based Infix"],
+              correctAnswer: 1,
+              explanation: "Postfix notation is formally known as Reverse Polish Notation (RPN)."
+            },
+            {
+              question: "When scanning an infix expression, what should you do if the current character is an OPERAND (like 'A' or '5')?",
+              options: ["Push it onto the operator stack", "Discard it", "Append it directly to the output string", "Wait for the next operator"],
+              correctAnswer: 2,
+              explanation: "Operands maintain their relative order in postfix and are added directly to the result string."
+            },
+            {
+              question: "How is a closing parenthesis ')' handled during the conversion process?",
+              options: ["It is pushed onto the stack", "Operators are popped from the stack to the output until '(' is reached", "It triggers an error", "It is ignored"],
+              correctAnswer: 1,
+              explanation: "Closing parentheses act as markers to empty the operator stack for the current sub-expression until the matching opening parenthesis is found."
+            },
+            {
+              question: "Which operator typically has the highest precedence in these expressions?",
+              options: ["+", "*", "^ (Exponentiation)", "/"],
+              correctAnswer: 2,
+              explanation: "Exponentiation (^) usually has higher precedence than multiplication/division and addition/subtraction."
+            },
+            {
+              question: "What is the primary reason for using Postfix notation in computer systems?",
+              options: ["It makes the expression shorter", "It eliminates the need for parentheses and precedence rules during evaluation", "It is easier for humans to read", "It reduces memory usage"],
+              correctAnswer: 1,
+              explanation: "Postfix notation allows a simple stack-based evaluation without complex rules, as the order of operations is unambiguous."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={3}
+        />
       </section>
     </div>
   );

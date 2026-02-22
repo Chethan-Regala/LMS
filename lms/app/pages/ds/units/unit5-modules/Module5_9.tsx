@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_9: React.FC = () => {
   return (
@@ -80,7 +81,7 @@ const Module5_9: React.FC = () => {
 
       <section className="content-section">
         <h3>Implementation</h3>
-        
+
         <details className="bg-gray-50 p-4 rounded mt-4">
           <summary className="cursor-pointer font-semibold">C++ Solution</summary>
           <div className="bg-gray-100 p-4 rounded overflow-x-auto mt-2">
@@ -191,15 +192,56 @@ const Module5_9: React.FC = () => {
       <section className="content-section">
         <h3>Practice Problem</h3>
         <p>
-          <a 
-            href="https://leetcode.com/problems/find-if-path-exists-in-graph/" 
-            target="_blank" 
+          <a
+            href="https://leetcode.com/problems/find-if-path-exists-in-graph/"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
             LeetCode 1971: Find if Path Exists in Graph
           </a>
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.9 Quiz: Find if Path Exists in Graph"
+          questions={[
+            {
+              question: "If source == destination in the path existence problem, what should you return immediately?",
+              options: ["false", "null", "true", "Run BFS first"],
+              correctAnswer: 2,
+              explanation: "A node is trivially reachable from itself. Returning true immediately as a base case avoids unnecessary traversal and is an important edge case."
+            },
+            {
+              question: "What is the first step before running BFS/DFS in the path existence problem?",
+              options: ["Sort all edges", "Build an adjacency list from the edge list", "Count total nodes", "Find all leaf nodes"],
+              correctAnswer: 1,
+              explanation: "The input is given as an edge list. You must first convert it to an adjacency list so that you can efficiently look up neighbors of any given node during traversal."
+            },
+            {
+              question: "In the BFS path-finding solution, what does reaching the destination node during traversal mean?",
+              options: ["The graph has a cycle", "A path exists between source and destination", "The path is the shortest possible", "All nodes have been visited"],
+              correctAnswer: 1,
+              explanation: "If BFS or DFS reaches the destination node, it means a valid path exists from source to destination in the graph."
+            },
+            {
+              question: "Which edge case must be handled in path existence problems?",
+              options: ["Negative weights", "No edges in the graph", "Floating point node values", "Nodes with self-loops only"],
+              correctAnswer: 1,
+              explanation: "If there are no edges, no paths exist between any two different nodes (unless source == destination). Returning false for this case is essential."
+            },
+            {
+              question: "Path existence in a graph is a real-world analogy for which of the following?",
+              options: ["Sorting database records", "Checking if two computers can communicate in a network", "Finding prime numbers", "Calculating factorial"],
+              correctAnswer: 1,
+              explanation: "Graph path existence directly models network connectivity: can packets travel from one machine to another? This underlies routing algorithms and access control systems."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={9}
+        />
       </section>
     </div>
   );

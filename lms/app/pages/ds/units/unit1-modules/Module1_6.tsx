@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module1_6: React.FC = () => {
   return (
@@ -12,70 +13,111 @@ const Module1_6: React.FC = () => {
       </div>
 
       <section className="content-section">
+        <h3>Why Efficiency Matters</h3>
         <p>
-          In our previous lessons, we explored foundational mathematics like divisors, GCD, and concepts such as counting digits and identifying primes. These helped us build a solid base for solving problems in programming. But solving a problem is just the first step—how efficiently we solve it is equally important.
+          In our previous lessons, we explored foundational mathematics like divisors, GCD, and concepts such as counting digits. These helped us build a solid base for solving problems. But solving a problem is just the first step—<strong>how efficiently</strong> we solve it is equally important.
         </p>
-        <p>Have you ever wondered why some apps load in a blink while others take ages?</p>
+        <div className="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-500 my-8 shadow-sm">
+          <p className="text-gray-700 leading-relaxed italic">
+            "Have you ever wondered why some apps load in a blink while others take ages? This difference often comes down to how efficiently their algorithms are designed."
+          </p>
+        </div>
         <p>
-          This difference often comes down to how efficiently their algorithms are designed. Think about looking for a friend's name in a contact list. If the list is sorted, you can find the name quickly (like skipping to the right page in a dictionary). But if it's unsorted, you might have to check every entry one by one!
+          Think about looking for a friend's name in a contact list. If the list is sorted, you can find the name quickly. But if it's unsorted, you might have to check every entry one by one!
         </p>
-        <p>
-          That's where time and space complexity come in. They help us measure and compare how fast or memory-efficient different approaches are, guiding us to write optimized code.
-        </p>
-        <p>In this lesson, we'll uncover:</p>
-        <ul>
-          <li>What time and space complexity means.</li>
-          <li>Why they matter in programming.</li>
-          <li>How to analyze them with simple examples and real-world analogies.</li>
-        </ul>
-        <p>Ready to make your code faster and smarter? Let's dive in</p>
       </section>
 
       <section className="content-section">
-        <h3>Time Complexity</h3>
+        <h3>1. Time Complexity</h3>
         <p>
-          Time complexity describes how the running time of an algorithm changes based on the length of the input. It is not a direct measurement of the actual time it takes to execute an algorithm, as external factors such as programming language, operating system, and processing power can affect execution time.
+          Time complexity describes how the <strong>running time</strong> of an algorithm changes based on the length of the input. It is not a direct measurement of seconds, but rather a count of the number of operations.
         </p>
-        <p>Key points about time complexity:</p>
-        <ul>
-          <li>It is a type of computational complexity that focuses on the time required to execute an algorithm.</li>
-          <li>It depends on the size of the input data being processed.</li>
-          <li>It helps define an algorithm's efficiency and evaluate its performance.</li>
-          <li>It represents the time taken for each statement to execute as the input size changes.</li>
-        </ul>
-      </section>
-
-      <section className="content-section">
-        <h3>Space Complexity</h3>
-        <p>
-          Space complexity refers to the amount of memory an algorithm requires to execute. It accounts for both the memory needed to store input data and any auxiliary memory used during the algorithm's operation.
-        </p>
-        <p>Key points about space complexity:</p>
-        <ul>
-          <li>It measures the memory used by a program while executing.</li>
-          <li>Space complexity includes both input space and auxiliary space.</li>
-          <li><strong>Input space:</strong> Memory needed to store the input data.</li>
-          <li><strong>Auxiliary space:</strong> Additional memory required for temporary variables and operations.</li>
-          <img src="https://kq-storage.kalvium.community/tcsc.png" alt="" />
-          <li>This metric is crucial for understanding an algorithm's memory efficiency and ensuring it runs within the available system resources.</li>
-        </ul>
-      </section>
-
-      <section className="content-section">
-        <p>Watch this video given below to understand what is time and space complexity and various notations used to represent them.</p>
-        <div className="flex justify-center my-4">
-          <iframe width="407" height="360" src="https://www.youtube.com/embed/FPu9Uld7W-E" title="Time and Space Complexity - Strivers A2Z DSA Course" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-md my-6">
+          <ul className="space-y-3">
+            <li className="flex items-center gap-3">
+              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+              <span>Depends on the size of the input data.</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+              <span>Helps evaluate algorithm performance independently of hardware.</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+              <span>Represents growth rate, not absolute time.</span>
+            </li>
+          </ul>
         </div>
       </section>
 
       <section className="content-section">
-        <h3>Summary</h3>
-        <p>This lesson introduced the basics of time complexity and space complexity, key concepts for evaluating and optimizing algorithms:</p>
-        <ul>
-          <li><strong>Time Complexity:</strong> Measures how the runtime of an algorithm grows with input size, helping assess its efficiency.</li>
-          <li><strong>Space Complexity:</strong> Evaluates the memory required for an algorithm, including input and temporary storage.</li>
-        </ul>
+        <h3>2. Space Complexity</h3>
+        <p>
+          Space complexity refers to the amount of memory an algorithm requires to execute. It accounts for both the memory needed to store input data and any <strong>auxiliary memory</strong> used during the algorithm's operation.
+        </p>
+        <div className="grid md:grid-cols-2 gap-6 my-8">
+          <div className="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
+            <h4 className="font-bold text-emerald-800 mb-2">Input Space</h4>
+            <p className="text-sm text-gray-600">Memory needed to store the initial input data provided to the algorithm.</p>
+          </div>
+          <div className="bg-purple-50 p-5 rounded-xl border border-purple-100">
+            <h4 className="font-bold text-purple-800 mb-2">Auxiliary Space</h4>
+            <p className="text-sm text-gray-600">Extra or temporary memory used by the algorithm to solve the problem.</p>
+          </div>
+        </div>
+        <div className="image-container flex justify-center my-6">
+          <img src="https://kq-storage.kalvium.community/tcsc.png" alt="Time vs Space Complexity" className="rounded-xl shadow-lg border border-gray-100" />
+        </div>
       </section>
+
+      <section className="content-section">
+        <h3>Course Learning</h3>
+        <p>Watch this video to understand the fundamental concepts of complexity analysis and the notations used to represent them.</p>
+        <div className="video-embed my-6">
+          <div className="video-container shadow-2xl rounded-2xl overflow-hidden">
+            <iframe src="https://www.youtube.com/embed/FPu9Uld7W-E" title="Time and Space Complexity" allowFullScreen></iframe>
+          </div>
+        </div>
+      </section>
+
+      <Quiz
+        title="Module 1.6 Quiz: Complexity Basics"
+        questions={[
+          {
+            question: "What does 'Time Complexity' primarily measure?",
+            options: ["The exact number of seconds a program takes", "How the number of operations increases with input size", "The size of the source code file", "The speed of the CPU"],
+            correctAnswer: 1,
+            explanation: "Time complexity focuses on the rate of growth in operations relative to the input size (n), ensuring the analysis is hardware-independent."
+          },
+          {
+            question: "If an algorithm creates a new array of size 'n' to store intermediate results, what kind of space is this called?",
+            options: ["Input Space", "Auxiliary Space", "Primary Space", "Stack Space"],
+            correctAnswer: 1,
+            explanation: "Extra memory used by the algorithm for its internal logic (beyond the input itself) is known as Auxiliary Space."
+          },
+          {
+            question: "Why is absolute time (in seconds) not used to define complexity?",
+            options: ["It is too hard to calculate", "It varies depending on the hardware and operating system", "Time doesn't matter in DSA", "Seconds are not a scientific unit"],
+            correctAnswer: 1,
+            explanation: "The same code runs faster on a supercomputer than a laptop. Complexity analysis must be platform-independent."
+          },
+          {
+            question: "In the contact list analogy, which scenario is more efficient for finding a name?",
+            options: ["Checking entries one by one in an unsorted list", "Searching a sorted list (skipping to the right page)", "Printing the whole list first", "Buying a new phone"],
+            correctAnswer: 1,
+            explanation: "Searching a sorted list (logarithmic complexity) is far more efficient than checking every entry (linear complexity)."
+          },
+          {
+            question: "Which components make up total 'Space Complexity'?",
+            options: ["Only the input data", "Only temporary variables", "Input Space + Auxiliary Space", "CPU Cache + RAM"],
+            correctAnswer: 2,
+            explanation: "Space complexity is the total memory used, which includes the space for inputs plus any extra variables used during execution."
+          }
+        ]}
+        subject="DS"
+        unitId={1}
+        moduleId={6}
+      />
     </div>
   );
 };

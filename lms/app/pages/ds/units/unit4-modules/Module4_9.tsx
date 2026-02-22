@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_9: React.FC = () => {
   return (
@@ -77,13 +78,13 @@ const Module4_9: React.FC = () => {
       <section className="content-section">
         <h3>Practice Problems</h3>
         <p>Try these after solving your main problem:</p>
-        
+
         <h4 className="font-semibold mt-4">LeetCode</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://leetcode.com/problems/invert-binary-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/invert-binary-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -91,9 +92,9 @@ const Module4_9: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/same-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/same-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -101,9 +102,9 @@ const Module4_9: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/symmetric-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/symmetric-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -115,9 +116,9 @@ const Module4_9: React.FC = () => {
         <h4 className="font-semibold mt-4">HackerRank</h4>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/swap-nodes-algo/problem" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/swap-nodes-algo/problem"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -134,9 +135,9 @@ const Module4_9: React.FC = () => {
         <h3>Additional Reference Material</h3>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://www.freecodecamp.org/news/understanding-recursion-in-programming/" 
-              target="_blank" 
+            <a
+              href="https://www.freecodecamp.org/news/understanding-recursion-in-programming/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -144,9 +145,9 @@ const Module4_9: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/" 
-              target="_blank" 
+            <a
+              href="https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -154,9 +155,9 @@ const Module4_9: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/invert-binary-tree/solutions/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/invert-binary-tree/solutions/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -175,6 +176,47 @@ const Module4_9: React.FC = () => {
         <p>
           Now that you can flip a tree… what if you were asked to check whether a tree is symmetric around its center? Can you adapt your logic to verify mirror structure without actually flipping it? That's where we're heading next!
         </p>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.9 Quiz: Invert Binary Tree"
+          questions={[
+            {
+              question: "What does 'inverting' a binary tree mean?",
+              options: ["Sorting all node values", "Swapping the left and right children of every node", "Reversing the tree level by level only", "Deleting alternate nodes"],
+              correctAnswer: 1,
+              explanation: "Inverting a tree means recursively swapping the left and right children of every single node, creating a mirror image of the original tree."
+            },
+            {
+              question: "For input [4, 2, 7, 1, 3, 6, 9], what is the level-order output after inversion?",
+              options: ["4 7 2 9 6 3 1", "4 2 7 1 3 6 9", "9 6 3 1 2 7 4", "1 3 6 9 2 7 4"],
+              correctAnswer: 0,
+              explanation: "Inverting swaps children at every level. Root stays 4. Its children swap: 7 (was right) becomes left, 2 becomes right. Similarly for the next level: 4 7 2 9 6 3 1."
+            },
+            {
+              question: "The tree inversion algorithm is best understood using which technique?",
+              options: ["Iteration with a for loop", "Recursion and tree traversal", "Sorting the array of values", "Using a hash map"],
+              correctAnswer: 1,
+              explanation: "Inversion is elegantly solved recursively: invert(node) swaps children, then recursively calls invert on each child."
+            },
+            {
+              question: "After inverting a BST, what property is likely broken?",
+              options: ["The height remains the same", "The BST property (left < root < right)", "The number of nodes", "The root value"],
+              correctAnswer: 1,
+              explanation: "Inverting swaps left and right subtrees at every node. This breaks the BST ordering property since values that were on the right (larger) move to the left."
+            },
+            {
+              question: "The tree inversion problem directly leads to which related tree concept?",
+              options: ["AVL rotations", "B-Tree splits", "Symmetric tree / Mirror check", "Heap sort"],
+              correctAnswer: 2,
+              explanation: "After mastering inversion, checking whether a tree is symmetric (a mirror of itself) becomes a natural next step, as both use the same swapping/mirroring logic."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={9}
+        />
       </section>
     </div>
   );

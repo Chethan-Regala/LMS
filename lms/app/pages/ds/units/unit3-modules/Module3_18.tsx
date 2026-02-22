@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_18: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Module3_18: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">Middle of the Linked List – LeetCode Problem #876</h3>
-        
+
         <p className="mb-6">
           Finding the midpoint of an array is easy—you just divide the length by two. But in a Linked List, you don't know the length upfront! To find the middle, you'd normally have to walk through the entire list to count the nodes, then walk through it a second time to reach the center.
         </p>
@@ -40,7 +41,7 @@ const Module3_18: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-semibold mb-4">Step-by-Step Approach</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">The Two-Pointer Strategy</p>
@@ -121,6 +122,45 @@ const Module3_18: React.FC = () => {
         <p className="mb-6 text-center font-semibold">
           Master this pattern and unlock many linked list problems! 🎯
         </p>
+
+        <Quiz
+          title="Module 3.18 Quiz: Finding the Middle Element"
+          questions={[
+            {
+              question: "If a linked list has 7 nodes (odd), at which node will the 'slow' pointer stop when the 'fast' pointer reaches the end?",
+              options: ["3rd node", "4th node", "5th node", "7th node"],
+              correctAnswer: 1,
+              explanation: "In an odd list, the formula for the middle is (n/2) + 1. For 7 nodes, the slow pointer lands exactly on the 4th node."
+            },
+            {
+              question: "If the problem asks for the FIRST middle node in an even-length list (e.g., node 3 in a 6-node list), how would you adjust the logic?",
+              options: ["Move the slow pointer faster", "Change the loop condition to stop one step earlier for the fast pointer", "Reverse the list first", "There is no way to do this"],
+              correctAnswer: 1,
+              explanation: "By checking 'fast.next.next' or ending the loop slightly earlier, you can capture the first of the two middle elements."
+            },
+            {
+              question: "What is the primary advantage of the two-pointer approach over counting the nodes first?",
+              options: ["It uses less memory", "It performs the task in a single pass instead of two", "It works only for sorted lists", "It is easier to write in Python"],
+              correctAnswer: 1,
+              explanation: "Efficiency in linked lists often involves minimizing the number of times you traverse the pointers."
+            },
+            {
+              question: "In the condition 'while (fast != NULL && fast.next != NULL)', why do we check 'fast.next != NULL'?",
+              options: ["To check if the list is empty", "To prevent a Null Pointer Exception when the fast pointer tries to jump two steps", "To find the tail node", "To delete the last node"],
+              correctAnswer: 1,
+              explanation: "Since 'fast' moves two nodes at a time, we must ensure that a node exists to jump TO before making the leap."
+            },
+            {
+              question: "What is the Space Complexity of this 'Tortoise and Hare' algorithm?",
+              options: ["O(n)", "O(log n)", "O(1)", "O(n^2)"],
+              correctAnswer: 2,
+              explanation: "The algorithm only uses two pointers (slow and fast), which do not scale with the size of the input list."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={18}
+        />
       </section>
     </div>
   );

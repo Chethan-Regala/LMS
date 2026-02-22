@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_15: React.FC = () => {
   return (
@@ -113,6 +114,47 @@ const Module5_15: React.FC = () => {
             If you can reason through this problem clearly, it shows you have internalized the core ideas of the course.
           </p>
         </div>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.15 Quiz: Task Dependency Manager"
+          questions={[
+            {
+              question: "In the Task Dependency Manager problem, what does a DIRECTED CYCLE represent?",
+              options: ["An optimized task order", "A circular dependency where tasks block each other permanently", "A completed task loop", "A valid execution order"],
+              correctAnswer: 1,
+              explanation: "A directed cycle (e.g., A depends on B, B depends on C, C depends on A) creates a circular dependency. No task can start because each waits for another in the cycle."
+            },
+            {
+              question: "This problem is fundamentally asking:",
+              options: ["What is the maximum number of tasks?", "Can all tasks be completed? (Is the dependency graph acyclic?)", "What is the shortest task chain?", "How to sort tasks alphabetically?"],
+              correctAnswer: 1,
+              explanation: "The core question is whether the directed graph of task dependencies has any cycle. If no cycle exists (DAG), all tasks can be completed. A single cycle blocks the entire system."
+            },
+            {
+              question: "A directed graph with no cycles is called a:",
+              options: ["Complete Graph", "Bipartite Graph", "Directed Acyclic Graph (DAG)", "Undirected Tree"],
+              correctAnswer: 2,
+              explanation: "A Directed Acyclic Graph (DAG) is a directed graph with no directed cycles. Dependency managers, build systems, and topological sort all require the input to be a DAG."
+            },
+            {
+              question: "Which algorithm is typically used to detect a cycle in a DIRECTED graph?",
+              options: ["BFS with a distance array", "DFS with a 'currently in stack' flag for each node", "Dijkstra's algorithm", "Kruskal's algorithm"],
+              correctAnswer: 1,
+              explanation: "DFS with a 'recursion stack' (or coloring: white/gray/black) detects back edges in directed graphs. A back edge from a node to an ancestor indicates a cycle."
+            },
+            {
+              question: "If the Task Dependency Manager determines the system CAN be completed, what is the output?",
+              options: ["The full execution schedule", "true (a valid order exists)", "The number of tasks", "The longest task chain"],
+              correctAnswer: 1,
+              explanation: "This is a decision problem with a boolean output. If no cycle exists, the answer is true (the system can be completed). The problem does not require you to produce the actual order."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={15}
+        />
       </section>
     </div>
   );

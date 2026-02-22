@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_8: React.FC = () => {
   return (
@@ -88,9 +89,9 @@ const Module4_8: React.FC = () => {
         <h3>Practice Problems</h3>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://www.geeksforgeeks.org/problems/height-of-binary-tree/1" 
-              target="_blank" 
+            <a
+              href="https://www.geeksforgeeks.org/problems/height-of-binary-tree/1"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -98,9 +99,9 @@ const Module4_8: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -108,9 +109,9 @@ const Module4_8: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/maximum-depth-of-binary-tree/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -156,6 +157,47 @@ const Module4_8: React.FC = () => {
           Let's get down to the coding part now.
         </p>
         <img src="https://storage.googleapis.com/kq-storage.kalvium.community/Gifs%2Fcat-bye.gif" alt="" />
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.8 Quiz: Maximum Depth of Binary Tree"
+          questions={[
+            {
+              question: "For a binary tree [3, 9, 20, null, null, 15, 7], what is the maximum depth?",
+              options: ["1", "2", "3", "4"],
+              correctAnswer: 2,
+              explanation: "The tree has 3 levels: root (3) at level 1, {9,20} at level 2, {15,7} at level 3. The maximum depth is 3."
+            },
+            {
+              question: "What is the recursive formula for computing maximum depth?",
+              options: ["depth = height(left) + height(right)", "depth = 1 + max(depth(left), depth(right))", "depth = max(left, right)", "depth = nodes / 2"],
+              correctAnswer: 1,
+              explanation: "The depth at any node is 1 (for the current node) plus the maximum depth of its left or right subtree, whichever is deeper."
+            },
+            {
+              question: "What does the algorithm return when the root is null (empty tree)?",
+              options: ["-1", "0", "1", "undefined"],
+              correctAnswer: 1,
+              explanation: "An empty tree has no nodes, so its depth/height is 0."
+            },
+            {
+              question: "What is step 3 in building the tree from level-order input?",
+              options: ["Sort the input array", "Use a queue to attach children from the input array", "Find the max value", "Count the null values"],
+              correctAnswer: 1,
+              explanation: "After creating the root from the first element, you use a queue to process nodes and attach the next two input values as left and right children for each node."
+            },
+            {
+              question: "Mastering max-depth of binary trees is a prerequisite for which more advanced topic?",
+              options: ["Sorting algorithms", "Graph shortest path (Dijkstra)", "Balancing trees (AVL trees) and tree transformation", "Dynamic programming"],
+              correctAnswer: 2,
+              explanation: "Understanding depth computation is foundational for AVL/balancing algorithms (which rely on height differences) and tree transformations like inversion."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={8}
+        />
       </section>
     </div>
   );

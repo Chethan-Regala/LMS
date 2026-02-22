@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_7: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Module3_7: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">Basic Calculator – LeetCode Problem #224</h3>
-        
+
         <p className="mb-6">
           If Reverse Polish Notation was the introduction to stacks, Basic Calculator is the final boss of string parsing. This problem takes you from simply following a post-fix order to handling the chaos of standard math: parentheses, unary operators (like negative numbers), and infix notation.
         </p>
@@ -50,7 +51,7 @@ const Module3_7: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-semibold mb-4">Step-by-Step Approach</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">Variables to Track</p>
@@ -118,6 +119,45 @@ const Module3_7: React.FC = () => {
         <p className="mb-6">
           Don't let the nested parentheses get you down! Just remember: every ( is just a new beginning. Keep track of your signs, and the math will take care of itself.
         </p>
+
+        <Quiz
+          title="Module 3.7 Quiz: Math Expression Parsing"
+          questions={[
+            {
+              question: "When evaluating an expression with parentheses using the iterative approach, what is the role of the Stack?",
+              options: ["To store every single character", "To save the 'context' (current result and sign) when entering a sub-problem defined by '('", "To sort the numbers", "To reverse the string"],
+              correctAnswer: 1,
+              explanation: "The stack acts as a memory to store the work-in-progress result and a pending operator so we can start fresh inside a parenthesis group."
+            },
+            {
+              question: "How is a subtraction operation typically handled in the 'Basic Calculator' algorithm logic?",
+              options: ["By deleting the next number", "By setting a 'sign' variable to -1 and adding the next value as (sign * value)", "By waiting until the end of the string", "By using a second stack for operators"],
+              correctAnswer: 1,
+              explanation: "Treating 'A - B' as 'A + (-1 * B)' allows us to use a simple running sum for the result."
+            },
+            {
+              question: "What happens when the parser encounters a closing parenthesis ')'?",
+              options: ["The program ends", "The current result is reset to zero", "The current result is combined with the 'context' (sign and previous sum) popped from the stack", "All numbers are deleted"],
+              correctAnswer: 2,
+              explanation: "Meeting ')' signifies the end of a scope; we must multiply the current sub-result by the scope's sign and add it to the outer sum."
+            },
+            {
+              question: "What is the time complexity for evaluating an expression string of length 'n' using this stack approach?",
+              options: ["O(n^2)", "O(log n)", "O(n)", "O(1)"],
+              correctAnswer: 2,
+              explanation: "Every character is processed exactly once as we iterate through the string."
+            },
+            {
+              question: "Why is it important to handle spaces (' ') in the input string?",
+              options: ["Spaces add to the final result", "Spaces are invalid and should crash the program", "Spaces should be ignored to prevent parsing errors", "Spaces represent the number zero"],
+              correctAnswer: 2,
+              explanation: "Expression strings often contain stylistic spaces; the algorithm must skip them to focus on meaningful tokens (digits, operators, brackets)."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={7}
+        />
       </section>
     </div>
   );

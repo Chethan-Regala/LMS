@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module4_1: React.FC = () => {
   return (
@@ -222,10 +223,10 @@ const Module4_1: React.FC = () => {
         <p><strong>How it looks:</strong> For a tree where node 'A' connects to 'B' and 'C', and 'B' connects to 'D', the list would be:</p>
         <div className="bg-gray-100 p-4 rounded overflow-x-auto my-4">
           <pre>
-A: [B, C]
-B: [A, D]
-C: [A]
-D: [B]
+            A: [B, C]
+            B: [A, D]
+            C: [A]
+            D: [B]
           </pre>
         </div>
         <p>
@@ -280,6 +281,47 @@ D: [B]
           <li>A rooted tree has one special node called the root, from which every other node descends uniquely.</li>
           <li>The chain letter model is a real-life example of a rooted tree, where one person sends letters to multiple people, branching out like a tree.</li>
         </ul>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 4.1 Quiz: Introduction to Trees"
+          questions={[
+            {
+              question: "In a tree with n nodes, how many edges does it have?",
+              options: ["n", "n+1", "n-1", "2n"],
+              correctAnswer: 2,
+              explanation: "A fundamental property of trees: every tree with n nodes has exactly n−1 edges. Removing any edge disconnects it; adding one creates a cycle."
+            },
+            {
+              question: "What is a forest in graph theory?",
+              options: ["A tree with more than 10 nodes", "A collection of disjoint (separate) trees", "A tree where every node has exactly two children", "A tree with only leaf nodes"],
+              correctAnswer: 1,
+              explanation: "A forest is simply a set of separate trees that are not connected to each other — just like individual trees in a real forest."
+            },
+            {
+              question: "Which memory representation is MOST efficient for storing a sparse tree?",
+              options: ["Adjacency Matrix", "Adjacency List", "2D Array", "Flat Array"],
+              correctAnswer: 1,
+              explanation: "Adjacency lists only store existing connections, making them memory-efficient. A matrix stores all possible connections (mostly zeros) and wastes space for sparse trees."
+            },
+            {
+              question: "In a tree, what is guaranteed about the path between any two nodes?",
+              options: ["There are multiple paths", "There is exactly one unique simple path", "There is no path", "The path is always the shortest"],
+              correctAnswer: 1,
+              explanation: "Rule 1 of trees — for any two distinct vertices u and v, there is exactly one simple path connecting them. Multiple paths would create a cycle."
+            },
+            {
+              question: "A structure has |E| = |V| - 1 but is NOT a tree. What could be wrong?",
+              options: ["It has too many nodes", "It is disconnected or has self-loops", "It has too many leaf nodes", "It has a root node"],
+              correctAnswer: 1,
+              explanation: "Having n-1 edges is necessary but not sufficient for a tree. The structure must also be connected and free of cycles and self-loops."
+            }
+          ]}
+          subject="DS"
+          unitId={4}
+          moduleId={1}
+        />
       </section>
     </div>
   );

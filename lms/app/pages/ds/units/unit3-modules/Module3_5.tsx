@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module3_5: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Module3_5: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">Evaluate Reverse Polish Notation – LeetCode Problem #150</h3>
-        
+
         <p className="mb-6">
           If you've ever used a classic HP calculator or wondered how computers actually process complex mathematical expressions like (3 + 4) * 5, you're about to find out! Evaluate Reverse Polish Notation (RPN) is a classic problem that moves beyond basic logic and introduces you to one of the most important data structures in computer science: the Stack.
         </p>
@@ -45,7 +46,7 @@ const Module3_5: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-semibold mb-4">Step-by-Step Approach</h3>
-        
+
         <div className="mb-6 space-y-4">
           <div>
             <p className="font-semibold mb-2">Understand the Data Structure</p>
@@ -124,6 +125,45 @@ const Module3_5: React.FC = () => {
         <p className="mb-6">
           Don't let the "Polish Notation" name intimidate you—it's just a different way of looking at math. Once you get the stack logic down, you'll see why this is such an elegant solution. Happy coding!
         </p>
+
+        <Quiz
+          title="Module 3.5 Quiz: Evaluate Reverse Polish Notation"
+          questions={[
+            {
+              question: "Why is a Stack the ideal data structure for evaluating RPN?",
+              options: ["It sorts the numbers automatically", "It allows us to access the most recently seen operands for any given operator", "It is the only linear data structure available", "It prevents division by zero"],
+              correctAnswer: 1,
+              explanation: "RPN evaluation requires applying an operator to the two most recently processed operands, which perfectly matches the LIFO nature of a stack."
+            },
+            {
+              question: "When you pop two elements from the stack to apply an operator, which one is typically treated as the SECOND operand?",
+              options: ["The first element popped", "The second element popped", "It doesn't matter for any operator", "Whichever is smaller"],
+              correctAnswer: 0,
+              explanation: "In standard RPN evaluation (especially for non-commutative operations like subtraction or division), the first element popped is the right (second) operand, and the second element popped is the left (first) operand."
+            },
+            {
+              question: "What is the result of the RPN expression: ['4', '13', '5', '/', '+'] using integer division?",
+              options: ["3", "6", "7", "4"],
+              correctAnswer: 1,
+              explanation: "First, '5' and '13' are processed with '/'. 13 / 5 = 2. Then '2' and '4' are processed with '+'. 4 + 2 = 6."
+            },
+            {
+              question: "What is the time complexity of the RPN evaluation algorithm?",
+              options: ["O(n^2)", "O(log n)", "O(n)", "O(1)"],
+              correctAnswer: 2,
+              explanation: "The algorithm iterates through the list of 'n' tokens exactly once, performing O(1) stack operations for each."
+            },
+            {
+              question: "Does RPN require parentheses to clarify operator precedence?",
+              options: ["Yes, for nested operations", "No, the order of operators relative to operands explicitly defines the order of evaluation", "Only when using negative numbers", "Only for multiplication"],
+              correctAnswer: 1,
+              explanation: "RPN is inherently unambiguous; the position of each operator uniquely determines which operands it applies to."
+            }
+          ]}
+          subject="DS"
+          unitId={3}
+          moduleId={5}
+        />
       </section>
     </div>
   );

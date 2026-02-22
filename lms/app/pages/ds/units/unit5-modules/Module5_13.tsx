@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module5_13: React.FC = () => {
   return (
@@ -50,7 +51,7 @@ const Module5_13: React.FC = () => {
                 <li>We only move in 4 directions</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 2: Use a visited matrix</h4>
               <ul className="list-disc ml-6 mt-2">
@@ -58,7 +59,7 @@ const Module5_13: React.FC = () => {
                 <li>This helps detect if we return to a previously visited cell</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 3: Use DFS from every unvisited cell</h4>
               <ul className="list-disc ml-6 mt-2">
@@ -66,7 +67,7 @@ const Module5_13: React.FC = () => {
                 <li>Pass the previous cell to avoid immediate backtracking</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 4: Detect a cycle</h4>
               <p>If you reach a cell that:</p>
@@ -77,7 +78,7 @@ const Module5_13: React.FC = () => {
               </ul>
               <p className="mt-2">➡️ Then a cycle exists</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold">Step 5: Final decision</h4>
               <ul className="list-disc ml-6 mt-2">
@@ -91,13 +92,13 @@ const Module5_13: React.FC = () => {
 
       <section className="content-section">
         <h3>Practice Problems</h3>
-        
+
         <h4 className="font-semibold mt-4">LeetCode</h4>
         <ul className="list-disc ml-6 space-y-2 mt-2">
           <li>
-            <a 
-              href="https://leetcode.com/problems/detect-cycles-in-2d-grid/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/detect-cycles-in-2d-grid/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -105,9 +106,9 @@ const Module5_13: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/number-of-islands/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/number-of-islands/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -115,9 +116,9 @@ const Module5_13: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://leetcode.com/problems/flood-fill/" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com/problems/flood-fill/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -129,9 +130,9 @@ const Module5_13: React.FC = () => {
         <h4 className="font-semibold mt-6">HackerRank</h4>
         <ul className="list-disc ml-6 space-y-2 mt-2">
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/connected-cell-in-a-grid" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/connected-cell-in-a-grid"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -139,9 +140,9 @@ const Module5_13: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.hackerrank.com/challenges/ctci-connected-cell-in-a-grid" 
-              target="_blank" 
+            <a
+              href="https://www.hackerrank.com/challenges/ctci-connected-cell-in-a-grid"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -155,9 +156,9 @@ const Module5_13: React.FC = () => {
         <h3>Additional Reference Material</h3>
         <ul className="list-disc ml-6 space-y-2">
           <li>
-            <a 
-              href="https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/" 
-              target="_blank" 
+            <a
+              href="https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -165,9 +166,9 @@ const Module5_13: React.FC = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://www.geeksforgeeks.org/detect-cycle-in-a-graph/" 
-              target="_blank" 
+            <a
+              href="https://www.geeksforgeeks.org/detect-cycle-in-a-graph/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
@@ -185,6 +186,47 @@ const Module5_13: React.FC = () => {
           </p>
           <p className="mt-2">Happy coding!</p>
         </div>
+      </section>
+
+      <section className="content-section">
+        <Quiz
+          title="Module 5.13 Quiz: Detect Cycle in a Graph (2D Grid)"
+          questions={[
+            {
+              question: "In the 2D grid cycle detection problem, what constitutes a valid 'edge' between two cells?",
+              options: ["Any two cells in the grid", "Two adjacent cells (up/down/left/right) with the SAME character", "Two cells with different characters", "Diagonal neighbors with matching characters"],
+              correctAnswer: 1,
+              explanation: "Only horizontally or vertically adjacent cells with the same character are connected. This creates the graph structure where a cycle means a loop of same-character cells."
+            },
+            {
+              question: "What minimum path length is required to be considered a valid cycle in this problem?",
+              options: ["2", "3", "4", "5"],
+              correctAnswer: 2,
+              explanation: "A valid cycle must have a path length of at least 4 to avoid trivially going back and forth on the same edge (A→B→A is length 2 but is not a true cycle)."
+            },
+            {
+              question: "Why must you track the PREVIOUS cell (parent) in the 2D grid DFS?",
+              options: ["To find the cycle length", "To avoid immediately backtracking to the cell you just came from (false cycle)", "To count grid dimensions", "To compare character values"],
+              correctAnswer: 1,
+              explanation: "Without tracking the previous cell, moving from cell A to cell B and back to A would look like a cycle. The parent check ensures we only flag cycles from truly different paths."
+            },
+            {
+              question: "If DFS from any unvisited cell returns true in the 2D grid problem, what does that mean?",
+              options: ["The grid has all identical characters", "A cycle exists somewhere in the grid", "The grid is fully traversed", "No cycle was found"],
+              correctAnswer: 1,
+              explanation: "Each DFS call explores one connected component. If any DFS call returns true, it means that component contains a cycle, so the overall answer is true."
+            },
+            {
+              question: "What does the visited matrix in the 2D grid cycle detection algorithm track?",
+              options: ["Grid character values", "Edge weights", "Which cells have already been explored by DFS", "The cycle length"],
+              correctAnswer: 2,
+              explanation: "The visited matrix (same dimensions as the grid) marks cells as true once DFS explores them. When DFS reaches an already-visited cell (that isn't the parent), a cycle is confirmed."
+            }
+          ]}
+          subject="DS"
+          unitId={5}
+          moduleId={13}
+        />
       </section>
     </div>
   );

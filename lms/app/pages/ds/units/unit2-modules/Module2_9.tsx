@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_9: React.FC = () => {
   return (
@@ -103,6 +103,39 @@ const Module2_9: React.FC = () => {
         <p className="mb-6">
           Don't worry if this feels slow at first. Sorting problems help build comparison logic, which is a foundation for many advanced algorithms.
         </p>
+
+        <Quiz
+          title="Module 2.9 Quiz: Sorting an Array (Bubble Sort)"
+          questions={[
+            {
+              question: "What is the key mechanism of Bubble Sort?",
+              options: ["Picking the smallest element and moving it to the front", "Comparing adjacent elements and swapping them if they are in the wrong order", "Dividing the array into two halves recursively", "Building a max-heap"],
+              correctAnswer: 1,
+              explanation: "Bubble Sort works by repeatedly stepping through the list, comparing adjacent elements and swapping them."
+            },
+            {
+              question: "After one full pass of Bubble Sort on an array of size 'n', which element is guaranteed to be in its correct sorted position?",
+              options: ["The smallest element", "The largest element", "The middle element", "No element is guaranteed after one pass"],
+              correctAnswer: 1,
+              explanation: "In each pass, the largest unsorted element 'bubbles' up to its correct final position at the end of the array."
+            },
+            {
+              question: "What is the worst-case time complexity of Bubble Sort?",
+              options: ["O(n)", "O(log n)", "O(n^2)", "O(n log n)"],
+              correctAnswer: 2,
+              explanation: "In the worst case (reverse sorted array), Bubble Sort needs n passes, each doing nearly n comparisons, resulting in quadratic time."
+            },
+            {
+              question: "Why is Bubble Sort suitable for learning purposes despite its inefficiency?",
+              options: ["It is the fastest algorithm", "It uses very little memory", "The logic is straightforward and helps beginners understand comparison-based sorting", "It is used in large-scale databases"],
+              correctAnswer: 2,
+              explanation: "Its simplicity makes it an excellent first algorithm to learn the basic concept of sorting through comparisons."
+            }
+          ]}
+          subject="DS"
+          unitId={2}
+          moduleId={9}
+        />
 
         <p className="mb-6 font-semibold">
           Master this, and tougher problems will feel easier later 👍
