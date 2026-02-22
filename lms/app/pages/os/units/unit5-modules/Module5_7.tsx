@@ -15,8 +15,7 @@ const RAIDAnimation: React.FC = () => {
     <div className="border-4 border-blue-500 bg-blue-50 p-6 rounded-lg">
       <div className="flex justify-center items-center gap-4">
         {disks.map((disk, i) => (
-          <div key={i} className={`w-24 h-24 flex items-center justify-center rounded-lg font-bold text-white transition-all ${active >= i ? 'bg-blue-600 scale-110' : 'bg-blue-400'
-            }`}>
+          <div key={i} className={`w-24 h-24 flex items-center justify-center rounded-lg font-bold text-white transition-all ${active >= i ? 'bg-blue-600 scale-110' : 'bg-blue-400'}`}>
             {disk}
           </div>
         ))}

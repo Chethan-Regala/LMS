@@ -24,8 +24,7 @@ const RPCFlowAnimation: React.FC = () => {
     <div className={`border-4 border-${current.color}-500 bg-${current.color}-50 p-6 rounded-lg`}>
       <div className="flex justify-center items-center gap-4 mb-4">
         {steps.map((s, i) => (
-          <div key={i} className={`w-16 h-16 flex items-center justify-center rounded-full font-bold text-white transition-all ${step === i ? `bg-${s.color}-600 scale-110` : `bg-${s.color}-300`
-            }`}>
+          <div key={i} className={`w-16 h-16 flex items-center justify-center rounded-full font-bold text-white transition-all ${step === i ? `bg-${s.color}-600 scale-110` : `bg-${s.color}-300`}`}>
             {i + 1}
           </div>
         ))}
@@ -119,7 +118,6 @@ const Module1_14: React.FC = () => {
       <section className="content-section">
         <h3>How RPC Works</h3>
         <RPCFlowAnimation />
-
         <div className="mt-6">
           <h4>Quick Steps (1–6)</h4>
           <ol className="list-decimal list-inside space-y-2 mt-2">
@@ -363,46 +361,46 @@ const Module1_14: React.FC = () => {
           <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Great Job" className="rounded-lg shadow-lg max-w-sm" />
         </div>
         <p className="text-center font-bold text-lg mt-2">Great job understanding RPC!</p>
-      </section>
 
-      <Quiz
-        title="Module 1.14 Quiz: Remote Procedure Calls"
-        questions={[
-          {
-            question: "What is the primary purpose of an RPC?",
-            options: ["To delete files on a remote server", "To allow a program to call a function on another machine as if it were local", "To increase network speed", "To browse the web"],
-            correctAnswer: 1,
-            explanation: "RPC abstracts network communication, allowing developers to execute code on remote systems seamlessly."
-          },
-          {
-            question: "Which component is responsible for packaging a request on the client side?",
-            options: ["Server Stub", "Client Stub", "Network Switch", "Processor"],
-            correctAnswer: 1,
-            explanation: "The client stub acts as the proxy for the remote procedure, handling the marshalling of parameters."
-          },
-          {
-            question: "What does 'Marshalling' involve?",
-            options: ["Converting data into a network-safe format", "Installing a new OS", "Connecting to Wi-Fi", "Unpacking data on the server"],
-            correctAnswer: 0,
-            explanation: "Marshalling is the process of serializing data objects into a format that can be transmitted over a network."
-          },
-          {
-            question: "Which of the following is a common challenge in RPC systems?",
-            options: ["Too much memory", "Network latency and failures", "Using only one computer", "Simple debugging"],
-            correctAnswer: 1,
-            explanation: "Because RPC involves network communication, it is vulnerable to delays (latency) and partial failures of remote nodes."
-          },
-          {
-            question: "What is the server-side equivalent of the client stub?",
-            options: ["Client Stub", "Server Stub", "API", "Socket"],
-            correctAnswer: 1,
-            explanation: "The server stub receives the message, unmarshalls the parameters, and invokes the actual procedure on the server."
-          }
-        ]}
-        subject="OS"
-        unitId={1}
-        moduleId={8}
-      />
+        <Quiz
+          title="Module 1.14 Quiz: Remote Procedure Calls"
+          questions={[
+            {
+              question: "What is the primary purpose of an RPC?",
+              options: ["To delete files on a remote server", "To allow a program to call a function on another machine as if it were local", "To increase network speed", "To browse the web"],
+              correctAnswer: 1,
+              explanation: "RPC abstracts network communication, allowing developers to execute code on remote systems seamlessly."
+            },
+            {
+              question: "Which component is responsible for packaging a request on the client side?",
+              options: ["Server Stub", "Client Stub", "Network Switch", "Processor"],
+              correctAnswer: 1,
+              explanation: "The client stub acts as the proxy for the remote procedure, handling the marshalling of parameters."
+            },
+            {
+              question: "What does 'Marshalling' involve?",
+              options: ["Converting data into a network-safe format", "Installing a new OS", "Connecting to Wi-Fi", "Unpacking data on the server"],
+              correctAnswer: 0,
+              explanation: "Marshalling is the process of serializing data objects into a format that can be transmitted over a network."
+            },
+            {
+              question: "Which of the following is a common challenge in RPC systems?",
+              options: ["Too much memory", "Network latency and failures", "Using only one computer", "Simple debugging"],
+              correctAnswer: 1,
+              explanation: "Because RPC involves network communication, it is vulnerable to delays (latency) and partial failures of remote nodes."
+            },
+            {
+              question: "What is the server-side equivalent of the client stub?",
+              options: ["Client Stub", "Server Stub", "API", "Socket"],
+              correctAnswer: 1,
+              explanation: "The server stub receives the message, unmarshalls the parameters, and invokes the actual procedure on the server."
+            }
+          ]}
+          subject="OS"
+          unitId={1}
+          moduleId={8}
+        />
+      </section>
     </div>
   );
 };
