@@ -238,8 +238,31 @@ export default function AdminProgress() {
       name: "Environmental Science",
       color: "#10B981",
       units: [
-        { id: 1, name: "Environment-Ecosystem", modules: ["Introduction to Environmental Science", "Ecosystems and Biodiversity", "Natural Resources", "Environmental Ethics", "Unit 1 Quiz"] },
-        { id: 2, name: "Natural Resources", modules: ["Renewable and Non-Renewable Energy Resources", "Forest Resources: Use and Over-exploitation", "Water Resources Management", "Mineral Resources and Environmental Effects", "Unit 2 Quiz"] },
+        {
+          id: 1,
+          name: "Environment-Ecosystem",
+          modules: [
+            "Definition, Scope and Importance - Need for Public Awareness",
+            "Multidisciplinary Nature of Environmental Sciences",
+            "Concept of an Ecosystem",
+            "Structure and Function of an Ecosystem: Producers",
+            "Consumers, Decomposers, Ecological Succession & Food Chains",
+            "Food Webs & Ecological Pyramids",
+            "Energy Flow in Ecosystems & Types of Ecosystems"
+          ]
+        },
+        {
+          id: 2,
+          name: "Natural Resources",
+          modules: [
+            "Energy & Forest Resources: Renewable vs Non-renewable Energy and Forest Conservation",
+            "Deforestation & Case Studies: Timber Extraction, Mining, Dams and Effects on Forests and Tribal People",
+            "Water Resources: Use, Over-utilization, Floods, Droughts, Conflicts & Dams",
+            "Mineral Resources: Use and Exploitation",
+            "Food Resources: World Food Problems, Changes Caused by Agriculture and Overgrazing",
+            "Effects of Modern Agriculture: Fertilizer-Pesticide Problems, Waterlogging & Salinity"
+          ]
+        },
         { id: 3, name: "Biodiversity and its Conservation", modules: ["Definition: Genetic, Species and Ecosystem Diversity", "Value of Biodiversity", "Biodiversity at Global, National and Local Levels", "Threats to Biodiversity", "Unit 3 Quiz"] },
         { id: 4, name: "Environmental Pollution", modules: ["Air Pollution: Definition, Causes, Effects and Control", "Water Pollution: Definition, Causes, Effects and Control", "Soil Pollution and Noise Pollution", "Nuclear Hazards and Solid Waste Management", "Unit 4 Quiz"] },
         { id: 5, name: "Human Population Change and the Environment", modules: ["Population Growth and Population Explosion", "Women Empowerment and Population Control", "Environmental Issues: Global Warming, Acid Rain, Ozone Depletion", "Role of Information Technology in Environment and Human Health", "Unit 5 Quiz"] }

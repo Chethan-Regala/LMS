@@ -65,9 +65,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
         { id: '2.9', title: 'Priority Scheduling', description: 'Not all tasks are created equal! How do we give some processes the red carpet treatment while others wait?' },
         { id: '2.10', title: 'Priority Scheduling - Implementation', description: 'Let us build the VIP list! How do you code a scheduler that plays favorites based on task importance?' },
         { id: '2.11', title: 'Round Robin', description: 'Everyone gets a turn! Explore this fair share CPU scheduler - like a carousel for your processes.' },
-        { id: '2.12', title: 'Round Robin - Implementation', description: 'Slice and dice that CPU time! How do we code a system where every task gets its fair (and tiny) moment in the spotlight?' },
-        { id: '2.13', title: 'Project: Simple Job Queue with Priority Scheduling | Part 1', description: 'Implement priority scheduling to compute waiting and turnaround times accurately.' },
-        { id: '2.14', title: 'Project: Simple Job Queue with Priority Scheduling | Part 2', description: 'Compare preemptive and non-preemptive priority scheduling using CPU metrics' }
+        { id: '2.12', title: 'Round Robin - Implementation', description: 'Slice and dice that CPU time! How do we code a system where every task gets its fair (and tiny) moment in the spotlight?' }
       ]
     },
     {
