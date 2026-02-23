@@ -104,18 +104,21 @@ export const MODULE_NAMES: { [subject: string]: { [unitId: number]: { [moduleId:
   },
   ES: {
     1: {
-      1: "Introduction to Environmental Science",
-      2: "Ecosystems and Biodiversity",
-      3: "Natural Resources",
-      4: "Environmental Ethics",
-      5: "Unit 1 Quiz"
+      1: "Definition, Scope and Importance - Need for Public Awareness",
+      2: "Multidisciplinary Nature of Environmental Sciences",
+      3: "Concept of an Ecosystem",
+      4: "Structure and Function of an Ecosystem: Producers",
+      5: "Consumers, Decomposers, Ecological Succession & Food Chains",
+      6: "Food Webs & Ecological Pyramids",
+      7: "Energy Flow in Ecosystems & Types of Ecosystems"
     },
     2: {
-      1: "Renewable and Non-Renewable Energy Resources",
-      2: "Forest Resources: Use and Over-exploitation",
-      3: "Water Resources Management",
-      4: "Mineral Resources and Environmental Effects",
-      5: "Unit 2 Quiz"
+      1: "Energy & Forest Resources: Renewable vs Non-renewable Energy and Forest Conservation",
+      2: "Deforestation & Case Studies: Timber Extraction, Mining, Dams and Effects on Forests and Tribal People",
+      3: "Water Resources: Use, Over-utilization, Floods, Droughts, Conflicts & Dams",
+      4: "Mineral Resources: Use and Exploitation",
+      5: "Food Resources: World Food Problems, Changes Caused by Agriculture and Overgrazing",
+      6: "Effects of Modern Agriculture: Fertilizer-Pesticide Problems, Waterlogging & Salinity"
     },
     3: {
       1: "Definition: Genetic, Species and Ecosystem Diversity",
