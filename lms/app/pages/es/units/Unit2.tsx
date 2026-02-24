@@ -1,6 +1,11 @@
 'use client';
 import React from 'react';
-import Quiz from '../components/Quiz';
+import Module2_1 from './unit2-modules/Module2_1';
+import Module2_2 from './unit2-modules/Module2_2';
+import Module2_3 from './unit2-modules/Module2_3';
+import Module2_4 from './unit2-modules/Module2_4';
+import Module2_5 from './unit2-modules/Module2_5';
+import Module2_6 from './unit2-modules/Module2_6';
 
 interface Unit2Props {
   currentModule: number;
@@ -9,172 +14,18 @@ interface Unit2Props {
 }
 
 const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
-  const module1Quiz = [
-    {
-      question: "What is the primary advantage of solar energy over fossil fuels?",
-      options: ["Lower initial cost", "Renewable and sustainable", "Higher energy density", "Easier to transport"],
-      correctAnswer: 1,
-      explanation: "Solar energy is renewable and sustainable, meaning it won't run out and has minimal environmental impact during operation, unlike finite fossil fuels."
-    },
-    {
-      question: "Which renewable energy source is most reliable for baseload power?",
-      options: ["Solar", "Wind", "Hydropower", "Tidal"],
-      correctAnswer: 2,
-      explanation: "Hydropower is the most reliable renewable source for baseload power as it can provide consistent electricity 24/7, unlike intermittent sources like solar and wind."
-    },
-    {
-      question: "What percentage of global electricity do data centers consume?",
-      options: ["0.1%", "1%", "5%", "10%"],
-      correctAnswer: 1,
-      explanation: "Data centers consume approximately 1% of global electricity, highlighting the significant energy demands of our digital infrastructure."
-    },
-    {
-      question: "What is the main challenge with renewable energy sources like solar and wind?",
-      options: ["High pollution", "Intermittency", "High fuel costs", "Limited lifespan"],
-      correctAnswer: 1,
-      explanation: "Intermittency is the main challenge - solar and wind power generation varies with weather conditions, requiring energy storage solutions and grid management."
-    },
-    {
-      question: "Which energy source has the highest energy density?",
-      options: ["Coal", "Solar", "Nuclear", "Wind"],
-      correctAnswer: 2,
-      explanation: "Nuclear energy has the highest energy density - one uranium pellet equals approximately 1 ton of coal in energy output."
-    }
+  const moduleNames = [
+    'Energy & Forest Resources: Renewable vs Non-renewable Energy and Forest Conservation',
+    'Deforestation & Case Studies: Timber Extraction, Mining, Dams and Effects on Forests and Tribal People',
+    'Water Resources: Use, Over-utilization, Floods, Droughts, Conflicts & Dams',
+    'Mineral Resources: Use and Exploitation',
+    'Food Resources: World Food Problems, Changes Caused by Agriculture and Overgrazing',
+    'Effects of Modern Agriculture: Fertilizer-Pesticide Problems, Waterlogging & Salinity'
   ];
 
-  const module2Quiz = [
-    {
-      question: "What percentage of global deforestation is caused by agricultural expansion?",
-      options: ["40%", "60%", "80%", "90%"],
-      correctAnswer: 2,
-      explanation: "Agricultural expansion, particularly cattle ranching and crop farming, accounts for approximately 80% of global deforestation worldwide."
-    },
-    {
-      question: "How much carbon do forests store globally?",
-      options: ["86 billion tons", "286 billion tons", "861 billion tons", "1,861 billion tons"],
-      correctAnswer: 2,
-      explanation: "Forests store approximately 861 billion tons of carbon, playing a crucial role in climate regulation and carbon sequestration."
-    },
-    {
-      question: "What percentage of pharmaceuticals come from forest compounds?",
-      options: ["10%", "25%", "50%", "75%"],
-      correctAnswer: 1,
-      explanation: "Approximately 25% of pharmaceuticals are derived from forest compounds, highlighting the medicinal value of forest biodiversity."
-    },
-    {
-      question: "Which technology is used for real-time deforestation monitoring?",
-      options: ["Blockchain", "Satellite monitoring with AI", "Virtual reality", "3D printing"],
-      correctAnswer: 1,
-      explanation: "Satellite monitoring combined with AI provides real-time deforestation alerts, enabling rapid response to illegal logging activities."
-    },
-    {
-      question: "What is the primary driver of deforestation in the Amazon rainforest?",
-      options: ["Logging", "Cattle ranching", "Mining", "Urban development"],
-      correctAnswer: 1,
-      explanation: "Cattle ranching accounts for approximately 80% of Amazon deforestation, driven by demand for beef and leather products."
-    }
-  ];
-
-  const module3Quiz = [
-    {
-      question: "How much water is required to manufacture one computer chip?",
-      options: ["1-2 gallons", "8-10 gallons", "20-30 gallons", "50-60 gallons"],
-      correctAnswer: 1,
-      explanation: "Manufacturing one computer chip requires 8-10 gallons of ultra-pure water, highlighting the water intensity of semiconductor production."
-    },
-    {
-      question: "What percentage of global freshwater is consumed by agriculture?",
-      options: ["30%", "50%", "70%", "90%"],
-      correctAnswer: 2,
-      explanation: "Agriculture consumes approximately 70% of global freshwater resources, making it the largest consumer of water worldwide."
-    },
-    {
-      question: "How many people globally lack safely managed drinking water?",
-      options: ["500 million", "1 billion", "2 billion", "3 billion"],
-      correctAnswer: 2,
-      explanation: "Approximately 2 billion people lack access to safely managed drinking water, representing a major global health and development challenge."
-    },
-    {
-      question: "What is the main benefit of dams for water management?",
-      options: ["Increased biodiversity", "Flood control and irrigation", "Reduced construction costs", "Elimination of droughts"],
-      correctAnswer: 1,
-      explanation: "Dams provide multiple benefits including flood control, irrigation water storage, hydroelectric power generation, and municipal water supply."
-    },
-    {
-      question: "Which technology helps detect water leaks in distribution systems?",
-      options: ["Blockchain", "Smart meters with IoT sensors", "Virtual reality", "Quantum computing"],
-      correctAnswer: 1,
-      explanation: "Smart meters with IoT sensors enable real-time monitoring of water flow, detecting leaks quickly and optimizing water usage efficiency."
-    }
-  ];
-
-  const module4Quiz = [
-    {
-      question: "How many different minerals are contained in a typical smartphone?",
-      options: ["10+", "30+", "60+", "100+"],
-      correctAnswer: 2,
-      explanation: "A typical smartphone contains 60+ different minerals including rare earth elements, making it a complex assembly of global mineral resources."
-    },
-    {
-      question: "Which mineral is essential for electric vehicle batteries?",
-      options: ["Iron", "Lithium", "Aluminum", "Zinc"],
-      correctAnswer: 1,
-      explanation: "Lithium is essential for electric vehicle batteries, along with cobalt and nickel, driving demand for these minerals worldwide."
-    },
-    {
-      question: "What is the primary environmental concern with acid mine drainage?",
-      options: ["Air pollution", "Water contamination with heavy metals", "Noise pollution", "Light pollution"],
-      correctAnswer: 1,
-      explanation: "Acid mine drainage causes severe water contamination with heavy metals, affecting aquatic ecosystems and water quality for miles downstream."
-    },
-    {
-      question: "Which Indian coalfield has been experiencing underground fires since 1916?",
-      options: ["Raniganj", "Jharia", "Singareni", "Korba"],
-      correctAnswer: 1,
-      explanation: "Jharia coalfields in Jharkhand have been experiencing underground coal fires since 1916, causing air pollution and land subsidence."
-    },
-    {
-      question: "What technology helps minimize environmental footprint in mining?",
-      options: ["Manual labor", "GPS and AI for precision mining", "Larger equipment", "Faster extraction"],
-      correctAnswer: 1,
-      explanation: "GPS and AI enable precision mining, allowing targeted extraction that minimizes waste, reduces environmental footprint, and improves efficiency."
-    }
-  ];
-
-  const module5Quiz = [
-    {
-      question: "By what percentage must global food production increase by 2050?",
-      options: ["30%", "50%", "70%", "90%"],
-      correctAnswer: 2,
-      explanation: "Global food production must increase by approximately 70% by 2050 to feed the projected 9.7 billion people on Earth."
-    },
-    {
-      question: "What percentage of food produced globally is wasted?",
-      options: ["10-15%", "20-25%", "30-40%", "50-60%"],
-      correctAnswer: 2,
-      explanation: "Approximately 30-40% of food produced globally is wasted, representing a massive efficiency opportunity for technology solutions."
-    },
-    {
-      question: "What percentage of greenhouse gas emissions come from agriculture?",
-      options: ["10%", "24%", "40%", "55%"],
-      correctAnswer: 1,
-      explanation: "Agriculture accounts for approximately 24% of global greenhouse gas emissions, making it a significant contributor to climate change."
-    },
-    {
-      question: "What is eutrophication caused by excessive fertilizer use?",
-      options: ["Soil acidification", "Excess nutrients in water bodies", "Pest resistance", "Crop failure"],
-      correctAnswer: 1,
-      explanation: "Eutrophication occurs when excess nutrients from fertilizers enter water bodies, causing algal blooms and oxygen depletion that harm aquatic life."
-    },
-    {
-      question: "Which technology enables precise application of fertilizers only where needed?",
-      options: ["Manual spreading", "Variable rate application with GPS", "Aerial spraying", "Flood irrigation"],
-      correctAnswer: 1,
-      explanation: "Variable rate application using GPS technology allows farmers to apply fertilizers precisely where needed, reducing waste and environmental impact."
-    }
-  ];
   const renderModule = () => {
     switch (currentModule) {
+<<<<<<< HEAD
       case 1:
         return (
           <div className="module-content">
@@ -920,10 +771,35 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
 
       default:
         return <div>Module not found</div>;
+=======
+      case 1: return <Module2_1 />;
+      case 2: return <Module2_2 />;
+      case 3: return <Module2_3 />;
+      case 4: return <Module2_4 />;
+      case 5: return <Module2_5 />;
+      case 6: return <Module2_6 />;
+      default: return <div>Module not found</div>;
+>>>>>>> 8379369ed2e1abf6077dc23b893538a08762e41a
     }
   };
 
-  return <div className="unit-container">{renderModule()}</div>;
+  return (
+    <div className="unit-container">
+      {renderModule()}
+      <div className="navigation-buttons" style={{ marginTop: '40px', marginBottom: '40px' }}>
+        {currentModule > 1 && (
+          <button onClick={() => setCurrentModule(currentModule - 1)} className="prev-module-btn" style={{ fontWeight: 'bold' }}>
+            ← {moduleNames[currentModule - 2]}
+          </button>
+        )}
+        {currentModule < 6 && (
+          <button onClick={() => setCurrentModule(currentModule + 1)} className="next-module-btn" style={{ fontWeight: 'bold' }}>
+            {moduleNames[currentModule]} →
+          </button>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Unit2;
