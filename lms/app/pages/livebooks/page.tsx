@@ -146,7 +146,7 @@ export default function LivebooksPage() {
       code: "LS",
       description: "Master the structures of human communication. Explore phonetic patterns, syntactic structures, and cultural linguistics.",
       credits: 4,
-      totalModules: 24,
+      totalModules: 22,
       color: "text-indigo-600",
       icon: <BookOpen className="w-6 h-6" />,
       link: "/pages/ls"

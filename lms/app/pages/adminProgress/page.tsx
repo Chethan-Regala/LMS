@@ -274,11 +274,58 @@ export default function AdminProgress() {
       name: "Language Systems",
       color: "#EF4444",
       units: [
-        { id: 1, name: "Introduction to Language and Linguistics", modules: ["Overview of Linguistics", "Phonetics", "Phonology", "Morphology", "Unit 1 Quiz"] },
-        { id: 2, name: "Syntax and Semantics", modules: ["Syntax and Syntactic Structures", "Semantics and Semantic Structures", "Language Typology", "Unit 2 Quiz"] },
-        { id: 3, name: "Language Acquisition and Change", modules: ["First and Second Language Acquisition", "Language Change and Contact", "Historical Linguistics", "Unit 3 Quiz"] },
-        { id: 4, name: "Sociolinguistics and Applied Linguistics", modules: ["Sociolinguistics and Variation", "Language Policy and Planning", "Language and Identity", "Language and Technology", "Unit 4 Quiz"] },
-        { id: 5, name: "Language in Context and Research", modules: ["Language and Culture", "Language and Gender", "Language and Power", "Language and Globalization", "Research Methods in Linguistics", "Unit 5 Quiz"] }
+        {
+          id: 1,
+          name: "Foundations of Language",
+          modules: [
+            "Overview of Linguistics and its Sub-fields",
+            "Phonetics and Phonology",
+            "Morphology: The Study of Word Structure",
+            "Unit 1 Mastery Quiz"
+          ]
+        },
+        {
+          id: 2,
+          name: "Meaning and Structure",
+          modules: [
+            "Syntax and Syntactic Structures",
+            "Semantics and Semantic Structures",
+            "Language Typology",
+            "Unit 2 Mastery Quiz"
+          ]
+        },
+        {
+          id: 3,
+          name: "Evolution and Growth",
+          modules: [
+            "Learning to Speak",
+            "The Changing Word",
+            "Tracing the Past",
+            "Unit 3 Mastery Quiz"
+          ]
+        },
+        {
+          id: 4,
+          name: "Language in Society",
+          modules: [
+            "Social Variation",
+            "Policy and Power",
+            "Language and Identity",
+            "Digital Linguistics",
+            "Unit 4 Mastery Quiz"
+          ]
+        },
+        {
+          id: 5,
+          name: "Culture and Globalization",
+          modules: [
+            "Language and Culture",
+            "Gendered Expression",
+            "The Global Stage",
+            "Research Masterclass",
+            "Unit 5 Mastery Quiz"
+          ]
+        }
       ]
     },
     FLAT: {

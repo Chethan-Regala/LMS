@@ -47,7 +47,7 @@ const Module1_2: React.FC = () => {
 
       <section className="content-section">
         <h3>📖 Deep Dive: Understanding the Concept</h3>
-        
+
         <h4 className="mt-4 font-semibold">Definition & Fundamentals</h4>
         <p>
           <strong>What are Additional Forms of Proof?</strong> In mathematics and theoretical computer science, a proof is a logical argument that establishes the truth of a mathematical statement beyond any doubt. While direct proof (assuming hypotheses and deriving conclusions through logical steps) and mathematical induction (proving base case and inductive step) are fundamental, they cannot handle all types of statements efficiently. Additional forms of proof provide alternative logical pathways to establish truth when direct approaches are impractical or impossible.
@@ -82,14 +82,14 @@ const Module1_2: React.FC = () => {
         </ul>
 
         <h4 className="mt-6 font-semibold">How It Works: The Mechanism Explained</h4>
-        
+
         <div className="mt-4 space-y-6">
           <div className="bg-red-50 border-l-4 border-red-500 p-4">
             <h5 className="font-semibold text-lg">🔴 Proof by Contradiction (Reductio ad Absurdum)</h5>
             <p className="mt-2">
               <strong>The Core Principle:</strong> To prove a statement P is true, we assume P is false (¬P) and show that this assumption leads to a logical impossibility—a contradiction. Since our reasoning is valid, the only error must be in our assumption, forcing us to conclude that P must be true. Think of it like a chess endgame: you assume your opponent has a defense, then prove systematically that every possible move leads to checkmate, forcing the conclusion that no defense exists.
             </p>
-            
+
             <p className="mt-3"><strong>Step-by-Step Process:</strong></p>
             <ol className="list-decimal ml-6 mt-2 space-y-1">
               <li><strong>State what you want to prove:</strong> Clearly identify the proposition P</li>
@@ -118,7 +118,7 @@ const Module1_2: React.FC = () => {
             <p className="mt-2">
               <strong>The Core Principle:</strong> To prove "If P then Q" (P → Q), we instead prove "If not Q then not P" (¬Q → ¬P). These statements are logically equivalent, but sometimes the contrapositive is much easier to prove. Imagine proving "All students who pass the exam studied hard." Instead of tracking all students who studied and checking if they passed, you could prove the contrapositive: "Any student who didn't study hard didn't pass"—often easier to verify!
             </p>
-            
+
             <p className="mt-3"><strong>Why It Works:</strong> The logical equivalence (P → Q) ≡ (¬Q → ¬P) is a fundamental law of logic. Think about it: if "rain implies wet ground," then "dry ground implies no rain" must also be true. The contrapositive preserves truth but shifts the proof burden, often making complex statements simpler.</p>
 
             <div className="bg-white p-4 rounded mt-4">
@@ -139,7 +139,7 @@ const Module1_2: React.FC = () => {
             <p className="mt-2">
               <strong>The Core Principle:</strong> To prove that something exists, we don't just claim it exists—we build it explicitly. This is like an engineer proving a bridge can be built by actually designing the blueprint with exact specifications. In automata theory, constructive proofs are essential: we prove a language is regular by constructing a finite automaton that recognizes it; we prove two languages can be combined by constructing the union/intersection automaton.
             </p>
-            
+
             <p className="mt-3"><strong>When to Use Construction:</strong> Existence claims in computer science (∃x such that P(x)) are best proven constructively because the construction itself is often useful beyond the proof—it becomes an algorithm, a design pattern, or a computational model others can use.</p>
 
             <div className="bg-white p-4 rounded mt-4">
@@ -163,43 +163,43 @@ const Module1_2: React.FC = () => {
                       <polygon points="0 0, 10 3, 0 6" fill="#374151" />
                     </marker>
                   </defs>
-                  
+
                   {/* States */}
-                  <circle cx="80" cy="100" r="30" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+                  <circle cx="80" cy="100" r="30" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
                   <text x="80" y="95" textAnchor="middle" fontSize="14" fontWeight="bold">q₀</text>
                   <text x="80" y="110" textAnchor="middle" fontSize="10">Start</text>
-                  
-                  <circle cx="250" cy="100" r="30" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+
+                  <circle cx="250" cy="100" r="30" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
                   <text x="250" y="95" textAnchor="middle" fontSize="14" fontWeight="bold">q₁</text>
                   <text x="250" y="110" textAnchor="middle" fontSize="10">Saw '0'</text>
-                  
-                  <circle cx="420" cy="100" r="30" fill="#dcfce7" stroke="#22c55e" strokeWidth="3"/>
-                  <circle cx="420" cy="100" r="25" fill="none" stroke="#22c55e" strokeWidth="2"/>
+
+                  <circle cx="420" cy="100" r="30" fill="#dcfce7" stroke="#22c55e" strokeWidth="3" />
+                  <circle cx="420" cy="100" r="25" fill="none" stroke="#22c55e" strokeWidth="2" />
                   <text x="420" y="95" textAnchor="middle" fontSize="14" fontWeight="bold">q₂</text>
                   <text x="420" y="110" textAnchor="middle" fontSize="10">Saw '01'</text>
-                  
+
                   {/* Start arrow */}
-                  <line x1="20" y1="100" x2="50" y2="100" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-                  
+                  <line x1="20" y1="100" x2="50" y2="100" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
                   {/* Transitions */}
                   {/* q0 to q1 on 0 */}
-                  <line x1="110" y1="100" x2="220" y2="100" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
+                  <line x1="110" y1="100" x2="220" y2="100" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
                   <text x="165" y="90" textAnchor="middle" fontSize="12" fontWeight="bold">0</text>
-                  
+
                   {/* q0 self-loop on 1 */}
-                  <path d="M 80 70 Q 80 30, 100 60" fill="none" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
+                  <path d="M 80 70 Q 80 30, 100 60" fill="none" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
                   <text x="90" y="40" textAnchor="middle" fontSize="12" fontWeight="bold">1</text>
-                  
+
                   {/* q1 to q2 on 1 */}
-                  <line x1="280" y1="100" x2="390" y2="100" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
+                  <line x1="280" y1="100" x2="390" y2="100" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
                   <text x="335" y="90" textAnchor="middle" fontSize="12" fontWeight="bold">1</text>
-                  
+
                   {/* q1 self-loop on 0 */}
-                  <path d="M 250 70 Q 250 30, 270 60" fill="none" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
+                  <path d="M 250 70 Q 250 30, 270 60" fill="none" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
                   <text x="260" y="40" textAnchor="middle" fontSize="12" fontWeight="bold">0</text>
-                  
+
                   {/* q2 self-loop on 0,1 */}
-                  <path d="M 420 70 Q 420 30, 440 60" fill="none" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
+                  <path d="M 420 70 Q 420 30, 440 60" fill="none" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
                   <text x="430" y="40" textAnchor="middle" fontSize="12" fontWeight="bold">0,1</text>
                 </svg>
               </div>
@@ -212,7 +212,7 @@ const Module1_2: React.FC = () => {
             <p className="mt-2">
               <strong>The Core Principle:</strong> To disprove a universal claim "For all x, P(x) is true," we only need to find one single example where P(x) is false. This is the logical principle behind software testing: one failing test case proves the program has a bug. In automata theory, counterexamples are crucial for showing that certain languages are not regular, or that claimed properties don't hold.
             </p>
-            
+
             <p className="mt-3"><strong>When to Use Counterexamples:</strong> This technique is exclusively for disproving universal claims. You cannot use counterexamples to prove universal statements—only to disprove them.</p>
 
             <div className="bg-white p-4 rounded mt-4">
@@ -235,7 +235,7 @@ const Module1_2: React.FC = () => {
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">🔧 Key Components & Architecture</h3>
         <p className="mb-4">Understanding when to use each proof technique is crucial for success in theory of computation. Here's a detailed breakdown of each component:</p>
-        
+
         <div className="space-y-6">
           <div className="bg-red-50 border-l-4 border-red-500 p-4">
             <h4 className="font-semibold text-lg">Component 1: Proof by Contradiction</h4>
@@ -268,7 +268,7 @@ const Module1_2: React.FC = () => {
 
         <div className="mt-6 bg-gray-50 border-l-4 border-gray-400 p-4">
           <h4 className="font-semibold text-lg">Real-World Implementation</h4>
-          
+
           <div className="mt-3 space-y-3 text-sm">
             <div>
               <p className="font-semibold">In Computer Science Research:</p>
@@ -290,7 +290,7 @@ const Module1_2: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">⚠️ Common Misconceptions</h3>
-        
+
         <div className="space-y-4">
           <div className="bg-gray-50 border-l-4 border-gray-400 p-4">
             <p className="font-semibold text-red-600">Misconception #1: "Contrapositive and converse are the same thing"</p>
@@ -316,31 +316,31 @@ const Module1_2: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">⚙️ Worked Examples</h3>
-        
+
         <div className="space-y-8">
           <div className="border-l-4 border-red-500 pl-4">
             <h4 className="font-semibold text-lg">Worked Example 1: Proof by Contradiction - Language Non-Regularity</h4>
             <p className="mt-2 font-semibold">📝 Problem: Prove that L = {'{'}0ⁿ1ⁿ | n ≥ 0{'}'} is not regular.</p>
-            
+
             <div className="mt-4 bg-gray-50 p-4 rounded">
               <p className="font-semibold">Step 1: Assume the negation</p>
               <p className="text-sm mt-1">Assume L = {'{'}0ⁿ1ⁿ | n ≥ 0{'}'} IS regular.</p>
-              
+
               <p className="font-semibold mt-3">Step 2: Apply Pumping Lemma</p>
               <p className="text-sm mt-1">Since L is regular, there exists pumping length p where any string s ∈ L with |s| ≥ p can be split as s = xyz with: |xy| ≤ p, |y| &gt; 0, and xyⁱz ∈ L for all i ≥ 0.</p>
-              
+
               <p className="font-semibold mt-3">Step 3: Choose strategic string</p>
               <p className="text-sm mt-1">Select s = 0ᵖ1ᵖ. Clearly s ∈ L and |s| = 2p ≥ p.</p>
-              
+
               <p className="font-semibold mt-3">Step 4: Analyze decomposition</p>
               <p className="text-sm mt-1">Since |xy| ≤ p and first p characters are 0s, both x and y consist entirely of 0s. So y = 0ᵏ for some k &gt; 0.</p>
-              
+
               <p className="font-semibold mt-3">Step 5: Pump the string</p>
               <p className="text-sm mt-1">Consider xy²z. Since y has k zeros, xy²z has p + k zeros and p ones. But p + k ≠ p, so xy²z has unequal 0s and 1s.</p>
-              
+
               <p className="font-semibold mt-3">Step 6: Contradiction!</p>
               <p className="text-sm mt-1">xy²z must be in L (by Pumping Lemma), but xy²z has unequal 0s and 1s, so xy²z ∉ L. Contradiction!</p>
-              
+
               <p className="font-semibold mt-3">✅ Conclusion</p>
               <p className="text-sm mt-1">Our assumption led to impossibility. Therefore, L = {'{'}0ⁿ1ⁿ | n ≥ 0{'}'} is NOT regular. ∎</p>
             </div>
@@ -349,17 +349,17 @@ const Module1_2: React.FC = () => {
           <div className="border-l-4 border-blue-500 pl-4">
             <h4 className="font-semibold text-lg">Worked Example 2: Proof by Contrapositive</h4>
             <p className="mt-2 font-semibold">📝 Problem: If L₁ ∪ L₂ is finite, then both L₁ and L₂ are finite.</p>
-            
+
             <div className="mt-4 bg-gray-50 p-4 rounded">
               <p className="font-semibold">Step 1: Identify conditional structure</p>
               <p className="text-sm mt-1">P: "L₁ ∪ L₂ is finite" → Q: "Both L₁ and L₂ are finite"</p>
-              
+
               <p className="font-semibold mt-3">Step 2: Form contrapositive</p>
               <p className="text-sm mt-1">¬Q → ¬P: "If at least one of L₁ or L₂ is infinite, then L₁ ∪ L₂ is infinite"</p>
-              
+
               <p className="font-semibold mt-3">Step 3: Prove contrapositive</p>
               <p className="text-sm mt-1">Assume L₁ is infinite. Since L₁ ⊆ L₁ ∪ L₂, and L₁ contains infinitely many strings, L₁ ∪ L₂ must also contain infinitely many strings. Therefore, L₁ ∪ L₂ is infinite.</p>
-              
+
               <p className="font-semibold mt-3">✅ Conclusion</p>
               <p className="text-sm mt-1">We proved the contrapositive. By logical equivalence, the original statement is true. ∎</p>
             </div>
@@ -370,10 +370,10 @@ const Module1_2: React.FC = () => {
             <p className="mt-2 font-semibold">📝 Problem Statement</p>
             <p className="mt-1"><strong>Claim:</strong> The class of regular languages is closed under union. That is, if L₁ and L₂ are regular languages, then L₁ ∪ L₂ is also regular.</p>
             <p className="mt-1 text-sm"><strong>Context:</strong> Closure properties are fundamental in automata theory. We'll prove this by constructing a DFA for L₁ ∪ L₂ from DFAs for L₁ and L₂.</p>
-            
+
             <div className="mt-4 bg-gray-50 p-4 rounded">
               <p className="font-semibold">🔍 Step-by-Step Solution</p>
-              
+
               <div className="mt-3 space-y-3 text-sm">
                 <div>
                   <p className="font-semibold">Step 1: Setup and assumptions</p>
@@ -455,54 +455,54 @@ const Module1_2: React.FC = () => {
                       <polygon points="0 0, 10 3, 0 6" fill="#374151" />
                     </marker>
                   </defs>
-                  
+
                   <text x="80" y="30" fontSize="14" fontWeight="bold">M₁ (Recognizes L₁)</text>
-                  <circle cx="50" cy="70" r="20" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+                  <circle cx="50" cy="70" r="20" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
                   <text x="50" y="75" textAnchor="middle" fontSize="12">q₁</text>
-                  <circle cx="120" cy="70" r="20" fill="#dcfce7" stroke="#22c55e" strokeWidth="2"/>
-                  <circle cx="120" cy="70" r="16" fill="none" stroke="#22c55e" strokeWidth="1.5"/>
+                  <circle cx="120" cy="70" r="20" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" />
+                  <circle cx="120" cy="70" r="16" fill="none" stroke="#22c55e" strokeWidth="1.5" />
                   <text x="120" y="75" textAnchor="middle" fontSize="12">f₁</text>
-                  <line x1="70" y1="70" x2="100" y2="70" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow2)"/>
+                  <line x1="70" y1="70" x2="100" y2="70" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow2)" />
                   <text x="85" y="65" textAnchor="middle" fontSize="10">a</text>
-                  
+
                   <text x="230" y="30" fontSize="14" fontWeight="bold">M₂ (Recognizes L₂)</text>
-                  <circle cx="200" cy="70" r="20" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+                  <circle cx="200" cy="70" r="20" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
                   <text x="200" y="75" textAnchor="middle" fontSize="12">q₂</text>
-                  <circle cx="270" cy="70" r="20" fill="#dcfce7" stroke="#22c55e" strokeWidth="2"/>
-                  <circle cx="270" cy="70" r="16" fill="none" stroke="#22c55e" strokeWidth="1.5"/>
+                  <circle cx="270" cy="70" r="20" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" />
+                  <circle cx="270" cy="70" r="16" fill="none" stroke="#22c55e" strokeWidth="1.5" />
                   <text x="270" y="75" textAnchor="middle" fontSize="12">f₂</text>
-                  <line x1="220" y1="70" x2="250" y2="70" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow2)"/>
+                  <line x1="220" y1="70" x2="250" y2="70" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow2)" />
                   <text x="235" y="65" textAnchor="middle" fontSize="10">b</text>
-                  
+
                   <text x="200" y="140" fontSize="14" fontWeight="bold">M (Product Construction - Recognizes L₁ ∪ L₂)</text>
-                  
-                  <circle cx="100" cy="200" r="25" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+
+                  <circle cx="100" cy="200" r="25" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
                   <text x="100" y="200" textAnchor="middle" fontSize="10">(q₁,q₂)</text>
-                  
-                  <circle cx="250" cy="200" r="25" fill="#fef3c7" stroke="#eab308" strokeWidth="2"/>
-                  <circle cx="250" cy="200" r="21" fill="none" stroke="#eab308" strokeWidth="1.5"/>
+
+                  <circle cx="250" cy="200" r="25" fill="#fef3c7" stroke="#eab308" strokeWidth="2" />
+                  <circle cx="250" cy="200" r="21" fill="none" stroke="#eab308" strokeWidth="1.5" />
                   <text x="250" y="200" textAnchor="middle" fontSize="10">(q₁,f₂)</text>
-                  
-                  <circle cx="400" cy="200" r="25" fill="#fef3c7" stroke="#eab308" strokeWidth="2"/>
-                  <circle cx="400" cy="200" r="21" fill="none" stroke="#eab308" strokeWidth="1.5"/>
+
+                  <circle cx="400" cy="200" r="25" fill="#fef3c7" stroke="#eab308" strokeWidth="2" />
+                  <circle cx="400" cy="200" r="21" fill="none" stroke="#eab308" strokeWidth="1.5" />
                   <text x="400" y="200" textAnchor="middle" fontSize="10">(f₁,q₂)</text>
-                  
-                  <circle cx="550" cy="200" r="25" fill="#dcfce7" stroke="#22c55e" strokeWidth="2"/>
-                  <circle cx="550" cy="200" r="21" fill="none" stroke="#22c55e" strokeWidth="1.5"/>
+
+                  <circle cx="550" cy="200" r="25" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" />
+                  <circle cx="550" cy="200" r="21" fill="none" stroke="#22c55e" strokeWidth="1.5" />
                   <text x="550" y="200" textAnchor="middle" fontSize="10">(f₁,f₂)</text>
-                  
-                  <line x1="125" y1="200" x2="225" y2="200" stroke="#374151" strokeWidth="1.5" markerEnd="url(#arrow2)"/>
+
+                  <line x1="125" y1="200" x2="225" y2="200" stroke="#374151" strokeWidth="1.5" markerEnd="url(#arrow2)" />
                   <text x="175" y="195" textAnchor="middle" fontSize="10">b</text>
-                  
-                  <line x1="275" y1="200" x2="375" y2="200" stroke="#374151" strokeWidth="1.5" markerEnd="url(#arrow2)"/>
+
+                  <line x1="275" y1="200" x2="375" y2="200" stroke="#374151" strokeWidth="1.5" markerEnd="url(#arrow2)" />
                   <text x="325" y="195" textAnchor="middle" fontSize="10">a</text>
-                  
-                  <line x1="425" y1="200" x2="525" y2="200" stroke="#374151" strokeWidth="1.5" markerEnd="url(#arrow2)"/>
+
+                  <line x1="425" y1="200" x2="525" y2="200" stroke="#374151" strokeWidth="1.5" markerEnd="url(#arrow2)" />
                   <text x="475" y="195" textAnchor="middle" fontSize="10">b</text>
-                  
-                  <path d="M 100 175 Q 175 160, 250 175" fill="none" stroke="#374151" strokeWidth="1.5" markerEnd="url(#arrow2)"/>
+
+                  <path d="M 100 175 Q 175 160, 250 175" fill="none" stroke="#374151" strokeWidth="1.5" markerEnd="url(#arrow2)" />
                   <text x="175" y="160" textAnchor="middle" fontSize="10">a</text>
-                  
+
                   <text x="300" y="270" fontSize="11" fill="#059669" fontWeight="bold">States with f₁ or f₂ are accepting (union!)</text>
                 </svg>
               </div>
@@ -514,7 +514,7 @@ const Module1_2: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">📚 Problem-Solving Practice</h3>
-        
+
         <div className="space-y-6">
           <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
             <h4 className="font-semibold text-lg">📘 Easy Problem</h4>
@@ -568,7 +568,7 @@ const Module1_2: React.FC = () => {
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">📊 Comparison & Analysis</h3>
         <p className="mb-4">Understanding when to apply each proof technique is crucial for efficient problem-solving.</p>
-        
+
         <div className="overflow-x-auto">
           <table className="min-w-full border-collapse border border-gray-300 text-sm">
             <thead className="bg-gray-100">
@@ -590,17 +590,17 @@ const Module1_2: React.FC = () => {
               </tr>
               <tr className="bg-gray-50">
                 <td className="border border-gray-300 p-2 font-semibold">Advantages</td>
-                <td className="border border-gray-300 p-2">✓ Works for any statement<br/>✓ Powerful for impossibility</td>
-                <td className="border border-gray-300 p-2">✓ Often simpler than direct<br/>✓ Logically equivalent</td>
-                <td className="border border-gray-300 p-2">✓ Provides algorithm<br/>✓ Practical and implementable</td>
-                <td className="border border-gray-300 p-2">✓ Most efficient disproof<br/>✓ Only needs one example</td>
+                <td className="border border-gray-300 p-2">✓ Works for any statement<br />✓ Powerful for impossibility</td>
+                <td className="border border-gray-300 p-2">✓ Often simpler than direct<br />✓ Logically equivalent</td>
+                <td className="border border-gray-300 p-2">✓ Provides algorithm<br />✓ Practical and implementable</td>
+                <td className="border border-gray-300 p-2">✓ Most efficient disproof<br />✓ Only needs one example</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-2 font-semibold">Disadvantages</td>
-                <td className="border border-gray-300 p-2">✗ Can be complex<br/>✗ May not provide insight</td>
-                <td className="border border-gray-300 p-2">✗ Only for conditionals<br/>✗ Students confuse with converse</td>
-                <td className="border border-gray-300 p-2">✗ May be difficult to find<br/>✗ Time-consuming</td>
-                <td className="border border-gray-300 p-2">✗ Only disproves<br/>✗ Finding it can be hard</td>
+                <td className="border border-gray-300 p-2">✗ Can be complex<br />✗ May not provide insight</td>
+                <td className="border border-gray-300 p-2">✗ Only for conditionals<br />✗ Students confuse with converse</td>
+                <td className="border border-gray-300 p-2">✗ May be difficult to find<br />✗ Time-consuming</td>
+                <td className="border border-gray-300 p-2">✗ Only disproves<br />✗ Finding it can be hard</td>
               </tr>
               <tr className="bg-gray-50">
                 <td className="border border-gray-300 p-2 font-semibold">Logical Structure</td>
@@ -626,7 +626,7 @@ const Module1_2: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">⚠️ Common Pitfalls & How to Avoid Them</h3>
-        
+
         <div className="space-y-4">
           <div className="bg-red-50 border-l-4 border-red-500 p-4">
             <h4 className="font-semibold">🚫 Pitfall #1: Confusing Contrapositive with Converse</h4>
@@ -660,7 +660,7 @@ const Module1_2: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">📄 Quick Reference Cheat Sheet</h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-gray-50 p-4 rounded">
             <h4 className="font-semibold mb-2">🔑 Key Definitions</h4>
@@ -706,11 +706,11 @@ const Module1_2: React.FC = () => {
 
       <section className="content-section">
         <h3 className="text-xl font-semibold mb-4">🛠️ Hands-On Lab Exercise</h3>
-        
+
         <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-l-4 border-purple-500 p-6 rounded">
           <h4 className="font-semibold text-lg">Multi-Technique Proof Challenge</h4>
           <p className="mt-2 text-sm">⏱️ Estimated Time: 60-75 minutes</p>
-          
+
           <div className="mt-4 space-y-4">
             <div className="bg-white p-4 rounded">
               <h5 className="font-semibold">📋 Objective</h5>
@@ -772,7 +772,7 @@ const Module1_2: React.FC = () => {
 
       <section className="content-section">
         <h3>Problem-Solving Practice</h3>
-        
+
         <div className="space-y-6 mt-4">
           <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
             <h4 className="font-semibold text-lg">📘 Easy Problem</h4>
@@ -832,7 +832,7 @@ const Module1_2: React.FC = () => {
         </div>
 
         <h4 className="mt-8 font-semibold">Short Answer Questions</h4>
-        
+
         <div className="space-y-6 mt-4">
           <div className="bg-white border-2 border-gray-300 rounded-lg p-4">
             <p className="font-semibold">Question 1:</p>
@@ -880,7 +880,7 @@ const Module1_2: React.FC = () => {
         <p>Test your understanding with these interactive questions. Answer each question by clicking on your choice, then check to see if you're correct!</p>
 
         <h4 className="mt-6 font-semibold">Quick Concept Checks (Interactive MCQs)</h4>
-        
+
         <div className="space-y-6 mt-4">
           <div className="bg-white border-2 border-gray-300 rounded-lg p-4">
             <p className="text-sm text-gray-600 mb-2">Question 1 of 5</p>

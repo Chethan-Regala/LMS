@@ -1,12 +1,13 @@
 'use client';
 import React, { useEffect } from 'react';
+import Quiz from '../../components/Quiz';
 
 const Module2_1: React.FC = () => {
   useEffect(() => {
     const handleCollapsible = () => {
       const collapsibles = document.querySelectorAll('.collapsible');
       collapsibles.forEach((button) => {
-        const handleClick = function(this: HTMLElement) {
+        const handleClick = function (this: HTMLElement) {
           this.classList.toggle('active');
           const content = this.nextElementSibling as HTMLElement;
           if (content && content.classList.contains('collapsible-content')) {
@@ -71,7 +72,7 @@ const Module2_1: React.FC = () => {
         .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
         .collapsible-content-inner { padding: 20px; background: #f8f9fa; border-radius: 5px; margin-top: 10px; }
       `}</style>
-      
+
       <div className="container">
         {/* ==================== HEADER ==================== */}
         <div className="header">
@@ -210,7 +211,7 @@ const Module2_1: React.FC = () => {
             <span className="section-icon">📖</span>
             Deep Dive: Understanding Syntax
           </h2>
-          
+
           <h3 className="subsection-title">Definition &amp; Fundamentals</h3>
           <p>
             <strong>Syntax</strong> (from Greek <em>syn-</em> = &quot;together&quot; + <em>taxis</em> = &quot;arrangement&quot;) is the branch of linguistics that studies how words are arranged to form phrases, clauses, and sentences. While morphology examines the internal structure of words, syntax investigates the rules that govern how these words combine to create meaningful utterances. Every language has its own syntactic rules—English puts adjectives before nouns (&quot;the red car&quot;), while French often places them after (&quot;la voiture rouge&quot;).
@@ -249,7 +250,7 @@ const Module2_1: React.FC = () => {
           <p>
             How do linguists determine which words group together as constituents? Native speakers have intuitions about sentence structure, but linguists need systematic methods to verify these intuitions. <strong>Constituency tests</strong> are diagnostic tools that reveal the hidden structure of sentences by showing which groups of words behave as units.
           </p>
-          
+
           <p><strong>1. Substitution (Replacement) Test</strong></p>
           <p>
             If a group of words can be replaced by a single word without changing the grammaticality or core meaning of the sentence, that group is a constituent. For example, in &quot;The tired doctor slept,&quot; we can replace &quot;the tired doctor&quot; with the pronoun &quot;she&quot;: &quot;She slept.&quot; This shows that &quot;the tired doctor&quot; is a constituent—a Noun Phrase (NP). Similarly, verb phrases can be replaced with &quot;do&quot; or &quot;do so&quot;: &quot;The tired doctor slept, and the nurse did so too.&quot;
@@ -519,63 +520,63 @@ const Module2_1: React.FC = () => {
             </div>
             <div className="code-block" style={{ fontFamily: 'monospace', fontSize: '0.9em', lineHeight: '1.6' }}>
               <code style={{ color: '#abb2bf' }}>
-                <span style={{ color: '#5c6370' }}>// ============================================</span><br/>
-                <span style={{ color: '#5c6370' }}>// CONSTITUENCY ANALYSIS ALGORITHM</span><br/>
-                <span style={{ color: '#5c6370' }}>// Input: A sentence to analyze</span><br/>
-                <span style={{ color: '#5c6370' }}>// Output: Tree diagram showing constituent structure</span><br/>
-                <span style={{ color: '#5c6370' }}>// ============================================</span><br/>
-                <span style={{ color: '#c678dd' }}>ALGORITHM</span> <span style={{ color: '#61dafb' }}>AnalyzeSentence</span>(sentence)<br/>
-                <span style={{ color: '#c678dd' }}>BEGIN</span><br/>
-                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 1: Label each word with its part of speech</span><br/>
-                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>FOR EACH</span> word <span style={{ color: '#c678dd' }}>in</span> sentence <span style={{ color: '#c678dd' }}>DO</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;assign_part_of_speech(word)<br/>
-                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END FOR</span><br/>
-                <br/>
-                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 2: Identify the main subject (NP) and predicate (VP)</span><br/>
-                &nbsp;&nbsp;subject = find_subject_NP(sentence)<br/>
-                &nbsp;&nbsp;predicate = find_predicate_VP(sentence)<br/>
-                <br/>
-                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 3: Apply constituency tests to verify groupings</span><br/>
-                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>FOR EACH</span> potential_constituent <span style={{ color: '#c678dd' }}>DO</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>IF</span> passes_substitution_test(potential_constituent)<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>OR</span> passes_movement_test(potential_constituent)<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>OR</span> passes_cleft_test(potential_constituent)<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>THEN</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mark_as_constituent(potential_constituent)<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END IF</span><br/>
-                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END FOR</span><br/>
-                <br/>
-                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 4: Identify phrases within constituents</span><br/>
-                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>FOR EACH</span> constituent <span style={{ color: '#c678dd' }}>DO</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>IF</span> constituent contains noun_head <span style={{ color: '#c678dd' }}>THEN</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label_as_NP(constituent)<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>ELSE IF</span> constituent contains verb_head <span style={{ color: '#c678dd' }}>THEN</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label_as_VP(constituent)<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>ELSE IF</span> constituent contains preposition_head <span style={{ color: '#c678dd' }}>THEN</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label_as_PP(constituent)<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END IF</span><br/>
-                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END FOR</span><br/>
-                <br/>
-                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 5: Build tree from top down</span><br/>
-                &nbsp;&nbsp;create_root_node(S)<br/>
-                &nbsp;&nbsp;attach_NP_as_left_child(subject)<br/>
-                &nbsp;&nbsp;attach_VP_as_right_child(predicate)<br/>
-                <br/>
-                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 6: Expand phrases recursively</span><br/>
-                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>FOR EACH</span> phrase <span style={{ color: '#c678dd' }}>DO</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;expand_phrase(phrase)<br/>
-                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END FOR</span><br/>
-                <br/>
-                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>RETURN</span> tree_diagram<br/>
+                <span style={{ color: '#5c6370' }}>// ============================================</span><br />
+                <span style={{ color: '#5c6370' }}>// CONSTITUENCY ANALYSIS ALGORITHM</span><br />
+                <span style={{ color: '#5c6370' }}>// Input: A sentence to analyze</span><br />
+                <span style={{ color: '#5c6370' }}>// Output: Tree diagram showing constituent structure</span><br />
+                <span style={{ color: '#5c6370' }}>// ============================================</span><br />
+                <span style={{ color: '#c678dd' }}>ALGORITHM</span> <span style={{ color: '#61dafb' }}>AnalyzeSentence</span>(sentence)<br />
+                <span style={{ color: '#c678dd' }}>BEGIN</span><br />
+                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 1: Label each word with its part of speech</span><br />
+                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>FOR EACH</span> word <span style={{ color: '#c678dd' }}>in</span> sentence <span style={{ color: '#c678dd' }}>DO</span><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;assign_part_of_speech(word)<br />
+                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END FOR</span><br />
+                <br />
+                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 2: Identify the main subject (NP) and predicate (VP)</span><br />
+                &nbsp;&nbsp;subject = find_subject_NP(sentence)<br />
+                &nbsp;&nbsp;predicate = find_predicate_VP(sentence)<br />
+                <br />
+                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 3: Apply constituency tests to verify groupings</span><br />
+                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>FOR EACH</span> potential_constituent <span style={{ color: '#c678dd' }}>DO</span><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>IF</span> passes_substitution_test(potential_constituent)<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>OR</span> passes_movement_test(potential_constituent)<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>OR</span> passes_cleft_test(potential_constituent)<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>THEN</span><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mark_as_constituent(potential_constituent)<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END IF</span><br />
+                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END FOR</span><br />
+                <br />
+                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 4: Identify phrases within constituents</span><br />
+                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>FOR EACH</span> constituent <span style={{ color: '#c678dd' }}>DO</span><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>IF</span> constituent contains noun_head <span style={{ color: '#c678dd' }}>THEN</span><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label_as_NP(constituent)<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>ELSE IF</span> constituent contains verb_head <span style={{ color: '#c678dd' }}>THEN</span><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label_as_VP(constituent)<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>ELSE IF</span> constituent contains preposition_head <span style={{ color: '#c678dd' }}>THEN</span><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label_as_PP(constituent)<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END IF</span><br />
+                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END FOR</span><br />
+                <br />
+                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 5: Build tree from top down</span><br />
+                &nbsp;&nbsp;create_root_node(S)<br />
+                &nbsp;&nbsp;attach_NP_as_left_child(subject)<br />
+                &nbsp;&nbsp;attach_VP_as_right_child(predicate)<br />
+                <br />
+                &nbsp;&nbsp;<span style={{ color: '#5c6370' }}>// Step 6: Expand phrases recursively</span><br />
+                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>FOR EACH</span> phrase <span style={{ color: '#c678dd' }}>DO</span><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;expand_phrase(phrase)<br />
+                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>END FOR</span><br />
+                <br />
+                &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>RETURN</span> tree_diagram<br />
                 <span style={{ color: '#c678dd' }}>END</span>
               </code>
             </div>
           </div>
           <div className="alert alert-info">
-            <strong>⏱️ Complexity Analysis:</strong><br/>
-            <strong>Time Complexity:</strong> O(n²) where n = number of words (due to nested phrase analysis)<br/>
-            <strong>Space Complexity:</strong> O(n) for tree representation<br/>
-            <strong>Best Case:</strong> O(n) for simple sentences with minimal embedding<br/>
+            <strong>⏱️ Complexity Analysis:</strong><br />
+            <strong>Time Complexity:</strong> O(n²) where n = number of words (due to nested phrase analysis)<br />
+            <strong>Space Complexity:</strong> O(n) for tree representation<br />
+            <strong>Best Case:</strong> O(n) for simple sentences with minimal embedding<br />
             <strong>Worst Case:</strong> O(n²) for heavily embedded sentences with multiple clauses
           </div>
 
@@ -929,9 +930,9 @@ const Module2_1: React.FC = () => {
                 <div className="step" style={{ background: 'white', padding: '15px', margin: '10px 0', borderRadius: '5px', borderLeft: '4px solid #667eea' }}>Object NP: &quot;the cat&quot; = Det + N</div>
               </div>
               <div style={{ background: '#d4edda', padding: '15px', borderRadius: '5px', marginTop: '15px' }}>
-                <strong>Heads identified:</strong><br/>
-                NP heads: dog, collar, cat<br/>
-                VP head: chased<br/>
+                <strong>Heads identified:</strong><br />
+                NP heads: dog, collar, cat<br />
+                VP head: chased<br />
                 PP head: with
               </div>
             </div>
@@ -1426,10 +1427,25 @@ const Module2_1: React.FC = () => {
             <a href="#exam" className="footer-link">✅ Retake Quiz</a>
           </div>
           <p style={{ marginTop: '20px', fontSize: '0.9em' }}>
-            Part of Principles and Practices of Human Communication | UNIT-2: Syntax and Semantics<br/>
+            Part of Principles and Practices of Human Communication | UNIT-2: Syntax and Semantics<br />
             Generated learning material for self-paced study
           </p>
         </div>
+
+        {/* ==================== MODULE QUIZ ==================== */}
+        <Quiz
+          title="Module 2.1 Quiz: Syntax and Syntactic Structures"
+          questions={[
+            { question: "What is the primary focus of syntax in linguistics?", options: ["Study of meaning in language", "Study of sound systems", "Study of sentence structure and word arrangement", "Study of language acquisition"], correctAnswer: 2, explanation: "Syntax studies how words combine to form phrases and sentences, including word order rules and phrase structure." },
+            { question: "Which of the following is a key component of phrase structure grammar?", options: ["Phonological rules", "Rewrite rules and phrase structure trees", "Semantic feature analysis", "Pragmatic inference"], correctAnswer: 1, explanation: "Phrase structure grammar uses rewrite rules (e.g., S → NP VP) and tree diagrams to represent sentence structure." },
+            { question: "What does the term 'constituency' refer to in syntax?", options: ["The meaning of individual words", "Groups of words that function as a unit", "The sound patterns of language", "The social context of language use"], correctAnswer: 1, explanation: "A constituent is a group of words that functions as a single syntactic unit, testable via substitution, movement, and cleft tests." },
+            { question: "What is recursion in syntax?", options: ["Repeating the same word", "Embedding structures within structures", "Changing word order", "Adding prefixes"], correctAnswer: 1, explanation: "Recursion allows phrases to be embedded inside other phrases of the same type, enabling an infinite number of sentences." },
+            { question: "Which is a major phrasal category?", options: ["Noun Phrase (NP)", "Verb Phrase (VP)", "Prepositional Phrase (PP)", "All of the above"], correctAnswer: 3, explanation: "NP, VP, PP, AdjP, and AdvP are all major phrasal categories in phrase structure grammar." }
+          ]}
+          subject="LS"
+          unitId={2}
+          moduleId={1}
+        />
       </div>
     </>
   );

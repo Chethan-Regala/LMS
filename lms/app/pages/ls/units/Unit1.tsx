@@ -13,7 +13,7 @@ interface Unit1Props {
 }
 
 const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }) => {
-  
+
   const module1Quiz = [
     {
       question: "What is the primary focus of linguistics?",
@@ -283,19 +283,19 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Phonology</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Understanding Phonology</h3>
               <p>Phonology is the study of sound systems in languages, examining how sounds function and pattern within particular linguistic systems. Unlike phonetics (which studies physical sounds), phonology studies abstract sound patterns.</p>
-              
-           
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/imH7hdOgxrU?si=JaT_sZx0WLvZdIdz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
-                  style={{width: '550px', height: '325px'}}
-                ></iframe>
-          
+
+
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/imH7hdOgxrU?si=JaT_sZx0WLvZdIdz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
+                style={{ width: '550px', height: '325px' }}
+              ></iframe>
+
 
               <h4>Basic Phonological Concepts</h4>
-              
+
               <h5>Phoneme</h5>
               <ul>
                 <li><strong>Definition:</strong> Abstract sound unit that distinguishes meaning in a language</li>
@@ -361,7 +361,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
 
               <h4>Phonological Processes</h4>
-              
+
               <h5>Assimilation</h5>
               <ul>
                 <li><strong>Definition:</strong> Sounds become more similar to neighboring sounds</li>
@@ -424,7 +424,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Syllable Structure</h4>
-              
+
               <h5>Components</h5>
               <ul>
                 <li><strong>Onset:</strong> Initial consonant(s) - optional ("cat" = /k/)</li>
@@ -461,7 +461,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Prosodic Features</h4>
-              
+
               <h5>Stress</h5>
               <ul>
                 <li><strong>Definition:</strong> Prominence given to syllables</li>
@@ -538,19 +538,19 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Morphology</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Understanding Morphology</h3>
               <p>Morphology is the study of word structure and the rules governing word formation in languages. It examines how morphemes (smallest meaningful units) combine to create words.</p>
-              
-             
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/93sK4jTGrss?si=7KPZLNEzyPsKZT7I" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
-                  style={{width: '550px', height: '325px'}}
-                ></iframe>
-              
+
+
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/93sK4jTGrss?si=7KPZLNEzyPsKZT7I" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
+                style={{ width: '550px', height: '325px' }}
+              ></iframe>
+
 
               <h4>Basic Morphological Concepts</h4>
-              
+
               <h5>Morpheme</h5>
               <ul>
                 <li><strong>Definition:</strong> Smallest meaningful unit in language</li>
@@ -606,7 +606,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
 
               <h4>Word Formation Processes</h4>
-              
+
               <h5>Derivational Morphology</h5>
               <ul>
                 <li><strong>Creates new words:</strong> Or changes word class</li>
@@ -710,7 +710,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Morphological Typology</h4>
-              
+
               <h5>Isolating Languages</h5>
               <ul>
                 <li><strong>Characteristic:</strong> One morpheme per word</li>
@@ -811,7 +811,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Unit 1 Comprehensive Assessment</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Test Your Knowledge of Unit 1</h3>
               <p>This comprehensive quiz covers all topics from Unit 1: Introduction to Linguistics. It includes questions from:</p>

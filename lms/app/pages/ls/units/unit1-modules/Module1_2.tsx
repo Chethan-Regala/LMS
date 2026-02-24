@@ -1,11 +1,64 @@
-import React, { useEffect } from 'react';
+import Quiz from '../../components/Quiz';
+import { useEffect } from 'react';
+const module2Quiz = [
+  {
+    question: "What is the International Phonetic Alphabet (IPA) used for?",
+    options: [
+      "Learning foreign languages",
+      "Representing speech sounds precisely",
+      "Writing poetry",
+      "Teaching grammar"
+    ],
+    correctAnswer: 1,
+    explanation: "The IPA provides a standardized way to represent speech sounds from all languages using one symbol per sound. This eliminates the ambiguity of regular spelling systems where the same letter can represent different sounds (like 'ough' in English)."
+  },
+  {
+    question: "Which branch of phonetics studies sound production?",
+    options: [
+      "Acoustic Phonetics",
+      "Auditory Phonetics",
+      "Articulatory Phonetics",
+      "Experimental Phonetics"
+    ],
+    correctAnswer: 2,
+    explanation: "Articulatory phonetics studies how speech sounds are produced by the vocal organs (lungs, vocal cords, tongue, lips, etc.). Acoustic phonetics studies sound waves, and auditory phonetics studies how we perceive sounds."
+  },
+  {
+    question: "What are the three main components of consonant classification?",
+    options: [
+      "Height, backness, roundedness",
+      "Place, manner, voicing",
+      "Stress, tone, intonation",
+      "Onset, nucleus, coda"
+    ],
+    correctAnswer: 1,
+    explanation: "Consonants are classified by: Place (where in the mouth), Manner (how air flows), and Voicing (whether vocal cords vibrate). Height, backness, and roundedness describe vowels. Stress, tone, and intonation are prosodic features."
+  },
+  {
+    question: "Which vowel feature refers to tongue position from front to back?",
+    options: ["Height", "Backness", "Roundedness", "Length"],
+    correctAnswer: 1,
+    explanation: "Backness refers to how far forward or back the tongue is positioned. Height refers to how high or low the tongue is, roundedness refers to lip shape, and length refers to vowel duration."
+  },
+  {
+    question: "What does 'voicing' refer to in phonetics?",
+    options: [
+      "Speaking loudly",
+      "Vocal fold vibration",
+      "Articulation place",
+      "Sound duration"
+    ],
+    correctAnswer: 1,
+    explanation: "Voicing refers to whether the vocal folds (vocal cords) vibrate during sound production. Voiced sounds like /b/, /d/, /g/ have vibration; voiceless sounds like /p/, /t/, /k/ don't. You can feel this by putting your hand on your throat."
+  }
+];
 
 const Module1_2: React.FC = () => {
   useEffect(() => {
     const handleCollapsible = () => {
       const collapsibles = document.querySelectorAll('.collapsible');
       collapsibles.forEach((button) => {
-        const handleClick = function(this: HTMLElement) {
+        const handleClick = function (this: HTMLElement) {
           this.classList.toggle('active');
           const content = this.nextElementSibling as HTMLElement;
           if (content && content.classList.contains('collapsible-content')) {
@@ -412,34 +465,56 @@ const Module1_2: React.FC = () => {
           margin-top: 10px;
         }
         .lab-exercise {
-          background: linear-gradient(135deg, #28a74515, #20c99715);
-          padding: 30px;
-          border-left: 5px solid #28a745;
-          border-radius: 10px;
-          margin: 40px 0;
+          background: #fcfcfc;
+          padding: 50px;
+          border: 2px solid #000;
+          border-radius: 4px;
+          margin: 60px 0;
+          position: relative;
+          box-shadow: 10px 10px 0px #000;
         }
         .lab-exercise h3 {
-          color: #28a745;
-          font-size: 1.8em;
-          margin-bottom: 10px;
+          color: #000;
+          font-size: 2.2em;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          border-bottom: 4px solid #000;
+          display: inline-block;
+          padding-bottom: 5px;
         }
         .lab-exercise h2 {
-          color: #2c3e50;
-          font-size: 1.5em;
-          margin-bottom: 20px;
+          color: #000;
+          font-size: 1.6em;
+          margin-bottom: 30px;
+          font-weight: 700;
         }
         .lab-objective {
           background: white;
-          padding: 20px;
-          border-radius: 8px;
-          margin: 15px 0;
-          border-left: 4px solid #28a745;
+          padding: 24px;
+          border-radius: 0;
+          margin: 20px 0;
+          border: 1px solid #eee;
+          border-left: 8px solid #000;
+          color: #000;
+        }
+        .lab-objective strong {
+          color: #000;
+          text-transform: uppercase;
+          font-size: 0.9em;
+          letter-spacing: 1px;
         }
         .lab-steps {
           background: white;
-          padding: 25px;
-          border-radius: 8px;
-          margin: 20px 0;
+          padding: 0;
+          margin: 40px 0;
+        }
+        .lab-steps h4 {
+          color: #000;
+          font-size: 1.4em;
+          margin-bottom: 25px;
+          text-decoration: underline;
+          text-underline-offset: 8px;
         }
         .lab-steps ol {
           counter-reset: lab-counter;
@@ -448,24 +523,33 @@ const Module1_2: React.FC = () => {
         }
         .lab-steps ol > li {
           counter-increment: lab-counter;
-          margin-bottom: 25px;
-          padding-left: 50px;
+          margin-bottom: 35px;
+          padding-left: 55px;
           position: relative;
+          color: #000;
+          font-weight: 500;
         }
         .lab-steps ol > li::before {
           content: counter(lab-counter);
           position: absolute;
           left: 0;
-          top: 0;
-          background: #28a745;
+          top: -5px;
+          background: #000;
           color: white;
-          width: 35px;
-          height: 35px;
-          border-radius: 50%;
+          width: 38px;
+          height: 38px;
+          border-radius: 0;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-weight: bold;
+          font-weight: 900;
+          font-size: 1.1em;
+        }
+        .lab-steps li strong {
+          color: #000;
+          font-size: 1.2em;
+          display: block;
+          margin-bottom: 10px;
         }
         .alert-danger {
           background: #f8d7da;
@@ -473,27 +557,47 @@ const Module1_2: React.FC = () => {
           color: #721c24;
         }
         .quick-ref {
-          background: linear-gradient(135deg, #17a2b815, #00bcd415);
-          padding: 30px;
-          border-radius: 10px;
-          margin: 40px 0;
+          background: #000;
+          color: #fff;
+          padding: 50px;
+          border-radius: 4px;
+          margin: 60px 0;
+        }
+        .quick-ref .section-title {
+          color: #fff;
+          border-bottom-color: #333;
         }
         .quick-ref-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 20px;
-          margin: 25px 0;
+          gap: 25px;
+          margin: 35px 0;
         }
         .quick-ref-card {
-          background: white;
-          padding: 20px;
-          border-radius: 8px;
-          border-left: 4px solid #17a2b8;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+          background: #111;
+          padding: 25px;
+          border-radius: 0;
+          border: 1px solid #222;
+          box-shadow: none;
+          transition: border-color 0.3s ease;
+        }
+        .quick-ref-card:hover {
+          border-color: #444;
         }
         .quick-ref-card h4 {
-          color: #17a2b8;
-          margin-bottom: 15px;
+          color: #fff;
+          margin-bottom: 20px;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-left: 3px solid #fff;
+          padding-left: 12px;
+        }
+        .quick-ref-card ul li {
+          color: #aaa;
+        }
+        .quick-ref-card strong {
+          color: #fff;
         }
         @media (max-width: 768px) {
           .container {
@@ -563,7 +667,7 @@ const Module1_2: React.FC = () => {
             <div className="misconceptions-title">
               <span>⚠️</span> Common Misconceptions
             </div>
-            
+
             <div className="misconception-item">
               <div className="misconception-title">
                 Misconception #1: "Phonetics and phonology are basically the same thing."
@@ -613,7 +717,7 @@ const Module1_2: React.FC = () => {
           <p style={{ color: '#6c757d', marginBottom: '25px' }}>
             Watch these carefully selected videos to reinforce your understanding with visual explanations, animations, and expert demonstrations.
           </p>
-          
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', margin: '25px 0' }}>
             <div style={{ background: 'white', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', border: '1px solid #e9ecef' }}>
               <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', background: '#333' }}>
@@ -1378,6 +1482,19 @@ const Module1_2: React.FC = () => {
           </div>
         </div>
 
+        {/* FINAL MASTERY QUIZ */}
+        <div className="section" id="quiz">
+          <h2 className="section-title">
+            <span>✅</span> Section Mastery Quiz
+          </h2>
+          <Quiz
+            title="Phonetics Mastery Quiz"
+            questions={module2Quiz}
+            subject="LS"
+            unitId={1}
+            moduleId={2}
+          />
+        </div>
         <div className="footer">
           <h3>🎓 Congratulations on Completing This Module!</h3>
           <p>You&apos;ve covered all aspects of Phonetics and Phonology. Make sure to practice regularly and review the quick reference sheet.</p>

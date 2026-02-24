@@ -1,2966 +1,2329 @@
-import React, { useState } from 'react';
+﻿'use client';
+import React, { useState, useEffect, useRef } from 'react';
+import './Module1_1.css';
+import mermaid from 'mermaid';
+import Quiz from '../../components/Quiz';
+
+const module1Quiz = [
+  {
+    question: "What is the primary goal of linguistics as a scientific discipline?",
+    options: [
+      "To prescribe correct grammar rules for formal writing and speech",
+      "To scientifically describe and explain how language is structured and used",
+      "To rank languages from most to least complex",
+      "To preserve endangered languages only"
+    ],
+    correctAnswer: 1,
+    explanation: "Linguistics is a descriptive science — it observes, analyzes, and explains how language actually works, without judging it."
+  },
+  {
+    question: "Which sub-field of linguistics studies the sound patterns and phoneme system of a language?",
+    options: ["Morphology", "Semantics", "Phonology", "Pragmatics"],
+    correctAnswer: 2,
+    explanation: "Phonology studies how sounds are organized and patterned within a language system (abstract/mental)."
+  },
+  {
+    question: "The word 'unbreakable' contains how many morphemes?",
+    options: [
+      "1 morpheme (it is a single word)",
+      "2 morphemes (un + breakable)",
+      "3 morphemes (un + break + able)",
+      "4 morphemes (u + n + break + able)"
+    ],
+    correctAnswer: 2,
+    explanation: "un- (prefix) + break (root) + -able (suffix) = 3 morphemes."
+  },
+  {
+    question: "Which linguist proposed the concept of Universal Grammar and the Language Acquisition Device (LAD)?",
+    options: [
+      "Ferdinand de Saussure",
+      "Edward Sapir",
+      "Noam Chomsky",
+      "Benjamin Lee Whorf"
+    ],
+    correctAnswer: 2,
+    explanation: "Noam Chomsky proposed the LAD and Universal Grammar."
+  },
+  {
+    question: "When someone says 'Can you open the window?' they are making a request, not literally asking about your ability. Which sub-field studies this?",
+    options: ["Semantics", "Syntax", "Phonetics", "Pragmatics"],
+    correctAnswer: 3,
+    explanation: "Pragmatics studies meaning in context and speaker intent."
+  },
+  {
+    question: "Minimal pairs in phonology are defined as:",
+    options: [
+      "Two words that sound completely different from each other",
+      "Two words that differ by exactly one phoneme and have different meanings",
+      "Two words with the same spelling but different pronunciations",
+      "Words that are synonyms in a language"
+    ],
+    correctAnswer: 1,
+    explanation: "Minimal pairs prove that two sounds are distinct phonemes (e.g., 'pit' vs 'bit')."
+  },
+  {
+    question: "Code-switching — switching between languages in conversation — is primarily studied under which sub-field?",
+    options: ["Psycholinguistics", "Phonetics", "Sociolinguistics", "Morphology"],
+    correctAnswer: 2,
+    explanation: "Code-switching relates language to social factors, making it sociolinguistics."
+  },
+  {
+    question: "Which of the following sentences is syntactically grammatical but semantically meaningless?",
+    options: [
+      "\"The happy child laughed.\"",
+      "\"Colorless green ideas sleep furiously.\"",
+      "\"Cat the quickly ran.\"",
+      "\"Dog bark big.\""
+    ],
+    correctAnswer: 1,
+    explanation: "Chomsky's 'Colorless green ideas sleep furiously' is syntactically perfect but semantically nonsensical."
+  },
+  {
+    question: "True or False — Linguistics is only concerned with written language and does not study spoken or signed languages.",
+    options: ["True", "False"],
+    correctAnswer: 1,
+    explanation: "False. Linguistics covers spoken, written, and signed languages."
+  },
+  {
+    question: "True or False — In linguistics, the relationship between a word and its meaning is natural and inherent.",
+    options: ["True", "False"],
+    correctAnswer: 1,
+    explanation: "False. This is the 'arbitrariness' of the sign; there is no natural connection."
+  }
+];
 
 const Module1_1: React.FC = () => {
   const [openCollapsible, setOpenCollapsible] = useState<string | null>(null);
+  const mermaidRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'default',
+      securityLevel: 'loose',
+      fontFamily: 'Segoe UI, sans-serif',
+      look: 'classic',
+    });
+
+    const renderMermaid = async () => {
+      if (!mermaidRef.current) return;
+      try {
+        const id = `mermaid-svg-${Math.random().toString(36).substr(2, 9)}`;
+        const content = `
+graph TD
+    A["🗣️ A Language Sample<br/>(word, sentence, or text)"] --> B["Phonological Analysis<br/>What sounds are present? What patterns?"]
+    B --> C["Morphological Analysis<br/>What morphemes? What word structure?"]
+    C --> D["Syntactic Analysis<br/>What is the sentence structure? Parse tree?"]
+    D --> E["Semantic Analysis<br/>What is the literal meaning?"]
+    E --> F["Pragmatic Analysis<br/>What does the speaker mean in this context?"]
+    F --> G["Sociolinguistic Analysis<br/>What does this reveal about the speaker's social identity?"]
+    G --> H["✅ Complete Linguistic Profile"]
+
+    style A fill:#667eea,color:#fff
+    style H fill:#28a745,color:#fff
+    style B fill:#e74c3c,color:#fff
+    style C fill:#f39c12,color:#fff
+    style D fill:#2ecc71,color:#fff
+    style E fill:#3498db,color:#fff
+    style F fill:#9b59b6,color:#fff
+    style G fill:#1abc9c,color:#fff
+        `.trim();
+
+        const { svg } = await mermaid.render(id, content);
+        if (mermaidRef.current) {
+          mermaidRef.current.innerHTML = svg;
+        }
+      } catch (error) {
+        console.error('Mermaid rendering failed:', error);
+      }
+    };
+
+    renderMermaid();
+  }, []);
 
   const toggleCollapsible = (id: string) => {
     setOpenCollapsible(openCollapsible === id ? null : id);
   };
 
   return (
-    <>
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    Overview of Linguistics and its Sub-fields - Human Communication
-  </title>
-  <style
-    dangerouslySetInnerHTML={{
-      __html:
-        "\n        * { margin: 0; padding: 0; box-sizing: border-box; }\n        body { font-family: 'Segoe UI', sans-serif; line-height: 1.8; color: #2c3e50; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; font-size: 16px; }\n        .container { max-width: 1400px; margin: 0 auto; background: white; padding: 50px; border-radius: 15px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }\n        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 10px; margin-bottom: 40px; }\n        .header h1 { font-size: 2.5em; margin-bottom: 15px; }\n        .breadcrumb { font-size: 1.1em; opacity: 0.9; margin-bottom: 20px; }\n        .meta-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 25px; }\n        .meta-card { background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 12px; }\n        .meta-icon { font-size: 2em; }\n        .meta-content strong { display: block; font-size: 0.9em; opacity: 0.8; }\n        .meta-content span { font-size: 1.1em; font-weight: 600; }\n        .section { margin-bottom: 50px; scroll-margin-top: 20px; }\n        .section-title { color: #2c3e50; font-size: 2em; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 3px solid #3498db; display: flex; align-items: center; gap: 15px; }\n        .subsection-title { color: #34495e; font-size: 1.5em; margin: 30px 0 15px 0; padding-left: 15px; border-left: 4px solid #3498db; }\n        .objectives-box { background: linear-gradient(135deg, #667eea15, #764ba215); padding: 30px; border-left: 5px solid #667eea; border-radius: 10px; margin: 25px 0; }\n        .objectives-box h3 { color: #667eea; font-size: 1.5em; margin-bottom: 15px; }\n        .objectives-list { list-style: none; counter-reset: objectives; }\n        .objectives-list li { counter-increment: objectives; margin-bottom: 12px; padding-left: 45px; position: relative; line-height: 1.6; }\n        .objectives-list li::before { content: counter(objectives); position: absolute; left: 0; top: 0; background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9em; }\n        .alert { padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid; }\n        .alert-info { background: #d1ecf1; border-color: #17a2b8; color: #0c5460; }\n        .alert-warning { background: #fff3cd; border-color: #ffc107; color: #856404; }\n        .alert-success { background: #d4edda; border-color: #28a745; color: #155724; }\n        .alert-danger { background: #f8d7da; border-color: #dc3545; color: #721c24; }\n        .alert strong { display: block; margin-bottom: 8px; font-size: 1.1em; }\n        p { margin-bottom: 15px; text-align: justify; line-height: 1.9; }\n        .term { color: #667eea; font-weight: 600; }\n        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 3px; font-weight: 600; }\n        .diagram-container { text-align: center; margin: 30px 0; padding: 25px; background: #f8f9fa; border-radius: 10px; border: 2px solid #e9ecef; }\n        .diagram-caption { margin-top: 15px; font-style: italic; color: #6c757d; font-size: 0.95em; }\n        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 25px; margin: 25px 0; }\n        .video-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }\n        .video-card:hover { transform: translateY(-5px); }\n        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }\n        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }\n        .video-info { padding: 15px; background: #f8f9fa; }\n        .video-title { font-weight: 600; color: #2c3e50; margin-bottom: 5px; }\n        .video-description { font-size: 0.9em; color: #6c757d; }\n        table { width: 100%; border-collapse: collapse; margin: 25px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }\n        table thead { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }\n        table th { padding: 15px; text-align: left; font-weight: 600; }\n        table td { padding: 12px 15px; border-bottom: 1px solid #e9ecef; vertical-align: top; }\n        table tr:nth-child(even) { background: #f8f9fa; }\n        table tr:hover { background: #e3f2fd; }\n        .example-box { background: #f0f8ff; border: 2px solid #2196f3; border-radius: 10px; padding: 25px; margin: 25px 0; }\n        .example-box h4 { color: #1976d2; font-size: 1.3em; margin-bottom: 15px; }\n        .example-steps { background: white; padding: 20px; border-radius: 8px; margin: 15px 0; }\n        .step { margin-bottom: 15px; padding-left: 30px; position: relative; }\n        .step::before { content: '→'; position: absolute; left: 0; color: #2196f3; font-weight: bold; font-size: 1.2em; }\n        .mcq-container { background: white; border: 2px solid #e9ecef; border-radius: 10px; padding: 25px; margin: 25px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }\n        .mcq-question { font-size: 1.1em; font-weight: 600; color: #2c3e50; margin-bottom: 20px; line-height: 1.6; }\n        .mcq-options { list-style: none; margin: 20px 0; }\n        .mcq-option { padding: 14px 20px; margin: 10px 0; background: #f8f9fa; border: 2px solid #dee2e6; border-radius: 8px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 12px; font-size: 1em; }\n        .mcq-option:hover:not(.disabled) { background: #e9ecef; border-color: #adb5bd; transform: translateX(5px); }\n        .option-label { background: #667eea; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }\n        .mcq-option.selected { background: #e3f2fd; border-color: #2196f3; border-width: 3px; }\n        .mcq-option.correct { background: #d4edda; border-color: #28a745; border-width: 3px; }\n        .mcq-option.correct .option-label { background: #28a745; }\n        .mcq-option.incorrect { background: #f8d7da; border-color: #dc3545; border-width: 3px; }\n        .mcq-option.incorrect .option-label { background: #dc3545; }\n        .mcq-option.disabled { cursor: not-allowed; }\n        .mcq-feedback { margin-top: 20px; padding: 20px; border-radius: 8px; display: none; }\n        .mcq-feedback.show { display: block; animation: slideDown 0.3s ease; }\n        .mcq-feedback.correct-fb { background: #d4edda; border-left: 5px solid #28a745; color: #155724; }\n        .mcq-feedback.incorrect-fb { background: #f8d7da; border-left: 5px solid #dc3545; color: #721c24; }\n        .mcq-explanation { background: #e8f4f8; padding: 15px; border-radius: 6px; margin-top: 10px; }\n        .collapsible { background: #667eea; color: white; cursor: pointer; padding: 16px 20px; width: 100%; border: none; text-align: left; font-size: 1em; font-weight: 600; border-radius: 8px; margin: 15px 0; transition: all 0.3s; display: flex; justify-content: space-between; align-items: center; }\n        .collapsible:hover { background: #764ba2; }\n        .collapsible::after { content: '+'; font-size: 1.5em; font-weight: bold; }\n        .collapsible.active::after { content: '−'; }\n        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: #f8f9fa; border-radius: 0 0 8px 8px; }\n        .collapsible-content-inner { padding: 25px; }\n        .quiz-header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 25px; border-radius: 10px; margin-bottom: 30px; text-align: center; }\n        .submit-btn { background: #28a745; color: white; padding: 14px 35px; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; margin: 20px 0; transition: all 0.3s; }\n        .submit-btn:hover { background: #218838; transform: translateY(-2px); }\n        .submit-btn:disabled { background: #6c757d; cursor: not-allowed; transform: none; }\n        .lab-exercise { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 35px; border-radius: 15px; margin: 30px 0; }\n        .lab-exercise h3 { font-size: 1.8em; margin-bottom: 20px; }\n        .lab-objective { background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px; margin: 15px 0; }\n        .lab-steps { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; margin-top: 20px; }\n        .lab-steps ol { margin-left: 25px; }\n        .lab-steps li { margin-bottom: 12px; line-height: 1.7; }\n        .quick-ref { background: #fff8e1; border: 3px dashed #ff9800; padding: 30px; border-radius: 10px; margin: 30px 0; }\n        .quick-ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }\n        .quick-ref-card { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #ff9800; }\n        .quick-ref-card h4 { color: #e65100; margin-bottom: 10px; }\n        .subfield-card { background: white; border: 2px solid #e9ecef; border-radius: 10px; padding: 20px; margin: 15px 0; border-left: 5px solid; transition: transform 0.2s; }\n        .subfield-card:hover { transform: translateX(5px); }\n        .subfield-card.phonetics { border-left-color: #e74c3c; }\n        .subfield-card.phonology { border-left-color: #e67e22; }\n        .subfield-card.morphology { border-left-color: #f1c40f; }\n        .subfield-card.syntax { border-left-color: #2ecc71; }\n        .subfield-card.semantics { border-left-color: #3498db; }\n        .subfield-card.pragmatics { border-left-color: #9b59b6; }\n        .subfield-card.sociolinguistics { border-left-color: #1abc9c; }\n        .subfield-card.psycholinguistics { border-left-color: #e91e63; }\n        .subfield-card h4 { font-size: 1.2em; margin-bottom: 10px; }\n        .image-float { float: right; margin: 0 0 20px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 200px; }\n        .image-float img { width: 100%; border-radius: 8px; }\n        .image-float .caption { font-size: 0.8em; color: #666; text-align: center; margin-top: 5px; font-style: italic; }\n        .footer { margin-top: 60px; padding-top: 30px; border-top: 3px solid #e9ecef; text-align: center; color: #6c757d; }\n        .footer-links { display: flex; justify-content: center; gap: 30px; margin-top: 15px; flex-wrap: wrap; }\n        .footer-link { color: #667eea; text-decoration: none; font-weight: 600; }\n        .footer-link:hover { color: #764ba2; }\n        .pro { color: #28a745; font-weight: 600; }\n        .con { color: #dc3545; font-weight: 600; }\n        .morpheme-box { display: inline-flex; align-items: stretch; margin: 10px 0; font-size: 1.1em; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }\n        .morpheme { padding: 12px 18px; text-align: center; color: white; font-weight: 700; }\n        .morpheme-prefix { background: #e74c3c; }\n        .morpheme-root { background: #2ecc71; }\n        .morpheme-suffix { background: #3498db; }\n        .morpheme-label { display: block; font-size: 0.75em; font-weight: 400; opacity: 0.9; }\n        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }\n        @media (max-width: 768px) { .container { padding: 20px; } .header h1 { font-size: 1.8em; } .video-grid { grid-template-columns: 1fr; } .image-float { float: none; max-width: 100%; margin: 0 0 20px 0; } }\n        nav.sticky-nav { position: sticky; top: 0; background: #2c3e50; z-index: 100; padding: 10px 0; border-radius: 8px; margin-bottom: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }\n        nav.sticky-nav a { color: #ecf0f1; text-decoration: none; padding: 8px 15px; border-radius: 5px; font-size: 0.9em; transition: background 0.3s; }\n        nav.sticky-nav a:hover { background: #667eea; }\n        .linguist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }\n        .linguist-card { text-align: center; background: #f8f9fa; border-radius: 10px; padding: 20px; border: 2px solid #e9ecef; }\n        .linguist-card img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 3px solid #667eea; }\n        .linguist-card h5 { color: #2c3e50; margin-bottom: 5px; }\n        .linguist-card p { font-size: 0.85em; color: #6c757d; margin: 0; text-align: center; }\n        .nav-number { display: inline-block; background: #667eea; color: white; width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 0.8em; margin-right: 4px; }\n    "
-    }}
-  />
-  <div className="container">
-    {/* HEADER */}
-    <div className="header">
-      <div className="breadcrumb">
-        📚 Principles and Practices of Human Communication &gt; UNIT-1:
-        Introduction to Language and Linguistics
-      </div>
-      <h1>🌐 Overview of Linguistics and its Sub-fields</h1>
-      <div className="meta-info">
-        <div className="meta-card">
-          <div className="meta-icon">⏱️</div>
-          <div className="meta-content">
-            <strong>Estimated Time</strong>
-            <span>75–90 minutes</span>
-          </div>
-        </div>
-        <div className="meta-card">
-          <div className="meta-icon">📊</div>
-          <div className="meta-content">
-            <strong>Difficulty</strong>
-            <span>Beginner</span>
-          </div>
-        </div>
-        <div className="meta-card">
-          <div className="meta-icon">🎯</div>
-          <div className="meta-content">
-            <strong>Prerequisites</strong>
-            <span>Basic English Grammar</span>
-          </div>
-        </div>
-        <div className="meta-card">
-          <div className="meta-icon">✅</div>
-          <div className="meta-content">
-            <strong>Pass Score</strong>
-            <span>70% or higher</span>
-          </div>
+    <div className="module-content">
+      <div className="lesson-header">
+        <div className="lesson-number-badge">1.1</div>
+        <div className="lesson-title-main">
+          <h1>Overview of Linguistics and its Sub-fields</h1>
         </div>
       </div>
-    </div>
-    {/* STICKY NAVIGATION */}
-    <nav className="sticky-nav">
-      <a href="#objectives">
-        <span className="nav-number">1</span>Objectives
-      </a>
-      <a href="#theory">
-        <span className="nav-number">2</span>Theory
-      </a>
-      <a href="#subfields">
-        <span className="nav-number">3</span>Sub-fields
-      </a>
-      <a href="#videos">
-        <span className="nav-number">4</span>Videos
-      </a>
-      <a href="#diagrams">
-        <span className="nav-number">5</span>Diagrams
-      </a>
-      <a href="#practice">
-        <span className="nav-number">6</span>Practice MCQs
-      </a>
-      <a href="#examples">
-        <span className="nav-number">7</span>Examples
-      </a>
-      <a href="#lab">
-        <span className="nav-number">8</span>Lab
-      </a>
-      <a href="#comparison">
-        <span className="nav-number">9</span>Comparison
-      </a>
-      <a href="#quiz">
-        <span className="nav-number">10</span>Quiz
-      </a>
-      <a href="#pitfalls">
-        <span className="nav-number">11</span>Pitfalls
-      </a>
-      <a href="#quickref">
-        <span className="nav-number">12</span>Quick Ref
-      </a>
-      <a href="#exam">
-        <span className="nav-number">13</span>Exam Prep
-      </a>
-    </nav>
-    {/* SECTION 1: LEARNING OBJECTIVES */}
-    <div className="section" id="objectives">
-      <h2 className="section-title">
-        <span>🎯</span> What You'll Master
-      </h2>
-      <div className="objectives-box">
-        <h3>Learning Objectives</h3>
-        <ul className="objectives-list">
-          <li>
-            Define linguistics as a scientific discipline and distinguish it
-            from prescriptive grammar using at least three concrete examples
-            from everyday language use.
-          </li>
-          <li>
-            Identify, name, and explain all eight major sub-fields of
-            linguistics — phonetics, phonology, morphology, syntax, semantics,
-            pragmatics, sociolinguistics, and psycholinguistics — with a clear
-            definition and example for each.
-          </li>
-          <li>
-            Apply linguistic analysis to a given sentence by examining it at
-            phonological, morphological, syntactic, and semantic levels
-            simultaneously.
-          </li>
-          <li>
-            Compare and contrast at least three pairs of closely related
-            sub-fields (e.g., phonetics vs. phonology; semantics vs. pragmatics;
-            sociolinguistics vs. psycholinguistics) using appropriate technical
-            terminology.
-          </li>
-          <li>
-            Recognize and explain at least four real-world applications of
-            linguistics across domains such as language teaching, NLP, forensic
-            linguistics, and clinical communication.
-          </li>
-        </ul>
-      </div>
-      <h3 className="subsection-title">🔥 Why This Topic Matters</h3>
-      <p>
-        Imagine waking up one morning and losing the ability to understand any
-        language — not just reading or writing, but even recognizing speech.
-        This is the reality for patients with certain brain injuries, and it is
-        linguists who help us understand why it happens and how to treat it.
-        Language is the most fundamental tool of human communication, yet most
-        of us take it completely for granted. Linguistics is the scientific
-        discipline that pulls back the curtain on this everyday miracle.
-      </p>
-      <p>
-        Understanding linguistics is essential for anyone studying
-        communication, education, psychology, artificial intelligence, or law.
-        When you know how languages are structured — how sounds combine into
-        words, words into sentences, and sentences into meaning — you become a
-        sharper thinker, a better communicator, and a more empathetic listener.
-        Voice assistants like Siri and Alexa are built on linguistic principles.
-        Courtrooms use forensic linguists to analyze threatening letters.
-        Teachers use linguistic insights to help struggling readers.
-      </p>
-      <div className="alert alert-success">
-        <strong>💡 Real-World Applications:</strong>
-        <ul style={{ marginTop: 10, marginLeft: 20 }}>
-          <li>
-            🤖 <strong>NLP &amp; AI:</strong> ChatGPT, Google Translate, and
-            Alexa are built on computational linguistics principles
-          </li>
-          <li>
-            ⚖️ <strong>Forensic Linguistics:</strong> Used in courts to analyze
-            ransom notes, threatening messages, and authorship disputes
-          </li>
-          <li>
-            👶 <strong>Language Acquisition:</strong> Helps educators support
-            children with dyslexia, autism, and speech delays
-          </li>
-          <li>
-            🌍 <strong>Translation:</strong> Professional translators rely on
-            semantic and pragmatic knowledge to avoid mistranslations
-          </li>
-          <li>
-            🏥 <strong>Clinical Linguistics:</strong> Speech-language therapists
-            use phonetics and morphology to treat communication disorders
-          </li>
-        </ul>
-      </div>
-    </div>
-    {/* SECTION 2: THEORY */}
-    <div className="section" id="theory">
-      <h2 className="section-title">
-        <span>📖</span> Deep Dive: What is Linguistics?
-      </h2>
-      <div style={{ overflow: "hidden" }}>
-        <div className="image-float">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ferdinand_de_Saussure_by_Jullien.jpg/220px-Ferdinand_de_Saussure_by_Jullien.jpg"
-            alt="Ferdinand de Saussure"
-            onError={(e) => (e.currentTarget.style.display = 'none')}
-          />
-          <div className="caption">
-            Ferdinand de Saussure (1857–1913), father of modern linguistics
-          </div>
-        </div>
-        <h3 className="subsection-title">Definition &amp; Scope</h3>
-        <p>
-          <span className="term">Linguistics</span> is the{" "}
-          <strong>scientific study of language</strong> — its structure, its
-          use, its history, and its role in human cognition and society. Unlike
-          your school English teacher who corrected your grammar ("Don't say
-          'ain't'!"), a linguist does not judge language as right or wrong.
-          Instead, a linguist <em>observes</em>, <em>describes</em>, and{" "}
-          <em>explains</em> how language actually works in the real world.
-        </p>
-        <p>
-          This distinction is crucial: linguistics is{" "}
-          <span className="highlight">descriptive, not prescriptive</span>. It
-          describes how people actually speak and write, rather than dictating
-          how they should. When linguists study African-American Vernacular
-          English (AAVE) or Indian English, they are not grading these varieties
-          — they are recognizing them as fully systematic, rule-governed
-          dialects worthy of scientific analysis.
-        </p>
-        <p>
-          Linguistics investigates questions such as: How do babies acquire
-          their first language without explicit instruction? Why do languages
-          change over time? How does the human brain process a sentence? Can
-          language shape the way we think? What do all human languages have in
-          common? These questions span biology, psychology, sociology,
-          philosophy, and computer science — making linguistics one of the most
-          interdisciplinary fields in academia.
-        </p>
-      </div>
-      <div className="alert alert-info">
-        <strong>📌 Key Terminology:</strong>
-        <ul style={{ marginTop: 10, marginLeft: 20 }}>
-          <li>
-            <span className="term">Descriptive linguistics:</span> Objectively
-            analyzing and describing how language is actually used by its
-            speakers
-          </li>
-          <li>
-            <span className="term">Prescriptive linguistics:</span> Setting
-            rules for how language "should" be used (grammar books, style
-            guides)
-          </li>
-          <li>
-            <span className="term">Langue vs. Parole:</span> Saussure's
-            distinction between the language system (langue) and actual speech
-            (parole)
-          </li>
-          <li>
-            <span className="term">Competence vs. Performance:</span> Chomsky's
-            distinction between knowing a language and actually using it
-          </li>
-          <li>
-            <span className="term">Language universals:</span> Features found in
-            all or most of the world's ~7,000 languages
-          </li>
-          <li>
-            <span className="term">Arbitrariness of sign:</span> Saussure's
-            principle that there is no natural connection between a word and its
-            meaning
-          </li>
-        </ul>
-      </div>
-      <h3 className="subsection-title">A Brief History of Linguistics</h3>
-      <p>
-        The scientific study of language has roots stretching back over 2,500
-        years. The Indian grammarian <strong>Panini</strong> (~400 BCE) wrote an
-        extraordinarily precise analysis of Sanskrit grammar — one that
-        anticipated many modern linguistic concepts. In the 19th century,
-        European scholars discovered that many languages (Sanskrit, Latin,
-        Greek, Persian, English) share a common ancestor —{" "}
-        <strong>Proto-Indo-European</strong> — and developed methods for
-        reconstructing ancient languages. This historical-comparative
-        linguistics was the first truly scientific approach to language.
-      </p>
-      <p>
-        The Swiss linguist <strong>Ferdinand de Saussure</strong> (1857–1913)
-        revolutionized linguistics by shifting focus from history to structure.
-        His posthumously published <em>Course in General Linguistics</em> (1916)
-        introduced the concepts of the linguistic sign, langue vs. parole, and
-        synchronic vs. diachronic analysis. Saussure is considered the "father
-        of modern linguistics."
-      </p>
-      <div className="linguist-grid">
-        <div className="linguist-card">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ferdinand_de_Saussure_by_Jullien.jpg/220px-Ferdinand_de_Saussure_by_Jullien.jpg"
-            alt="Saussure"
-            onError={(e) => e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="50" fill="%23667eea"/><text x="50" y="55" font-size="30" text-anchor="middle" fill="white">FS</text></svg>'}
-          />
-          <h5>Ferdinand de Saussure</h5>
-          <p>
-            Father of structural linguistics. Introduced the linguistic sign
-            concept.
-          </p>
-        </div>
-        <div className="linguist-card">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Noam_Chomsky_portrait_2015.jpg/220px-Noam_Chomsky_portrait_2015.jpg"
-            alt="Chomsky"
-            onError={(e) => e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="50" fill="%232ecc71"/><text x="50" y="55" font-size="30" text-anchor="middle" fill="white">NC</text></svg>'}
-          />
-          <h5>Noam Chomsky</h5>
-          <p>
-            Proposed Universal Grammar and the Language Acquisition Device
-            (LAD).
-          </p>
-        </div>
-        <div className="linguist-card">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/EdwardSapir.jpg/200px-EdwardSapir.jpg"
-            alt="Sapir"
-            onError={(e) => e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="50" fill="%23e74c3c"/><text x="50" y="55" font-size="30" text-anchor="middle" fill="white">ES</text></svg>'}
-          />
-          <h5>Edward Sapir</h5>
-          <p>Developed the Sapir-Whorf hypothesis: language shapes thought.</p>
-        </div>
-        <div className="linguist-card">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Panini.jpg/200px-Panini.jpg"
-            alt="Panini"
-            onError={(e) => e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="50" fill="%23f39c12"/><text x="50" y="55" font-size="30" text-anchor="middle" fill="white">P</text></svg>'}
-          />
-          <h5>Panini (~400 BCE)</h5>
-          <p>
-            Ancient Indian grammarian. Wrote the world's first systematic
-            grammar.
-          </p>
-        </div>
-      </div>
-      <p>
-        In the 20th century, <strong>Noam Chomsky</strong> transformed
-        linguistics again by arguing that all humans are born with an innate
-        capacity for language — a <em>Language Acquisition Device</em> — and
-        that all languages share a common underlying structure called{" "}
-        <strong>Universal Grammar</strong>. This nativist view sparked decades
-        of debate and research that continues today.
-      </p>
-    </div>
-    {/* SECTION 3: SUB-FIELDS */}
-    <div className="section" id="subfields">
-      <h2 className="section-title">
-        <span>🔬</span> The Eight Sub-fields of Linguistics
-      </h2>
-      <p>
-        Linguistics is not a single, monolithic field. It branches into several
-        specialized sub-disciplines, each focusing on a different level or
-        aspect of language. Think of linguistics as a tree: the trunk is
-        language itself, and each major branch is a sub-field that studies one
-        dimension of that language.
-      </p>
-      {/* SVG Linguistics Tree Diagram */}
-      <div className="diagram-container" id="diagrams">
-        <h4>🌳 The Linguistics Family Tree</h4>
-        <svg
-          width={900}
-          height={500}
-          viewBox="0 0 900 500"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Background */}
-          <rect width={900} height={500} fill="#f8f9fa" rx={10} />
-          {/* Trunk: Central node */}
-          <ellipse cx={450} cy={60} rx={100} ry={35} fill="#2c3e50" />
-          <text
-            x={450}
-            y={55}
-            textAnchor="middle"
-            fill="white"
-            fontSize={16}
-            fontWeight="bold"
-          >
-            LINGUISTICS
-          </text>
-          <text x={450} y={72} textAnchor="middle" fill="#ecf0f1" fontSize={11}>
-            Scientific Study of Language
-          </text>
-          {/* Lines to sub-fields */}
-          <line
-            x1={450}
-            y1={95}
-            x2={90}
-            y2={180}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          <line
-            x1={450}
-            y1={95}
-            x2={200}
-            y2={180}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          <line
-            x1={450}
-            y1={95}
-            x2={315}
-            y2={180}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          <line
-            x1={450}
-            y1={95}
-            x2={430}
-            y2={180}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          <line
-            x1={450}
-            y1={95}
-            x2={545}
-            y2={180}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          <line
-            x1={450}
-            y1={95}
-            x2={660}
-            y2={180}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          <line
-            x1={450}
-            y1={95}
-            x2={775}
-            y2={180}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          <line
-            x1={450}
-            y1={95}
-            x2={860}
-            y2={180}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          {/* Phonetics */}
-          <rect x={30} y={175} width={120} height={55} fill="#e74c3c" rx={8} />
-          <text
-            x={90}
-            y={198}
-            textAnchor="middle"
-            fill="white"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            Phonetics
-          </text>
-          <text x={90} y={215} textAnchor="middle" fill="#ffd" fontSize={10}>
-            Speech Sounds
-          </text>
-          {/* Phonology */}
-          <rect x={145} y={175} width={120} height={55} fill="#e67e22" rx={8} />
-          <text
-            x={205}
-            y={198}
-            textAnchor="middle"
-            fill="white"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            Phonology
-          </text>
-          <text x={205} y={215} textAnchor="middle" fill="#ffd" fontSize={10}>
-            Sound Patterns
-          </text>
-          {/* Morphology */}
-          <rect x={260} y={175} width={120} height={55} fill="#f1c40f" rx={8} />
-          <text
-            x={320}
-            y={198}
-            textAnchor="middle"
-            fill="#333"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            Morphology
-          </text>
-          <text x={320} y={215} textAnchor="middle" fill="#555" fontSize={10}>
-            Word Structure
-          </text>
-          {/* Syntax */}
-          <rect x={375} y={175} width={120} height={55} fill="#2ecc71" rx={8} />
-          <text
-            x={435}
-            y={198}
-            textAnchor="middle"
-            fill="white"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            Syntax
-          </text>
-          <text x={435} y={215} textAnchor="middle" fill="#dfd" fontSize={10}>
-            Sentence Structure
-          </text>
-          {/* Semantics */}
-          <rect x={490} y={175} width={120} height={55} fill="#3498db" rx={8} />
-          <text
-            x={550}
-            y={198}
-            textAnchor="middle"
-            fill="white"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            Semantics
-          </text>
-          <text x={550} y={215} textAnchor="middle" fill="#ddf" fontSize={10}>
-            Meaning
-          </text>
-          {/* Pragmatics */}
-          <rect x={605} y={175} width={120} height={55} fill="#9b59b6" rx={8} />
-          <text
-            x={665}
-            y={198}
-            textAnchor="middle"
-            fill="white"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            Pragmatics
-          </text>
-          <text x={665} y={215} textAnchor="middle" fill="#edf" fontSize={10}>
-            Meaning in Context
-          </text>
-          {/* Sociolinguistics */}
-          <rect x={720} y={175} width={130} height={55} fill="#1abc9c" rx={8} />
-          <text
-            x={785}
-            y={198}
-            textAnchor="middle"
-            fill="white"
-            fontSize={12}
-            fontWeight="bold"
-          >
-            Sociolinguistics
-          </text>
-          <text x={785} y={215} textAnchor="middle" fill="#dff" fontSize={10}>
-            Language &amp; Society
-          </text>
-          {/* Psycholinguistics */}
-          <rect x={820} y={285} width={75} height={55} fill="#e91e63" rx={8} />
-          <text
-            x={857}
-            y={308}
-            textAnchor="middle"
-            fill="white"
-            fontSize={10}
-            fontWeight="bold"
-          >
-            Psycho-
-          </text>
-          <text
-            x={857}
-            y={320}
-            textAnchor="middle"
-            fill="white"
-            fontSize={10}
-            fontWeight="bold"
-          >
-            linguistics
-          </text>
-          <text x={857} y={332} textAnchor="middle" fill="#fdd" fontSize={9}>
-            Mind &amp; Lang.
-          </text>
-          <line
-            x1={860}
-            y1={230}
-            x2={857}
-            y2={285}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          {/* Sub-labels row 2 */}
-          <text
-            x={90}
-            y={250}
-            textAnchor="middle"
-            fill="#e74c3c"
-            fontSize={10}
-            fontStyle="italic"
-          >
-            /p/ /b/ /t/ /d/
-          </text>
-          <text
-            x={205}
-            y={250}
-            textAnchor="middle"
-            fill="#e67e22"
-            fontSize={10}
-            fontStyle="italic"
-          >
-            minimal pairs
-          </text>
-          <text
-            x={320}
-            y={250}
-            textAnchor="middle"
-            fill="#c0a000"
-            fontSize={10}
-            fontStyle="italic"
-          >
-            un+break+able
-          </text>
-          <text
-            x={435}
-            y={250}
-            textAnchor="middle"
-            fill="#27ae60"
-            fontSize={10}
-            fontStyle="italic"
-          >
-            NP + VP
-          </text>
-          <text
-            x={550}
-            y={250}
-            textAnchor="middle"
-            fill="#2980b9"
-            fontSize={10}
-            fontStyle="italic"
-          >
-            denotation
-          </text>
-          <text
-            x={665}
-            y={250}
-            textAnchor="middle"
-            fill="#8e44ad"
-            fontSize={10}
-            fontStyle="italic"
-          >
-            speech acts
-          </text>
-          <text
-            x={785}
-            y={250}
-            textAnchor="middle"
-            fill="#16a085"
-            fontSize={10}
-            fontStyle="italic"
-          >
-            dialects
-          </text>
-          {/* Bottom legend */}
-          <text
-            x={450}
-            y={440}
-            textAnchor="middle"
-            fill="#7f8c8d"
-            fontSize={13}
-            fontStyle="italic"
-          >
-            Each branch studies a different level or dimension of human language
-          </text>
-        </svg>
-        <p className="diagram-caption">
-          Figure 1: The major sub-fields of linguistics, each focusing on a
-          distinct aspect of language structure or use
-        </p>
-      </div>
-      ----part 1---
-      {/* PHONETICS */}
-      <div className="subfield-card phonetics">
-        <h4>🔴 1. Phonetics — The Study of Speech Sounds</h4>
-        <p>
-          <strong>Phonetics</strong> is the scientific study of the physical
-          sounds of human speech. Phoneticians analyze how sounds are produced
-          by the vocal tract (
-          <span className="term">articulatory phonetics</span>), how they travel
-          through the air as sound waves (
-          <span className="term">acoustic phonetics</span>), and how they are
-          perceived by the listener's ear and brain (
-          <span className="term">auditory phonetics</span>).
-        </p>
-        <p>
-          Phonetics deals with actual, concrete sounds — called{" "}
-          <span className="term">phones</span> — irrespective of meaning. The
-          International Phonetic Alphabet (IPA) provides a universal symbol
-          system for transcribing any sound in any language. For example, the
-          English word "ship" is transcribed as /ʃɪp/ in IPA. Phonetics is
-          crucial for language learning, speech therapy, voice acting, and
-          accent training.
-        </p>
-        <p>
-          <strong>Examples:</strong> The /p/ sound in "pin" is produced by
-          pressing both lips together and releasing a puff of air (bilabial
-          plosive). The /f/ sound in "fan" is made by placing the upper teeth on
-          the lower lip (labiodental fricative). Even slight changes in tongue
-          position create entirely different sounds.
-        </p>
-        <div className="diagram-container" style={{ margin: "15px 0" }}>
-          <h5>IPA Chart (International Phonetic Alphabet)</h5>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/IPA_chart_2020.svg/800px-IPA_chart_2020.svg.png"
-            alt="IPA Chart"
-            style={{ maxWidth: "100%", borderRadius: 8 }}
-            onError={(e) => e.currentTarget.alt = 'IPA Chart - Search for IPA chart on Wikipedia'}
-          />
-          <p className="diagram-caption">
-            The International Phonetic Alphabet — a standardized system for
-            transcribing speech sounds in any language
-          </p>
-        </div>
-      </div>
-      {/* PHONOLOGY */}
-      <div className="subfield-card phonology">
-        <h4>🟠 2. Phonology — The Study of Sound Patterns</h4>
-        <p>
-          <span className="term">Phonology</span> studies how sounds function
-          and are organized within a specific language system. While phonetics
-          asks "what sounds can humans produce?", phonology asks "which sounds
-          matter in this language, and what rules govern them?" The key unit of
-          phonology is the <span className="term">phoneme</span> — an abstract,
-          meaning-distinguishing sound unit.
-        </p>
-        <p>
-          Phonologists study <span className="term">minimal pairs</span> — pairs
-          of words that differ by only one sound and have different meanings.
-          For example, in English, "cat" /kæt/ and "bat" /bæt/ are a minimal
-          pair — the only difference is /k/ vs. /b/, showing these are separate
-          phonemes. Phonology also studies syllable structure, stress patterns,
-          tone, and intonation.
-        </p>
-        <p>
-          <strong>Example:</strong> In English, the sounds [p] and [pʰ]
-          (aspirated p) are allophones of the same phoneme /p/ — "spin" has
-          unaspirated [p], while "pin" has aspirated [pʰ]. English speakers
-          don't notice the difference. But in Thai and Hindi, this difference is
-          phonemic — it changes meaning!
-        </p>
-      </div>
-      {/* MORPHOLOGY */}
-      <div className="subfield-card morphology">
-        <h4>🟡 3. Morphology — The Study of Word Structure</h4>
-        <p>
-          <span className="term">Morphology</span> is the study of the internal
-          structure of words and how words are formed. The fundamental unit of
-          morphology is the <span className="term">morpheme</span> — the
-          smallest unit of meaning or grammatical function. Morphemes can be
-          free (stand-alone words like "cat", "run") or bound (must attach to
-          another morpheme, like "-ing", "un-", "-ness").
-        </p>
-        <p>
-          Morphology explains how complex words are built from simpler parts:
-          prefixes, roots, and suffixes. It also studies inflection (grammatical
-          changes like "walk → walked → walking") and derivation (creating new
-          words: "happy → unhappy → unhappiness"). Understanding morphology
-          helps with vocabulary building, language learning, spelling, and
-          lexicography.
-        </p>
-        <p>
-          <strong>Example breakdown of "unbreakable":</strong>
-        </p>
-        <div style={{ textAlign: "center", margin: "15px 0" }}>
-          <div className="morpheme-box">
-            <div className="morpheme morpheme-prefix">
-              un-
-              <span className="morpheme-label">
-                Prefix
-                <br />
-                "not"
-              </span>
-            </div>
-            <div className="morpheme morpheme-root">
-              break
-              <span className="morpheme-label">
-                Root
-                <br />
-                "to break"
-              </span>
-            </div>
-            <div className="morpheme morpheme-suffix">
-              -able
-              <span className="morpheme-label">
-                Suffix
-                <br />
-                "capable of"
-              </span>
-            </div>
-          </div>
-          <p style={{ marginTop: 10, fontSize: "0.9em", color: "#666" }}>
-            un + break + able = "not capable of being broken" — 3 morphemes, 1
-            word
-          </p>
-        </div>
-      </div>
-      {/* SYNTAX */}
-      <div className="subfield-card syntax">
-        <h4>🟢 4. Syntax — The Study of Sentence Structure</h4>
-        <p>
-          <span className="term">Syntax</span> is the study of how words are
-          combined to form phrases, clauses, and sentences. Every language has
-          rules — called <span className="term">phrase structure rules</span> or{" "}
-          <span className="term">grammar</span> — that determine which word
-          orders are grammatical. Syntax explains why "The cat chased the mouse"
-          is grammatical in English but "Cat the mouse the chased" is not.
-        </p>
-        <p>
-          Syntacticians use <span className="term">parse trees</span> (or syntax
-          trees) to visually represent the hierarchical structure of sentences.
-          Every sentence can be broken into a Noun Phrase (NP) and a Verb Phrase
-          (VP). Chomsky's <em>Transformational Grammar</em> proposed that
-          sentences have a <strong>deep structure</strong> (underlying meaning)
-          and a <strong>surface structure</strong> (what we actually say),
-          connected by transformations.
-        </p>
-        <p>
-          <strong>Example:</strong> "Colorless green ideas sleep furiously"
-          (Chomsky, 1957) is syntactically grammatical (NP + V + adverb) but
-          semantically meaningless — proving that syntax and semantics are
-          separate systems.
-        </p>
-      </div>
-      {/* SEMANTICS */}
-      <div className="subfield-card semantics">
-        <h4>🔵 5. Semantics — The Study of Meaning</h4>
-        <p>
-          <span className="term">Semantics</span> is the branch of linguistics
-          concerned with meaning — the meaning of words, phrases, sentences, and
-          larger units of language. Semanticists study{" "}
-          <span className="term">denotation</span> (literal, dictionary meaning)
-          and <span className="term">connotation</span> (emotional or cultural
-          associations). They also analyze relationships between words: synonyms
-          (big/large), antonyms (hot/cold), hyponyms (rose is a hyponym of
-          flower), and homonyms (bank: financial institution vs. riverbank).
-        </p>
-        <p>
-          Semantics distinguishes between{" "}
-          <span className="term">lexical semantics</span> (word meanings) and{" "}
-          <span className="term">compositional semantics</span> (how meanings
-          combine in phrases and sentences). The principle of compositionality
-          states that the meaning of a complex expression is determined by the
-          meanings of its parts and the rules for combining them.
-        </p>
-        <p>
-          <strong>Example:</strong> "The dog bit the man" and "The man bit the
-          dog" contain exactly the same words, but have completely different
-          meanings because of the syntactic arrangement — showing how syntax and
-          semantics interact.
-        </p>
-      </div>
-      {/* PRAGMATICS */}
-      <div className="subfield-card pragmatics">
-        <h4>🟣 6. Pragmatics — Meaning in Context</h4>
-        <p>
-          <span className="term">Pragmatics</span> studies how context shapes
-          the interpretation of language — how we mean more than we literally
-          say. While semantics asks "what does this sentence literally mean?",
-          pragmatics asks "what does the speaker mean by saying this, in this
-          situation?" The same sentence can mean very different things depending
-          on context, tone, and social relationship.
-        </p>
-        <p>
-          Key concepts in pragmatics include{" "}
-          <span className="term">speech acts</span> (J.L. Austin's theory that
-          utterances perform actions: promises, warnings, requests),{" "}
-          <span className="term">Gricean maxims</span> (Paul Grice's cooperative
-          principle: be truthful, relevant, clear, and informative), and{" "}
-          <span className="term">implicature</span> (what is implied but not
-          stated).
-        </p>
-        <p>
-          <strong>Example:</strong> If someone asks "Can you pass the salt?"
-          they are not asking about your ability to pass salt (semantics) — they
-          are making a polite request (pragmatics). If a student says "I have an
-          exam tomorrow" to explain why they can't attend a party, that is an
-          implicature — the statement implies a refusal without explicitly
-          refusing.
-        </p>
-      </div>
-      {/* SOCIOLINGUISTICS */}
-      <div className="subfield-card sociolinguistics">
-        <h4>🩵 7. Sociolinguistics — Language and Society</h4>
-        <p>
-          <span className="term">Sociolinguistics</span> investigates the
-          relationship between language and society — how social factors like
-          age, gender, ethnicity, class, geography, and culture influence
-          language variation and change. No two people speak exactly alike;
-          sociolinguists study these variations systematically.
-        </p>
-        <p>
-          Key concepts include <span className="term">dialects</span> (regional
-          or social varieties of a language),{" "}
-          <span className="term">code-switching</span> (switching between
-          languages or dialects depending on context),{" "}
-          <span className="term">diglossia</span> (using two varieties of a
-          language for different social functions), and{" "}
-          <span className="term">language change</span> (how and why languages
-          evolve over time). William Labov's study of New York City speech
-          (1966) is a landmark sociolinguistic work.
-        </p>
-        <p>
-          <strong>Example:</strong> A bilingual Indian professional might switch
-          between Hindi and English within a single conversation at work
-          (code-switching). A British speaker from Yorkshire uses different
-          vowel sounds than a speaker from London — this is dialect variation.
-          Both are studied by sociolinguists.
-        </p>
-      </div>
-      {/* PSYCHOLINGUISTICS */}
-      <div className="subfield-card psycholinguistics">
-        <h4>🩷 8. Psycholinguistics — Language and the Mind</h4>
-        <p>
-          <span className="term">Psycholinguistics</span> explores the
-          psychological and neurobiological factors that enable humans to
-          acquire, produce, understand, and remember language. It bridges
-          linguistics and cognitive psychology. Psycholinguists study how
-          children acquire their mother tongue (first language acquisition), how
-          adults learn second languages, how the brain processes sentences in
-          real time, and what happens when language breaks down due to brain
-          injury.
-        </p>
-        <p>
-          Key findings include: children acquire language remarkably rapidly and
-          uniformly (supporting Chomsky's nativist hypothesis);{" "}
-          <span className="term">Broca's area</span> (left frontal lobe) is
-          critical for speech production;{" "}
-          <span className="term">Wernicke's area</span> (left temporal lobe) is
-          critical for language comprehension. Damage to these areas causes
-          different types of aphasia.
-        </p>
-        <p>
-          <strong>Example:</strong> A child who has never been taught a grammar
-          rule will still correctly use it. Children around the world go through
-          the same stages of language development (babbling → one-word stage →
-          two-word stage → full sentences) regardless of which language they are
-          learning — evidence for a universal language acquisition mechanism.
-        </p>
-      </div>
-      <h3 className="subsection-title">Applied Linguistics</h3>
-      <p>
-        Beyond pure theoretical research, linguistics has a rich applied
-        dimension. <span className="term">Applied linguistics</span> uses
-        linguistic knowledge to solve real-world problems in education,
-        technology, healthcare, and law. Major areas include:
-      </p>
-      <ul style={{ marginLeft: 25, marginBottom: 15, lineHeight: 2 }}>
-        <li>
-          <strong>Language Teaching (SLA):</strong> Using knowledge of language
-          acquisition to design better teaching methods
-        </li>
-        <li>
-          <strong>Computational Linguistics / NLP:</strong> Building computer
-          systems that understand and generate human language (machine
-          translation, chatbots, speech recognition)
-        </li>
-        <li>
-          <strong>Forensic Linguistics:</strong> Analyzing language evidence in
-          legal contexts (authorship identification, language of threat,
-          contract interpretation)
-        </li>
-        <li>
-          <strong>Clinical Linguistics:</strong> Diagnosing and treating
-          communication disorders (aphasia, dyslexia, stuttering, autism
-          spectrum communication)
-        </li>
-        <li>
-          <strong>Lexicography:</strong> Compiling dictionaries and thesauri
-          based on corpus data
-        </li>
-        <li>
-          <strong>Translation &amp; Interpretation:</strong> Using semantic and
-          pragmatic knowledge to transfer meaning across languages
-        </li>
-      </ul>
-    </div>
-    {/* SECTION 4: VIDEOS */}
-    <div className="section" id="videos">
-      <h2 className="section-title">
-        <span>🎥</span> Learn Through Videos
-      </h2>
-      <p>
-        Watch these carefully curated videos to reinforce your understanding
-        with expert explanations and visual demonstrations.
-      </p>
-      <div className="video-grid">
-        <div className="video-card">
-          <div className="video-container">
-            <iframe
-              src="https://www.youtube.com/embed/3yLXNzDUH58"
-              allowFullScreen=""
-              title="What is Linguistics?"
-            />
-          </div>
-          <div className="video-info">
-            <div className="video-title">
-              📚 What is Linguistics? — Introduction
-            </div>
-            <div className="video-description">
-              A clear introduction to linguistics as a scientific discipline,
-              covering core concepts and why it matters.
-            </div>
-          </div>
-        </div>
-        <div className="video-card">
-          <div className="video-container">
-            <iframe
-              src="https://www.youtube.com/embed/xVnMFCHfFiY"
-              allowFullScreen=""
-              title="Branches of Linguistics"
-            />
-          </div>
-          <div className="video-info">
-            <div className="video-title">
-              🔬 Branches of Linguistics Explained
-            </div>
-            <div className="video-description">
-              Covers all major sub-fields of linguistics with clear definitions
-              and real-world examples for each branch.
-            </div>
-          </div>
-        </div>
-        <div className="video-card">
-          <div className="video-container">
-            <iframe
-              src="https://www.youtube.com/embed/DWCOCpCKKyE"
-              allowFullScreen=""
-              title="Linguistics Sub-fields Overview"
-            />
-          </div>
-          <div className="video-info">
-            <div className="video-title">
-              🌐 Overview of Linguistics Sub-fields
-            </div>
-            <div className="video-description">
-              An animated overview covering phonetics, phonology, morphology,
-              syntax, semantics, and pragmatics with visual aids.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="alert alert-info">
-        <strong>📺 Additional Resources:</strong>
-        <ul style={{ marginTop: 10, marginLeft: 20 }}>
-          <li>
-            <strong>YouTube Channels:</strong> Crash Course Linguistics,
-            NativLang, The Ling Space, Tom Scott (linguistics videos)
-          </li>
-          <li>
-            <strong>Interactive:</strong> Search "IPA chart interactive" for a
-            clickable IPA chart with audio samples
-          </li>
-          <li>
-            <strong>Apps:</strong> Duolingo (applied linguistics in language
-            learning), Speechling (pronunciation/phonetics)
-          </li>
-        </ul>
-      </div>
-    </div>
-    {/* SECTION 5: MERMAID DIAGRAMS */}
-    <div className="section">
-      <h2 className="section-title">
-        <span>📊</span> Visual Concept Maps
-      </h2>
-      <div className="diagram-container">
-        <h4>How to Analyze Language at Multiple Levels</h4>
-        <div className="mermaid">
-          graph TD A["🗣️ A Language Sample
-          <br />
-          (word, sentence, or text)"] --&gt; B["Phonological Analysis
-          <br />
-          What sounds are present? What patterns?"] B --&gt; C["Morphological
-          Analysis
-          <br />
-          What morphemes? What word structure?"] C --&gt; D["Syntactic Analysis
-          <br />
-          What is the sentence structure? Parse tree?"] D --&gt; E["Semantic
-          Analysis
-          <br />
-          What is the literal meaning?"] E --&gt; F["Pragmatic Analysis
-          <br />
-          What does the speaker mean in this context?"] F --&gt;
-          G["Sociolinguistic Analysis
-          <br />
-          What does this reveal about the speaker's social identity?"] G --&gt;
-          H["✅ Complete Linguistic Profile"] style A fill:#667eea,color:#fff
-          style H fill:#28a745,color:#fff style B fill:#e74c3c,color:#fff style
-          C fill:#f39c12,color:#fff style D fill:#2ecc71,color:#fff style E
-          fill:#3498db,color:#fff style F fill:#9b59b6,color:#fff style G
-          fill:#1abc9c,color:#fff
-        </div>
-        <p className="diagram-caption">
-          Figure 2: Multi-level linguistic analysis — how linguists examine
-          language at each layer
-        </p>
-      </div>
-      <div className="diagram-container">
-        <h4>Syntax Tree: "The cat sat on the mat"</h4>
-        <svg
-          width={700}
-          height={320}
-          viewBox="0 0 700 320"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width={700} height={320} fill="#f8f9fa" rx={10} />
-          {/* S node */}
-          <ellipse cx={350} cy={35} rx={30} ry={20} fill="#2c3e50" />
-          <text
-            x={350}
-            y={40}
-            textAnchor="middle"
-            fill="white"
-            fontSize={14}
-            fontWeight="bold"
-          >
-            S
-          </text>
-          {/* Lines from S */}
-          <line
-            x1={325}
-            y1={50}
-            x2={175}
-            y2={100}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          <line
-            x1={375}
-            y1={50}
-            x2={525}
-            y2={100}
-            stroke="#2c3e50"
-            strokeWidth={2}
-          />
-          {/* NP node */}
-          <ellipse cx={175} cy={115} rx={30} ry={20} fill="#e74c3c" />
-          <text
-            x={175}
-            y={120}
-            textAnchor="middle"
-            fill="white"
-            fontSize={14}
-            fontWeight="bold"
-          >
-            NP
-          </text>
-          {/* VP node */}
-          <ellipse cx={525} cy={115} rx={30} ry={20} fill="#3498db" />
-          <text
-            x={525}
-            y={120}
-            textAnchor="middle"
-            fill="white"
-            fontSize={14}
-            fontWeight="bold"
-          >
-            VP
-          </text>
-          {/* Lines from NP */}
-          <line
-            x1={152}
-            y1={130}
-            x2={105}
-            y2={175}
-            stroke="#e74c3c"
-            strokeWidth={2}
-          />
-          <line
-            x1={198}
-            y1={130}
-            x2={245}
-            y2={175}
-            stroke="#e74c3c"
-            strokeWidth={2}
-          />
-          {/* DET */}
-          <ellipse cx={105} cy={190} rx={30} ry={20} fill="#e67e22" />
-          <text
-            x={105}
-            y={195}
-            textAnchor="middle"
-            fill="white"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            DET
-          </text>
-          {/* N */}
-          <ellipse cx={245} cy={190} rx={25} ry={20} fill="#e67e22" />
-          <text
-            x={245}
-            y={195}
-            textAnchor="middle"
-            fill="white"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            N
-          </text>
-          {/* Lines from VP */}
-          <line
-            x1={502}
-            y1={130}
-            x2={440}
-            y2={175}
-            stroke="#3498db"
-            strokeWidth={2}
-          />
-          <line
-            x1={548}
-            y1={130}
-            x2={610}
-            y2={175}
-            stroke="#3498db"
-            strokeWidth={2}
-          />
-          {/* V */}
-          <ellipse cx={440} cy={190} rx={25} ry={20} fill="#2ecc71" />
-          <text
-            x={440}
-            y={195}
-            textAnchor="middle"
-            fill="white"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            V
-          </text>
-          {/* PP */}
-          <ellipse cx={610} cy={190} rx={30} ry={20} fill="#9b59b6" />
-          <text
-            x={610}
-            y={195}
-            textAnchor="middle"
-            fill="white"
-            fontSize={13}
-            fontWeight="bold"
-          >
-            PP
-          </text>
-          {/* Lines from PP */}
-          <line
-            x1={585}
-            y1={205}
-            x2={545}
-            y2={248}
-            stroke="#9b59b6"
-            strokeWidth={2}
-          />
-          <line
-            x1={635}
-            y1={205}
-            x2={675}
-            y2={248}
-            stroke="#9b59b6"
-            strokeWidth={2}
-          />
-          {/* P and NP2 */}
-          <ellipse cx={545} cy={263} rx={25} ry={18} fill="#1abc9c" />
-          <text
-            x={545}
-            y={268}
-            textAnchor="middle"
-            fill="white"
-            fontSize={12}
-            fontWeight="bold"
-          >
-            P
-          </text>
-          <ellipse cx={675} cy={263} rx={28} ry={18} fill="#e74c3c" />
-          <text
-            x={675}
-            y={268}
-            textAnchor="middle"
-            fill="white"
-            fontSize={12}
-            fontWeight="bold"
-          >
-            NP
-          </text>
-          {/* Leaf words */}
-          <line
-            x1={105}
-            y1={210}
-            x2={105}
-            y2={248}
-            stroke="#555"
-            strokeWidth="1.5"
-          />
-          <line
-            x1={245}
-            y1={210}
-            x2={245}
-            y2={248}
-            stroke="#555"
-            strokeWidth="1.5"
-          />
-          <line
-            x1={440}
-            y1={210}
-            x2={440}
-            y2={248}
-            stroke="#555"
-            strokeWidth="1.5"
-          />
-          <line
-            x1={545}
-            y1={281}
-            x2={545}
-            y2={298}
-            stroke="#555"
-            strokeWidth="1.5"
-          />
-          <line
-            x1={675}
-            y1={281}
-            x2={675}
-            y2={298}
-            stroke="#555"
-            strokeWidth="1.5"
-          />
-          {/* NP2 children */}
-          <rect x={30} y={248} width={40} height={25} fill="#fff3cd" rx={4} />
-          <text
-            x={50}
-            y={265}
-            textAnchor="middle"
-            fill="#2c3e50"
-            fontSize={12}
-            fontWeight="bold"
-          >
-            The
-          </text>
-          <rect x={215} y={248} width={40} height={25} fill="#fff3cd" rx={4} />
-          <text
-            x={235}
-            y={265}
-            textAnchor="middle"
-            fill="#2c3e50"
-            fontSize={12}
-            fontWeight="bold"
-          >
-            cat
-          </text>
-          <rect x={415} y={248} width={40} height={25} fill="#fff3cd" rx={4} />
-          <text
-            x={435}
-            y={265}
-            textAnchor="middle"
-            fill="#2c3e50"
-            fontSize={12}
-            fontWeight="bold"
-          >
-            sat
-          </text>
-          <rect x={522} y={298} width={40} height={22} fill="#fff3cd" rx={4} />
-          <text
-            x={542}
-            y={314}
-            textAnchor="middle"
-            fill="#2c3e50"
-            fontSize={12}
-            fontWeight="bold"
-          >
-            on
-          </text>
-          <rect x={640} y={298} width={75} height={22} fill="#fff3cd" rx={4} />
-          <text
-            x={677}
-            y={314}
-            textAnchor="middle"
-            fill="#2c3e50"
-            fontSize={12}
-            fontWeight="bold"
-          >
-            the mat
-          </text>
-        </svg>
-        <p className="diagram-caption">
-          Figure 3: Syntax tree (parse tree) for "The cat sat on the mat"
-          showing hierarchical sentence structure
-        </p>
-      </div>
-    </div>
-    {/* SECTION 6: PRACTICE MCQs */}
-    <div className="section" id="practice">
-      <h2 className="section-title">
-        <span>🎯</span> Practice MCQs — Test Your Understanding
-      </h2>
-      <p>
-        Click on your chosen answer, then press "Check Answer" to see instant
-        feedback with detailed explanations.
-      </p>
-      {/* MCQ 1 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 1: What is the primary goal of linguistics as a scientific
-          discipline?
-        </div>
-        <ul className="mcq-options" id="opts-1">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">A</span>
-            <span>
-              To prescribe correct grammar rules for formal writing and speech
-            </span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">B</span>
-            <span>
-              To scientifically describe and explain how language is structured
-              and used
-            </span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">C</span>
-            <span>To rank languages from most to least complex</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">D</span>
-            <span>To preserve endangered languages only</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-1"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-1" />
-        <div className="mcq-explanation" id="exp-1" style={{ display: "none" }}>
-          <strong>✅ Correct Answer: B</strong>
-          <p>
-            <strong>Why B:</strong> Linguistics is a <em>descriptive</em>{" "}
-            science — it observes, analyzes, and explains how language actually
-            works, without judging it. This includes spoken, written, and signed
-            languages.
-          </p>
-          <p>
-            <strong>Why A is wrong:</strong> That describes prescriptive grammar
-            (e.g., style guides, grammar textbooks) — which is the opposite of
-            how linguists approach language.
-          </p>
-          <p>
-            <strong>Why C is wrong:</strong> Linguists recognize all languages
-            as equally complex and systematic. No language is inherently
-            "better" than another.
-          </p>
-          <p>
-            <strong>Why D is wrong:</strong> While some linguists do work on
-            language documentation and preservation, this is just one
-            application — not the primary goal of linguistics.
-          </p>
-        </div>
-      </div>
-      {/* MCQ 2 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 2: Which sub-field of linguistics studies the sound
-          patterns and phoneme system of a language?
-        </div>
-        <ul className="mcq-options" id="opts-2">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">A</span>
-            <span>Morphology</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">B</span>
-            <span>Semantics</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">C</span>
-            <span>Phonology</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">D</span>
-            <span>Pragmatics</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-2"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-2" />
-        <div className="mcq-explanation" id="exp-2" style={{ display: "none" }}>
-          <strong>✅ Correct Answer: C — Phonology</strong>
-          <p>
-            <strong>Why C:</strong> Phonology studies how sounds are organized
-            and patterned within a language system — including phonemes, minimal
-            pairs, syllable structure, and stress. It is the abstract, mental
-            system of sounds.
-          </p>
-          <p>
-            <strong>Note:</strong> Don't confuse phonology with phonetics.
-            Phonetics studies the physical properties of sounds (acoustics,
-            articulation). Phonology studies how sounds function as a system
-            within a language.
-          </p>
-        </div>
-      </div>
-      {/* MCQ 3 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 3: The word "unbreakable" contains how many morphemes?
-        </div>
-        <ul className="mcq-options" id="opts-3">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">A</span>
-            <span>1 morpheme (it is a single word)</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">B</span>
-            <span>2 morphemes (un + breakable)</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">C</span>
-            <span>3 morphemes (un + break + able)</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">D</span>
-            <span>4 morphemes (u + n + break + able)</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-3"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-3" />
-        <div className="mcq-explanation" id="exp-3" style={{ display: "none" }}>
-          <strong>✅ Correct Answer: C — 3 morphemes</strong>
-          <p>
-            <strong>Analysis:</strong> <code>un-</code> (prefix meaning "not") +{" "}
-            <code>break</code> (free morpheme = root) + <code>-able</code>{" "}
-            (suffix meaning "capable of") = 3 morphemes.
-          </p>
-          <p>
-            <strong>Why D is wrong:</strong> "u" and "n" are not morphemes
-            individually — they have no independent meaning or grammatical
-            function. Only "un-" as a whole is a morpheme.
-          </p>
-        </div>
-      </div>
-      {/* MCQ 4 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 4: Which linguist proposed the concept of Universal
-          Grammar and the Language Acquisition Device (LAD)?
-        </div>
-        <ul className="mcq-options" id="opts-4">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">A</span>
-            <span>Ferdinand de Saussure</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">B</span>
-            <span>Edward Sapir</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">C</span>
-            <span>Noam Chomsky</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">D</span>
-            <span>Benjamin Lee Whorf</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-4"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-4" />
-        <div className="mcq-explanation" id="exp-4" style={{ display: "none" }}>
-          <strong>✅ Correct Answer: C — Noam Chomsky</strong>
-          <p>
-            Noam Chomsky (b. 1928) proposed that humans are born with an innate,
-            species-specific capacity for language — the Language Acquisition
-            Device. He argued all languages share a common deep structure:
-            Universal Grammar. This is why children across the world acquire
-            language so quickly and similarly, even without formal instruction.
-          </p>
-          <p>
-            <strong>Saussure</strong> contributed the structural view of
-            language (langue/parole). <strong>Sapir &amp; Whorf</strong>{" "}
-            proposed that language shapes thought (linguistic relativity).
-          </p>
-        </div>
-      </div>
-      {/* MCQ 5 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 5: When someone says "Can you open the window?" they are
-          making a request, not literally asking about your ability. Which
-          sub-field studies this phenomenon?
-        </div>
-        <ul className="mcq-options" id="opts-5">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">A</span>
-            <span>Semantics</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">B</span>
-            <span>Syntax</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">C</span>
-            <span>Phonetics</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">D</span>
-            <span>Pragmatics</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-5"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-5" />
-        <div className="mcq-explanation" id="exp-5" style={{ display: "none" }}>
-          <strong>✅ Correct Answer: D — Pragmatics</strong>
-          <p>
-            Pragmatics studies meaning in context — how what is said differs
-            from what is meant. The sentence "Can you open the window?" is
-            literally a question about ability (semantics), but in context it
-            functions as a polite request (pragmatics). This is a classic
-            example of an indirect speech act, a core concept in pragmatics
-            developed by philosophers J.L. Austin and John Searle.
-          </p>
-        </div>
-      </div>
-    </div>
-    {/* SECTION 7: WORKED EXAMPLES */}
-    <div className="section" id="examples">
-      <h2 className="section-title">
-        <span>⚙️</span> Worked Examples
-      </h2>
-      {/* Example 1 */}
-      <div className="example-box">
-        <h4>📝 Example 1: Morphological Analysis of "Unhappiness"</h4>
-        <p>
-          <strong>Task:</strong> Identify all morphemes in the word
-          "unhappiness" and describe each one.
-        </p>
-        <div className="example-steps">
-          <div className="step">
-            <strong>Step 1 — Identify the root:</strong> The root is{" "}
-            <code>happy</code> — an adjective meaning "feeling pleasure or
-            contentment." It is a free morpheme (can stand alone).
-          </div>
-          <div className="step">
-            <strong>Step 2 — Identify suffixes:</strong> Adding{" "}
-            <code>-ness</code> (a derivational suffix) to an adjective creates a
-            noun: <em>happiness</em> = the state of being happy.
-          </div>
-          <div className="step">
-            <strong>Step 3 — Identify prefixes:</strong> Adding <code>un-</code>{" "}
-            (a derivational prefix meaning "not") negates the meaning:{" "}
-            <em>unhappiness</em> = the state of not being happy.
-          </div>
-          <div className="step">
-            <strong>Step 4 — Count morphemes:</strong> un + happy + ness ={" "}
-            <strong>3 morphemes</strong> total.
-          </div>
-          <div className="step">
-            <strong>Step 5 — Classify morphemes:</strong> <code>un-</code> =
-            bound, derivational, prefix. <code>happy</code> = free, root.{" "}
-            <code>-ness</code> = bound, derivational, suffix.
-          </div>
-        </div>
-        <div style={{ textAlign: "center", margin: "15px 0" }}>
-          <div className="morpheme-box">
-            <div className="morpheme morpheme-prefix">
-              un-
-              <span className="morpheme-label">
-                Prefix
-                <br />
-                Bound
-                <br />
-                "not"
-              </span>
-            </div>
-            <div className="morpheme morpheme-root">
-              happy
-              <span className="morpheme-label">
-                Root
-                <br />
-                Free
-                <br />
-                "joyful"
-              </span>
-            </div>
-            <div className="morpheme morpheme-suffix">
-              -ness
-              <span className="morpheme-label">
-                Suffix
-                <br />
-                Bound
-                <br />
-                "state of"
-              </span>
-            </div>
-          </div>
-        </div>
-        <div
-          style={{
-            background: "#d4edda",
-            padding: 15,
-            borderRadius: 8,
-            borderLeft: "4px solid #28a745"
-          }}
-        >
-          <strong>✅ Final Answer:</strong> "Unhappiness" contains 3 morphemes:{" "}
-          <code>un-</code> (prefix, negation) + <code>happy</code> (root
-          adjective) + <code>-ness</code> (nominalizing suffix). The word is a
-          derived noun formed through prefixation and suffixation.
-        </div>
-      </div>
-      {/* Example 2 */}
-      <div className="example-box">
-        <h4>
-          📝 Example 2: Multi-Level Linguistic Analysis of "The birds are
-          singing"
-        </h4>
-        <p>
-          <strong>Task:</strong> Analyze the sentence "The birds are singing" at
-          five linguistic levels.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Level</th>
-              <th>Analysis</th>
-              <th>Key Concepts</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <strong>Phonological</strong>
-              </td>
-              <td>/ðə bɜːrdz ɑːr ˈsɪŋɪŋ/</td>
-              <td>
-                IPA transcription; /ð/ voiced dental fricative; /ŋ/ velar nasal
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Morphological</strong>
-              </td>
-              <td>The + bird + -s + are + sing + -ing</td>
-              <td>bird+s = plural inflection; sing+ing = present participle</td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Syntactic</strong>
-              </td>
-              <td>[NP The birds] [VP are singing]</td>
-              <td>
-                Subject NP + Predicate VP; present progressive tense structure
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Semantic</strong>
-              </td>
-              <td>Multiple birds, currently producing melodic sounds</td>
-              <td>
-                Collective action; present continuous aspect; "birds" = hyponym
-                of "animal"
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Pragmatic</strong>
-              </td>
-              <td>Context-dependent: observation, complaint, poetry, signal</td>
-              <td>Depends on speaker intent, relationship, and setting</td>
-            </tr>
-          </tbody>
-        </table>
-        <div
-          style={{
-            background: "#d4edda",
-            padding: 15,
-            borderRadius: 8,
-            borderLeft: "4px solid #28a745",
-            marginTop: 15
-          }}
-        >
-          <strong>✅ Key Insight:</strong> The same sentence can be analyzed
-          from multiple independent angles. Each sub-field reveals a different
-          layer of linguistic structure, and these layers interact to produce
-          the full meaning of an utterance.
-        </div>
-      </div>
-      {/* Example 3 */}
-      <div className="example-box">
-        <h4>
-          📝 Example 3 (Edge Case): Syntactic Ambiguity — "I saw the man with
-          the telescope"
-        </h4>
-        <p>
-          <strong>Task:</strong> Show how this sentence has two different
-          syntactic structures, producing two different meanings.
-        </p>
-        <div className="example-steps">
-          <div className="step">
-            <strong>Interpretation 1:</strong> "I used the telescope to see the
-            man" — The PP "with the telescope" modifies the verb "saw" (it is
-            part of the VP). Structure: [I] [saw [the man] [with the telescope]]
-          </div>
-          <div className="step">
-            <strong>Interpretation 2:</strong> "I saw the man who had the
-            telescope" — The PP "with the telescope" modifies "the man" (it is
-            part of the NP). Structure: [I] [saw [the man with the telescope]]
-          </div>
-          <div className="step">
-            <strong>Why this is important:</strong> This is syntactic ambiguity
-            — the sentence has one surface form but two underlying deep
-            structures (Chomsky's distinction). Context or intonation normally
-            resolves the ambiguity in real speech.
-          </div>
-        </div>
-        <div className="alert alert-warning" style={{ marginTop: 10 }}>
-          <strong>⚠️ Exam Tip:</strong> Ambiguous sentences are a favorite exam
-          topic. Always check if a sentence could have multiple parse trees
-          before committing to one analysis.
-        </div>
-      </div>
-    </div>
-    {/* SECTION 8: LAB EXERCISE */}
-    <div className="lab-exercise" id="lab">
-      <h3>🛠️ Hands-On Lab: The Linguistic Detective</h3>
-      <h2>Analyze a Sentence at All Five Linguistic Levels</h2>
-      <div className="lab-objective">
-        <strong>📋 Objective:</strong>
-        <p>
-          Apply your knowledge of linguistics sub-fields to perform a complete
-          linguistic analysis of the sentence:{" "}
-          <em>"She quickly writes beautiful letters."</em>
-        </p>
-      </div>
-      <div className="lab-objective">
-        <strong>⏱️ Estimated Time:</strong> 25–35 minutes
-      </div>
-      <div className="lab-steps">
-        <h4>📝 Instructions:</h4>
-        <ol>
-          <li>
-            <strong>Phonological Level:</strong> Write the IPA transcription of
-            the sentence. Identify at least 3 phonemes and describe their
-            place/manner of articulation.
-          </li>
-          <li>
-            <strong>Morphological Level:</strong> Break each word into its
-            morphemes. Classify each morpheme as free/bound and
-            root/prefix/suffix. Count the total number of morphemes in the
-            sentence.
-          </li>
-          <li>
-            <strong>Syntactic Level:</strong> Draw a phrase structure tree.
-            Label NP, VP, and any sub-phrases. Identify the subject and
-            predicate.
-          </li>
-          <li>
-            <strong>Semantic Level:</strong> Identify the semantic roles (who is
-            the agent? what is the theme?). Note any examples of polysemy,
-            synonymy, or antonymy in the sentence.
-          </li>
-          <li>
-            <strong>Pragmatic Level:</strong> Write three different contexts
-            where this sentence might be said. In each context, how might the
-            implied meaning differ from the literal meaning?
-          </li>
-          <li>
-            <strong>Sub-field Connection:</strong> Write 2–3 sentences
-            explaining which sub-field you found most challenging and why.
-          </li>
-          <li>
-            <strong>Extension (Optional):</strong> Replace one word in the
-            sentence and explain how this changes the analysis at two or more
-            linguistic levels.
-          </li>
-        </ol>
-      </div>
-      <div className="lab-objective">
-        <strong>✅ Expected Outcome:</strong>
-        <p>
-          A complete written analysis document covering all 5 linguistic levels,
-          with correctly labeled morphemes, a syntactic tree, and pragmatic
-          context examples. You should find approximately 8 morphemes total in
-          the sentence.
-        </p>
-      </div>
-      <div className="lab-objective">
-        <strong>🎓 Grading Rubric (25 marks):</strong>
-        <ul style={{ marginLeft: 20, marginTop: 8 }}>
-          <li>Phonological analysis: 5 marks</li>
-          <li>Morphological analysis (correct morpheme count): 5 marks</li>
-          <li>Syntactic tree (correctly labeled): 5 marks</li>
-          <li>Semantic role analysis: 5 marks</li>
-          <li>Pragmatic context examples: 5 marks</li>
-        </ul>
-      </div>
-    </div>
-    {/* SECTION 9: COMPARISON TABLE */}
-    <div className="section" id="comparison">
-      <h2 className="section-title">
-        <span>📊</span> Comparison of All Eight Sub-fields
-      </h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Sub-field</th>
-            <th>What It Studies</th>
-            <th>Key Unit</th>
-            <th>Classic Example</th>
-            <th>Real-World Application</th>
-            <th>Key Scholar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong style={{ color: "#e74c3c" }}>Phonetics</strong>
-            </td>
-            <td>Physical speech sounds — production, acoustics, perception</td>
-            <td>Phone [p]</td>
-            <td>/p/ vs. /b/ articulation</td>
-            <td>Speech therapy, voice technology, accent coaching</td>
-            <td>Peter Ladefoged</td>
-          </tr>
-          <tr>
-            <td>
-              <strong style={{ color: "#e67e22" }}>Phonology</strong>
-            </td>
-            <td>Sound systems and patterns within a language</td>
-            <td>Phoneme /p/</td>
-            <td>Minimal pairs: "cat" vs. "bat"</td>
-            <td>Second language pronunciation, spelling rules</td>
-            <td>N. Trubetzkoy</td>
-          </tr>
-          <tr>
-            <td>
-              <strong style={{ color: "#c0a000" }}>Morphology</strong>
-            </td>
-            <td>Word structure and formation</td>
-            <td>Morpheme</td>
-            <td>un+break+able</td>
-            <td>Vocabulary building, dictionary making, NLP tokenization</td>
-            <td>John McCarthy</td>
-          </tr>
-          <tr>
-            <td>
-              <strong style={{ color: "#27ae60" }}>Syntax</strong>
-            </td>
-            <td>Sentence structure and grammar</td>
-            <td>Phrase / Clause</td>
-            <td>NP + VP sentence structure</td>
-            <td>Grammar checkers, parsing engines, language teaching</td>
-            <td>Noam Chomsky</td>
-          </tr>
-          <tr>
-            <td>
-              <strong style={{ color: "#2980b9" }}>Semantics</strong>
-            </td>
-            <td>Literal meaning of words and sentences</td>
-            <td>Lexeme</td>
-            <td>"big" = synonymous with "large"</td>
-            <td>
-              Thesaurus design, machine translation, word sense disambiguation
-            </td>
-            <td>Gottlob Frege</td>
-          </tr>
-          <tr>
-            <td>
-              <strong style={{ color: "#8e44ad" }}>Pragmatics</strong>
-            </td>
-            <td>Meaning in context; speaker intent</td>
-            <td>Utterance</td>
-            <td>Indirect speech acts</td>
-            <td>Chatbot design, politeness in cross-cultural communication</td>
-            <td>Paul Grice, J.L. Austin</td>
-          </tr>
-          <tr>
-            <td>
-              <strong style={{ color: "#16a085" }}>Sociolinguistics</strong>
-            </td>
-            <td>Language variation related to social factors</td>
-            <td>Dialect / Idiolect</td>
-            <td>Code-switching in bilingual communities</td>
-            <td>Language policy, education equity, multilingual AI</td>
-            <td>William Labov</td>
-          </tr>
-          <tr>
-            <td>
-              <strong style={{ color: "#c2185b" }}>Psycholinguistics</strong>
-            </td>
-            <td>Language and the human mind/brain</td>
-            <td>Mental lexicon</td>
-            <td>Children's language acquisition stages</td>
-            <td>
-              Dyslexia treatment, aphasia rehabilitation, language learning apps
-            </td>
-            <td>Noam Chomsky, Steven Pinker</td>
-          </tr>
-        </tbody>
-      </table>
-      <div className="alert alert-info">
-        <strong>💡 Key Distinctions to Remember:</strong>
-        <ul style={{ marginTop: 10, marginLeft: 20 }}>
-          <li>
-            <strong>Phonetics vs. Phonology:</strong> Phonetics = physical
-            sounds (science of acoustics). Phonology = mental/abstract sound
-            system (which sounds matter in a language).
-          </li>
-          <li>
-            <strong>Semantics vs. Pragmatics:</strong> Semantics = what a
-            sentence literally means. Pragmatics = what the speaker means by
-            saying it in that context.
-          </li>
-          <li>
-            <strong>Sociolinguistics vs. Psycholinguistics:</strong> Socio =
-            language and society (external factors). Psycho = language and the
-            mind (internal cognitive factors).
-          </li>
-        </ul>
-      </div>
-    </div>
-    {/* SECTION 10: FINAL QUIZ */}
-    <div className="section" id="quiz">
-      <h2 className="section-title">
-        <span>✅</span> Section Mastery Quiz
-      </h2>
-      <div className="quiz-header">
-        <h3>🧠 Test Your Mastery</h3>
-        <p>Answer all 10 questions. Score 7/10 (70%) or higher to pass.</p>
-        <div
-          id="final-score-display"
-          style={{
-            display: "none",
-            fontSize: "2em",
-            fontWeight: "bold",
-            marginTop: 10
-          }}
-        >
-          Score: <span id="score-num">0</span>/10
-        </div>
-      </div>
-      {/* Q6 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 6: Minimal pairs in phonology are defined as:
-        </div>
-        <ul className="mcq-options" id="opts-6">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">A</span>
-            <span>
-              Two words that sound completely different from each other
-            </span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">B</span>
-            <span>
-              Two words that differ by exactly one phoneme and have different
-              meanings
-            </span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">C</span>
-            <span>
-              Two words with the same spelling but different pronunciations
-            </span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">D</span>
-            <span>Words that are synonyms in a language</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-6"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-6" />
-        <div className="mcq-explanation" id="exp-6" style={{ display: "none" }}>
-          <strong>✅ Answer: B</strong>
-          <p>
-            Minimal pairs prove that two sounds are distinct phonemes in a
-            language. Example: "pit" /pɪt/ and "bit" /bɪt/ — one phoneme
-            difference (/p/ vs. /b/) creates a meaning difference, so /p/ and
-            /b/ are separate phonemes in English.
-          </p>
-        </div>
-      </div>
-      {/* Q7 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 7: Code-switching — the practice of switching between
-          languages in a conversation — is primarily studied under which
-          sub-field?
-        </div>
-        <ul className="mcq-options" id="opts-7">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">A</span>
-            <span>Psycholinguistics</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">B</span>
-            <span>Phonetics</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">C</span>
-            <span>Sociolinguistics</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">D</span>
-            <span>Morphology</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-7"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-7" />
-        <div className="mcq-explanation" id="exp-7" style={{ display: "none" }}>
-          <strong>✅ Answer: C — Sociolinguistics</strong>
-          <p>
-            Code-switching is a social behavior — speakers switch languages
-            based on social context, audience, topic, or identity. Since it
-            relates language to social factors, it belongs to sociolinguistics.
-          </p>
-        </div>
-      </div>
-      {/* Q8 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 8: Which of the following sentences is syntactically
-          grammatical but semantically meaningless?
-        </div>
-        <ul className="mcq-options" id="opts-8">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">A</span>
-            <span>"The happy child laughed."</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">B</span>
-            <span>"Colorless green ideas sleep furiously."</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">C</span>
-            <span>"Cat the quickly ran."</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">D</span>
-            <span>"Dog bark big."</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-8"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-8" />
-        <div className="mcq-explanation" id="exp-8" style={{ display: "none" }}>
-          <strong>✅ Answer: B</strong>
-          <p>
-            This is Chomsky's famous example (1957) showing syntax and semantics
-            are independent systems. The sentence follows perfect English syntax
-            (Adj+Adj+N+V+Adv) but is semantically nonsensical (ideas can't be
-            green, green things can't be colorless, ideas don't sleep).
-          </p>
-        </div>
-      </div>
-      {/* Q9 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 9: True or False — Linguistics is only concerned with
-          written language and does not study spoken or signed languages.
-        </div>
-        <ul className="mcq-options" id="opts-9">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">T</span>
-            <span>True</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">F</span>
-            <span>False</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-9"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-9" />
-        <div className="mcq-explanation" id="exp-9" style={{ display: "none" }}>
-          <strong>✅ Answer: FALSE</strong>
-          <p>
-            Linguistics studies ALL forms of human language — spoken, written,
-            AND signed. In fact, spoken language is primary: writing is a
-            secondary representation system. Sign languages like ASL (American
-            Sign Language) are complete, fully structured natural languages
-            studied extensively by linguists.
-          </p>
-        </div>
-      </div>
-      {/* Q10 */}
-      <div className="mcq-container">
-        <div className="mcq-question">
-          ❓ Question 10: True or False — In linguistics, the relationship
-          between a word and its meaning is considered to be natural and
-          inherent (e.g., the word "dog" naturally sounds like a dog).
-        </div>
-        <ul className="mcq-options" id="opts-10">
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="false"
-          >
-            <span className="option-label">T</span>
-            <span>True</span>
-          </li>
-          <li
-            className="mcq-option"
-            onClick={() => {}}
-            data-correct="true"
-          >
-            <span className="option-label">F</span>
-            <span>False</span>
-          </li>
-        </ul>
-        <button
-          className="submit-btn"
-          style={{ padding: "10px 25px" }}
-          onClick={() => {}}
-          id="btn-10"
-        >
-          Check Answer
-        </button>
-        <div className="mcq-feedback" id="fb-10" />
-        <div
-          className="mcq-explanation"
-          id="exp-10"
-          style={{ display: "none" }}
-        >
-          <strong>✅ Answer: FALSE</strong>
-          <p>
-            This is Saussure's principle of the{" "}
-            <strong>arbitrariness of the linguistic sign</strong>. The word
-            "dog" in English has no natural connection to the animal — Spanish
-            speakers say "perro," French speakers say "chien," and Hindi
-            speakers say "kutta." If the connection were natural, all languages
-            would use the same word.
-          </p>
-        </div>
-      </div>
-      <button
-        className="submit-btn"
-        onClick={() => {}}
-        id="quiz-submit-btn"
-        style={{ fontSize: "1.2em", padding: "16px 40px" }}
-      >
-        📊 Submit Complete Quiz &amp; See Results
-      </button>
-      <div id="quiz-results" style={{ display: "none", marginTop: 30 }}>
-        <div
-          className="alert alert-success"
-          id="pass-msg"
-          style={{ display: "none" }}
-        >
-          <strong>🎉 Excellent! You Passed!</strong>
-          <p>
-            Your score: <span id="pass-score-text" />
-          </p>
-          <p>
-            You have demonstrated solid understanding of linguistics and its
-            sub-fields. Well done!
-          </p>
-        </div>
-        <div
-          className="alert alert-danger"
-          id="fail-msg"
-          style={{ display: "none" }}
-        >
-          <strong>📚 Keep Studying!</strong>
-          <p>
-            Your score: <span id="fail-score-text" />
-          </p>
-          <p>
-            You need 70% (7/10) to pass. Review the theory sections and try
-            again!
-          </p>
-          <button className="submit-btn" onClick={() => window.location.reload()}>
-            🔄 Retake Quiz
-          </button>
-        </div>
-      </div>
-    </div>
-    {/* SECTION 11: PITFALLS */}
-    <div className="section" id="pitfalls">
-      <h2 className="section-title">
-        <span>⚠️</span> Common Pitfalls &amp; How to Avoid Them
-      </h2>
-      <div className="alert alert-danger">
-        <strong>
-          🚫 Pitfall 1: Confusing Linguistics with Prescriptive Grammar
-        </strong>
-        <p>
-          <strong>What students do wrong:</strong> Thinking that linguistics is
-          about correcting people's grammar and teaching "proper" language.
-        </p>
-        <p>
-          <strong>Reality:</strong> Linguistics is descriptive — it studies how
-          language is actually used, not how it "should" be used. A linguist
-          would analyze "I ain't done nothing" as a valid grammatical double
-          negative, not as an error.
-        </p>
-        <p>
-          <strong>✅ Remember:</strong> In linguistics, "wrong" = ungrammatical
-          by native speakers' intuitions, not by school rules.
-        </p>
-      </div>
-      <div className="alert alert-danger">
-        <strong>🚫 Pitfall 2: Mixing Up Phonetics and Phonology</strong>
-        <p>
-          <strong>What students do wrong:</strong> Using "phonetics" and
-          "phonology" interchangeably, or thinking they study the same thing.
-        </p>
-        <p>
-          <strong>Reality:</strong> Phonetics = physical, observable sounds
-          (acoustics, articulation). Phonology = abstract, mental sound system
-          (phonemes, patterns, rules). You can think of it as: phonetics is
-          hardware, phonology is software.
-        </p>
-        <p>
-          <strong>✅ Memory trick:</strong> PhonETICS = physical. PhonOLOGY =
-          mental/mental rules.
-        </p>
-      </div>
-      <div className="alert alert-danger">
-        <strong>🚫 Pitfall 3: Confusing Semantics and Pragmatics</strong>
-        <p>
-          <strong>What students do wrong:</strong> Thinking semantics and
-          pragmatics both deal with "meaning" and are therefore the same thing.
-        </p>
-        <p>
-          <strong>Reality:</strong> Semantics = literal, context-free meaning.
-          Pragmatics = meaning in context, speaker intent. "It's cold in here"
-          literally describes temperature (semantics) but may be a request to
-          close the window (pragmatics).
-        </p>
-      </div>
-      <div className="alert alert-danger">
-        <strong>🚫 Pitfall 4: Forgetting that Morphemes ≠ Syllables</strong>
-        <p>
-          <strong>What students do wrong:</strong> Counting syllables when asked
-          to identify morphemes, or assuming one syllable = one morpheme.
-        </p>
-        <p>
-          <strong>Reality:</strong> "Walked" has 1 syllable but 2 morphemes
-          (walk + -ed). "Beautiful" has 3 syllables but 2 morphemes (beauty →
-          beautiful via suffix -ful). Always look for meaning units, not sound
-          units.
-        </p>
-      </div>
-      <div className="alert alert-danger">
-        <strong>
-          🚫 Pitfall 5: Thinking Some Languages are "Better" or "More Complex"
-        </strong>
-        <p>
-          <strong>What students do wrong:</strong> Assuming English is more
-          logical than other languages, or that certain dialects are "broken"
-          versions of standard languages.
-        </p>
-        <p>
-          <strong>Reality:</strong> All human languages are equally complex and
-          fully capable of expressing any thought. Every dialect is a
-          rule-governed linguistic system. Linguists call this the principle of{" "}
-          <em>linguistic equality</em>.
-        </p>
-      </div>
-      <div className="alert alert-warning">
-        <strong>💡 Top 5 Exam Tips:</strong>
-        <ul style={{ marginTop: 10, marginLeft: 20 }}>
-          <li>
-            Always define your terms precisely before giving examples —
-            examiners reward technical vocabulary.
-          </li>
-          <li>
-            When asked to compare sub-fields, use a table format — it shows
-            clarity of thought and earns full marks.
-          </li>
-          <li>
-            For morpheme analysis, remember: count meaning units, not syllables
-            or letters.
-          </li>
-          <li>
-            In pragmatics questions, always mention context and speaker intent —
-            the literal meaning alone is only half the answer.
-          </li>
-          <li>
-            If asked about Chomsky or Saussure, mention their specific
-            contributions (not just their names) to earn full marks.
-          </li>
-        </ul>
-      </div>
-    </div>
-    {/* SECTION 12: QUICK REFERENCE */}
-    <div className="quick-ref" id="quickref">
-      <h2 style={{ color: "#e65100", marginBottom: 20 }}>
-        📄 Quick Reference Cheat Sheet
-      </h2>
-      <div className="quick-ref-grid">
-        <div className="quick-ref-card">
-          <h4>🔑 What is Linguistics?</h4>
-          <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
-            <li>Scientific, descriptive study of language</li>
-            <li>Studies spoken, written &amp; signed language</li>
-            <li>Examines structure, meaning, use, and variation</li>
-            <li>Key principle: no language is superior to another</li>
-          </ul>
-        </div>
-        <div className="quick-ref-card">
-          <h4>🔴 Phonetics &amp; 🟠 Phonology</h4>
-          <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
-            <li>
-              <strong>Phonetics:</strong> Physical sounds, IPA, articulation
-            </li>
-            <li>
-              <strong>Phonology:</strong> Sound systems, phonemes, minimal pairs
-            </li>
-            <li>Phone [p] vs. Phoneme /p/</li>
-            <li>Key: Phonology is language-specific; phonetics is universal</li>
-          </ul>
-        </div>
-        <div className="quick-ref-card">
-          <h4>🟡 Morphology</h4>
-          <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
-            <li>Studies word structure; unit = morpheme</li>
-            <li>Free morphemes: stand alone (cat, run, big)</li>
-            <li>Bound morphemes: must attach (un-, -ing, -ness)</li>
-            <li>Inflection vs. Derivation</li>
-          </ul>
-        </div>
-        <div className="quick-ref-card">
-          <h4>🟢 Syntax &amp; 🔵 Semantics</h4>
-          <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
-            <li>
-              <strong>Syntax:</strong> Sentence structure; parse trees; NP+VP
-            </li>
-            <li>
-              <strong>Semantics:</strong> Literal meaning; denotation &amp;
-              connotation
-            </li>
-            <li>Synonyms, antonyms, homonyms, hyponyms</li>
-            <li>Chomsky: syntax and semantics are separate!</li>
-          </ul>
-        </div>
-        <div className="quick-ref-card">
-          <h4>🟣 Pragmatics</h4>
-          <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
-            <li>Meaning in context; speaker intent</li>
-            <li>Speech acts (Austin/Searle)</li>
-            <li>Grice's Cooperative Principle (maxims)</li>
-            <li>Implicature = implied but not stated meaning</li>
-          </ul>
-        </div>
-        <div className="quick-ref-card">
-          <h4>🩵 Socio- &amp; 🩷 Psycholinguistics</h4>
-          <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
-            <li>
-              <strong>Socio:</strong> Language &amp; society; dialects;
-              code-switching
-            </li>
-            <li>
-              <strong>Psycho:</strong> Language &amp; the mind; acquisition;
-              Broca's area
-            </li>
-            <li>
-              Key: Socio = external social factors; Psycho = internal cognitive
-              factors
-            </li>
-          </ul>
-        </div>
-        <div className="quick-ref-card">
-          <h4>🧠 Key Linguists</h4>
-          <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
-            <li>
-              <strong>Panini (~400 BCE):</strong> First systematic grammar
-            </li>
-            <li>
-              <strong>Saussure (1857–1913):</strong> Structural linguistics,
-              langue/parole
-            </li>
-            <li>
-              <strong>Chomsky (b.1928):</strong> Universal Grammar, LAD
-            </li>
-            <li>
-              <strong>Sapir &amp; Whorf:</strong> Linguistic relativity
-            </li>
-            <li>
-              <strong>Labov (b.1927):</strong> Sociolinguistics, language
-              variation
-            </li>
-            <li>
-              <strong>Grice (1913–1988):</strong> Cooperative Principle,
-              implicature
-            </li>
-          </ul>
-        </div>
-        <div className="quick-ref-card">
-          <h4>⚠️ Don't Confuse!</h4>
-          <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
-            <li>❌ Phonetics ≠ Phonology</li>
-            <li>❌ Semantics ≠ Pragmatics</li>
-            <li>❌ Morpheme ≠ Syllable</li>
-            <li>❌ Linguistics ≠ Grammar prescription</li>
-            <li>❌ Sociolinguistics ≠ Psycholinguistics</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    {/* SECTION 13: EXAM PRACTICE */}
-    <div className="section" id="exam">
-      <h2 className="section-title">
-        <span>📝</span> University Exam Practice
-      </h2>
-      <div className="example-box">
-        <h4>Question 1: Short Answer (5 marks) — Time: 7 minutes</h4>
-        <p>
-          <strong>
-            Q: Define linguistics and explain, with examples, why it is
-            considered a scientific discipline rather than a prescriptive study
-            of grammar.
-          </strong>
-        </p>
-        <button className={`collapsible ${openCollapsible === 'q1' ? 'active' : ''}`} onClick={() => toggleCollapsible('q1')}>
-          Show Marking Scheme &amp; Model Answer
-        </button>
-        <div className="collapsible-content" style={{ maxHeight: openCollapsible === 'q1' ? '2000px' : '0' }}>
-          <div className="collapsible-content-inner">
-            <h4>Marking Scheme:</h4>
-            <ul style={{ marginLeft: 20 }}>
-              <li>Clear definition of linguistics: 1 mark</li>
-              <li>Explaining "descriptive" approach with example: 1 mark</li>
-              <li>Contrast with prescriptive grammar: 1 mark</li>
+      <section className="content-section">
+        {/* SECTION 1: LEARNING OBJECTIVES */}
+        <div className="section" id="objectives">
+          <h2 className="section-title">
+            <span>🎯</span> What You'll Master
+          </h2>
+          <div className="objectives-box">
+            <h3>Learning Objectives</h3>
+            <ul className="objectives-list">
               <li>
-                At least one example of linguistic analysis (not grammar
-                correction): 1 mark
+                Define linguistics as a scientific discipline and distinguish it
+                from prescriptive grammar using at least three concrete examples
+                from everyday language use.
               </li>
               <li>
-                Reference to a key concept (e.g., language universals,
-                scientific methodology): 1 mark
+                Identify, name, and explain all eight major sub-fields of
+                linguistics — phonetics, phonology, morphology, syntax, semantics,
+                pragmatics, sociolinguistics, and psycholinguistics — with a clear
+                definition and example for each.
+              </li>
+              <li>
+                Apply linguistic analysis to a given sentence by examining it at
+                phonological, morphological, syntactic, and semantic levels
+                simultaneously.
+              </li>
+              <li>
+                Compare and contrast at least three pairs of closely related
+                sub-fields (e.g., phonetics vs. phonology; semantics vs. pragmatics;
+                sociolinguistics vs. psycholinguistics) using appropriate technical
+                terminology.
+              </li>
+              <li>
+                Recognize and explain at least four real-world applications of
+                linguistics across domains such as language teaching, NLP, forensic
+                linguistics, and clinical communication.
               </li>
             </ul>
-            <h4>Model Answer:</h4>
+          </div>
+          <h3 className="subsection-title">🔥 Why This Topic Matters</h3>
+          <p>
+            Imagine waking up one morning and losing the ability to understand any
+            language — not just reading or writing, but even recognizing speech.
+            This is the reality for patients with certain brain injuries, and it is
+            linguists who help us understand why it happens and how to treat it.
+            Language is the most fundamental tool of human communication, yet most
+            of us take it completely for granted. Linguistics is the scientific
+            discipline that pulls back the curtain on this everyday miracle.
+          </p>
+          <p>
+            Understanding linguistics is essential for anyone studying
+            communication, education, psychology, artificial intelligence, or law.
+            When you know how languages are structured — how sounds combine into
+            words, words into sentences, and sentences into meaning — you become a
+            sharper thinker, a better communicator, and a more empathetic listener.
+            Voice assistants like Siri and Alexa are built on linguistic principles.
+            Courtrooms use forensic linguists to analyze threatening letters.
+            Teachers use linguistic insights to help struggling readers.
+          </p>
+          <div className="alert alert-success">
+            <strong>💡 Real-World Applications:</strong>
+            <ul style={{ marginTop: 10, marginLeft: 20 }}>
+              <li>
+                🤖 <strong>NLP &amp; AI:</strong> ChatGPT, Google Translate, and
+                Alexa are built on computational linguistics principles
+              </li>
+              <li>
+                ⚖️ <strong>Forensic Linguistics:</strong> Used in courts to analyze
+                ransom notes, threatening messages, and authorship disputes
+              </li>
+              <li>
+                👶 <strong>Language Acquisition:</strong> Helps educators support
+                children with dyslexia, autism, and speech delays
+              </li>
+              <li>
+                🌍 <strong>Translation:</strong> Professional translators rely on
+                semantic and pragmatic knowledge to avoid mistranslations
+              </li>
+              <li>
+                🏥 <strong>Clinical Linguistics:</strong> Speech-language therapists
+                use phonetics and morphology to treat communication disorders
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/* SECTION 2: THEORY */}
+        <div className="section" id="theory">
+          <h2 className="section-title">
+            <span>📖</span> Deep Dive: What is Linguistics?
+          </h2>
+          <div style={{ overflow: "hidden" }}>
+            <div className="image-float">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ferdinand_de_Saussure_by_Jullien.jpg/220px-Ferdinand_de_Saussure_by_Jullien.jpg"
+                alt="Ferdinand de Saussure"
+                onError={(e) => (e.currentTarget.style.display = 'none')}
+              />
+              <div className="caption">
+                Ferdinand de Saussure (1857–1913), father of modern linguistics
+              </div>
+            </div>
+            <h3 className="subsection-title">Definition &amp; Scope</h3>
             <p>
-              Linguistics is the scientific study of language — encompassing its
-              structure, use, variation, and change across all human languages.
-              It is scientific because it follows empirical methods: linguists
-              observe actual language use, form hypotheses, collect data, and
-              test theories systematically. Unlike prescriptive grammar, which
-              prescribes how people <em>should</em> speak (e.g., "never split an
-              infinitive"), linguistics is <strong>descriptive</strong> — it
-              analyzes how people <em>actually</em> speak, without value
-              judgments. For example, while a grammar teacher might correct "He
-              don't know nothing" as incorrect, a linguist would recognize this
-              as a grammatical double-negative construction common in many
-              English dialects, with a fully systematic rule system. Linguistics
-              also investigates language universals — features shared by all
-              languages — proving that language study goes far beyond any single
-              language's grammar rules.
+              <span className="term">Linguistics</span> is the{" "}
+              <strong>scientific study of language</strong> — its structure, its
+              use, its history, and its role in human cognition and society. Unlike
+              your school English teacher who corrected your grammar ("Don't say
+              'ain't'!"), a linguist does not judge language as right or wrong.
+              Instead, a linguist <em>observes</em>, <em>describes</em>, and{" "}
+              <em>explains</em> how language actually works in the real world.
+            </p>
+            <p>
+              This distinction is crucial: linguistics is{" "}
+              <span className="highlight">descriptive, not prescriptive</span>. It
+              describes how people actually speak and write, rather than dictating
+              how they should. When linguists study African-American Vernacular
+              English (AAVE) or Indian English, they are not grading these varieties
+              — they are recognizing them as fully systematic, rule-governed
+              dialects worthy of scientific analysis.
+            </p>
+            <p>
+              Linguistics investigates questions such as: How do babies acquire
+              their first language without explicit instruction? Why do languages
+              change over time? How does the human brain process a sentence? Can
+              language shape the way we think? What do all human languages have in
+              common? These questions span biology, psychology, sociology,
+              philosophy, and computer science — making linguistics one of the most
+              interdisciplinary fields in academia.
+            </p>
+          </div>
+          <div className="alert alert-info">
+            <strong>📌 Key Terminology:</strong>
+            <ul style={{ marginTop: 10, marginLeft: 20 }}>
+              <li>
+                <span className="term">Descriptive linguistics:</span> Objectively
+                analyzing and describing how language is actually used by its
+                speakers
+              </li>
+              <li>
+                <span className="term">Prescriptive linguistics:</span> Setting
+                rules for how language "should" be used (grammar books, style
+                guides)
+              </li>
+              <li>
+                <span className="term">Langue vs. Parole:</span> Saussure's
+                distinction between the language system (langue) and actual speech
+                (parole)
+              </li>
+              <li>
+                <span className="term">Competence vs. Performance:</span> Chomsky's
+                distinction between knowing a language and actually using it
+              </li>
+              <li>
+                <span className="term">Language universals:</span> Features found in
+                all or most of the world's ~7,000 languages
+              </li>
+              <li>
+                <span className="term">Arbitrariness of sign:</span> Saussure's
+                principle that there is no natural connection between a word and its
+                meaning
+              </li>
+            </ul>
+          </div>
+          <h3 className="subsection-title">A Brief History of Linguistics</h3>
+          <p>
+            The scientific study of language has roots stretching back over 2,500
+            years. The Indian grammarian <strong>Panini</strong> (~400 BCE) wrote an
+            extraordinarily precise analysis of Sanskrit grammar — one that
+            anticipated many modern linguistic concepts. In the 19th century,
+            European scholars discovered that many languages (Sanskrit, Latin,
+            Greek, Persian, English) share a common ancestor —{" "}
+            <strong>Proto-Indo-European</strong> — and developed methods for
+            reconstructing ancient languages. This historical-comparative
+            linguistics was the first truly scientific approach to language.
+          </p>
+          <p>
+            The Swiss linguist <strong>Ferdinand de Saussure</strong> (1857–1913)
+            revolutionized linguistics by shifting focus from history to structure.
+            His posthumously published <em>Course in General Linguistics</em> (1916)
+            introduced the concepts of the linguistic sign, langue vs. parole, and
+            synchronic vs. diachronic analysis. Saussure is considered the "father
+            of modern linguistics."
+          </p>
+          <div className="linguist-grid">
+            <div className="linguist-card">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ferdinand_de_Saussure_by_Jullien.jpg/220px-Ferdinand_de_Saussure_by_Jullien.jpg"
+                alt="Saussure"
+                onError={(e) => e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="50" fill="%23667eea"/><text x="50" y="55" font-size="30" text-anchor="middle" fill="white">FS</text></svg>'}
+              />
+              <h5>Ferdinand de Saussure</h5>
+              <p>
+                Father of structural linguistics. Introduced the linguistic sign
+                concept.
+              </p>
+            </div>
+            <div className="linguist-card">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Noam_Chomsky_portrait_2015.jpg/220px-Noam_Chomsky_portrait_2015.jpg"
+                alt="Chomsky"
+                onError={(e) => e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="50" fill="%232ecc71"/><text x="50" y="55" font-size="30" text-anchor="middle" fill="white">NC</text></svg>'}
+              />
+              <h5>Noam Chomsky</h5>
+              <p>
+                Proposed Universal Grammar and the Language Acquisition Device
+                (LAD).
+              </p>
+            </div>
+            <div className="linguist-card">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/EdwardSapir.jpg/200px-EdwardSapir.jpg"
+                alt="Sapir"
+                onError={(e) => e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="50" fill="%23e74c3c"/><text x="50" y="55" font-size="30" text-anchor="middle" fill="white">ES</text></svg>'}
+              />
+              <h5>Edward Sapir</h5>
+              <p>Developed the Sapir-Whorf hypothesis: language shapes thought.</p>
+            </div>
+            <div className="linguist-card">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Panini.jpg/200px-Panini.jpg"
+                alt="Panini"
+                onError={(e) => e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="50" fill="%23f39c12"/><text x="50" y="55" font-size="30" text-anchor="middle" fill="white">P</text></svg>'}
+              />
+              <h5>Panini (~400 BCE)</h5>
+              <p>
+                Ancient Indian grammarian. Wrote the world's first systematic
+                grammar.
+              </p>
+            </div>
+          </div>
+          <p>
+            In the 20th century, <strong>Noam Chomsky</strong> transformed
+            linguistics again by arguing that all humans are born with an innate
+            capacity for language — a <em>Language Acquisition Device</em> — and
+            that all languages share a common underlying structure called{" "}
+            <strong>Universal Grammar</strong>. This nativist view sparked decades
+            of debate and research that continues today.
+          </p>
+        </div>
+        {/* SECTION 3: SUB-FIELDS */}
+        <div className="section" id="subfields">
+          <h2 className="section-title">
+            <span>🔬</span> The Eight Sub-fields of Linguistics
+          </h2>
+          <p>
+            Linguistics is not a single, monolithic field. It branches into several
+            specialized sub-disciplines, each focusing on a different level or
+            aspect of language. Think of linguistics as a tree: the trunk is
+            language itself, and each major branch is a sub-field that studies one
+            dimension of that language.
+          </p>
+          {/* SVG Linguistics Tree Diagram */}
+          <div className="diagram-container" id="diagrams">
+            <h4>🌳 The Linguistics Family Tree</h4>
+            <svg
+              width={900}
+              height={500}
+              viewBox="0 0 900 500"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Background */}
+              <rect width={900} height={500} fill="#f8f9fa" rx={10} />
+              {/* Trunk: Central node */}
+              <ellipse cx={450} cy={60} rx={100} ry={35} fill="#2c3e50" />
+              <text
+                x={450}
+                y={55}
+                textAnchor="middle"
+                fill="white"
+                fontSize={16}
+                fontWeight="bold"
+              >
+                LINGUISTICS
+              </text>
+              <text x={450} y={72} textAnchor="middle" fill="#ecf0f1" fontSize={11}>
+                Scientific Study of Language
+              </text>
+              {/* Lines to sub-fields */}
+              <line
+                x1={450}
+                y1={95}
+                x2={90}
+                y2={180}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              <line
+                x1={450}
+                y1={95}
+                x2={200}
+                y2={180}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              <line
+                x1={450}
+                y1={95}
+                x2={315}
+                y2={180}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              <line
+                x1={450}
+                y1={95}
+                x2={430}
+                y2={180}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              <line
+                x1={450}
+                y1={95}
+                x2={545}
+                y2={180}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              <line
+                x1={450}
+                y1={95}
+                x2={660}
+                y2={180}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              <line
+                x1={450}
+                y1={95}
+                x2={775}
+                y2={180}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              <line
+                x1={450}
+                y1={95}
+                x2={860}
+                y2={180}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              {/* Phonetics */}
+              <rect x={30} y={175} width={120} height={55} fill="#e74c3c" rx={8} />
+              <text
+                x={90}
+                y={198}
+                textAnchor="middle"
+                fill="white"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                Phonetics
+              </text>
+              <text x={90} y={215} textAnchor="middle" fill="#ffd" fontSize={10}>
+                Speech Sounds
+              </text>
+              {/* Phonology */}
+              <rect x={145} y={175} width={120} height={55} fill="#e67e22" rx={8} />
+              <text
+                x={205}
+                y={198}
+                textAnchor="middle"
+                fill="white"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                Phonology
+              </text>
+              <text x={205} y={215} textAnchor="middle" fill="#ffd" fontSize={10}>
+                Sound Patterns
+              </text>
+              {/* Morphology */}
+              <rect x={260} y={175} width={120} height={55} fill="#f1c40f" rx={8} />
+              <text
+                x={320}
+                y={198}
+                textAnchor="middle"
+                fill="#333"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                Morphology
+              </text>
+              <text x={320} y={215} textAnchor="middle" fill="#555" fontSize={10}>
+                Word Structure
+              </text>
+              {/* Syntax */}
+              <rect x={375} y={175} width={120} height={55} fill="#2ecc71" rx={8} />
+              <text
+                x={435}
+                y={198}
+                textAnchor="middle"
+                fill="white"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                Syntax
+              </text>
+              <text x={435} y={215} textAnchor="middle" fill="#dfd" fontSize={10}>
+                Sentence Structure
+              </text>
+              {/* Semantics */}
+              <rect x={490} y={175} width={120} height={55} fill="#3498db" rx={8} />
+              <text
+                x={550}
+                y={198}
+                textAnchor="middle"
+                fill="white"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                Semantics
+              </text>
+              <text x={550} y={215} textAnchor="middle" fill="#ddf" fontSize={10}>
+                Meaning
+              </text>
+              {/* Pragmatics */}
+              <rect x={605} y={175} width={120} height={55} fill="#9b59b6" rx={8} />
+              <text
+                x={665}
+                y={198}
+                textAnchor="middle"
+                fill="white"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                Pragmatics
+              </text>
+              <text x={665} y={215} textAnchor="middle" fill="#edf" fontSize={10}>
+                Meaning in Context
+              </text>
+              {/* Sociolinguistics */}
+              <rect x={720} y={175} width={130} height={55} fill="#1abc9c" rx={8} />
+              <text
+                x={785}
+                y={198}
+                textAnchor="middle"
+                fill="white"
+                fontSize={12}
+                fontWeight="bold"
+              >
+                Sociolinguistics
+              </text>
+              <text x={785} y={215} textAnchor="middle" fill="#dff" fontSize={10}>
+                Language &amp; Society
+              </text>
+              {/* Psycholinguistics */}
+              <rect x={820} y={285} width={75} height={55} fill="#e91e63" rx={8} />
+              <text
+                x={857}
+                y={308}
+                textAnchor="middle"
+                fill="white"
+                fontSize={10}
+                fontWeight="bold"
+              >
+                Psycho-
+              </text>
+              <text
+                x={857}
+                y={320}
+                textAnchor="middle"
+                fill="white"
+                fontSize={10}
+                fontWeight="bold"
+              >
+                linguistics
+              </text>
+              <text x={857} y={332} textAnchor="middle" fill="#fdd" fontSize={9}>
+                Mind &amp; Lang.
+              </text>
+              <line
+                x1={860}
+                y1={230}
+                x2={857}
+                y2={285}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              {/* Sub-labels row 2 */}
+              <text
+                x={90}
+                y={250}
+                textAnchor="middle"
+                fill="#e74c3c"
+                fontSize={10}
+                fontStyle="italic"
+              >
+                /p/ /b/ /t/ /d/
+              </text>
+              <text
+                x={205}
+                y={250}
+                textAnchor="middle"
+                fill="#e67e22"
+                fontSize={10}
+                fontStyle="italic"
+              >
+                minimal pairs
+              </text>
+              <text
+                x={320}
+                y={250}
+                textAnchor="middle"
+                fill="#c0a000"
+                fontSize={10}
+                fontStyle="italic"
+              >
+                un+break+able
+              </text>
+              <text
+                x={435}
+                y={250}
+                textAnchor="middle"
+                fill="#27ae60"
+                fontSize={10}
+                fontStyle="italic"
+              >
+                NP + VP
+              </text>
+              <text
+                x={550}
+                y={250}
+                textAnchor="middle"
+                fill="#2980b9"
+                fontSize={10}
+                fontStyle="italic"
+              >
+                denotation
+              </text>
+              <text
+                x={665}
+                y={250}
+                textAnchor="middle"
+                fill="#8e44ad"
+                fontSize={10}
+                fontStyle="italic"
+              >
+                speech acts
+              </text>
+              <text
+                x={785}
+                y={250}
+                textAnchor="middle"
+                fill="#16a085"
+                fontSize={10}
+                fontStyle="italic"
+              >
+                dialects
+              </text>
+              {/* Bottom legend */}
+              <text
+                x={450}
+                y={440}
+                textAnchor="middle"
+                fill="#7f8c8d"
+                fontSize={13}
+                fontStyle="italic"
+              >
+                Each branch studies a different level or dimension of human language
+              </text>
+            </svg>
+            <p className="diagram-caption">
+              Figure 1: The major sub-fields of linguistics, each focusing on a
+              distinct aspect of language structure or use
+            </p>
+          </div>
+          {/* PHONETICS */}
+          <div className="subfield-card phonetics">
+            <h4>🔴 1. Phonetics — The Study of Speech Sounds</h4>
+            <p>
+              <strong>Phonetics</strong> is the scientific study of the physical
+              sounds of human speech. Phoneticians analyze how sounds are produced
+              by the vocal tract (
+              <span className="term">articulatory phonetics</span>), how they travel
+              through the air as sound waves (
+              <span className="term">acoustic phonetics</span>), and how they are
+              perceived by the listener's ear and brain (
+              <span className="term">auditory phonetics</span>).
+            </p>
+            <p>
+              Phonetics deals with actual, concrete sounds — called{" "}
+              <span className="term">phones</span> — irrespective of meaning. The
+              International Phonetic Alphabet (IPA) provides a universal symbol
+              system for transcribing any sound in any language. For example, the
+              English word "ship" is transcribed as /ʃɪp/ in IPA. Phonetics is
+              crucial for language learning, speech therapy, voice acting, and
+              accent training.
+            </p>
+            <p>
+              <strong>Examples:</strong> The /p/ sound in "pin" is produced by
+              pressing both lips together and releasing a puff of air (bilabial
+              plosive). The /f/ sound in "fan" is made by placing the upper teeth on
+              the lower lip (labiodental fricative). Even slight changes in tongue
+              position create entirely different sounds.
+            </p>
+            <div className="diagram-container" style={{ margin: "15px 0" }}>
+              <h5>IPA Chart (International Phonetic Alphabet)</h5>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/IPA_chart_2020.svg/800px-IPA_chart_2020.svg.png"
+                alt="IPA Chart"
+                style={{ maxWidth: "100%", borderRadius: 8 }}
+                onError={(e) => e.currentTarget.alt = 'IPA Chart - Search for IPA chart on Wikipedia'}
+              />
+              <p className="diagram-caption">
+                The International Phonetic Alphabet — a standardized system for
+                transcribing speech sounds in any language
+              </p>
+            </div>
+          </div>
+          {/* PHONOLOGY */}
+          <div className="subfield-card phonology">
+            <h4>🟠 2. Phonology — The Study of Sound Patterns</h4>
+            <p>
+              <span className="term">Phonology</span> studies how sounds function
+              and are organized within a specific language system. While phonetics
+              asks "what sounds can humans produce?", phonology asks "which sounds
+              matter in this language, and what rules govern them?" The key unit of
+              phonology is the <span className="term">phoneme</span> — an abstract,
+              meaning-distinguishing sound unit.
+            </p>
+            <p>
+              Phonologists study <span className="term">minimal pairs</span> — pairs
+              of words that differ by only one sound and have different meanings.
+              For example, in English, "cat" /kæt/ and "bat" /bæt/ are a minimal
+              pair — the only difference is /k/ vs. /b/, showing these are separate
+              phonemes. Phonology also studies syllable structure, stress patterns,
+              tone, and intonation.
+            </p>
+            <p>
+              <strong>Example:</strong> In English, the sounds [p] and [pʰ]
+              (aspirated p) are allophones of the same phoneme /p/ — "spin" has
+              unaspirated [p], while "pin" has aspirated [pʰ]. English speakers
+              don't notice the difference. But in Thai and Hindi, this difference is
+              phonemic — it changes meaning!
+            </p>
+          </div>
+          {/* MORPHOLOGY */}
+          <div className="subfield-card morphology">
+            <h4>🟡 3. Morphology — The Study of Word Structure</h4>
+            <p>
+              <span className="term">Morphology</span> is the study of the internal
+              structure of words and how words are formed. The fundamental unit of
+              morphology is the <span className="term">morpheme</span> — the
+              smallest unit of meaning or grammatical function. Morphemes can be
+              free (stand-alone words like "cat", "run") or bound (must attach to
+              another morpheme, like "-ing", "un-", "-ness").
+            </p>
+            <p>
+              Morphology explains how complex words are built from simpler parts:
+              prefixes, roots, and suffixes. It also studies inflection (grammatical
+              changes like "walk → walked → walking") and derivation (creating new
+              words: "happy → unhappy → unhappiness"). Understanding morphology
+              helps with vocabulary building, language learning, spelling, and
+              lexicography.
+            </p>
+            <p>
+              <strong>Example breakdown of "unbreakable":</strong>
+            </p>
+            <div style={{ textAlign: "center", margin: "15px 0" }}>
+              <div className="morpheme-box">
+                <div className="morpheme morpheme-prefix">
+                  un-
+                  <span className="morpheme-label">
+                    Prefix
+                    <br />
+                    "not"
+                  </span>
+                </div>
+                <div className="morpheme morpheme-root">
+                  break
+                  <span className="morpheme-label">
+                    Root
+                    <br />
+                    "to break"
+                  </span>
+                </div>
+                <div className="morpheme morpheme-suffix">
+                  -able
+                  <span className="morpheme-label">
+                    Suffix
+                    <br />
+                    "capable of"
+                  </span>
+                </div>
+              </div>
+              <p style={{ marginTop: 10, fontSize: "0.9em", color: "#666" }}>
+                un + break + able = "not capable of being broken" — 3 morphemes, 1
+                word
+              </p>
+            </div>
+          </div>
+          {/* SYNTAX */}
+          <div className="subfield-card syntax">
+            <h4>🟢 4. Syntax — The Study of Sentence Structure</h4>
+            <p>
+              <span className="term">Syntax</span> is the study of how words are
+              combined to form phrases, clauses, and sentences. Every language has
+              rules — called <span className="term">phrase structure rules</span> or{" "}
+              <span className="term">grammar</span> — that determine which word
+              orders are grammatical. Syntax explains why "The cat chased the mouse"
+              is grammatical in English but "Cat the mouse the chased" is not.
+            </p>
+            <p>
+              Syntacticians use <span className="term">parse trees</span> (or syntax
+              trees) to visually represent the hierarchical structure of sentences.
+              Every sentence can be broken into a Noun Phrase (NP) and a Verb Phrase
+              (VP). Chomsky's <em>Transformational Grammar</em> proposed that
+              sentences have a <strong>deep structure</strong> (underlying meaning)
+              and a <strong>surface structure</strong> (what we actually say),
+              connected by transformations.
+            </p>
+            <p>
+              <strong>Example:</strong> "Colorless green ideas sleep furiously"
+              (Chomsky, 1957) is syntactically grammatical (NP + V + adverb) but
+              semantically meaningless — proving that syntax and semantics are
+              separate systems.
+            </p>
+          </div>
+          {/* SEMANTICS */}
+          <div className="subfield-card semantics">
+            <h4>🔵 5. Semantics — The Study of Meaning</h4>
+            <p>
+              <span className="term">Semantics</span> is the branch of linguistics
+              concerned with meaning — the meaning of words, phrases, sentences, and
+              larger units of language. Semanticists study{" "}
+              <span className="term">denotation</span> (literal, dictionary meaning)
+              and <span className="term">connotation</span> (emotional or cultural
+              associations). They also analyze relationships between words: synonyms
+              (big/large), antonyms (hot/cold), hyponyms (rose is a hyponym of
+              flower), and homonyms (bank: financial institution vs. riverbank).
+            </p>
+            <p>
+              Semantics distinguishes between{" "}
+              <span className="term">lexical semantics</span> (word meanings) and{" "}
+              <span className="term">compositional semantics</span> (how meanings
+              combine in phrases and sentences). The principle of compositionality
+              states that the meaning of a complex expression is determined by the
+              meanings of its parts and the rules for combining them.
+            </p>
+            <p>
+              <strong>Example:</strong> "The dog bit the man" and "The man bit the
+              dog" contain exactly the same words, but have completely different
+              meanings because of the syntactic arrangement — showing how syntax and
+              semantics interact.
+            </p>
+          </div>
+          {/* PRAGMATICS */}
+          <div className="subfield-card pragmatics">
+            <h4>🟣 6. Pragmatics — Meaning in Context</h4>
+            <p>
+              <span className="term">Pragmatics</span> studies how context shapes
+              the interpretation of language — how we mean more than we literally
+              say. While semantics asks "what does this sentence literally mean?",
+              pragmatics asks "what does the speaker mean by saying this, in this
+              situation?" The same sentence can mean very different things depending
+              on context, tone, and social relationship.
+            </p>
+            <p>
+              Key concepts in pragmatics include{" "}
+              <span className="term">speech acts</span> (J.L. Austin's theory that
+              utterances perform actions: promises, warnings, requests),{" "}
+              <span className="term">Gricean maxims</span> (Paul Grice's cooperative
+              principle: be truthful, relevant, clear, and informative), and{" "}
+              <span className="term">implicature</span> (what is implied but not
+              stated).
+            </p>
+            <p>
+              <strong>Example:</strong> If someone asks "Can you pass the salt?"
+              they are not asking about your ability to pass salt (semantics) — they
+              are making a polite request (pragmatics). If a student says "I have an
+              exam tomorrow" to explain why they can't attend a party, that is an
+              implicature — the statement implies a refusal without explicitly
+              refusing.
+            </p>
+          </div>
+          {/* SOCIOLINGUISTICS */}
+          <div className="subfield-card sociolinguistics">
+            <h4>🩵 7. Sociolinguistics — Language and Society</h4>
+            <p>
+              <span className="term">Sociolinguistics</span> investigates the
+              relationship between language and society — how social factors like
+              age, gender, ethnicity, class, geography, and culture influence
+              language variation and change. No two people speak exactly alike;
+              sociolinguists study these variations systematically.
+            </p>
+            <p>
+              Key concepts include <span className="term">dialects</span> (regional
+              or social varieties of a language),{" "}
+              <span className="term">code-switching</span> (switching between
+              languages or dialects depending on context),{" "}
+              <span className="term">diglossia</span> (using two varieties of a
+              language for different social functions), and{" "}
+              <span className="term">language change</span> (how and why languages
+              evolve over time). William Labov's study of New York City speech
+              (1966) is a landmark sociolinguistic work.
+            </p>
+            <p>
+              <strong>Example:</strong> A bilingual Indian professional might switch
+              between Hindi and English within a single conversation at work
+              (code-switching). A British speaker from Yorkshire uses different
+              vowel sounds than a speaker from London — this is dialect variation.
+              Both are studied by sociolinguists.
+            </p>
+          </div>
+          {/* PSYCHOLINGUISTICS */}
+          <div className="subfield-card psycholinguistics">
+            <h4>🩷 8. Psycholinguistics — Language and the Mind</h4>
+            <p>
+              <span className="term">Psycholinguistics</span> explores the
+              psychological and neurobiological factors that enable humans to
+              acquire, produce, understand, and remember language. It bridges
+              linguistics and cognitive psychology. Psycholinguists study how
+              children acquire their mother tongue (first language acquisition), how
+              adults learn second languages, how the brain processes sentences in
+              real time, and what happens when language breaks down due to brain
+              injury.
+            </p>
+            <p>
+              Key findings include: children acquire language remarkably rapidly and
+              uniformly (supporting Chomsky's nativist hypothesis);{" "}
+              <span className="term">Broca's area</span> (left frontal lobe) is
+              critical for speech production;{" "}
+              <span className="term">Wernicke's area</span> (left temporal lobe) is
+              critical for language comprehension. Damage to these areas causes
+              different types of aphasia.
+            </p>
+            <p>
+              <strong>Example:</strong> A child who has never been taught a grammar
+              rule will still correctly use it. Children around the world go through
+              the same stages of language development (babbling → one-word stage →
+              two-word stage → full sentences) regardless of which language they are
+              learning — evidence for a universal language acquisition mechanism.
+            </p>
+          </div>
+          <h3 className="subsection-title">Applied Linguistics</h3>
+          <p>
+            Beyond pure theoretical research, linguistics has a rich applied
+            dimension. <span className="term">Applied linguistics</span> uses
+            linguistic knowledge to solve real-world problems in education,
+            technology, healthcare, and law. Major areas include:
+          </p>
+          <ul style={{ marginLeft: 25, marginBottom: 15, lineHeight: 2 }}>
+            <li>
+              <strong>Language Teaching (SLA):</strong> Using knowledge of language
+              acquisition to design better teaching methods
+            </li>
+            <li>
+              <strong>Computational Linguistics / NLP:</strong> Building computer
+              systems that understand and generate human language (machine
+              translation, chatbots, speech recognition)
+            </li>
+            <li>
+              <strong>Forensic Linguistics:</strong> Analyzing language evidence in
+              legal contexts (authorship identification, language of threat,
+              contract interpretation)
+            </li>
+            <li>
+              <strong>Clinical Linguistics:</strong> Diagnosing and treating
+              communication disorders (aphasia, dyslexia, stuttering, autism
+              spectrum communication)
+            </li>
+            <li>
+              <strong>Lexicography:</strong> Compiling dictionaries and thesauri
+              based on corpus data
+            </li>
+            <li>
+              <strong>Translation &amp; Interpretation:</strong> Using semantic and
+              pragmatic knowledge to transfer meaning across languages
+            </li>
+          </ul>
+        </div>
+        {/* SECTION 4: VIDEOS */}
+        <div className="section" id="videos">
+          <h2 className="section-title">
+            <span>🎥</span> Learn Through Videos
+          </h2>
+          <p>
+            Watch these carefully curated videos to reinforce your understanding
+            with expert explanations and visual demonstrations.
+          </p>
+          <div className="video-grid">
+            <div className="video-card">
+              <div className="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/3yLXNzDUH58"
+                  allowFullScreen=""
+                  title="What is Linguistics?"
+                />
+              </div>
+              <div className="video-info">
+                <div className="video-title">
+                  📚 What is Linguistics? — Introduction
+                </div>
+                <div className="video-description">
+                  A clear introduction to linguistics as a scientific discipline,
+                  covering core concepts and why it matters.
+                </div>
+              </div>
+            </div>
+            <div className="video-card">
+              <div className="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/xVnMFCHfFiY"
+                  allowFullScreen=""
+                  title="Branches of Linguistics"
+                />
+              </div>
+              <div className="video-info">
+                <div className="video-title">
+                  🔬 Branches of Linguistics Explained
+                </div>
+                <div className="video-description">
+                  Covers all major sub-fields of linguistics with clear definitions
+                  and real-world examples for each branch.
+                </div>
+              </div>
+            </div>
+            <div className="video-card">
+              <div className="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/DWCOCpCKKyE"
+                  allowFullScreen=""
+                  title="Linguistics Sub-fields Overview"
+                />
+              </div>
+              <div className="video-info">
+                <div className="video-title">
+                  🌐 Overview of Linguistics Sub-fields
+                </div>
+                <div className="video-description">
+                  An animated overview covering phonetics, phonology, morphology,
+                  syntax, semantics, and pragmatics with visual aids.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="alert alert-info">
+            <strong>📺 Additional Resources:</strong>
+            <ul style={{ marginTop: 10, marginLeft: 20 }}>
+              <li>
+                <strong>YouTube Channels:</strong> Crash Course Linguistics,
+                NativLang, The Ling Space, Tom Scott (linguistics videos)
+              </li>
+              <li>
+                <strong>Interactive:</strong> Search "IPA chart interactive" for a
+                clickable IPA chart with audio samples
+              </li>
+              <li>
+                <strong>Apps:</strong> Duolingo (applied linguistics in language
+                learning), Speechling (pronunciation/phonetics)
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/* SECTION 5: MERMAID DIAGRAMS */}
+        <div className="section">
+          <h2 className="section-title">
+            <span>📊</span> Visual Concept Maps
+          </h2>
+          <div className="diagram-container">
+            <h4>How to Analyze Language at Multiple Levels</h4>
+            <div className="flex justify-center my-6 overflow-hidden">
+              <div className="mermaid" ref={mermaidRef} />
+            </div>
+            <p className="diagram-caption">
+              Figure 2: Multi-level linguistic analysis — how linguists examine
+              language at each layer
+            </p>
+          </div>
+          <div className="diagram-container">
+            <h4>Syntax Tree: "The cat sat on the mat"</h4>
+            <svg
+              width={700}
+              height={320}
+              viewBox="0 0 700 320"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width={700} height={320} fill="#f8f9fa" rx={10} />
+              {/* S node */}
+              <ellipse cx={350} cy={35} rx={30} ry={20} fill="#2c3e50" />
+              <text
+                x={350}
+                y={40}
+                textAnchor="middle"
+                fill="white"
+                fontSize={14}
+                fontWeight="bold"
+              >
+                S
+              </text>
+              {/* Lines from S */}
+              <line
+                x1={325}
+                y1={50}
+                x2={175}
+                y2={100}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              <line
+                x1={375}
+                y1={50}
+                x2={525}
+                y2={100}
+                stroke="#2c3e50"
+                strokeWidth={2}
+              />
+              {/* NP node */}
+              <ellipse cx={175} cy={115} rx={30} ry={20} fill="#e74c3c" />
+              <text
+                x={175}
+                y={120}
+                textAnchor="middle"
+                fill="white"
+                fontSize={14}
+                fontWeight="bold"
+              >
+                NP
+              </text>
+              {/* VP node */}
+              <ellipse cx={525} cy={115} rx={30} ry={20} fill="#3498db" />
+              <text
+                x={525}
+                y={120}
+                textAnchor="middle"
+                fill="white"
+                fontSize={14}
+                fontWeight="bold"
+              >
+                VP
+              </text>
+              {/* Lines from NP */}
+              <line
+                x1={152}
+                y1={130}
+                x2={105}
+                y2={175}
+                stroke="#e74c3c"
+                strokeWidth={2}
+              />
+              <line
+                x1={198}
+                y1={130}
+                x2={245}
+                y2={175}
+                stroke="#e74c3c"
+                strokeWidth={2}
+              />
+              {/* DET */}
+              <ellipse cx={105} cy={190} rx={30} ry={20} fill="#e67e22" />
+              <text
+                x={105}
+                y={195}
+                textAnchor="middle"
+                fill="white"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                DET
+              </text>
+              {/* N */}
+              <ellipse cx={245} cy={190} rx={25} ry={20} fill="#e67e22" />
+              <text
+                x={245}
+                y={195}
+                textAnchor="middle"
+                fill="white"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                N
+              </text>
+              {/* Lines from VP */}
+              <line
+                x1={502}
+                y1={130}
+                x2={440}
+                y2={175}
+                stroke="#3498db"
+                strokeWidth={2}
+              />
+              <line
+                x1={548}
+                y1={130}
+                x2={610}
+                y2={175}
+                stroke="#3498db"
+                strokeWidth={2}
+              />
+              {/* V */}
+              <ellipse cx={440} cy={190} rx={25} ry={20} fill="#2ecc71" />
+              <text
+                x={440}
+                y={195}
+                textAnchor="middle"
+                fill="white"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                V
+              </text>
+              {/* PP */}
+              <ellipse cx={610} cy={190} rx={30} ry={20} fill="#9b59b6" />
+              <text
+                x={610}
+                y={195}
+                textAnchor="middle"
+                fill="white"
+                fontSize={13}
+                fontWeight="bold"
+              >
+                PP
+              </text>
+              {/* Lines from PP */}
+              <line
+                x1={585}
+                y1={205}
+                x2={545}
+                y2={248}
+                stroke="#9b59b6"
+                strokeWidth={2}
+              />
+              <line
+                x1={635}
+                y1={205}
+                x2={675}
+                y2={248}
+                stroke="#9b59b6"
+                strokeWidth={2}
+              />
+              {/* P and NP2 */}
+              <ellipse cx={545} cy={263} rx={25} ry={18} fill="#1abc9c" />
+              <text
+                x={545}
+                y={268}
+                textAnchor="middle"
+                fill="white"
+                fontSize={12}
+                fontWeight="bold"
+              >
+                P
+              </text>
+              <ellipse cx={675} cy={263} rx={28} ry={18} fill="#e74c3c" />
+              <text
+                x={675}
+                y={268}
+                textAnchor="middle"
+                fill="white"
+                fontSize={12}
+                fontWeight="bold"
+              >
+                NP
+              </text>
+              {/* Leaf words */}
+              <line
+                x1={105}
+                y1={210}
+                x2={105}
+                y2={248}
+                stroke="#555"
+                strokeWidth="1.5"
+              />
+              <line
+                x1={245}
+                y1={210}
+                x2={245}
+                y2={248}
+                stroke="#555"
+                strokeWidth="1.5"
+              />
+              <line
+                x1={440}
+                y1={210}
+                x2={440}
+                y2={248}
+                stroke="#555"
+                strokeWidth="1.5"
+              />
+              <line
+                x1={545}
+                y1={281}
+                x2={545}
+                y2={298}
+                stroke="#555"
+                strokeWidth="1.5"
+              />
+              <line
+                x1={675}
+                y1={281}
+                x2={675}
+                y2={298}
+                stroke="#555"
+                strokeWidth="1.5"
+              />
+              {/* NP2 children */}
+              <rect x={30} y={248} width={40} height={25} fill="#fff3cd" rx={4} />
+              <text
+                x={50}
+                y={265}
+                textAnchor="middle"
+                fill="#2c3e50"
+                fontSize={12}
+                fontWeight="bold"
+              >
+                The
+              </text>
+              <rect x={215} y={248} width={40} height={25} fill="#fff3cd" rx={4} />
+              <text
+                x={235}
+                y={265}
+                textAnchor="middle"
+                fill="#2c3e50"
+                fontSize={12}
+                fontWeight="bold"
+              >
+                cat
+              </text>
+              <rect x={415} y={248} width={40} height={25} fill="#fff3cd" rx={4} />
+              <text
+                x={435}
+                y={265}
+                textAnchor="middle"
+                fill="#2c3e50"
+                fontSize={12}
+                fontWeight="bold"
+              >
+                sat
+              </text>
+              <rect x={522} y={298} width={40} height={22} fill="#fff3cd" rx={4} />
+              <text
+                x={542}
+                y={314}
+                textAnchor="middle"
+                fill="#2c3e50"
+                fontSize={12}
+                fontWeight="bold"
+              >
+                on
+              </text>
+              <rect x={640} y={298} width={75} height={22} fill="#fff3cd" rx={4} />
+              <text
+                x={677}
+                y={314}
+                textAnchor="middle"
+                fill="#2c3e50"
+                fontSize={12}
+                fontWeight="bold"
+              >
+                the mat
+              </text>
+            </svg>
+            <p className="diagram-caption">
+              Figure 3: Syntax tree (parse tree) for "The cat sat on the mat"
+              showing hierarchical sentence structure
             </p>
           </div>
         </div>
-      </div>
-      <div className="example-box">
-        <h4>Question 2: Problem Solving (10 marks) — Time: 15 minutes</h4>
-        <p>
-          <strong>
-            Q: Perform a complete morphological analysis of the following words.
-            For each word, identify all morphemes, classify them as free or
-            bound, and state the type (prefix, root, suffix). Words: (a)
-            "dishonestly" (b) "teachers" (c) "predetermined"
-          </strong>
-        </p>
-        <button className={`collapsible ${openCollapsible === 'q2' ? 'active' : ''}`} onClick={() => toggleCollapsible('q2')}>
-          Show Marking Scheme &amp; Complete Solution
-        </button>
-        <div className="collapsible-content" style={{ maxHeight: openCollapsible === 'q2' ? '3000px' : '0' }}>
-          <div className="collapsible-content-inner">
-            <h4>Marking Scheme:</h4>
-            <ul style={{ marginLeft: 20 }}>
-              <li>
-                Each word correctly identified morphemes: 2 marks each (×3 = 6
-                marks)
-              </li>
-              <li>Correct free/bound classification: 2 marks</li>
-              <li>Clear table presentation: 2 marks</li>
-            </ul>
-            <h4>Complete Solution:</h4>
+
+        {/* SECTION 7: WORKED EXAMPLES */}
+        <div className="section" id="examples">
+          <h2 className="section-title">
+            <span>⚙️</span> Worked Examples
+          </h2>
+          {/* Example 1 */}
+          <div className="example-box">
+            <h4>📝 Example 1: Morphological Analysis of "Unhappiness"</h4>
+            <p>
+              <strong>Task:</strong> Identify all morphemes in the word
+              "unhappiness" and describe each one.
+            </p>
+            <div className="example-steps">
+              <div className="step">
+                <strong>Step 1 — Identify the root:</strong> The root is{" "}
+                <code>happy</code> — an adjective meaning "feeling pleasure or
+                contentment." It is a free morpheme (can stand alone).
+              </div>
+              <div className="step">
+                <strong>Step 2 — Identify suffixes:</strong> Adding{" "}
+                <code>-ness</code> (a derivational suffix) to an adjective creates a
+                noun: <em>happiness</em> = the state of being happy.
+              </div>
+              <div className="step">
+                <strong>Step 3 — Identify prefixes:</strong> Adding <code>un-</code>{" "}
+                (a derivational prefix meaning "not") negates the meaning:{" "}
+                <em>unhappiness</em> = the state of not being happy.
+              </div>
+              <div className="step">
+                <strong>Step 4 — Count morphemes:</strong> un + happy + ness ={" "}
+                <strong>3 morphemes</strong> total.
+              </div>
+              <div className="step">
+                <strong>Step 5 — Classify morphemes:</strong> <code>un-</code> =
+                bound, derivational, prefix. <code>happy</code> = free, root.{" "}
+                <code>-ness</code> = bound, derivational, suffix.
+              </div>
+            </div>
+            <div style={{ textAlign: "center", margin: "15px 0" }}>
+              <div className="morpheme-box">
+                <div className="morpheme morpheme-prefix">
+                  un-
+                  <span className="morpheme-label">
+                    Prefix
+                    <br />
+                    Bound
+                    <br />
+                    "not"
+                  </span>
+                </div>
+                <div className="morpheme morpheme-root">
+                  happy
+                  <span className="morpheme-label">
+                    Root
+                    <br />
+                    Free
+                    <br />
+                    "joyful"
+                  </span>
+                </div>
+                <div className="morpheme morpheme-suffix">
+                  -ness
+                  <span className="morpheme-label">
+                    Suffix
+                    <br />
+                    Bound
+                    <br />
+                    "state of"
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              style={{
+                background: "#d4edda",
+                padding: 15,
+                borderRadius: 8,
+                borderLeft: "4px solid #28a745"
+              }}
+            >
+              <strong>✅ Final Answer:</strong> "Unhappiness" contains 3 morphemes:{" "}
+              <code>un-</code> (prefix, negation) + <code>happy</code> (root
+              adjective) + <code>-ness</code> (nominalizing suffix). The word is a
+              derived noun formed through prefixation and suffixation.
+            </div>
+          </div>
+          {/* Example 2 */}
+          <div className="example-box">
+            <h4>
+              📝 Example 2: Multi-Level Linguistic Analysis of "The birds are
+              singing"
+            </h4>
+            <p>
+              <strong>Task:</strong> Analyze the sentence "The birds are singing" at
+              five linguistic levels.
+            </p>
             <table>
               <thead>
                 <tr>
-                  <th>Word</th>
-                  <th>Morpheme</th>
-                  <th>Type</th>
-                  <th>Free/Bound</th>
-                  <th>Meaning</th>
+                  <th>Level</th>
+                  <th>Analysis</th>
+                  <th>Key Concepts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td rowSpan={4}>
-                    <strong>dishonestly</strong>
+                  <td>
+                    <strong>Phonological</strong>
                   </td>
-                  <td>dis-</td>
-                  <td>Prefix</td>
-                  <td>Bound</td>
-                  <td>"not, opposite of"</td>
-                </tr>
-                <tr>
-                  <td>honest</td>
-                  <td>Root</td>
-                  <td>Free</td>
-                  <td>"truthful"</td>
-                </tr>
-                <tr>
-                  <td>-ly</td>
-                  <td>Suffix</td>
-                  <td>Bound</td>
-                  <td>"in a manner of" (adverb maker)</td>
-                </tr>
-                <tr>
-                  <td colSpan={4}>
-                    <em>Total: 3 morphemes | dis+honest+ly</em>
+                  <td>/ðə bɜːrdz ɑːr ˈsɪŋɪŋ/</td>
+                  <td>
+                    IPA transcription; /ð/ voiced dental fricative; /ŋ/ velar nasal
                   </td>
                 </tr>
                 <tr>
-                  <td rowSpan={3}>
-                    <strong>teachers</strong>
+                  <td>
+                    <strong>Morphological</strong>
                   </td>
-                  <td>teach</td>
-                  <td>Root</td>
-                  <td>Free</td>
-                  <td>"to instruct"</td>
+                  <td>The + bird + -s + are + sing + -ing</td>
+                  <td>bird+s = plural inflection; sing+ing = present participle</td>
                 </tr>
                 <tr>
-                  <td>-er</td>
-                  <td>Suffix</td>
-                  <td>Bound</td>
-                  <td>"one who does" (agentive noun)</td>
-                </tr>
-                <tr>
-                  <td>-s</td>
-                  <td>Suffix</td>
-                  <td>Bound</td>
-                  <td>Plural inflection</td>
-                </tr>
-                <tr>
-                  <td colSpan={4}>
-                    <em>Total: 3 morphemes | teach+er+s</em>
+                  <td>
+                    <strong>Syntactic</strong>
+                  </td>
+                  <td>[NP The birds] [VP are singing]</td>
+                  <td>
+                    Subject NP + Predicate VP; present progressive tense structure
                   </td>
                 </tr>
                 <tr>
-                  <td rowSpan={4}>
-                    <strong>predetermined</strong>
+                  <td>
+                    <strong>Semantic</strong>
                   </td>
-                  <td>pre-</td>
-                  <td>Prefix</td>
-                  <td>Bound</td>
-                  <td>"before"</td>
-                </tr>
-                <tr>
-                  <td>determine</td>
-                  <td>Root</td>
-                  <td>Free</td>
-                  <td>"to decide"</td>
-                </tr>
-                <tr>
-                  <td>-ed</td>
-                  <td>Suffix</td>
-                  <td>Bound</td>
-                  <td>Past tense inflection</td>
-                </tr>
-                <tr>
-                  <td colSpan={4}>
-                    <em>Total: 3 morphemes | pre+determine+ed</em>
+                  <td>Multiple birds, currently producing melodic sounds</td>
+                  <td>
+                    Collective action; present continuous aspect; "birds" = hyponym
+                    of "animal"
                   </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Pragmatic</strong>
+                  </td>
+                  <td>Context-dependent: observation, complaint, poetry, signal</td>
+                  <td>Depends on speaker intent, relationship, and setting</td>
                 </tr>
               </tbody>
             </table>
+            <div
+              style={{
+                background: "#d4edda",
+                padding: 15,
+                borderRadius: 8,
+                borderLeft: "4px solid #28a745",
+                marginTop: 15
+              }}
+            >
+              <strong>✅ Key Insight:</strong> The same sentence can be analyzed
+              from multiple independent angles. Each sub-field reveals a different
+              layer of linguistic structure, and these layers interact to produce
+              the full meaning of an utterance.
+            </div>
+          </div>
+          {/* Example 3 */}
+          <div className="example-box">
+            <h4>
+              📝 Example 3 (Edge Case): Syntactic Ambiguity — "I saw the man with
+              the telescope"
+            </h4>
+            <p>
+              <strong>Task:</strong> Show how this sentence has two different
+              syntactic structures, producing two different meanings.
+            </p>
+            <div className="example-steps">
+              <div className="step">
+                <strong>Interpretation 1:</strong> "I used the telescope to see the
+                man" — The PP "with the telescope" modifies the verb "saw" (it is
+                part of the VP). Structure: [I] [saw [the man] [with the telescope]]
+              </div>
+              <div className="step">
+                <strong>Interpretation 2:</strong> "I saw the man who had the
+                telescope" — The PP "with the telescope" modifies "the man" (it is
+                part of the NP). Structure: [I] [saw [the man with the telescope]]
+              </div>
+              <div className="step">
+                <strong>Why this is important:</strong> This is syntactic ambiguity
+                — the sentence has one surface form but two underlying deep
+                structures (Chomsky's distinction). Context or intonation normally
+                resolves the ambiguity in real speech.
+              </div>
+            </div>
+            <div className="alert alert-warning" style={{ marginTop: 10 }}>
+              <strong>⚠️ Exam Tip:</strong> Ambiguous sentences are a favorite exam
+              topic. Always check if a sentence could have multiple parse trees
+              before committing to one analysis.
+            </div>
           </div>
         </div>
-      </div>
-      <div className="example-box">
-        <h4>Question 3: Analytical/Comparison (15 marks) — Time: 20 minutes</h4>
-        <p>
-          <strong>
-            Q: Compare and contrast phonetics and phonology. Your answer should
-            include: definitions, key differences, concepts specific to each,
-            and the relationship between the two sub-fields. Use examples
-            throughout.
-          </strong>
-        </p>
-        <button className={`collapsible ${openCollapsible === 'q3' ? 'active' : ''}`} onClick={() => toggleCollapsible('q3')}>
-          Show Marking Scheme &amp; Model Answer
-        </button>
-        <div className="collapsible-content" style={{ maxHeight: openCollapsible === 'q3' ? '3000px' : '0' }}>
-          <div className="collapsible-content-inner">
-            <h4>Marking Scheme:</h4>
-            <ul style={{ marginLeft: 20 }}>
-              <li>Definition of phonetics with example: 3 marks</li>
-              <li>Definition of phonology with example: 3 marks</li>
+        {/* SECTION 8: LAB EXERCISE */}
+        <div className="lab-exercise" id="lab">
+          <h3>🛠️ Hands-On Lab: The Linguistic Detective</h3>
+          <h2>Analyze a Sentence at All Five Linguistic Levels</h2>
+          <div className="lab-objective">
+            <strong>📋 Objective:</strong>
+            <p>
+              Apply your knowledge of linguistics sub-fields to perform a complete
+              linguistic analysis of the sentence:{" "}
+              <em>"She quickly writes beautiful letters."</em>
+            </p>
+          </div>
+          <div className="lab-objective">
+            <strong>⏱️ Estimated Time:</strong> 25–35 minutes
+          </div>
+          <div className="lab-steps">
+            <h4>📝 Instructions:</h4>
+            <ol>
               <li>
-                Clear comparison of key differences (at least 3 points): 4 marks
+                <strong>Phonological Level:</strong> Write the IPA transcription of
+                the sentence. Identify at least 3 phonemes and describe their
+                place/manner of articulation.
               </li>
               <li>
-                Specific concepts (IPA, minimal pairs, phonemes, allophones): 3
-                marks
+                <strong>Morphological Level:</strong> Break each word into its
+                morphemes. Classify each morpheme as free/bound and
+                root/prefix/suffix. Count the total number of morphemes in the
+                sentence.
               </li>
-              <li>Explanation of how they relate/interact: 2 marks</li>
+              <li>
+                <strong>Syntactic Level:</strong> Draw a phrase structure tree.
+                Label NP, VP, and any sub-phrases. Identify the subject and
+                predicate.
+              </li>
+              <li>
+                <strong>Semantic Level:</strong> Identify the semantic roles (who is
+                the agent? what is the theme?). Note any examples of polysemy,
+                synonymy, or antonymy in the sentence.
+              </li>
+              <li>
+                <strong>Pragmatic Level:</strong> Write three different contexts
+                where this sentence might be said. In each context, how might the
+                implied meaning differ from the literal meaning?
+              </li>
+              <li>
+                <strong>Sub-field Connection:</strong> Write 2–3 sentences
+                explaining which sub-field you found most challenging and why.
+              </li>
+              <li>
+                <strong>Extension (Optional):</strong> Replace one word in the
+                sentence and explain how this changes the analysis at two or more
+                linguistic levels.
+              </li>
+            </ol>
+          </div>
+          <div className="lab-objective">
+            <strong>✅ Expected Outcome:</strong>
+            <p>
+              A complete written analysis document covering all 5 linguistic levels,
+              with correctly labeled morphemes, a syntactic tree, and pragmatic
+              context examples. You should find approximately 8 morphemes total in
+              the sentence.
+            </p>
+          </div>
+          <div className="lab-objective">
+            <strong>🎓 Grading Rubric (25 marks):</strong>
+            <ul style={{ marginLeft: 20, marginTop: 8 }}>
+              <li>Phonological analysis: 5 marks</li>
+              <li>Morphological analysis (correct morpheme count): 5 marks</li>
+              <li>Syntactic tree (correctly labeled): 5 marks</li>
+              <li>Semantic role analysis: 5 marks</li>
+              <li>Pragmatic context examples: 5 marks</li>
             </ul>
-            <h4>Model Answer:</h4>
-            <p>
-              <strong>Phonetics</strong> is the scientific study of speech
-              sounds — how they are produced by the human vocal tract
-              (articulatory phonetics), how they travel as sound waves (acoustic
-              phonetics), and how they are perceived by listeners (auditory
-              phonetics). Phonetics deals with physical, concrete sounds called{" "}
-              <em>phones</em>, transcribed using the International Phonetic
-              Alphabet (IPA). For example, the English word "pin" is transcribed
-              as [pʰɪn] — the superscript "h" indicates aspiration, a physical
-              quality of the /p/ sound in this position.
-            </p>
-            <p>
-              <strong>Phonology</strong>, in contrast, studies the abstract,
-              mental system of sounds within a specific language — which sounds
-              are phonemically distinct, what patterns they follow, and what
-              rules govern their combinations. The core unit is the{" "}
-              <em>phoneme</em> — an abstract category that distinguishes
-              meaning. The tool for establishing phonemes is the{" "}
-              <strong>minimal pair</strong>: "cat" /kæt/ and "bat" /bæt/ differ
-              only in initial consonant, proving /k/ and /b/ are separate
-              phonemes in English.
-            </p>
-            <p>
-              The key difference is scope and abstraction: phonetics is
-              universal (studying all possible human sounds), while phonology is
-              language-specific (studying the sound rules of a particular
-              language). Phonetics is concrete and measurable; phonology is
-              abstract and mental. In English, [p] and [pʰ] are allophones of
-              the same phoneme /p/ (phonology) — but they are distinct phones
-              (phonetics). In Thai, this same distinction is phonemic — it
-              changes word meaning. The two fields are deeply connected:
-              phonetics provides the raw material (sounds) that phonology
-              organizes into systems. Effective linguistic analysis requires
-              both perspectives.
-            </p>
           </div>
         </div>
-      </div>
+        {/* SECTION 9: COMPARISON TABLE */}
+        <div className="section" id="comparison">
+          <h2 className="section-title">
+            <span>📊</span> Comparison of All Eight Sub-fields
+          </h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Sub-field</th>
+                <th>What It Studies</th>
+                <th>Key Unit</th>
+                <th>Classic Example</th>
+                <th>Real-World Application</th>
+                <th>Key Scholar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong style={{ color: "#e74c3c" }}>Phonetics</strong>
+                </td>
+                <td>Physical speech sounds — production, acoustics, perception</td>
+                <td>Phone [p]</td>
+                <td>/p/ vs. /b/ articulation</td>
+                <td>Speech therapy, voice technology, accent coaching</td>
+                <td>Peter Ladefoged</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style={{ color: "#e67e22" }}>Phonology</strong>
+                </td>
+                <td>Sound systems and patterns within a language</td>
+                <td>Phoneme /p/</td>
+                <td>Minimal pairs: "cat" vs. "bat"</td>
+                <td>Second language pronunciation, spelling rules</td>
+                <td>N. Trubetzkoy</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style={{ color: "#c0a000" }}>Morphology</strong>
+                </td>
+                <td>Word structure and formation</td>
+                <td>Morpheme</td>
+                <td>un+break+able</td>
+                <td>Vocabulary building, dictionary making, NLP tokenization</td>
+                <td>John McCarthy</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style={{ color: "#27ae60" }}>Syntax</strong>
+                </td>
+                <td>Sentence structure and grammar</td>
+                <td>Phrase / Clause</td>
+                <td>NP + VP sentence structure</td>
+                <td>Grammar checkers, parsing engines, language teaching</td>
+                <td>Noam Chomsky</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style={{ color: "#2980b9" }}>Semantics</strong>
+                </td>
+                <td>Literal meaning of words and sentences</td>
+                <td>Lexeme</td>
+                <td>"big" = synonymous with "large"</td>
+                <td>
+                  Thesaurus design, machine translation, word sense disambiguation
+                </td>
+                <td>Gottlob Frege</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style={{ color: "#8e44ad" }}>Pragmatics</strong>
+                </td>
+                <td>Meaning in context; speaker intent</td>
+                <td>Utterance</td>
+                <td>Indirect speech acts</td>
+                <td>Chatbot design, politeness in cross-cultural communication</td>
+                <td>Paul Grice, J.L. Austin</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style={{ color: "#16a085" }}>Sociolinguistics</strong>
+                </td>
+                <td>Language variation related to social factors</td>
+                <td>Dialect / Idiolect</td>
+                <td>Code-switching in bilingual communities</td>
+                <td>Language policy, education equity, multilingual AI</td>
+                <td>William Labov</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style={{ color: "#c2185b" }}>Psycholinguistics</strong>
+                </td>
+                <td>Language and the human mind/brain</td>
+                <td>Mental lexicon</td>
+                <td>Children's language acquisition stages</td>
+                <td>
+                  Dyslexia treatment, aphasia rehabilitation, language learning apps
+                </td>
+                <td>Noam Chomsky, Steven Pinker</td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="alert alert-info">
+            <strong>💡 Key Distinctions to Remember:</strong>
+            <ul style={{ marginTop: 10, marginLeft: 20 }}>
+              <li>
+                <strong>Phonetics vs. Phonology:</strong> Phonetics = physical
+                sounds (science of acoustics). Phonology = mental/abstract sound
+                system (which sounds matter in a language).
+              </li>
+              <li>
+                <strong>Semantics vs. Pragmatics:</strong> Semantics = what a
+                sentence literally means. Pragmatics = what the speaker means by
+                saying it in that context.
+              </li>
+              <li>
+                <strong>Sociolinguistics vs. Psycholinguistics:</strong> Socio =
+                language and society (external factors). Psycho = language and the
+                mind (internal cognitive factors).
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* SECTION 11: PITFALLS */}
+        <div className="section" id="pitfalls">
+          <h2 className="section-title">
+            <span>⚠️</span> Common Pitfalls &amp; How to Avoid Them
+          </h2>
+          <div className="alert alert-danger">
+            <strong>
+              🚫 Pitfall 1: Confusing Linguistics with Prescriptive Grammar
+            </strong>
+            <p>
+              <strong>What students do wrong:</strong> Thinking that linguistics is
+              about correcting people's grammar and teaching "proper" language.
+            </p>
+            <p>
+              <strong>Reality:</strong> Linguistics is descriptive — it studies how
+              language is actually used, not how it "should" be used. A linguist
+              would analyze "I ain't done nothing" as a valid grammatical double
+              negative, not as an error.
+            </p>
+            <p>
+              <strong>✅ Remember:</strong> In linguistics, "wrong" = ungrammatical
+              by native speakers' intuitions, not by school rules.
+            </p>
+          </div>
+          <div className="alert alert-danger">
+            <strong>🚫 Pitfall 2: Mixing Up Phonetics and Phonology</strong>
+            <p>
+              <strong>What students do wrong:</strong> Using "phonetics" and
+              "phonology" interchangeably, or thinking they study the same thing.
+            </p>
+            <p>
+              <strong>Reality:</strong> Phonetics = physical, observable sounds
+              (acoustics, articulation). Phonology = abstract, mental sound system
+              (phonemes, patterns, rules). You can think of it as: phonetics is
+              hardware, phonology is software.
+            </p>
+            <p>
+              <strong>✅ Memory trick:</strong> PhonETICS = physical. PhonOLOGY =
+              mental/mental rules.
+            </p>
+          </div>
+          <div className="alert alert-danger">
+            <strong>🚫 Pitfall 3: Confusing Semantics and Pragmatics</strong>
+            <p>
+              <strong>What students do wrong:</strong> Thinking semantics and
+              pragmatics both deal with "meaning" and are therefore the same thing.
+            </p>
+            <p>
+              <strong>Reality:</strong> Semantics = literal, context-free meaning.
+              Pragmatics = meaning in context, speaker intent. "It's cold in here"
+              literally describes temperature (semantics) but may be a request to
+              close the window (pragmatics).
+            </p>
+          </div>
+          <div className="alert alert-danger">
+            <strong>🚫 Pitfall 4: Forgetting that Morphemes ≠ Syllables</strong>
+            <p>
+              <strong>What students do wrong:</strong> Counting syllables when asked
+              to identify morphemes, or assuming one syllable = one morpheme.
+            </p>
+            <p>
+              <strong>Reality:</strong> "Walked" has 1 syllable but 2 morphemes
+              (walk + -ed). "Beautiful" has 3 syllables but 2 morphemes (beauty →
+              beautiful via suffix -ful). Always look for meaning units, not sound
+              units.
+            </p>
+          </div>
+          <div className="alert alert-danger">
+            <strong>
+              🚫 Pitfall 5: Thinking Some Languages are "Better" or "More Complex"
+            </strong>
+            <p>
+              <strong>What students do wrong:</strong> Assuming English is more
+              logical than other languages, or that certain dialects are "broken"
+              versions of standard languages.
+            </p>
+            <p>
+              <strong>Reality:</strong> All human languages are equally complex and
+              fully capable of expressing any thought. Every dialect is a
+              rule-governed linguistic system. Linguists call this the principle of{" "}
+              <em>linguistic equality</em>.
+            </p>
+          </div>
+          <div className="alert alert-warning">
+            <strong>💡 Top 5 Exam Tips:</strong>
+            <ul style={{ marginTop: 10, marginLeft: 20 }}>
+              <li>
+                Always define your terms precisely before giving examples —
+                examiners reward technical vocabulary.
+              </li>
+              <li>
+                When asked to compare sub-fields, use a table format — it shows
+                clarity of thought and earns full marks.
+              </li>
+              <li>
+                For morpheme analysis, remember: count meaning units, not syllables
+                or letters.
+              </li>
+              <li>
+                In pragmatics questions, always mention context and speaker intent —
+                the literal meaning alone is only half the answer.
+              </li>
+              <li>
+                If asked about Chomsky or Saussure, mention their specific
+                contributions (not just their names) to earn full marks.
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/* SECTION 12: QUICK REFERENCE */}
+        <div className="quick-ref" id="quickref">
+          <h2 style={{ color: "#e65100", marginBottom: 20 }}>
+            📄 Quick Reference Cheat Sheet
+          </h2>
+          <div className="quick-ref-grid">
+            <div className="quick-ref-card">
+              <h4>🔑 What is Linguistics?</h4>
+              <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
+                <li>Scientific, descriptive study of language</li>
+                <li>Studies spoken, written &amp; signed language</li>
+                <li>Examines structure, meaning, use, and variation</li>
+                <li>Key principle: no language is superior to another</li>
+              </ul>
+            </div>
+            <div className="quick-ref-card">
+              <h4>🔴 Phonetics &amp; 🟠 Phonology</h4>
+              <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
+                <li>
+                  <strong>Phonetics:</strong> Physical sounds, IPA, articulation
+                </li>
+                <li>
+                  <strong>Phonology:</strong> Sound systems, phonemes, minimal pairs
+                </li>
+                <li>Phone [p] vs. Phoneme /p/</li>
+                <li>Key: Phonology is language-specific; phonetics is universal</li>
+              </ul>
+            </div>
+            <div className="quick-ref-card">
+              <h4>🟡 Morphology</h4>
+              <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
+                <li>Studies word structure; unit = morpheme</li>
+                <li>Free morphemes: stand alone (cat, run, big)</li>
+                <li>Bound morphemes: must attach (un-, -ing, -ness)</li>
+                <li>Inflection vs. Derivation</li>
+              </ul>
+            </div>
+            <div className="quick-ref-card">
+              <h4>🟢 Syntax &amp; 🔵 Semantics</h4>
+              <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
+                <li>
+                  <strong>Syntax:</strong> Sentence structure; parse trees; NP+VP
+                </li>
+                <li>
+                  <strong>Semantics:</strong> Literal meaning; denotation &amp;
+                  connotation
+                </li>
+                <li>Synonyms, antonyms, homonyms, hyponyms</li>
+                <li>Chomsky: syntax and semantics are separate!</li>
+              </ul>
+            </div>
+            <div className="quick-ref-card">
+              <h4>🟣 Pragmatics</h4>
+              <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
+                <li>Meaning in context; speaker intent</li>
+                <li>Speech acts (Austin/Searle)</li>
+                <li>Grice's Cooperative Principle (maxims)</li>
+                <li>Implicature = implied but not stated meaning</li>
+              </ul>
+            </div>
+            <div className="quick-ref-card">
+              <h4>🩵 Socio- &amp; 🩷 Psycholinguistics</h4>
+              <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
+                <li>
+                  <strong>Socio:</strong> Language &amp; society; dialects;
+                  code-switching
+                </li>
+                <li>
+                  <strong>Psycho:</strong> Language &amp; the mind; acquisition;
+                  Broca's area
+                </li>
+                <li>
+                  Key: Socio = external social factors; Psycho = internal cognitive
+                  factors
+                </li>
+              </ul>
+            </div>
+            <div className="quick-ref-card">
+              <h4>🧠 Key Linguists</h4>
+              <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
+                <li>
+                  <strong>Panini (~400 BCE):</strong> First systematic grammar
+                </li>
+                <li>
+                  <strong>Saussure (1857–1913):</strong> Structural linguistics,
+                  langue/parole
+                </li>
+                <li>
+                  <strong>Chomsky (b.1928):</strong> Universal Grammar, LAD
+                </li>
+                <li>
+                  <strong>Sapir &amp; Whorf:</strong> Linguistic relativity
+                </li>
+                <li>
+                  <strong>Labov (b.1927):</strong> Sociolinguistics, language
+                  variation
+                </li>
+                <li>
+                  <strong>Grice (1913–1988):</strong> Cooperative Principle,
+                  implicature
+                </li>
+              </ul>
+            </div>
+            <div className="quick-ref-card">
+              <h4>⚠️ Don't Confuse!</h4>
+              <ul style={{ marginLeft: 15, lineHeight: "1.9" }}>
+                <li>❌ Phonetics ≠ Phonology</li>
+                <li>❌ Semantics ≠ Pragmatics</li>
+                <li>❌ Morpheme ≠ Syllable</li>
+                <li>❌ Linguistics ≠ Grammar prescription</li>
+                <li>❌ Sociolinguistics ≠ Psycholinguistics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {/* SECTION 13: EXAM PRACTICE */}
+        <div className="section" id="exam">
+          <h2 className="section-title">
+            <span>📝</span> University Exam Practice
+          </h2>
+          <div className="example-box">
+            <h4>Question 1: Short Answer (5 marks) — Time: 7 minutes</h4>
+            <p>
+              <strong>
+                Q: Define linguistics and explain, with examples, why it is
+                considered a scientific discipline rather than a prescriptive study
+                of grammar.
+              </strong>
+            </p>
+            <button className={`collapsible ${openCollapsible === 'q1' ? 'active' : ''}`} onClick={() => toggleCollapsible('q1')}>
+              Show Marking Scheme &amp; Model Answer
+            </button>
+            <div className="collapsible-content" style={{ maxHeight: openCollapsible === 'q1' ? '2000px' : '0' }}>
+              <div className="collapsible-content-inner">
+                <h4>Marking Scheme:</h4>
+                <ul style={{ marginLeft: 20 }}>
+                  <li>Clear definition of linguistics: 1 mark</li>
+                  <li>Explaining "descriptive" approach with example: 1 mark</li>
+                  <li>Contrast with prescriptive grammar: 1 mark</li>
+                  <li>
+                    At least one example of linguistic analysis (not grammar
+                    correction): 1 mark
+                  </li>
+                  <li>
+                    Reference to a key concept (e.g., language universals,
+                    scientific methodology): 1 mark
+                  </li>
+                </ul>
+                <h4>Model Answer:</h4>
+                <p>
+                  Linguistics is the scientific study of language — encompassing its
+                  structure, use, variation, and change across all human languages.
+                  It is scientific because it follows empirical methods: linguists
+                  observe actual language use, form hypotheses, collect data, and
+                  test theories systematically. Unlike prescriptive grammar, which
+                  prescribes how people <em>should</em> speak (e.g., "never split an
+                  infinitive"), linguistics is <strong>descriptive</strong> — it
+                  analyzes how people <em>actually</em> speak, without value
+                  judgments. For example, while a grammar teacher might correct "He
+                  don't know nothing" as incorrect, a linguist would recognize this
+                  as a grammatical double-negative construction common in many
+                  English dialects, with a fully systematic rule system. Linguistics
+                  also investigates language universals — features shared by all
+                  languages — proving that language study goes far beyond any single
+                  language's grammar rules.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="example-box">
+            <h4>Question 2: Problem Solving (10 marks) — Time: 15 minutes</h4>
+            <p>
+              <strong>
+                Q: Perform a complete morphological analysis of the following words.
+                For each word, identify all morphemes, classify them as free or
+                bound, and state the type (prefix, root, suffix). Words: (a)
+                "dishonestly" (b) "teachers" (c) "predetermined"
+              </strong>
+            </p>
+            <button className={`collapsible ${openCollapsible === 'q2' ? 'active' : ''}`} onClick={() => toggleCollapsible('q2')}>
+              Show Marking Scheme &amp; Complete Solution
+            </button>
+            <div className="collapsible-content" style={{ maxHeight: openCollapsible === 'q2' ? '3000px' : '0' }}>
+              <div className="collapsible-content-inner">
+                <h4>Marking Scheme:</h4>
+                <ul style={{ marginLeft: 20 }}>
+                  <li>
+                    Each word correctly identified morphemes: 2 marks each (×3 = 6
+                    marks)
+                  </li>
+                  <li>Correct free/bound classification: 2 marks</li>
+                  <li>Clear table presentation: 2 marks</li>
+                </ul>
+                <h4>Complete Solution:</h4>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Word</th>
+                      <th>Morpheme</th>
+                      <th>Type</th>
+                      <th>Free/Bound</th>
+                      <th>Meaning</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td rowSpan={4}>
+                        <strong>dishonestly</strong>
+                      </td>
+                      <td>dis-</td>
+                      <td>Prefix</td>
+                      <td>Bound</td>
+                      <td>"not, opposite of"</td>
+                    </tr>
+                    <tr>
+                      <td>honest</td>
+                      <td>Root</td>
+                      <td>Free</td>
+                      <td>"truthful"</td>
+                    </tr>
+                    <tr>
+                      <td>-ly</td>
+                      <td>Suffix</td>
+                      <td>Bound</td>
+                      <td>"in a manner of" (adverb maker)</td>
+                    </tr>
+                    <tr>
+                      <td colSpan={4}>
+                        <em>Total: 3 morphemes | dis+honest+ly</em>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td rowSpan={3}>
+                        <strong>teachers</strong>
+                      </td>
+                      <td>teach</td>
+                      <td>Root</td>
+                      <td>Free</td>
+                      <td>"to instruct"</td>
+                    </tr>
+                    <tr>
+                      <td>-er</td>
+                      <td>Suffix</td>
+                      <td>Bound</td>
+                      <td>"one who does" (agentive noun)</td>
+                    </tr>
+                    <tr>
+                      <td>-s</td>
+                      <td>Suffix</td>
+                      <td>Bound</td>
+                      <td>Plural inflection</td>
+                    </tr>
+                    <tr>
+                      <td colSpan={4}>
+                        <em>Total: 3 morphemes | teach+er+s</em>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td rowSpan={4}>
+                        <strong>predetermined</strong>
+                      </td>
+                      <td>pre-</td>
+                      <td>Prefix</td>
+                      <td>Bound</td>
+                      <td>"before"</td>
+                    </tr>
+                    <tr>
+                      <td>determine</td>
+                      <td>Root</td>
+                      <td>Free</td>
+                      <td>"to decide"</td>
+                    </tr>
+                    <tr>
+                      <td>-ed</td>
+                      <td>Suffix</td>
+                      <td>Bound</td>
+                      <td>Past tense inflection</td>
+                    </tr>
+                    <tr>
+                      <td colSpan={4}>
+                        <em>Total: 3 morphemes | pre+determine+ed</em>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div className="example-box">
+            <h4>Question 3: Analytical/Comparison (15 marks) — Time: 20 minutes</h4>
+            <p>
+              <strong>
+                Q: Compare and contrast phonetics and phonology. Your answer should
+                include: definitions, key differences, concepts specific to each,
+                and the relationship between the two sub-fields. Use examples
+                throughout.
+              </strong>
+            </p>
+            <button className={`collapsible ${openCollapsible === 'q3' ? 'active' : ''}`} onClick={() => toggleCollapsible('q3')}>
+              Show Marking Scheme &amp; Model Answer
+            </button>
+            <div className="collapsible-content" style={{ maxHeight: openCollapsible === 'q3' ? '3000px' : '0' }}>
+              <div className="collapsible-content-inner">
+                <h4>Marking Scheme:</h4>
+                <ul style={{ marginLeft: 20 }}>
+                  <li>Definition of phonetics with example: 3 marks</li>
+                  <li>Definition of phonology with example: 3 marks</li>
+                  <li>
+                    Clear comparison of key differences (at least 3 points): 4 marks
+                  </li>
+                  <li>
+                    Specific concepts (IPA, minimal pairs, phonemes, allophones): 3
+                    marks
+                  </li>
+                  <li>Explanation of how they relate/interact: 2 marks</li>
+                </ul>
+                <h4>Model Answer:</h4>
+                <p>
+                  <strong>Phonetics</strong> is the scientific study of speech
+                  sounds — how they are produced by the human vocal tract
+                  (articulatory phonetics), how they travel as sound waves (acoustic
+                  phonetics), and how they are perceived by listeners (auditory
+                  phonetics). Phonetics deals with physical, concrete sounds called{" "}
+                  <em>phones</em>, transcribed using the International Phonetic
+                  Alphabet (IPA). For example, the English word "pin" is transcribed
+                  as [pʰɪn] — the superscript "h" indicates aspiration, a physical
+                  quality of the /p/ sound in this position.
+                </p>
+                <p>
+                  <strong>Phonology</strong>, in contrast, studies the abstract,
+                  mental system of sounds within a specific language — which sounds
+                  are phonemically distinct, what patterns they follow, and what
+                  rules govern their combinations. The core unit is the{" "}
+                  <em>phoneme</em> — an abstract category that distinguishes
+                  meaning. The tool for establishing phonemes is the{" "}
+                  <strong>minimal pair</strong>: "cat" /kæt/ and "bat" /bæt/ differ
+                  only in initial consonant, proving /k/ and /b/ are separate
+                  phonemes in English.
+                </p>
+                <p>
+                  The key difference is scope and abstraction: phonetics is
+                  universal (studying all possible human sounds), while phonology is
+                  language-specific (studying the sound rules of a particular
+                  language). Phonetics is concrete and measurable; phonology is
+                  abstract and mental. In English, [p] and [pʰ] are allophones of
+                  the same phoneme /p/ (phonology) — but they are distinct phones
+                  (phonetics). In Thai, this same distinction is phonemic — it
+                  changes word meaning. The two fields are deeply connected:
+                  phonetics provides the raw material (sounds) that phonology
+                  organizes into systems. Effective linguistic analysis requires
+                  both perspectives.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* FINAL MASTERY QUIZ */}
+        <div className="section" id="quiz">
+          <h2 className="section-title">
+            <span>✅</span> Section Mastery Quiz
+          </h2>
+          <Quiz 
+            title="Linguistics Overview Mastery Quiz" 
+            questions={module1Quiz} 
+            subject="LS" 
+            unitId={1} 
+            moduleId={1} 
+          />
+        </div>
+
+        {/* FOOTER */}
+        <div className="footer">
+          <h3>🎓 Congratulations on Completing This Module!</h3>
+          <p>
+            You've covered the full landscape of linguistics — from phonetics to
+            psycholinguistics. Review regularly and apply these concepts in your
+            daily communication.
+          </p>
+          <div className="footer-links">
+            <a href="#objectives" className="footer-link">
+              ↑ Back to Top
+            </a>
+            <a href="#theory" className="footer-link">
+              📖 Review Theory
+            </a>
+            <a href="#practice" className="footer-link">
+              🎯 More Practice
+            </a>
+            <a href="#quiz" className="footer-link">
+              ✅ Retake Quiz
+            </a>
+            <a href="#quickref" className="footer-link">
+              📄 Quick Reference
+            </a>
+          </div>
+          <p style={{ marginTop: 20, fontSize: "0.9em" }}>
+            Principles and Practices of Human Communication | UNIT-1: Introduction
+            to Language and Linguistics
+            <br />
+            Generated interactive learning material for self-paced study
+          </p>
+        </div>
+      </section>
     </div>
-    {/* FOOTER */}
-    <div className="footer">
-      <h3>🎓 Congratulations on Completing This Module!</h3>
-      <p>
-        You've covered the full landscape of linguistics — from phonetics to
-        psycholinguistics. Review regularly and apply these concepts in your
-        daily communication.
-      </p>
-      <div className="footer-links">
-        <a href="#objectives" className="footer-link">
-          ↑ Back to Top
-        </a>
-        <a href="#theory" className="footer-link">
-          📖 Review Theory
-        </a>
-        <a href="#practice" className="footer-link">
-          🎯 More Practice
-        </a>
-        <a href="#quiz" className="footer-link">
-          ✅ Retake Quiz
-        </a>
-        <a href="#quickref" className="footer-link">
-          📄 Quick Reference
-        </a>
-      </div>
-      <p style={{ marginTop: 20, fontSize: "0.9em" }}>
-        Principles and Practices of Human Communication | UNIT-1: Introduction
-        to Language and Linguistics
-        <br />
-        Generated interactive learning material for self-paced study
-      </p>
-    </div>
-    </div>
-    {/* end container */}
-  </>
   );
 };
 
