@@ -15,22 +15,25 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedModule, onModuleSelect, isOpe
       id: 1,
       title: 'Unit 1: Environment-Ecosystem',
       modules: [
-        'Introduction to Environmental Science',
-        'Ecosystems and Biodiversity',
-        'Natural Resources',
-        'Environmental Ethics',
-        'Unit 1 Quiz'
+        'Definition, Scope and Importance - Need for Public Awareness',
+        'Multidisciplinary Nature of Environmental Sciences',
+        'Concept of an Ecosystem',
+        'Structure and Function of an Ecosystem: Producers',
+        'Consumers, Decomposers, Ecological Succession & Food Chains',
+        'Food Webs & Ecological Pyramids',
+        'Energy Flow in Ecosystems & Types of Ecosystems'
       ]
     },
     {
       id: 2,
       title: 'Unit 2: Natural Resources',
       modules: [
-        'Renewable and Non-Renewable Energy Resources',
-        'Forest Resources: Use and Over-exploitation',
-        'Water Resources Management',
-        'Mineral Resources and Environmental Effects',
-        'Unit 2 Quiz'
+        'Energy & Forest Resources: Renewable vs Non-renewable Energy and Forest Conservation',
+        'Deforestation & Case Studies: Timber Extraction, Mining, Dams and Effects on Forests and Tribal People',
+        'Water Resources: Use, Over-utilization, Floods, Droughts, Conflicts & Dams',
+        'Mineral Resources: Use and Exploitation',
+        'Food Resources: World Food Problems, Changes Caused by Agriculture and Overgrazing',
+        'Effects of Modern Agriculture: Fertilizer-Pesticide Problems, Waterlogging & Salinity'
       ]
     },
     {

@@ -57,23 +57,26 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       title: 'Environment-Ecosystem',
       description: 'Understand the basic concepts of environmental science, ecosystems, and biodiversity.',
       modules: [
-        { id: '1.1', title: 'Introduction to Environmental Science', description: 'Basic concepts and scope of environmental science' },
-        { id: '1.2', title: 'Ecosystems and Biodiversity', description: 'Understanding ecological systems and biological diversity' },
-        { id: '1.3', title: 'Natural Resources', description: 'Classification and management of natural resources' },
-        { id: '1.4', title: 'Environmental Ethics', description: 'Moral principles governing environmental protection' },
-        { id: '1.5', title: 'Unit 1 Quiz', description: 'Test your knowledge of environmental fundamentals' }
+        { id: '1.1', title: 'Definition, Scope and Importance - Need for Public Awareness', description: 'Basic concepts and scope of environmental science' },
+        { id: '1.2', title: 'Multidisciplinary Nature of Environmental Sciences', description: 'Environmental awareness and the interdisciplinary nature of the field' },
+        { id: '1.3', title: 'Concept of an Ecosystem', description: 'Understanding ecological systems as social networks' },
+        { id: '1.4', title: 'Structure and Function of an Ecosystem: Producers', description: 'The living and non-living parts of nature' },
+        { id: '1.5', title: 'Consumers, Decomposers, Ecological Succession & Food Chains', description: 'Trophic relationships and energy providers' },
+        { id: '1.6', title: 'Food Webs & Ecological Pyramids', description: 'How biological communities change over time' },
+        { id: '1.7', title: 'Energy Flow in Ecosystems & Types of Ecosystems', description: 'Energy transfer networks and pyramids' }
       ]
     },
     {
       id: 2,
       title: 'Natural Resources',
-      description: 'Explore various types of pollution, their sources, and control measures for protection.',
+      description: 'Explore renewable and non-renewable energy, forest, water, and mineral resources.',
       modules: [
-        { id: '2.1', title: 'Renewable and Non-Renewable Energy', description: 'Energy sources and their environmental impact' },
-        { id: '2.2', title: 'Forest Resources', description: 'Forest management and deforestation issues' },
-        { id: '2.3', title: 'Water Resources Management', description: 'Water conservation and utilization strategies' },
-        { id: '2.4', title: 'Mineral Resources', description: 'Mining impacts and resource extraction' },
-        { id: '2.5', title: 'Unit 2 Quiz', description: 'Test your knowledge of natural resources' }
+        { id: '2.1', title: 'Energy & Forest Resources: Renewable vs Non-renewable Energy and Forest Conservation', description: 'Energy sources and their environmental impact' },
+        { id: '2.2', title: 'Deforestation & Case Studies: Timber Extraction, Mining, Dams and Effects on Forests and Tribal People', description: 'Forest management and deforestation issues' },
+        { id: '2.3', title: 'Water Resources: Use, Over-utilization, Floods, Droughts, Conflicts & Dams', description: 'Water conservation and utilization strategies' },
+        { id: '2.4', title: 'Mineral Resources: Use and Exploitation', description: 'Mining impacts and resource extraction' },
+        { id: '2.5', title: 'Food Resources: World Food Problems, Changes Caused by Agriculture and Overgrazing', description: 'Global food challenges, world food problems and overgrazing' },
+        { id: '2.6', title: 'Effects of Modern Agriculture: Fertilizer-Pesticide Problems, Waterlogging & Salinity', description: 'Fertilizer-Pesticide problems, waterlogging and salinity' }
       ]
     },
     {

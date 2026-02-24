@@ -79,20 +79,18 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       description: 'Master multithreading models and the algorithms that determine which tasks the CPU executes next.',
       icon: <Cpu className="w-6 h-6" />,
       modules: [
-        { id: '2.1', title: 'Introduction to threads', description: 'How your apps juggle tasks with the power of threads.' },
-        { id: '2.2', title: 'Multithreading models and Hyperthreading', description: 'Unpack the magic of Hyperthreading and thread management.' },
-        { id: '2.3', title: 'Issues in threading', description: 'The messy drama and challenges of complex threading.' },
-        { id: '2.4', title: 'Introduction to CPU Scheduling', description: 'Become the ultimate bouncer for your computer tasks.' },
-        { id: '2.5', title: 'First Come First Served', description: 'The simplest waiting line policy for CPU tasks.' },
-        { id: '2.6', title: 'First Come First Served - Implementation', description: 'Coding the digital waiting line for processes.' },
-        { id: '2.7', title: 'Shortest Job First', description: 'Prioritizing the speediest tasks for maximum efficiency.' },
-        { id: '2.8', title: 'Shortest Job First - Implementation', description: 'Implementing predictive task-length scheduling.' },
-        { id: '2.9', title: 'Priority Scheduling', description: 'Giving your VIP processes the red carpet treatment.' },
-        { id: '2.10', title: 'Priority Scheduling - Implementation', description: 'Coding a scheduler that plays favorites based on importance.' },
-        { id: '2.11', title: 'Round Robin', description: 'Fair share CPU scheduling - everyone gets a turn.' },
-        { id: '2.12', title: 'Round Robin - Implementation', description: 'Slicing CPU time for fair task distribution.' },
-        { id: '2.13', title: 'Project: Simple Job Queue with Priority | Part 1', description: 'Implementing core priority waiting time metrics.' },
-        { id: '2.14', title: 'Project: Simple Job Queue with Priority | Part 2', description: 'Comparing preemptive vs non-preemptive logic.' }
+        { id: '2.1', title: 'Introduction to threads', description: 'Ever wondered how your app juggles music, downloads, AND your frantic typing? Meet the unsung heroes: threads!' },
+        { id: '2.2', title: 'Multithreading models and Hyperthreading', description: 'One brain, many thoughts? Or many brains, many thoughts? Unpack how your CPU really handles threads and the magic of Hyperthreading!' },
+        { id: '2.3', title: 'Issues in threading', description: 'What happens when too many cooks (threads) spoil the broth (your program)? Let us dive into the messy drama of threading challenges!' },
+        { id: '2.4', title: 'Introduction to CPU Scheduling', description: 'Who gets to use the CPU next? Become the ultimate bouncer for your computer tasks and decide who gets VIP access!' },
+        { id: '2.5', title: 'First Come First Served', description: 'The get in line policy for your CPU tasks! Is it the fairest way, or just the simplest?' },
+        { id: '2.6', title: 'First Come First Served - Implementation', description: 'Time to code the queue! How do we actually build this digital waiting line for our CPU tasks?' },
+        { id: '2.7', title: 'Shortest Job First', description: 'Tired of waiting? What if your CPU prioritized the quickest tasks first? Uncover the speedy (but sometimes tricky) world of Shortest Job First!' },
+        { id: '2.8', title: 'Shortest Job First - Implementation', description: 'Can you predict the future? Let us figure out how to actually implement a scheduler that needs to know task lengths beforehand!' },
+        { id: '2.9', title: 'Priority Scheduling', description: 'Not all tasks are created equal! How do we give some processes the red carpet treatment while others wait?' },
+        { id: '2.10', title: 'Priority Scheduling - Implementation', description: 'Let us build the VIP list! How do you code a scheduler that plays favorites based on task importance?' },
+        { id: '2.11', title: 'Round Robin', description: 'Everyone gets a turn! Explore this fair share CPU scheduler - like a carousel for your processes.' },
+        { id: '2.12', title: 'Round Robin - Implementation', description: 'Slice and dice that CPU time! How do we code a system where every task gets its fair (and tiny) moment in the spotlight?' }
       ]
     },
     {
