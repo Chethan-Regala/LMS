@@ -46,7 +46,7 @@ const Module1_6: React.FC = () => {
 
       <section className="content-section">
         <h3>Video Resources</h3>
-        
+
         <div className="space-y-6 mt-4">
           <div>
             <h4 className="font-semibold mb-2">String Matching with Finite Automata</h4>
@@ -80,7 +80,7 @@ const Module1_6: React.FC = () => {
 
       <section className="content-section">
         <h3>📖 Deep Dive: Understanding Text Search</h3>
-        
+
         <h4 className="mt-4 font-semibold">Definition & Fundamentals</h4>
         <p>
           Text search (also called string matching or pattern matching) is the problem of finding all occurrences of a pattern string P of length m within a text string T of length n. The fundamental challenge is efficiency—a naive approach requires O(nm) comparisons in the worst case, which becomes prohibitively slow for large texts.
@@ -109,64 +109,64 @@ const Module1_6: React.FC = () => {
 
       <section className="content-section">
         <h3>How It Works: The Mechanism Explained</h3>
-        
+
         <div className="flex flex-col items-center my-6">
           <div className="bg-white border-2 border-gray-300 rounded-lg p-6 max-w-5xl">
             <h4 className="text-center font-bold text-lg mb-4">Finite Automaton for Pattern "ABABC"</h4>
             <svg width="900" height="300" viewBox="0 0 900 300" className="mx-auto">
               {/* States */}
-              <circle cx="50" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+              <circle cx="50" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
               <text x="50" y="145" textAnchor="middle" fontSize="16" fontWeight="bold">0</text>
               <text x="50" y="162" textAnchor="middle" fontSize="11">Start</text>
-              
-              <circle cx="200" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+
+              <circle cx="200" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
               <text x="200" y="145" textAnchor="middle" fontSize="16" fontWeight="bold">1</text>
               <text x="200" y="162" textAnchor="middle" fontSize="11">"A"</text>
-              
-              <circle cx="350" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+
+              <circle cx="350" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
               <text x="350" y="145" textAnchor="middle" fontSize="16" fontWeight="bold">2</text>
               <text x="350" y="162" textAnchor="middle" fontSize="11">"AB"</text>
-              
-              <circle cx="500" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+
+              <circle cx="500" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
               <text x="500" y="145" textAnchor="middle" fontSize="16" fontWeight="bold">3</text>
               <text x="500" y="162" textAnchor="middle" fontSize="11">"ABA"</text>
-              
-              <circle cx="650" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2"/>
+
+              <circle cx="650" cy="150" r="35" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
               <text x="650" y="145" textAnchor="middle" fontSize="16" fontWeight="bold">4</text>
               <text x="650" y="162" textAnchor="middle" fontSize="11">"ABAB"</text>
-              
-              <circle cx="820" cy="150" r="35" fill="#bbf7d0" stroke="#16a34a" strokeWidth="3"/>
-              <circle cx="820" cy="150" r="30" fill="none" stroke="#16a34a" strokeWidth="2"/>
+
+              <circle cx="820" cy="150" r="35" fill="#bbf7d0" stroke="#16a34a" strokeWidth="3" />
+              <circle cx="820" cy="150" r="30" fill="none" stroke="#16a34a" strokeWidth="2" />
               <text x="820" y="145" textAnchor="middle" fontSize="16" fontWeight="bold">5</text>
               <text x="820" y="162" textAnchor="middle" fontSize="10">"ABABC"</text>
               <text x="820" y="200" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#16a34a">MATCH!</text>
-              
+
               {/* Success transitions (solid arrows) */}
-              <line x1="85" y1="150" x2="165" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)"/>
+              <line x1="85" y1="150" x2="165" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)" />
               <text x="125" y="140" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#059669">A</text>
-              
-              <line x1="235" y1="150" x2="315" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)"/>
+
+              <line x1="235" y1="150" x2="315" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)" />
               <text x="275" y="140" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#059669">B</text>
-              
-              <line x1="385" y1="150" x2="465" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)"/>
+
+              <line x1="385" y1="150" x2="465" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)" />
               <text x="425" y="140" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#059669">A</text>
-              
-              <line x1="535" y1="150" x2="615" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)"/>
+
+              <line x1="535" y1="150" x2="615" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)" />
               <text x="575" y="140" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#059669">B</text>
-              
-              <line x1="685" y1="150" x2="785" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)"/>
+
+              <line x1="685" y1="150" x2="785" y2="150" stroke="#059669" strokeWidth="2" markerEnd="url(#arrowSuccess)" />
               <text x="735" y="140" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#059669">C</text>
-              
+
               {/* Failure transitions (dashed arrows) */}
-              <path d="M 200 185 Q 125 230 50 185" fill="none" stroke="#dc2626" strokeWidth="2" strokeDasharray="5,5" markerEnd="url(#arrowFailure)"/>
+              <path d="M 200 185 Q 125 230 50 185" fill="none" stroke="#dc2626" strokeWidth="2" strokeDasharray="5,5" markerEnd="url(#arrowFailure)" />
               <text x="125" y="240" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#dc2626">B,C</text>
-              
-              <path d="M 350 185 Q 275 230 200 185" fill="none" stroke="#dc2626" strokeWidth="2" strokeDasharray="5,5" markerEnd="url(#arrowFailure)"/>
+
+              <path d="M 350 185 Q 275 230 200 185" fill="none" stroke="#dc2626" strokeWidth="2" strokeDasharray="5,5" markerEnd="url(#arrowFailure)" />
               <text x="275" y="240" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#dc2626">C</text>
-              
-              <path d="M 465 165 Q 425 200 385 165" fill="none" stroke="#dc2626" strokeWidth="2" strokeDasharray="5,5" markerEnd="url(#arrowFailure)"/>
+
+              <path d="M 465 165 Q 425 200 385 165" fill="none" stroke="#dc2626" strokeWidth="2" strokeDasharray="5,5" markerEnd="url(#arrowFailure)" />
               <text x="425" y="210" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#dc2626">C</text>
-              
+
               {/* Arrow markers */}
               <defs>
                 <marker id="arrowSuccess" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
@@ -177,7 +177,7 @@ const Module1_6: React.FC = () => {
                 </marker>
               </defs>
             </svg>
-            
+
             <div className="mt-4 p-3 bg-gray-50 rounded">
               <p className="font-semibold mb-2">Legend:</p>
               <div className="space-y-1 text-sm">
@@ -186,7 +186,7 @@ const Module1_6: React.FC = () => {
                   <span>Success transition (matches pattern character)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-12 h-0.5 bg-red-600 border-dashed" style={{borderTop: '2px dashed #dc2626', height: '0'}}></div>
+                  <div className="w-12 h-0.5 bg-red-600 border-dashed" style={{ borderTop: '2px dashed #dc2626', height: '0' }}></div>
                   <span>Failure transition (mismatch, use longest proper suffix)</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -197,101 +197,101 @@ const Module1_6: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="flex flex-col items-center my-6">
           <div className="bg-white border-2 border-gray-300 rounded-lg p-6 max-w-4xl">
             <h4 className="text-center font-bold text-lg mb-4">Text Search Algorithm Flow</h4>
             <svg width="800" height="900" viewBox="0 0 800 900" className="mx-auto">
               {/* Start */}
-              <ellipse cx="400" cy="30" rx="60" ry="25" fill="#10b981" stroke="#065f46" strokeWidth="2"/>
+              <ellipse cx="400" cy="30" rx="60" ry="25" fill="#10b981" stroke="#065f46" strokeWidth="2" />
               <text x="400" y="37" textAnchor="middle" fill="white" fontWeight="bold">Start</text>
-              
+
               {/* Input */}
-              <rect x="280" y="70" width="240" height="50" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+              <rect x="280" y="70" width="240" height="50" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="400" y="90" textAnchor="middle" fontSize="13" fontWeight="bold">Input: Text T length n,</text>
               <text x="400" y="107" textAnchor="middle" fontSize="13" fontWeight="bold">Pattern P length m</text>
-              <line x1="400" y1="55" x2="400" y2="70" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="55" x2="400" y2="70" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Build Automaton */}
-              <rect x="260" y="140" width="280" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5"/>
+              <rect x="260" y="140" width="280" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5" />
               <text x="400" y="165" textAnchor="middle" fontSize="13" fontWeight="bold">Build Finite Automaton from Pattern P</text>
-              <line x1="400" y1="120" x2="400" y2="140" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="120" x2="400" y2="140" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Compute Prefix */}
-              <rect x="260" y="200" width="280" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5"/>
+              <rect x="260" y="200" width="280" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5" />
               <text x="400" y="225" textAnchor="middle" fontSize="13" fontWeight="bold">Compute Prefix/Failure Function π</text>
-              <line x1="400" y1="180" x2="400" y2="200" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="180" x2="400" y2="200" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Create States */}
-              <rect x="280" y="260" width="240" height="40" fill="#e0e7ff" stroke="#6366f1" strokeWidth="2" rx="5"/>
+              <rect x="280" y="260" width="240" height="40" fill="#e0e7ff" stroke="#6366f1" strokeWidth="2" rx="5" />
               <text x="400" y="285" textAnchor="middle" fontSize="13" fontWeight="bold">Create m+1 states: 0 to m</text>
-              <line x1="400" y1="240" x2="400" y2="260" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="240" x2="400" y2="260" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Compute Transitions */}
-              <rect x="240" y="320" width="320" height="50" fill="#e0e7ff" stroke="#6366f1" strokeWidth="2" rx="5"/>
+              <rect x="240" y="320" width="320" height="50" fill="#e0e7ff" stroke="#6366f1" strokeWidth="2" rx="5" />
               <text x="400" y="340" textAnchor="middle" fontSize="12" fontWeight="bold">Compute transition function δ(q,c)</text>
               <text x="400" y="357" textAnchor="middle" fontSize="12" fontWeight="bold">for all states and characters</text>
-              <line x1="400" y1="300" x2="400" y2="320" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="300" x2="400" y2="320" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Initialize */}
-              <rect x="260" y="390" width="280" height="40" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5"/>
+              <rect x="260" y="390" width="280" height="40" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5" />
               <text x="400" y="415" textAnchor="middle" fontSize="13" fontWeight="bold">Initialize: state q = 0, position i = 0</text>
-              <line x1="400" y1="370" x2="400" y2="390" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="370" x2="400" y2="390" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Decision: i < n? */}
-              <path d="M 400 450 L 480 490 L 400 530 L 320 490 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2"/>
+              <path d="M 400 450 L 480 490 L 400 530 L 320 490 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2" />
               <text x="400" y="495" textAnchor="middle" fontSize="13" fontWeight="bold">i &lt; n?</text>
-              <line x1="400" y1="430" x2="400" y2="450" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="430" x2="400" y2="450" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Read Character */}
-              <rect x="300" y="560" width="200" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+              <rect x="300" y="560" width="200" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="400" y="585" textAnchor="middle" fontSize="13" fontWeight="bold">Read character c = T[i]</text>
-              <line x1="400" y1="530" x2="400" y2="560" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
+              <line x1="400" y1="530" x2="400" y2="560" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
               <text x="410" y="545" fontSize="12" fontWeight="bold" fill="#10b981">Yes</text>
-              
+
               {/* Transition */}
-              <rect x="320" y="620" width="160" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+              <rect x="320" y="620" width="160" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="400" y="645" textAnchor="middle" fontSize="13" fontWeight="bold">q = δ(q, c)</text>
-              <line x1="400" y1="600" x2="400" y2="620" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="600" x2="400" y2="620" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Decision: q == m? */}
-              <path d="M 400 680 L 480 720 L 400 760 L 320 720 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2"/>
+              <path d="M 400 680 L 480 720 L 400 760 L 320 720 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2" />
               <text x="400" y="725" textAnchor="middle" fontSize="13" fontWeight="bold">q == m?</text>
-              <line x1="400" y1="660" x2="400" y2="680" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="660" x2="400" y2="680" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Report Match */}
-              <rect x="540" y="700" width="200" height="50" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5"/>
+              <rect x="540" y="700" width="200" height="50" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5" />
               <text x="640" y="720" textAnchor="middle" fontSize="12" fontWeight="bold">Report match at</text>
               <text x="640" y="737" textAnchor="middle" fontSize="12" fontWeight="bold">position i - m + 1</text>
-              <line x1="480" y1="720" x2="540" y2="720" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
+              <line x1="480" y1="720" x2="540" y2="720" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
               <text x="510" y="715" fontSize="12" fontWeight="bold" fill="#10b981">Yes</text>
-              
+
               {/* Use Failure Function */}
-              <rect x="540" y="770" width="200" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5"/>
+              <rect x="540" y="770" width="200" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5" />
               <text x="640" y="795" textAnchor="middle" fontSize="12" fontWeight="bold">Use failure function to transition q</text>
-              <line x1="640" y1="750" x2="640" y2="770" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="640" y1="750" x2="640" y2="770" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Increment i */}
-              <rect x="320" y="790" width="160" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+              <rect x="320" y="790" width="160" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="400" y="815" textAnchor="middle" fontSize="13" fontWeight="bold">i = i + 1</text>
-              <line x1="400" y1="760" x2="400" y2="790" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
+              <line x1="400" y1="760" x2="400" y2="790" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
               <text x="410" y="775" fontSize="12" fontWeight="bold" fill="#ef4444">No</text>
-              
+
               {/* Loop back */}
-              <path d="M 320 810 L 200 810 L 200 490 L 320 490" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)"/>
-              <path d="M 640 810 L 680 810 L 680 490 L 480 490" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)"/>
-              
+              <path d="M 320 810 L 200 810 L 200 490 L 320 490" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
+              <path d="M 640 810 L 680 810 L 680 490 L 480 490" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
+
               {/* Output */}
-              <rect x="300" y="550" width="200" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+              <rect x="300" y="550" width="200" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="400" y="575" textAnchor="middle" fontSize="13" fontWeight="bold">Output: All match positions</text>
-              <line x1="320" y1="490" x2="300" y2="570" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
+              <line x1="320" y1="490" x2="300" y2="570" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
               <text x="300" y="530" fontSize="12" fontWeight="bold" fill="#ef4444">No</text>
-              
+
               {/* End */}
-              <ellipse cx="400" cy="870" rx="60" ry="25" fill="#ef4444" stroke="#991b1b" strokeWidth="2"/>
+              <ellipse cx="400" cy="870" rx="60" ry="25" fill="#ef4444" stroke="#991b1b" strokeWidth="2" />
               <text x="400" y="877" textAnchor="middle" fill="white" fontWeight="bold">End</text>
-              <line x1="400" y1="590" x2="400" y2="845" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-              
+              <line x1="400" y1="590" x2="400" y2="845" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+
               {/* Arrow marker definition */}
               <defs>
                 <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
@@ -302,7 +302,7 @@ const Module1_6: React.FC = () => {
             <p className="text-center text-sm text-gray-600 mt-4 italic">Figure 5: Complete flowchart of automata-based string matching algorithm</p>
           </div>
         </div>
-        
+
         <div className="space-y-4 mt-4">
           <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
             <h4 className="font-semibold">Step 1: Preprocessing the Pattern</h4>
@@ -328,103 +328,103 @@ const Module1_6: React.FC = () => {
 
       <section className="content-section">
         <h3>⚙️ The KMP Algorithm</h3>
-        
+
         <div className="flex flex-col items-center my-6">
           <div className="bg-white border-2 border-gray-300 rounded-lg p-6 max-w-4xl">
             <h4 className="text-center font-bold text-lg mb-4">KMP Algorithm Flowchart</h4>
             <svg width="700" height="1000" viewBox="0 0 700 1000" className="mx-auto">
               {/* Start */}
-              <ellipse cx="350" cy="30" rx="80" ry="25" fill="#10b981" stroke="#065f46" strokeWidth="2"/>
+              <ellipse cx="350" cy="30" rx="80" ry="25" fill="#10b981" stroke="#065f46" strokeWidth="2" />
               <text x="350" y="37" textAnchor="middle" fill="white" fontWeight="bold">Start KMP</text>
-              
+
               {/* Input */}
-              <rect x="260" y="70" width="180" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+              <rect x="260" y="70" width="180" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="350" y="95" textAnchor="middle" fontSize="13" fontWeight="bold">Input: T[n], P[m]</text>
-              <line x1="350" y1="55" x2="350" y2="70" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
-              
+              <line x1="350" y1="55" x2="350" y2="70" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
+
               {/* Compute Prefix */}
-              <rect x="230" y="130" width="240" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5"/>
+              <rect x="230" y="130" width="240" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5" />
               <text x="350" y="155" textAnchor="middle" fontSize="13" fontWeight="bold">Compute Prefix Function π</text>
-              <line x1="350" y1="110" x2="350" y2="130" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
-              
+              <line x1="350" y1="110" x2="350" y2="130" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
+
               {/* Initialize */}
-              <rect x="250" y="190" width="200" height="40" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5"/>
+              <rect x="250" y="190" width="200" height="40" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5" />
               <text x="350" y="215" textAnchor="middle" fontSize="13" fontWeight="bold">Initialize: q=0, i=0</text>
-              <line x1="350" y1="170" x2="350" y2="190" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
-              
+              <line x1="350" y1="170" x2="350" y2="190" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
+
               {/* Decision: i < n? */}
-              <path d="M 350 250 L 420 290 L 350 330 L 280 290 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2"/>
+              <path d="M 350 250 L 420 290 L 350 330 L 280 290 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2" />
               <text x="350" y="295" textAnchor="middle" fontSize="13" fontWeight="bold">i &lt; n?</text>
-              <line x1="350" y1="230" x2="350" y2="250" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
-              
+              <line x1="350" y1="230" x2="350" y2="250" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
+
               {/* Decision: q>0 AND mismatch */}
-              <path d="M 350 370 L 430 415 L 350 460 L 270 415 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2"/>
+              <path d="M 350 370 L 430 415 L 350 460 L 270 415 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2" />
               <text x="350" y="410" textAnchor="middle" fontSize="12" fontWeight="bold">q&gt;0 AND</text>
               <text x="350" y="425" textAnchor="middle" fontSize="12" fontWeight="bold">P[q] ≠ T[i]?</text>
-              <line x1="350" y1="330" x2="350" y2="370" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
+              <line x1="350" y1="330" x2="350" y2="370" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
               <text x="360" y="350" fontSize="12" fontWeight="bold" fill="#10b981">Yes</text>
-              
+
               {/* q = π[q-1] */}
-              <rect x="490" y="395" width="140" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5"/>
+              <rect x="490" y="395" width="140" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5" />
               <text x="560" y="420" textAnchor="middle" fontSize="13" fontWeight="bold">q = π[q-1]</text>
-              <line x1="430" y1="415" x2="490" y2="415" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
+              <line x1="430" y1="415" x2="490" y2="415" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
               <text x="460" y="410" fontSize="12" fontWeight="bold" fill="#10b981">Yes</text>
-              
+
               {/* Loop back from q = π[q-1] */}
-              <path d="M 630 415 L 660 415 L 660 290 L 420 290" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrow)"/>
-              
+              <path d="M 630 415 L 660 415 L 660 290 L 420 290" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrow)" />
+
               {/* Decision: P[q] = T[i]? */}
-              <path d="M 350 500 L 420 540 L 350 580 L 280 540 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2"/>
+              <path d="M 350 500 L 420 540 L 350 580 L 280 540 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2" />
               <text x="350" y="545" textAnchor="middle" fontSize="13" fontWeight="bold">P[q] = T[i]?</text>
-              <line x1="350" y1="460" x2="350" y2="500" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
+              <line x1="350" y1="460" x2="350" y2="500" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
               <text x="360" y="480" fontSize="12" fontWeight="bold" fill="#ef4444">No</text>
-              
+
               {/* q = q + 1 */}
-              <rect x="280" y="610" width="140" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+              <rect x="280" y="610" width="140" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="350" y="635" textAnchor="middle" fontSize="13" fontWeight="bold">q = q + 1</text>
-              <line x1="350" y1="580" x2="350" y2="610" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
+              <line x1="350" y1="580" x2="350" y2="610" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
               <text x="360" y="595" fontSize="12" fontWeight="bold" fill="#10b981">Yes</text>
-              
+
               {/* i = i + 1 */}
-              <rect x="280" y="680" width="140" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+              <rect x="280" y="680" width="140" height="40" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="350" y="705" textAnchor="middle" fontSize="13" fontWeight="bold">i = i + 1</text>
-              <line x1="350" y1="650" x2="350" y2="680" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
-              
+              <line x1="350" y1="650" x2="350" y2="680" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
+
               {/* Skip path from P[q] != T[i] No */}
-              <path d="M 280 540 L 200 540 L 200 700 L 280 700" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrow)"/>
+              <path d="M 280 540 L 200 540 L 200 700 L 280 700" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrow)" />
               <text x="210" y="535" fontSize="12" fontWeight="bold" fill="#ef4444">No</text>
-              
+
               {/* Decision: q = m? */}
-              <path d="M 350 750 L 420 790 L 350 830 L 280 790 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2"/>
+              <path d="M 350 750 L 420 790 L 350 830 L 280 790 Z" fill="#fef08a" stroke="#eab308" strokeWidth="2" />
               <text x="350" y="795" textAnchor="middle" fontSize="13" fontWeight="bold">q = m?</text>
-              <line x1="350" y1="720" x2="350" y2="750" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
-              
+              <line x1="350" y1="720" x2="350" y2="750" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
+
               {/* Report match */}
-              <rect x="470" y="770" width="180" height="40" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5"/>
+              <rect x="470" y="770" width="180" height="40" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5" />
               <text x="560" y="795" textAnchor="middle" fontSize="12" fontWeight="bold">Report match at i-m+1</text>
-              <line x1="420" y1="790" x2="470" y2="790" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
+              <line x1="420" y1="790" x2="470" y2="790" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
               <text x="445" y="785" fontSize="12" fontWeight="bold" fill="#10b981">Yes</text>
-              
+
               {/* q = π[q-1] after match */}
-              <rect x="490" y="840" width="140" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5"/>
+              <rect x="490" y="840" width="140" height="40" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5" />
               <text x="560" y="865" textAnchor="middle" fontSize="13" fontWeight="bold">q = π[q-1]</text>
-              <line x1="560" y1="810" x2="560" y2="840" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
-              
+              <line x1="560" y1="810" x2="560" y2="840" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
+
               {/* Loop back to i < n? */}
-              <path d="M 350 830 L 350 900 L 100 900 L 100 290 L 280 290" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrow)"/>
+              <path d="M 350 830 L 350 900 L 100 900 L 100 290 L 280 290" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrow)" />
               <text x="360" y="850" fontSize="12" fontWeight="bold" fill="#ef4444">No</text>
-              
+
               {/* Loop from q = π[q-1] after match */}
-              <path d="M 630 860 L 680 860 L 680 290 L 420 290" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrow)"/>
-              
+              <path d="M 630 860 L 680 860 L 680 290 L 420 290" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrow)" />
+
               {/* End */}
-              <ellipse cx="350" cy="960" rx="60" ry="25" fill="#ef4444" stroke="#991b1b" strokeWidth="2"/>
+              <ellipse cx="350" cy="960" rx="60" ry="25" fill="#ef4444" stroke="#991b1b" strokeWidth="2" />
               <text x="350" y="967" textAnchor="middle" fill="white" fontWeight="bold">End</text>
-              <line x1="280" y1="290" x2="200" y2="290" stroke="#374151" strokeWidth="2"/>
-              <line x1="200" y1="290" x2="200" y2="960" stroke="#374151" strokeWidth="2"/>
-              <line x1="200" y1="960" x2="290" y2="960" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)"/>
+              <line x1="280" y1="290" x2="200" y2="290" stroke="#374151" strokeWidth="2" />
+              <line x1="200" y1="290" x2="200" y2="960" stroke="#374151" strokeWidth="2" />
+              <line x1="200" y1="960" x2="290" y2="960" stroke="#374151" strokeWidth="2" markerEnd="url(#arrow)" />
               <text x="210" y="285" fontSize="12" fontWeight="bold" fill="#ef4444">No</text>
-              
+
               {/* Arrow marker */}
               <defs>
                 <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
@@ -435,7 +435,7 @@ const Module1_6: React.FC = () => {
             <p className="text-center text-sm text-gray-600 mt-4 italic">Figure 8: Complete flowchart of KMP string matching algorithm</p>
           </div>
         </div>
-        
+
         <div className="bg-gray-50 border-l-4 border-gray-500 p-4 mt-4">
           <p className="font-semibold">Algorithm Overview</p>
           <p className="text-sm mt-2">The Knuth-Morris-Pratt algorithm preprocesses the pattern to compute a "failure function" (LPS array), then uses this to avoid rescanning characters in the text.</p>
@@ -458,93 +458,93 @@ const Module1_6: React.FC = () => {
 
       <section className="content-section">
         <h3>🏗️ System Architecture: Complete Overview</h3>
-        
+
         <div className="flex flex-col items-center my-6">
           <div className="bg-white border-2 border-gray-300 rounded-lg p-6 max-w-6xl w-full">
             <h4 className="text-center font-bold text-lg mb-4">Complete Architecture of Automata-Based String Matching</h4>
             <svg width="1000" height="700" viewBox="0 0 1000 700" className="mx-auto">
-              <rect x="50" y="30" width="200" height="120" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+              <rect x="50" y="30" width="200" height="120" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="150" y="55" textAnchor="middle" fontSize="14" fontWeight="bold">Input Components</text>
               <text x="150" y="80" textAnchor="middle" fontSize="11">Pattern P: "ABABC"</text>
               <text x="150" y="100" textAnchor="middle" fontSize="11">Text T: &quot;ABABDABA...&quot;</text>
               <text x="150" y="120" textAnchor="middle" fontSize="11">m = 5, n = large</text>
-              
-              <rect x="50" y="180" width="200" height="150" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5"/>
+
+              <rect x="50" y="180" width="200" height="150" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5" />
               <text x="150" y="205" textAnchor="middle" fontSize="14" fontWeight="bold">Preprocessing Module</text>
               <text x="150" y="225" textAnchor="middle" fontSize="11" fill="#f59e0b" fontWeight="bold">O(m) Time</text>
-              <rect x="60" y="235" width="180" height="40" fill="#fef9e7" stroke="#f59e0b" strokeWidth="1" rx="3"/>
+              <rect x="60" y="235" width="180" height="40" fill="#fef9e7" stroke="#f59e0b" strokeWidth="1" rx="3" />
               <text x="150" y="252" textAnchor="middle" fontSize="10" fontWeight="bold">Prefix Function Builder</text>
               <text x="150" y="265" textAnchor="middle" fontSize="9">Compute π[i] for all i</text>
-              <rect x="60" y="280" width="180" height="40" fill="#fef9e7" stroke="#f59e0b" strokeWidth="1" rx="3"/>
+              <rect x="60" y="280" width="180" height="40" fill="#fef9e7" stroke="#f59e0b" strokeWidth="1" rx="3" />
               <text x="150" y="297" textAnchor="middle" fontSize="10" fontWeight="bold">Transition Function Builder</text>
               <text x="150" y="310" textAnchor="middle" fontSize="9">Build δ(q,c) table</text>
-              
-              <rect x="300" y="30" width="200" height="300" fill="#e0e7ff" stroke="#6366f1" strokeWidth="2" rx="5"/>
+
+              <rect x="300" y="30" width="200" height="300" fill="#e0e7ff" stroke="#6366f1" strokeWidth="2" rx="5" />
               <text x="400" y="55" textAnchor="middle" fontSize="14" fontWeight="bold">Finite Automaton</text>
-              <rect x="310" y="65" width="180" height="50" fill="#f0f4ff" stroke="#6366f1" strokeWidth="1" rx="3"/>
+              <rect x="310" y="65" width="180" height="50" fill="#f0f4ff" stroke="#6366f1" strokeWidth="1" rx="3" />
               <text x="400" y="82" textAnchor="middle" fontSize="10" fontWeight="bold">DFA Structure</text>
-              <text x="400" y="95" textAnchor="middle" fontSize="9">States Q = {0,1,2,3,4,5}</text>
-              <text x="400" y="107" textAnchor="middle" fontSize="9">q₀ = 0, F = {5}</text>
-              <rect x="310" y="120" width="180" height="40" fill="#f0f4ff" stroke="#6366f1" strokeWidth="1" rx="3"/>
+              <text x="400" y="95" textAnchor="middle" fontSize="9">{'States Q = {0, 1, 2, 3, 4, 5}'}</text>
+              <text x="400" y="107" textAnchor="middle" fontSize="9">{'q₀ = 0, F = {5}'}</text>
+              <rect x="310" y="120" width="180" height="40" fill="#f0f4ff" stroke="#6366f1" strokeWidth="1" rx="3" />
               <text x="400" y="137" textAnchor="middle" fontSize="10" fontWeight="bold">Transition Table δ</text>
               <text x="400" y="150" textAnchor="middle" fontSize="9">State × Alphabet → State</text>
-              <rect x="310" y="165" width="180" height="40" fill="#f0f4ff" stroke="#6366f1" strokeWidth="1" rx="3"/>
+              <rect x="310" y="165" width="180" height="40" fill="#f0f4ff" stroke="#6366f1" strokeWidth="1" rx="3" />
               <text x="400" y="182" textAnchor="middle" fontSize="10" fontWeight="bold">Alphabet Σ</text>
               <text x="400" y="195" textAnchor="middle" fontSize="9">{'{A, B, C, D, ...}'}</text>
-              
-              <rect x="300" y="360" width="200" height="200" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5"/>
+
+              <rect x="300" y="360" width="200" height="200" fill="#dcfce7" stroke="#10b981" strokeWidth="2" rx="5" />
               <text x="400" y="385" textAnchor="middle" fontSize="14" fontWeight="bold">Matching Engine</text>
               <text x="400" y="405" textAnchor="middle" fontSize="11" fill="#10b981" fontWeight="bold">O(n) Time</text>
-              <rect x="310" y="415" width="180" height="35" fill="#f0fdf4" stroke="#10b981" strokeWidth="1" rx="3"/>
+              <rect x="310" y="415" width="180" height="35" fill="#f0fdf4" stroke="#10b981" strokeWidth="1" rx="3" />
               <text x="400" y="430" textAnchor="middle" fontSize="10" fontWeight="bold">State Tracker: current q</text>
               <text x="400" y="442" textAnchor="middle" fontSize="9">Maintains automaton state</text>
-              <rect x="310" y="455" width="180" height="40" fill="#f0fdf4" stroke="#10b981" strokeWidth="1" rx="3"/>
+              <rect x="310" y="455" width="180" height="40" fill="#f0fdf4" stroke="#10b981" strokeWidth="1" rx="3" />
               <text x="400" y="472" textAnchor="middle" fontSize="10" fontWeight="bold">Text Scanner</text>
               <text x="400" y="485" textAnchor="middle" fontSize="9">Read T[i], compute q = δ(q, T[i])</text>
-              <rect x="310" y="500" width="180" height="50" fill="#f0fdf4" stroke="#10b981" strokeWidth="1" rx="3"/>
+              <rect x="310" y="500" width="180" height="50" fill="#f0fdf4" stroke="#10b981" strokeWidth="1" rx="3" />
               <text x="400" y="517" textAnchor="middle" fontSize="10" fontWeight="bold">Match Reporter</text>
               <text x="400" y="530" textAnchor="middle" fontSize="9">Detection: if q == m then MATCH</text>
               <text x="400" y="542" textAnchor="middle" fontSize="9">Position: Match at i - m + 1</text>
-              
-              <rect x="550" y="180" width="200" height="150" fill="#bbf7d0" stroke="#16a34a" strokeWidth="2" rx="5"/>
+
+              <rect x="550" y="180" width="200" height="150" fill="#bbf7d0" stroke="#16a34a" strokeWidth="2" rx="5" />
               <text x="650" y="205" textAnchor="middle" fontSize="14" fontWeight="bold">Output: All match indices</text>
-              <rect x="560" y="220" width="180" height="100" fill="#f0fdf4" stroke="#16a34a" strokeWidth="1" rx="3"/>
+              <rect x="560" y="220" width="180" height="100" fill="#f0fdf4" stroke="#16a34a" strokeWidth="1" rx="3" />
               <text x="650" y="240" textAnchor="middle" fontSize="12" fontWeight="bold">Results</text>
               <text x="650" y="260" textAnchor="middle" fontSize="11">Matches: [7, 15, 23]</text>
               <text x="650" y="280" textAnchor="middle" fontSize="11">Count: 3</text>
               <text x="650" y="300" textAnchor="middle" fontSize="11">Time: O(n) ✓ Optimal</text>
-              
-              <rect x="550" y="360" width="200" height="120" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5"/>
+
+              <rect x="550" y="360" width="200" height="120" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" rx="5" />
               <text x="650" y="385" textAnchor="middle" fontSize="14" fontWeight="bold">Overall Complexity</text>
               <text x="650" y="410" textAnchor="middle" fontSize="11">Preprocessing: O(m)</text>
               <text x="650" y="430" textAnchor="middle" fontSize="11">Matching: O(n)</text>
               <text x="650" y="455" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#16a34a">Total: O(m + n)</text>
               <text x="650" y="472" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#16a34a">Optimal!</text>
-              
-              <rect x="550" y="30" width="200" height="80" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5"/>
+
+              <rect x="550" y="30" width="200" height="80" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" rx="5" />
               <text x="650" y="55" textAnchor="middle" fontSize="14" fontWeight="bold">Text T</text>
               <text x="650" y="75" textAnchor="middle" fontSize="11">&quot;ABABDABAABABC...&quot;</text>
               <text x="650" y="95" textAnchor="middle" fontSize="11">Length: n (large)</text>
-              
-              <line x1="150" y1="150" x2="150" y2="180" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)"/>
-              <line x1="250" y1="255" x2="300" y2="255" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)"/>
-              <line x1="400" y1="330" x2="400" y2="360" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)"/>
-              <line x1="500" y1="460" x2="550" y2="255" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)"/>
-              <line x1="650" y1="110" x2="500" y2="460" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)"/>
-              
-              <rect x="800" y="30" width="180" height="200" fill="#f9fafb" stroke="#9ca3af" strokeWidth="2" rx="5"/>
+
+              <line x1="150" y1="150" x2="150" y2="180" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)" />
+              <line x1="250" y1="255" x2="300" y2="255" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)" />
+              <line x1="400" y1="330" x2="400" y2="360" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)" />
+              <line x1="500" y1="460" x2="550" y2="255" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)" />
+              <line x1="650" y1="110" x2="500" y2="460" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowArch)" />
+
+              <rect x="800" y="30" width="180" height="200" fill="#f9fafb" stroke="#9ca3af" strokeWidth="2" rx="5" />
               <text x="890" y="55" textAnchor="middle" fontSize="13" fontWeight="bold">Legend</text>
-              <rect x="810" y="70" width="30" height="20" fill="#dbeafe" stroke="#3b82f6" strokeWidth="1"/>
+              <rect x="810" y="70" width="30" height="20" fill="#dbeafe" stroke="#3b82f6" strokeWidth="1" />
               <text x="850" y="84" fontSize="10">Input Data</text>
-              <rect x="810" y="100" width="30" height="20" fill="#fef3c7" stroke="#f59e0b" strokeWidth="1"/>
+              <rect x="810" y="100" width="30" height="20" fill="#fef3c7" stroke="#f59e0b" strokeWidth="1" />
               <text x="850" y="114" fontSize="10">Preprocessing</text>
-              <rect x="810" y="130" width="30" height="20" fill="#e0e7ff" stroke="#6366f1" strokeWidth="1"/>
+              <rect x="810" y="130" width="30" height="20" fill="#e0e7ff" stroke="#6366f1" strokeWidth="1" />
               <text x="850" y="144" fontSize="10">Automaton</text>
-              <rect x="810" y="160" width="30" height="20" fill="#dcfce7" stroke="#10b981" strokeWidth="1"/>
+              <rect x="810" y="160" width="30" height="20" fill="#dcfce7" stroke="#10b981" strokeWidth="1" />
               <text x="850" y="174" fontSize="10">Matching</text>
-              <rect x="810" y="190" width="30" height="20" fill="#bbf7d0" stroke="#16a34a" strokeWidth="1"/>
+              <rect x="810" y="190" width="30" height="20" fill="#bbf7d0" stroke="#16a34a" strokeWidth="1" />
               <text x="850" y="204" fontSize="10">Output</text>
-              
+
               <defs>
                 <marker id="arrowArch" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
                   <polygon points="0 0, 10 3, 0 6" fill="#374151" />
@@ -558,7 +558,7 @@ const Module1_6: React.FC = () => {
 
       <section className="content-section">
         <h3>⚠️ Common Misconceptions</h3>
-        
+
         <div className="space-y-4">
           <div className="bg-red-50 border-l-4 border-red-500 p-4">
             <h4 className="font-semibold">Misconception #1: Automata-based search is always faster</h4>
@@ -580,7 +580,7 @@ const Module1_6: React.FC = () => {
       <section className="content-section">
         <h3>💻 Code Implementation</h3>
         <p className="mb-4">Complete KMP algorithm implementation in Python:</p>
-        
+
         <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
           <pre className="text-sm">
             <code>{`def compute_prefix_function(pattern):
@@ -633,7 +633,7 @@ def kmp_search(text, pattern):
 
       <section className="content-section">
         <h3>📚 Worked Example: Building Prefix Function</h3>
-        
+
         <div className="bg-blue-50 p-4 rounded mt-4">
           <p className="font-semibold">Example: Compute π for pattern "ABABCABAB"</p>
           <div className="mt-3 overflow-x-auto">
@@ -686,7 +686,7 @@ def kmp_search(text, pattern):
 
       <section className="content-section">
         <h3>📊 Algorithm Comparison</h3>
-        
+
         <div className="overflow-x-auto">
           <table className="min-w-full border-collapse border border-gray-300 text-sm">
             <thead className="bg-gray-100">
@@ -741,7 +741,7 @@ def kmp_search(text, pattern):
 
       <section className="content-section">
         <h3>🎯 Real-World Applications</h3>
-        
+
         <div className="space-y-4">
           <div className="bg-gray-50 border-l-4 border-gray-400 p-4">
             <h4 className="font-semibold">GNU grep Implementation</h4>
@@ -762,7 +762,7 @@ def kmp_search(text, pattern):
 
       <section className="content-section">
         <h3>📄 Quick Reference</h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-blue-50 p-4 rounded">
             <h4 className="font-semibold mb-2">🔑 Key Formulas</h4>
@@ -808,7 +808,7 @@ def kmp_search(text, pattern):
 
       <section className="content-section">
         <h3>🚀 Advanced Topics</h3>
-        
+
         <div className="space-y-4">
           <div className="bg-gray-50 border-l-4 border-gray-400 p-4">
             <h4 className="font-semibold">Aho-Corasick Algorithm</h4>
@@ -829,7 +829,7 @@ def kmp_search(text, pattern):
 
       <section className="content-section">
         <h3>📚 Problem-Solving Practice</h3>
-        
+
         <div className="space-y-6">
           <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
             <h4 className="font-semibold text-lg">📘 Easy Problem: Basic Prefix Function</h4>
@@ -958,7 +958,7 @@ def kmp_search(text, pattern):
       <section className="content-section">
         <h3>📊 String Matching Algorithms Comparison</h3>
         <p className="mb-4">Different text search algorithms excel in different scenarios. The choice depends on alphabet size, pattern characteristics, text characteristics, and performance requirements.</p>
-        
+
         <div className="overflow-x-auto">
           <table className="min-w-full border-collapse border border-gray-300 text-xs">
             <thead className="bg-gray-100">
@@ -1037,7 +1037,7 @@ def kmp_search(text, pattern):
 
       <section className="content-section">
         <h3>📄 Quick Reference Cheat Sheet</h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-blue-50 p-4 rounded">
             <h4 className="font-semibold mb-2">🔑 Key Definitions</h4>
@@ -1084,7 +1084,7 @@ def kmp_search(text, pattern):
 
       <section className="content-section">
         <h3>💼 Interview Preparation</h3>
-        
+
         <div className="space-y-4">
           <div className="bg-blue-50 p-4 rounded">
             <h4 className="font-semibold">Common Interview Questions:</h4>
@@ -1113,9 +1113,9 @@ def kmp_search(text, pattern):
       <section className="content-section">
         <h3>🎓 Practice & Apply Your Knowledge</h3>
         <p className="mb-4">Test your understanding with these interactive questions. Click on your choice for each question, then check your answer!</p>
-        
+
         <h4 className="font-semibold mt-6 mb-4">Quick Concept Checks (Interactive MCQs)</h4>
-        
+
         <div className="space-y-6">
           <div className="bg-white border-2 border-gray-300 rounded-lg p-6">
             <p className="font-semibold text-gray-600 text-sm mb-2">Question 1 of 10</p>
