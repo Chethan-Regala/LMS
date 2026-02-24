@@ -84,7 +84,7 @@ const Module2_6: React.FC = () => {
                 {/* OBJECTIVES */}
                 <div style={{ backgroundColor: '#f0fdf4', padding: '30px', borderRadius: '16px', border: '1px solid #dcfce7', margin: '40px 0' }}>
                     <h3 style={{ margin: '0 0 20px 0', color: '#166534', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span>🎯</span> What You'll Master: Learning Objectives
+                        <span>🎯</span> What You&apos;ll Master: Learning Objectives
                     </h3>
                     <ul style={{ margin: 0, paddingLeft: '20px', color: '#15803d', fontSize: '1em', lineHeight: '1.6' }}>
                         <li style={{ marginBottom: '12px' }}>Describe at least four negative environmental effects of modern intensive agriculture on soil, water, and biodiversity.</li>
@@ -522,23 +522,23 @@ const Module2_6: React.FC = () => {
                                         <p>(b) Waterlogged soils have impaired drainage → salts brought in by irrigation water cannot be leached downward.</p>
                                         <p>(c) In arid climates with high evaporation, capillary action draws salt-laden groundwater upward toward the surface.</p>
                                         <p>(d) As water evaporates, salts are deposited at/near the surface → soil salinity increases.</p>
-                                        <p>(e) Saline soil further degrades soil structure (dispersion of clay particles) → permeability decreases → drainage worsens → more waterlogging.</p>
-                                        <p>This is why effective drainage is essential in irrigated agriculture — without it, the cycle is self-reinforcing and eventually renders land unfit for cultivation.</p>
+                                        <p>(e) Saline soil further degrades soil structure (dispersion of clay particles) &rarr; permeability decreases &rarr; drainage worsens &rarr; more waterlogging.</p>
+                                        <p>This is why effective drainage is essential in irrigated agriculture &mdash; without it, the cycle is self-reinforcing and eventually renders land unfit for cultivation.</p>
                                     </div>
                                 </details>
                             </div>
                             <div style={{ backgroundColor: '#f8fafc', padding: '30px', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
                                 <h3 style={{ margin: '0 0 20px 0', color: '#ef4444' }}>📕 Hard: Evaluation</h3>
-                                <p style={{ fontSize: '0.95em', color: '#334155' }}><strong>Question:</strong> "The Green Revolution saved millions from famine but sowed the seeds of environmental catastrophe." Critically evaluate this statement with reference to fertilizer/pesticide use, waterlogging, and soil salinity, using specific examples from India's Punjab region.</p>
+                                <p style={{ fontSize: '0.95em', color: '#334155' }}><strong>Question:</strong> &quot;The Green Revolution saved millions from famine but sowed the seeds of environmental catastrophe.&quot; Critically evaluate this statement with reference to fertilizer/pesticide use, waterlogging, and soil salinity, using specific examples from India&apos;s Punjab region.</p>
                                 <details style={{ marginTop: '15px', backgroundColor: '#fff', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
                                     <summary style={{ cursor: 'pointer', fontWeight: 'bold', color: '#ef4444' }}>Show Solution</summary>
                                     <div style={{ marginTop: '15px', fontSize: '0.9em', color: '#334155', lineHeight: '1.6' }}>
                                         <p><strong>Arguments supporting the statement:</strong></p>
-                                        <p>The Green Revolution (1960s–70s) introduced high-yielding wheat and rice varieties that required intensive inputs of chemical fertilizers, pesticides, and irrigation. In Punjab, wheat yields tripled and India became food self-sufficient. However:</p>
+                                        <p>The Green Revolution (1960s&ndash;70s) introduced high-yielding wheat and rice varieties that required intensive inputs of chemical fertilizers, pesticides, and irrigation. In Punjab, wheat yields tripled and India became food self-sufficient. However:</p>
                                         <ul>
                                             <li>Fertilizer use increased from 2 kg/ha (1960s) to over 200 kg/ha, leading to soil degradation, declining organic carbon, and groundwater nitrate contamination.</li>
-                                            <li>Pesticide overuse caused resistance in pests (e.g., cotton bollworm), destroyed beneficial insects, and created health crises — Punjab reports elevated cancer rates linked to pesticide exposure.</li>
-                                            <li>Tube well irrigation and canal seepage raised water tables, causing waterlogging in southwest Punjab, while over-extraction lowered tables in central Punjab — a paradox of mismanagement.</li>
+                                            <li>Pesticide overuse caused resistance in pests (e.g., cotton bollworm), destroyed beneficial insects, and created health crises &mdash; Punjab reports elevated cancer rates linked to pesticide exposure.</li>
+                                            <li>Tube well irrigation and canal seepage raised water tables, causing waterlogging in southwest Punjab, while over-extraction lowered tables in central Punjab &mdash; a paradox of mismanagement.</li>
                                             <li>Soil salinity now affects significant areas of Punjab, reducing yields in formerly productive land.</li>
                                         </ul>
                                         <p><strong>Counter-arguments:</strong></p>
@@ -547,7 +547,7 @@ const Module2_6: React.FC = () => {
                                             <li>The environmental damage is not inevitable — it resulted from mismanagement, not the technology itself.</li>
                                             <li>Improved practices (precision farming, drip irrigation, IPM, organic amendments) can address many of these issues.</li>
                                         </ul>
-                                        <p><strong>Conclusion:</strong> The statement is broadly valid — the Green Revolution's environmental costs were severe and inadequately anticipated. However, the damage resulted from how technologies were deployed (excess, without drainage/IPM) rather than from the technologies themselves. Sustainable intensification is the path forward.</p>
+                                        <p><strong>Conclusion:</strong> The statement is broadly valid &mdash; the Green Revolution&apos;s environmental costs were severe and inadequately anticipated. However, the damage resulted from how technologies were deployed (excess, without drainage/IPM) rather than from the technologies themselves. Sustainable intensification is the path forward.</p>
                                     </div>
                                 </details>
                             </div>
@@ -588,21 +588,21 @@ const Module2_6: React.FC = () => {
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
                             <div>
                                 <p style={{ fontWeight: 'bold', color: '#e11d48', marginBottom: '10px' }}>🚫 Pitfall #1: Confusing bioaccumulation with biomagnification</p>
-                                <p style={{ fontSize: '0.9em', color: '#475569' }}><strong>How to avoid:</strong> Bioaccumulation = buildup in ONE organism over time. Biomagnification = increase in concentration ACROSS trophic levels. Use the mnemonic: "Accumulate in one, Magnify across many."</p>
+                                <p style={{ fontSize: '0.9em', color: '#475569' }}><strong>How to avoid:</strong> Bioaccumulation = buildup in ONE organism over time. Biomagnification = increase in concentration ACROSS trophic levels. Use the mnemonic: &quot;Accumulate in one, Magnify across many.&quot;</p>
 
                                 <p style={{ fontWeight: 'bold', color: '#e11d48', marginBottom: '10px', marginTop: '20px' }}>🚫 Pitfall #2: Stating that waterlogging and salinity are the same thing</p>
                                 <p style={{ fontSize: '0.9em', color: '#475569' }}><strong>How to avoid:</strong> Waterlogging is a physical problem (excess water, no oxygen). Salinity is a chemical problem (excess dissolved salts). They often co-occur but have different mechanisms and require different solutions.</p>
 
-                                <p style={{ fontWeight: 'bold', color: '#e11d48', marginBottom: '10px', marginTop: '20px' }}>🚫 Pitfall #3: Writing "fertilizers are bad" without nuance</p>
+                                <p style={{ fontWeight: 'bold', color: '#e11d48', marginBottom: '10px', marginTop: '20px' }}>🚫 Pitfall #3: Writing &quot;fertilizers are bad&quot; without nuance</p>
                                 <p style={{ fontSize: '0.9em', color: '#475569' }}><strong>How to avoid:</strong> Always acknowledge that fertilizers are necessary for food security. The problem is EXCESSIVE and IMPROPER use. Discuss optimal application rates, timing, and precision agriculture as solutions.</p>
                             </div>
                             <div style={{ backgroundColor: '#fff', padding: '25px', borderRadius: '16px', border: '1px solid #fecdd3' }}>
                                 <p style={{ fontWeight: 'bold', color: '#1e293b', marginBottom: '15px' }}>💡 Exam Tips:</p>
                                 <ul style={{ fontSize: '0.9em', color: '#334155', lineHeight: '1.7', paddingLeft: '20px' }}>
                                     <li>Always draw diagrams for waterlogging and eutrophication questions — they earn bonus marks.</li>
-                                    <li>Include specific data: "830 million hectares globally," "EC &gt; 4 dS/m for saline soil".</li>
+                                    <li>Include specific data: &quot;830 million hectares globally,&quot; &quot;EC &gt; 4 dS/m for saline soil&quot;.</li>
                                     <li>Mention at least one real-world case study (Gulf of Mexico, Punjab, Aral Sea).</li>
-                                    <li>For long-answer questions, structure as: Definition → Causes → Effects → Remediation.</li>
+                                    <li>For long-answer questions, structure as: Definition &rarr; Causes &rarr; Effects &rarr; Remediation.</li>
                                     <li>Distinguish between saline (EC &gt; 4, pH &lt; 8.5) and sodic (ESP &gt; 15, pH &gt; 8.5) soils.</li>
                                 </ul>
                             </div>
@@ -619,8 +619,8 @@ const Module2_6: React.FC = () => {
                                 <h4 style={{ color: '#0369a1', margin: '0 0 10px 0' }}>🔑 Key Definitions</h4>
                                 <ul style={{ fontSize: '0.85em', color: '#475569', paddingLeft: '15px' }}>
                                     <li><strong>Eutrophication:</strong> Nutrient-driven algal overgrowth</li>
-                                    <li><strong>Biomagnification:</strong> Toxin concentration ↑ up food chain</li>
-                                    <li><strong>Waterlogging:</strong> Water table in root zone, O₂ depleted</li>
+                                    <li><strong>Biomagnification:</strong> Toxin concentration &uarr; up food chain</li>
+                                    <li><strong>Waterlogging:</strong> Water table in root zone, O&sub2; depleted</li>
                                     <li><strong>Salinity:</strong> Excess salts in soil, EC &gt; 4 dS/m</li>
                                     <li><strong>Sodicity:</strong> High sodium (ESP &gt; 15), destroys soil structure</li>
                                 </ul>
@@ -632,13 +632,13 @@ const Module2_6: React.FC = () => {
                                     <li>Sodic soil: ESP &gt; 15, pH &gt; 8.5</li>
                                     <li>Nitrate in water: WHO limit = 50 mg/L</li>
                                     <li>Hypoxia: DO &lt; 2 mg/L (dead zone)</li>
-                                    <li>N₂O GWP: ~265× CO₂ (100-year)</li>
+                                    <li>N&sub2;O GWP: &sim;265&times; CO&sub2; (100-year)</li>
                                 </ul>
                             </div>
                             <div>
                                 <h4 style={{ color: '#0369a1', margin: '0 0 10px 0' }}>🌍 Key Case Studies</h4>
                                 <ul style={{ fontSize: '0.85em', color: '#475569', paddingLeft: '15px' }}>
-                                    <li><strong>Gulf of Mexico:</strong> Fertilizer → dead zone</li>
+                                    <li><strong>Gulf of Mexico:</strong> Fertilizer &rarr; dead zone</li>
                                     <li><strong>Punjab India:</strong> Waterlogging + salinity</li>
                                     <li><strong>Aral Sea:</strong> Irrigation-driven disaster</li>
                                     <li><strong>DDT/Peregrine:</strong> Biomagnification</li>
@@ -675,11 +675,11 @@ const Module2_6: React.FC = () => {
                                         <li>Definition of eutrophication: 1 mark</li>
                                         <li>Source of nutrients (N, P from fertilizers): 1 mark</li>
                                         <li>Transport mechanism (runoff, leaching): 1 mark</li>
-                                        <li>Algal bloom → decomposition → O₂ depletion: 1 mark</li>
+                                        <li>Algal bloom &rarr; decomposition &rarr; O&sub2; depletion: 1 mark</li>
                                         <li>Consequences (dead zone, fish kills): 1 mark</li>
                                     </ul>
                                     <p><strong>Model Answer:</strong></p>
-                                    <p>Eutrophication is the excessive enrichment of water bodies with mineral nutrients, primarily nitrogen and phosphorus. When chemical fertilizers are applied to agricultural fields beyond crop requirements, the surplus nutrients are carried into rivers, lakes, and coastal waters through surface runoff during rainfall and through subsurface leaching into groundwater that feeds streams. These elevated nutrient levels stimulate rapid and excessive growth of algae (algal bloom) on the water surface. When these algae die, decomposer bacteria break them down aerobically, consuming large quantities of dissolved oxygen. This creates hypoxic conditions (DO below 2 mg/L) — known as "dead zones" — where fish, shellfish, and other aquatic organisms cannot survive, leading to massive die-offs and collapse of aquatic ecosystems. A well-known example is the Gulf of Mexico dead zone, which spans up to 22,000 km² annually.</p>
+                                    <p>Eutrophication is the excessive enrichment of water bodies with mineral nutrients, primarily nitrogen and phosphorus. When chemical fertilizers are applied to agricultural fields beyond crop requirements, the surplus nutrients are carried into rivers, lakes, and coastal waters through surface runoff during rainfall and through subsurface leaching into groundwater that feeds streams. These elevated nutrient levels stimulate rapid and excessive growth of algae (algal bloom) on the water surface. When these algae die, decomposer bacteria break them down aerobically, consuming large quantities of dissolved oxygen. This creates hypoxic conditions (DO below 2 mg/L) &mdash; known as &quot;dead zones&quot; &mdash; where fish, shellfish, and other aquatic organisms cannot survive, leading to massive die-offs and collapse of aquatic ecosystems. A well-known example is the Gulf of Mexico dead zone, which spans up to 22,000 km&sup2; annually.</p>
                                 </div>
                             </details>
                         </div>
@@ -694,18 +694,18 @@ const Module2_6: React.FC = () => {
                                     <ul>
                                         <li>Definitions of waterlogging and salinity: 2 marks</li>
                                         <li>Causes (over-irrigation, poor drainage, canal seepage, capillary rise): 3 marks</li>
-                                        <li>Effects on crops (O₂ deprivation, osmotic stress, ion toxicity, yield loss): 3 marks</li>
+                                        <li>Effects on crops (O&sub2; deprivation, osmotic stress, ion toxicity, yield loss): 3 marks</li>
                                         <li>The waterlogging-salinity feedback cycle: 2 marks</li>
                                         <li>Remediation strategies (drainage, gypsum, salt-tolerant crops, improved irrigation): 3 marks</li>
                                         <li>Examples (Indus Basin, Australia Murray-Darling, etc.): 2 marks</li>
                                     </ul>
                                     <p><strong>Model Answer:</strong></p>
-                                    <p><strong>Introduction:</strong> Waterlogging and salinity are the twin environmental threats to irrigated agriculture, particularly in arid and semi-arid regions where over 75% of the world's population lives.</p>
-                                    <p><strong>Waterlogging — Causes & Effects:</strong> Waterlogging occurs when the water table rises to within the root zone (upper 1–2 m), saturating soil pores and displacing air. Causes include over-irrigation, seepage from unlined canals (25–40% water loss), impermeable subsoil layers, and inadequate drainage systems. The effect on crops is severe: oxygen-starved roots cannot respire or absorb nutrients, anaerobic conditions produce toxic compounds (H₂S, reduced iron), and yield reductions of 40–80% are common for sensitive crops like wheat and cotton.</p>
-                                    <p><strong>Salinity — Causes & Effects:</strong> Soil salinity is the accumulation of soluble salts (NaCl, Na₂SO₄) to levels toxic to plants (EC &gt; 4 dS/m). Irrigation water carries dissolved salts into the soil; as water evaporates or is transpired, salts concentrate. Without drainage to leach salts below the root zone, concentrations build up. High salinity creates osmotic stress — roots struggle to extract water even from moist soil — and specific ion toxicity (Na⁺, Cl⁻) damages cell membranes and enzymes.</p>
+                                    <p><strong>Introduction:</strong> Waterlogging and salinity are the twin environmental threats to irrigated agriculture, particularly in arid and semi-arid regions where over 75% of the world&apos;s population lives.</p>
+                                    <p><strong>Waterlogging &mdash; Causes &amp; Effects:</strong> Waterlogging occurs when the water table rises to within the root zone (upper 1&ndash;2 m), saturating soil pores and displacing air. Causes include over-irrigation, seepage from unlined canals (25&ndash;40% water loss), impermeable subsoil layers, and inadequate drainage systems. The effect on crops is severe: oxygen-starved roots cannot respire or absorb nutrients, anaerobic conditions produce toxic compounds (H&sub2;S, reduced iron), and yield reductions of 40&ndash;80% are common for sensitive crops like wheat and cotton.</p>
+                                    <p><strong>Salinity &mdash; Causes &amp; Effects:</strong> Soil salinity is the accumulation of soluble salts (NaCl, Na&sub2;SO&sub4;) to levels toxic to plants (EC &gt; 4 dS/m). Irrigation water carries dissolved salts into the soil; as water evaporates or is transpired, salts concentrate. Without drainage to leach salts below the root zone, concentrations build up. High salinity creates osmotic stress &mdash; roots struggle to extract water even from moist soil &mdash; and specific ion toxicity (Na&plusmn;, Cl&ordm;) damages cell membranes and enzymes.</p>
                                     <p><strong>The Feedback Cycle:</strong> These problems reinforce each other: waterlogging prevents salt leaching → salts accumulate → saline conditions degrade soil structure → permeability decreases → drainage worsens → more waterlogging.</p>
                                     <p><strong>Remediation:</strong> (i) Subsurface tile drainage systems to lower water tables and flush salts; (ii) Canal lining to reduce seepage; (iii) Gypsum (CaSO₄) application to displace sodium from sodic soils; (iv) Selecting salt-tolerant crop varieties; (v) Switching from flood to drip irrigation to reduce excess water application; (vi) Afforestation with deep-rooted trees (eucalyptus, Prosopis) to lower water tables through transpiration.</p>
-                                    <p><strong>Examples:</strong> In Pakistan's Indus Basin, ~6.3 million ha are salt-affected. In India, the Indo-Gangetic plains and Rajasthan face similar crises. Australia's Murray-Darling Basin has extensive dryland salinity from land clearing that raised water tables, bringing ancient salt deposits to the surface.</p>
+                                    <p><strong>Examples:</strong> In Pakistan&apos;s Indus Basin, &sim;6.3 million ha are salt-affected. In India, the Indo-Gangetic plains and Rajasthan face similar crises. Australia&apos;s Murray-Darling Basin has extensive dryland salinity from land clearing that raised water tables, bringing ancient salt deposits to the surface.</p>
                                 </div>
                             </details>
                         </div>
