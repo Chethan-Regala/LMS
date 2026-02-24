@@ -17,11 +17,9 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedModule, onModuleSelect, isOpe
       id: 1,
       title: 'Unit 1: Introduction to Language',
       modules: [
-        'Overview of Linguistics',
+        'Overview of Linguistics and its Sub-fields',
         'Phonetics',
-        'Phonology',
-        'Morphology',
-        'Unit 1 Quiz'
+        'Phonology'
       ]
     },
     {
@@ -30,41 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedModule, onModuleSelect, isOpe
       modules: [
         'Syntax and Syntactic Structures',
         'Semantics and Semantic Structures',
-        'Language Typology',
-        'Unit 2 Quiz'
-      ]
-    },
-    {
-      id: 3,
-      title: 'Unit 3: Language Acquisition',
-      modules: [
-        'First and Second Language Acquisition',
-        'Language Change and Contact',
-        'Historical Linguistics',
-        'Unit 3 Quiz'
-      ]
-    },
-    {
-      id: 4,
-      title: 'Unit 4: Sociolinguistics',
-      modules: [
-        'Sociolinguistics and Variation',
-        'Language Policy and Planning',
-        'Language and Identity',
-        'Language and Technology',
-        'Unit 4 Quiz'
-      ]
-    },
-    {
-      id: 5,
-      title: 'Unit 5: Language in Context',
-      modules: [
-        'Language and Culture',
-        'Language and Gender',
-        'Language and Power',
-        'Language and Globalization',
-        'Research Methods in Linguistics',
-        'Unit 5 Quiz'
+        'Language Typology'
       ]
     }
   ];

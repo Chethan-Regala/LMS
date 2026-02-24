@@ -1,7 +1,25 @@
 'use client';
+
 import React, { useState, useEffect } from 'react';
-import MainSidebar from '@/components/Sidebar';
 import { useSession } from 'next-auth/react';
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Cpu,
+  MessageSquare,
+  LayoutGrid,
+  ArrowLeft,
+  BookOpen,
+  ChevronDown,
+  PlayCircle,
+  Clock,
+  Award,
+  Book,
+  FileText,
+  HelpCircle,
+  Menu,
+  CheckCircle2
+} from "lucide-react";
+import { useRouter } from 'next/navigation';
 
 interface CourseOverviewProps {
   onModuleSelect: (unitId: number, moduleId: number) => void;
@@ -12,6 +30,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
   const [expandedUnit, setExpandedUnit] = useState<number | null>(1);
   const { data: session } = useSession();
   const [studentProgress, setStudentProgress] = useState<any[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     if (session?.user?.email) {
@@ -20,16 +39,20 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
   }, [session]);
 
   const fetchStudentProgress = async (email: string) => {
-    const res = await fetch(`/api/progress?userEmail=${email}&subject=OS`, {
-      cache: 'no-store',
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache'
+    try {
+      const res = await fetch(`/api/progress?userEmail=${email}&subject=OS`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache'
+        }
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStudentProgress(data.data);
       }
-    });
-    const data = await res.json();
-    if (data.success) {
-      setStudentProgress(data.data);
+    } catch (error) {
+      console.error("Failed to fetch progress", error);
     }
   };
 
@@ -37,22 +60,24 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
     {
       id: 1,
       title: 'Getting started with OS',
-      description: 'This module introduces the fundamentals of operating systems, including their purpose, structure, and core functions. It explains how operating systems manage hardware, support program execution, and enable communication between processes.',
+      description: 'Introduction to fundamentals, system calls, and the core architecture of modern operating systems.',
+      icon: <LayoutGrid className="w-6 h-6" />,
       modules: [
-        { id: '1.1', title: 'Getting Started with OS', description: 'Explore the fundamentals of Operating Systems through engaging sessions, hands-on assignments, and real-world problem-solving activities.' },
-        { id: '1.2', title: 'Introduction to Operating systems', description: 'What if your OS disappeared - would you even be able to turn your computer on? This session uncovers the invisible force that controls your system heart and brain.' },
-        { id: '1.3', title: 'System calls and programs', description: 'How do your apps get anything done? Uncover the secret handshakes (system calls!) they use to boss the operating system around!' },
-        { id: '1.4', title: 'Operating System Design, Implementation and structures', description: 'What is really inside your OS? We are cracking open the case to explore the architectural blueprints and ingenious structures that make it all tick!' },
-        { id: '1.5', title: 'Introduction to processes', description: 'What are these processes everyone talks about? Think of them as the OS tiny, tireless workers - let us meet them (live!) and see how they are managed.' },
-        { id: '1.6', title: 'Operation on Processes & Interprocess communication', description: 'Processes can be loners, or they can collaborate! How do they talk (pipes) or nudge (signals) each other? Let us explore their social (and sometimes bossy) lives.' },
-        { id: '1.7', title: 'Shared memory and Message passing Systems', description: 'How do processes share secrets or data super-fast? Discover if they prefer leaving notes in a shared mailbox (shared memory) or sending direct telegrams (message passing)!' },
-        { id: '1.8', title: 'Remote Procedure calls', description: 'How can your program call a function on a computer miles away like it is next door? Unravel the magic of Remote Procedure Calls (RPCs) - it is like programming with teleportation!' }
+        { id: '1.1', title: 'Getting Started with OS', description: 'Explore the fundamentals of Operating Systems through engaging sessions and activities.' },
+        { id: '1.2', title: 'Introduction to Operating systems', description: 'Uncover the invisible force that controls your system heart and brain.' },
+        { id: '1.3', title: 'System calls and programs', description: 'Uncover the secret handshakes apps use to boss the operating system around!' },
+        { id: '1.4', title: 'Operating System Design, Implementation and structures', description: 'Architecture blueprints and ingenious structures that make it all tick!' },
+        { id: '1.5', title: 'Introduction to processes', description: 'Meet the OS tiny, tireless workers - see how they are managed.' },
+        { id: '1.6', title: 'Operation on Processes & Interprocess communication', description: 'How processes talk or nudge each other through pipes and signals.' },
+        { id: '1.7', title: 'Shared memory and Message passing Systems', description: 'Secrets of shared memory and message passing systems.' },
+        { id: '1.8', title: 'Remote Procedure calls', description: 'The magic of calling functions on distant computers.' }
       ]
     },
     {
       id: 2,
       title: 'Threads and CPU scheduling',
-      description: 'This module introduces threads as the basic unit of execution and explains their relationship with processes. It covers CPU scheduling concepts and common algorithms such as FCFS, SJF, Priority, and Round Robin, focusing on fairness, responsiveness, and performance.',
+      description: 'Master multithreading models and the algorithms that determine which tasks the CPU executes next.',
+      icon: <Cpu className="w-6 h-6" />,
       modules: [
         { id: '2.1', title: 'Introduction to threads', description: 'Ever wondered how your app juggles music, downloads, AND your frantic typing? Meet the unsung heroes: threads!' },
         { id: '2.2', title: 'Multithreading models and Hyperthreading', description: 'One brain, many thoughts? Or many brains, many thoughts? Unpack how your CPU really handles threads and the magic of Hyperthreading!' },
@@ -71,58 +96,61 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
     {
       id: 3,
       title: 'Process Synchronization and Deadlocks',
-      description: 'This module explains how multiple processes coordinate while sharing resources using synchronization mechanisms such as locks, semaphores, and monitors. It also introduces deadlocks, their causes, and strategies for prevention and handling to ensure system stability.',
+      description: 'Solving the critical section problem with semaphores, monitors, and avoiding system gridlock.',
+      icon: <Clock className="w-6 h-6" />,
       modules: [
-        { id: '3.1', title: 'Process Synchronization', description: 'Ever tried group work where everyone edits the same document at once? Let us learn how to make processes share nicely!' },
-        { id: '3.2', title: 'The Critical Section Problem', description: 'Imagine a one-person bathroom in a busy office. How do we ensure only one process gets alone time with shared data?' },
-        { id: '3.3', title: 'Test & set Lock', description: 'Is this resource free? Learn a simple, powerful hardware instruction that answers this crucial question for process coordination!' },
-        { id: '3.4', title: 'Semaphores', description: 'Need traffic lights for your processes? Meet semaphores, the classic tool for controlling access to shared resources!' },
-        { id: '3.5', title: 'Classic problems of Process synchronization', description: 'Dining philosophers starving? Barbers sleeping? Unravel these legendary brain-teasers of concurrent programming!' },
-        { id: '3.6', title: 'Monitors', description: 'Tired of juggling locks and conditions yourself? Discover Monitors, the VIP lounges that manage synchronization for you!' },
-        { id: '3.7', title: 'Solved problems on Process synchronization', description: 'Apply theoretical knowledge of process synchronization by working through practical scenarios.' },
-        { id: '3.8', title: 'Assignment | Process Synchronization', description: 'Learn to implement process synchronization using semaphores by managing concurrent thread access to a shared variable.' },
-        { id: '3.9', title: 'Deadlocks', description: 'I am waiting for you, but you are waiting for me! What happens when processes get stuck in this deadly embrace?' },
-        { id: '3.10', title: 'Deadlock Handling methods and Recovery', description: 'Your system is gridlocked! Do we call a tow truck (kill a process) or try to untangle the mess?' },
-        { id: '3.11', title: 'Deadlock Avoidance', description: 'Can we be OS fortune tellers, peering into the future to steer clear of deadlocks before they even happen?' }
+        { id: '3.1', title: 'Process Synchronization', description: 'Learning how to make multiple processes share resources nicely.' },
+        { id: '3.2', title: 'The Critical Section Problem', description: 'Ensuring only one process gets alone time with shared data.' },
+        { id: '3.3', title: 'Test & set Lock', description: 'Hardware level instructions for process coordination.' },
+        { id: '3.4', title: 'Semaphores', description: 'Traffic lights for controlling resource access.' },
+        { id: '3.5', title: 'Classic problems of Synchronization', description: 'Dining philosophers and other legendary concurrent puzzles.' },
+        { id: '3.6', title: 'Monitors', description: 'VIP lounges for automatic synchronization management.' },
+        { id: '3.7', title: 'Solved problems on Synchronization', description: 'Practical scenarios and theoretical applications.' },
+        { id: '3.8', title: 'Assignment | Synchronization', description: 'Implementation focus using semaphores.' },
+        { id: '3.9', title: 'Deadlocks', description: 'The deadly embrace of processes waiting for each other.' },
+        { id: '3.10', title: 'Deadlock Handling and Recovery', description: 'Untangling system gridlocks through recovery strategies.' },
+        { id: '3.11', title: 'Deadlock Avoidance', description: 'Stearing clear of deadlocks before they happen.' }
       ]
     },
     {
       id: 4,
       title: 'Memory Management',
-      description: 'This module explains how operating systems manage and allocate main memory to support multiple processes. It covers paging, segmentation, and page replacement algorithms, focusing on performance and efficient resource utilization.',
+      description: 'Understanding paging, segmentation, and the SNUG strategies for allocating computer memory.',
+      icon: <Award className="w-6 h-6" />,
       modules: [
-        { id: '4.1', title: 'Introduction to Memory Management', description: 'Where does your program actually live while it is running? Let us explore your computer most valuable real estate!' },
-        { id: '4.2', title: 'Fixed and Variable Partitioning', description: 'Slicing up memory: do we use pre-defined chunks (fixed) or cut custom sizes (variable)? What is the trade-off?' },
-        { id: '4.3', title: 'Partition Allocation Techniques (Best fit)', description: 'Playing memory matchmaker! How do we find the snuggest available spot for a new process?' },
-        { id: '4.4', title: 'Partition Allocation Techniques (Worst fit)', description: 'Sounds bad, but is it? Why might leaving the largest possible hole be a good strategy for memory allocation?' },
-        { id: '4.5', title: 'Partition Allocation Techniques (First fit)', description: 'Quick and easy! Why search far and wide when the first spot that fits will do? But is it always efficient?' },
-        { id: '4.6', title: 'Paging', description: 'What if we chopped programs and memory into equal-sized pages? Welcome to a revolutionary way to manage memory!' },
-        { id: '4.7', title: 'Segmentation', description: 'Instead of equal pages, what if we divided memory based on logical parts of a program, like code, data, and stack?' },
-        { id: '4.8', title: 'Assignment | Paging & Segmentation', description: 'In this assignment, learners will solve problems related to paging and segmentation, applying address translation concepts.' },
-        { id: '4.9', title: 'Fragmentation', description: 'Oh, the wasted space! Discover the annoying holes in memory that are too small to use - memory version of lost socks!' },
-        { id: '4.10', title: 'Page replacement Algorithm: FIFO', description: 'When memory is full and a new page needs to come in, who gets evicted? First In, First Out - fair or just simple?' },
-        { id: '4.11', title: 'Optimal Page replacement', description: 'If you had a crystal ball to know which page will not be needed for the longest time, how would you swap?' },
-        { id: '4.12', title: 'Least Recently Used', description: 'Have not used it in a while? You are out! Explore this popular, practical strategy for deciding which page to kick out.' },
-        { id: '4.13', title: 'Solved Problems on Page Replacement', description: 'Apply page replacement algorithms to compute page faults accurately' }
+        { id: '4.1', title: 'Introduction to Memory Management', description: 'Where your programs live while they are running.' },
+        { id: '4.2', title: 'Fixed and Variable Partitioning', description: 'Slicing up memory into predefined or custom chunks.' },
+        { id: '4.3', title: 'Partition Allocation (Best fit)', description: 'Snug fit strategies for memory matchmakers.' },
+        { id: '4.4', title: 'Partition Allocation (Worst fit)', description: 'Leaving large holes can actually be a good thing.' },
+        { id: '4.5', title: 'Partition Allocation (First fit)', description: 'Quick and easy strategies for the first spot that fits.' },
+        { id: '4.6', title: 'Paging', description: 'Revolutionary equal-sized chopping of programs.' },
+        { id: '4.7', title: 'Segmentation', description: 'Logical division based on code, data, and stack.' },
+        { id: '4.8', title: 'Assignment | Paging & Segmentation', description: 'Solving address translation concepts.' },
+        { id: '4.9', title: 'Fragmentation', description: 'Recovering the wasted holes in memory real estate.' },
+        { id: '4.10', title: 'Page replacement: FIFO', description: 'The simplest eviction policy for memory overflow.' },
+        { id: '4.11', title: 'Optimal Page replacement', description: 'Peering into the future for perfect swapping.' },
+        { id: '4.12', title: 'Least Recently Used', description: 'The gold standard for practical memory swapping.' },
+        { id: '4.13', title: 'Solved Problems on Page Replacement', description: 'Computing page faults for various algorithms.' }
       ]
     },
     {
       id: 5,
       title: 'Storage Management & Linux',
-      description: 'This module covers how operating systems manage long-term storage through file systems, allocation methods, protection, and reliability techniques. It also introduces virtualization and provides hands-on Linux labs for practical system interaction.',
+      description: 'Mastering file systems, RAID, and hands-on Linux system resource monitor projects.',
+      icon: <Book className="w-6 h-6" />,
       modules: [
-        { id: '5.1', title: 'Introduction to Storage Management', description: 'Beyond Save As, where do your digital treasures actually live and how does your OS keep track of them all?' },
-        { id: '5.2', title: 'File systems', description: 'It is not just folders! How does your OS organize billions of bits into a structure you can actually navigate without going insane?' },
-        { id: '5.3', title: 'File system Implementations', description: 'Ever wondered what is under the hood of NTFS, FAT32, or ext4? Let us peek at how these digital librarians actually work!' },
-        { id: '5.4', title: 'File Allocation methods', description: 'When you save a file, where do its pieces physically go on the disk? Contiguous, linked, or indexed - what is the best scatter plan?' },
-        { id: '5.5', title: 'File system crash recovery and protection', description: 'Power outage! System crash! How does your file system play hero and try to bring your data back from the brink (and keep it safe)?' },
-        { id: '5.6', title: 'Free space management', description: 'Your disk is not a bottomless pit! How does the OS keep track of all the empty nooks and crannies to store new files?' },
-        { id: '5.7', title: 'RAID', description: 'One disk is good, but what if many disks team up? Discover RAID: for super speed, super safety, or a bit of both!' },
-        { id: '5.8', title: 'Virtual Machines', description: 'Want to run Windows on your Mac, or Linux inside Windows? Step into the Matrix with Virtual Machines - computers within your computer!' },
-        { id: '5.9', title: 'Getting Started with Linux: Desktop, Terminal, and Basics', description: 'Goodbye GUI, hello command line! Can you navigate your computer with just typed commands? Let us find out!' },
-        { id: '5.10', title: 'Working with directories in Linux', description: 'Moving beyond ls and cd! Let us unlock more text-based superpowers and start making Linux dance to your tune.' },
-        { id: '5.11', title: 'Working with Files and Exploring the Linux Directory Structure', description: 'Users, permissions, and pipes, oh my! Master the art of controlling who does what and making commands work together like a symphony.' },
-        { id: '5.12', title: 'Mini Project: System Resource Monitor & Process Analyzer', description: 'Apply Linux commands and scripting to monitor and summarize system performance.' }
+        { id: '5.1', title: 'Introduction to Storage Management', description: 'Where your digital treasures are physically stored.' },
+        { id: '5.2', title: 'File systems', description: 'Organizing bits into structures you can navigate.' },
+        { id: '5.3', title: 'File system Implementations', description: 'Looking under the hood of NTFS, ext4, and more.' },
+        { id: '5.4', title: 'File Allocation methods', description: 'Contiguous, linked, or indexed physical storage.' },
+        { id: '5.5', title: 'Crash recovery and protection', description: 'Saving data from the brink after power failures.' },
+        { id: '5.6', title: 'Free space management', description: 'Managing the empty nooks and crannies of disks.' },
+        { id: '5.7', title: 'RAID', description: 'Team storage for speed and safety.' },
+        { id: '5.8', title: 'Virtual Machines', description: 'The Matrix: running computers within computers.' },
+        { id: '5.9', title: 'Linux Basics & Terminal', description: 'Mastering the command line and basic navigation.' },
+        { id: '5.10', title: 'Directories in Linux', description: 'Advanced text-based superpowers for Linux.' },
+        { id: '5.11', title: 'Files and Directory Structure', description: 'Pipes, permissions, and directory symphonies.' },
+        { id: '5.12', title: 'Project: System Resource Monitor', description: 'Building a process analyzer and summarizer.' }
       ]
     }
   ];
@@ -134,112 +162,172 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
   const masteryPercentage = totalModules > 0 ? Math.round((masteryModules / totalModules) * 100) : 0;
 
   return (
-    <div className="flex">
-      <div className="fixed left-0 top-0 h-screen overflow-hidden">
-        <MainSidebar />
-      </div>
-      <div className="flex-1">
-        <div className="lms-dashboard">
-          <div className="lms-container">
-            <div className="lms-header">
-              <div className="header-left">
-                <svg className="megaphone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="#E63946" strokeWidth="2" fill="none" />
-                </svg>
-                <h1 className="course-title">Operating Systems</h1>
-              </div>
-              <div className="header-right">
-                <div className="progress-bar-container">
-                  <div className="progress-segments">
-                    {[...Array(20)].map((_, i) => {
-                      const segmentThreshold = (i + 1) * 5;
-                      return (
-                        <div
-                          key={i}
-                          className={`segment ${completedPercentage >= segmentThreshold ? 'completed' :
-                            masteryPercentage >= segmentThreshold ? 'mastery' : ''
-                            }`}
-                        ></div>
-                      );
-                    })}
-                  </div>
-                  <div className="progress-text">{completedPercentage}% Completed • {masteryPercentage}% Mastery</div>
-                </div>
-              </div>
-            </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-10 py-12 font-sans">
+      {/* BACK TO LIVEBOOKS */}
+      <button
+        onClick={() => router.push('/pages/livebooks')}
+        className="flex items-center gap-2 text-sm font-bold text-[#AAA] hover:text-[#121212] transition-colors mb-8 group"
+      >
+        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        Back to Livebooks
+      </button>
 
-            <nav className="tab-navigation">
-              <button className={`tab ${activeTab === 'learning-path' ? 'active' : ''}`} onClick={() => setActiveTab('learning-path')}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M2 3h12M2 8h12M2 13h12" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                </svg>
-                Learning Path
-              </button>
-              <button className={`tab ${activeTab === 'sessions' ? 'active' : ''}`} onClick={() => setActiveTab('sessions')}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <rect x="3" y="3" width="10" height="10" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                </svg>
-                Sessions
-              </button>
-              <button className={`tab ${activeTab === 'assessments' ? 'active' : ''}`} onClick={() => setActiveTab('assessments')}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" />
-                </svg>
-                Assessments
-              </button>
-              <button className={`tab ${activeTab === 'about' ? 'active' : ''}`} onClick={() => setActiveTab('about')}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                </svg>
-                About
-              </button>
-              <button className="tab" onClick={() => window.location.href = '/pages/livebooks'} style={{ marginLeft: 'auto' }}>
-                Go to Livebooks
-              </button>
-            </nav>
-
-            <div className="timeline-content">
-              {units.map((unit) => (
-                <div key={unit.id} className="unit-block">
-                  <div className="unit-header-block" onClick={() => setExpandedUnit(expandedUnit === unit.id ? null : unit.id)}>
-                    <div className="module-badge">
-                      <div className="badge-label">Module</div>
-                      <div className="badge-number">{unit.id}</div>
-                    </div>
-                    <div className="unit-description">
-                      <h2 className="unit-title">{unit.title}</h2>
-                      <p className="unit-desc">{unit.description}</p>
-                    </div>
-                    <div className="expand-indicator">{expandedUnit === unit.id ? '▼' : '▶'}</div>
-                  </div>
-
-                  {expandedUnit === unit.id && (
-                    <div className="lessons-timeline">
-                      {unit.modules.map((module, idx) => (
-                        <div
-                          key={module.id}
-                          className="lesson-item"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onModuleSelect(unit.id, idx + 1);
-                          }}
-                        >
-                          <div className="lesson-badge">{module.id}</div>
-                          <div className="lesson-content">
-                            <h3 className="lesson-title">{module.title}</h3>
-                            <p className="lesson-desc">{module.description}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+      {/* HEADER SECTION - Match Image */}
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-6 mb-8">
+        <div className="flex items-center gap-4">
+          <div className="w-8 h-8 flex items-center justify-center text-red-500 border-2 border-red-500 rounded-lg rotate-[30deg]">
+            <div className="-rotate-[30deg]">
+              <Cpu className="w-4 h-4" />
             </div>
           </div>
+          <h1 className="text-2xl font-bold text-[#2B2B2B] tracking-tight">Operating Systems</h1>
+        </div>
+
+        <div className="flex flex-col items-end gap-2">
+          <div className="flex gap-1">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className={`w-2 h-2 rounded-full transition-colors ${(i + 1) * 5 <= completedPercentage ? 'bg-emerald-500' : 'bg-[#E5E2D9]'
+                  }`}
+              />
+            ))}
+          </div>
+          <p className="text-[10px] font-bold text-[#AAA] uppercase">
+            {completedPercentage}% Completed • {masteryPercentage}% Mastery
+          </p>
         </div>
       </div>
-    </div>
+
+      {/* TABS - Match Image */}
+      <div className="flex items-center justify-between border-b border-[#EEE] mb-12">
+        <div className="flex items-center gap-10">
+          {[
+            { id: 'learning-path', label: 'Learning Path', icon: <Menu className="w-4 h-4" /> },
+            { id: 'sessions', label: 'Sessions', icon: <LayoutGrid className="w-4 h-4" /> },
+            { id: 'assessments', label: 'Assessments', icon: <div className="text-lg leading-none">+</div> },
+            { id: 'about', label: 'About', icon: <HelpCircle className="w-4 h-4" /> }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 py-4 text-sm font-bold transition-all relative ${activeTab === tab.id
+                ? 'text-[#121212]'
+                : 'text-[#888] hover:text-[#121212]'
+                }`}
+            >
+              {tab.icon}
+              {tab.label}
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="activeTabUnderlineOS"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#121212]"
+                />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* CONTENT AREA */}
+      <div className="space-y-16">
+        {activeTab === 'learning-path' ? (
+          units.map((unit) => {
+            const isUnitFinished = unit.modules.every((_, idx) =>
+              studentProgress.some(p => p.unitId === unit.id && p.moduleId === idx + 1 && p.completed)
+            );
+
+            return (
+              <div key={unit.id} className="relative group/unit">
+                {/* UNIT HEADER ROW */}
+                <div className="flex items-start gap-8 mb-12">
+                  {/* UNIT SQUARE BADGE - Match Image perfectly */}
+                  <div className={`w-20 h-20 border border-[#E5E2D9] rounded flex flex-col items-center justify-center shrink-0 bg-white transition-colors duration-500 ${isUnitFinished ? 'border-emerald-500 ring-4 ring-emerald-50/50' : ''
+                    }`}>
+                    <span className="text-[10px] font-bold text-[#AAA] uppercase tracking-wider mb-1">UNIT</span>
+                    <span className="text-4xl font-bold text-[#121212] leading-none">{unit.id}</span>
+                  </div>
+
+                  <div className="flex-1">
+                    <div
+                      className="flex items-center justify-between group cursor-pointer"
+                      onClick={() => setExpandedUnit(expandedUnit === unit.id ? null : unit.id)}
+                    >
+                      <h2 className="text-2xl font-bold text-[#121212] group-hover:text-emerald-600 transition-colors">{unit.title}</h2>
+                      <div className={`w-8 h-8 rounded-full border border-[#EEE] flex items-center justify-center transition-all duration-300 ${expandedUnit === unit.id ? 'rotate-180 bg-[#121212] text-white border-[#121212]' : 'text-[#AAA] hover:border-[#CCC]'}`}>
+                        <ChevronDown className="w-4 h-4" />
+                      </div>
+                    </div>
+                    <p className="text-[15px] text-[#888] font-medium leading-relaxed max-w-4xl mt-2">
+                      {unit.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* SUBMODULES TIMELINE */}
+                <AnimatePresence>
+                  {expandedUnit === unit.id && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="relative pl-10 ml-10 border-l border-dashed border-[#E5E2D9] space-y-12 pb-8"
+                    >
+                      {unit.modules.map((module, idx) => {
+                        const moduleRecord = studentProgress.find(p => p.unitId === unit.id && p.moduleId === idx + 1);
+                        const isCompleted = moduleRecord?.completed || false;
+
+                        return (
+                          <div
+                            key={module.id}
+                            className="relative group/module cursor-pointer pt-1"
+                            onClick={() => onModuleSelect(unit.id, idx + 1)}
+                          >
+                            {/* Green square badge with number */}
+                            <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[11px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-emerald-500' : 'bg-[#8BC34A]'
+                              }`}>
+                              {module.id}
+                            </div>
+
+                            <div className="flex-1">
+                              <h3 className="text-[17px] font-bold text-[#121212] group-hover/module:translate-x-1 transition-transform inline-block">
+                                {module.title}
+                              </h3>
+                              <p className="text-sm text-[#AAA] font-medium leading-relaxed mt-1 block">
+                                {module.description}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })
+        ) : (
+          <div className="bg-[#FBFAF8] rounded-[3rem] border border-[#EAE8E0] p-32 flex flex-col items-center justify-center text-center">
+            <div className="w-20 h-20 bg-white rounded-[2rem] border border-[#EAE8E0] shadow-sm flex items-center justify-center text-[#CCC] mb-8">
+              <LayoutGrid className="w-10 h-10" />
+            </div>
+            <h3 className="text-2xl font-bold text-[#121212] mb-4 uppercase tracking-tighter">Content coming soon</h3>
+            <p className="text-[#888] font-medium max-w-sm leading-relaxed">
+              We are currently finalizing the high-fidelity materials for this section. Please check back next week.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <style jsx global>{`
+        body {
+          background-color: #FFFFFF !important;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          height: 0px;
+        }
+      `}</style>
+    </div >
   );
 };
 

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Calendar, ArrowUpRight, Clock } from "lucide-react";
 
 interface Period {
   time: string;
@@ -9,24 +11,10 @@ interface Period {
   description?: string;
 }
 
-interface TimetableData {
-  [key: string]: Period[];
-}
-
 export default function Timetable() {
   const [data, setData] = useState<Period[]>([]);
   const [selected, setSelected] = useState<Period | null>(null);
   const [currentPeriod, setCurrentPeriod] = useState<Period | null>(null);
-  const [currentTime, setCurrentTime] = useState<Date>(new Date());
-  const [linePosition, setLinePosition] = useState<number>(0);
-  const timelineRef = useState<HTMLDivElement | null>(null)[0];
-
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = '.timeline::-webkit-scrollbar { display: none; }';
-    document.head.appendChild(style);
-    return () => { document.head.removeChild(style); };
-  }, []);
 
   useEffect(() => {
     loadData();
@@ -34,40 +22,18 @@ export default function Timetable() {
 
   useEffect(() => {
     if (data.length > 0) {
-      const currentPeriod = getCurrentOrNextPeriod();
-      setSelected(currentPeriod);
-      scrollToCurrentPeriod();
+      const current = getCurrentPeriod();
+      setCurrentPeriod(current);
+      // Auto-select current period if available, otherwise first
+      setSelected(current || data[0]);
+
       const interval = setInterval(() => {
-        const newPeriod = getCurrentOrNextPeriod();
-        setSelected(newPeriod);
-        scrollToCurrentPeriod();
+        const newPeriod = getCurrentPeriod();
+        setCurrentPeriod(newPeriod);
       }, 60000);
       return () => clearInterval(interval);
     }
   }, [data]);
-
-  useEffect(() => {
-    const updateLinePosition = () => {
-      const now = new Date();
-      setCurrentTime(now);
-      calculateLinePosition(now);
-    };
-
-    updateLinePosition();
-    const interval = setInterval(updateLinePosition, 1000);
-    return () => clearInterval(interval);
-  }, [data]);
-
-  const scrollToCurrentPeriod = () => {
-    if (!currentPeriod) return;
-    const index = data.findIndex(p => p === currentPeriod);
-    if (index !== -1) {
-      const element = document.querySelector(`[data-period-index="${index}"]`);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
-  };
 
   const loadData = async () => {
     const res = await fetch("/api/timetable");
@@ -75,264 +41,248 @@ export default function Timetable() {
     if (json.ok) {
       const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
       const today = days[new Date().getDay()];
-      setData(json.data[today] || []);
+      const todayData = json.data[today] || [];
+      setData(todayData);
     }
   };
 
   const parseTime = (timeStr: string) => {
     let [hours, minutes] = timeStr.split(":").map(Number);
-    if (hours < 9) hours += 12;
+    if (hours < 9) hours += 12; // Simple heuristic for PM if before 9 (school hours)
     const date = new Date();
     date.setHours(hours, minutes, 0, 0);
     return date;
   };
 
-  const calculateLinePosition = (now: Date) => {
-    if (data.length === 0) return;
-
-    const firstPeriod = data[0];
-    const [startStr] = firstPeriod.time.split(" - ");
-    const startTime = parseTime(startStr);
-
-    const lastPeriod = data[data.length - 1];
-    const [, endStr] = lastPeriod.time.split(" - ");
-    const endTime = parseTime(endStr);
-
-    const totalMinutes = (endTime.getTime() - startTime.getTime()) / (1000 * 60);
-    const elapsedMinutes = (now.getTime() - startTime.getTime()) / (1000 * 60);
-
-    const periodHeight = 88;
-    const breakHeight = 30;
-    
-    // Calculate total height including breaks
-    let totalHeight = data.length * periodHeight;
-    totalHeight += breakHeight; // Lunch break (after period 3)
-    totalHeight += breakHeight; // Other break (after period 6)
-
-    const position = (elapsedMinutes / totalMinutes) * totalHeight;
-    setLinePosition(Math.max(0, Math.min(position, totalHeight)));
-  };
-
-  const getCurrentOrNextPeriod = () => {
+  const getCurrentPeriod = () => {
     const now = new Date();
-    let activePeriod = null;
     for (const period of data) {
       const [start, end] = period.time.split(" - ");
       const startTime = parseTime(start);
       const endTime = parseTime(end);
       if (now >= startTime && now <= endTime) {
-        activePeriod = period;
-        break;
+        return period;
       }
     }
-    setCurrentPeriod(activePeriod);
-    if (activePeriod) return activePeriod;
-    for (const period of data) {
-      const [start] = period.time.split(" - ");
-      const startTime = parseTime(start);
-      if (now < startTime) return period;
-    }
-    return data[0] || null;
+    return null;
   };
 
-  const renderTimeline = () => (
-    <div style={styles.timeline} className="timeline">
-      <div style={{...styles.redLine, top: `${linePosition}px`}} />
-      {data.map((period, i) => {
-        const isCurrentPeriod = currentPeriod === period;
-        return (
-          <div key={i} data-period-index={i}>
-            <div
-              style={{
-                ...styles.periodItem,
-                background: selected === period ? "#f0f0f0" : "white",
-                position: "relative",
-              }}
-              onClick={() => setSelected(period)}
-            >
-              <div style={styles.timeText}>{period.time}</div>
-              <div style={styles.subjectText}>{period.subject || "Free"}</div>
-              {isCurrentPeriod && (
-                <div style={styles.happeningBadge}>Happening</div>
-              )}
-            </div>
-            {i === 2 && (
-              <div style={styles.breakSpace}>
-                <div style={styles.breakText}>Lunch Break (12:30 - 1:15)</div>
-              </div>
-            )}
-            {i === 5 && (
-              <div style={styles.breakSpace}>
-                <div style={styles.breakText}>Break</div>
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-
-  const renderDetails = () => {
-    if (!selected) return <div style={styles.details}>No period selected</div>;
-    const [start, end] = selected.time.split(" - ");
-    
-    // Handle subject link generation
-    let subjectLink = '';
-    if (selected.subject) {
-      // Extract the main subject code (e.g., "LS" from "LS: PPHC")
-      const subjectCode = selected.subject.split(':')[0].trim().toLowerCase();
-      subjectLink = `/pages/${subjectCode}`;
-    }
-    
+  if (data.length === 0) {
     return (
-      <div style={styles.details}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <h2 style={styles.detailSubject}>{selected.subject || "Free Period"}</h2>
-            {selected.subject && (
-              <a href={subjectLink} style={styles.subjectLink}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-              </a>
-            )}
-          </div>
-          {selected.teacher && (
-            <h2 style={styles.detailField}>
-              {selected.teacher.toLowerCase()}
-            </h2>
-          )}
-          <h3 style={styles.detailTime}>
-            {start} – {end}
-          </h3>
-        </div>
-        
-        {selected.description && (
-          <div style={styles.detailDescription}>
-            {selected.description}
-          </div>
-        )}
+      <div className="py-8 flex flex-col items-center text-[#AAA] gap-4 bg-white rounded-3xl border border-[#EEE]">
+        <Calendar className="w-8 h-8 opacity-10" />
+        <p className="text-[10px] font-bold uppercase tracking-widest">No classes scheduled</p>
       </div>
     );
+  }
+
+  // Calculate indicator position based on rows
+  const getIndicatorPosition = () => {
+    if (!data.length) return null;
+    const now = new Date();
+
+    const firstStart = parseTime(data[0].time.split(" - ")[0]);
+    const lastEnd = parseTime(data[data.length - 1].time.split(" - ")[1]);
+
+    if (now < firstStart) return 0;
+    if (now > lastEnd) return 100;
+
+    let periodIndex = -1;
+    let progressInRange = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      const [start, end] = data[i].time.split(" - ");
+      const startTime = parseTime(start);
+      const endTime = parseTime(end);
+
+      if (now >= startTime && now <= endTime) {
+        periodIndex = i;
+        const duration = endTime.getTime() - startTime.getTime();
+        const elapsed = now.getTime() - startTime.getTime();
+        progressInRange = elapsed / duration;
+        break;
+      }
+
+      // If it's between periods (a gap), we can interpolate or hide
+      if (i < data.length - 1) {
+        const nextStart = parseTime(data[i + 1].time.split(" - ")[0]);
+        if (now > endTime && now < nextStart) {
+          // It's in the gap between row i and row i+1
+          periodIndex = i + 0.5; // Visual midpoint representation
+          break;
+        }
+      }
+    }
+
+    // If periodIndex is still -1, it means 'now' is outside any defined period or gap,
+    // but we've already handled before first and after last.
+    // This case should ideally not be reached if the above checks are comprehensive.
+    // However, if it does, we can return null or a default. For now, let's assume it's covered.
+    if (periodIndex === -1) return null;
+
+
+    // Convert index to percentage of total rows
+    // Since each button is a row of equal height
+    return ((periodIndex + progressInRange) / data.length) * 100;
   };
 
+  const indicatorPos = getIndicatorPosition();
+
   return (
-    <div style={styles.container}>
-      {renderTimeline()}
-      {renderDetails()}
+    <div className="w-full flex bg-white border border-[#E5E2D9] overflow-hidden rounded-2xl h-[480px] shadow-sm">
+      {/* LEFT SIDEBAR: TIME SLOTS */}
+      <div className="w-[150px] md:w-[200px] border-r border-[#E5E2D9] flex flex-col">
+        <div className="flex-1 overflow-y-auto custom-scrollbar">
+          <div className="relative">
+            {/* Real-time Indicator Line */}
+            {indicatorPos !== null && (
+              <div
+                className="absolute left-0 right-0 z-20 pointer-events-none transition-all duration-1000 ease-linear"
+                style={{ top: `${indicatorPos}%` }}
+              >
+                <div className="w-full border-t-3 border-dotted border-[#FF4D4D] opacity-80" />
+              </div>
+            )}
+
+            <div className="divide-y divide-[#F0F0F0]">
+              {data.map((period, i) => {
+                const isLunch = period.subject === "Lunch Break";
+                const isSelected = selected === period;
+                const isCurrent = currentPeriod === period;
+
+                if (isLunch) {
+                  return (
+                    <div
+                      key={i}
+                      className="w-full h-16 bg-[#FBFBFB] flex items-center justify-center border-y border-[#EEE] relative group"
+                    >
+                      <p className="text-[13px] font-medium text-[#7096CC] tracking-wide">
+                        Lunch Break ({period.time.replace(/0(\d:\d\d)/g, '$1')})
+                      </p>
+                      {isCurrent && (
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#7096CC] rounded-full animate-pulse" />
+                      )}
+                    </div>
+                  );
+                }
+
+                return (
+                  <button
+                    key={i}
+                    onClick={() => setSelected(period)}
+                    className={`w-full p-5 text-left transition-colors relative ${isSelected ? "bg-[#F8F6F1]" : "hover:bg-[#FAF9F6]"
+                      }`}
+                  >
+                    <p className={`text-[10px] font-bold mb-1 ${isCurrent ? "text-rose-500" : "text-[#AAA]"}`}>
+                      {period.time}
+                    </p>
+                    <p className={`text-xs font-bold tracking-tight truncate ${isSelected ? "text-[#121212]" : "text-[#555]"}`}>
+                      {period.subject || "Break"}
+                    </p>
+                    {isCurrent && (
+                      <div className="absolute right-3 top-3 w-1.5 h-1.5 bg-rose-500 rounded-full animate-pulse" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* DASHED DIVIDER */}
+      <div className="w-[1px] bg-transparent border-r border-dashed border-[#E5E2D9]" />
+
+      {/* RIGHT DETAIL VIEW */}
+      <div className="flex-1 relative p-10 overflow-hidden bg-dot-grid flex flex-col">
+        <AnimatePresence mode="wait">
+          {currentPeriod?.subject === "Lunch Break" ? (
+            <motion.div
+              key="lunch-break-view"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              className="h-full flex flex-col items-center justify-center text-center space-y-6"
+            >
+              <div className="w-24 h-24 bg-blue-50/50 rounded-full flex items-center justify-center">
+                <Clock className="w-10 h-10 text-blue-300 animate-pulse" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-[#121212] tracking-tighter">It's Lunch Break</h2>
+                <p className="text-xs text-[#AAA] font-bold uppercase tracking-widest mt-2">Time to refuel and recharge</p>
+              </div>
+              <div className="px-6 py-2 bg-[#F8F6F1] border border-[#E5E2D9] rounded-full text-[10px] font-bold text-[#7096CC]">
+                RESUMING AT 01:15 PM
+              </div>
+            </motion.div>
+          ) : selected && (
+            <motion.div
+              key={selected.time}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              className="h-full flex flex-col"
+            >
+              <div className="flex justify-between items-start">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-0.5 bg-[#121212] text-white text-[9px] font-bold rounded-sm uppercase tracking-widest">
+                      {selected.time.split(" - ")[0]}
+                    </span>
+                    <span className="w-4 h-[1px] bg-[#DDD]" />
+                    <span className="text-[9px] font-bold text-[#AAA] uppercase tracking-widest">Live Session</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-[#121212] tracking-tighter leading-none max-w-md">
+                    {selected.subject || "Open Study"}
+                  </h2>
+                  <div className="flex items-center gap-4 pt-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center">
+                        <Calendar className="w-3 h-3 text-blue-600" />
+                      </div>
+                      <span className="text-[10px] font-bold text-[#888]">{selected.time}</span>
+                    </div>
+                  </div>
+                </div>
+                <button className="p-3 bg-white border border-[#E5E2D9] rounded-xl hover:bg-[#F8F6F1] transition-all shadow-sm group">
+                  <ArrowUpRight className="w-6 h-6 text-[#121212] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
+              </div>
+
+              {/* Detail Content */}
+              <div className="mt-auto space-y-6">
+                {selected.description ? (
+                  <div className="p-6 bg-[#F8F6F1]/50 border border-[#E5E2D9] rounded-2xl">
+                    <p className="text-[9px] font-bold uppercase tracking-widest text-[#AAA] mb-3">Agenda & Overview</p>
+                    <p className="text-xs text-[#666] leading-relaxed line-clamp-3">
+                      {selected.description}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="p-6 border border-dashed border-[#E5E2D9] rounded-2xl">
+                    <p className="text-[10px] font-bold text-[#AAA] tracking-tight">No additional descriptions were provided for this session yet.</p>
+                  </div>
+                )}
+                <button className="w-full py-3 bg-[#121212] text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-[#333] transition-all">
+                  Enter Integrated Session
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* DOT GRID STYLE */}
+        <style jsx>{`
+          .bg-dot-grid {
+            background-color: white;
+            background-image: radial-gradient(#F0EFEA 1px, transparent 1px);
+            background-size: 20px 20px;
+          }
+          .custom-scrollbar::-webkit-scrollbar {
+            width: 0px;
+          }
+        `}</style>
+      </div>
     </div>
   );
 }
-
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    display: "flex",
-    height: "100%",
-    width: "100%",
-    border: "2px solid #333",
-  },
-  timeline: {
-    flex: "0 0 35%",
-    overflowY: "auto",
-    borderRight: "2px dotted #999",
-    position: "relative",
-    background: "white",
-    scrollbarWidth: "none",
-    msOverflowStyle: "none",
-  },
-  redLine: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    height: "3px",
-    background: "#FF8080",
-    zIndex: 10,
-    transition: "top 0.5s ease",
-    pointerEvents: "none",
-  },
-  periodItem: {
-    padding: "20px 25px",
-    borderBottom: "1px solid #ccc",
-    cursor: "pointer",
-    transition: "background 0.2s",
-  },
-  timeText: {
-    fontSize: "13px",
-    color: "#666",
-    marginBottom: "8px",
-  },
-  subjectText: {
-    fontSize: "12px",
-    fontWeight: "500",
-    color: "#333",
-  },
-  breakSpace: {
-    height: "30px",
-    background: "#f9f9f9",
-    borderBottom: "1px solid #ccc",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  breakText: {
-    fontSize: "12px",
-    color: "#999",
-    fontStyle: "italic",
-  },
-  happeningBadge: {
-    position: "absolute",
-    top: "8px",
-    right: "8px",
-    background: "#4CAF50",
-    color: "white",
-    fontSize: "10px",
-    padding: "3px 8px",
-    borderRadius: "12px",
-    fontWeight: "600",
-  },
-  details: {
-    flex: 1,
-    padding: "30px",
-    background: "#FFFFFF",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    backgroundImage: "radial-gradient(circle, #D8D8D8 1px, transparent 1px)",
-    backgroundSize: "20px 20px",
-  },
-  detailSubject: {
-    fontSize: "16px",
-    fontWeight: "700",
-    marginBottom: "5px",
-    color: "#1a1a1a",
-  },
-  subjectLink: {
-    color: "#666",
-    textDecoration: "none",
-    display: "flex",
-    alignItems: "center",
-    transition: "color 0.2s",
-  },
-  detailTime: {
-    fontSize: "14px",
-    color: "#3a3a3a",
-    marginBottom: "20px",
-  },
-  detailField: {
-    fontSize: "13px",
-    marginBottom: "5px",
-    color: "#2a2a2a",
-  },
-  detailDescription: {
-    fontSize: "12px",
-    padding: "12px",
-    backgroundColor: "#FFFFFF",
-    borderRadius: "0",
-    color: "#666666",
-    lineHeight: "1.6",
-    marginTop: "auto",
-    fontWeight: "400",
-    backgroundImage: "radial-gradient(circle, #D8D8D8 1px, transparent 1px)",
-    backgroundSize: "20px 20px",
-  },
-};

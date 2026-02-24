@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Quiz from '../components/Quiz';
+import CompletionButton from '@/components/CompletionButton';
 
 interface Unit2Props {
   currentModule: number;
@@ -1038,7 +1039,16 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule, onBack }
     }
   };
 
-  return <div className="unit-container">{renderModule()}</div>;
+  return (
+    <div className="unit-container">
+      {renderModule()}
+      <CompletionButton 
+        subject="NSS"
+        unitId={2}
+        moduleId={currentModule}
+      />
+    </div>
+  );
 };
 
 export default Unit2;
