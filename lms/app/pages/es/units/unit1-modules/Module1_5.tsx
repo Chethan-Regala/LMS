@@ -219,35 +219,84 @@ const Module1_5: React.FC = () => {
 
                 <p><strong>Omnivore Flexibility:</strong> Omnivores like bears have diverse dentition—sharp canines for meat and flat molars for plants—and medium-length digestive systems that can handle both food types. This dietary flexibility allows omnivores to survive in changing conditions, switching food sources seasonally or when one becomes scarce. Humans are highly successful omnivores, though our hunting and gathering strategies rely more on tool use and intelligence than specialized physical adaptations.</p>
 
-                <div style={{ backgroundColor: '#f9fafb', padding: '30px', borderRadius: '16px', border: '1px solid #f1f5f9', margin: '40px 0' }}>
-                    <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0', marginBottom: '20px' }}>
-                        <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.1em', marginBottom: '30px', color: '#111827' }}>Energy Available at Each Trophic Level</div>
-                        <div style={{ maxWidth: '400px', margin: '0 auto' }}>
-                            <div style={{ backgroundColor: '#fef2f2', border: '1px solid #fecaca', padding: '12px', textAlign: 'center', marginBottom: '6px', width: '30%', marginInline: 'auto', borderRadius: '4px' }}>
-                                <div style={{ fontSize: '0.65em', fontWeight: '800', color: '#991b1b', letterSpacing: '0.05em' }}>APEX / TERTIARY</div>
-                                <div style={{ fontSize: '0.85em', fontWeight: '700' }}>1-10 kcal (0.01-0.1%)</div>
+                <div style={{ backgroundColor: '#f8fafc', padding: '60px 20px', borderRadius: '32px', border: '1px solid #e2e8f0', margin: '40px 0', boxShadow: '0 4px 20px -5px rgba(0,0,0,0.05)' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                        <div style={{ fontSize: '0.85em', fontWeight: 'bold', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '10px' }}>Energy Flow Through Consumer Trophic Levels</div>
+                        <h2 style={{ color: '#1e293b', fontSize: '1.8em', fontWeight: '800', margin: 0 }}>Energy Pyramid: Energy Available at Each Trophic Level</h2>
+                    </div>
+
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+                        {/* PYRAMID CONTAINER */}
+                        <div style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+
+                            {/* APEX */}
+                            <div style={{
+                                width: '15%', minWidth: '120px', height: '80px', backgroundColor: '#b91c1c', color: 'white', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', padding: '20px 10px 5px 10px'
+                            }}>
+                                <div style={{ fontSize: '0.7em', fontWeight: 'bold', textTransform: 'uppercase' }}>APEX</div>
+                                <div style={{ fontSize: '0.85em', fontWeight: '800' }}>1 kcal (0.01%)</div>
                             </div>
-                            <div style={{ textAlign: 'center', color: '#94a3b8', fontSize: '0.8em', margin: '5px 0' }}>↑ 90% Energy Lost</div>
-                            <div style={{ backgroundColor: '#fff1f2', border: '1px solid #fecaca', padding: '12px', textAlign: 'center', marginBottom: '6px', width: '50%', marginInline: 'auto', borderRadius: '4px' }}>
-                                <div style={{ fontSize: '0.65em', fontWeight: '800', color: '#991b1b', letterSpacing: '0.05em' }}>SECONDARY</div>
-                                <div style={{ fontSize: '0.85em', fontWeight: '700' }}>100 kcal (1%)</div>
+
+                            {/* TERTIARY */}
+                            <div style={{
+                                width: '35%', minWidth: '280px', height: '100px', backgroundColor: '#e11d48', color: 'white', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', clipPath: 'polygon(10% 0, 90% 0, 100% 100%, 0 100%)', padding: '10px'
+                            }}>
+                                <div style={{ fontSize: '0.8em', fontWeight: 'bold', textTransform: 'uppercase' }}>TERTIARY CONSUMERS</div>
+                                <div style={{ fontSize: '1em', fontWeight: '800' }}>10 kcal (0.1%)</div>
+                                <div style={{ fontSize: '0.7em', opacity: 0.9 }}>Hawks, Lions, Sharks</div>
                             </div>
-                            <div style={{ textAlign: 'center', color: '#94a3b8', fontSize: '0.8em', margin: '5px 0' }}>↑ 90% Energy Lost</div>
-                            <div style={{ backgroundColor: '#fff7ed', border: '1px solid #fed7aa', padding: '12px', textAlign: 'center', marginBottom: '6px', width: '70%', marginInline: 'auto', borderRadius: '4px' }}>
-                                <div style={{ fontSize: '0.65em', fontWeight: '800', color: '#9a3412', letterSpacing: '0.05em' }}>PRIMARY</div>
-                                <div style={{ fontSize: '0.85em', fontWeight: '700' }}>1,000 kcal (10%)</div>
+
+                            {/* SECONDARY */}
+                            <div style={{
+                                width: '55%', minWidth: '440px', height: '110px', backgroundColor: '#ea580c', color: 'white', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', clipPath: 'polygon(10% 0, 90% 0, 100% 100%, 0 100%)', padding: '10px'
+                            }}>
+                                <div style={{ fontSize: '0.9em', fontWeight: 'bold', textTransform: 'uppercase' }}>SECONDARY CONSUMERS</div>
+                                <div style={{ fontSize: '1.1em', fontWeight: '800' }}>100 kcal (1%)</div>
+                                <div style={{ fontSize: '0.8em', opacity: 0.9 }}>Snakes, Small Fish, Frogs</div>
                             </div>
-                            <div style={{ textAlign: 'center', color: '#94a3b8', fontSize: '0.8em', margin: '5px 0' }}>↑ 90% Energy Lost</div>
-                            <div style={{ backgroundColor: '#f0fdf4', border: '2px solid #16a34a', padding: '15px', textAlign: 'center', width: '100%', marginInline: 'auto', borderRadius: '4px' }}>
-                                <div style={{ fontSize: '0.7em', fontWeight: '800', color: '#166534', letterSpacing: '0.12em' }}>PRODUCERS</div>
-                                <div style={{ fontSize: '1em', fontWeight: '800' }}>10,000 kcal (100%)</div>
+
+                            {/* PRIMARY */}
+                            <div style={{
+                                width: '75%', minWidth: '600px', height: '120px', backgroundColor: '#f59e0b', color: 'white', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', clipPath: 'polygon(10% 0, 90% 0, 100% 100%, 0 100%)', padding: '10px'
+                            }}>
+                                <div style={{ fontSize: '1em', fontWeight: 'bold', textTransform: 'uppercase' }}>PRIMARY CONSUMERS (Herbivores)</div>
+                                <div style={{ fontSize: '1.2em', fontWeight: '800' }}>1,000 kcal (10%)</div>
+                                <div style={{ fontSize: '0.85em', opacity: 0.9 }}>Deer, Grasshoppers, Zooplankton</div>
+                            </div>
+
+                            {/* PRODUCERS */}
+                            <div style={{
+                                width: '95%', minWidth: '760px', height: '130px', backgroundColor: '#10b981', color: 'white', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', clipPath: 'polygon(10% 0, 90% 0, 100% 100%, 0 100%)', padding: '10px'
+                            }}>
+                                <div style={{ fontSize: '1.2em', fontWeight: 'bold', textTransform: 'uppercase' }}>PRODUCERS</div>
+                                <div style={{ fontSize: '1.4em', fontWeight: '800' }}>10,000 kcal (100%)</div>
+                                <div style={{ fontSize: '0.95em', opacity: 0.9 }}>Plants, Algae, Phytoplankton</div>
+                            </div>
+
+                            {/* LOSS ARROWS LAYER (OVERLAY) */}
+                            <div style={{ position: 'absolute', right: '0', top: '150px', display: 'flex', flexDirection: 'column', gap: '80px', alignItems: 'flex-start' }}>
+                                {[1, 2, 3].map(i => (
+                                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                        <div style={{ width: '40px', height: '2px', backgroundColor: '#ef4444', position: 'relative' }}>
+                                            <div style={{ position: 'absolute', right: '-8px', top: '-6px', width: '0', height: '0', borderTop: '7px solid transparent', borderBottom: '7px solid transparent', borderLeft: '12px solid #ef4444' }}></div>
+                                        </div>
+                                        <div style={{ fontSize: '0.75em', fontWeight: 'bold', color: '#ef4444' }}>90% Energy</div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.75em', color: '#64748b' }}>
-                            <strong>Why Energy Decreases:</strong> Each level uses ~90% of energy for metabolism, movement, heat production, and reproduction. Only ~10% becomes biomass available to next level.
+
+                        {/* WHY DECREASES BOX */}
+                        <div style={{ marginTop: '40px', width: '100%', maxWidth: '800px', backgroundColor: '#fffbeb', border: '2px solid #fcd34d', borderRadius: '12px', padding: '20px', textAlign: 'center' }}>
+                            <div style={{ fontSize: '1em', fontWeight: 'bold', color: '#92400e', marginBottom: '5px' }}>Why Energy Decreases:</div>
+                            <div style={{ fontSize: '0.9em', color: '#92400e', lineHeight: '1.5' }}>
+                                Each level uses ~90% of energy for metabolism, movement, heat production, and reproduction. Only ~10% becomes biomass available to next level.
+                            </div>
                         </div>
                     </div>
-                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', margin: '0 10px' }}>
+
+                    <p style={{ fontSize: '0.95em', fontStyle: 'italic', color: '#64748b', textAlign: 'center', marginTop: '40px', borderTop: '1px solid #e2e8f0', paddingTop: '20px' }}>
                         Figure 1: Energy pyramid showing dramatic energy loss at each trophic level, explaining why food chains rarely exceed 4-5 levels.
                     </p>
                 </div>
@@ -411,28 +460,180 @@ const Module1_5: React.FC = () => {
                 <h4>Food Webs: The Real Picture</h4>
                 <p>A <strong>food web</strong> is an interconnected network of multiple food chains. It shows all feeding relationships and reveals redundancy (multiple pathways), Keystone species, and ecosystem vulnerability/stability.</p>
 
-                <div style={{ backgroundColor: '#f9fafb', padding: '30px', borderRadius: '16px', border: '1px solid #f1f5f9', margin: '40px 0' }}>
-                    <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-                        <div style={{ fontWeight: 'bold', marginBottom: '30px' }}>Simplified Food Web Interaction Map</div>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', fontSize: '0.75em' }}>
-                            <div style={{ gridColumn: 'span 2', padding: '10px', backgroundColor: '#f0fdf4', borderRadius: '8px' }}>Sun → Grass, Trees</div>
-                            <div style={{ gridColumn: 'span 2', padding: '10px', backgroundColor: '#fef2f2', borderRadius: '8px' }}>Rabbits, Mice, Deer</div>
-
-                            <div style={{ gridColumn: 'span 4', height: '20px', position: 'relative' }}>
-                                <div style={{ position: 'absolute', top: 0, left: '20%', right: '20%', bottom: 0, border: '1px dashed #cbd5e1', borderBottom: 0 }}></div>
-                            </div>
-
-                            <div style={{ padding: '10px', backgroundColor: '#fff1f2', borderRadius: '8px' }}>Frog</div>
-                            <div style={{ padding: '10px', backgroundColor: '#fff1f2', borderRadius: '8px' }}>Snake</div>
-                            <div style={{ padding: '10px', backgroundColor: '#fff1f2', borderRadius: '8px' }}>Fox</div>
-                            <div style={{ padding: '10px', backgroundColor: '#fff1f2', borderRadius: '8px' }}>Hawk</div>
-
-                            <div style={{ gridColumn: 'span 4', marginTop: '20px', padding: '15px', backgroundColor: '#f5f3ff', borderRadius: '8px', border: '1px solid #ddd6fe' }}>
-                                <div style={{ fontWeight: 'bold', color: '#6b21a8' }}>DECOMPOSERS & SOIL NUTRIENTS</div>
-                            </div>
-                        </div>
+                <div style={{ backgroundColor: '#f8fafc', padding: '60px 20px', borderRadius: '32px', border: '1px solid #e2e8f0', margin: '40px 0', boxShadow: '0 4px 20px -5px rgba(0,0,0,0.05)' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                        <h3 style={{ color: '#1e293b', fontSize: '1.6em', fontWeight: 'bold' }}>The Food Web: Interconnected Life</h3>
                     </div>
-                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', margin: '20px 10px 0' }}>
+
+                    <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto', overflow: 'hidden' }}>
+                        <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: 'auto' }}>
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orientation="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#334155" />
+                                </marker>
+                            </defs>
+
+                            {/* --- CONNECTIONS (Lines Behind Nodes) --- */}
+                            <g fill="none" stroke="#334155" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6">
+                                {/* Flow from Sun */}
+                                <path d="M 600,50 Q 550,75 500,100" /> {/* Sun -> Grass */}
+                                <path d="M 620,65 Q 630,350 600,660" /> {/* Sun -> Shrubs */}
+                                <path d="M 625,50 Q 850,100 850,660" /> {/* Sun -> Trees */}
+
+                                {/* Flow from Grass */}
+                                <path d="M 500,135 L 500,175" /> {/* Grass -> Grasshopper */}
+                                <path d="M 470,115 Q 350,120 280,240" /> {/* Grass -> Mouse */}
+                                <path d="M 470,125 Q 350,150 350,735" /> {/* Grass -> Rabbit */}
+                                <path d="M 530,125 Q 750,150 750,735" /> {/* Grass -> Deer */}
+                                <path d="M 500,135 Q 560,300 500,490" /> {/* Grass -> Decomposers */}
+
+                                {/* Flow from Grasshopper */}
+                                <path d="M 500,215 Q 450,225 420,245" /> {/* Grasshopper -> Frog */}
+                                <path d="M 500,215 L 502,305" /> {/* Grasshopper -> Bird */}
+                                <path d="M 530,200 Q 570,350 530,495" /> {/* Grasshopper -> Decomposers */}
+
+                                {/* Flow from Mouse */}
+                                <path d="M 280,275 Q 300,310 320,345" /> {/* Mouse -> Snake */}
+                                <path d="M 250,270 Q 150,450 250,805" /> {/* Mouse -> Owl */}
+                                <path d="M 265,275 Q 230,350 300,435" /> {/* Mouse -> Hawk */}
+                                <path d="M 280,275 Q 350,400 480,505" /> {/* Mouse -> Decomposers */}
+
+                                {/* Flow from Frog */}
+                                <path d="M 400,275 Q 350,300 330,345" /> {/* Frog -> Snake */}
+                                <path d="M 415,275 Q 450,290 490,310" /> {/* Frog -> Bird */}
+                                <path d="M 415,275 Q 450,400 485,495" /> {/* Frog -> Decomposers */}
+
+                                {/* Flow from Bird */}
+                                <path d="M 500,350 Q 400,380 335,435" /> {/* Bird -> Hawk */}
+                                <path d="M 500,350 L 500,490" /> {/* Bird -> Decomposers */}
+
+                                {/* Flow from Snake */}
+                                <path d="M 320,385 L 320,430" /> {/* Snake -> Hawk */}
+                                <path d="M 335,380 Q 400,420 480,495" /> {/* Snake -> Decomposers */}
+
+                                {/* Flow from Hawk */}
+                                <path d="M 350,455 Q 440,470 475,495" /> {/* Hawk -> Decomposers */}
+
+                                {/* Flow from Shrubs */}
+                                <path d="M 630,695 Q 700,720 735,740" /> {/* Shrubs -> Deer */}
+                                <path d="M 600,715 Q 500,730 385,745" /> {/* Shrubs -> Rabbit */}
+                                <path d="M 600,690 Q 550,600 520,545" /> {/* Shrubs -> Decomposers */}
+
+                                {/* Flow from Trees */}
+                                <path d="M 850,715 Q 820,740 785,745" /> {/* Trees -> Deer */}
+                                <path d="M 850,690 Q 750,550 535,525" /> {/* Trees -> Decomposers */}
+
+                                {/* Flow from Soil Nutrients */}
+                                <path d="M 780,625 Q 840,640 850,665" /> {/* Soil Nutrients -> Trees */}
+
+                                {/* Flow from Rabbit */}
+                                <path d="M 370,775 Q 430,795 470,810" /> {/* Rabbit -> Fox */}
+                                <path d="M 350,775 Q 280,750 310,465" /> {/* Rabbit -> Hawk */}
+                                <path d="M 330,760 Q 300,770 270,810" /> {/* Rabbit -> Owl */}
+                                <path d="M 365,740 Q 420,620 480,540" /> {/* Rabbit -> Decomposers */}
+
+                                {/* Flow from Deer */}
+                                <path d="M 750,785 Q 650,850 580,900" /> {/* Deer -> Wolf */}
+                                <path d="M 750,760 Q 650,650 535,545" /> {/* Deer -> Decomposers */}
+
+                                {/* Flow from Fox */}
+                                <path d="M 500,845 L 535,895" /> {/* Fox -> Wolf */}
+                                <path d="M 480,820 Q 380,680 340,465" /> {/* Fox -> Hawk */}
+                                <path d="M 500,815 Q 510,680 500,545" /> {/* Fox -> Decomposers */}
+
+                                {/* Flow from Wolf */}
+                                <path d="M 550,900 Q 520,750 505,545" /> {/* Wolf -> Decomposers */}
+                                <path d="M 230,810 Q 200,650 475,520" /> {/* Owl -> Decomposers */}
+
+                                {/* From Decomposers back */}
+                                <path d="M 535,520 Q 700,540 740,580" /> {/* Decomposers -> Soil Nutrients */}
+                            </g>
+
+                            {/* --- NODES (Rectangles with Text) --- */}
+
+                            {/* Apex (Red) */}
+                            <g transform="translate(530,900)">
+                                <rect x="0" y="0" width="60" height="35" rx="4" fill="#ef4444" stroke="#334155" strokeWidth="1" />
+                                <text x="30" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Wolf</text>
+                            </g>
+
+                            {/* High Consumers (Red/Dark Orange) */}
+                            <g transform="translate(300,440)">
+                                <rect x="0" y="0" width="60" height="35" rx="4" fill="#ef4444" stroke="#334155" strokeWidth="1" />
+                                <text x="30" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Hawk</text>
+                            </g>
+                            <g transform="translate(220,820)">
+                                <rect x="0" y="0" width="60" height="35" rx="4" fill="#f97316" stroke="#334155" strokeWidth="1" />
+                                <text x="30" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Owl</text>
+                            </g>
+                            <g transform="translate(470,823)">
+                                <rect x="0" y="0" width="60" height="35" rx="4" fill="#f97316" stroke="#334155" strokeWidth="1" />
+                                <text x="30" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Fox</text>
+                            </g>
+                            <g transform="translate(300,350)">
+                                <rect x="0" y="0" width="65" height="37" rx="4" fill="#f97316" stroke="#334155" strokeWidth="1" />
+                                <text x="32.5" y="23" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Snake</text>
+                            </g>
+
+                            {/* Decomposers (Brown) */}
+                            <g transform="translate(450,495)">
+                                <rect x="0" y="0" width="120" height="40" rx="6" fill="#78350f" stroke="#334155" strokeWidth="2" />
+                                <text x="60" y="25" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Decomposers</text>
+                            </g>
+
+                            {/* Secondary/Primary Consumers (Orange) */}
+                            <g transform="translate(480,310)">
+                                <rect x="0" y="0" width="55" height="35" rx="4" fill="#f97316" stroke="#334155" strokeWidth="1" />
+                                <text x="27.5" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Bird</text>
+                            </g>
+                            <g transform="translate(390,250)">
+                                <rect x="0" y="0" width="55" height="35" rx="4" fill="#f97316" stroke="#334155" strokeWidth="1" />
+                                <text x="27.5" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Frog</text>
+                            </g>
+                            <g transform="translate(250,250)">
+                                <rect x="0" y="0" width="65" height="35" rx="4" fill="#f97316" stroke="#334155" strokeWidth="1" />
+                                <text x="32.5" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Mouse</text>
+                            </g>
+                            <g transform="translate(325,745)">
+                                <rect x="0" y="0" width="70" height="35" rx="4" fill="#f97316" stroke="#334155" strokeWidth="1" />
+                                <text x="35" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Rabbit</text>
+                            </g>
+                            <g transform="translate(730,750)">
+                                <rect x="0" y="0" width="60" height="35" rx="4" fill="#f97316" stroke="#334155" strokeWidth="1" />
+                                <text x="30" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Deer</text>
+                            </g>
+                            <g transform="translate(445,183)">
+                                <rect x="0" y="0" width="110" height="35" rx="4" fill="#f97316" stroke="#334155" strokeWidth="1" />
+                                <text x="55" y="22" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Grasshopper</text>
+                            </g>
+                            <g transform="translate(720,590)">
+                                <rect x="0" y="0" width="115" height="40" rx="4" fill="#c2410c" stroke="#334155" strokeWidth="1" />
+                                <text x="57.5" y="25" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Soil Nutrients</text>
+                            </g>
+
+                            {/* Producers (Green) */}
+                            <g transform="translate(470,100)">
+                                <rect x="0" y="0" width="70" height="40" rx="6" fill="#10b981" stroke="#334155" strokeWidth="1" />
+                                <text x="35" y="25" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Grass</text>
+                            </g>
+                            <g transform="translate(570,670)">
+                                <rect x="0" y="0" width="75" height="40" rx="6" fill="#10b981" stroke="#334155" strokeWidth="1" />
+                                <text x="37.5" y="25" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Shrubs</text>
+                            </g>
+                            <g transform="translate(830,670)">
+                                <rect x="0" y="0" width="65" height="40" rx="6" fill="#10b981" stroke="#334155" strokeWidth="1" />
+                                <text x="32.5" y="25" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Trees</text>
+                            </g>
+
+                            {/* Sun (Yellow) */}
+                            <g transform="translate(585,25)">
+                                <rect x="0" y="0" width="55" height="35" rx="6" fill="#fcd34d" stroke="#334155" strokeWidth="2" />
+                                <text x="27.5" y="22" textAnchor="middle" fill="#92400e" fontSize="14" fontWeight="900">Sun</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <p style={{ fontSize: '0.95em', fontStyle: 'italic', color: '#64748b', textAlign: 'center', marginTop: '40px', borderTop: '1px solid #e2e8f0', paddingTop: '20px' }}>
                         Figure 2: Food web showing multiple interconnected feeding relationships and the return of nutrients through decomposers.
                     </p>
                 </div>
@@ -485,112 +686,317 @@ const Module1_5: React.FC = () => {
 
                 <h3>🌱 Part 4: Ecological Succession - Ecosystem Change Over Time</h3>
                 <h4>What is Ecological Succession?</h4>
-                <p>Ecological succession is the gradual, predictable change in species composition and ecosystem structure over time. It's ecosystem development—from simple communities to complex, stable climax communities. Early colonizers modify conditions (soil, light), making habitat suitable for later species.</p>
+                <p>Ecological succession is the gradual, predictable change in species composition and ecosystem structure over time in a given area. Think of it as ecosystem development—from simple communities with few species to complex, stable communities with high biodiversity. Succession demonstrates that ecosystems are dynamic, not static, and that communities replace one another in relatively predictable patterns.</p>
 
-                <div style={{ backgroundColor: '#f8fafc', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', margin: '25px 0' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
-                        <p style={{ margin: 0, fontSize: '0.85em' }}><strong>Pioneer Species:</strong> First organisms (lichens, mosses, grasses).</p>
-                        <p style={{ margin: 0, fontSize: '0.85em' }}><strong>Sere:</strong> Complete sequence from pioneer to climax.</p>
-                        <p style={{ margin: 0, fontSize: '0.85em' }}><strong>Climax Community:</strong> Final, stable, self-perpetuating equilibrium community.</p>
+                <p>The process was first formally described by ecologist Henry Chandler Cowles in 1899, studying sand dune formation along Lake Michigan, and later refined by Frederic Clements who developed the climax community concept. Succession occurs because early colonizers modify environmental conditions (soil, light, humidity, nutrients), making the habitat more suitable for other species that eventually outcompete the pioneers.</p>
+
+                <div style={{ backgroundColor: '#f0fdf4', padding: '25px', borderRadius: '16px', border: '1px solid #dcfce7', margin: '30px 0' }}>
+                    <h4 style={{ margin: '0 0 15px 0', color: '#166534', fontSize: '0.9em', textTransform: 'uppercase', letterSpacing: '0.05em' }}>📌 Key Succession Terms:</h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+                        <div>
+                            <strong style={{ color: '#065f46', display: 'block' }}>Pioneer Species:</strong>
+                            <span style={{ fontSize: '0.85em', color: '#15803d' }}>First organisms to colonize barren or disturbed areas (lichens, mosses, grasses).</span>
+                        </div>
+                        <div>
+                            <strong style={{ color: '#065f46', display: 'block' }}>Sere:</strong>
+                            <span style={{ fontSize: '0.85em', color: '#15803d' }}>The complete sequence of communities from pioneer to climax.</span>
+                        </div>
+                        <div>
+                            <strong style={{ color: '#065f46', display: 'block' }}>Seral Stages:</strong>
+                            <span style={{ fontSize: '0.85em', color: '#15803d' }}>Intermediate communities in the succession sequence.</span>
+                        </div>
+                        <div>
+                            <strong style={{ color: '#065f46', display: 'block' }}>Climax Community:</strong>
+                            <span style={{ fontSize: '0.85em', color: '#15803d' }}>The final, stable, self-perpetuating community at equilibrium.</span>
+                        </div>
                     </div>
                 </div>
 
-                <div style={{ overflowX: 'auto', margin: '30px 0' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85em' }}>
+                <div style={{ overflowX: 'auto', margin: '40px 0', borderRadius: '16px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9em' }}>
                         <thead>
                             <tr style={{ backgroundColor: '#f8fafc', borderBottom: '2px solid #e2e8f0' }}>
-                                <th style={{ padding: '10px', textAlign: 'left' }}>Characteristic</th>
-                                <th style={{ padding: '10px', textAlign: 'left' }}>Early (Pioneer)</th>
-                                <th style={{ padding: '10px', textAlign: 'left' }}>Late (Climax)</th>
+                                <th style={{ padding: '15px', textAlign: 'left', color: '#475569' }}>Characteristic</th>
+                                <th style={{ padding: '15px', textAlign: 'left', color: '#059669' }}>Early (Pioneer)</th>
+                                <th style={{ padding: '15px', textAlign: 'left', color: '#2563eb' }}>Mid-Succession</th>
+                                <th style={{ padding: '15px', textAlign: 'left', color: '#1e293b' }}>Late (Climax)</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
-                                <td>Diversity</td>
-                                <td>Low</td>
-                                <td>High / Maximum</td>
-                            </tr>
-                            <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
-                                <td>Biomass</td>
-                                <td>Very Low</td>
-                                <td>Maximum accumulation</td>
-                            </tr>
-                            <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
-                                <td>Nutrient Cycle</td>
-                                <td>Open (nutrient loss)</td>
-                                <td>Closed (efficient recycling)</td>
-                            </tr>
-                            <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
-                                <td>Stability</td>
-                                <td>Low (vulnerable)</td>
-                                <td>High (resistant)</td>
-                            </tr>
+                            {[
+                                ['Species Diversity', 'Low - few hardy species', 'Increasing rapidly', 'High - maximum diversity'],
+                                ['Dominant Species', 'Grasses, lichens, mosses', 'Shrubs, small trees', 'Large trees, shade-tolerant'],
+                                ['Biomass', 'Very low', 'Increasing', 'Maximum accumulation'],
+                                ['Productivity (NPP)', 'Moderate to high (r-selected)', 'Very high (peak)', 'Lower (maintenance mode)'],
+                                ['Soil Development', 'Minimal - rocky, poor', 'Increasing organic matter', 'Deep, nutrient-rich'],
+                                ['Microclimate', 'Exposed, extreme temps', 'Moderating', 'Stable, buffered, high humidity'],
+                                ['Food Webs', 'Simple, few levels', 'Increasing complexity', 'Complex interconnections'],
+                                ['Nutrient Cycling', 'Open cycle, high loss', 'Becoming more closed', 'Closed cycle, efficient'],
+                                ['Stability', 'Low - vulnerable', 'Increasing', 'High - resistant/resilient'],
+                                ['Life Strategies', 'r-selected (fast/high repro)', 'Mixed strategies', 'K-selected (slow/competitive)']
+                            ].map((row, i) => (
+                                <tr key={i} style={{ borderBottom: '1px solid #f1f5f9', backgroundColor: i % 2 === 0 ? 'white' : '#fcfcfc' }}>
+                                    <td style={{ padding: '15px', fontWeight: 'bold', color: '#64748b' }}>{row[0]}</td>
+                                    <td style={{ padding: '15px', color: '#065f46' }}>{row[1]}</td>
+                                    <td style={{ padding: '15px', color: '#1e40af' }}>{row[2]}</td>
+                                    <td style={{ padding: '15px', color: '#1e293b' }}>{row[3]}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '25px', margin: '30px 0' }}>
-                    <div style={{ padding: '25px', backgroundColor: '#f1f5f9', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-                        <h4 style={{ margin: '0 0 10px 0', color: '#334155' }}>🌋 Primary Succession</h4>
-                        <p style={{ fontSize: '0.85em', marginBottom: '10px' }}>Starts from <strong>bare rock</strong> (lava, glacial retreat) devoid of life and soil. Timeline is very slow (centuries).</p>
-                        <p style={{ fontSize: '0.85em' }}><strong>Example:</strong> New volcanic islands or retreating glaciers.</p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px', margin: '40px 0' }}>
+                    <div style={{ backgroundColor: '#fef2f2', padding: '30px', borderRadius: '24px', border: '1px solid #fee2e2', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.05)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+                            <div style={{ fontSize: '2.5em' }}>🌋</div>
+                            <h4 style={{ color: '#991b1b', margin: 0 }}>Primary Succession: Starting from Scratch</h4>
+                        </div>
+                        <p style={{ fontSize: '0.95em', color: '#7f1d1d', lineHeight: '1.6' }}><strong>Definition:</strong> Succession that occurs in an area previously devoid of life, where no soil exists initially.</p>
+                        <ul style={{ fontSize: '0.9em', color: '#7f1d1d', paddingLeft: '20px', lineHeight: '1.7' }}>
+                            <li><strong>Starting Conditions:</strong> Bare rock, lava flows, sand dunes, glacial till.</li>
+                            <li><strong>Timeline:</strong> Very slow—hundreds to thousands of years.</li>
+                            <li><strong>First Colonizers:</strong> Lichens and mosses (survive on rock).</li>
+                            <li><strong>Examples:</strong> Surtsey Island (formed 1963), Glacier Bay retreat, new lava flows.</li>
+                        </ul>
                     </div>
-                    <div style={{ padding: '25px', backgroundColor: '#f1f5f9', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-                        <h4 style={{ margin: '0 0 10px 0', color: '#334155' }}>🔥 Secondary Succession</h4>
-                        <p style={{ fontSize: '0.85em', marginBottom: '10px' }}>Starts where <strong>soil remains</strong> after disturbance (fire, abandoned field, hurricane). Timeline is much faster.</p>
-                        <p style={{ fontSize: '0.85em' }}><strong>Example:</strong> Yellowstone regrowth after 1988 wildfire.</p>
+
+                    <div style={{ backgroundColor: '#fff7ed', padding: '30px', borderRadius: '24px', border: '1px solid #ffedd5', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.05)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+                            <div style={{ fontSize: '2.5em' }}>🔥</div>
+                            <h4 style={{ color: '#9a3412', margin: 0 }}>Secondary Succession: Restarting from Disturbance</h4>
+                        </div>
+                        <p style={{ fontSize: '0.95em', color: '#7c2d12', lineHeight: '1.6' }}><strong>Definition:</strong> Succession that occurs in an area where an ecosystem existed previously but was disturbed, with soil remaining.</p>
+                        <ul style={{ fontSize: '0.9em', color: '#7c2d12', paddingLeft: '20px', lineHeight: '1.7' }}>
+                            <li><strong>Starting Conditions:</strong> Soil present, seed bank intact, root systems may survive.</li>
+                            <li><strong>Timeline:</strong> Faster—tens to hundreds of years.</li>
+                            <li><strong>First Colonizers:</strong> Grasses, weeds, pioneer tree species.</li>
+                            <li><strong>Examples:</strong> Yellowstone after wildfire, abandoned farms, recovery after storms.</li>
+                        </ul>
                     </div>
                 </div>
 
-                <h4>Stages of Primary Succession (Terrestrial)</h4>
-                <div style={{ marginLeft: '20px' }}>
-                    <p style={{ marginBottom: '10px' }}><strong>Stage 1: Pioneer Community (0-50 yrs)</strong> - Lichens/mosses weather rock, creating tiny soil layer. Acid secretion and dust trapping.</p>
-                    <p style={{ marginBottom: '10px' }}><strong>Stage 2: Herbaceous Stage (50-150 yrs)</strong> - Grasses, herbs. Root penetration further breaks rock. Dead matter increases organic soil.</p>
-                    <p style={{ marginBottom: '10px' }}><strong>Stage 3: Shrub Stage (150-300 yrs)</strong> - Woody plants, nitrogen-fixers (alders). Microclimate begins moderating.</p>
-                    <p style={{ marginBottom: '10px' }}><strong>Stage 4: Young Forest (300-500 yrs)</strong> - Fast-growing, shade-intolerant trees (aspen, birch, pine). Canopy closure starts.</p>
-                    <p style={{ marginBottom: '10px' }}><strong>Stage 5: Climax Forest (500-1000+ yrs)</strong> - Shade-tolerant species (Oak, Maple). Birth rate = death rate. Maximum complexity.</p>
+                <div style={{ backgroundColor: '#f8fafc', padding: '40px', borderRadius: '32px', border: '1px solid #e2e8f0', margin: '40px 0' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                        <h4 style={{ color: '#1e293b', fontSize: '1.4em', fontWeight: '800', margin: 0 }}>Stages of Primary Succession (Terrestrial)</h4>
+                        <p style={{ color: '#64748b', fontSize: '0.95em', marginTop: '5px' }}>From bare rock to a complex climax forest</p>
+                    </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                        {[
+                            {
+                                stage: '1', title: 'Pioneer Community', time: '0-50 years',
+                                organisms: 'Lichens (symbiotic fungi + algae/cyanobacteria) and mosses',
+                                process: 'Lichens secrete acids that weather rock, creating tiny amounts of soil. They fix nitrogen from air. Mosses trap wind-blown dust and organic matter.',
+                                change: 'Minimal soil development, some moisture retention begins.',
+                                examples: 'Crustose lichens (Rhizocarpon), moss (Polytrichum)',
+                                bg: '#f1f5f9', color: '#475569', icon: '🌑'
+                            },
+                            {
+                                stage: '2', title: 'Herbaceous Stage', time: '50-150 years',
+                                organisms: 'Annual and perennial grasses, herbs, small flowering plants',
+                                process: 'Pioneer lichens/mosses have created thin soil layer. Grasses send roots deeper, further breaking rock. Dead plant material increases soil organic matter.',
+                                change: 'Soil depth increases to 5-15 cm, nutrients accumulate, water retention improves.',
+                                examples: 'Grasses (Festuca, Agrostis), fireweed (Epilobium), sedges',
+                                bg: '#f0fdf4', color: '#166534', icon: '🌱'
+                            },
+                            {
+                                stage: '3', title: 'Shrub Stage', time: '150-300 years',
+                                organisms: 'Shrubs, small bushes, nitrogen-fixing plants (legumes, alders)',
+                                process: 'Woody plants establish. Nitrogen-fixing species dramatically increase soil nitrogen. Shade begins to affect light-demanding pioneers.',
+                                change: 'Soil depth 15-30 cm, nutrient levels increase significantly, microclimate moderation begins.',
+                                examples: 'Alders (Alnus), willows (Salix), hawthorn, juniper',
+                                bg: '#dcfce7', color: '#14532d', icon: '🌿'
+                            },
+                            {
+                                stage: '4', title: 'Young Forest Stage', time: '300-500 years',
+                                organisms: 'Fast-growing, shade-intolerant pioneer trees',
+                                process: 'Pioneer trees (aspens, birches, pines) dominate. They grow quickly, outcompeting shrubs for light. Forest canopy begins to close.',
+                                change: 'Deep soil (30-60 cm), shaded understory, stable humidity, complex food webs developing.',
+                                examples: 'Aspens (Populus tremuloides), birches (Betula), pines (Pinus), cherry trees',
+                                bg: '#bbf7d0', color: '#166534', icon: '🌲'
+                            },
+                            {
+                                stage: '5', title: 'Mature/Climax Forest', time: '500-1000+ years',
+                                organisms: 'Shade-tolerant climax species, maximum biodiversity',
+                                process: 'Shade-tolerant species (oaks, maples, beeches) grow slowly under canopy. As pioneer trees die, climax species replace them. Self-perpetuating community established.',
+                                change: 'Deep, nutrient-rich soil (60-100+ cm), stable microclimate, closed nutrient cycles, maximum structural complexity.',
+                                examples: 'Oaks (Quercus), maples (Acer), beeches (Fagus), hemlocks (Tsuga)',
+                                bg: '#86efac', color: '#064e3b', icon: '🌳'
+                            }
+                        ].map((s, i) => (
+                            <div key={i} style={{ display: 'flex', gap: '25px', backgroundColor: s.bg, padding: '30px', borderRadius: '24px', border: '1px solid rgba(0,0,0,0.05)', position: 'relative', overflow: 'hidden' }}>
+                                <div style={{ position: 'absolute', top: '-10px', right: '-10px', fontSize: '4em', opacity: 0.05 }}>{s.icon}</div>
+                                <div style={{ backgroundColor: 'white', color: s.color, width: '45px', height: '45px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', flexShrink: 0, boxShadow: '0 4px 6px rgba(0,0,0,0.05)', border: `2px solid ${s.color}20` }}>{s.stage}</div>
+                                <div style={{ flex: 1 }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', borderBottom: `1px solid ${s.color}20`, paddingBottom: '8px' }}>
+                                        <h5 style={{ margin: 0, color: s.color, fontSize: '1.2em', fontWeight: '800' }}>{s.title}</h5>
+                                        <span style={{ fontSize: '0.85em', fontWeight: 'bold', backgroundColor: 'white', padding: '4px 12px', borderRadius: '20px', color: s.color, boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>{s.time}</span>
+                                    </div>
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
+                                        <p style={{ fontSize: '0.95em', margin: 0, color: s.color, lineHeight: '1.6' }}><strong>Organisms:</strong> {s.organisms}</p>
+                                        <p style={{ fontSize: '0.9em', margin: 0, color: s.color, lineHeight: '1.6', opacity: 0.9 }}><strong>Process:</strong> {s.process}</p>
+                                        <p style={{ fontSize: '0.9em', margin: 0, color: s.color, lineHeight: '1.6', opacity: 0.9 }}><strong>Environmental Change:</strong> {s.change}</p>
+                                        <div style={{ marginTop: '5px', padding: '10px 15px', backgroundColor: 'rgba(255,255,255,0.4)', borderRadius: '12px', border: `1px solid ${s.color}15` }}>
+                                            <p style={{ fontSize: '0.85em', fontWeight: 'bold', margin: '0 0 4px 0', color: s.color, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Example Species:</p>
+                                            <p style={{ fontSize: '0.9em', margin: 0, color: s.color, fontStyle: 'italic' }}>{s.examples}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
-                <div style={{ backgroundColor: '#f9fafb', padding: '30px', borderRadius: '16px', border: '1px solid #f1f5f9', margin: '40px 0' }}>
-                    <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-                        <div style={{ fontWeight: 'bold', marginBottom: '30px' }}>PRIMARY SUCCESSION TIMELINE</div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', height: '100px', gap: '5px' }}>
-                            <div style={{ backgroundColor: '#94a3b8', width: '15%', height: '10%' }}></div>
-                            <div style={{ backgroundColor: '#4ade80', width: '15%', height: '30%' }}></div>
-                            <div style={{ backgroundColor: '#22c55e', width: '15%', height: '50%' }}></div>
-                            <div style={{ backgroundColor: '#16a34a', width: '15%', height: '70%' }}></div>
-                            <div style={{ backgroundColor: '#15803d', width: '15%', height: '85%' }}></div>
-                            <div style={{ backgroundColor: '#14532d', width: '15%', height: '100%' }}></div>
+                <div style={{ backgroundColor: '#f8fafc', padding: '60px 20px', borderRadius: '40px', border: '1px solid #e2e8f0', margin: '60px 0', boxShadow: '0 10px 30px -5px rgba(0,0,0,0.05)' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                        <div style={{ fontSize: '0.85em', fontWeight: 'bold', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '10px' }}>Succession Timeline Visualization</div>
+                        <h4 style={{ color: '#1e293b', fontSize: '1.6em', fontWeight: '900', margin: 0 }}>PRIMARY SUCCESSION STAGES</h4>
+                    </div>
+
+                    <div style={{ width: '100%', maxWidth: '950px', margin: '0 auto', position: 'relative', padding: '40px 20px 80px 20px' }}>
+                        {/* THE BOTTOM LINE WITH ARROW */}
+                        <div style={{ position: 'absolute', bottom: '100px', left: '20px', right: '20px', height: '4px', backgroundColor: '#334155', borderRadius: '2px' }}>
+                            <div style={{ position: 'absolute', right: '-10px', top: '-8px', width: '0', height: '0', borderTop: '10px solid transparent', borderBottom: '10px solid transparent', borderLeft: '20px solid #334155' }}></div>
+                            <div style={{ position: 'absolute', right: '-60px', top: '-10px', fontSize: '0.9em', fontWeight: 'bold', color: '#334155' }}>Time</div>
                         </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', marginTop: '10px', fontSize: '0.6em', color: '#64748b' }}>
-                            <span>Bare Rock</span>
-                            <span>Lichens</span>
-                            <span>Grasses</span>
-                            <span>Shrubs</span>
-                            <span>Pioneers</span>
-                            <span>Climax</span>
+
+                        {/* STAGES SHAPES ROW */}
+                        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '15px', position: 'relative', zIndex: 1 }}>
+
+                            {/* BARE ROCK */}
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ width: '100%', maxWidth: '120px', height: '80px', backgroundColor: '#94a3b8', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: 'white', textAlign: 'center', padding: '10px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', marginBottom: '35px' }}>
+                                    <div style={{ fontWeight: 'bold', fontSize: '0.9em' }}>Bare Rock</div>
+                                    <div style={{ fontSize: '0.7em', opacity: 0.9 }}>No vegetation</div>
+                                </div>
+                                <div style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '0.75em', fontWeight: 'bold', color: '#64748b' }}>Year 0</div>
+                                </div>
+                            </div>
+
+                            {/* LICHENS */}
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ width: '100px', height: '100px', backgroundColor: '#10b981', borderRadius: '50%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: 'white', textAlign: 'center', padding: '10px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', marginBottom: '35px' }}>
+                                    <div style={{ fontWeight: 'bold', fontSize: '0.9em' }}>Lichens</div>
+                                    <div style={{ fontSize: '0.7em', opacity: 0.9 }}>& Mosses</div>
+                                </div>
+                                <div style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '0.75em', fontWeight: 'bold', color: '#10b981' }}>10-50 yrs</div>
+                                </div>
+                            </div>
+
+                            {/* GRASSES */}
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{
+                                    width: '120px', height: '90px', backgroundColor: '#4ade80',
+                                    clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)',
+                                    display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: '#064e3b', textAlign: 'center', padding: '10px', marginBottom: '35px'
+                                }}>
+                                    <div style={{ fontWeight: 'bold', fontSize: '0.9em' }}>Grasses</div>
+                                    <div style={{ fontSize: '0.7em', opacity: 0.9 }}>& Herbs</div>
+                                </div>
+                                <div style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '0.75em', fontWeight: 'bold', color: '#22c55e' }}>50-150 yrs</div>
+                                </div>
+                            </div>
+
+                            {/* SHRUBS */}
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ width: '110px', height: '110px', backgroundColor: '#f59e0b', borderRadius: '15px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: 'white', textAlign: 'center', padding: '10px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', marginBottom: '35px' }}>
+                                    <div style={{ fontWeight: 'bold', fontSize: '0.9em' }}>Shrubs</div>
+                                    <div style={{ fontSize: '0.7em', opacity: 0.9 }}>Small Woody Plants</div>
+                                </div>
+                                <div style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '0.75em', fontWeight: 'bold', color: '#d97706' }}>150-300 yrs</div>
+                                </div>
+                            </div>
+
+                            {/* PIONEER TREES */}
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ display: 'flex', gap: '4px', alignItems: 'flex-end', marginBottom: '35px', height: '140px' }}>
+                                    <div style={{ width: '25px', height: '120px', backgroundColor: '#ea580c', borderRadius: '4px 4px 0 0' }}></div>
+                                    <div style={{ width: '25px', height: '140px', backgroundColor: '#ea580c', borderRadius: '4px 4px 0 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <div style={{ transform: 'rotate(-90deg)', whiteSpace: 'nowrap', fontSize: '0.85em', fontWeight: 'bold', color: 'white' }}>Pioneer Trees</div>
+                                    </div>
+                                    <div style={{ width: '25px', height: '130px', backgroundColor: '#ea580c', borderRadius: '4px 4px 0 0' }}></div>
+                                </div>
+                                <div style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '0.75em', fontWeight: 'bold', color: '#ea580c' }}>300-500 yrs</div>
+                                </div>
+                            </div>
+
+                            {/* CLIMAX FOREST */}
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ display: 'flex', gap: '4px', alignItems: 'flex-end', marginBottom: '35px', height: '160px' }}>
+                                    <div style={{ width: '25px', height: '140px', backgroundColor: '#15803d', borderRadius: '4px 4px 0 0' }}></div>
+                                    <div style={{ width: '25px', height: '160px', backgroundColor: '#15803d', borderRadius: '4px 4px 0 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <div style={{ transform: 'rotate(-90deg)', whiteSpace: 'nowrap', fontSize: '0.85em', fontWeight: 'bold', color: 'white' }}>Climax Forest</div>
+                                    </div>
+                                    <div style={{ width: '25px', height: '150px', backgroundColor: '#15803d', borderRadius: '4px 4px 0 0' }}></div>
+                                    <div style={{ width: '25px', height: '155px', backgroundColor: '#15803d', borderRadius: '4px 4px 0 0' }}></div>
+                                </div>
+                                <div style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '0.75em', fontWeight: 'bold', color: '#14532d' }}>500-1000+ yrs</div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', margin: '20px 10px 0' }}>
-                        Figure 3: Visual representation of primary succession from bare rock to climax forest over centuries.
+
+                    <div style={{ marginTop: '20px', padding: '20px', backgroundColor: '#f0fdf4', borderRadius: '15px', border: '1px solid #dcfce7', maxWidth: '800px', margin: '20px auto 0' }}>
+                        <p style={{ margin: 0, fontSize: '0.9em', color: '#166534', lineHeight: '1.5' }}>
+                            <strong>Climax Characteristics:</strong> Species composition remains stable unless disturbed; birth rate ≈ death rate; maximum species diversity; highly complex food webs; and extremely efficient, closed nutrient cycling.
+                        </p>
+                    </div>
+
+                    <p style={{ fontSize: '0.95em', fontStyle: 'italic', color: '#64748b', textAlign: 'center', marginTop: '40px', borderTop: '1px solid #e2e8f0', paddingTop: '20px' }}>
+                        Figure 3: Visual representation of primary succession from bare rock to climax forest over centuries
                     </p>
                 </div>
 
-                <div style={{ backgroundColor: '#f8fafc', padding: '25px', borderRadius: '12px', border: '1px solid #e2e8f0', margin: '30px 0' }}>
-                    <h4 style={{ margin: '0 0 15px 0' }}>Factors Affecting Succession:</h4>
-                    <p style={{ fontSize: '0.85em', marginBottom: '10px' }}><strong>🌍 Climate:</strong> Temperature/Percipitation determines forest vs grassland vs desert climaxes.</p>
-                    <p style={{ fontSize: '0.85em', marginBottom: '10px' }}><strong>🦌 Biological:</strong> Seed dispersal, competition, and mutualism (nitrogen-fixing).</p>
-                    <p style={{ fontSize: '0.85em' }}><strong>💥 Disturbance:</strong> Fire, floods, and human activities can reverse or interrupt succession.</p>
+                <div style={{ margin: '60px 0' }}>
+                    <h4 style={{ textAlign: 'center', color: '#1e293b', marginBottom: '30px' }}>Factors Affecting Succession</h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                        <div style={{ backgroundColor: '#f0f9ff', padding: '25px', borderRadius: '20px', border: '1px solid #e0f2fe' }}>
+                            <div style={{ fontSize: '2em', marginBottom: '10px' }}>🌍</div>
+                            <h5 style={{ color: '#0369a1', margin: '0 0 10px 0' }}>Climate & Geography</h5>
+                            <p style={{ fontSize: '0.85em', color: '#0c4a6e', lineHeight: '1.6', margin: 0 }}>Temperature and precipitation determine forest vs. grassland vs. desert climaxes. Slope and aspect also influence local moisture and heat.</p>
+                        </div>
+                        <div style={{ backgroundColor: '#f0fdf4', padding: '25px', borderRadius: '20px', border: '1px solid #dcfce7' }}>
+                            <div style={{ fontSize: '2em', marginBottom: '10px' }}>🦌</div>
+                            <h5 style={{ color: '#166534', margin: '0 0 10px 0' }}>Biological Factors</h5>
+                            <p style={{ fontSize: '0.85em', color: '#14532d', lineHeight: '1.6', margin: 0 }}>Seed dispersal methods, competition, and mutualistic relationships (like nitrogen-fixing bacteria) accelerate or redirect development.</p>
+                        </div>
+                        <div style={{ backgroundColor: '#fff1f2', padding: '25px', borderRadius: '20px', border: '1px solid #ffe4e6' }}>
+                            <div style={{ fontSize: '2em', marginBottom: '10px' }}>💥</div>
+                            <h5 style={{ color: '#9f1239', margin: '0 0 10px 0' }}>Disturbance Regime</h5>
+                            <p style={{ fontSize: '0.85em', color: '#881337', lineHeight: '1.6', margin: 0 }}>Fire, floods, and human activities can reset or interrupt succession, maintaining ecosystems in earlier, productive seral stages.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div style={{ backgroundColor: '#fff5f5', padding: '25px', borderRadius: '12px', border: '1px solid #fed7aa', margin: '30px 0' }}>
-                    <h4 style={{ margin: '0 0 15px 0', color: '#b91c1c' }}>⚠️ Common Misconceptions:</h4>
-                    <ul style={{ fontSize: '0.85em', color: '#991b1b', paddingLeft: '20px' }}>
-                        <li style={{ marginBottom: '8px' }}>"Climax communities are permanent": Reality is dynamic equilibrium.</li>
-                        <li style={{ marginBottom: '8px' }}>"Succession is always linear": Local factors create multiple paths.</li>
-                        <li style={{ marginBottom: '8px' }}>"Climax is the same everywhere": Climate and topography dictate local climaxes.</li>
-                        <li>"Primary succession always takes centuries": Varies by climate; 100-200 yrs in tropics.</li>
-                    </ul>
+                <div style={{ backgroundColor: '#fef2f2', padding: '35px', borderRadius: '32px', border: '2px solid #fee2e2', margin: '60px 0' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px' }}>
+                        <div style={{ fontSize: '2.5em' }}>⚠️</div>
+                        <h4 style={{ color: '#991b1b', margin: 0 }}>Common Misconceptions About Succession</h4>
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                        {[
+                            { m: '"Climax communities are permanent."', r: 'Climax is a dynamic equilibrium; disturbances create a patchwork of stages.' },
+                            { m: '"Succession is always linear."', r: 'While general patterns exist, local factors create variation and multiple pathways.' },
+                            { m: '"All ecosystems have the same climax."', r: 'Climate and topography determine multiple possible climax types (forest vs grassland).' },
+                            { m: '"Primary succession always takes centuries."', r: 'Timeline varies—warm/wet climates can develop forests in as little as 100-200 years.' }
+                        ].map((item, i) => (
+                            <div key={i} style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #fee2e2' }}>
+                                <div style={{ fontWeight: 'bold', fontSize: '0.85em', color: '#991b1b', textTransform: 'uppercase', marginBottom: '8px' }}>Misconception:</div>
+                                <div style={{ fontSize: '0.9em', color: '#7f1d1d', marginBottom: '12px', fontStyle: 'italic' }}>{item.m}</div>
+                                <div style={{ fontWeight: 'bold', fontSize: '0.85em', color: '#166534', textTransform: 'uppercase', marginBottom: '8px' }}>Reality:</div>
+                                <div style={{ fontSize: '0.9em', color: '#14532d' }}>{item.r}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 <div style={{ maxWidth: '640px', margin: '30px auto' }}>

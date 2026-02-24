@@ -111,7 +111,7 @@ const Module1_2: React.FC = () => {
                     No single expert possesses all this knowledge. Multidisciplinarity is not merely helpful—it's absolutely essential for environmental understanding and action.
                 </p>
 
-            
+
 
                 <div style={{ backgroundColor: '#f0f9ff', padding: '20px', borderRadius: '8px', borderLeft: '4px solid #0ea5e9', margin: '20px 0' }}>
                     <strong>Key Insight</strong>
@@ -149,24 +149,80 @@ const Module1_2: React.FC = () => {
                     Research transcends traditional disciplines entirely, including non-academic stakeholders (communities, policymakers, practitioners) as equal partners in knowledge creation. It emphasizes real-world problem-solving over disciplinary advancement.
                 </p>
 
-                <div style={{ backgroundColor: '#f9fafb', padding: '30px', borderRadius: '16px', border: '1px solid #f1f5f9', margin: '40px 0' }}>
-                    <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0', marginBottom: '20px' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', textAlign: 'center' }}>
-                            <div style={{ padding: '20px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                                <div style={{ fontSize: '0.7em', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#64748b', marginBottom: '10px' }}>Multidisciplinary</div>
-                                <p style={{ fontSize: '0.8em', color: '#334155', margin: 0 }}>Discipline A works independently; Discipline B works independently; Results combined later</p>
+                <div style={{ backgroundColor: '#f8fafc', padding: '40px', borderRadius: '24px', border: '1px solid #e2e8f0', margin: '40px 0', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '900px', margin: '0 auto' }}>
+
+                        {/* Top Node */}
+                        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '60px', position: 'relative' }}>
+                            <div style={{
+                                backgroundColor: '#ef4444',
+                                color: 'white',
+                                padding: '15px 30px',
+                                borderRadius: '12px',
+                                fontWeight: '800',
+                                boxShadow: '0 10px 15px -3px rgba(239, 68, 68, 0.3)',
+                                zIndex: 2,
+                                border: '3px solid white'
+                            }}>
+                                Environmental Problem
                             </div>
-                            <div style={{ padding: '20px', backgroundColor: '#f0f9ff', borderRadius: '8px', border: '1px solid #bae6fd' }}>
-                                <div style={{ fontSize: '0.7em', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#0369a1', marginBottom: '10px' }}>Interdisciplinary</div>
-                                <p style={{ fontSize: '0.8em', color: '#0c4a6e', margin: 0 }}>Disciplines collaborate; Methods integrated; Synthesized understanding</p>
+                            {/* Branching lines from top to middle */}
+                            <svg style={{ position: 'absolute', top: '100%', left: 0, width: '100%', height: '60px', zIndex: 1 }}>
+                                <path d="M 450 0 L 450 30 M 450 30 L 150 30 L 150 60 M 450 30 L 450 60 M 450 30 L 750 30 L 750 60" fill="none" stroke="#cbd5e1" strokeWidth="2" />
+                            </svg>
+                        </div>
+
+                        {/* Middle Level */}
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', marginBottom: '80px', position: 'relative' }}>
+
+                            {/* Multidisciplinary Column */}
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                                <div style={{ backgroundColor: '#3b82f6', color: 'white', padding: '10px 20px', borderRadius: '8px', fontWeight: '700', fontSize: '0.9em', marginBottom: '40px', boxShadow: '0 4px 6px -1px rgba(59, 130, 246, 0.2)', zIndex: 2 }}>
+                                    Multidisciplinary
+                                </div>
+                                <svg style={{ position: 'absolute', top: '40px', left: 0, width: '100%', height: '40px', zIndex: 1 }}>
+                                    <path d="M 140 0 L 140 20 M 140 20 L 40 20 L 40 40 M 140 20 L 140 40 M 140 20 L 240 20 L 240 40" fill="none" stroke="#cbd5e1" strokeDasharray="4" strokeWidth="1.5" />
+                                </svg>
+                                <div style={{ display: 'flex', gap: '10px', width: '100%', justifyContent: 'center' }}>
+                                    <div style={{ backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', padding: '10px', borderRadius: '6px', fontSize: '0.7em', width: '90px', textAlign: 'center', color: '#1e40af' }}>Discipline A works independently</div>
+                                    <div style={{ backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', padding: '10px', borderRadius: '6px', fontSize: '0.7em', width: '90px', textAlign: 'center', color: '#1e40af' }}>Discipline B works independently</div>
+                                    <div style={{ backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', padding: '10px', borderRadius: '6px', fontSize: '0.7em', width: '90px', textAlign: 'center', color: '#1e40af' }}>Results combined later</div>
+                                </div>
                             </div>
-                            <div style={{ padding: '20px', backgroundColor: '#f0fdf4', borderRadius: '8px', border: '1px solid #dcfce7' }}>
-                                <div style={{ fontSize: '0.7em', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#166534', marginBottom: '10px' }}>Transdisciplinary</div>
-                                <p style={{ fontSize: '0.8em', color: '#14532d', margin: 0 }}>Transcends disciplines; Includes stakeholders; Co-created solutions</p>
+
+                            {/* Interdisciplinary Column */}
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                                <div style={{ backgroundColor: '#10b981', color: 'white', padding: '10px 20px', borderRadius: '8px', fontWeight: '700', fontSize: '0.9em', marginBottom: '40px', boxShadow: '0 4px 6px -1px rgba(16, 185, 129, 0.2)', zIndex: 2 }}>
+                                    Interdisciplinary
+                                </div>
+                                <svg style={{ position: 'absolute', top: '40px', left: 0, width: '100%', height: '40px', zIndex: 1 }}>
+                                    <path d="M 140 0 L 140 20 M 140 20 L 40 20 L 40 40 M 140 20 L 140 40 M 140 20 L 240 20 L 240 40" fill="none" stroke="#cbd5e1" strokeWidth="1.5" />
+                                </svg>
+                                <div style={{ display: 'flex', gap: '10px', width: '100%', justifyContent: 'center' }}>
+                                    <div style={{ backgroundColor: '#ecfdf5', border: '1px solid #a7f3d0', padding: '10px', borderRadius: '6px', fontSize: '0.7em', width: '90px', textAlign: 'center', color: '#065f46' }}>Disciplines collaborate</div>
+                                    <div style={{ backgroundColor: '#ecfdf5', border: '1px solid #a7f3d0', padding: '10px', borderRadius: '6px', fontSize: '0.7em', width: '90px', textAlign: 'center', color: '#065f46' }}>Methods integrated</div>
+                                    <div style={{ backgroundColor: '#ecfdf5', border: '1px solid #a7f3d0', padding: '10px', borderRadius: '6px', fontSize: '0.7em', width: '90px', textAlign: 'center', color: '#065f46' }}>Synthesized understanding</div>
+                                </div>
                             </div>
+
+                            {/* Transdisciplinary Column */}
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                                <div style={{ backgroundColor: '#8b5cf6', color: 'white', padding: '10px 20px', borderRadius: '8px', fontWeight: '700', fontSize: '0.9em', marginBottom: '40px', boxShadow: '0 4px 6px -1px rgba(139, 92, 246, 0.2)', zIndex: 2 }}>
+                                    Transdisciplinary
+                                </div>
+                                <svg style={{ position: 'absolute', top: '40px', left: 0, width: '100%', height: '40px', zIndex: 1 }}>
+                                    <path d="M 140 0 L 140 20 M 140 20 L 40 20 L 40 40 M 140 20 L 140 40 M 140 20 L 240 20 L 240 40" fill="none" stroke="#cbd5e1" strokeWidth="2" />
+                                </svg>
+                                <div style={{ display: 'flex', gap: '10px', width: '100%', justifyContent: 'center' }}>
+                                    <div style={{ backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', padding: '10px', borderRadius: '6px', fontSize: '0.7em', width: '90px', textAlign: 'center', color: '#5b21b6' }}>Transcends disciplines</div>
+                                    <div style={{ backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', padding: '10px', borderRadius: '6px', fontSize: '0.7em', width: '90px', textAlign: 'center', color: '#5b21b6' }}>Includes stakeholders</div>
+                                    <div style={{ backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', padding: '10px', borderRadius: '6px', fontSize: '0.7em', width: '90px', textAlign: 'center', color: '#5b21b6' }}>Co-created solutions</div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', margin: '0 10px' }}>
+                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', textAlign: 'center', marginTop: '20px' }}>
                         Figure 1: Three levels of integrating knowledge across disciplines
                     </p>
                 </div>
@@ -175,62 +231,200 @@ const Module1_2: React.FC = () => {
 
                 <h3>Natural Sciences: Understanding Natural Systems</h3>
                 <p>
-                    Natural sciences form the foundational pillar of environmental science, providing the tools and frameworks to understand how nature works.
+                    Natural sciences form the foundational pillar of environmental science, providing the tools and frameworks to understand how nature works. These disciplines reveal the physical, chemical, and biological processes that govern Earth's systems and how human activities disrupt them.
                 </p>
 
                 <h4>Biology & Ecology</h4>
                 <p>
-                    Biology provides understanding of life at all scales—from molecular genetics to ecosystem dynamics. Ecology specifically examines relationships between organisms and their environment. Key concepts include Biodiversity, Food webs, and Ecosystem services.
+                    What they contribute: Biology provides understanding of life at all scales—from molecular genetics to ecosystem dynamics. Ecology specifically examines relationships between organisms and their environment.
+
+                    Key concepts:
+
+                    Biodiversity: The variety of life and its importance for ecosystem resilience
+                    Food webs: Energy flow and trophic interactions
+                    Population dynamics: How species populations change over time
+                    Ecosystem services: Benefits humans derive from nature
+                    Environmental applications: Conservation biology, habitat restoration, species management, invasive species control, climate impact assessment on biodiversity.
+
+                    🔗 Integration example: Ecologists studying coral reef decline collaborate with chemists to measure ocean acidification, economists to value reef ecosystem services, and social scientists to understand fishing community dependencies.
                 </p>
 
                 <h4>Chemistry</h4>
                 <p>
-                    Environmental chemistry tracks how substances move through and affect environmental systems. It covers Biogeochemical cycles, Toxicology, and Atmospheric chemistry.
+                    What it contributes: Chemistry explains the composition, structure, and transformations of matter. Environmental chemistry specifically tracks how substances move through and affect environmental systems.
+
+                    Key concepts:
+
+                    Biogeochemical cycles: How elements (C, N, P) cycle through Earth systems
+                    Toxicology: How chemicals affect living organisms
+                    Pollution chemistry: Source, transport, and fate of pollutants
+                    Atmospheric chemistry: Reactions in the atmosphere affecting climate and air quality
+                    Environmental applications: Water quality assessment, air pollution monitoring, hazardous waste management, climate change (greenhouse gases), green chemistry development.
                 </p>
 
                 <h4>Geology & Earth Sciences</h4>
                 <p>
-                    Provides understanding of Earth's structure and history. It reveals how land, water, and atmosphere interact over geological timescales, including soil formation and natural hazards.
+                    What they contribute: Geology provides understanding of Earth's structure, processes, and history. It reveals how land, water, and atmosphere interact over geological timescales.
+
+                    Key concepts:
+
+                    Rock cycle & soil formation: Understanding Earth materials and their transformations
+                    Natural resources: Location, extraction, and sustainable use of minerals and energy
+                    Natural hazards: Earthquakes, volcanoes, landslides, and their impacts
+                    Paleoclimatology: Earth's climate history providing context for current changes
+                    Environmental applications: Resource management, hazard assessment, groundwater contamination tracking, carbon sequestration in geological formations, mining impact assessment
                 </p>
 
-                <div style={{ backgroundColor: '#f9fafb', padding: '30px', borderRadius: '16px', border: '1px solid #f1f5f9', margin: '40px 0' }}>
-                    <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0', marginBottom: '20px' }}>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '15px' }}>
-                            {['Biology & Ecology', 'Chemistry', 'Physics', 'Geology & Earth Sci', 'Atmospheric Science', 'Marine Science'].map((item) => (
-                                <span key={item} style={{ backgroundColor: '#f0fdf4', color: '#166534', padding: '8px 20px', borderRadius: '20px', fontSize: '0.85em', fontWeight: '600', border: '1px solid #dcfce7' }}>
-                                    {item}
-                                </span>
-                            ))}
+                <div style={{ backgroundColor: '#f9fafb', padding: '60px 40px', borderRadius: '24px', border: '1px solid #f1f5f9', margin: '40px 0', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '800px', margin: '0 auto', minHeight: '550px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+                        {/* Connecting Lines (Background) */}
+                        <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+                            <line x1="50%" y1="50%" x2="50%" y2="60" stroke="#cbd5e1" strokeWidth="2" />
+                            <line x1="50%" y1="50%" x2="50%" y2="490" stroke="#cbd5e1" strokeWidth="2" />
+                            <line x1="50%" y1="50%" x2="160" y2="140" stroke="#cbd5e1" strokeWidth="2" />
+                            <line x1="50%" y1="50%" x2="640" y2="140" stroke="#cbd5e1" strokeWidth="2" />
+                            <line x1="50%" y1="50%" x2="160" y2="410" stroke="#cbd5e1" strokeWidth="2" />
+                            <line x1="50%" y1="50%" x2="640" y2="410" stroke="#cbd5e1" strokeWidth="2" />
+                        </svg>
+
+                        {/* Central Node */}
+                        <div style={{
+                            position: 'relative',
+                            zIndex: 2,
+                            backgroundColor: '#10b981',
+                            color: 'white',
+                            padding: '20px',
+                            borderRadius: '50%',
+                            width: '200px',
+                            height: '200px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                            boxShadow: '0 20px 25px -5px rgba(16, 185, 129, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                            border: '6px solid white'
+                        }}>
+                            <div style={{ fontWeight: '900', fontSize: '1.4em', lineHeight: '1.1', letterSpacing: '0.05em' }}>NATURAL</div>
+                            <div style={{ fontWeight: '900', fontSize: '1.4em', lineHeight: '1.1', letterSpacing: '0.05em' }}>SCIENCES</div>
                         </div>
-                        <div style={{ marginTop: '30px', borderTop: '2px dashed #e2e8f0', paddingTop: '20px', textAlign: 'center' }}>
-                            <span style={{ fontSize: '0.7em', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#94a3b8' }}>Foundation: Natural Systems</span>
+
+                        {/* Node 1: Atmospheric Science (Top) */}
+                        <div style={{ position: 'absolute', top: '0', left: '50%', transform: 'translateX(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#f3e8ff', border: '3px solid #d8b4fe', padding: '20px', borderRadius: '50%', width: '150px', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
+                                <div style={{ fontWeight: '800', color: '#6b21a8', fontSize: '0.9em' }}>Atmospheric Science</div>
+                            </div>
                         </div>
+
+                        {/* Node 2: Chemistry (Top Right) */}
+                        <div style={{ position: 'absolute', top: '70px', right: '10px', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#dbeafe', border: '3px solid #93c5fd', padding: '20px', borderRadius: '50%', width: '150px', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
+                                <div style={{ fontWeight: '800', color: '#1e40af', fontSize: '0.9em' }}>Chemistry</div>
+                            </div>
+                        </div>
+
+                        {/* Node 3: Geology & Earth Sci (Bottom Right) */}
+                        <div style={{ position: 'absolute', bottom: '70px', right: '10px', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#fee2e2', border: '3px solid #fca5a5', padding: '20px', borderRadius: '50%', width: '150px', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
+                                <div style={{ fontWeight: '800', color: '#991b1b', fontSize: '0.9em' }}>Geology & Earth Sci</div>
+                            </div>
+                        </div>
+
+                        {/* Node 4: Marine Science (Bottom) */}
+                        <div style={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#e0f2fe', border: '3px solid #7dd3fc', padding: '20px', borderRadius: '50%', width: '150px', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
+                                <div style={{ fontWeight: '800', color: '#075985', fontSize: '0.9em' }}>Marine Science</div>
+                            </div>
+                        </div>
+
+                        {/* Node 5: Physics (Bottom Left) */}
+                        <div style={{ position: 'absolute', bottom: '70px', left: '10px', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#fef9c3', border: '3px solid #fde047', padding: '20px', borderRadius: '50%', width: '150px', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
+                                <div style={{ fontWeight: '800', color: '#854d0e', fontSize: '0.9em' }}>Physics</div>
+                            </div>
+                        </div>
+
+                        {/* Node 6: Biology & Ecology (Top Left) */}
+                        <div style={{ position: 'absolute', top: '70px', left: '10px', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#f0fdf4', border: '3px solid #86efac', padding: '20px', borderRadius: '50%', width: '150px', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
+                                <div style={{ fontWeight: '800', color: '#166534', fontSize: '0.9em' }}>Biology & Ecology</div>
+                            </div>
+                        </div>
+
                     </div>
-                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', margin: '0 10px' }}>
+                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', textAlign: 'center', marginTop: '40px' }}>
                         Figure 2: Natural sciences contributing to environmental understanding
                     </p>
+                </div>
+
+                <div style={{ backgroundColor: '#f8fafc', padding: '30px', borderRadius: '16px', border: '1px solid #e2e8f0', margin: '40px 0' }}>
+                    <h3 style={{ margin: '0 0 15px 0', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span style={{ fontSize: '1.2em' }}>🔬</span> Why Multiple Natural Sciences?
+                    </h3>
+                    <p style={{ color: '#475569', lineHeight: '1.6' }}>
+                        Environmental systems involve matter, energy, life, and Earth processes simultaneously. Understanding water pollution requires <strong>chemistry</strong> (contaminant properties), <strong>biology</strong> (organism impacts), <strong>geology</strong> (groundwater flow), and <strong>physics</strong> (water movement). No single natural science provides complete understanding.
+                    </p>
+                    <div style={{ marginTop: '20px', borderTop: '1px solid #e2e8f0', paddingTop: '15px' }}>
+                        <p style={{ fontWeight: 'bold', color: '#334155', marginBottom: '10px', fontSize: '0.9em', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span style={{ fontSize: '1.1em' }}>🔗</span> Explore Natural Sciences:
+                        </p>
+                        <ul style={{ listStyle: 'none', padding: 0, fontSize: '0.85em', display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
+                            <li><a href="https://www.britannica.com/science/ecology" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>Britannica - Ecology</a></li>
+                            <li><a href="https://www.acs.org/content/acs/en/greenchemistry.html" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>ACS - Green Chemistry</a></li>
+                            <li><a href="https://www.usgs.gov" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>USGS - Earth Science</a></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <hr style={{ margin: '40px 0', border: '0', borderTop: '1px solid #eee' }} />
 
                 <h3>Social Sciences: Understanding Human Dimensions</h3>
                 <p>
-                    Since humans cause most environmental problems and must implement solutions, understanding human behavior, societies, and decision-making is absolutely essential.
+                    If natural sciences explain how nature works, social sciences explain how humans work—individually and collectively. Since humans cause most environmental problems and must implement solutions, understanding human behavior, societies, and decision-making is absolutely essential.
                 </p>
 
                 <h4>Economics</h4>
                 <p>
-                    Analyzes how societies allocate scarce resources. Key concepts include Externalities (like pollution), Common pool resources, and Cost-benefit analysis.
+                    What it contributes: Economics analyzes how societies allocate scarce resources, make decisions under constraints, and respond to incentives. Environmental economics specifically addresses market failures, resource valuation, and policy design.
+
+                    Key concepts:
+
+                    Externalities: Costs/benefits affecting those not involved in transactions (pollution as negative externality)
+                    Common pool resources: Resources difficult to exclude users from or limit use (fisheries, atmosphere)
+                    Cost-benefit analysis: Comparing costs and benefits of environmental actions
+                    Market mechanisms: Carbon taxes, cap-and-trade, payments for ecosystem services
+                    Environmental applications: Designing environmental policies, valuing ecosystem services, analyzing sustainable development, evaluating renewable energy economics, carbon pricing mechanisms.
+
+                    🔗 Integration example: Economists designing carbon taxes need climate scientists to quantify emissions impacts, engineers to assess technology costs, and political scientists to understand policy feasibility.
                 </p>
 
                 <h4>Political Science</h4>
                 <p>
-                    Examines how power, governance, and institutions shape environmental outcomes. It explains why some environmental policies succeed while others fail.
+                    What it contributes: Political science examines how power, governance, and institutions shape environmental outcomes. It explains why some environmental policies succeed while others fail.
+
+                    Key concepts:
+
+                    Environmental governance: Multi-level governance from local to global
+                    Policy analysis: How environmental laws are made, implemented, and enforced
+                    International relations: Transboundary issues requiring cooperation
+                    Advocacy & activism: How social movements influence environmental policy
+                    Environmental applications: International climate negotiations, environmental regulation design, protected area governance, conflict resolution over natural resources.
+
+
                 </p>
 
                 <h4>Sociology & Anthropology</h4>
                 <p>
-                    Studies social behavior and cultural diversity. Key concepts include Environmental justice and Indigenous ecological knowledge.
+                    What they contribute: Sociology studies social behavior, institutions, and inequality. Anthropology examines cultural diversity, traditional knowledge, and human-environment relationships across societies.
+
+                    Key concepts:
+
+                    Environmental justice: Inequitable distribution of environmental harms/benefits
+                    Social movements: Collective action for environmental change
+                    Indigenous knowledge: Traditional ecological knowledge and sustainable practices
+                    Consumption patterns: Social factors driving resource use
+                    Environmental applications: Community-based conservation, environmental justice advocacy, understanding consumption behavior, incorporating traditional knowledge.
                 </p>
 
                 <h3>Social Dimensions of Environmental Change</h3>
@@ -260,49 +454,138 @@ const Module1_2: React.FC = () => {
 
                 <h3>Humanities & Applied Fields: Values, Ethics, and Implementation</h3>
                 <p>
-                    Humanities ask the "should" questions while applied fields translate knowledge into action.
+                    Humanities ask the "should" questions that science cannot answer: What do we owe to nature? To future generations? To each other? Applied fields translate knowledge into action through technology, law, design, and management.
                 </p>
 
                 <h4>Philosophy & Ethics</h4>
                 <p>
-                    Provides frameworks for valuation. Key approaches include Anthropocentrism (human-centered), Biocentrism (life-centered), and Ecocentrism (ecosystem-centered).
+                    What they contribute: Philosophical frameworks for environmental values and ethical decision-making. Questions about moral obligations to nature, animals, and future generations.
+
+                    Key approaches:
+
+                    Anthropocentrism: Human-centered environmental ethics
+                    Biocentrism: Life-centered ethics valuing all living things
+                    Ecocentrism: Ecosystem-centered ethics valuing ecological wholes
+                    Deep ecology: Intrinsic value of nature independent of human use
                 </p>
 
                 <h4>Engineering & Technology</h4>
                 <p>
-                    Develops practical tools like renewable energy systems, water treatment, and green building design.
+                    What they contribute: Practical tools and technologies for environmental protection, pollution control, resource efficiency, and sustainable infrastructure.
+
+                    Key areas:
+
+                    Renewable energy systems (solar, wind, hydroelectric)
+                    Water treatment and purification technologies
+                    Waste management and recycling systems
+                    Green building and sustainable design
+                    Environmental monitoring technologies
                 </p>
 
                 <h4>Law</h4>
                 <p>
-                    Establishes legal frameworks and enforcement mechanisms like the Clean Air Act and international treaties like the Paris Agreement.
+                    What it contributes: Legal frameworks, regulations, and enforcement mechanisms for environmental protection. International environmental law for transboundary issues.
+
+                    Key areas: Environmental Impact Assessment (EIA) requirements, pollution regulations (Clean Air Act, Clean Water Act), international treaties (Paris Agreement, Montreal Protocol), environmental rights and justice.
                 </p>
 
-                <div style={{ backgroundColor: '#f9fafb', padding: '30px', borderRadius: '16px', border: '1px solid #f1f5f9', margin: '40px 0' }}>
-                    <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0', marginBottom: '20px' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
-                            <div style={{ padding: '20px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-                                <div style={{ fontSize: '0.75em', fontWeight: '800', color: '#64748b', marginBottom: '5px' }}>SCIENCE</div>
-                                <div style={{ fontSize: '0.9em', fontWeight: '600' }}>What IS happening?</div>
-                            </div>
-                            <div style={{ padding: '20px', backgroundColor: '#fdf2f8', borderRadius: '8px', border: '1px solid #fce7f3', textAlign: 'center' }}>
-                                <div style={{ fontSize: '0.75em', fontWeight: '800', color: '#be185d', marginBottom: '5px' }}>SOCIAL SCIENCE</div>
-                                <div style={{ fontSize: '0.9em', fontWeight: '600' }}>Why ARE people doing this?</div>
-                            </div>
-                            <div style={{ padding: '20px', backgroundColor: '#fff7ed', borderRadius: '8px', border: '1px solid #ffedd5', textAlign: 'center' }}>
-                                <div style={{ fontSize: '0.75em', fontWeight: '800', color: '#c2410c', marginBottom: '5px' }}>HUMANITIES</div>
-                                <div style={{ fontSize: '0.9em', fontWeight: '600' }}>What SHOULD we do?</div>
-                            </div>
-                            <div style={{ padding: '20px', backgroundColor: '#f0fdf4', borderRadius: '8px', border: '1px solid #dcfce7', textAlign: 'center' }}>
-                                <div style={{ fontSize: '0.75em', fontWeight: '800', color: '#166534', marginBottom: '5px' }}>APPLIED FIELDS</div>
-                                <div style={{ fontSize: '0.9em', fontWeight: '600' }}>How DO we implement?</div>
+                <div style={{ margin: '40px 0', overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', fontSize: '0.9em' }}>
+                        <thead>
+                            <tr style={{ backgroundColor: '#10b981', color: 'white' }}>
+                                <th style={{ padding: '15px 20px', textAlign: 'left', fontWeight: '800' }}>Discipline Category</th>
+                                <th style={{ padding: '15px 20px', textAlign: 'left', fontWeight: '800' }}>Primary Question</th>
+                                <th style={{ padding: '15px 20px', textAlign: 'left', fontWeight: '800' }}>Example Contribution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
+                                <td style={{ padding: '15px 20px', fontWeight: '700', color: '#1e293b' }}>Natural Sciences</td>
+                                <td style={{ padding: '15px 20px', color: '#475569' }}>What is happening?</td>
+                                <td style={{ padding: '15px 20px', color: '#475569' }}>CO₂ levels rising, causing warming</td>
+                            </tr>
+                            <tr style={{ borderBottom: '1px solid #f1f5f9', backgroundColor: '#f8fafc' }}>
+                                <td style={{ padding: '15px 20px', fontWeight: '700', color: '#1e293b' }}>Social Sciences</td>
+                                <td style={{ padding: '15px 20px', color: '#475569' }}>Why is it happening?</td>
+                                <td style={{ padding: '15px 20px', color: '#475569' }}>Economic incentives favor fossil fuels</td>
+                            </tr>
+                            <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
+                                <td style={{ padding: '15px 20px', fontWeight: '700', color: '#1e293b' }}>Humanities</td>
+                                <td style={{ padding: '15px 20px', color: '#475569' }}>What should we do?</td>
+                                <td style={{ padding: '15px 20px', color: '#475569' }}>Ethical obligations to future generations</td>
+                            </tr>
+                            <tr style={{ backgroundColor: '#f8fafc' }}>
+                                <td style={{ padding: '15px 20px', fontWeight: '700', color: '#1e293b' }}>Applied Fields</td>
+                                <td style={{ padding: '15px 20px', color: '#475569' }}>How do we do it?</td>
+                                <td style={{ padding: '15px 20px', color: '#475569' }}>Solar technology, carbon regulations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style={{ backgroundColor: '#fcfcfc', padding: '40px', borderRadius: '24px', border: '1px solid #f1f5f9', margin: '40px 0', position: 'relative' }}>
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '850px', margin: '0 auto', minHeight: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+                        {/* Environmental Problem (Left) */}
+                        <div style={{ position: 'absolute', left: '0', top: '50%', transform: 'translateY(-50%)', zIndex: 2 }}>
+                            <div style={{ backgroundColor: '#ef4444', color: 'white', padding: '12px 15px', borderRadius: '6px', fontWeight: '700', fontSize: '0.85em', boxShadow: '0 4px 6px rgba(239, 68, 68, 0.3)', width: '160px', textAlign: 'center' }}>
+                                Environmental Problem
                             </div>
                         </div>
-                        <div style={{ marginTop: '25px', backgroundColor: '#111827', color: 'white', padding: '15px', borderRadius: '8px', textAlign: 'center', fontWeight: 'bold', letterSpacing: '0.1em' }}>
-                            INTEGRATED SOLUTION
+
+                        {/* Integration Node (Right) */}
+                        <div style={{ position: 'absolute', right: '0', top: '50%', transform: 'translateY(-50%)', zIndex: 2 }}>
+                            <div style={{ backgroundColor: '#1e293b', color: 'white', padding: '12px 15px', borderRadius: '6px', fontWeight: '700', fontSize: '0.85em', boxShadow: '0 4px 6px rgba(0,0,0,0.3)', width: '160px', textAlign: 'center' }}>
+                                Integrated Solution
+                            </div>
                         </div>
+
+                        {/* Middle Paths (Grid Layout for positioning) */}
+                        <div style={{ display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gap: '20px', width: '100%', padding: '0 180px' }}>
+                            {/* Path 1: Science */}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', position: 'relative' }}>
+                                <div style={{ backgroundColor: '#3b82f6', color: 'white', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75em', fontWeight: '700', width: '100px', textAlign: 'center' }}>Science</div>
+                                <div style={{ backgroundColor: '#f1f5f9', border: '1px solid #e2e8f0', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75em', width: '150px', color: '#334155' }}>What IS happening?</div>
+                                {/* SVG Lines */}
+                                <svg style={{ position: 'absolute', top: '50%', left: '-20px', width: '20px', height: '0', zIndex: 0 }}><path d="M 0 0 L 20 0" stroke="#94a3b8" strokeWidth="1.5" fill="none" /></svg>
+                            </div>
+
+                            {/* Path 2: Social Science */}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                                <div style={{ backgroundColor: '#10b981', color: 'white', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75em', fontWeight: '700', width: '100px', textAlign: 'center' }}>Social Science</div>
+                                <div style={{ backgroundColor: '#f1f5f9', border: '1px solid #e2e8f0', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75em', width: '150px', color: '#334155' }}>Why ARE people doing this?</div>
+                            </div>
+
+                            {/* Path 3: Humanities */}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                                <div style={{ backgroundColor: '#8b5cf6', color: 'white', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75em', fontWeight: '700', width: '100px', textAlign: 'center' }}>Humanities</div>
+                                <div style={{ backgroundColor: '#f1f5f9', border: '1px solid #e2e8f0', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75em', width: '150px', color: '#334155' }}>What SHOULD we do?</div>
+                            </div>
+
+                            {/* Path 4: Applied Fields */}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                                <div style={{ backgroundColor: '#f59e0b', color: 'white', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75em', fontWeight: '700', width: '100px', textAlign: 'center' }}>Applied Fields</div>
+                                <div style={{ backgroundColor: '#f1f5f9', border: '1px solid #e2e8f0', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75em', width: '150px', color: '#334155' }}>How DO we implement?</div>
+                            </div>
+                        </div>
+
+                        {/* Global Connection SVG Overlay */}
+                        <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none' }}>
+                            {/* From Problem to Disciplines */}
+                            <path d="M 160 175 Q 180 175, 180 85" fill="none" stroke="#cbd5e1" strokeWidth="1.5" />
+                            <path d="M 160 175 Q 180 175, 180 145" fill="none" stroke="#cbd5e1" strokeWidth="1.5" />
+                            <path d="M 160 175 Q 180 175, 180 205" fill="none" stroke="#cbd5e1" strokeWidth="1.5" />
+                            <path d="M 160 175 Q 180 175, 180 265" fill="none" stroke="#cbd5e1" strokeWidth="1.5" />
+
+                            {/* From Questions to Integrated Solution */}
+                            <path d="M 450 85 Q 670 85, 690 175" fill="none" stroke="#cbd5e1" strokeWidth="1.5" />
+                            <path d="M 450 145 Q 670 145, 690 175" fill="none" stroke="#cbd5e1" strokeWidth="1.5" />
+                            <path d="M 450 205 Q 670 205, 690 175" fill="none" stroke="#cbd5e1" strokeWidth="1.5" />
+                            <path d="M 450 265 Q 670 265, 690 175" fill="none" stroke="#cbd5e1" strokeWidth="1.5" />
+                        </svg>
+
                     </div>
-                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', margin: '0 10px' }}>
+                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', textAlign: 'center', color: '#888', marginTop: '20px' }}>
                         Figure 3: Different disciplines answer different questions about the same problem
                     </p>
                 </div>
@@ -320,12 +603,46 @@ const Module1_2: React.FC = () => {
 
                 <h4>Case Study 1: Managing Chesapeake Bay</h4>
                 <p>
-                    The Chesapeake Bay restoration represents one of the most comprehensive ecosystem efforts globally. Success required deep integration across fields: Marine Biology tracked species, Chemistry measured pollution levels, Economics valued services, and Law established the TMDL regulations for pollution limits. No single discipline could have achieved the recovery of oyster populations and water quality.
+                    The Problem: The Chesapeake Bay, largest estuary in the United States, has suffered from pollution, overfishing, and habitat loss for decades. Water quality has declined, oyster populations collapsed, and "dead zones" (oxygen-depleted areas) expanded.
+
+                    Why Multidisciplinary Approach Was Essential:
+
+                    Marine Biology & Ecology: Documented species decline, identified pollution effects on food webs, studied oyster reef restoration benefits, and monitored water quality and ecosystem health.
+
+                    Chemistry: Tracked nutrient pollution (nitrogen and phosphorus) from agricultural runoff and sewage, measured oxygen levels in dead zones, and analyzed sediment contamination.
+
+                    Hydrology & Earth Sciences: Mapped watershed boundaries showing pollutant sources, studied sediment transport, and predicted flooding impacts on pollution.
+
+                    Agricultural Science: Developed best management practices reducing fertilizer runoff while maintaining farm productivity.
+
+                    Economics: Valued ecosystem services (commercial fishing, recreation, tourism), conducted cost-benefit analyses of restoration options, and designed incentive programs for farmers.
+
+                    Political Science: Facilitated cooperation among six states and federal government, negotiated pollution reduction agreements, and addressed conflicts between agricultural and environmental interests.
+
+                    Sociology: Studied fishing community dependencies, engaged stakeholders in restoration planning, and addressed environmental justice concerns.
+
+                    Engineering: Designed stormwater management systems, upgraded wastewater treatment plants, and developed oyster reef restoration techniques.
+
+                    Law: Established Total Maximum Daily Load (TMDL) regulations setting pollution limits, created enforcement mechanisms, and defined state responsibilities.
+
+                    The Result: The Chesapeake Bay Program represents one of the most comprehensive ecosystem restoration efforts globally. While challenges remain, water quality has improved, oyster populations are recovering, and the program serves as a model for integrated watershed management. No single discipline could have achieved this—success required deep integration across all fields.
                 </p>
 
                 <h4>Case Study 2: IPCC Climate Assessment</h4>
                 <p>
-                    The IPCC structure consists of three Working Groups: Physical Science (Working Group I), Impacts & Adaptation (Working Group II), and Mitigation (Working Group III). Their credibility depends on comprehensive assessment that synthesizes physics, biology, economics, and policy analysis into a single authoritative voice for global policy.
+                    The Challenge: Provide comprehensive, authoritative assessment of climate change science, impacts, and response options to inform global policy.
+
+Multidisciplinary Structure:
+
+Working Group I (Physical Science): Climate scientists, atmospheric physicists, oceanographers, glaciologists assess physical climate change—temperature rise, sea level, extreme events. Uses physics, chemistry, mathematics, and computer modeling.
+
+Working Group II (Impacts & Adaptation): Ecologists, agricultural scientists, health experts, economists assess climate impacts on ecosystems, agriculture, water, human health, and infrastructure. Examines adaptation options across sectors. Integrates natural and social sciences.
+
+Working Group III (Mitigation): Energy engineers, economists, policy analysts assess emission reduction technologies and policies. Evaluates renewable energy, energy efficiency, carbon capture, and economic instruments. Integrates engineering, economics, and policy analysis.
+
+Why This Works: The IPCC doesn't just compile separate reports—it synthesizes across working groups, showing how physical changes (WG I) create impacts (WG II) requiring both adaptation and mitigation responses (WG III). Thousands of scientists from diverse disciplines collaborate, with social scientists and humanities scholars increasingly involved to address ethics, justice, and policy dimensions.
+
+Impact: IPCC reports form the scientific foundation for international climate negotiations, national climate policies, and corporate sustainability strategies. Their credibility depends on comprehensive, integrated assessment that no single discipline could provide.
                 </p>
 
                 <Quiz

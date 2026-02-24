@@ -5,14 +5,19 @@ import { useSession } from 'next-auth/react';
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Leaf,
+  MessageSquare,
   LayoutGrid,
+  ArrowLeft,
+  BookOpen,
   ChevronDown,
+  PlayCircle,
+  Clock,
+  Award,
+  Book,
+  FileText,
   HelpCircle,
   Menu,
-  CheckCircle2,
-  Cpu,
-  ArrowLeft,
-  TreePine
+  CheckCircle2
 } from "lucide-react";
 import { useRouter } from 'next/navigation';
 
@@ -55,7 +60,8 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
     {
       id: 1,
       title: 'Environment-Ecosystem',
-      description: 'Understand the basic concepts of environmental science, ecosystems, and biodiversity.',
+      description: 'Understand the basic concepts of environmental science, ecosystems, biodiversity, and the relationship between humans and the environment.',
+      icon: <Leaf className="w-6 h-6" />,
       modules: [
         { id: '1.1', title: 'Definition, Scope and Importance - Need for Public Awareness', description: 'Basic concepts and scope of environmental science' },
         { id: '1.2', title: 'Multidisciplinary Nature of Environmental Sciences', description: 'Environmental awareness and the interdisciplinary nature of the field' },
@@ -70,6 +76,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       id: 2,
       title: 'Natural Resources',
       description: 'Explore renewable and non-renewable energy, forest, water, and mineral resources.',
+      icon: <BookOpen className="w-6 h-6" />,
       modules: [
         { id: '2.1', title: 'Energy & Forest Resources: Renewable vs Non-renewable Energy and Forest Conservation', description: 'Energy sources and their environmental impact' },
         { id: '2.2', title: 'Deforestation & Case Studies: Timber Extraction, Mining, Dams and Effects on Forests and Tribal People', description: 'Forest management and deforestation issues' },
@@ -81,38 +88,41 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
     },
     {
       id: 3,
-      title: 'Biodiversity and Conservation',
-      description: 'Explore definition, values, distribution patterns, and conservation strategies.',
+      title: 'Biodiversity and its Conservation',
+      description: 'Explore biodiversity definition, values, distribution patterns, threats, and conservation strategies for preserving life on Earth.',
+      icon: <Award className="w-6 h-6" />,
       modules: [
-        { id: '3.1', title: 'Defining Diversity', description: 'Understanding genetic, species and ecosystem levels' },
-        { id: '3.2', title: 'Value of Biodiversity', description: 'Economic, social, and ethical importance' },
-        { id: '3.3', title: 'Global & Local Levels', description: 'Mega-diversity nations and local distribution' },
-        { id: '3.4', title: 'Threats to Biodiversity', description: 'Habitat loss, poaching, and conflicts' },
-        { id: '3.5', title: 'Unit 3 Quiz', description: 'Test your knowledge of biodiversity' }
+        { id: '3.1', title: 'Definition: Genetic, Species and Ecosystem Diversity', description: 'Understanding the three levels of biodiversity' },
+        { id: '3.2', title: 'Value of Biodiversity', description: 'Economic, social, ethical, and aesthetic values of biological diversity' },
+        { id: '3.3', title: 'Biodiversity at Global, National and Local Levels', description: 'Distribution patterns and India as a mega-diversity nation' },
+        { id: '3.4', title: 'Threats to Biodiversity', description: 'Habitat loss, poaching, conflicts, and other major threats' },
+        { id: '3.5', title: 'Unit 3 Quiz', description: 'Test your knowledge of biodiversity and conservation' }
       ]
     },
     {
       id: 4,
       title: 'Environmental Pollution',
-      description: 'Study causes, effects, control measures, and disaster management strategies.',
+      description: 'Study various types of pollution, their causes, effects, control measures, and disaster management strategies.',
+      icon: <Clock className="w-6 h-6" />,
       modules: [
-        { id: '4.1', title: 'Air Pollution', description: 'Sources, effects, and control technologies' },
-        { id: '4.2', title: 'Water Pollution', description: 'Contamination sources and treatment methods' },
-        { id: '4.3', title: 'Soil & Noise Pollution', description: 'Land and acoustic contamination management' },
-        { id: '4.4', title: 'Nuclear & Solid Waste', description: 'Radioactive risks and waste management' },
-        { id: '4.5', title: 'Unit 4 Quiz', description: 'Test your knowledge of pollution' }
+        { id: '4.1', title: 'Air Pollution: Definition, Causes, Effects and Control', description: 'Understanding air pollution sources and control technologies' },
+        { id: '4.2', title: 'Water Pollution: Definition, Causes, Effects and Control', description: 'Water contamination sources and treatment methods' },
+        { id: '4.3', title: 'Soil Pollution and Noise Pollution', description: 'Land contamination and acoustic pollution management' },
+        { id: '4.4', title: 'Nuclear Hazards and Solid Waste Management', description: 'Radioactive risks and waste management strategies' },
+        { id: '4.5', title: 'Unit 4 Quiz', description: 'Test your knowledge of environmental pollution' }
       ]
     },
     {
       id: 5,
-      title: 'Human Population & Environment',
-      description: 'Explore dynamics, women empowerment, and the role of IT in management.',
+      title: 'Human Population Change and the Environment',
+      description: 'Explore population dynamics, women empowerment, environmental issues, and the role of IT in environmental management.',
+      icon: <Book className="w-6 h-6" />,
       modules: [
-        { id: '5.1', title: 'Population Growth', description: 'Dynamics and growth patterns' },
-        { id: '5.2', title: 'Empowerment & Control', description: 'Role of women in population management' },
-        { id: '5.3', title: 'Global Warming & Acid Rain', description: 'Major global environmental challenges' },
-        { id: '5.4', title: 'IT in Environment', description: 'Monitoring systems and human health' },
-        { id: '5.5', title: 'Unit 5 Quiz', description: 'Test your knowledge of human impact' }
+        { id: '5.1', title: 'Population Growth and Population Explosion', description: 'Understanding population dynamics and growth patterns' },
+        { id: '5.2', title: 'Women Empowerment and Population Control', description: 'Role of women empowerment in population management' },
+        { id: '5.3', title: 'Environmental Issues: Global Warming, Acid Rain, Ozone Depletion', description: 'Major global environmental challenges and solutions' },
+        { id: '5.4', title: 'Role of Information Technology in Environment and Human Health', description: 'IT applications in environmental monitoring and health' },
+        { id: '5.5', title: 'Unit 5 Quiz', description: 'Test your knowledge of population and environmental interactions' }
       ]
     }
   ];
@@ -137,9 +147,9 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       {/* HEADER SECTION */}
       <div className="flex flex-col sm:flex-row justify-between items-start gap-6 mb-8">
         <div className="flex items-center gap-4">
-          <div className="w-8 h-8 flex items-center justify-center text-emerald-600 border-2 border-emerald-600 rounded-lg rotate-[30deg]">
+          <div className="w-8 h-8 flex items-center justify-center text-green-600 border-2 border-green-600 rounded-lg rotate-[30deg]">
             <div className="-rotate-[30deg]">
-              <TreePine className="w-4 h-4" />
+              <Leaf className="w-4 h-4" />
             </div>
           </div>
           <h1 className="text-2xl font-bold text-[#2B2B2B] tracking-tight">Environmental Science</h1>
@@ -203,6 +213,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
               <div key={unit.id} className="relative group/unit">
                 {/* UNIT HEADER ROW */}
                 <div className="flex items-start gap-8 mb-12">
+                  {/* UNIT SQUARE BADGE */}
                   <div className={`w-20 h-20 border border-[#E5E2D9] rounded flex flex-col items-center justify-center shrink-0 bg-white transition-colors duration-500 ${isUnitFinished ? 'border-emerald-500 ring-4 ring-emerald-50/50' : ''
                     }`}>
                     <span className="text-[10px] font-bold text-[#AAA] uppercase tracking-wider mb-1">UNIT</span>
@@ -244,7 +255,8 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
                             className="relative group/module cursor-pointer pt-1"
                             onClick={() => onModuleSelect(unit.id, idx + 1)}
                           >
-                            <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[11px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-emerald-500' : 'bg-[#8BC34A]'
+                            {/* Green square badge with number */}
+                            <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[11px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-emerald-500' : 'bg-[#4CAF50]'
                               }`}>
                               {module.id}
                             </div>
@@ -282,6 +294,9 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       <style jsx global>{`
         body {
           background-color: #FFFFFF !important;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          height: 0px;
         }
       `}</style>
     </div>

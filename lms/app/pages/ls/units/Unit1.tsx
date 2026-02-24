@@ -3,7 +3,9 @@ import React from 'react';
 import Module1_1 from './unit1-modules/Module1_1';
 import Module1_2 from './unit1-modules/Module1_2';
 import Module1_3 from './unit1-modules/Module1_3';
-import CompletionButton from '@/components/CompletionButton';
+import Quiz from '../components/Quiz';
+import ModuleNavigation from '../components/ModuleNavigation';
+
 
 interface Unit1Props {
   currentModule: number;
@@ -12,49 +14,851 @@ interface Unit1Props {
 }
 
 const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }) => {
-  const moduleNames = [
-    "Overview of Linguistics and its Sub-fields",
-    "Phonetics",
-    "Phonology"
+
+  const module1Quiz = [
+    {
+      question: "What is the primary focus of linguistics?",
+      options: [
+        "The study of literature",
+        "The scientific study of language and its structure",
+        "The study of foreign languages",
+        "The study of language teaching methods"
+      ],
+      correctAnswer: 1,
+      explanation: "Linguistics is the scientific study of language and its structure, including phonetics, phonology, morphology, syntax, semantics, and pragmatics. It's not about literature or teaching methods, but about understanding how language works as a system."
+    },
+    {
+      question: "Which of the following is NOT a core sub-field of linguistics?",
+      options: ["Phonetics", "Phonology", "Morphology", "Literature"],
+      correctAnswer: 3,
+      explanation: "Literature is not a core sub-field of linguistics. The main branches are phonetics (speech sounds), phonology (sound patterns), morphology (word structure), syntax (sentence structure), semantics (meaning), and pragmatics (language use in context)."
+    },
+    {
+      question: "What does phonetics study?",
+      options: [
+        "Sound patterns in specific languages",
+        "The physical properties of speech sounds",
+        "The meaning of words",
+        "The structure of sentences"
+      ],
+      correctAnswer: 1,
+      explanation: "Phonetics studies the physical properties of speech sounds - how they're produced (articulatory), their acoustic properties (acoustic), and how they're perceived (auditory). Phonology studies sound patterns, semantics studies meaning, and syntax studies sentence structure."
+    },
+    {
+      question: "What is the difference between phonetics and phonology?",
+      options: [
+        "Phonetics studies sound systems, phonology studies individual sounds",
+        "Phonetics studies physical properties, phonology studies functional aspects",
+        "There is no difference",
+        "Phonetics is about writing, phonology is about speaking"
+      ],
+      correctAnswer: 1,
+      explanation: "Phonetics studies the physical properties of speech sounds (how they're made, what they sound like), while phonology studies how sounds function and pattern within specific languages (which sounds distinguish meaning, how they change in different contexts)."
+    },
+    {
+      question: "What is morphology concerned with?",
+      options: [
+        "Sentence structure",
+        "Word structure and formation",
+        "Sound patterns",
+        "Meaning in context"
+      ],
+      correctAnswer: 1,
+      explanation: "Morphology studies word structure and formation - how morphemes (smallest meaningful units) combine to create words. Syntax studies sentence structure, phonology studies sound patterns, and pragmatics studies meaning in context."
+    }
+  ];
+
+  const module2Quiz = [
+    {
+      question: "What is the International Phonetic Alphabet (IPA) used for?",
+      options: [
+        "Learning foreign languages",
+        "Representing speech sounds precisely",
+        "Writing poetry",
+        "Teaching grammar"
+      ],
+      correctAnswer: 1,
+      explanation: "The IPA provides a standardized way to represent speech sounds from all languages using one symbol per sound. This eliminates the ambiguity of regular spelling systems where the same letter can represent different sounds (like 'ough' in English)."
+    },
+    {
+      question: "Which branch of phonetics studies sound production?",
+      options: [
+        "Acoustic Phonetics",
+        "Auditory Phonetics",
+        "Articulatory Phonetics",
+        "Experimental Phonetics"
+      ],
+      correctAnswer: 2,
+      explanation: "Articulatory phonetics studies how speech sounds are produced by the vocal organs (lungs, vocal cords, tongue, lips, etc.). Acoustic phonetics studies sound waves, and auditory phonetics studies how we perceive sounds."
+    },
+    {
+      question: "What are the three main components of consonant classification?",
+      options: [
+        "Height, backness, roundedness",
+        "Place, manner, voicing",
+        "Stress, tone, intonation",
+        "Onset, nucleus, coda"
+      ],
+      correctAnswer: 1,
+      explanation: "Consonants are classified by: Place (where in the mouth), Manner (how air flows), and Voicing (whether vocal cords vibrate). Height, backness, and roundedness describe vowels. Stress, tone, and intonation are prosodic features."
+    },
+    {
+      question: "Which vowel feature refers to tongue position from front to back?",
+      options: ["Height", "Backness", "Roundedness", "Length"],
+      correctAnswer: 1,
+      explanation: "Backness refers to how far forward or back the tongue is positioned. Height refers to how high or low the tongue is, roundedness refers to lip shape, and length refers to vowel duration."
+    },
+    {
+      question: "What does 'voicing' refer to in phonetics?",
+      options: [
+        "Speaking loudly",
+        "Vocal fold vibration",
+        "Articulation place",
+        "Sound duration"
+      ],
+      correctAnswer: 1,
+      explanation: "Voicing refers to whether the vocal folds (vocal cords) vibrate during sound production. Voiced sounds like /b/, /d/, /g/ have vibration; voiceless sounds like /p/, /t/, /k/ don't. You can feel this by putting your hand on your throat."
+    }
+  ];
+
+  const module3Quiz = [
+    {
+      question: "What is a phoneme?",
+      options: [
+        "A specific speech sound",
+        "An abstract sound unit that can distinguish meaning",
+        "A letter of the alphabet",
+        "A word"
+      ],
+      correctAnswer: 1,
+      explanation: "A phoneme is an abstract mental representation of a sound that can distinguish meaning in a language. For example, /p/ and /b/ are different phonemes in English because they distinguish 'pat' from 'bat'. It's not the physical sound itself, but the mental category."
+    },
+    {
+      question: "What are allophones?",
+      options: [
+        "Different phonemes",
+        "Phonetic variants of the same phoneme",
+        "Foreign sounds",
+        "Silent letters"
+      ],
+      correctAnswer: 1,
+      explanation: "Allophones are different pronunciations of the same phoneme that don't change word meaning. For example, the aspirated [pʰ] in 'pin' and unaspirated [p] in 'spin' are allophones of the phoneme /p/ - they sound different but don't create different words."
+    },
+    {
+      question: "What is assimilation in phonology?",
+      options: [
+        "Sounds becoming more similar",
+        "Sounds becoming less similar",
+        "Sound deletion",
+        "Sound insertion"
+      ],
+      correctAnswer: 0,
+      explanation: "Assimilation is when sounds become more similar to neighboring sounds to make pronunciation easier. For example, 'input' is pronounced [ɪmpʊt] where /n/ becomes [m] to match the following bilabial /p/. This makes speech more fluid."
+    },
+    {
+      question: "What are the three parts of syllable structure?",
+      options: [
+        "Beginning, middle, end",
+        "Onset, nucleus, coda",
+        "Consonant, vowel, consonant",
+        "Prefix, root, suffix"
+      ],
+      correctAnswer: 1,
+      explanation: "Syllables have three parts: Onset (initial consonant(s), optional), Nucleus (vowel or syllabic consonant, required), and Coda (final consonant(s), optional). In 'cat': /k/ is onset, /æ/ is nucleus, /t/ is coda."
+    },
+    {
+      question: "What is prosody in phonology?",
+      options: [
+        "Sound patterns",
+        "Stress, tone, and intonation patterns",
+        "Vowel systems",
+        "Consonant clusters"
+      ],
+      correctAnswer: 1,
+      explanation: "Prosody refers to suprasegmental features like stress (syllable prominence), tone (pitch patterns that distinguish meaning), and intonation (pitch patterns across phrases). These features operate above individual sounds and affect meaning and emotion."
+    }
+  ];
+
+  const module4Quiz = [
+    {
+      question: "What is a morpheme?",
+      options: [
+        "A sentence",
+        "The smallest meaningful unit in a language",
+        "A sound",
+        "A word"
+      ],
+      correctAnswer: 1,
+      explanation: "A morpheme is the smallest unit that carries meaning. For example, 'unhappiness' has three morphemes: 'un-' (not), 'happy' (feeling good), and '-ness' (state of being). You can't break these down further without losing meaning."
+    },
+    {
+      question: "What is the difference between a free morpheme and a bound morpheme?",
+      options: [
+        "Free morphemes can stand alone, bound morphemes cannot",
+        "Free morphemes are longer",
+        "There is no difference",
+        "Bound morphemes are more common"
+      ],
+      correctAnswer: 0,
+      explanation: "Free morphemes can stand alone as complete words (like 'cat', 'run', 'happy'), while bound morphemes must attach to other morphemes (like '-s', 'un-', '-ing'). Bound morphemes include prefixes, suffixes, and other affixes."
+    },
+    {
+      question: "Which type of morphology changes word class?",
+      options: [
+        "Inflectional morphology",
+        "Derivational morphology",
+        "Compounding",
+        "Conversion"
+      ],
+      correctAnswer: 1,
+      explanation: "Derivational morphology often changes word class and creates new words (teach → teacher, happy → happiness). Inflectional morphology only modifies words for grammar without changing class (cat → cats, walk → walked)."
+    },
+    {
+      question: "What is compounding?",
+      options: [
+        "Adding prefixes",
+        "Adding suffixes",
+        "Combining two or more words",
+        "Changing word class"
+      ],
+      correctAnswer: 2,
+      explanation: "Compounding combines two or more free morphemes (complete words) to create new words, like 'bookshelf' (book + shelf), 'classroom' (class + room), or 'blackboard' (black + board). The result often has a specialized meaning."
+    },
+    {
+      question: "Which is an example of inflectional morphology?",
+      options: [
+        "happy → happiness",
+        "walk → walked",
+        "teach → teacher",
+        "possible → impossible"
+      ],
+      correctAnswer: 1,
+      explanation: "'Walk → walked' is inflectional because it adds grammatical information (past tense) without changing the word class (both are verbs). The others are derivational: happiness (noun from adjective), teacher (noun from verb), impossible (negative adjective)."
+    }
+  ];
+
+  const unitQuiz = [
+    ...module1Quiz.slice(0, 2),
+    ...module2Quiz.slice(0, 2),
+    ...module3Quiz.slice(0, 2),
+    ...module4Quiz.slice(0, 2),
+    {
+      question: "What does syntax study?",
+      options: [
+        "Meaning in language",
+        "Sentence structure and word arrangement",
+        "Sound systems",
+        "Language change"
+      ],
+      correctAnswer: 1,
+      explanation: "Syntax studies how words combine to form phrases and sentences, including word order rules, phrase structure, and grammatical relationships. It explains why 'The cat chased the mouse' is grammatical but 'Cat the mouse the chased' is not."
+    },
+    {
+      question: "What does semantics study?",
+      options: [
+        "Sound patterns",
+        "Meaning in language",
+        "Sentence structure",
+        "Language use in context"
+      ],
+      correctAnswer: 1,
+      explanation: "Semantics studies meaning in language - how words, phrases, and sentences convey meaning. It includes lexical semantics (word meaning), compositional semantics (how meanings combine), and truth conditions. Pragmatics studies meaning in context."
+    }
   ];
 
   const renderModule = () => {
     switch (currentModule) {
-      case 1: return <Module1_1 />;
-      case 2: return <Module1_2 />;
-      case 3: return <Module1_3 />;
-      default: return <div>Module not found</div>;
+      case 1:
+        return <Module1_1 setCurrentModule={setCurrentModule} onBack={onBack} />;
+      case 2:
+        return <Module1_2 setCurrentModule={setCurrentModule} onBack={onBack} />;
+      case 3:
+        return <Module1_3 setCurrentModule={setCurrentModule} onBack={onBack} />;
+
+      case 999:
+        return (
+          <div className="module-content">
+            <div className="lesson-header">
+              <div className="lesson-number-badge">1.3</div>
+              <div className="lesson-title-main">
+                <h1>Phonology</h1>
+              </div>
+            </div>
+
+            <section className="content-section">
+              <h3>Understanding Phonology</h3>
+              <p>Phonology is the study of sound systems in languages, examining how sounds function and pattern within particular linguistic systems. Unlike phonetics (which studies physical sounds), phonology studies abstract sound patterns.</p>
+
+
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/imH7hdOgxrU?si=JaT_sZx0WLvZdIdz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
+                style={{ width: '550px', height: '325px' }}
+              ></iframe>
+
+
+              <h4>Basic Phonological Concepts</h4>
+
+              <h5>Phoneme</h5>
+              <ul>
+                <li><strong>Definition:</strong> Abstract sound unit that distinguishes meaning in a language</li>
+                <li><strong>Mental representation:</strong> Exists in speakers' minds, not physical reality</li>
+                <li><strong>Example:</strong> /p/ and /b/ are different phonemes in English ("pit" vs. "bit")</li>
+                <li><strong>Language-specific:</strong> What counts as a phoneme varies by language</li>
+                <li><strong>Notation:</strong> Written between slashes /p/</li>
+              </ul>
+
+              <h5>Allophone</h5>
+              <ul>
+                <li><strong>Definition:</strong> Phonetic variants of the same phoneme</li>
+                <li><strong>Do not change meaning:</strong> Different pronunciations of same sound</li>
+                <li><strong>Example:</strong> Aspirated [pʰ] in "pin" vs. unaspirated [p] in "spin"</li>
+                <li><strong>Predictable:</strong> Distribution determined by phonological rules</li>
+                <li><strong>Notation:</strong> Written in square brackets [pʰ]</li>
+              </ul>
+
+              <h5>Minimal Pairs</h5>
+              <ul>
+                <li><strong>Definition:</strong> Words differing by only one sound in the same position</li>
+                <li><strong>Purpose:</strong> Used to identify phonemes</li>
+                <li><strong>Examples:</strong>
+                  <ul>
+                    <li>cat/bat (initial consonant)</li>
+                    <li>ship/sheep (vowel)</li>
+                    <li>light/right (initial consonant)</li>
+                    <li>pin/bin/tin/din/sin (multiple minimal pairs)</li>
+                  </ul>
+                </li>
+                <li><strong>Prove phonemic contrast:</strong> Show sounds are different phonemes</li>
+              </ul>
+
+              <h5>Complementary Distribution</h5>
+              <ul>
+                <li><strong>Definition:</strong> Allophones occur in mutually exclusive environments</li>
+                <li><strong>Never in same context:</strong> Predictable where each appears</li>
+                <li><strong>Example:</strong> [pʰ] only word-initially, [p] after /s/</li>
+              </ul>
+
+              <h5>Free Variation</h5>
+              <ul>
+                <li><strong>Definition:</strong> Sounds that can be interchanged without changing meaning</li>
+                <li><strong>Example:</strong> Flapped [r] vs. trilled [r] in some Spanish dialects</li>
+              </ul>
+
+              <h5>Distinctive Features</h5>
+              <ul>
+                <li><strong>Binary oppositions:</strong> [+voice] vs. [-voice]</li>
+                <li><strong>Describe sounds:</strong> [+nasal], [+continuant], etc.</li>
+                <li><strong>Minimal feature differences:</strong> /p/ and /b/ differ only in [voice]</li>
+              </ul>
+
+              <div className="example-box">
+                <h5>Phoneme vs. Allophone Example</h5>
+                <p>English /p/ phoneme has multiple allophones:</p>
+                <ul>
+                  <li>[pʰ] aspirated in "pin" (word-initial)</li>
+                  <li>[p] unaspirated in "spin" (after /s/)</li>
+                  <li>[pʺ] unreleased in "stop" (word-final)</li>
+                  <li>All are the same phoneme /p/ but pronounced differently</li>
+                </ul>
+              </div>
+
+              <h4>Phonological Processes</h4>
+
+              <h5>Assimilation</h5>
+              <ul>
+                <li><strong>Definition:</strong> Sounds become more similar to neighboring sounds</li>
+                <li><strong>Nasal assimilation:</strong> "impossible" [ɪmpɑsəbl] - /n/ becomes [m] before /p/</li>
+                <li><strong>Voicing assimilation:</strong> "cats" [kæts] vs. "dogs" [dɔgz]</li>
+                <li><strong>Place assimilation:</strong> "input" - /n/ becomes [m] before bilabial</li>
+                <li><strong>Purpose:</strong> Makes articulation easier and faster</li>
+              </ul>
+
+              <h5>Dissimilation</h5>
+              <ul>
+                <li><strong>Definition:</strong> Sounds become less similar</li>
+                <li><strong>Less common:</strong> Than assimilation</li>
+                <li><strong>Example:</strong> "fifths" often pronounced without second [f]</li>
+                <li><strong>Historical:</strong> Latin "peregrinus" → "pilgrim" (r...r → l...r)</li>
+              </ul>
+
+              <h5>Deletion/Elision</h5>
+              <ul>
+                <li><strong>Definition:</strong> Sound is removed</li>
+                <li><strong>Examples:</strong>
+                  <ul>
+                    <li>"handbag" → [hænbæg] (d deleted)</li>
+                    <li>"camera" → [kæmrə] (schwa deleted)</li>
+                    <li>"probably" → [prɑbli] (schwa deleted)</li>
+                  </ul>
+                </li>
+                <li><strong>Common in fast speech:</strong> Casual pronunciation</li>
+              </ul>
+
+              <h5>Insertion/Epenthesis</h5>
+              <ul>
+                <li><strong>Definition:</strong> Sound is added</li>
+                <li><strong>Examples:</strong>
+                  <ul>
+                    <li>"warmth" → [wɔrmpθ] (p inserted)</li>
+                    <li>"athlete" → [æθəlit] (schwa inserted)</li>
+                    <li>"film" → [fɪləm] (schwa inserted)</li>
+                  </ul>
+                </li>
+                <li><strong>Purpose:</strong> Breaks up difficult consonant clusters</li>
+              </ul>
+
+              <h5>Metathesis</h5>
+              <ul>
+                <li><strong>Definition:</strong> Sounds switch positions</li>
+                <li><strong>Examples:</strong>
+                  <ul>
+                    <li>"ask" → "aks" in some dialects</li>
+                    <li>"comfortable" → "comfterble"</li>
+                  </ul>
+                </li>
+                <li><strong>Historical:</strong> Old English "brid" → Modern English "bird"</li>
+              </ul>
+
+              <h5>Lenition (Weakening)</h5>
+              <ul>
+                <li><strong>Definition:</strong> Sound becomes weaker or less constricted</li>
+                <li><strong>Example:</strong> Spanish "hablado" [aβlaðo] - stops become fricatives</li>
+              </ul>
+
+              <h4>Syllable Structure</h4>
+
+              <h5>Components</h5>
+              <ul>
+                <li><strong>Onset:</strong> Initial consonant(s) - optional ("cat" = /k/)</li>
+                <li><strong>Nucleus:</strong> Vowel or syllabic consonant - obligatory ("cat" = /æ/)</li>
+                <li><strong>Coda:</strong> Final consonant(s) - optional ("cat" = /t/)</li>
+                <li><strong>Rhyme:</strong> Nucleus + Coda together</li>
+              </ul>
+
+              <h5>Syllable Types</h5>
+              <ul>
+                <li><strong>Open syllable:</strong> Ends in vowel (CV) - "go" [goʊ]</li>
+                <li><strong>Closed syllable:</strong> Ends in consonant (CVC) - "cat" [kæt]</li>
+                <li><strong>Heavy syllable:</strong> Long vowel or coda - "beat", "cat"</li>
+                <li><strong>Light syllable:</strong> Short vowel, no coda - "ba" in "baby"</li>
+              </ul>
+
+              <h5>Sonority Hierarchy</h5>
+              <ul>
+                <li><strong>Principle:</strong> Sounds arranged by sonority (resonance)</li>
+                <li><strong>Hierarchy:</strong> Vowels &gt; Glides &gt; Liquids &gt; Nasals &gt; Fricatives &gt; Stops</li>
+                <li><strong>Syllable peak:</strong> Most sonorous element (usually vowel)</li>
+              </ul>
+
+              <h5>Phonotactics</h5>
+              <ul>
+                <li><strong>Definition:</strong> Rules for permissible sound combinations</li>
+                <li><strong>English examples:</strong>
+                  <ul>
+                    <li>Can start with /str/ ("street") but not /tsr/</li>
+                    <li>Can end with /ŋk/ ("sink") but not /ŋg/</li>
+                  </ul>
+                </li>
+                <li><strong>Language-specific:</strong> Varies across languages</li>
+              </ul>
+
+              <h4>Prosodic Features</h4>
+
+              <h5>Stress</h5>
+              <ul>
+                <li><strong>Definition:</strong> Prominence given to syllables</li>
+                <li><strong>Distinguishes meaning:</strong> REcord (noun) vs. reCORD (verb)</li>
+                <li><strong>Marked by:</strong> Increased loudness, length, pitch</li>
+                <li><strong>Primary and secondary:</strong> Different levels of stress</li>
+              </ul>
+
+              <h5>Tone</h5>
+              <ul>
+                <li><strong>Definition:</strong> Pitch patterns that distinguish meaning</li>
+                <li><strong>Tonal languages:</strong> Mandarin Chinese, Thai, Yoruba, Vietnamese</li>
+                <li><strong>Types:</strong> Level tones (high, mid, low), contour tones (rising, falling)</li>
+                <li><strong>Example:</strong> Mandarin "ma" - high tone = "mother", rising = "hemp"</li>
+              </ul>
+
+              <h5>Intonation</h5>
+              <ul>
+                <li><strong>Definition:</strong> Pitch patterns across phrases/sentences</li>
+                <li><strong>Functions:</strong> Indicates questions, statements, emotions</li>
+                <li><strong>Rising intonation:</strong> Yes/no questions ("You're coming?↗")</li>
+                <li><strong>Falling intonation:</strong> Statements ("I'm coming.↘")</li>
+              </ul>
+
+              <h5>Length/Duration</h5>
+              <ul>
+                <li><strong>Phonemic length:</strong> Long vs. short sounds distinguish meaning</li>
+                <li><strong>Example:</strong> Finnish "tuli" (fire) vs. "tuuli" (wind)</li>
+              </ul>
+
+              <h5>Rhythm</h5>
+              <ul>
+                <li><strong>Stress-timed:</strong> English, German (stressed syllables at regular intervals)</li>
+                <li><strong>Syllable-timed:</strong> Spanish, French (syllables at regular intervals)</li>
+                <li><strong>Mora-timed:</strong> Japanese (morae at regular intervals)</li>
+              </ul>
+
+              <div className="example-box">
+                <h5>Phonological Rules</h5>
+                <p>Phonological rules describe systematic sound patterns:</p>
+                <ul>
+                  <li><strong>Rule format:</strong> A → B / C_D (A becomes B in context C_D)</li>
+                  <li><strong>Example:</strong> Vowels → [+nasal] / _[+nasal] (vowels nasalized before nasal consonants)</li>
+                  <li><strong>Productive:</strong> Apply to new words automatically</li>
+                  <li><strong>Predictable:</strong> Follow consistent patterns</li>
+                </ul>
+              </div>
+            </section>
+
+            <Quiz title="Module 1.3 Quiz: Phonology" questions={module3Quiz} subject="LS" unitId={1} moduleId={3} />
+
+            <div className="reference-section">
+              <h3>Reference Materials</h3>
+              <ul>
+                <li><a href="https://www.phon.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Oxford Phonetics Laboratory</a></li>
+                <li><a href="https://linguistics.stackexchange.com/" target="_blank" rel="noopener noreferrer">Linguistics Stack Exchange</a></li>
+                <li><a href="https://www.sil.org/linguistics/phonology" target="_blank" rel="noopener noreferrer">SIL - Phonology Resources</a></li>
+              </ul>
+            </div>
+
+            <ModuleNavigation
+              unitId={1}
+              moduleId={3}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
+          </div>
+        );
+
+      case 4:
+        return (
+          <div className="module-content">
+            <div className="lesson-header">
+              <div className="lesson-number-badge">1.4</div>
+              <div className="lesson-title-main">
+                <h1>Morphology</h1>
+              </div>
+            </div>
+
+            <section className="content-section">
+              <h3>Understanding Morphology</h3>
+              <p>Morphology is the study of word structure and the rules governing word formation in languages. It examines how morphemes (smallest meaningful units) combine to create words.</p>
+
+
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/93sK4jTGrss?si=7KPZLNEzyPsKZT7I" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
+                style={{ width: '550px', height: '325px' }}
+              ></iframe>
+
+
+              <h4>Basic Morphological Concepts</h4>
+
+              <h5>Morpheme</h5>
+              <ul>
+                <li><strong>Definition:</strong> Smallest meaningful unit in language</li>
+                <li><strong>Cannot be divided:</strong> Into smaller meaningful parts</li>
+                <li><strong>Example:</strong> "unbreakable" = un + break + able (3 morphemes)</li>
+                <li><strong>Carries meaning:</strong> Lexical or grammatical</li>
+              </ul>
+
+              <h5>Types of Morphemes</h5>
+              <ul>
+                <li><strong>Free morpheme:</strong> Can stand alone as a word
+                  <ul>
+                    <li>Examples: cat, run, happy, book, green</li>
+                    <li>Can function independently</li>
+                  </ul>
+                </li>
+                <li><strong>Bound morpheme:</strong> Must attach to other morphemes
+                  <ul>
+                    <li>Affixes: -s, -ed, un-, -ness, -ing</li>
+                    <li>Cannot stand alone</li>
+                  </ul>
+                </li>
+                <li><strong>Root:</strong> Core meaning element (break in "unbreakable")</li>
+                <li><strong>Stem:</strong> Base to which affixes attach</li>
+                <li><strong>Base:</strong> Form to which affixes attach</li>
+              </ul>
+
+              <h5>Allomorph</h5>
+              <ul>
+                <li><strong>Definition:</strong> Variant forms of the same morpheme</li>
+                <li><strong>Example - Plural -s:</strong>
+                  <ul>
+                    <li>/s/ in "cats" [kæts]</li>
+                    <li>/z/ in "dogs" [dɔgz]</li>
+                    <li>/ɪz/ in "horses" [hɔrsɪz]</li>
+                  </ul>
+                </li>
+                <li><strong>Phonologically conditioned:</strong> Environment determines which form</li>
+                <li><strong>Same meaning:</strong> Different pronunciation</li>
+              </ul>
+
+              <div className="example-box">
+                <h5>Morpheme Analysis Example</h5>
+                <p>Analyze the word "unbelievably":</p>
+                <ul>
+                  <li><strong>un-:</strong> prefix (negative) - bound morpheme</li>
+                  <li><strong>believe:</strong> root (verb) - free morpheme</li>
+                  <li><strong>-able:</strong> suffix (adjective-forming) - bound morpheme</li>
+                  <li><strong>-ly:</strong> suffix (adverb-forming) - bound morpheme</li>
+                  <li><strong>Total:</strong> 4 morphemes (1 free + 3 bound)</li>
+                  <li><strong>Process:</strong> believe → believable → unbelievable → unbelievably</li>
+                </ul>
+              </div>
+
+              <h4>Word Formation Processes</h4>
+
+              <h5>Derivational Morphology</h5>
+              <ul>
+                <li><strong>Creates new words:</strong> Or changes word class</li>
+                <li><strong>Prefixation:</strong> Adding prefixes
+                  <ul>
+                    <li>un-happy, re-write, pre-view, dis-agree</li>
+                    <li>Often changes meaning, not word class</li>
+                  </ul>
+                </li>
+                <li><strong>Suffixation:</strong> Adding suffixes
+                  <ul>
+                    <li>teach-er (V→N), happi-ness (Adj→N), quick-ly (Adj→Adv)</li>
+                    <li>Often changes word class</li>
+                  </ul>
+                </li>
+                <li><strong>Infixation:</strong> Inserting within roots
+                  <ul>
+                    <li>Rare in English: fan-bloody-tastic</li>
+                    <li>Common in Tagalog, Arabic</li>
+                  </ul>
+                </li>
+                <li><strong>Changes meaning:</strong> And often word class</li>
+              </ul>
+
+              <h5>Inflectional Morphology</h5>
+              <ul>
+                <li><strong>Modifies word:</strong> For grammatical function</li>
+                <li><strong>Does not change:</strong> Word class or core meaning</li>
+                <li><strong>English inflections (only 8):</strong>
+                  <ul>
+                    <li><strong>Plural:</strong> cat → cats</li>
+                    <li><strong>Possessive:</strong> cat → cat's</li>
+                    <li><strong>3rd person singular:</strong> walk → walks</li>
+                    <li><strong>Past tense:</strong> walk → walked</li>
+                    <li><strong>Past participle:</strong> walk → walked</li>
+                    <li><strong>Present participle:</strong> walk → walking</li>
+                    <li><strong>Comparative:</strong> big → bigger</li>
+                    <li><strong>Superlative:</strong> big → biggest</li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h5>Compounding</h5>
+              <ul>
+                <li><strong>Definition:</strong> Combining two or more free morphemes</li>
+                <li><strong>Types:</strong>
+                  <ul>
+                    <li><strong>Noun + Noun:</strong> bookshelf, classroom, football</li>
+                    <li><strong>Adjective + Noun:</strong> blackboard, greenhouse, hotdog</li>
+                    <li><strong>Verb + Noun:</strong> pickpocket, breakfast, crybaby</li>
+                    <li><strong>Noun + Verb:</strong> babysit, skydive</li>
+                    <li><strong>Adjective + Adjective:</strong> bittersweet, blue-green</li>
+                  </ul>
+                </li>
+                <li><strong>Creates new lexical items:</strong> Often with specialized meaning</li>
+                <li><strong>Stress pattern:</strong> Usually on first element (BLACKboard)</li>
+              </ul>
+
+              <h5>Conversion (Zero Derivation)</h5>
+              <ul>
+                <li><strong>Definition:</strong> Changing word class without adding affixes</li>
+                <li><strong>Noun → Verb:</strong>
+                  <ul>
+                    <li>to email, to google, to text, to chair (a meeting)</li>
+                  </ul>
+                </li>
+                <li><strong>Verb → Noun:</strong>
+                  <ul>
+                    <li>a walk, a run, a hit, a catch</li>
+                  </ul>
+                </li>
+                <li><strong>Adjective → Verb:</strong>
+                  <ul>
+                    <li>to clean, to empty, to dirty</li>
+                  </ul>
+                </li>
+                <li><strong>Very productive:</strong> In English</li>
+              </ul>
+
+              <h5>Back-formation</h5>
+              <ul>
+                <li><strong>Definition:</strong> Creating new word by removing apparent affix</li>
+                <li><strong>Examples:</strong>
+                  <ul>
+                    <li>editor → edit (removed -or)</li>
+                    <li>television → televise (removed -ion)</li>
+                    <li>burglar → burgle (removed -ar)</li>
+                    <li>enthusiasm → enthuse (removed -iasm)</li>
+                  </ul>
+                </li>
+                <li><strong>Reverse process:</strong> Of normal derivation</li>
+              </ul>
+
+              <h5>Other Word Formation Processes</h5>
+              <ul>
+                <li><strong>Clipping:</strong> Shortening words (advertisement → ad, laboratory → lab)</li>
+                <li><strong>Blending:</strong> Combining parts of words (breakfast + lunch → brunch, smoke + fog → smog)</li>
+                <li><strong>Acronyms:</strong> Initial letters (NASA, radar, scuba)</li>
+                <li><strong>Borrowing:</strong> Taking words from other languages (pizza, karate, safari)</li>
+                <li><strong>Coinage:</strong> Creating entirely new words (Google, Xerox, Kodak)</li>
+              </ul>
+
+              <h4>Morphological Typology</h4>
+
+              <h5>Isolating Languages</h5>
+              <ul>
+                <li><strong>Characteristic:</strong> One morpheme per word</li>
+                <li><strong>Little to no inflection:</strong> Minimal bound morphemes</li>
+                <li><strong>Examples:</strong> Mandarin Chinese, Vietnamese, Thai</li>
+                <li><strong>Grammar:</strong> Expressed through word order and separate words</li>
+                <li><strong>Example:</strong> Mandarin "wǒ kàn shū" (I see book) - each word = one morpheme</li>
+              </ul>
+
+              <h5>Agglutinating Languages</h5>
+              <ul>
+                <li><strong>Characteristic:</strong> Multiple morphemes per word</li>
+                <li><strong>Clear boundaries:</strong> Easy to segment morphemes</li>
+                <li><strong>Examples:</strong> Turkish, Finnish, Japanese, Swahili</li>
+                <li><strong>Each morpheme:</strong> Has one clear meaning/function</li>
+                <li><strong>Example:</strong> Turkish "evlerimizden" = ev-ler-imiz-den (house-PL-our-from)</li>
+              </ul>
+
+              <h5>Fusional Languages</h5>
+              <ul>
+                <li><strong>Characteristic:</strong> Multiple meanings per morpheme</li>
+                <li><strong>Unclear boundaries:</strong> Morphemes fused together</li>
+                <li><strong>Examples:</strong> Spanish, Russian, Latin, German</li>
+                <li><strong>One affix:</strong> Expresses multiple grammatical categories</li>
+                <li><strong>Example:</strong> Spanish "hablo" = habl-o (speak-1st.person.singular.present)</li>
+              </ul>
+
+              <h5>Polysynthetic Languages</h5>
+              <ul>
+                <li><strong>Characteristic:</strong> Highly complex words</li>
+                <li><strong>Single word:</strong> Can express entire sentence</li>
+                <li><strong>Examples:</strong> Inuktitut, Mohawk, Yup'ik</li>
+                <li><strong>Incorporation:</strong> Extensive use of noun incorporation</li>
+                <li><strong>Example:</strong> Inuktitut "tusaatsiarunnanngittualuujunga" (I can't hear very well)</li>
+              </ul>
+
+              <h4>Morphological Analysis Techniques</h4>
+              <ul>
+                <li><strong>Morphological parsing:</strong> Breaking words into morphemes</li>
+                <li><strong>Segmentation:</strong> Identifying boundaries between morphemes</li>
+                <li><strong>Identification:</strong> Recognizing morpheme types and functions</li>
+                <li><strong>Pattern recognition:</strong> Finding systematic patterns</li>
+                <li><strong>Morphophonemic alternations:</strong> Sound changes at morpheme boundaries</li>
+                <li><strong>Cross-linguistic comparison:</strong> Comparing morphological systems</li>
+              </ul>
+
+              <h4>Applications of Morphology</h4>
+              <ul>
+                <li><strong>Language teaching:</strong> Understanding word structure aids learning</li>
+                <li><strong>Computational linguistics:</strong> Natural language processing, spell checkers</li>
+                <li><strong>Speech synthesis:</strong> Text-to-speech systems</li>
+                <li><strong>Translation:</strong> Understanding word formation across languages</li>
+                <li><strong>Language documentation:</strong> Describing endangered languages</li>
+                <li><strong>Language disorders:</strong> Diagnosing morphological deficits</li>
+                <li><strong>Lexicography:</strong> Dictionary making and word analysis</li>
+              </ul>
+
+              <div className="example-box">
+                <h5>Concatenative vs. Non-concatenative Morphology</h5>
+                <p><strong>Concatenative:</strong> Morphemes joined end-to-end (English)</p>
+                <ul>
+                  <li>un + happy = unhappy</li>
+                  <li>walk + ed = walked</li>
+                </ul>
+                <p><strong>Non-concatenative:</strong> Internal changes (Arabic, Hebrew)</p>
+                <ul>
+                  <li>Arabic: k-t-b (root for "write")</li>
+                  <li>kataba (he wrote), kutiba (it was written), kaatib (writer)</li>
+                  <li>Vowel patterns inserted into consonant root</li>
+                </ul>
+              </div>
+            </section>
+
+            <Quiz title="Module 1.4 Quiz: Morphology" questions={module4Quiz} subject="LS" unitId={1} moduleId={4} />
+
+            <div className="reference-section">
+              <h3>Reference Materials</h3>
+              <ul>
+                <li><a href="https://www.sil.org/linguistics/morphology" target="_blank" rel="noopener noreferrer">SIL - Morphology Resources</a></li>
+                <li><a href="https://wals.info/" target="_blank" rel="noopener noreferrer">World Atlas of Language Structures</a></li>
+                <li><a href="https://www.ethnologue.com/" target="_blank" rel="noopener noreferrer">Ethnologue - Languages of the World</a></li>
+              </ul>
+            </div>
+
+            <ModuleNavigation
+              unitId={1}
+              moduleId={4}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
+          </div>
+        );
+
+      case 5:
+        return (
+          <div className="module-content">
+            <div className="lesson-header">
+              <div className="lesson-number-badge">1.5</div>
+              <div className="lesson-title-main">
+                <h1>Unit 1 Comprehensive Assessment</h1>
+              </div>
+            </div>
+
+            <section className="content-section">
+              <h3>Test Your Knowledge of Unit 1</h3>
+              <p>This comprehensive quiz covers all topics from Unit 1: Introduction to Linguistics. It includes questions from:</p>
+              <ul>
+                <li><strong>Module 1.1:</strong> Overview of Linguistics and its Sub-fields</li>
+                <li><strong>Module 1.2:</strong> Phonetics</li>
+                <li><strong>Module 1.3:</strong> Phonology</li>
+                <li><strong>Module 1.4:</strong> Morphology</li>
+              </ul>
+              <p>Take your time and demonstrate your understanding of the fundamental concepts in linguistics!</p>
+            </section>
+
+            <Quiz title="Unit 1 Comprehensive Quiz" questions={unitQuiz} subject="LS" unitId={1} moduleId={5} />
+
+            <div className="reference-section">
+              <h3>Unit 1 Complete - Additional Resources</h3>
+              <ul>
+                <li><a href="https://www.cambridge.org/core/books/how-languages-work/" target="_blank" rel="noopener noreferrer">How Languages Work - Carol Genetti (Textbook)</a></li>
+                <li><a href="https://www.linguisticsociety.org/resource/faq" target="_blank" rel="noopener noreferrer">Linguistic Society of America - FAQs</a></li>
+                <li><a href="https://ocw.mit.edu/courses/linguistics-and-philosophy/" target="_blank" rel="noopener noreferrer">MIT OpenCourseWare - Linguistics</a></li>
+                <li><a href="https://www.youtube.com/c/LingSpace" target="_blank" rel="noopener noreferrer">The Ling Space - YouTube Channel</a></li>
+              </ul>
+            </div>
+
+            <ModuleNavigation
+              unitId={1}
+              moduleId={5}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
+          </div>
+        );
+
+      default:
+        return <div>Module not found</div>;
     }
   };
 
-  return (
-    <div className="unit-container">
-      {renderModule()}
-      <CompletionButton
-        subject="LS"
-        unitId={1}
-        moduleId={currentModule}
-      />
-      <div className="navigation-buttons" style={{ marginTop: '40px', marginBottom: '40px' }}>
-        <button
-          onClick={currentModule === 1 ? onBack : () => setCurrentModule(currentModule - 1)}
-          className="prev-module-btn"
-          style={{ fontWeight: 'bold' }}
-        >
-          ← {currentModule === 1 ? 'Back to Overview' : moduleNames[currentModule - 2]}
-        </button>
-        {currentModule < 3 && (
-          <button
-            onClick={() => setCurrentModule(currentModule + 1)}
-            className="next-module-btn"
-            style={{ fontWeight: 'bold' }}
-          >
-            {moduleNames[currentModule]} →
-          </button>
-        )}
-      </div>
-    </div>
-  );
+  return <div className="unit-container">{renderModule()}</div>;
 };
 
 export default Unit1;
+
+
+

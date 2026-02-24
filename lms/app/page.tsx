@@ -29,17 +29,28 @@ import { useProgress } from "@/app/pages/useProgress";
 import Footer from "@/components/Footer";
 
 function SubjectProgressBar({ name, code, totalModules }: { name: string, code: string, totalModules: number }) {
-  const { completedPercentage } = useProgress(code, totalModules);
+  const { completedPercentage, masteryPercentage } = useProgress(code, totalModules);
 
   return (
     <div className="space-y-3">
-      <div className="flex justify-between items-center text-[10px] font-black">
+      <div className="flex justify-between items-center text-[10px] font-black uppercase">
         <span className="text-[#121212]">
           {name} — <span className="text-[#888]">{code}</span>
         </span>
-        <span className={`${completedPercentage < 50 ? 'text-rose-600' : 'text-blue-600'}`}>
-          {completedPercentage}%
-        </span>
+        <div className="flex gap-4 items-center">
+          <div className="flex flex-col items-end">
+            <span className="text-[8px] text-[#AAA]">Progress</span>
+            <span className={completedPercentage < 50 ? 'text-rose-600' : 'text-blue-600'}>
+              {completedPercentage}%
+            </span>
+          </div>
+          <div className="flex flex-col items-end">
+            <span className="text-[8px] text-[#AAA]">Mastery</span>
+            <span className={masteryPercentage < 50 ? 'text-rose-600' : 'text-emerald-600'}>
+              {masteryPercentage}%
+            </span>
+          </div>
+        </div>
       </div>
       <div className="h-2 w-full bg-[#EEEEEE] rounded-full overflow-hidden">
         <motion.div
@@ -152,7 +163,7 @@ export default function Home() {
                     <SubjectProgressBar name="Data Structures" code="DS" totalModules={91} />
                     <SubjectProgressBar name="Formal Languages & Automata Theory" code="FLAT" totalModules={30} />
                     <SubjectProgressBar name="Environmental Science" code="ES" totalModules={25} />
-                    <SubjectProgressBar name="Language Systems" code="LS" totalModules={24} />
+                    <SubjectProgressBar name="Language Systems" code="LS" totalModules={22} />
                     <SubjectProgressBar name="National Service Scheme" code="NSS" totalModules={25} />
                   </div>
                 </div>

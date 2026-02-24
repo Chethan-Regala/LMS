@@ -184,12 +184,12 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Air Pollution: Definition, Causes, Effects and Control</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Air Pollution: When the Atmosphere Gets Corrupted</h3>
               <div className="theory-box">
                 <p>Hey future engineers! 👋 Think of air pollution like malware in your computer's system - harmful substances get into the atmosphere and mess up everything! Just like how a virus can slow down your laptop, air pollutants can seriously damage our health and the environment. Understanding air pollution is crucial because as engineers, you'll be designing solutions to clean up this mess! 💨</p>
-
+                
                 <div className="performance-metrics">
                   <h4>Air Pollution Stats That'll Shock You</h4>
                   <ul>
@@ -200,10 +200,10 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-
+              
               <h4>Understanding Air Pollution</h4>
               <p>Air pollution is the presence of substances in the atmosphere that are harmful to the health of humans and other living beings, or cause damage to the climate or to materials.</p>
-
+              
               <h5>Causes of Air Pollution</h5>
               <div className="example-box">
                 <p>Think of pollution sources like different types of malware - each has its own way of corrupting the system!</p>
@@ -231,7 +231,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Control Measures for Air Pollution</h4>
-
+              
               <h5>Technological Solutions - The Engineering Approach</h5>
               <div className="example-box">
                 <p>These are like antivirus software and system optimizations - technical fixes to clean up the mess!</p>
@@ -259,7 +259,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Career Opportunities 🚀</h4>
-
+              
               <div className="career-opportunities">
                 <h5>Software Engineering Applications</h5>
                 <ul>
@@ -301,12 +301,12 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Water Pollution: Definition, Causes, Effects and Control</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Water Pollution: When H₂O Gets Hacked</h3>
               <div className="theory-box">
                 <p>Imagine if someone injected malicious code into your database - that's exactly what water pollution is! 🗄️ Clean water is like a perfectly functioning database, but when harmful substances get in, the whole system becomes corrupted and dangerous to use. As engineers, understanding water pollution is crucial because you'll be designing the "firewalls" and "cleanup utilities" to protect this vital resource!</p>
-
+                
                 <div className="performance-metrics">
                   <h4>Water Pollution Reality Check</h4>
                   <ul>
@@ -317,10 +317,10 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-
+              
               <h4>Understanding Water Pollution</h4>
               <p>Water pollution occurs when harmful substances—often chemicals or microorganisms—contaminate water bodies, making the water toxic to humans and the environment.</p>
-
+              
               <h5>Causes of Water Pollution</h5>
               <div className="example-box">
                 <p>Water pollution sources are like different attack vectors on a network - each one finds a way to compromise the system!</p>
@@ -348,7 +348,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Control Measures for Water Pollution</h4>
-
+              
               <h5>Waste Treatment Solutions - The Technical Fixes</h5>
               <div className="example-box">
                 <p>These are like sophisticated antivirus and cleanup programs for water systems!</p>
@@ -376,7 +376,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Solutions for Water Treatment</h4>
-
+              
               <div className="career-opportunities">
                 <h5>Advanced Treatment Technologies</h5>
                 <ul>
@@ -426,12 +426,12 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Soil Pollution and Noise Pollution</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Soil Pollution: When the Foundation Gets Corrupted</h3>
               <div className="theory-box">
                 <p>Think of soil as the motherboard of our ecosystem - everything depends on it! When soil gets polluted, it's like having a corrupted motherboard that affects every component connected to it. As engineers, you need to understand soil pollution because contaminated land affects everything from food production to groundwater quality. Plus, cleaning up contaminated sites is a huge engineering challenge!</p>
-
+                
                 <div className="performance-metrics">
                   <h4>Soil Pollution Facts</h4>
                   <ul>
@@ -442,10 +442,10 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-
+              
               <h4>Understanding Soil Pollution</h4>
               <p>Soil pollution is the contamination of soil by harmful chemicals and substances that affect soil fertility, groundwater quality, and plant and animal health.</p>
-
+              
               <h5>Causes of Soil Pollution</h5>
               <div className="example-box">
                 <ul>
@@ -470,7 +470,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Soil Remediation Techniques</h4>
-
+              
               <div className="example-box">
                 <h5>Engineering Solutions</h5>
                 <ul>
@@ -484,10 +484,10 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h3>Noise Pollution: When the Environment Gets Too Loud</h3>
-
+              
               <h4>Understanding Noise Pollution</h4>
               <p>Noise pollution is like having too many applications running with sound notifications - it overwhelms the system and affects performance!</p>
-
+              
               <h5>Causes of Noise Pollution</h5>
               <div className="example-box">
                 <ul>
@@ -511,7 +511,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Control Measures</h4>
-
+              
               <div className="example-box">
                 <h5>Engineering Controls</h5>
                 <ul>
@@ -523,7 +523,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Career Opportunities </h4>
-
+              
               <div className="career-opportunities">
                 <h5>Technology Applications </h5>
                 <ul>
@@ -559,12 +559,12 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Nuclear Hazards and Solid Waste Management</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Nuclear Hazards: When Atoms Go Rogue</h3>
               <div className="theory-box">
                 <p>Nuclear hazards are like the ultimate system security threat - invisible, potentially catastrophic, and requiring extreme safety protocols! ⚡ Think of radioactive materials as highly volatile code that can corrupt everything it touches. As engineers, understanding nuclear safety is crucial because you might work with radiation in medical devices, power plants, or research facilities.</p>
-
+                
                 <div className="performance-metrics">
                   <h4>Nuclear Reality Check</h4>
                   <ul>
@@ -575,10 +575,10 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-
+              
               <h4>Understanding Nuclear Hazards</h4>
               <p>Nuclear hazards refer to the potential dangers associated with radioactive materials and nuclear energy, including radiation exposure, contamination, and accidents at nuclear facilities.</p>
-
+              
               <h5>Causes of Nuclear Hazards</h5>
               <div className="example-box">
                 <ul>
@@ -604,7 +604,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Nuclear Safety and Control Measures</h4>
-
+              
               <div className="example-box">
                 <h5>Safety and Prevention</h5>
                 <ul>
@@ -618,10 +618,10 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h3>Solid Waste Management: Dealing with Digital and Physical Trash</h3>
-
+              
               <h4>Understanding Solid Waste Management</h4>
               <p>Solid waste management is like managing your computer's storage - you need to organize, clean up, and dispose of unnecessary files efficiently!</p>
-
+              
               <h5>Types of Solid Waste</h5>
               <div className="example-box">
                 <h6>Urban Solid Waste</h6>
@@ -643,7 +643,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Effects of Poor Waste Management</h4>
-
+              
               <div className="example-box">
                 <h5>Environmental and Health Effects</h5>
                 <ul>
@@ -656,7 +656,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Waste Management Solutions</h4>
-
+              
               <div className="example-box">
                 <h5>The Waste Management Hierarchy</h5>
                 <ul>
@@ -669,7 +669,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Career Opportunities </h4>
-
+              
               <div className="career-opportunities">
                 <h5>Technology Applications </h5>
                 <ul>
@@ -713,12 +713,12 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Unit 4 Quiz</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Disaster Management: System Recovery and Business Continuity </h3>
               <div className="theory-box">
                 <p>Disaster management is like IT disaster recovery planning on a massive scale!  Just like how you need backup systems, recovery protocols, and emergency procedures for your servers, we need similar strategies for natural disasters. As engineers, you'll be designing early warning systems, resilient infrastructure, and emergency response technologies!</p>
-
+                
                 <div className="performance-metrics">
                   <h4>Disaster Impact Statistics</h4>
                   <ul>
@@ -729,10 +729,10 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-
+              
               <h4>Understanding Natural Disasters</h4>
               <p>Disaster management involves systematic organization of resources and responsibilities for dealing with all aspects of emergencies, particularly preparedness, response, and recovery.</p>
-
+              
               <h5>Flood Management - Overflow Protection</h5>
               <div className="example-box">
                 <p>Floods are like buffer overflow attacks - too much input overwhelms the system's capacity!</p>
@@ -786,7 +786,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Integrated Disaster Management</h4>
-
+              
               <div className="example-box">
                 <h5>Modern Disaster Management Approaches</h5>
                 <ul>
@@ -800,7 +800,7 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Applications in Disaster Management</h4>
-
+              
               <div className="career-opportunities">
                 <h5>Technology Solutions </h5>
                 <ul>

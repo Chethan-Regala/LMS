@@ -123,7 +123,7 @@ const Module2_1: React.FC = () => {
                 </div>
 
                 {/* FIGURE 1 */}
-             
+
 
                 <hr style={{ margin: '40px 0', border: '0', borderTop: '1px solid #eee' }} />
 
@@ -140,7 +140,7 @@ const Module2_1: React.FC = () => {
                 <p>The fundamental distinction lies in the concept of regeneration rate. Renewable resources regenerate continuously or on relatively short cycles—the sun rises every day, wind blows constantly, water cycles through precipitation, and plants grow seasonally. Non-renewable resources, however, formed through geological processes over millions of years. For example, coal formed from ancient plant matter buried and compressed over 300 million years during the Carboniferous period. Once we extract and burn this coal, it's gone forever from a human perspective—we cannot wait another 300 million years for more to form.</p>
                 <p>This distinction matters profoundly because our current energy system relies overwhelmingly on non-renewable sources. As of 2023, fossil fuels still provide about 82% of global primary energy, despite decades of warnings about climate change and resource depletion. The burning of fossil fuels releases carbon dioxide (CO₂) that was sequestered underground for millions of years, rapidly increasing atmospheric CO₂ concentrations from pre-industrial levels of 280 parts per million (ppm) to over 420 ppm today—the highest level in at least 3 million years. This greenhouse gas accumulation is driving unprecedented climate change with cascading effects on ecosystems, weather patterns, sea levels, and human societies.</p>
 
-               
+
 
                 <div style={{ backgroundColor: '#f0f9ff', padding: '25px', borderRadius: '12px', border: '1px solid #bae6fd', margin: '30px 0' }}>
                     <h4 style={{ margin: '0 0 15px 0', color: '#075985' }}>📌 Key Terminology:</h4>
@@ -171,324 +171,866 @@ const Module2_1: React.FC = () => {
                 <p>Wind energy offers numerous advantages: zero fuel costs after installation, very low operating costs, minimal land footprint, rapid installation, and declining costs. Offshore wind is particularly promising—steadier, stronger winds allow higher capacity factors (40-50%) and larger turbines. However, wind faces challenges: intermittency and variability (wind doesn't always blow when needed), requiring backup power or storage, visual and noise impacts on landscapes, bird and bat mortality (though proper siting and technology minimize this), and transmission challenges.</p>
                 <p><strong>3. HYDROELECTRIC POWER</strong> - Hydropower harnesses the gravitational potential energy of water elevated in mountains or behind dams. Water flowing through turbines converts potential energy into kinetic energy and then into electricity. Hydropower is the largest renewable electricity source globally, generating about 16% of global electricity from approximately 1,300 GW of installed capacity. Large-scale hydropower includes massive dams like China's Three Gorges Dam (22.5 GW capacity), Itaipu Dam on the Brazil-Paraguay border (14 GW), and India's Bhakra Dam (1.5 GW).</p>
                 <p>Hydropower's advantages include: high efficiency (85-90% conversion efficiency), flexible and controllable generation (can ramp up/down quickly), energy storage capability (pumped-storage), long operational life (50-100+ years), and additional benefits like flood control, irrigation, and recreation. However, large dams have severe environmental and social impacts: flooding vast land areas and destroying ecosystems, blocking fish migration routes, changing downstream river ecosystems, displacing communities (Three Gorges displaced 1.3 million people), methane emissions from decaying organic matter in reservoirs, and vulnerability to drought.</p>
-                <p><strong>4. BIOMASS AND BIOENERGY</strong> - Biomass includes plant matter, agricultural residues, forestry waste, animal waste, and organic municipal waste that can be burned directly for heat, converted into liquid biofuels (ethanol, biodiesel), or gasified for electricity generation. Traditional biomass (wood, dung, crop residues) has been humanity's primary energy source for millennia and still provides cooking and heating energy for 2.5 billion people in developing countries. Modern bioenergy is more sophisticated: first-generation biofuels (corn ethanol, soy biodiesel), second-generation biofuels from non-food biomass (cellulosic ethanol), and advanced biofuels from algae and waste oils. Biomass provides about 10% of global primary energy.</p>
-                <p><strong>5. GEOTHERMAL ENERGY</strong> - Earth's interior contains vast amounts of heat—temperatures reach 5,000-7,000°C at the core. Geothermal energy taps into this heat through wells drilled 1-4 km deep, extracting hot water or steam to drive turbines. Geothermal power plants generate about 15 GW globally, concentrated in geologically active regions: USA, Indonesia, Philippines, Turkey, New Zealand, Mexico, Italy, and Kenya. Geothermal offers unique benefits: continuous baseload generation (24/7), very small land footprint, and very low lifecycle emissions. Challenges include geographic restrictions, high upfront drilling costs, and potential for induced seismicity.</p>
-                <p><strong>6. OCEAN ENERGY</strong> - The ocean contains enormous energy in multiple forms: tidal energy from gravitational pull, wave energy from wind, ocean thermal energy conversion (OTEC), and salinity gradient energy. Ocean energy is at early development stages—total global installed capacity is only about 0.5 GW, mostly tidal barrages. Potential advantages include predictability, high energy density, and vast theoretical resource. Challenges include harsh marine environment, high costs, and environmental impacts on marine ecosystems.</p>
+                <p><strong>4. BIOMASS AND BIOENERGY</strong> - Biomass includes plant matter, agricultural residues, forestry waste, animal waste, and organic municipal waste that can be burned directly for heat, converted into liquid biofuels (ethanol, biodiesel), or gasified for electricity generation. Plants capture solar energy through photosynthesis, storing it in chemical bonds. When we burn biomass, we release this stored solar energy. Traditional biomass (wood, dung, crop residues) has been humanity's primary energy source for millennia and still provides cooking and heating energy for 2.5 billion people in developing countries.
 
-                {/* COMPARISON - SHORT VERSION FOR NOW */}
-                <div style={{ backgroundColor: '#f8fafc', padding: '25px', borderRadius: '12px', border: '1px solid #e2e8f0', margin: '30px 0' }}>
-                    <h4 style={{ margin: '0 0 15px 0' }}>Comprehensive Comparison: Energy Resources</h4>
+                    Modern bioenergy is more sophisticated: first-generation biofuels (corn ethanol, soy biodiesel), second-generation biofuels from non-food biomass (cellulosic ethanol from agricultural waste), and advanced biofuels from algae and waste oils. Biomass provides about 10% of global primary energy. Theoretical advantages include carbon neutrality (CO₂ released when burning was recently absorbed during growth, creating a closed cycle), use of waste products, and rural economic development. However, biomass sustainability is controversial. Problems include: land competition with food production, deforestation for biomass plantations, soil degradation, water use, fertilizer and pesticide pollution, and questionable carbon neutrality (when accounting for land-use change, processing energy, and opportunity cost of not allowing forest regeneration). Burning biomass still produces air pollutants.</p>
+                <p><strong>5. GEOTHERMAL ENERGY</strong> -  Earth's interior contains vast amounts of heat—temperatures reach 5,000-7,000°C at the core. This heat slowly flows toward the surface through conduction and convection. Geothermal energy taps into this heat through wells drilled 1-4 km deep, extracting hot water or steam to drive turbines. Geothermal power plants generate about 15 GW globally, concentrated in geologically active regions: USA, Indonesia, Philippines, Turkey, New Zealand, Mexico, Italy, and Kenya. Iceland generates 30% of its electricity from geothermal and heats 90% of homes using geothermal district heating.
+
+                    Geothermal offers unique benefits: continuous baseload generation (24/7, unlike solar and wind), very small land footprint, minimal visual impact, and very low lifecycle emissions (about 50g CO₂/kWh). However, limitations include: geographic restrictions (best resources at tectonic plate boundaries), high upfront drilling costs and exploration risks, potential for induced seismicity, and possible local environmental impacts (release of dissolved gases, land subsidence). Enhanced Geothermal Systems (EGS) could expand geothermal access by creating artificial reservoirs through hydraulic fracturing, but the technology remains experimental and expensive.</p>
+                <p><strong>6. OCEAN ENERGY</strong> - The ocean contains enormous energy in multiple forms: tidal energy from gravitational pull of moon and sun, wave energy from wind transferring energy to water surface, ocean thermal energy conversion (OTEC) exploiting temperature differences between warm surface and cold deep water, and salinity gradient energy from osmotic pressure differences between fresh and salt water. Ocean energy is at early development stages—total global installed capacity is only about 0.5 GW, mostly tidal barrages and stream generators.
+
+                    Potential advantages include: predictability (tides are precisely predictable years in advance), high energy density, and vast theoretical resource (ocean energy could theoretically meet all human energy needs). Challenges include: harsh marine environment causing engineering difficulties, high costs, environmental impacts on marine ecosystems, early-stage technology requiring more research and development, and limited suitable locations. The technology shows promise but likely won't contribute significantly to global energy supply for decades.</p>
+
+                {/* COMPREHENSIVE COMPARISON TABLE */}
+                <div style={{ backgroundColor: '#f8fafc', padding: '35px', borderRadius: '24px', border: '1px solid #e2e8f0', margin: '40px 0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+                    <h3 style={{ margin: '0 0 25px 0', color: '#0f172a', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <span style={{ backgroundColor: '#3b82f6', color: 'white', padding: '8px', borderRadius: '10px', fontSize: '0.8em' }}>📊</span> Comprehensive Comparison: Energy Resources
+                    </h3>
                     <div style={{ overflowX: 'auto' }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85em' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85em', minWidth: '900px' }}>
                             <thead>
-                                <tr style={{ backgroundColor: '#e2e8f0' }}>
-                                    <th style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Criterion</th>
-                                    <th style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Coal</th>
-                                    <th style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Oil/Gas</th>
-                                    <th style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Nuclear</th>
-                                    <th style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Renewables</th>
+                                <tr style={{ backgroundColor: '#1e293b', color: '#fff' }}>
+                                    <th style={{ padding: '15px', border: '1px solid #334155', textAlign: 'left' }}>Criterion</th>
+                                    <th style={{ padding: '15px', border: '1px solid #334155' }}>Coal</th>
+                                    <th style={{ padding: '15px', border: '1px solid #334155' }}>Oil/Gas</th>
+                                    <th style={{ padding: '15px', border: '1px solid #334155' }}>Nuclear</th>
+                                    <th style={{ padding: '15px', border: '1px solid #334155' }}>Solar</th>
+                                    <th style={{ padding: '15px', border: '1px solid #334155' }}>Wind</th>
+                                    <th style={{ padding: '15px', border: '1px solid #334155' }}>Hydro</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Renewability</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Non-renewable</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Non-renewable</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Non-renewable</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Renewable</td>
-                                </tr>
-                                <tr style={{ backgroundColor: '#f1f5f9' }}>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>CO₂ Emissions</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Very High (~1000g)</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>High (450-650g)</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Low (~15g)</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>Very Low (15-50g)</td>
-                                </tr>
-                                <tr>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Cost per kWh</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>$0.05-0.15</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>$0.05-0.20</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>$0.12-0.20</td>
-                                    <td style={{ padding: '8px', border: '1px solid #cbd5e1' }}>$0.03-0.08</td>
-                                </tr>
+                                {[
+                                    { criterion: 'Renewability', coal: 'Non-renewable (300M years to form)', oil: 'Non-renewable (millions of years)', nuclear: 'Non-renewable (uranium finite)', solar: 'Renewable (sun lasts 5B years)', wind: 'Renewable (continuous)', hydro: 'Renewable (water cycle)' },
+                                    { criterion: 'CO₂ Emissions', coal: 'Very High: ~1000g/kWh', oil: 'High: 450-650g/kWh', nuclear: 'Low: ~15g/kWh (lifecycle)', solar: 'Very Low: ~50g/kWh', wind: 'Very Low: ~15g/kWh', hydro: 'Low: ~25g/kWh' },
+                                    { criterion: 'Cost per kWh', coal: '$0.05-0.15', oil: '$0.05-0.20', nuclear: '$0.10-0.20', solar: '$0.03-0.06', wind: '$0.03-0.08', hydro: '$0.03-0.10' },
+                                    { criterion: 'Reliability', coal: 'Dispatchable, baseload', oil: 'Dispatchable, flexible', nuclear: 'Baseload, constant', solar: 'Intermittent (day only)', wind: 'Variable (weather dependent)', hydro: 'Flexible, dispatchable' },
+                                    { criterion: 'Land Use', coal: 'High (mining devastates landscapes)', oil: 'Moderate (drilling, refineries)', nuclear: 'Very Low (compact plants)', solar: 'Moderate-High (solar farms large)', wind: 'Low (dual land use possible)', hydro: 'Very High (reservoirs flood vast areas)' },
+                                    { criterion: 'Safety Risks', coal: 'Mining deaths, black lung disease', oil: 'Oil spills, explosions, gas leaks', nuclear: 'Catastrophic accidents (rare but severe)', solar: 'Minimal (manufacturing chemicals)', wind: 'Low (turbine failures rare)', hydro: 'Dam failures (rare but catastrophic)' },
+                                    { criterion: 'Resource Availability', coal: '130 years at current rates', oil: '50 years oil, 50 years gas', nuclear: '90-130 years uranium', solar: 'Unlimited', wind: 'Unlimited', hydro: 'Limited sites (geography constrained)' },
+                                    { criterion: 'Scalability', coal: 'Limited by reserves and climate impacts', oil: 'Limited by reserves and climate impacts', nuclear: 'Limited by costs, safety, and public opposition', solar: 'Highly scalable (modular)', wind: 'Highly scalable (modular)', hydro: 'Limited by suitable geography' },
+                                    { criterion: 'Job Creation', coal: 'Moderate (declining sector)', oil: 'Moderate (automation increasing)', nuclear: 'Low (few plants, specialized)', solar: 'High (4M jobs globally)', wind: 'High (1.3M jobs globally)', hydro: 'Moderate (construction heavy)' },
+                                    { criterion: 'Other Impacts', coal: 'Acid rain, mercury, PM2.5, water pollution', oil: 'Oil spills, plastic pollution, methane leaks', nuclear: 'Radioactive waste (100K year problem)', solar: 'Mining impacts (rare earths, silicon)', wind: 'Bird/bat mortality, visual/noise impacts', hydro: 'Ecosystem destruction, species extinction' }
+                                ].map((row, i) => (
+                                    <tr key={i} style={{ backgroundColor: i % 2 === 0 ? 'white' : '#f8fafc' }}>
+                                        <td style={{ padding: '12px 15px', border: '1px solid #e2e8f0', fontWeight: 'bold', color: '#1e293b' }}>{row.criterion}</td>
+                                        <td style={{ padding: '12px 15px', border: '1px solid #e2e8f0', color: '#475569' }}>{row.coal}</td>
+                                        <td style={{ padding: '12px 15px', border: '1px solid #e2e8f0', color: '#475569' }}>{row.oil}</td>
+                                        <td style={{ padding: '12px 15px', border: '1px solid #e2e8f0', color: '#475569' }}>{row.nuclear}</td>
+                                        <td style={{ padding: '12px 15px', border: '1px solid #e2e8f0', color: '#475569' }}>{row.solar}</td>
+                                        <td style={{ padding: '12px 15px', border: '1px solid #e2e8f0', color: '#475569' }}>{row.wind}</td>
+                                        <td style={{ padding: '12px 15px', border: '1px solid #e2e8f0', color: '#475569' }}>{row.hydro}</td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <div style={{ backgroundColor: '#fff1f2', padding: '25px', borderRadius: '12px', border: '1px solid #fecaca', margin: '40px 0' }}>
-                    <h4 style={{ margin: '0 0 15px 0', color: '#9f1239' }}>⚠️ Common Misconceptions About Energy</h4>
-                    <div style={{ marginBottom: '20px' }}>
-                        <p style={{ fontWeight: 'bold', color: '#be123c', margin: '0 0 5px 0' }}>Misconception #1: "Renewable energy can never fully replace fossil fuels"</p>
-                        <p style={{ color: '#e11d48', fontSize: '0.9em', margin: 0 }}><strong>Reality:</strong> Multiple peer-reviewed studies demonstrate that 100% renewable energy systems are technically feasible and economically viable. The International Energy Agency (IEA) projects that solar could become the world's largest source of electricity by 2035. New renewable capacity is now cheaper than operating existing coal plants in most markets.</p>
+                {/* FIGURE 6: HIERARCHICAL CLASSIFICATION */}
+                <div style={{ margin: '60px 0', padding: '40px', backgroundColor: '#f8fafc', borderRadius: '32px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
+                    <h4 style={{ color: '#0f172a', fontWeight: '900', marginBottom: '40px', fontSize: '1.2em' }}>Energy Resource Classification</h4>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '40px', maxWidth: '1000px', margin: '0 auto' }}>
+                        {/* ROOT */}
+                        <div style={{ backgroundColor: '#f1f5f9', color: '#475569', padding: '12px 30px', borderRadius: '12px', fontWeight: '900', border: '2px solid #cbd5e1', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
+                            Energy Resources
+                        </div>
+
+                        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', gap: '40px', flexWrap: 'wrap' }}>
+
+                            {/* NON-RENEWABLE BRANCH */}
+                            <div style={{ flex: '1', minWidth: '350px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '25px' }}>
+                                <div style={{ backgroundColor: '#ef4444', color: 'white', padding: '10px 25px', borderRadius: '10px', fontWeight: 'bold', width: 'fit-content' }}>Non-Renewable</div>
+
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', width: '100%' }}>
+                                    {/* Fossil Fuels */}
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
+                                        <div style={{ backgroundColor: '#e9d5ff', color: '#6b21a8', padding: '6px 15px', borderRadius: '8px', fontSize: '0.85em', fontWeight: 'bold' }}>Fossil Fuels</div>
+                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '10px', width: '100%' }}>
+                                            {[
+                                                { name: 'Coal', val: '~1000g CO₂/kWh', res: '130 years reserves', bg: '#b91c1c' },
+                                                { name: 'Oil', val: '~650g CO₂/kWh', res: '50 years reserves', bg: '#dc2626' },
+                                                { name: 'Natural Gas', val: '~450g CO₂/kWh', res: '50 years reserves', bg: '#f59e0b' }
+                                            ].map((item, i) => (
+                                                <div key={i} style={{ backgroundColor: item.bg, color: 'white', padding: '12px', borderRadius: '12px', textAlign: 'center', fontSize: '0.75em', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                                                    <div style={{ fontWeight: '900', marginBottom: '4px' }}>{item.name}</div>
+                                                    <div>{item.val}</div>
+                                                    <div style={{ opacity: 0.9 }}>{item.res}</div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Nuclear */}
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
+                                        <div style={{ backgroundColor: '#e9d5ff', color: '#6b21a8', padding: '6px 15px', borderRadius: '8px', fontSize: '0.85em', fontWeight: 'bold' }}>Nuclear</div>
+                                        <div style={{ backgroundColor: '#64748b', color: 'white', padding: '15px', borderRadius: '12px', textAlign: 'center', fontSize: '0.75em', width: '100%' }}>
+                                            <div style={{ fontWeight: '900', marginBottom: '4px' }}>Uranium Fission</div>
+                                            <div>~15g CO₂/kWh</div>
+                                            <div style={{ opacity: 0.9 }}>90-130 years reserves</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* RENEWABLE BRANCH */}
+                            <div style={{ flex: '1.5', minWidth: '450px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '25px' }}>
+                                <div style={{ backgroundColor: '#22c55e', color: 'white', padding: '10px 25px', borderRadius: '10px', fontWeight: 'bold', width: 'fit-content' }}>Renewable</div>
+
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '15px', width: '100%' }}>
+                                    {[
+                                        { name: 'Solar', c1: '173,000 TW potential', c2: '~50g CO₂/kWh', c3: 'Intermittent', bg: '#16a34a' },
+                                        { name: 'Wind', c1: 'Vast potential', c2: '~15g CO₂/kWh', c3: 'Variable', bg: '#16a34a' },
+                                        { name: 'Hydro', c1: '16% of electricity', c2: '~25g CO₂/kWh', c3: 'Geography limited', bg: '#15803d' },
+                                        { name: 'Biomass', c1: '10% of primary energy', c2: 'Carbon neutral?', c3: 'Land competition', bg: '#ea580c' },
+                                        { name: 'Geothermal', c1: 'Baseload 24/7', c2: '~50g CO₂/kWh', c3: 'Location specific', bg: '#15803d' },
+                                        { name: 'Ocean', c1: 'Huge potential', c2: 'Technology immature', c3: 'Predictable tides', bg: '#2563eb' }
+                                    ].map((item, i) => (
+                                        <div key={i} style={{ backgroundColor: item.bg, color: 'white', padding: '12px', borderRadius: '12px', textAlign: 'center', fontSize: '0.75em', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100px' }}>
+                                            <div style={{ fontWeight: '900', marginBottom: '4px', fontSize: '1.1em' }}>{item.name}</div>
+                                            <div style={{ lineHeight: '1.4' }}>{item.c1}</div>
+                                            <div style={{ opacity: 0.9 }}>{item.c2}</div>
+                                            <div style={{ opacity: 0.8, fontSize: '0.9em', fontStyle: 'italic' }}>{item.c3}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div style={{ marginBottom: '20px' }}>
-                        <p style={{ fontWeight: 'bold', color: '#be123c', margin: '0 0 5px 0' }}>Misconception #2: "Nuclear power is a clean, green solution to climate change"</p>
-                        <p style={{ color: '#e11d48', fontSize: '0.9em', margin: 0 }}><strong>Reality:</strong> While nuclear generates low-carbon electricity, calling it "clean and green" ignores serious problems. Nuclear is extremely expensive ($6-12 billion per reactor) and takes 10-20 years to build. Every dollar spent on nuclear could generate 5-10 times more carbon-free energy if invested in solar/wind.</p>
+
+                    <div style={{ marginTop: '40px', fontSize: '0.9em', color: '#64748b', fontWeight: '900' }}>
+                        Figure 6: Hierarchical classification of energy resources with key characteristics
                     </div>
-                    <div>
-                        <p style={{ fontWeight: 'bold', color: '#be123c', margin: '0 0 5px 0' }}>Misconception #3: "Natural gas is a 'clean' or 'bridge' fuel"</p>
-                        <p style={{ color: '#e11d48', fontSize: '0.9em', margin: 0 }}><strong>Reality:</strong> Natural gas framing ignores methane leakage throughout the supply chain. Methane is 84x more potent than CO₂ over 20 years. Studies reveal 2-6% leakage into the atmosphere, making it potentially worse than coal over short timescales.</p>
+                </div>
+
+                <div style={{ backgroundColor: '#fff1f2', padding: '40px', borderRadius: '32px', border: '1px solid #fecaca', margin: '60px 0' }}>
+                    <h3 style={{ margin: '0 0 30px 0', color: '#9f1239', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                        <span style={{ backgroundColor: '#be123c', color: 'white', padding: '10px', borderRadius: '12px', fontSize: '0.8em' }}>⚠️</span> Common Misconceptions About Energy
+                    </h3>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '30px' }}>
+                        {[
+                            {
+                                id: 1,
+                                title: "Renewable energy can never fully replace fossil fuels",
+                                wrong: "Many believe that renewables are inherently inadequate—too intermittent, not powerful enough, or too expensive—to replace fossil fuels completely, and that we'll always need coal, oil, and gas for baseload power and energy security.",
+                                reality: "Multiple peer-reviewed studies demonstrate that 100% renewable energy systems are technically feasible and economically viable. Stanford University's Solutions Project mapped pathways for 139 countries to achieve 100% clean energy by 2050. Countries like Iceland (85% renewable), Norway (98% renewable electricity), Costa Rica (99% renewable electricity), and Uruguay (98% renewable electricity) prove large-scale renewable systems work. The key is combining multiple renewable sources, implementing energy storage, improving grid infrastructure, and enhancing energy efficiency.",
+                                evidence: "The IEA projects solar could become the world's largest source of electricity by 2035. Renewable costs have fallen so dramatically that new capacity is now cheaper than operating existing coal plants in most markets. Tesla's battery installations have proven grid-scale storage can provide backup power and peak shaving."
+                            },
+                            {
+                                id: 2,
+                                title: "Nuclear power is a clean, green solution to climate change",
+                                wrong: "Nuclear is often portrayed as the perfect climate solution—zero emissions, reliable baseload power, and proven technology. Students believe nuclear should be massively expanded to replace fossil fuels.",
+                                reality: "While nuclear generates low-carbon electricity, calling it 'clean and green' ignores serious problems. Nuclear is extremely expensive ($6-12 billion per reactor) and takes 10-20 years to build. It produces radioactive waste requiring secure isolation for 100,000+ years. Accidents like Fukushima have devastating long-term consequences ($200+ billion cleanup).",
+                                evidence: "Every dollar spent on nuclear could generate 5-10 times more carbon-free energy if invested in solar/wind. The energy transition is happening through solar, wind, and storage, not a nuclear renaissance."
+                            },
+                            {
+                                id: 3,
+                                title: "Natural gas is a 'clean' or 'bridge' fuel to a renewable future",
+                                wrong: "Natural gas is marketed as 'clean' because it produces about half the CO₂ of coal when burned. Many believe it can serve as a temporary 'bridge fuel' providing flexible backup power.",
+                                reality: "Natural gas is not clean—it's just less dirty than coal. This framing ignores methane leakage (84x more potent than CO₂). Leakage rates of 2.3-6% potentially make gas worse for climate change than coal over 20-year timescales. Investment in gas infrastructure locks in decades of emissions.",
+                                evidence: "Research in 'Science' shows high methane leakage eliminates gas's climate advantage over coal. Countries like Portugal and UK are bypassing gas entirely, phasing out coal while building renewables directly."
+                            },
+                            {
+                                id: 4,
+                                title: "Renewable energy requires too much land and materials to be sustainable",
+                                wrong: "Critics claim solar and wind require vast land areas and consume enormous quantities of materials (silicon, rare earths, copper, steel), making them environmentally destructive.",
+                                reality: "Impacts are dramatically smaller than fossil fuels. A complete renewable system would require less than 1% of global land area—much of which (rooftops, deserts, offshore) doesn't preclude other uses. Material requirements are finite (one-time installation) unlike fossil fuels (continuous extraction forever).",
+                                evidence: "Coal mining has devastated 6,000+ km² in Appalachia alone. Solar panels on just 0.6% of global land area could theoretically power the entire world. Lifecycle material intensity is lower, and panels are 95% recyclable."
+                            }
+                        ].map((item) => (
+                            <div key={item.id} style={{ backgroundColor: 'white', padding: '30px', borderRadius: '24px', border: '1px solid #fecaca', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+                                <div style={{ color: '#be123c', fontWeight: '900', fontSize: '1.1em', marginBottom: '20px', borderBottom: '2px solid #fecaca', paddingBottom: '10px' }}>
+                                    Misconception #{item.id}: "{item.title}"
+                                </div>
+                                <div style={{ marginBottom: '20px' }}>
+                                    <div style={{ fontSize: '0.75em', fontWeight: '900', color: '#991b1b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>❌ What is often misunderstood</div>
+                                    <div style={{ fontSize: '0.9em', color: '#4b5563', lineHeight: '1.6' }}>{item.wrong}</div>
+                                </div>
+                                <div style={{ marginBottom: '20px' }}>
+                                    <div style={{ fontSize: '0.75em', fontWeight: '900', color: '#166534', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>✅ The Reality</div>
+                                    <div style={{ fontSize: '0.9em', color: '#1f2937', lineHeight: '1.6', fontWeight: '500' }}>{item.reality}</div>
+                                </div>
+                                <div style={{ backgroundColor: '#fdf2f2', padding: '20px', borderRadius: '16px', border: '1px solid #fee2e2' }}>
+                                    <div style={{ fontSize: '0.75em', fontWeight: '900', color: '#991b1b', textTransform: 'uppercase', marginBottom: '8px' }}>🔍 Evidence & Insight</div>
+                                    <div style={{ fontSize: '0.85em', color: '#7f1d1d', lineHeight: '1.6', fontStyle: 'italic' }}>{item.evidence}</div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
                 <hr style={{ margin: '40px 0', border: '0', borderTop: '1px solid #eee' }} />
 
                 {/* PART II */}
-                <div style={{ backgroundColor: '#f0fdf4', padding: '25px', borderRadius: '12px', border: '1px solid #dcfce7', margin: '40px 0' }}>
-                    <h2 style={{ margin: 0, color: '#166534', display: 'flex', alignItems: 'center', gap: '15px' }}>
-                        <span style={{ backgroundColor: '#86efac', color: '#fff', padding: '5px 12px', borderRadius: '8px', fontSize: '0.6em' }}>PART II</span>
-                        🌲 Forest Resources and Conservation
-                    </h2>
-                </div>
+                <div style={{ margin: '40px 0' }}>
+                    <h2>Part II: Forest Resources and Conservation</h2>
 
-                <h3>What Are Forest Resources?</h3>
-                <p>Forest resources encompass all the valuable products, services, and ecological functions that forests provide to humanity and the planet. Forests cover approximately 31% of Earth's land area (about 4.06 billion hectares or 10 billion acres), though this represents a dramatic decline from pre-agricultural times when forests covered nearly 6 billion hectares—we've lost one-third of Earth's forests. These ecosystems are among the most biologically diverse and ecologically important habitats on Earth, playing absolutely critical roles in climate regulation, water cycles, soil conservation, and biodiversity support that make life on Earth possible.</p>
+                    <h3>What Are Forest Resources?</h3>
+                    <p>Forest resources encompass all the valuable products, services, and ecological functions that forests provide to humanity and the planet. Forests cover approximately 31% of Earth's land area (about 4.06 billion hectares or 10 billion acres), though this represents a dramatic decline from pre-agricultural times when forests covered nearly 6 billion hectares—we've lost one-third of Earth's forests. These ecosystems are among the most biologically diverse and ecologically important habitats on Earth, playing absolutely critical roles in climate regulation, water cycles, soil conservation, and biodiversity support that make life on Earth possible.</p>
 
-             
+                    <p><strong>Global forest distribution</strong></p>
+                    <p>Figure 7: Global forest distribution showing highest concentrations in tropical, boreal, and temperate regions (Source: FAO Forest Resources Assessment)</p>
 
-                <p>Forests provide two broad categories of value: direct use values (tangible products we extract) and indirect use values (ecosystem services that benefit us without extraction). Direct products include timber for construction and furniture, fuelwood for cooking and heating (still the primary energy source for 2.5 billion people), non-timber forest products like fruits, nuts, mushrooms, medicinal plants, resins, rubber, and rattan, and bushmeat. Indirect services are even more valuable: climate regulation through carbon sequestration (forests absorb about 2.6 billion tonnes of CO₂ annually, approximately 1/3 of fossil fuel emissions), water cycle regulation (forests influence precipitation patterns and protect watersheds), soil conservation (tree roots prevent erosion, forest litter maintains soil fertility), air purification (trees filter pollutants), pollination services, and biodiversity habitat (forests contain 80% of terrestrial species).</p>
+                    <p>Forests provide two broad categories of value: direct use values (tangible products we extract) and indirect use values (ecosystem services that benefit us without extraction). Direct products include timber for construction and furniture, fuelwood for cooking and heating (still the primary energy source for 2.5 billion people), non-timber forest products like fruits, nuts, mushrooms, medicinal plants, resins, rubber, and rattan, and bushmeat (though unsustainable hunting threatens many species). Indirect services are even more valuable: climate regulation through carbon sequestration (forests absorb about 2.6 billion tonnes of CO₂ annually, approximately 1/3 of fossil fuel emissions), water cycle regulation (forests influence precipitation patterns and protect watersheds), soil conservation (tree roots prevent erosion, forest litter maintains soil fertility), air purification (trees filter pollutants), pollination services, and biodiversity habitat (forests contain 80% of terrestrial species).</p>
 
-                <div style={{ backgroundColor: '#f0f9ff', padding: '25px', borderRadius: '12px', border: '1px solid #bae6fd', margin: '30px 0' }}>
-                    <h4 style={{ margin: '0 0 15px 0', color: '#075985' }}>📌 Types of Forests:</h4>
-                    <ul style={{ margin: 0, paddingLeft: '20px', color: '#0369a1', fontSize: '0.95em' }}>
-                        <li style={{ marginBottom: '10px' }}><strong>Tropical Rainforests:</strong> Located near equator, characterized by high biodiversity, dense vegetation, year-round rainfall, and rapid nutrient cycling. Contain {'>'}50% of Earth's terrestrial species despite covering just 6% of land.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Temperate Forests:</strong> Found in mid-latitudes, characterized by deciduous trees that lose leaves seasonally, moderate climate, and distinct seasons.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Boreal Forests (Taiga):</strong> Vast coniferous forests in northern latitudes, characterized by cold climate, coniferous trees, and massive carbon storage in soils and trees. Largest terrestrial biome.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Mangrove Forests:</strong> Coastal forests in tropical/subtropical regions, characterized by salt-tolerant trees. Critical for coastal protection and carbon sequestration (store 3-5x more carbon per area than terrestrial forests).</li>
-                        <li><strong>Dry Forests:</strong> Semi-arid regions with seasonal rainfall, characterized by drought-resistant species. Among most threatened forest types globally.</li>
-                    </ul>
-                </div>
+                    <p>The economic value of forests is staggering yet underestimated. Timber and forest products generate $600+ billion annually in global trade. But ecosystem services are worth far more—estimated at $5-10 trillion annually when you include carbon storage, water purification, flood prevention, pollination, and other benefits. The problem is that these ecosystem services don't show up in GDP calculations, creating perverse incentives where clearing forests for agriculture appears profitable in conventional economics despite destroying far greater value in ecosystem services.</p>
 
-                <h3>The Importance of Forests</h3>
-                <h4>1. Carbon Sequestration and Climate Regulation</h4>
-                <p>Forests are Earth's primary terrestrial carbon sinks, absorbing CO₂ from the atmosphere through photosynthesis and storing carbon in biomass (trunks, branches, leaves, roots) and soils. Global forests store approximately 296 gigatonnes (billion tonnes) of carbon in their biomass alone, plus another 400+ gigatonnes in forest soils—that's more carbon than exists in the entire atmosphere. Growing forests actively sequester about 2.6 billion tonnes of CO₂ annually, offsetting roughly one-third of global fossil fuel emissions.</p>
-
-          
-
-                <h4>2. Water Cycle Regulation</h4>
-                <p>Forests profoundly influence water cycles at local, regional, and even global scales through several mechanisms. Tree roots absorb groundwater and transport it upward, where it evaporates from leaves. Combined with evaporation from soil and water surfaces, this "evapotranspiration" returns 40-60% of rainfall back to the atmosphere locally. Forests act as natural water filters and storage systems. Tree canopies intercept rainfall, slowing its descent and allowing gradual absorption into soil. Major cities worldwide—New York, Tokyo, Bogotá, Vienna—depend on forested watersheds for drinking water.</p>
-
-                <h4>3. Biodiversity Habitat</h4>
-                <p>Forests are Earth's biodiversity hotspots, containing an estimated 80% of terrestrial plant, animal, and insect species despite covering just 31% of land. A single hectare of tropical rainforest can contain 200+ tree species—more diversity than exists in all of North America. Biodiversity isn't just about charismatic species—it's about ecosystem functioning and resilience. Many forest species have direct human value: 25% of pharmaceutical drugs derive from forest plants, including aspirin, morphine, and quinine.</p>
-
-                <h4>4. Soil Conservation</h4>
-                <p>Tree roots create extensive underground networks that stabilize soil structure, prevent erosion, and create pathways for water infiltration. Fallen leaves, branches, and dead organisms decompose to form humus—organic matter that holds nutrients and retains moisture. When forests are cleared, soil degradation happens rapidly; erosion rates can increase 10-100 times after deforestation.</p>
-
-                <div style={{ backgroundColor: '#fff1f2', padding: '25px', borderRadius: '12px', border: '1px solid #fecaca', margin: '40px 0' }}>
-                    <h3 style={{ margin: '0 0 15px 0', color: '#9f1239' }}>🚨 Forest Over-Exploitation: Causes and Consequences</h3>
-                    <p style={{ color: '#be123c', fontStyle: 'italic', marginBottom: '15px' }}>Global deforestation currently removes approximately 10 million hectares annually—an area equivalent to Iceland, or 27 football fields per minute.</p>
-
-                    <h4 style={{ color: '#9f1239', margin: '20px 0 10px 0' }}>Causes (The ALIFC Framework):</h4>
-                    <ul style={{ margin: 0, paddingLeft: '20px', color: '#be123c', fontSize: '0.95em' }}>
-                        <li style={{ marginBottom: '10px' }}><strong>Agriculture (80%):</strong> Cattle ranching (top driver), soy, palm oil, and cocoa/coffee plantations. Industrial agriculture is the single largest threat.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Logging:</strong> Legal and rampant illegal logging (estimates suggest up to 90% in tropical countries). Selective logging often degrades up to 60% of forest value even if some trees remain.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Infrastructure:</strong> Roads open forests to settlement (fishbone pattern), while dams flood vast areas.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Fuelwood/Charcoal:</strong> 2.5 billion people depend on wood for energy, particularly in dry regions of Africa and Asia.</li>
-                        <li><strong>Climate Change:</strong> Created feedback loops where droughts increase fires/pests, leading to more forest loss and CO₂ release.</li>
+                    <h4>📌 Types of Forests:</h4>
+                    <ul>
+                        <li><strong>Tropical Rainforests:</strong> Located near equator (Amazon, Congo Basin, Southeast Asia), characterized by high biodiversity, dense vegetation, year-round rainfall, and rapid nutrient cycling. Contain {'>'}50% of Earth's terrestrial species despite covering just 6% of land.</li>
+                        <li><strong>Temperate Forests:</strong> Found in mid-latitudes (Eastern USA, Europe, East Asia), characterized by deciduous trees that lose leaves seasonally, moderate climate, and distinct seasons. Historically heavily logged but some regions recovering.</li>
+                        <li><strong>Boreal Forests (Taiga):</strong> Vast coniferous forests in northern latitudes (Canada, Russia, Scandinavia), characterized by cold climate, coniferous trees (pines, spruces, firs), and massive carbon storage in soils and trees. Largest terrestrial biome by area.</li>
+                        <li><strong>Mangrove Forests:</strong> Coastal forests in tropical/subtropical regions, characterized by salt-tolerant trees with specialized root systems. Critical for coastal protection, fisheries nursery habitat, and carbon sequestration (store 3-5x more carbon per area than terrestrial forests).</li>
+                        <li><strong>Dry Forests:</strong> Semi-arid regions with seasonal rainfall (parts of Africa, India, Australia), characterized by drought-resistant species, lower density than rainforests, but still biodiversity hotspots. Among most threatened forest types globally.</li>
                     </ul>
 
-                    <h4 style={{ color: '#9f1239', margin: '25px 0 10px 0' }}>Consequences:</h4>
-                    <ul style={{ margin: 0, paddingLeft: '20px', color: '#be123c', fontSize: '0.95em' }}>
-                        <li style={{ marginBottom: '10px' }}><strong>Climate Acceleration:</strong> 10-15% of global emissions. Loss of carbon sinks makes future warming harder to control.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Biodiversity Collapse:</strong> 10k-100k species lost per year. Habitat fragmentation isolates populations until they can no longer survive.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Water Disruption:</strong> Flash floods followed by extreme droughts. Regional rainfall collapses (Amazon's 'flying rivers' disappearing).</li>
-                        <li><strong>Indigenous Rights:</strong> Displacement and violence against forest defenders. Loss of traditional knowledge and cultural genocide.</li>
+                    <h3>🌲 The Importance of Forests</h3>
+                    <p>WWF - 4 minutes - Beautiful visuals showing forest ecosystem services</p>
+                    <p>Understand why forests are critical for climate, water, biodiversity, and human wellbeing</p>
+
+                    <h4>Ecological Functions of Forests</h4>
+
+                    <h4>1. CARBON SEQUESTRATION AND CLIMATE REGULATION</h4>
+                    <p>Forests are Earth's primary terrestrial carbon sinks, absorbing CO₂ from the atmosphere through photosynthesis and storing carbon in biomass (trunks, branches, leaves, roots) and soils. Global forests store approximately 296 gigatonnes (billion tonnes) of carbon in their biomass alone, plus another 400+ gigatonnes in forest soils—that's more carbon than exists in the entire atmosphere. Growing forests actively sequester about 2.6 billion tonnes of CO₂ annually, offsetting roughly one-third of global fossil fuel emissions.</p>
+
+                    <p>Different forest types store vastly different amounts of carbon. Tropical forests are the most carbon-dense, storing 200-400 tonnes of carbon per hectare in biomass and soils. Old-growth temperate rainforests (like those in the Pacific Northwest USA) can store over 500 tonnes per hectare—among the highest on Earth. Boreal forests store less carbon per hectare in biomass but have enormous soil carbon reserves due to slow decomposition in cold climates. Mangroves, despite smaller area, are exceptionally carbon-dense ("blue carbon"), storing 3-5 times more carbon per area than terrestrial forests.</p>
+
+                    <p><strong>Amazon rainforest aerial view</strong></p>
+                    <p>Figure 8: The Amazon rainforest stores massive amounts of carbon and generates much of its own rainfall through evapotranspiration (Source: Wikimedia Commons)</p>
+
+                    <p>When we destroy forests through logging or burning, this stored carbon releases back into the atmosphere as CO₂, driving climate change. Deforestation accounts for approximately 10-15% of global CO₂ emissions—more than all the world's cars, planes, and ships combined. Protecting existing forests, especially old-growth and tropical forests, is one of the most cost-effective climate mitigation strategies available. Reforestation and afforestation (planting new forests) can also help, though they take decades to store significant carbon and can never fully replace the carbon storage capacity and biodiversity of natural old-growth forests.</p>
+
+                    <h4>2. WATER CYCLE REGULATION</h4>
+                    <p>Forests profoundly influence water cycles at local, regional, and even global scales through several mechanisms. Tree roots absorb groundwater and transport it upward, where it evaporates from leaves (transpiration) back into the atmosphere. Combined with evaporation from soil and water surfaces, this "evapotranspiration" returns 40-60% of rainfall back to the atmosphere locally, where it forms clouds and generates precipitation downwind. The Amazon rainforest essentially creates its own climate—trees pump so much moisture into the atmosphere that they generate much of the region's rainfall. Destroy the forest, and you destroy the rain.</p>
+
+                    <p>Forests act as natural water filters and storage systems. Tree canopies intercept rainfall, slowing its descent and allowing gradual absorption into soil rather than rapid runoff. Root networks create porous soil structure that absorbs water like a sponge, storing it in underground aquifers and releasing it slowly to streams throughout dry seasons. This means forests prevent both flooding (by absorbing peak rainfall) and drought (by slowly releasing stored water). Studies show that forested watersheds provide more reliable water supplies, higher water quality, and less seasonal variation than deforested areas. Major cities worldwide—New York, Tokyo, Bogotá, Vienna, Barcelona—depend on forested watersheds for drinking water. Protecting these watershed forests is far cheaper than building water treatment facilities.</p>
+
+                    <h4>3. BIODIVERSITY HABITAT</h4>
+                    <p>Forests are Earth's biodiversity hotspots, containing an estimated 80% of terrestrial plant, animal, and insect species despite covering just 31% of land. A single hectare of tropical rainforest can contain 200+ tree species—more diversity than exists in all of North America. The three-dimensional structure of forests—from soil to canopy reaching 50-60 meters high in tropical forests—creates countless ecological niches supporting incredible species diversity. Complex interdependencies exist: specific pollinators for specific plants, predator-prey relationships maintaining population balance, decomposers recycling nutrients, and seed dispersers enabling plant reproduction.</p>
+
+                    <h4>Forest Ecosystem Services</h4>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ccc', margin: '20px 0' }}>
+                        <thead>
+                            <tr style={{ backgroundColor: '#f3f4f6' }}>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Provisioning Services</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Regulating Services</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Supporting Services</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Cultural Services</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Timber & Wood Products</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Climate Regulation</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Biodiversity Habitat</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Recreation & Tourism</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Fuelwood & Energy</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Carbon Sequestration</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>80% of Terrestrial Species</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Spiritual & Religious Value</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Non-Timber Products</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Water Cycle Regulation</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Nutrient Cycling</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Educational & Research Value</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Fruits, Nuts, Medicine</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Watershed Protection</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Soil Formation & Conservation</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Cultural Heritage</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Genetic Resources</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Air Purification / Oxygen</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Primary Production</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Indigenous Homelands</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}></td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Pollination / Pest Control</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}></td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Figure 9: Comprehensive classification of forest ecosystem services showing multiple value categories</p>
+
+                    <p>Biodiversity isn't just about charismatic species—it's about ecosystem functioning and resilience. Diverse ecosystems are more stable, more productive, and more resistant to disturbances like pests, diseases, and climate change. Many forest species have direct human value: 25% of pharmaceutical drugs derive from forest plants, including aspirin, morphine, quinine, vincristine (cancer treatment), and countless others. Indigenous peoples have used thousands of forest species for medicine, food, and materials for millennia. As forests disappear, we're driving species extinct before we even discover them, losing potential cures for diseases and solutions to problems we don't yet understand.</p>
+
+                    <p>Tropical deforestation is driving a mass extinction event—current extinction rates are 100-1000 times the natural background rate, comparable to the five major mass extinctions in Earth's history. We're losing an estimated 10,000-100,000 species per year, most without even being scientifically described. This isn't just sad for nature lovers—it's an existential threat to civilization. Humans depend on biodiversity for food security (crop pollination, pest control, genetic diversity), ecosystem stability, disease regulation, and countless other services.</p>
+
+                    <h4>4. SOIL CONSERVATION</h4>
+                    <p>Forest soils are among the most fertile and productive on Earth, despite the paradox that tropical rainforests often grow on relatively nutrient-poor soils. The secret lies in rapid nutrient cycling—nutrients exist primarily in living biomass rather than soil. Tree roots create extensive underground networks that stabilize soil structure, prevent erosion, and create pathways for water infiltration. The forest canopy shields soil from direct rainfall impact that would otherwise compact and erode it. Fallen leaves, branches, and dead organisms decompose to form humus—organic matter that holds nutrients, retains moisture, and maintains soil structure.</p>
+
+                    <p>When forests are cleared, soil degradation happens rapidly. Without tree roots holding soil in place, erosion accelerates dramatically—studies show erosion rates can increase 10-100 times after deforestation. Without leaf litter protecting soil from sun and rain, tropical soils can harden into concrete-like laterite within a few years. Without continuous organic matter input, soil fertility declines rapidly. This is why slash-and-burn agriculture quickly exhausts tropical forest soils, forcing farmers to clear new areas after just 2-3 years of cultivation. The Amazon's legendary fertility exists in the forest ecosystem, not the soil—clear the forest, and the fertility disappears.</p>
+
+                    <p>Soil erosion from deforestation has cascading effects: sediment clogs rivers and reservoirs, reducing water storage capacity and navigation. Nutrient runoff from degraded soils pollutes waterways, causing algal blooms and dead zones. Loss of topsoil means land can no longer support agriculture, leading to desertification. The Dust Bowl of 1930s America resulted from agriculture on lands that should have remained grassland or forest. Haiti's severe poverty and vulnerability to disasters stems partly from losing 98% of forests, causing catastrophic soil erosion.</p>
+
+                    <h3>🚨 Forest Over-Exploitation: Causes and Consequences</h3>
+                    <p>DEFORESTATION STATISTICS: A CRISIS IN NUMBERS - We're losing forests at staggering rates. Global deforestation currently removes approximately 10 million hectares (25 million acres) of forest annually—an area equivalent to Iceland, or 27 football fields per minute. Since 1990, the world has lost 420 million hectares of forest (1 billion acres)—an area larger than India. Historical deforestation is even more extreme: since the agricultural revolution 10,000 years ago, humans have cleared approximately one-third of Earth's forests, reducing cover from ~6 billion hectares to ~4 billion hectares today.</p>
+
+                    <p><strong>Deforestation in Borneo</strong></p>
+                    <p>Figure 10: Satellite image showing dramatic deforestation in Borneo for palm oil plantations (Source: NASA)</p>
+
+                    <p>The Amazon rainforest—Earth's largest and most biodiverse tropical forest—has lost approximately 17% of its original area, with another 17% degraded. Brazil alone lost 1.5 million hectares in 2021, a 22% increase from 2020 and the highest deforestation rate in 15 years. At current rates, scientists warn the Amazon could reach a "tipping point" within decades, where reduced rainfall (due to less evapotranspiration from fewer trees) causes the rainforest to transform into savanna—an irreversible ecological catastrophe that would release 90 billion tonnes of CO₂ and cause mass extinctions.</p>
+
+                    <p>Southeast Asia has experienced catastrophic deforestation, losing 50-90% of original forest cover in Indonesia, Malaysia, Thailand, and Philippines. Indonesia had the world's highest deforestation rate in the 2000s, losing 8+ million hectares of tropical forest. Madagascar has lost 90% of its original forests, driving lemurs and countless unique species toward extinction. Central Africa's Congo Basin forests—the world's second-largest tropical forest—are increasingly threatened. Temperate and boreal forests face threats too: Canada's boreal forests are being logged for lumber and cleared for tar sands oil extraction. Europe lost most forests centuries ago (UK has just 13% forest cover). Even protected areas face illegal logging, encroachment, and degradation.</p>
+
+                    <p>🔥 Amazon Deforestation Explained</p>
+                    <p>Vox - 7 minutes - Investigative report with maps and data</p>
+                    <p>Understand the drivers, scale, and consequences of Amazon rainforest destruction</p>
+
+                    <h3>CAUSES OF FOREST OVER-EXPLOITATION</h3>
+
+                    <h4>1. Agriculture and Livestock Ranching</h4>
+                    <p>Agriculture is the driver of approximately 80% of deforestation globally. In tropical regions, forests are cleared for cattle ranching (particularly in Latin America), palm oil plantations (Southeast Asia), soy cultivation (Amazon and Cerrado in Brazil), coffee and cocoa (Africa and Latin America), and rubber plantations. Cattle ranching alone accounts for 40% of tropical deforestation—an area the size of Switzerland is cleared annually just for beef production. The Amazon loses forest primarily to cattle ranching and soy farms (soy mostly feeds livestock). Indonesia and Malaysia have destroyed vast rainforests for palm oil plantations—palm oil is in ~50% of packaged supermarket products.</p>
+
+                    <p>Small-scale subsistence farming also causes deforestation, though much less per capita than industrial agriculture. Poor farmers practice "slash-and-burn" agriculture: cutting and burning forest to create temporary cropland. After 2-3 years when soil fertility is exhausted, they abandon the land and clear new forest. This traditional practice was sustainable when population density was low and forests could regenerate during long fallow periods. But population growth and lack of alternatives now make slash-and-burn farming unsustainable, contributing to permanent forest loss.</p>
+
+                    <p>The perverse irony: much forest is cleared to produce commodities for export (beef, soy, palm oil, coffee, cocoa) to wealthy countries. Your hamburger, chocolate bar, and shampoo may contain deforestation. Consumer demand in Europe, USA, China, and Japan drives forest destruction in the tropics through global supply chains.</p>
+
+                    <h4>2. Logging</h4>
+                    <p>Industrial logging removes trees for timber, paper, and wood products. Legal logging is regulated (in theory) but often poorly enforced, leading to unsustainable harvest rates, illegal logging, and ecosystem degradation. Illegal logging is rampant—estimates suggest 15-30% of global timber trade involves illegally harvested wood, rising to 50-90% in tropical countries like Brazil, Indonesia, and Democratic Republic of Congo. Illegal logging costs governments billions in lost revenue and drives corruption.</p>
+
+                    <p>Even "selective logging" that removes only commercially valuable trees causes significant damage: logging roads provide access for farmers and hunters, heavy machinery compacts soil, felling large trees damages surrounding vegetation, and removing keystone species disrupts ecosystem functioning. Studies show that selectively logged tropical forests lose 40-60% of their carbon storage and biodiversity compared to intact forests. Clear-cutting is far worse, removing all trees and often followed by conversion to agriculture or plantations.</p>
+
+                    <h4>3. Infrastructure Development</h4>
+                    <p>Roads, dams, mines, and urban expansion drive deforestation directly and indirectly. Roads are particularly destructive because they open previously inaccessible forest areas to settlement, agriculture, and logging. The pattern is tragically predictable: government builds road into forest (often for logging or mining access) → settlers follow the road → forest cleared in expanding "fishbone" patterns along the road → biodiversity collapses. Brazil's Trans-Amazonian Highway drove massive deforestation. China's Belt and Road Initiative is funding roads, dams, and railways across tropical forests in Asia, Africa, and Latin America.</p>
+
+                    <p>Hydroelectric dams flood vast forest areas. Mining for metals, minerals, and fossil fuels devastates landscapes and pollutes watersheds. Gold mining in the Amazon uses mercury that poisons rivers and communities. Oil drilling degrades forests through infrastructure, pipelines, and spills. Urban sprawl consumes forests as cities expand—though this is a smaller factor globally than agriculture, it's significant in rapidly urbanizing regions.</p>
+
+                    <h4>4. Fuelwood and Charcoal</h4>
+                    <p>In developing countries, 2.5 billion people depend on fuelwood and charcoal for cooking and heating. This causes significant deforestation in dry forests of Africa and Asia where alternatives are scarce and poverty prevents transition to cleaner energy. In Haiti, 98% deforestation resulted largely from desperate poverty driving unsustainable charcoal production. However, fuelwood is a smaller deforestation driver than often assumed—agriculture is far more destructive.</p>
+
+                    <h4>5. Climate Change (Feedback Loop)</h4>
+                    <p>Climate change is now becoming a driver of forest loss, creating a dangerous feedback loop. Droughts stress forests, making them vulnerable to fires, pests, and diseases. The Amazon experienced severe droughts in 2005, 2010, and 2015-2016 that killed billions of trees. Western USA faces unprecedented wildfires driven by climate-change-induced drought, beetle infestations, and heat. Boreal forests in Canada and Siberia are experiencing increased fires as climate warms. As forests die and burn, they release stored carbon, accelerating climate change, which further stresses remaining forests—a feedback loop that could spiral out of control.</p>
+
+                    <h4>Deforestation Drivers and Impacts</h4>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ccc', margin: '20px 0' }}>
+                        <thead>
+                            <tr style={{ backgroundColor: '#f3f4f6' }}>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>FEEDBACK LOOPS</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>ENVIRONMENTAL IMPACTS</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>DEFORESTATION PROCESS</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>DRIVERS OF DEFORESTATION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>More Climate Change → More Forest Stress</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Climate Change (10-15% Emissions)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>10 Million Ha Lost/Year</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Agriculture 80% (Cattle, Soy, Palm Oil)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Forest Loss → Less Carbon Absorption</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Biodiversity Loss (Mass Extinction)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}></td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Logging (Legal & Illegal)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Degraded Soils → More Poverty → More Clearing</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Water Cycle Disruption (Drought/Floods)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}></td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Infrastructure (Roads, Dams, Mines)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}></td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Soil Degradation (Desertification)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}></td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Fuelwood (2.5B people)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}></td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Indigenous Displacement</td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}></td>
+                                <td style={{ border: '1px solid #ccc', padding: '8px' }}>Climate Change (Droughts, Fires)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Figure 11: Complex web of deforestation drivers, impacts, and dangerous feedback loops</p>
+
+                    <h3>CONSEQUENCES OF FOREST OVER-EXPLOITATION</h3>
+
+                    <h4>1. Climate Change Acceleration</h4>
+                    <p>Deforestation is both cause and consequence of climate change. When forests are cleared and burned, carbon stored in trees and soil releases as CO₂. Deforestation and forest degradation account for approximately 10-15% of global greenhouse gas emissions—about 5 billion tonnes of CO₂ equivalent annually. This is more than the emissions from all global transportation. Indonesia briefly became the world's third-largest emitter (after China and USA) in 2015 due to massive peat forest fires that released enormous carbon quantities.</p>
+
+                    <p>But deforestation's climate impact goes beyond direct emissions. Losing forests means losing carbon sinks that would have absorbed future CO₂ emissions. If we continue current deforestation rates, we forfeit carbon sequestration capacity equivalent to billions of tonnes of CO₂. The Amazon rainforest has absorbed about 1/4 of all CO₂ emitted by fossil fuels over past decades. Research suggests parts of the Amazon have now become net carbon sources rather than sinks due to degradation, drought, and fires—a terrifying tipping point.</p>
+
+                    <p>Deforestation also alters regional climates through changed albedo (surface reflectivity) and reduced evapotranspiration. Models predict that complete Amazon deforestation would reduce rainfall by 20-30% across South America, devastate agriculture, cause droughts, and transform the region's climate. Similar effects occur elsewhere—deforestation in West Africa has reduced Sahel rainfall, contributing to desertification.</p>
+
+                    <h4>2. Biodiversity Collapse and Species Extinction</h4>
+                    <p>Deforestation is the primary driver of Earth's sixth mass extinction event. When forests disappear, so do the species that depend on them. We're losing an estimated 10,000-100,000 species per year—extinction rates 100-1,000 times the natural background rate. Most extinctions occur in tropical forests cleared for agriculture. The Atlantic Forest of Brazil has lost 93% of its original area, and dozens of endemic species have gone extinct. Orangutans face extinction as Bornean and Sumatran rainforests are cleared for palm oil. The Sumatran tiger, elephant, and rhinoceros are critically endangered due to habitat loss. Mountain gorillas, lemurs, and countless bird, amphibian, and insect species are disappearing.</p>
+
+                    <p>Habitat fragmentation is nearly as destructive as total clearing. When large forest blocks are divided into small, isolated patches by roads and clearings, many species cannot survive. Large mammals need extensive territories—tigers require 30-100 km², elephants may range over 1,000 km². Small forest fragments cannot support viable populations. Edge effects change microclimate, increasing temperature, reducing humidity, and allowing invasive species to penetrate forest interior. Studies show that forest fragments lose 50%+ of their species within decades of isolation.</p>
+
+                    <p>Losing biodiversity isn't just aesthetically sad—it threatens ecosystem functioning that humans depend on. Forests with higher biodiversity are more productive, more resilient to disturbances, and provide better ecosystem services. Specialized pollinators, seed dispersers, and predators maintain ecosystem health. Remove them, and ecosystems collapse in cascading failures.</p>
+
+                    <h4>3. Water Cycle Disruption</h4>
+                    <p>Deforestation devastates water systems at multiple scales. At local scales, removing forest cover causes increased surface runoff and flash flooding because rain isn't absorbed by forest soils. Paradoxically, deforestation also causes droughts because forests no longer release water through evapotranspiration. Studies show that deforested areas experience more extreme floods and droughts—less water regulation overall.</p>
+
+                    <p>At regional scales, deforestation reduces rainfall. The Amazon generates much of its own precipitation through evapotranspiration—moisture from the forest forms clouds that rain back onto the forest, cycling water 5-6 times before rivers carry it to the ocean. Models predict that losing 20-40% of Amazon forest could trigger a tipping point where reduced evapotranspiration causes rainfall to collapse, transforming rainforest into savanna. This wouldn't just affect the Amazon—atmospheric rivers carry Amazon moisture to agricultural regions throughout South America. Amazon deforestation could devastate agriculture in Brazil, Argentina, and Paraguay.</p>
+
+                    <p>Watershed deforestation pollutes drinking water. Without forest filtration, sediment and agricultural runoff contaminate rivers and reservoirs. New York City spends billions maintaining Catskills Mountain forests to protect drinking water—far cheaper than building water treatment plants. Tropical cities face water crises as watershed forests are cleared: São Paulo (Brazil), Cape Town (South Africa), and Chennai (India) have experienced severe water shortages linked to forest loss.</p>
+
+                    <h4>4. Soil Degradation and Desertification</h4>
+                    <p>Without forest protection, tropical soils degrade rapidly. Erosion increases 10-100 times after deforestation, washing away fertile topsoil. Exposed to sun and rain, some tropical soils harden into laterite—a brick-like material useless for agriculture. This is why many deforested areas become permanent wastelands. The Sahel region of Africa is expanding southward as deforestation, overgrazing, and climate change drive desertification—productive land becoming desert.</p>
+
+                    <p>Eroded sediment clogs rivers, damages coral reefs, and reduces reservoir capacity. The Three Gorges Dam in China is filling with sediment much faster than predicted due to upstream deforestation. Haiti's deforestation causes such severe erosion that topsoil washes into the ocean, turning coastal waters brown visible from space. Rebuilding lost soil takes centuries to millennia—soil forms incredibly slowly (1 cm of topsoil takes 100-1,000 years to develop).</p>
+
+                    <h4>5. Impacts on Indigenous Peoples and Local Communities</h4>
+                    <p>Over 1.6 billion people worldwide depend directly on forests for livelihoods, including 70 million indigenous peoples for whom forests are home, culture, and spiritual center. Deforestation displaces communities, destroys traditional ways of life, and often involves violence. Indigenous peoples are murdered defending forests—Brazil averages ~50 killings per year of environmental defenders, many indigenous. The Amazonian indigenous activist Bruno Pereira and journalist Dom Phillips were murdered in 2022 investigating illegal activities in indigenous territories.</p>
+
+                    <p>Indigenous peoples are often the best forest stewards—studies show that indigenous territories maintain better forest cover and biodiversity than many official protected areas. Indigenous peoples hold customary rights to about 1/3 of remaining intact forests. Recognizing indigenous land rights is thus both a human rights issue and an effective conservation strategy. Yet indigenous lands are constantly invaded by loggers, miners, ranchers, and land-grabbers, often with government complicity.</p>
+
+                    <p>Forest loss also perpetuates poverty. Rural communities lose access to non-timber forest products (fruits, nuts, medicines, materials) they depend on. Women particularly suffer—they typically gather fuelwood, and deforestation forces longer, more dangerous journeys. Degraded soils mean farmers must clear more forest to grow food, creating a poverty-deforestation spiral.</p>
+
+                    <h2>✅ Forest Conservation and Sustainable Management</h2>
+
+                    <h3>CONSERVATION STRATEGIES</h3>
+
+                    <h4>1. Protected Areas</h4>
+                    <p>Establishing national parks, wildlife reserves, and other protected areas has been conservation's primary strategy. About 15% of global land area is formally protected (though protection quality varies enormously). Well-managed protected areas successfully conserve biodiversity and ecosystems. Costa Rica has protected 25% of its territory, combining conservation with ecotourism that generates significant revenue. However, many protected areas are "paper parks"—designated but not effectively managed or enforced. Insufficient funding, corruption, illegal logging, and encroachment undermine protection. Protected areas are also often too small or isolated to maintain viable populations of large species.</p>
+
+                    <h4>2. Sustainable Forest Management (SFM)</h4>
+                    <p>Sustainable forestry aims to harvest timber while maintaining forest ecosystem health. Principles include: selective harvest rather than clear-cutting, maintaining forest structure and composition, protecting biodiversity and sensitive species, preserving soil and water quality, respecting indigenous and local community rights, and ensuring harvest rates don't exceed regeneration rates. Certification schemes like Forest Stewardship Council (FSC) verify sustainable practices.</p>
+
+                    <p>When properly implemented, SFM can provide timber while maintaining many ecosystem services. Germany has practiced sustainable forestry for over 300 years, maintaining productive forests. However, truly sustainable forestry is expensive and difficult. Many "sustainably managed" forests are actually simplified, degraded ecosystems compared to natural forests. In tropics, sustainable harvest rates are very low—perhaps 1-2 trees per hectare per decade—making tropical SFM economically challenging compared to conversion to agriculture.</p>
+
+                    <h4>3. Reforestation and Afforestation</h4>
+                    <p>Reforestation (replanting previously forested land) and afforestation (creating new forests on non-forested land) can restore some forest benefits. Many countries have large-scale planting programs: China's "Great Green Wall" aims to plant 100 billion trees, India pledges to restore 26 million hectares, and the Bonn Challenge targets 350 million hectares of forest restoration globally by 2030.</p>
+
+                    <p>However, tree planting isn't a silver bullet. Many programs plant fast-growing exotic species in monoculture plantations—these provide some carbon storage and wood products but minimal biodiversity or ecosystem service compared to natural forests. Plantations of eucalyptus, pine, or palm oil are not ecological equivalents of natural rainforest. Furthermore, natural forest regeneration is often more effective and cheaper than active planting if you simply protect land and let nature recover. The key is protecting and restoring native, biodiverse forests rather than industrial plantations.</p>
+
+                    <p><strong>Forest restoration</strong></p>
+                    <p>Figure 12: Forest landscape restoration combines protection, sustainable management, and community involvement (Source: IUCN)</p>
+
+                    <h4>4. Community-Based Forest Management</h4>
+                    <p>Empowering local communities to manage forests sustainably has proven highly effective. When communities have secure rights to forests and benefit economically from conservation, they become powerful stewards. Nepal's community forestry program transferred management of 1/3 of forests to local communities, resulting in improved forest conditions, biodiversity conservation, and poverty reduction. Mexico's community forest management supports thousands of communities that protect millions of hectares while generating sustainable income.</p>
+
+                    <h4>5. Economic Incentives: REDD+ and PES</h4>
+                    <p>REDD+ (Reducing Emissions from Deforestation and Forest Degradation) provides financial incentives for developing countries to protect forests. Rich countries pay poor countries to conserve forests, recognizing forests' carbon storage value. Dozens of REDD+ projects operate in Indonesia, Brazil, Congo Basin, and elsewhere. Payment for Ecosystem Services (PES) schemes similarly compensate landowners for maintaining forests that provide watershed protection, biodiversity conservation, or other services.</p>
+
+                    <h4>6. Reducing Consumption and Changing Behavior</h4>
+                    <p>Ultimately, forest conservation requires addressing demand driving deforestation. This means: reducing meat consumption (cattle ranching is the top deforestation driver), avoiding products containing palm oil, soy, or timber from unsustainable sources, supporting certification schemes (FSC for timber, RSPO for palm oil, though these have limitations), and advocating for strong forest protection policies. Companies are increasingly committing to "zero deforestation" supply chains in response to consumer pressure—though enforcement varies.</p>
+
+                    <h3>🌟 Success Stories in Forest Conservation</h3>
+                    <ul>
+                        <li><strong>Costa Rica:</strong> Reversed deforestation through PES programs, ecotourism, and strong environmental policies. Forest cover increased from 20% (1980s) to 55% today (2020s).</li>
+                        <li><strong>South Korea:</strong> Reforested 65% of country after Korean War devastation through massive government planting programs and community involvement.</li>
+                        <li><strong>Brazil (2004-2012):</strong> Reduced Amazon deforestation by 80% through satellite monitoring, enforcement operations, protected areas expansion, and economic incentives.</li>
+                        <li><strong>Bhutan:</strong> Maintains 72% forest cover through constitutional mandate requiring minimum 60% coverage. Practices Buddhist philosophy of environmental harmony and has carbon-negative economy.</li>
+                        <li><strong>Community Forests, Nepal and Mexico:</strong> Empowering local communities to manage forests has increased forest cover while improving livelihoods, demonstrating that conservation and development can align.</li>
                     </ul>
+                    <p style={{ textAlign: 'center', fontSize: '2em' }}>🎯</p>
                 </div>
 
-                <h3>Forest Conservation and Sustainable Management</h3>
-                <p><strong>1. Protected Areas:</strong> About 15% of land is protected, but many are "paper parks" with no enforcement. Costa Rica is the gold standard, protecting 25% of its territory.</p>
-                <p><strong>2. Sustainable Forest Management (SFM):</strong> Logging within regeneration capacity. FSC certification helps consumers choose sustainable wood.</p>
-                <p><strong>3. Reforestation vs. Afforestation:</strong> Replanting and creating new forests. Note: Industrial monoculture plantations are NOT ecological equivalents to natural forests.</p>
-                <p><strong>4. Community-Based Management:</strong> Giving local people secure land rights is the most effective strategy. Nepal and Mexico have seen massive success with this approach.</p>
-                <p><strong>5. Economic Incentives (REDD+):</strong> Paying countries to keep forests standing for their carbon storage value.</p>
-                <p><strong>6. Reducing Consumption:</strong> Addressing the demand for meat, palm oil, and unsustainable timber that drives 80% of clearing.</p>
-
-                <div style={{ backgroundColor: '#f0fdf4', padding: '25px', borderRadius: '12px', border: '1px solid #dcfce7', margin: '30px 0' }}>
-                    <h4 style={{ margin: '0 0 15px 0', color: '#166534' }}>🌟 Success Stories:</h4>
-                    <ul style={{ margin: 0, paddingLeft: '20px', color: '#15803d', fontSize: '0.95em' }}>
-                        <li style={{ marginBottom: '10px' }}><strong>Costa Rica:</strong> Forest cover increased from 20% to 55% via the PES program.</li>
-                        <li style={{ marginBottom: '10px' }}><strong>Bhutan:</strong> Constitutional mandate for 60% forest cover (currently at 72%).</li>
-                        <li style={{ marginBottom: '10px' }}><strong>South Korea:</strong> Reforested 65% of the country after complete devastation.</li>
-                        <li><strong>Nepal & Mexico:</strong> Community-led initiatives that increased cover while reducing poverty.</li>
-                    </ul>
-                </div>
 
                 <hr style={{ margin: '60px 0', border: '0', borderTop: '1px solid #eee' }} />
 
                 {/* PRACTICE SECTION */}
 
 
-                <h3>📘 Problem-Solving Practice</h3>
+                <h3>Problem-Solving Practice</h3>
 
-                <details style={{ backgroundColor: '#f8fafc', padding: '20px', borderRadius: '12px', marginBottom: '20px', border: '1px solid #e2e8f0' }}>
-                    <summary style={{ cursor: 'pointer', fontWeight: 'bold', color: '#334155' }}>Problem 1: Energy Source Comparison</summary>
-                    <div style={{ marginTop: '15px', color: '#475569', fontSize: '0.9em' }}>
-                        <p><strong>Scenario:</strong> Choosing between 500 MW coal vs 300 MW solar + 200 MW wind farm (with storage).</p>
-                        <p><strong>Solution:</strong> While coal has higher energy density, its social cost of carbon alone adds $50/tonne CO₂. Over 30 years, coal emissions (~950g/kWh) would generate millions of tonnes of CO₂ costs that far exceed the capital savings. Solar/wind also generates 5-15x more local jobs.</p>
+                <h4>📘 Problem 1: Energy Source Comparison</h4>
+                <p><strong>Scenario:</strong> A developing country is deciding between building a 500 MW coal power plant or a combination of 300 MW solar farm + 200 MW wind farm (with battery storage) to meet growing electricity demand. Both options would generate approximately the same annual electricity output.</p>
+                <p><strong>Data:</strong></p>
+                <ul>
+                    <li>Coal plant: Capital cost $1 billion, fuel cost $30/MWh, O&M $5/MWh, lifetime 40 years, CO₂ emissions 950g/kWh</li>
+                    <li>Solar+Wind: Capital cost $900 million (including storage), fuel cost $0, O&M $8/MWh, lifetime 25-30 years, CO₂ emissions 35g/kWh (lifecycle)</li>
+                    <li>Capacity factor: Coal 70%, Solar 22%, Wind 35%</li>
+                    <li>Social cost of carbon: $50 per tonne CO₂</li>
+                </ul>
+                <p><strong>Question:</strong> Analyze and recommend which option is better considering: (a) total cost over 30 years including environmental costs, (b) employment generation, (c) energy security, and (d) scalability. Justify your recommendation with calculations and reasoning.</p>
+
+                <details>
+                    <summary><strong>Show Detailed Solution</strong></summary>
+                    <div style={{ padding: '20px', border: '1px solid #eee', marginTop: '10px' }}>
+                        <p><strong>Comprehensive Solution:</strong></p>
+                        <p><strong>Step 1: Calculate annual electricity generation</strong></p>
+                        <p>Coal plant: 500 MW × 8,760 hours/year × 0.70 capacity factor = 3,066,000 MWh/year = 3.07 TWh/year</p>
+                        <p>Solar: 300 MW × 8,760 × 0.22 = 577,920 MWh/year = 0.58 TWh/year</p>
+                        <p>Wind: 200 MW × 8,760 × 0.35 = 613,200 MWh/year = 0.61 TWh/year</p>
+                        <p>Solar + Wind total: 1.19 TWh/year (We need more capacity or storage to match coal's 3.07 TWh. Let's adjust: we need to scale up by factor of 2.6. Revised: 780 MW solar + 520 MW wind ≈ same output as coal.)</p>
+                        <p>Revised renewable cost: $900M × 2.6 = $2.34 billion capital cost</p>
+
+                        <p><strong>Step 2: Calculate 30-year costs (Coal)</strong></p>
+                        <p>Capital cost: $1 billion</p>
+                        <p>Fuel costs over 30 years: 3,066,000 MWh/year × 30 years × $30/MWh = $2.76 billion</p>
+                        <p>O&M costs: 3,066,000 × 30 × $5 = $0.46 billion</p>
+                        <p>Environmental cost (CO₂): 3,066,000 MWh × 950 kg CO₂/MWh × 30 years = 87.4 million tonnes CO₂</p>
+                        <p>At $50/tonne: 87.4M × $50 = $4.37 billion</p>
+                        <p>TOTAL COAL COST: $1B + $2.76B + $0.46B + $4.37B = <strong>$8.59 billion</strong></p>
+
+                        <p><strong>Step 3: Calculate 30-year costs (Renewables)</strong></p>
+                        <p>Capital cost: $2.34 billion (Note: batteries may need replacement after 15 years, add ~$0.5B)</p>
+                        <p>Fuel costs: $0 (sun and wind are free!)</p>
+                        <p>O&M costs: 3,066,000 MWh × 30 years × $8/MWh = $0.74 billion</p>
+                        <p>Environmental cost (CO₂): 3,066,000 × 35g/kWh × 30 = 3.2 million tonnes CO₂</p>
+                        <p>At $50/tonne: 3.2M × $50 = $0.16 billion</p>
+                        <p>TOTAL RENEWABLE COST: $2.34B + $0.5B + $0.74B + $0.16B = <strong>$3.74 billion</strong></p>
+
+                        <p><strong>Step 4: Cost Comparison</strong></p>
+                        <p>Coal: $8.59 billion over 30 years | Renewables: $3.74 billion over 30 years</p>
+                        <p>Renewables save: $4.85 billion (56% cheaper!)</p>
+                        <p>Even without accounting for environmental costs, renewables are competitive. With environmental costs included, renewables are dramatically cheaper.</p>
+
+                        <p><strong>Step 5: Employment Generation</strong></p>
+                        <p>Coal plant: ~500-800 direct jobs during construction (2-3 years), ~150-200 permanent operations jobs</p>
+                        <p>Renewables: ~2,000-3,000 jobs during construction (shorter period but more labor-intensive), ~200-300 permanent O&M jobs spread across multiple sites, plus manufacturing jobs for panels/turbines</p>
+                        <p>Advantage: Renewables generate more employment, especially short-term construction jobs</p>
+
+                        <p><strong>Step 6: Energy Security</strong></p>
+                        <p>Coal: Requires continuous fuel supply (import or domestic mining). Vulnerable to price volatility, supply disruptions, geopolitical tensions.</p>
+                        <p>Renewables: Fuel is free and domestic (sun/wind available everywhere). No import dependence. Reduces foreign exchange spending on fuel imports.</p>
+                        <p>Advantage: Renewables provide superior energy security</p>
+
+                        <p><strong>Step 7: Scalability</strong></p>
+                        <p>Coal: Limited scalability—requires large upfront investment, long construction time (5-7 years).</p>
+                        <p>Renewables: Highly scalable—modular (can add capacity incrementally), faster deployment (1-2 years).</p>
+                        <p>Advantage: Renewables are more scalable</p>
+
+                        <p><strong>RECOMMENDATION:</strong> The country should choose the renewable energy option (solar + wind + storage).</p>
+                        <p><strong>Justification:</strong> Economic (saves $4.85B), Employment (more jobs), Energy Security (no fuel imports), Environmental (96% less CO₂), Scalability (flexible expansion).</p>
                     </div>
                 </details>
 
-                <details style={{ backgroundColor: '#f8fafc', padding: '20px', borderRadius: '12px', marginBottom: '20px', border: '1px solid #e2e8f0' }}>
-                    <summary style={{ cursor: 'pointer', fontWeight: 'bold', color: '#334155' }}>Problem 2: Forest Carbon Calculation</summary>
-                    <div style={{ marginTop: '15px', color: '#475569', fontSize: '0.9em' }}>
-                        <p><strong>Scenario:</strong> Clearing 10,000 ha of tropical rainforest for palm oil.</p>
-                        <p><strong>Solution:</strong> Clearing 10k ha (180 tC biomass + 120 tC soil) releases approx. 11 million tonnes of CO₂ equivalent. A palm oil plantation stores only 25 tC/ha. The "carbon debt" created would take over 150 years of biodiesel production to offset, making the clearing ecologically net-negative.</p>
+                <h4>📙 Problem 2: Forest Carbon Calculation</h4>
+                <p><strong>Scenario:</strong> A tropical rainforest in Indonesia covering 10,000 hectares is proposed for clearing to establish palm oil plantations. Environmental impact assessment requires calculating carbon emissions from forest clearing.</p>
+                <p><strong>Data:</strong></p>
+                <ul>
+                    <li>Forest biomass carbon density: 180 tonnes C/hectare (above-ground) + 40 tonnes C/hectare (below-ground roots)</li>
+                    <li>Soil organic carbon: 120 tonnes C/hectare in top 1 meter</li>
+                    <li>Assume 80% of biomass carbon and 25% of soil carbon will be released as CO₂ within 5 years of clearing</li>
+                    <li>Molecular weight ratio: CO₂/C = 44/12 = 3.67</li>
+                    <li>Palm oil plantation will store: 25 tonnes C/hectare (steady state after 10 years)</li>
+                    <li>Social cost of carbon: $50 per tonne CO₂</li>
+                </ul>
+                <p><strong>Questions:</strong> Calculate total stored carbon, CO₂ emissions, net loss, and economic cost.</p>
+
+                <details>
+                    <summary><strong>Show Complete Solution</strong></summary>
+                    <div style={{ padding: '20px', border: '1px solid #eee', marginTop: '10px' }}>
+                        <p><strong>Step 1: Calculate total forest carbon storage</strong></p>
+                        <p>Total storage: 1,800,000 + 400,000 + 1,200,000 = <strong>3,400,000 tonnes C</strong></p>
+
+                        <p><strong>Step 2: Calculate carbon released from clearing</strong></p>
+                        <p>Released: 1,760,000 (biomass) + 300,000 (soil) = <strong>2,060,000 tonnes C</strong></p>
+
+                        <p><strong>Step 3: Convert carbon to CO₂ emissions</strong></p>
+                        <p>CO₂ emissions = 2,060,000 × 3.67 = <strong>7,560,200 tonnes CO₂</strong> (1.64 million passenger cars equivalent!)</p>
+
+                        <p><strong>Step 4: Calculate carbon storage in palm plantation</strong></p>
+                        <p>Plantation storage: 25 tonnes C/ha × 10,000 ha × 3.67 = <strong>917,500 tonnes CO₂ equivalent</strong></p>
+
+                        <p><strong>Step 5: Calculate net carbon loss</strong></p>
+                        <p>Net permanent loss: 12,478,000 - 917,500 = <strong>11,560,500 tonnes CO₂ loss (93%)</strong></p>
+
+                        <p><strong>Step 6: Calculate economic cost of emissions</strong></p>
+                        <p>Economic cost = 7,560,200 × $50 = <strong>$378,010,000</strong></p>
+
+                        <p><strong>Step 7: Carbon debt payback period analysis</strong></p>
+                        <p>Annual CO₂ avoided by palm biodiesel ≈ 110,000 tonnes. Payback: 7,560,200 ÷ 110,000 = <strong>68.7 years</strong>.</p>
+                        <p><strong>⚠️ CRITICAL CONCLUSIONS:</strong> Clearing rainforest emits 7.56M tonnes CO₂ ($378M damage). Palm stores only 7% of original carbon. Payback (69 years) exceeds plantation life (25-30 years). narrative is greenwashing.</p>
                     </div>
                 </details>
 
-                <details style={{ backgroundColor: '#f8fafc', padding: '20px', borderRadius: '12px', marginBottom: '40px', border: '1px solid #e2e8f0' }}>
-                    <summary style={{ cursor: 'pointer', fontWeight: 'bold', color: '#334155' }}>Problem 3: Sustainable Forest Management</summary>
-                    <div style={{ marginTop: '15px', color: '#475569', fontSize: '0.9em' }}>
-                        <p><strong>Solution:</strong> Maximum sustainable yield must ensure volume stays above 70% threshold. If growth is 4% but harvest is 50k m³/year, the extraction exceeds regeneration. A sustainable schedule requires reducing harvest to allow the 70% base-stock to remain undisturbed while only harvesting the surplus increment.</p>
+                <h4>📕 Problem 3: Sustainable Forest Management</h4>
+                <p><strong>Scenario:</strong> 5,000 hectares, 1M m³ volume, 4% growth, maintain 70% threshold (700k m³).</p>
+                <details>
+                    <summary><strong>Show Solution</strong></summary>
+                    <div style={{ padding: '20px', border: '1px solid #eee', marginTop: '10px' }}>
+                        <p>Truly sustainable forestry requires harvesting well below maximum biological yield to maintain ecosystem integrity. If current harvest (50,000 m³) exceeds annual growth (40,000 m³), the forest degrades. Economic optimization alone lead to degradation—only harvesting a portion of the surplus increment while strictly maintaining the 70% baseline ensures long-term forest survival.</p>
                     </div>
                 </details>
 
-                <div style={{ backgroundColor: '#f8fafc', padding: '25px', borderRadius: '12px', border: '1px solid #e2e8f0', margin: '40px 0' }}>
-                    <h3 style={{ margin: '0 0 20px 0', color: '#1e293b' }}>📊 Energy Resources: Detailed Comparison Matrix</h3>
-                    <div style={{ overflowX: 'auto' }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8em' }}>
-                            <thead>
-                                <tr style={{ backgroundColor: '#334155', color: '#fff' }}>
-                                    <th style={{ padding: '8px', border: '1px solid #475569' }}>Criterion</th>
-                                    <th style={{ padding: '8px', border: '1px solid #475569' }}>Coal</th>
-                                    <th style={{ padding: '8px', border: '1px solid #475569' }}>Oil/Gas</th>
-                                    <th style={{ padding: '8px', border: '1px solid #475569' }}>Nuclear</th>
-                                    <th style={{ padding: '8px', border: '1px solid #475569' }}>Solar</th>
-                                    <th style={{ padding: '8px', border: '1px solid #475569' }}>Wind</th>
-                                    <th style={{ padding: '8px', border: '1px solid #475569' }}>Hydro</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0', fontWeight: 'bold' }}>Energy Density</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>High (24 MJ/kg)</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>High (45-55 MJ/kg)</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>Extreme (80M MJ/kg)</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>Low</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>Low</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>Medium</td>
-                                </tr>
-                                <tr style={{ backgroundColor: '#f1f5f9' }}>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0', fontWeight: 'bold' }}>Capacity Factor</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>60-80%</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>50-90%</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>92% (Baseload)</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>15-25%</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>25-45%</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>40-60%</td>
-                                </tr>
-                                <tr>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0', fontWeight: 'bold' }}>Lifecycle CO₂</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>~1000g/kWh</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>450-650g/kWh</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>~12g/kWh</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>~48g/kWh</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>~11g/kWh</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>~24g/kWh</td>
-                                </tr>
-                                <tr style={{ backgroundColor: '#f1f5f9' }}>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0', fontWeight: 'bold' }}>Env/Social Risk</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>Very High</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>High (Methane)</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>Catastrophic</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>Low</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>Low</td>
-                                    <td style={{ padding: '8px', border: '1px solid #e2e8f0' }}>High (Dams)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+
+
+                <h3>📊 Comprehensive Comparison & Analysis</h3>
+
+                <h4>Energy Resources: Detailed Comparison Matrix</h4>
+                <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ccc', margin: '20px 0', fontSize: '0.75em' }}>
+                        <thead>
+                            <tr style={{ backgroundColor: '#f9fafb' }}>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Criterion</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Coal</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Natural Gas</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Nuclear</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Solar PV</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Wind</th>
+                                <th style={{ border: '1px solid #ccc', padding: '8px' }}>Hydroelectric</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Renewability Status</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Non-renewable (300M years formation)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Non-renewable (millions years formation)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Non-renewable (uranium finite)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Renewable (sun lasts 5B years)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Renewable (continuous atmospheric circulation)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Renewable (water cycle continuous)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Greenhouse Gas Emissions</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Very High: 820-1000g CO₂/kWh</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate: 450-650g CO₂/kWh (plus methane leakage)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Very Low: 12-15g CO₂/kWh (lifecycle)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Very Low: 40-50g CO₂/kWh (lifecycle)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Very Low: 11-15g CO₂/kWh (lifecycle)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Low: 24-40g CO₂/kWh (varies by reservoir)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Levelized Cost ($/MWh)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>$60-150</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>$40-100</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>$120-200</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>$30-60</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>$30-80</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>$30-100</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Capacity Factor</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>60-80%</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>50-70%</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>85-95%</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>15-25%</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>25-45%</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>40-90%</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Dispatchability</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Yes (Slow)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Yes (Fast)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>No (Baseload)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>No (Intermittent)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>No (Variable)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Yes (Excellent)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Construction Time</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>3-6 years</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>2-4 years</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>10-20 years</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>6-18 months</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>1-2 years</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>5-15 years</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Water Use</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Very High</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Very High</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Very Low</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>None</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High Evaporation</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Air Pollution (non-GHG)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Severe: SO₂, NOₓ, PM2.5, mercury, heavy metals</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate: NOₓ, some PM</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>None (during operation)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>None (during operation)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>None</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>None</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Resource Availability</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>130 years at current rates</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>50 years at current rates</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>90-130 years uranium</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Unlimited (5 billion years of sunlight)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Unlimited (continuous winds)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Limited by geography (suitable rivers)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Energy Security</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Vulnerable (import dependence for many countries)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Vulnerable (geopolitical supply risks)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate (uranium imports, proliferation concerns)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High (domestic, distributed generation)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High (domestic, distributed)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High (domestic, but drought vulnerable)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Safety Risks</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High: mining deaths, black lung, accidents</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate: explosions, gas leaks, fracking impacts</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Low frequency but catastrophic: meltdowns, waste</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Very Low (manufacturing hazards only)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Low (turbine failures rare, blade throws)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Dam failures (rare but catastrophic)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Job Creation (Jobs/MW)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>0.2-0.5 permanent jobs/MW</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>0.1-0.3 permanent jobs/MW</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>0.3-0.5 jobs/MW (specialized)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>3.5-4.5 jobs/MW (installation-heavy)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>2-3 jobs/MW</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>0.5-1.5 jobs/MW</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Scalability &amp; Modularity</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Limited (large plants, long build times)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Good (flexible sizes, quick build)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Poor (huge upfront investment, inflexible)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Excellent (1W to 1GW scale)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Excellent (modular, incremental)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Limited (geography constrained)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Future Cost Trajectory</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Rising (regulations, carbon taxes)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Volatile (supply dependent)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Rising (safety, waste costs increase)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Falling (learning curve continues)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Falling (technology improving)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Stable (mature technology)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Climate Change Vulnerability</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate (water scarcity affects cooling)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate (heat affects efficiency)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High (drought, heat cause shutdowns)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Low (heat reduces efficiency ~10%)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Low-Moderate (wind patterns may shift)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High (drought reduces generation)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Recycling &amp; Disposal</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Ash disposal (toxic), mine remediation</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Infrastructure decommissioning</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Radioactive waste (100,000+ year storage)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>95% recyclable (improving programs)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>85-95% recyclable (blade disposal challenge)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Decommissioning challenges (sediment, ecosystems)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>💡 Key Insights:</strong> Cost Revolution (Renewables cheapest), Emissions Gap (10-100x), Nuclear's Dilemma (Expensive/Slow), Energy Security (Independence), Job Creation (Renewables 5-15x higher).</p>
+
+                <h4>Forest Management Approaches: Comparison</h4>
+                <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ccc', margin: '20px 0', fontSize: '0.7em' }}>
+                        <thead>
+                            <tr style={{ backgroundColor: '#f9fafb' }}>
+                                <th style={{ border: '1px solid #ccc', padding: '5px' }}>Criterion</th>
+                                <th style={{ border: '1px solid #ccc', padding: '5px' }}>Clear-Cutting</th>
+                                <th style={{ border: '1px solid #ccc', padding: '5px' }}>Selective Logging</th>
+                                <th style={{ border: '1px solid #ccc', padding: '5px' }}>Sustainable Forest Management</th>
+                                <th style={{ border: '1px solid #ccc', padding: '5px' }}>Protected Areas (No Extraction)</th>
+                                <th style={{ border: '1px solid #ccc', padding: '5px' }}>Community-Based Management</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Definition</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Complete removal of all trees from area</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Harvest only commercially valuable trees</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Harvest within regeneration capacity, maintaining ecosystem health</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>No commercial extraction allowed</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Local communities manage forests for multiple benefits</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Economic Return</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High short-term: Maximum immediate harvest</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate: Regular harvest of valuable species</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate long-term: Lower harvest rates but sustainable indefinitely</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>No direct timber income (ecotourism possible)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate: Diverse income streams (timber, NTFP, tourism)</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Biodiversity Impact</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Catastrophic: 80-95% species loss, habitat destruction</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High: 40-70% diversity loss, disrupted ecosystem</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Low-Moderate: Can maintain 70-90% of biodiversity if well-managed</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Excellent: Maintains full ecosystem integrity</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Good-Excellent: Communities often prioritize conservation</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Carbon Storage</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Massive loss: 70-90% of forest carbon released</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Significant loss: 30-50% carbon reduction</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate impact: 10-30% carbon reduction (varies by intensity)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Maximum: Preserves full carbon storage capacity</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Good: Maintains most carbon storage with light extraction</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Soil &amp; Water Protection</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Severe degradation: Erosion increases 10-100x</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate degradation: Roads, machinery compact soil</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Low impact if proper practices followed (buffer zones, reduced impact logging)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Full protection: Maintains watershed functions</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Good protection: Community interest in maintaining water sources</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Regeneration Potential</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Poor: Degraded soil, seed source lost, invasives colonize</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate: Some canopy remains but regeneration slow/altered</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Good: Designed to allow natural regeneration within decades</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Excellent: Natural succession undisturbed</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Good-Excellent: Light extraction allows regeneration</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Long-term Sustainability</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Unsustainable: Requires continuous new forest areas</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Often unsustainable: Extraction exceeds regeneration</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Sustainable: Designed for indefinite harvest if properly managed</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Sustainable: Ecosystem maintained indefinitely</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Sustainable: Communities have long-term incentive for conservation</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Implementation Challenges</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Low: Simple, quick, low-skill</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate: Requires planning, skilled workers</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High: Requires expertise, monitoring, long-term commitment, lower profits tempt cheating</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High: Requires funding, enforcement, addressing local needs</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High: Requires secure tenure, capacity building, fair governance</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Social Impact</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Negative: Displaces communities, destroys livelihoods, often involves violence</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Mixed: Jobs created but often unfair benefit distribution</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Positive if communities included: Sustainable livelihoods, respects rights</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Mixed: Conservation benefits but may restrict traditional use if poorly designed</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Very Positive: Empowers communities, poverty reduction, cultural preservation</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Examples</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Amazon deforestation for cattle, Borneo palm oil, Pacific Northwest until 1990s</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Tropical hardwood logging (teak, mahogany), Congo Basin, Amazon</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>FSC-certified forests in Sweden, Germany; some tropical concessions</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Costa Rica national parks, Amazon indigenous reserves, Yellowstone, Serengeti</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Nepal community forests, Mexico community forestry, Amazon indigenous territories</td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: '1px solid #ccc', padding: '5px', fontWeight: 'bold' }}>Success Rate</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>N/A (environmentally catastrophic by definition)</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Low: Most operations unsustainable in practice</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate: Works when well-funded, enforced, and monitored</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>Moderate-High: Effective with adequate funding and enforcement</td>
+                                <td style={{ border: '1px solid #ccc', padding: '5px' }}>High: When communities have secure rights and capacity</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div style={{ backgroundColor: '#f0fdf4', padding: '25px', borderRadius: '12px', border: '1px solid #dcfce7', margin: '40px 0' }}>
-                    <h3 style={{ margin: '0 0 20px 0', color: '#166534' }}>🌲 Forest Management Approaches: Comparison</h3>
-                    <div style={{ overflowX: 'auto' }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85em' }}>
-                            <thead>
-                                <tr style={{ backgroundColor: '#166534', color: '#fff' }}>
-                                    <th style={{ padding: '12px', border: '1px solid #15803d' }}>Approach</th>
-                                    <th style={{ padding: '12px', border: '1px solid #15803d' }}>Primary Goal</th>
-                                    <th style={{ padding: '12px', border: '1px solid #15803d' }}>Key Advantage</th>
-                                    <th style={{ padding: '12px', border: '1px solid #15803d' }}>Main Challenge</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7', fontWeight: 'bold' }}>Strict Protection</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Biodiversity preservation</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Highest ecological integrity</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>"Paper Parks" / Conflict</td>
-                                </tr>
-                                <tr style={{ backgroundColor: '#f0fdf4' }}>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7', fontWeight: 'bold' }}>SFM (Sustainable)</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Continuous timber yield</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Economic sustainability</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Monitoring illegal logging</td>
-                                </tr>
-                                <tr>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7', fontWeight: 'bold' }}>Community-Based</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Livelihoods + Conservation</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>High local support/success</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Technical capacity needs</td>
-                                </tr>
-                                <tr style={{ backgroundColor: '#f0fdf4' }}>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7', fontWeight: 'bold' }}>REDD+ (Payments)</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Carbon sequestration</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Global funding stream</td>
-                                    <td style={{ padding: '10px', border: '1px solid #dcfce7' }}>Measurement & Leakage</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <hr style={{ margin: '40px 0', border: '0', borderTop: '1px solid #eee' }} />
 
-                <div style={{ backgroundColor: '#f1f5f9', padding: '30px', borderRadius: '16px', margin: '40px 0' }}>
-                    <h3 style={{ margin: '0 0 20px 0', color: '#1e293b' }}>🎓 Comprehensive Mastery Assessment</h3>
-                    <div style={{ color: '#334155', fontSize: '0.95em' }}>
-                        <p style={{ fontWeight: 'bold', marginBottom: '10px' }}>Q1. Explain the 'Energy Trilemma' in the context of transitioning from fossil fuels to renewables.</p>
-                        <p style={{ marginLeft: '20px', marginBottom: '20px', fontStyle: 'italic' }}>Focus on balancing energy security (availability), energy equity (affordability), and environmental sustainability (low carbon).</p>
-
-                        <p style={{ fontWeight: 'bold', marginBottom: '10px' }}>Q2. How does forest fragmentation differ from total deforestation, and why is it sometimes more dangerous for species?</p>
-                        <p style={{ marginLeft: '20px', marginBottom: '20px', fontStyle: 'italic' }}>Discuss the 'edge effect', isolation of gene pools, and increased vulnerability to fires/pests in small forest islands.</p>
-
-                        <p style={{ fontWeight: 'bold', marginBottom: '10px' }}>Q3. Contrast the environmental impacts of a large-scale hydroelectric dam vs. a utility-scale solar farm.</p>
-                        <p style={{ marginLeft: '20px', marginBottom: '20px', fontStyle: 'italic' }}>Include land displacement, impact on aquatic vs terrestrial biodiversity, and methane emissions from reservoirs.</p>
-
-                        <p style={{ fontWeight: 'bold', marginBottom: '10px' }}>Q4. Why is 'Community Forest Management' considered the most successful conservation strategy in the 21st century?</p>
-                        <p style={{ marginLeft: '20px', marginBottom: '20px', fontStyle: 'italic' }}>Discuss local ownership, traditional ecological knowledge, and the failure of 'top-down' exclusionary models.</p>
-
-                        <p style={{ fontWeight: 'bold', marginBottom: '10px' }}>Q5. Analyze the role of 'Energy Efficiency' as the "First Fuel" in achieving climate goals.</p>
-                        <p style={{ marginLeft: '20px', marginBottom: '20px', fontStyle: 'italic' }}>Explain why avoiding a unit of energy through efficiency is always cheaper and cleaner than producing a unit of renewable energy.</p>
-                    </div>
-                </div>
-
-                <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-                    <h4 style={{ color: '#1e293b', margin: '0', fontSize: '1.1em' }}>
-RENEWABLE AND NON-RENEWABLE RESOURCES ☀️🌲 Differences and Examples!
-                    </h4>
-                </div>
-                <div style={{ maxWidth: '640px', margin: '0 auto 30px auto' }}>
-                    <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-
-                        <iframe
-
-                            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                            src="https://www.youtube.com/embed/MQEiQE_wVMw?si=40EwMtQUazRWXjnZ"
-                            title="YouTube video player"
-                            allowFullScreen
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                        ></iframe>
-                    </div>
-                </div>
-
-                <div style={{ margin: '60px 0 40px 0' }}>
-                    <h3 style={{ margin: '0 0 20px 0' }}>🎯 Practice & Apply Your Knowledge</h3>
+                <div style={{ margin: '40px 0' }}>
+                    <h3 style={{ margin: '0 0 20px 0' }}>🎯 Practice &amp; Apply Your Knowledge</h3>
                     <Quiz
-                        title="Module 2.1 Quiz: Energy & Forest Resources"
+                        title="Module 2.1 Quiz: Energy &amp; Forest Resources"
                         questions={quizQuestions}
                         subject="ES"
                         unitId={2}
@@ -496,37 +1038,168 @@ RENEWABLE AND NON-RENEWABLE RESOURCES ☀️🌲 Differences and Examples!
                     />
                 </div>
 
+                <h3>✅ Comprehensive Mastery Assessment</h3>
+                <h4>Test Your Complete Understanding</h4>
+                <p>This comprehensive assessment tests your mastery of energy resources, forest ecosystems, and conservation strategies. Answer all questions thoughtfully.</p>
+                <p><strong>Passing Score: 70% (7 out of 10 questions correct)</strong></p>
+                <p><strong>Instructions:</strong></p>
+                <ul>
+                    <li>Answer all 10 questions to the best of your ability</li>
+                    <li>For MCQs, click your chosen answer then check it</li>
+                    <li>For written questions, think carefully and compare your answer to the model answer</li>
+                    <li>Your goal is to demonstrate comprehensive understanding, not just memorization</li>
+                    <li>You can retake the quiz as many times as needed</li>
+                </ul>
+
+                <h4>Question 1: Short Answer (Compare and Contrast)</h4>
+                <p><strong>Question:</strong> Compare and contrast renewable and non-renewable energy resources in terms of environmental sustainability, economic viability, and energy security. Use specific examples and data in your answer. (Write 150-200 words)</p>
+                <details>
+                    <summary><strong>Show Model Answer</strong></summary>
+                    <div style={{ padding: '20px', border: '1px solid #eee', marginTop: '10px' }}>
+                        <p><strong>Comprehensive Model Answer:</strong></p>
+                        <p>Renewable and non-renewable energy resources differ fundamentally in sustainability, economics, and security. Environmental sustainability: Renewable sources (solar, wind, hydro) regenerate continuously and produce minimal lifecycle emissions (15-50g CO₂/kWh), while non-renewable fossil fuels (coal, oil, gas) took millions of years to form and emit 450-1000g CO₂/kWh, driving climate change. For example, coal emits 20 times more CO₂ than wind power per kWh. Economic viability: Renewable energy costs have plummeted—utility-scale solar now costs $30-60/MWh compared to nuclear at $120-200/MWh, making renewables the cheapest electricity source in most markets. Solar and wind also have zero fuel costs, providing price stability. Energy security: Renewables offer superior security since sun and wind are domestic resources available everywhere, eliminating import dependence and price volatility that plague fossil fuels. For instance, Germany's renewable transition reduced fossil fuel imports by €10+ billion annually. However, renewables face intermittency challenges requiring storage or backup, while fossil fuels offer on-demand generation. Overall, renewables are increasingly superior across all three dimensions, explaining their rapid global growth from 20% to 29% of electricity generation (2010-2022) and projected dominance by 2050.</p>
+                        <p><strong>Key Points Your Answer Should Include:</strong></p>
+                        <ul>
+                            <li>Regeneration: Renewables replenish on human timescales; fossil fuels take millions of years</li>
+                            <li>Emissions comparison: Specific data showing 10-60x lower emissions for renewables</li>
+                            <li>Cost trends: Renewables declining, now cheapest; fossil/nuclear rising</li>
+                            <li>Energy security: Renewables = domestic/independent; fossils = import dependent/volatile</li>
+                            <li>Specific examples: Actual numbers for costs, emissions, or real-world cases</li>
+                            <li>Balanced perspective: Acknowledging intermittency challenge while explaining solutions</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h4>Question 2: Critical Analysis</h4>
+                <p><strong>Question:</strong> Natural gas is often promoted as a "bridge fuel" to a renewable energy future. Critically evaluate this claim, discussing both supporting arguments and counterarguments. What does recent scientific evidence suggest about natural gas's role in climate change? (150-200 words)</p>
+                <details>
+                    <summary><strong>Show Model Answer</strong></summary>
+                    <div style={{ padding: '20px', border: '1px solid #eee', marginTop: '10px' }}>
+                        <p>Model answer demonstrates critical thinking about a controversial topic, evaluating both sides while reaching evidence-based conclusion. Students should show they understand the complexity beyond simple "gas is clean" marketing.</p>
+                        <p><strong>Supporting arguments for "bridge fuel":</strong> Natural gas emits ~50% less CO₂ than coal per kWh (~450g vs ~1000g). It can back up intermittent renewables with fast-ramping capacity. It already exists as infrastructure in many countries, enabling faster transition than building all-new systems.</p>
+                        <p><strong>Counterarguments (the stronger case):</strong> Methane leakage during extraction and transport (1-9% of production) has 80x the warming potency of CO₂ over 20 years, erasing the CO₂ advantage. Building new gas infrastructure locks in emissions for 30-40 years, incompatible with 2050 net-zero goals. Renewable costs have fallen so fast that the "bridge" may not be needed—batteries and demand response can now provide grid flexibility. IEA (2021) states no new fossil fuel development is compatible with 1.5°C pathway.</p>
+                        <p><strong>Conclusion:</strong> Scientific evidence increasingly undermines the bridge fuel argument, especially when methane leakage is properly accounted for.</p>
+                    </div>
+                </details>
+
+                <h4>Question 3: Problem-Solving</h4>
+                <p><strong>Scenario:</strong> A country currently generates 70% electricity from coal, 20% from natural gas, and 10% from renewables. The government pledges to achieve 50% renewable electricity by 2030 (7 years away) while reducing CO₂ emissions by 40%. Is this target achievable? What strategy would you recommend, and what are the main barriers?</p>
+                <details>
+                    <summary><strong>Show Approach &amp; Solution</strong></summary>
+                    <div style={{ padding: '20px', border: '1px solid #eee', marginTop: '10px' }}>
+                        <p>This question tests ability to apply knowledge to real-world policy scenarios, evaluate feasibility, and propose solutions considering technical, economic, and political constraints.</p>
+                        <p><strong>Feasibility analysis:</strong> Going from 10% to 50% renewable in 7 years is ambitious but achievable—comparable to what Germany, Denmark, and China have done. A 40% CO₂ reduction requires replacing most coal capacity, since coal produces ~3x the emissions of gas and ~20x renewables.</p>
+                        <p><strong>Recommended strategy:</strong></p>
+                        <ul>
+                            <li>Immediate: Halt new coal permits; implement carbon price to make coal uneconomic</li>
+                            <li>Years 1-3: Fast-deploy utility-scale solar and wind (6-18 month build time); upgrade grid infrastructure</li>
+                            <li>Years 3-6: Add battery storage and demand response; retire oldest coal plants first</li>
+                            <li>Years 6-7: Natural gas as backup only; achieve 50% renewables milestone</li>
+                        </ul>
+                        <p><strong>Main barriers:</strong> Grid reliability concerns during transition; stranded asset costs for coal plant owners; political resistance from coal communities; financing renewable buildout; supply chain constraints for panels/turbines.</p>
+                        <p><strong>Conclusion:</strong> The target is achievable with strong policy, adequate financing, and a just transition plan for affected workers.</p>
+                    </div>
+                </details>
+
+                <h4>Question 4: Forest Ecosystems</h4>
+                <p><strong>Question:</strong> Explain how forests regulate regional and global climate through three distinct mechanisms. For each mechanism, describe the process and explain what happens when forests are destroyed. (150-200 words)</p>
+                <details>
+                    <summary><strong>Show Complete Answer</strong></summary>
+                    <div style={{ padding: '20px', border: '1px solid #eee', marginTop: '10px' }}>
+                        <p>Expected answer should cover the three mechanisms below. Each should describe the process AND what happens when forests are destroyed.</p>
+                        <ol>
+                            <li><strong>Carbon Sequestration:</strong> Photosynthesis removes atmospheric CO₂ and stores it in biomass (trunks, roots, leaves) and soils. Forests store 650+ Gt of carbon—more than the entire atmosphere. Deforestation releases this stored carbon as CO₂, contributing 10-15% of global greenhouse gas emissions. The Amazon alone stores ~150-200 Gt of carbon; its destruction would push global temperatures well beyond 1.5°C.</li>
+                            <li><strong>Evapotranspiration:</strong> Forests pump enormous quantities of water vapor into the atmosphere through transpiration from leaves. This vapor forms clouds and generates rainfall, creating "flying rivers" of moisture. The Amazon generates rainfall for agricultural regions thousands of kilometers away. Deforestation breaks this cycle, reducing regional precipitation and causing droughts that can be self-reinforcing (drought kills more trees, releasing more carbon).</li>
+                            <li><strong>Albedo (Reflectivity) Effects:</strong> Dark forest canopies absorb sunlight (low albedo, ~0.12-0.15), converting it to heat that drives atmospheric circulation. Cleared or degraded land reflects more light (high albedo), altering regional energy balance and wind patterns. In temperate regions, this can actually cause cooling locally but disrupts precipitation patterns regionally, affecting agriculture and water supplies far from the deforestation.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <h4>Question 5: Conservation Strategies</h4>
+                <p><strong>Question:</strong> Community-based forest management has proven more effective than government-run protected areas in many cases. Explain why this approach works, what conditions are necessary for success, and provide at least two real-world examples. (150-200 words)</p>
+                <details>
+                    <summary><strong>Show Model Answer</strong></summary>
+                    <div style={{ padding: '20px', border: '1px solid #eee', marginTop: '10px' }}>
+                        <p><strong>Why it works:</strong> Local communities that depend directly on the forest have the strongest long-term incentive for sustainable management—unlike distant government agencies, their livelihoods, water, food security, and cultural identity are tied to forest health. Communities also provide far better day-to-day monitoring than infrequent government patrols. Many communities hold traditional ecological knowledge accumulated over generations about forest dynamics, sustainable harvest rates, and indicator species. When communities have formal rights and meaningful decision-making power, they invest in conservation because they capture the benefits.</p>
+                        <p><strong>Conditions for success:</strong> Secure land tenure and legal rights (without which communities cannot exclude outsiders); fair benefit-sharing arrangements so all members benefit; capacity building and technical support; supportive national policy frameworks; fair governance structures within communities.</p>
+                        <p><strong>Real-world examples:</strong></p>
+                        <ul>
+                            <li><strong>Nepal community forestry:</strong> Since the 1990s, over 1/3 of Nepal's forests transferred to ~19,000 community forest user groups. Forest cover increased from 26% to 44% in some regions, biodiversity improved, and poverty reduced simultaneously—a rare win-win.</li>
+                            <li><strong>Mexico community forests:</strong> Over 8,000 communities manage ~60% of Mexico's forests, generate sustainable timber income, maintain biodiversity, and have lower deforestation rates than government-protected areas in many states.</li>
+                        </ul>
+                    </div>
+                </details>
+
                 <hr style={{ margin: '40px 0', border: '0', borderTop: '1px solid #eee' }} />
 
-                <div style={{ margin: '40px 0' }}>
-                    <h3 style={{ margin: '0 0 20px 0' }}>📄 Quick Reference Cheat Sheet</h3>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
-                        <div>
-                            <p style={{ fontWeight: 'bold', margin: '0 0 10px 0', color: '#334155' }}>Energy Metrics</p>
-                            <ul style={{ fontSize: '0.9em', paddingLeft: '20px', color: '#475569', margin: 0 }}>
-                                <li style={{ marginBottom: '5px' }}>Coal: ~1000g CO₂/kWh</li>
-                                <li style={{ marginBottom: '5px' }}>Solar/Wind: 15-50g CO₂/kWh</li>
-                                <li>Fossil Fuel Era: 82% global energy</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <p style={{ fontWeight: 'bold', margin: '0 0 10px 0', color: '#334155' }}>Forest Facts</p>
-                            <ul style={{ fontSize: '0.9em', paddingLeft: '20px', color: '#475569', margin: 0 }}>
-                                <li style={{ marginBottom: '5px' }}>Area: 31% of land</li>
-                                <li style={{ marginBottom: '5px' }}>Loss: 10M ha/year (Iceland size)</li>
-                                <li>Carbon storage: 650+ gigatonnes</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <p style={{ fontWeight: 'bold', margin: '0 0 10px 0', color: '#334155' }}>Exam Tips</p>
-                            <ul style={{ fontSize: '0.9em', paddingLeft: '20px', color: '#475569', margin: 0 }}>
-                                <li style={{ marginBottom: '5px' }}>Use the ALIFC acronym</li>
-                                <li style={{ marginBottom: '5px' }}>Link energy to forest feedbacks</li>
-                                <li>Mention case studies (Bhutan, Costa Rica)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <h3>📄 Quick Reference Cheat Sheet</h3>
+                <p>Bookmark this section for rapid review before exams! Here's everything you need to remember at a glance.</p>
+
+                <h4>🔑 Key Definitions</h4>
+                <ul>
+                    <li><strong>Renewable Energy:</strong> Sources that regenerate on human timescales (solar, wind, hydro, biomass, geothermal)</li>
+                    <li><strong>Non-Renewable Energy:</strong> Finite sources taking millions of years to form (fossil fuels, nuclear)</li>
+                    <li><strong>Deforestation:</strong> Permanent removal of forest cover (10M ha/year globally)</li>
+                    <li><strong>Carbon Sequestration:</strong> Process of capturing and storing atmospheric CO₂ (forests store 650+ Gt C)</li>
+                    <li><strong>Sustainable Yield:</strong> Harvest rate that doesn't exceed regeneration capacity</li>
+                    <li><strong>Capacity Factor:</strong> Actual output vs. maximum possible output over time</li>
+                </ul>
+
+                <h4>📐 Critical Numbers to Remember</h4>
+                <ul>
+                    <li><strong>Global forest area:</strong> 4.06 billion hectares (31% of land)</li>
+                    <li><strong>Annual deforestation:</strong> 10 million hectares (area of Iceland)</li>
+                    <li><strong>Forest carbon storage:</strong> 650+ gigatonnes (more than atmosphere)</li>
+                    <li><strong>Coal emissions:</strong> ~1000g CO₂/kWh</li>
+                    <li><strong>Natural gas emissions:</strong> ~450g CO₂/kWh (plus methane leakage)</li>
+                    <li><strong>Solar/wind emissions:</strong> 15-50g CO₂/kWh (lifecycle)</li>
+                    <li><strong>Agriculture drives:</strong> 80% of tropical deforestation</li>
+                    <li><strong>Solar cost decline:</strong> 90% decrease (2010-2020)</li>
+                </ul>
+
+                <h4>⚙️ Energy Resources Summary</h4>
+                <p><strong>Non-Renewable:</strong></p>
+                <ul>
+                    <li><strong>Coal:</strong> Highest emissions, 130 yr reserves, declining</li>
+                    <li><strong>Oil:</strong> Transportation fuel, 50 yr reserves, geopolitical</li>
+                    <li><strong>Natural Gas:</strong> "Bridge fuel" myth, methane leaks, 50 yr</li>
+                    <li><strong>Nuclear:</strong> Low emissions but expensive, slow, waste problem</li>
+                </ul>
+                <p><strong>Renewable:</strong></p>
+                <ul>
+                    <li><strong>Solar:</strong> Cheapest, fastest growing, intermittent</li>
+                    <li><strong>Wind:</strong> Cheap, scalable, variable, bird impacts</li>
+                    <li><strong>Hydro:</strong> Mature, flexible, geography limited, dam impacts</li>
+                </ul>
+
+                <h4>🌳 Forest Ecosystem Services</h4>
+                <ul>
+                    <li><strong>Climate:</strong> Carbon sink (2.6 Gt CO₂/yr), temperature regulation</li>
+                    <li><strong>Water:</strong> Evapotranspiration → rainfall, watershed protection, flood prevention</li>
+                    <li><strong>Biodiversity:</strong> 80% of terrestrial species habitat</li>
+                    <li><strong>Soil:</strong> Erosion prevention, nutrient cycling, fertility maintenance</li>
+                    <li><strong>Direct Products:</strong> Timber, fuelwood, NTFPs, medicine</li>
+                    <li><strong>Economic Value:</strong> $5-10 trillion/year in services</li>
+                </ul>
+
+                <h4>⚠️ Deforestation Drivers (Remember: ALIFC)</h4>
+                <ul>
+                    <li><strong>Agriculture (80%):</strong> cattle, soy, palm oil</li>
+                    <li><strong>Logging:</strong> legal &amp; illegal timber extraction</li>
+                    <li><strong>Infrastructure:</strong> roads, dams, mining, urban expansion</li>
+                    <li><strong>Fuelwood:</strong> 2.5B people depend on it</li>
+                    <li><strong>Climate feedback:</strong> droughts, fires, pests</li>
+                </ul>
+
+                <h4>✅ Conservation Strategies</h4>
+                <ul>
+                    <li><strong>Protected Areas:</strong> 15% of land (needs enforcement)</li>
+                    <li><strong>Sustainable Management:</strong> FSC certification, reduced-impact logging</li>
+                    <li><strong>Reforestation:</strong> Native species, natural regeneration best</li>
+                    <li><strong>Community Management:</strong> Most effective when communities have rights</li>
+                    <li><strong>REDD+:</strong> Payment for carbon storage</li>
+                    <li><strong>Reducing Consumption:</strong> Less meat, sustainable sourcing</li>
+                </ul>
             </section>
         </div>
     );

@@ -184,12 +184,12 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Definition: Genetic, Species and Ecosystem Diversity</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Understanding Biodiversity: Nature's Ultimate Database </h3>
               <div className="theory-box">
                 <p>Hey future engineers!  Think of biodiversity as nature's massive distributed database system - it's got three levels of organization, each more complex than the last. Just like how your code has different layers (functions, classes, modules), biodiversity has genetic, species, and ecosystem levels. And trust me, this "database" is way more sophisticated than anything we've built! </p>
-
+                
                 <div className="performance-metrics">
                   <h4>Biodiversity Stats That'll Blow Your Mind </h4>
                   <ul>
@@ -200,10 +200,10 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-
+              
               <h4>The Three Levels of Biodiversity </h4>
               <p>Biodiversity refers to the variety of life on Earth and the natural patterns it forms. It encompasses three main levels of biological organization that are interconnected and essential for ecosystem functioning.</p>
-
+              
               <h5>Genetic Diversity - The Source Code Level </h5>
               <div className="example-box">
                 <p>Think of genetic diversity as different versions of the same software - same basic function, but with unique features and capabilities!</p>
@@ -244,7 +244,7 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Why This Matters for Engineers </h4>
-
+              
               <div className="career-opportunities">
                 <h5>Biomimicry Applications </h5>
                 <ul>
@@ -286,12 +286,12 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Value of Biodiversity</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Value of Biodiversity: Nature's Economic Engine </h3>
               <div className="theory-box">
                 <p>Alright engineers, let's talk business! 💼 Biodiversity isn't just pretty to look at - it's a massive economic powerhouse that drives industries worth trillions of dollars. From the medicines in your cabinet to the algorithms in your code, nature has been humanity's original R&D department. Understanding these values helps you see opportunities where biology meets technology!</p>
-
+                
                 <div className="performance-metrics">
                   <h4>Biodiversity's Economic Impact </h4>
                   <ul>
@@ -302,10 +302,10 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-
+              
               <h4>Economic and Non-Economic Values of Biodiversity </h4>
               <p>Biodiversity provides numerous values that can be categorized into different types based on how humans interact with and benefit from biological diversity.</p>
-
+              
               <h5>Consumptive Use Values - Direct Benefits</h5>
               <div className="example-box">
                 <p>These are like open-source resources - directly used without going through markets!</p>
@@ -345,7 +345,7 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Additional Biodiversity Values </h4>
-
+              
               <h5>Ethical Values - The Moral Code </h5>
               <div className="example-box">
                 <ul>
@@ -382,7 +382,7 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Applications of Biodiversity Values </h4>
-
+              
               <div className="career-opportunities">
                 <h5>Tech Opportunities </h5>
                 <ul>
@@ -426,12 +426,12 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Biodiversity at Global, National and Local Levels</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Biodiversity Distribution: From Global to Local Scale </h3>
               <div className="theory-box">
                 <p>Think of biodiversity distribution like network architecture - you've got global infrastructure, national networks, and local nodes, each with different characteristics and challenges! 🌐 Just like how internet traffic isn't evenly distributed (some servers get way more hits), biodiversity isn't spread evenly across the planet. Some places are like biological data centers - packed with incredible diversity!</p>
-
+                
                 <div className="performance-metrics">
                   <h4>Biodiversity Distribution Facts </h4>
                   <ul>
@@ -442,10 +442,10 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-
+              
               <h4>Biodiversity Distribution Across Scales </h4>
               <p>Biodiversity varies significantly across different spatial scales, with patterns of richness and endemism changing from global to national to local levels.</p>
-
+              
               <h5>Global Biodiversity Patterns </h5>
               <div className="example-box">
                 <p>The global scale is like looking at the entire internet - massive, complex, and with clear patterns!</p>
@@ -486,7 +486,7 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>India as a Mega-Diversity Nation 🇮🇳</h4>
-
+              
               <h5>India's Exceptional Biodiversity </h5>
               <div className="example-box">
                 <p>India is like a biological supercomputer - incredible processing power packed into a relatively small space!</p>
@@ -525,7 +525,7 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Applications </h4>
-
+              
               <div className="career-opportunities">
                 <h5>Technology Solutions </h5>
                 <ul>
@@ -569,12 +569,12 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Threats to Biodiversity</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Threats to Biodiversity: System Vulnerabilities </h3>
               <div className="theory-box">
                 <p>Alright engineers, time for some cybersecurity thinking!  Just like how computer systems face various threats (malware, DDoS attacks, data breaches), biodiversity faces multiple threats that can crash entire ecosystems. Understanding these threats is like doing a security audit on nature - we need to identify vulnerabilities and patch them before the whole system goes down!</p>
-
+                
                 <div className="performance-metrics">
                   <h4>Biodiversity Threat Statistics </h4>
                   <ul>
@@ -585,10 +585,10 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-
+              
               <h4>Major Threats to Biodiversity </h4>
               <p>Biodiversity faces unprecedented threats from human activities, with habitat destruction, direct exploitation, and human-wildlife conflicts being among the most pressing challenges.</p>
-
+              
               <h5>Habitat Loss - The Ultimate System Crash </h5>
               <div className="example-box">
                 <p>Habitat loss is like deleting the operating system - everything else stops working!</p>
@@ -629,7 +629,7 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Additional Threats to Biodiversity </h4>
-
+              
               <h5>Climate Change Impacts - System Overheating </h5>
               <div className="example-box">
                 <p>Climate change is like your computer overheating - everything starts malfunctioning!</p>
@@ -670,7 +670,7 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Solutions to Biodiversity Threats </h4>
-
+              
               <div className="career-opportunities">
                 <h5>Technology Applications </h5>
                 <ul>
@@ -714,13 +714,13 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Unit 3 Quiz</h1>
               </div>
             </div>
-
+            
             <section className="content-section">
               <h3>Conservation of Biodiversity: Protecting Nature's Systems 🛡️</h3>
               <div className="theory-box">
                 <p>Conservation is like system backup and disaster recovery - we need both on-site protection (in-situ) and off-site backups (ex-situ) to ensure biodiversity survives! Just like you wouldn't trust a single backup strategy for critical data, we can't rely on just one conservation approach.</p>
               </div>
-
+              
               <h4>In-Situ Conservation - On-Site Protection 🏞️</h4>
               <div className="example-box">
                 <p>Protecting species in their natural habitats with all ecological relationships intact.</p>
