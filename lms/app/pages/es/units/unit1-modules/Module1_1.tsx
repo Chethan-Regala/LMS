@@ -61,14 +61,13 @@ const Module1_1: React.FC = () => {
 
                 <h3>Why This Topic Matters</h3>
                 <p>
-                    Imagine waking up one morning to discover that the air you breathe has become toxic, the water from your tap is contaminated, and the food you eat is unsafe. This isn't science fiction—millions of people worldwide face these realities daily due to environmental degradation.
+                    Imagine waking up one morning to discover that the air you breathe has become toxic, the water from your tap is contaminated, and the food you eat is unsafe. This isn't science fiction—millions of people worldwide face these realities daily due to environmental degradation. Environmental Studies exists to prevent such scenarios and ensure a sustainable future for all life on Earth.
+
+                    This foundational topic is like learning the alphabet before writing—you cannot understand climate change, biodiversity loss, pollution control, or sustainable development without first grasping what "environment" means, what Environmental Studies encompasses, why it matters, and why everyone needs to be aware of environmental issues.
+
+                    The practical importance is immense: environmental professionals are among the fastest-growing job markets globally. Corporations need sustainability managers, governments require environmental policy experts, NGOs seek conservation specialists, and communities need environmental educators.
                 </p>
-                <p>
-                    Environmental Studies exists to prevent such scenarios and ensure a sustainable future for all life on Earth. Grasping these foundations is essential before diving into complex topics like climate change or biodiversity loss.
-                </p>
-                <p>
-                    The practical importance is immense: environmental professionals are among the fastest-growing job markets globally. Corporations need sustainability managers, and governments require policy experts.
-                </p>
+
 
                 <h3>Introduction to Environmental Science</h3>
                 <p>Crash Course provides an excellent overview of what environmental science is and why it matters.</p>
@@ -118,39 +117,77 @@ const Module1_1: React.FC = () => {
                     <li><strong>Built Environment:</strong> Cities, buildings, roads, infrastructure</li>
                 </ul>
 
-                <div style={{ backgroundColor: '#f9fafb', padding: '30px', borderRadius: '16px', border: '1px solid #f1f5f9', margin: '40px 0' }}>
-                    <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0', marginBottom: '20px' }}>
-                        <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.1em', marginBottom: '30px', color: '#111827' }}>ENVIRONMENT (Sum of all factors)</p>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
-                            <div style={{ backgroundColor: '#f8fafc', padding: '20px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                                <div style={{ fontSize: '0.7em', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#64748b', marginBottom: '15px', textAlign: 'center' }}>Biotic Components</div>
-                                <ul style={{ fontSize: '0.9em', color: '#334155', listStyle: 'none', padding: 0, textAlign: 'center' }}>
+                <div style={{ backgroundColor: '#f9fafb', padding: '40px', borderRadius: '24px', border: '1px solid #f1f5f9', margin: '40px 0', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '750px', margin: '0 auto', minHeight: '450px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+                        {/* Connecting Lines (Background) */}
+                        <div style={{ position: 'absolute', top: '50%', left: '50%', width: '2px', height: '100%', background: 'linear-gradient(to bottom, transparent, #cbd5e1, transparent)', transform: 'translate(-50%, -50%)', zIndex: 0 }}></div>
+                        <div style={{ position: 'absolute', top: '50%', left: '50%', width: '100%', height: '2px', background: 'linear-gradient(to right, transparent, #cbd5e1, transparent)', transform: 'translate(-50%, -50%)', zIndex: 0 }}></div>
+
+                        {/* Central Node */}
+                        <div style={{
+                            position: 'relative',
+                            zIndex: 2,
+                            backgroundColor: '#10b981',
+                            color: 'white',
+                            padding: '30px',
+                            borderRadius: '50%',
+                            width: '180px',
+                            height: '180px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                            boxShadow: '0 10px 25px -5px rgba(16, 185, 129, 0.4), 0 8px 10px -6px rgba(16, 185, 129, 0.4)',
+                            border: '4px solid white'
+                        }}>
+                            <div style={{ fontWeight: '800', fontSize: '1.2em', lineHeight: '1.1' }}>ENVIRONMENT</div>
+                            <div style={{ fontSize: '0.7em', marginTop: '5px', opacity: 0.9 }}>(Sum of all factors)</div>
+                        </div>
+
+                        {/* Top Node: NATURAL */}
+                        <div style={{ position: 'absolute', top: '0', left: '50%', transform: 'translateX(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#fef3c7', border: '1px solid #fcd34d', padding: '15px 20px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', width: '200px' }}>
+                                <div style={{ fontWeight: '800', color: '#92400e', fontSize: '0.8em', textTransform: 'uppercase', marginBottom: '4px' }}>NATURAL</div>
+                                <div style={{ fontSize: '0.75em', color: '#b45309' }}>Forests, Oceans, Mountains, Wildlife</div>
+                            </div>
+                        </div>
+
+                        {/* Bottom Node: BUILT */}
+                        <div style={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#f8fafc', border: '1px solid #cbd5e1', padding: '15px 20px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', width: '200px' }}>
+                                <div style={{ fontWeight: '800', color: '#334155', fontSize: '0.8em', textTransform: 'uppercase', marginBottom: '4px' }}>BUILT</div>
+                                <div style={{ fontSize: '0.75em', color: '#64748b' }}>Cities, Buildings, Roads, Infrastructure</div>
+                            </div>
+                        </div>
+
+                        {/* Left Node: BIOTIC */}
+                        <div style={{ position: 'absolute', left: '0', top: '50%', transform: 'translateY(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #86efac', padding: '15px 20px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', width: '180px' }}>
+                                <div style={{ fontWeight: '800', color: '#166534', fontSize: '0.8em', textTransform: 'uppercase', marginBottom: '4px' }}>BIOTIC</div>
+                                <ul style={{ fontSize: '0.75em', color: '#15803d', margin: 0, padding: 0, listStyle: 'none' }}>
                                     <li>Plants</li>
                                     <li>Animals</li>
                                     <li>Microorganisms</li>
                                 </ul>
                             </div>
-                            <div style={{ backgroundColor: '#f8fafc', padding: '20px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                                <div style={{ fontSize: '0.7em', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#64748b', marginBottom: '15px', textAlign: 'center' }}>Abiotic Components</div>
-                                <ul style={{ fontSize: '0.9em', color: '#334155', listStyle: 'none', padding: 0, textAlign: 'center' }}>
+                        </div>
+
+                        {/* Right Node: ABIOTIC */}
+                        <div style={{ position: 'absolute', right: '0', top: '50%', transform: 'translateY(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#eff6ff', border: '1px solid #93c5fd', padding: '15px 20px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', width: '180px' }}>
+                                <div style={{ fontWeight: '800', color: '#1e40af', fontSize: '0.8em', textTransform: 'uppercase', marginBottom: '4px' }}>ABIOTIC</div>
+                                <ul style={{ fontSize: '0.75em', color: '#1d4ed8', margin: 0, padding: 0, listStyle: 'none' }}>
                                     <li>Air & Water</li>
                                     <li>Soil & Minerals</li>
                                     <li>Sunlight & Climate</li>
                                 </ul>
                             </div>
                         </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '20px' }}>
-                            <div style={{ backgroundColor: '#f0fdf4', padding: '20px', borderRadius: '8px', border: '1px solid #dcfce7', textAlign: 'center' }}>
-                                <div style={{ fontSize: '0.7em', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#166534', marginBottom: '10px' }}>Natural Environment</div>
-                                <p style={{ fontSize: '0.8em', color: '#15803d', margin: 0 }}>Forests, Oceans, Mountains, Wildlife</p>
-                            </div>
-                            <div style={{ backgroundColor: '#f1f5f9', padding: '20px', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-                                <div style={{ fontSize: '0.7em', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569', marginBottom: '10px' }}>Built Environment</div>
-                                <p style={{ fontSize: '0.8em', color: '#64748b', margin: 0 }}>Cities, Buildings, Roads, Infrastructure</p>
-                            </div>
-                        </div>
+
                     </div>
-                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', margin: '0 10px' }}>
+                    <p style={{ fontSize: '0.85em', fontStyle: 'italic', color: '#64748b', textAlign: 'center', marginTop: '30px', margin: '30px 10px 0' }}>
                         Figure 1: Environment consists of interconnected biotic and abiotic components forming natural and built environments
                     </p>
                 </div>
@@ -197,32 +234,72 @@ const Module1_1: React.FC = () => {
                     </div>
                 </div>
 
-                <div style={{ backgroundColor: '#f0f4f8', padding: '20px', borderRadius: '8px', border: '1px solid #d1d9e6', marginBottom: '20px' }}>
-                    <p style={{ fontWeight: 'bold', textAlign: 'center', margin: '0' }}>Environmental Studies Interdisciplinary Web</p>
-                    <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '15px' }}>
-                        <div style={{ textAlign: 'center', flex: 1 }}>
-                            <strong>Natural Sciences</strong>
-                            <p style={{ fontSize: '0.8em' }}>Biology, Chemistry, Physics</p>
+                <div style={{ backgroundColor: '#f8fafc', padding: '40px', borderRadius: '24px', border: '1px solid #e2e8f0', margin: '40px 0', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'relative', width: '100%', maxWidth: '750px', margin: '0 auto', minHeight: '450px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+                        {/* Connecting Lines (Background) */}
+                        <div style={{ position: 'absolute', top: '50%', left: '50%', width: '2px', height: '100%', background: 'linear-gradient(to bottom, transparent, #cbd5e1, transparent)', transform: 'translate(-50%, -50%)', zIndex: 0 }}></div>
+                        <div style={{ position: 'absolute', top: '50%', left: '50%', width: '100%', height: '2px', background: 'linear-gradient(to right, transparent, #cbd5e1, transparent)', transform: 'translate(-50%, -50%)', zIndex: 0 }}></div>
+
+                        {/* Central Node */}
+                        <div style={{
+                            position: 'relative',
+                            zIndex: 2,
+                            backgroundColor: '#3b82f6',
+                            color: 'white',
+                            padding: '25px',
+                            borderRadius: '50%',
+                            width: '180px',
+                            height: '180px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                            boxShadow: '0 10px 25px -5px rgba(59, 130, 246, 0.4), 0 8px 10px -6px rgba(59, 130, 246, 0.4)',
+                            border: '4px solid white'
+                        }}>
+                            <div style={{ fontWeight: '800', fontSize: '1.1em', lineHeight: '1.1' }}>ENVIRONMENTAL STUDIES</div>
+                            <div style={{ fontSize: '0.65em', marginTop: '5px', opacity: 0.9 }}>(Interdisciplinary Web)</div>
                         </div>
-                        <div style={{ textAlign: 'center', flex: 1 }}>
-                            <strong>Social Sciences</strong>
-                            <p style={{ fontSize: '0.8em' }}>Economics, Politics, Sociology</p>
+
+                        {/* Top Node: NATURAL SCIENCES */}
+                        <div style={{ position: 'absolute', top: '0', left: '50%', transform: 'translateX(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#f0f9ff', border: '1px solid #bae6fd', padding: '15px 20px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', width: '200px' }}>
+                                <div style={{ fontWeight: '800', color: '#075985', fontSize: '0.8em', textTransform: 'uppercase', marginBottom: '4px' }}>NATURAL SCIENCES</div>
+                                <div style={{ fontSize: '0.75em', color: '#0369a1' }}>Biology, Chemistry, Physics, Geology</div>
+                            </div>
                         </div>
+
+                        {/* Bottom Node: APPLIED FIELDS */}
+                        <div style={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#f9fafb', border: '1px solid #cbd5e1', padding: '15px 20px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', width: '200px' }}>
+                                <div style={{ fontWeight: '800', color: '#334155', fontSize: '0.8em', textTransform: 'uppercase', marginBottom: '4px' }}>APPLIED FIELDS</div>
+                                <div style={{ fontSize: '0.75em', color: '#64748b' }}>Engineering, Law, Planning, Management</div>
+                            </div>
+                        </div>
+
+                        {/* Left Node: SOCIAL SCIENCES */}
+                        <div style={{ position: 'absolute', left: '0', top: '50%', transform: 'translateY(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#fdf2f8', border: '1px solid #fbcfe8', padding: '15px 20px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', width: '180px' }}>
+                                <div style={{ fontWeight: '800', color: '#9d174d', fontSize: '0.8em', textTransform: 'uppercase', marginBottom: '4px' }}>SOCIAL SCIENCES</div>
+                                <div style={{ fontSize: '0.75em', color: '#be185d' }}>Economics, Politics, Sociology, Psychology</div>
+                            </div>
+                        </div>
+
+                        {/* Right Node: HUMANITIES */}
+                        <div style={{ position: 'absolute', right: '0', top: '50%', transform: 'translateY(-50%)', zIndex: 1 }}>
+                            <div style={{ backgroundColor: '#faf5ff', border: '1px solid #e9d5ff', padding: '15px 20px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', width: '180px' }}>
+                                <div style={{ fontWeight: '800', color: '#6b21a8', fontSize: '0.8em', textTransform: 'uppercase', marginBottom: '4px' }}>HUMANITIES</div>
+                                <div style={{ fontSize: '0.75em', color: '#7e22ce' }}>Philosophy, History, Ethics, Literature</div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '10px' }}>
-                        <div style={{ textAlign: 'center', flex: 1 }}>
-                            <strong>Humanities</strong>
-                            <p style={{ fontSize: '0.8em' }}>Philosophy, History, Arts</p>
-                        </div>
-                        <div style={{ textAlign: 'center', flex: 1 }}>
-                            <strong>Applied Fields</strong>
-                            <p style={{ fontSize: '0.8em' }}>Engineering, Law, Planning</p>
-                        </div>
-                    </div>
+                    <p style={{ fontSize: '0.8em', fontStyle: 'italic', textAlign: 'center', color: '#888', marginTop: '30px' }}>
+                        Figure 2: Interdisciplinary nature of Environmental Studies
+                    </p>
                 </div>
-                <p style={{ fontSize: '0.8em', fontStyle: 'italic', textAlign: 'center', color: '#888' }}>
-                    Figure 2: Interdisciplinary nature of Environmental Studies
-                </p>
 
                 <h4>Explore More</h4>
                 <ul>
@@ -253,7 +330,7 @@ const Module1_1: React.FC = () => {
 
                 <h3>Our Planet Documentary</h3>
                 <p>Netflix's stunning documentary series showing why environmental protection matters for all life on Earth.</p>
-              
+
 
                 <div style={{ backgroundColor: '#fff5f5', padding: '20px', borderRadius: '8px', border: '1px solid #feb2b2', margin: '20px 0' }}>
                     <strong>Critical Statistics</strong>
@@ -294,7 +371,7 @@ const Module1_1: React.FC = () => {
                     <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '8px' }}>
                         <iframe
                             style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                            src="https://www.youtube.com/embed/EAmmUIEsN9A?si=gdyr_cMK6xOrOXMz" 
+                            src="https://www.youtube.com/embed/EAmmUIEsN9A?si=gdyr_cMK6xOrOXMz"
                             title="Greta Thunberg TED"
                             allowFullScreen
                             frameBorder="0"

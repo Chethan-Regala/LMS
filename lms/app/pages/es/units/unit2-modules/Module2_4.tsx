@@ -289,6 +289,19 @@ const Module2_4: React.FC = () => {
                         <span style={{ fontSize: '1.5em' }}>🎥</span> Learn Through Videos
                     </h2>
                     <p>Watch these carefully selected videos to reinforce your understanding with visual explanations, real-world footage, and expert analysis.</p>
+                    <div style={{ maxWidth: '640px', margin: '30px auto' }}>
+                        <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+                            <iframe
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                                src="https://www.youtube.com/embed/zIK_T73tPQ8?si=9G3Rr8cWr0eyzYib"
+                                title="Mineral Resources: Use and Exploitation"
+                                allowFullScreen
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                            ></iframe>
+                        </div>
+                    </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '25px', margin: '30px 0' }}>
                         {[
                             { title: "Environmental Impact of Mining", meta: "Khan Academy - 8 minutes", text: "Comprehensive overview of mining's environmental impacts including habitat destruction, water pollution, air contamination, and responsible mining practices. Perfect foundation for this module.", icon: "📚" },
@@ -333,31 +346,33 @@ const Module2_4: React.FC = () => {
                         <h3 style={{ color: '#be123c', marginTop: 0 }}>🏔️ Case Study 1: The Ok Tedi Mining Disaster, Papua New Guinea</h3>
                         <p style={{ fontWeight: '600', color: '#e11d48' }}>Riverine Tailings Disposal</p>
 
-
-
                         <div style={{ fontSize: '1em', lineHeight: '1.7', color: '#334155' }}>
-                            <p><strong>Background:</strong> The Ok Tedi copper-gold mine (initially BHP) began operations in 1984 on Mount Fubilan, source of the Ok Tedi River. A 1984 landslide destroyed the planned tailings dam foundations. Rather than finding alternatives, the company lobbied for permission to dump untreated waste directly into the river.</p>
-                            <p><strong>Scale:</strong> Discharges <strong>80,000 metric tonnes</strong> of waste daily—equivalent to dumping <strong>40,000 family cars</strong> into the river every single day.</p>
+                            <p><strong>Background:</strong> The Ok Tedi copper-gold mine, majority-owned and operated by BHP (Broken Hill Proprietary, now BHP Billiton), began operations in 1984 in Papua New Guinea's Western Province. The mine is located on Mount Fubilan, the source of the Ok Tedi River, which flows through dense rainforest before joining the Fly River and eventually reaching the Gulf of Papua.</p>
+                            <p><strong>The Environmental Catastrophe:</strong> Originally, the mine planned to build a tailings dam to contain waste. However, a major landslide in 1984 destroyed the dam's foundations. Rather than halt operations or find alternative waste management solutions, BHP lobbied the Papua New Guinea government for permission to dump untreated mine waste directly into the Ok Tedi River—a practice known as riverine tailings disposal that is banned or heavily restricted in most developed countries.</p>
+                            <p><strong>Scale of Pollution:</strong> Since operations began, the Ok Tedi mine has discharged approximately 80,000 metric tonnes of mine waste into the Fly River system every day—equivalent to dumping 40,000 family cars into the river daily. This waste contains heavy metals including copper, lead, and zinc, along with processing chemicals.</p>
+
                             <h4 style={{ color: '#be123c' }}>Environmental Impacts:</h4>
                             <ul>
-                                <li>2,000 km² forest destroyed by mine tailings</li>
-                                <li>Rivers run thick gray with heavy metals; visible from satellite</li>
-                                <li>Toxic sludge smothers forests and food gardens during floods</li>
-                                <li>Fish populations declined by <strong>95%</strong></li>
-                                <li>Mount Fubilan reduced from 2,000m peak to a 3km-wide pit</li>
+                                <li style={{ marginBottom: '8px' }}>Over 2,000 square kilometers of forest has been damaged or destroyed by mine tailings</li>
+                                <li style={{ marginBottom: '8px' }}>The Ok Tedi and Fly rivers run thick and gray with waste, visible from satellite imagery</li>
+                                <li style={{ marginBottom: '8px' }}>When the river floods, toxic sludge rises over banks, smothering forests and food gardens</li>
+                                <li style={{ marginBottom: '8px' }}>Fish populations in the Ok Tedi River have declined by 95%, eliminating a primary protein source</li>
+                                <li>Mount Fubilan has been reduced from a peak of over 2,000 meters to a 3km-wide open pit at sea level</li>
                             </ul>
-                            <h4 style={{ color: '#c2410b' }}>Social Impacts:</h4>
-                            <p>40,000 indigenous people (Yonggom/Ninggirum) lost hunting and fishing livelihoods. Elder: "Before the mine, we had plenty of food... The river was clear... Now there are no fish."</p>
-                            <p><strong>Corporate Response:</strong> BHP admitted in 1996 the mine was "not compatible with environmental values." In 2002, they transferred ownership to the government and walked away. The mine continues dumping waste today.</p>
+
+                            <h4 style={{ color: '#c2410b', marginTop: '20px' }}>Social Impacts:</h4>
+                            <p>An estimated 40,000 indigenous people from the Yonggom and Ninggirum communities have been affected. Traditional subsistence lifestyles based on hunting, fishing, and agriculture have been destroyed. As one Yonggom elder described: "Before the mine, we had plenty of food... The river was clear and it was easy to catch fish and prawns. Now there are no fish in the river and the turtles no longer come to lay their eggs."</p>
+
+                            <p><strong>Corporate Response:</strong> In 1996, BHP admitted that the Ok Tedi mine was "not compatible with environmental values" and that they "should not have operated the mine." Their solution? In 2002, BHP transferred its ownership to the Papua New Guinea government, established a trust fund for community development, and walked away—leaving the ongoing environmental disaster for others to manage. The mine continues operating today, still dumping waste into the river.</p>
                         </div>
 
                         <div style={{ backgroundColor: '#fff7ed', padding: '25px', borderRadius: '16px', border: '1px solid #ffedd5', marginTop: '30px' }}>
                             <h4 style={{ margin: '0 0 10px 0', color: '#9a3412' }}>⚠️ Key Lessons from Ok Tedi:</h4>
                             <ul style={{ margin: 0, paddingLeft: '20px', color: '#c2410b', fontSize: '0.9em' }}>
-                                <li>Riverine tailings disposal causes irreversible damage</li>
-                                <li>Corporate CSR programs cannot compensate for destroyed ecosystems</li>
-                                <li>Weak regulatory environments enable exploitation</li>
-                                <li>Indigenous communities bear costs while shareholders capture benefits</li>
+                                <li style={{ marginBottom: '5px' }}>Riverine tailings disposal causes irreversible ecosystem damage</li>
+                                <li style={{ marginBottom: '5px' }}>Corporate "social responsibility" programs cannot compensate for destroyed ecosystems</li>
+                                <li style={{ marginBottom: '5px' }}>Weak regulatory environments enable environmental exploitation</li>
+                                <li>Indigenous communities bear the costs while distant shareholders capture the benefits</li>
                             </ul>
                         </div>
                     </div>
@@ -367,27 +382,31 @@ const Module2_4: React.FC = () => {
                         <h3 style={{ color: '#0369a1', marginTop: 0 }}>🔋 Case Study 2: Lithium Mining in Chile's Atacama Desert</h3>
                         <p style={{ fontWeight: '600', color: '#0284c7' }}>Water Depletion</p>
 
-
-
                         <div style={{ fontSize: '1em', lineHeight: '1.7', color: '#334155' }}>
-                            <p><strong>Background:</strong> Salar de Atacama contains 27% of global lithium. Pumping brine into evaporation ponds Concentrations the lithium over 12-18 months. Producing one ton of lithium carbonate requires evaporating <strong>500,000 liters</strong> of brine water—permanently removed from the aquifer.</p>
+                            <p><strong>Background:</strong> Chile's Salar de Atacama is the world's largest and purest active source of lithium, containing approximately 27% of global lithium reserves. Since the 1980s, mining companies including Albemarle and SQM have extracted lithium using evaporation ponds—a method that takes advantage of the Atacama's intense solar radiation and arid conditions.</p>
+                            <p><strong>The Extraction Process:</strong> Brine containing lithium is pumped from beneath the salt flat into massive open-air evaporation ponds. Over 12-18 months, the sun evaporates the water, concentrating the lithium. The problem? Producing one ton of lithium carbonate requires the evaporation of approximately 500,000 liters (132,000 gallons) of brine water—water that is permanently removed from the aquifer.</p>
+
                             <h4 style={{ color: '#0369a1' }}>Environmental Impacts:</h4>
                             <ul>
-                                <li>Groundwater dropped &gt;10m in 15 years</li>
-                                <li>Salt flat sinking 1-2cm per year</li>
-                                <li>Lagoons and vegetation disappearing; flamingo habitat loss</li>
+                                <li style={{ marginBottom: '8px' }}>Groundwater levels have fallen by more than 10 meters (33 feet) in the last 15 years</li>
+                                <li style={{ marginBottom: '8px' }}>The salt flat is sinking at a rate of 1-2 centimeters per year due to water removal</li>
+                                <li style={{ marginBottom: '8px' }}>Lagoons that support wildlife and local communities are disappearing</li>
+                                <li style={{ marginBottom: '8px' }}>Vegetation cover has declined significantly, affecting pastoral communities</li>
+                                <li>Three iconic flamingo species (Andean, Chilean, and James's) face habitat loss</li>
                             </ul>
-                            <h4 style={{ color: '#10b981' }}>Social Impacts:</h4>
-                            <p>Lickanantay Indigenous people lost water for livestock and ceremonies. Elena Rivera Cardoso: "We used to have a river before that now doesn't exist. There isn't a drop of water."</p>
-                            <p><strong>The Irony of "Green" Minerals:</strong> Lithium powers EVs in the Global North, while local communities lose survival-critical water. "We suffer from the contamination... at whose cost?"</p>
+
+                            <h4 style={{ color: '#10b981', marginTop: '20px' }}>Social Impacts:</h4>
+                            <p>The Lickanantay (Atacameño) Indigenous people have inhabited this region for thousands of years, developing a culture intimately connected to the desert's scarce water resources. Community members report that lagoons they depend on for livestock and ceremonial purposes have dried up. "We used to have a river before that now doesn't exist. There isn't a drop of water," says Elena Rivera Cardoso, president of the Indigenous Colla community.</p>
+
+                            <p><strong>The Irony of "Green" Minerals:</strong> The lithium extracted from Atacama powers electric vehicles and renewable energy storage in Europe, North America, and China—regions seeking to reduce their carbon footprint. Yet the extraction process itself creates severe environmental damage, and the benefits of the "green transition" do not reach the communities bearing its costs.</p>
                         </div>
 
                         <div style={{ backgroundColor: '#f0f9ff', padding: '25px', borderRadius: '16px', border: '1px solid #e0f2fe', marginTop: '30px' }}>
                             <h4 style={{ margin: '0 0 10px 0', color: '#0369a1' }}>💡 Key Lessons from Atacama:</h4>
                             <ul style={{ margin: 0, paddingLeft: '20px', color: '#0284c7', fontSize: '0.9em' }}>
-                                <li>"Green" technologies can have significant environmental footprints</li>
-                                <li>Water scarcity makes arid regions particularly vulnerable</li>
-                                <li>Indigenous rights and FPIC are essential safeguards</li>
+                                <li style={{ marginBottom: '5px' }}>"Green" technologies can have significant environmental footprints</li>
+                                <li style={{ marginBottom: '5px' }}>Water scarcity makes arid regions particularly vulnerable to mining impacts</li>
+                                <li>Indigenous rights and free, prior, informed consent (FPIC) are essential safeguards</li>
                             </ul>
                         </div>
                     </div>
@@ -395,12 +414,30 @@ const Module2_4: React.FC = () => {
                     <h2 style={{ color: '#059669', display: 'flex', alignItems: 'center', gap: '15px' }}>
                         <span style={{ fontSize: '1.5em' }}>🌱</span> Sustainable Solutions & Best Practices
                     </h2>
+                    <div style={{ fontSize: '1.05em', lineHeight: '1.7', color: '#334155', marginBottom: '30px' }}>
+                        <p>While the impacts of mining are significant, the industry is gradually adopting technologies and practices to minimize its footprint.</p>
+
+                        <h4 style={{ color: '#065f46' }}>Technical Solutions:</h4>
+                        <ul style={{ paddingLeft: '20px' }}>
+                            <li style={{ marginBottom: '15px' }}><strong>Dry Stacking:</strong> This involves dewatering tailings until they reach a soil-like consistency, and then stacking them in stable piles. This eliminates the risk of catastrophic tailings dam failures and reduces water consumption by up to 80% through recycling.</li>
+                            <li style={{ marginBottom: '15px' }}><strong>In-Pit Disposal:</strong> Returning waste rock and tailings to exhausted mine pits. This avoids creating new surface footprints and helps stabilize the pit for eventual reclamation.</li>
+                            <li style={{ marginBottom: '15px' }}><strong>Phytoremediation:</strong> Using plants to extract heavy metals from contaminated soils. Certain "hyperaccumulator" plants (like sunflowers or brake ferns) can absorb metals through their roots, concentrating them in their stems and leaves for harvest and disposal.</li>
+                        </ul>
+
+                        <h4 style={{ color: '#065f46', marginTop: '25px' }}>Recycling and Circular Economy:</h4>
+                        <p>The most sustainable way to "mine" is to recover materials already in circulation.</p>
+                        <ul style={{ paddingLeft: '20px' }}>
+                            <li style={{ marginBottom: '15px' }}><strong>Urban Mining:</strong> Recovering minerals from electronic waste (e-waste). For example, there is more gold in a ton of circuit boards than in a ton of gold ore.</li>
+                            <li><strong>Battery Recycling:</strong> New regulations in regions like the European Union now require a minimum percentage of recycled content (lithium, cobalt, nickel) in all new EV batteries.</li>
+                        </ul>
+                    </div>
+
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', margin: '30px 0' }}>
                         {[
-                            { title: "Dry Stacking", text: "Dewatering tailings into stable piles. Removes dam failure risk and reduces water use by 80%." },
-                            { title: "In-Pit Disposal", text: "Returning tailings to exhausted pits to eliminate surface footprints." },
-                            { title: "Phytoremediation", text: "Using hyperaccumulator plants to extract heavy metals from soil sustainably." },
-                            { title: "Circular Economy", text: "Urban mining/recycling. EU now requires minimum recycled content in batteries." }
+                            { title: "Dry Stacking", text: "80% water reduction + safety" },
+                            { title: "In-Pit Disposal", text: "Zero surface footprint" },
+                            { title: "Phytoremediation", text: "Green soil cleanup" },
+                            { title: "Urban Mining", text: "Circular resource recovery" }
                         ].map((s, i) => (
                             <div key={i} style={{ padding: '25px', backgroundColor: '#f0fdf4', borderRadius: '16px', border: '1px solid #dcfce7' }}>
                                 <h4 style={{ margin: '0 0 10px 0', color: '#065f46' }}>{s.title}</h4>
@@ -413,51 +450,57 @@ const Module2_4: React.FC = () => {
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9em' }}>
                             <thead>
                                 <tr style={{ backgroundColor: '#f1f5f9' }}>
-                                    <th style={{ padding: '15px', textAlign: 'left' }}>Practice</th>
-                                    <th style={{ padding: '15px', textAlign: 'left' }}>Traditional Approach</th>
-                                    <th style={{ padding: '15px', textAlign: 'left' }}>Sustainable Alternative</th>
-                                    <th style={{ padding: '15px', textAlign: 'left' }}>Benefit</th>
+                                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e2e8f0' }}>Practice</th>
+                                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e2e8f0' }}>Traditional Approach</th>
+                                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e2e8f0' }}>Sustainable Alternative</th>
+                                    <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e2e8f0' }}>Environmental Benefit</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
-                                    <td style={{ padding: '15px', fontWeight: 'bold' }}>Tailings</td>
-                                    <td style={{ padding: '15px' }}>Wet dams</td>
-                                    <td style={{ padding: '15px' }}>Dry stacking</td>
-                                    <td style={{ padding: '15px' }}>Eliminates failure risk</td>
+                                    <td style={{ padding: '15px', fontWeight: 'bold' }}>Tailings Management</td>
+                                    <td style={{ padding: '15px' }}>Wet impoundment dams</td>
+                                    <td style={{ padding: '15px' }}>Dry stacking, in-pit disposal</td>
+                                    <td style={{ padding: '15px' }}>Eliminates dam failure risk, reduces water use by 80%</td>
                                 </tr>
                                 <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
                                     <td style={{ padding: '15px', fontWeight: 'bold' }}>Water Use</td>
-                                    <td style={{ padding: '15px' }}>Freshwater</td>
-                                    <td style={{ padding: '15px' }}>Recycled/Seawater</td>
-                                    <td style={{ padding: '15px' }}>Protects supplies</td>
+                                    <td style={{ padding: '15px' }}>Freshwater consumption</td>
+                                    <td style={{ padding: '15px' }}>Recycled water, seawater</td>
+                                    <td style={{ padding: '15px' }}>Reduces freshwater demand, protects local supplies</td>
                                 </tr>
                                 <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
                                     <td style={{ padding: '15px', fontWeight: 'bold' }}>Energy</td>
-                                    <td style={{ padding: '15px' }}>Diesel</td>
-                                    <td style={{ padding: '15px' }}>Renewables</td>
-                                    <td style={{ padding: '15px' }}>Reduces emissions 70%</td>
+                                    <td style={{ padding: '15px' }}>Diesel-powered equipment</td>
+                                    <td style={{ padding: '15px' }}>Electrification, renewable energy</td>
+                                    <td style={{ padding: '15px' }}>Reduces emissions by up to 70%</td>
+                                </tr>
+                                <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
+                                    <td style={{ padding: '15px', fontWeight: 'bold' }}>Reclamation</td>
+                                    <td style={{ padding: '15px' }}>Basic landscaping</td>
+                                    <td style={{ padding: '15px' }}>Ecosystem restoration, native species</td>
+                                    <td style={{ padding: '15px' }}>Recovers biodiversity, restores ecosystem functions</td>
                                 </tr>
                                 <tr>
-                                    <td style={{ padding: '15px', fontWeight: 'bold' }}>Reclamation</td>
-                                    <td style={{ padding: '15px' }}>Landscaping</td>
-                                    <td style={{ padding: '15px' }}>Ecosystem restoration</td>
-                                    <td style={{ padding: '15px' }}>Recovers biodiversity</td>
+                                    <td style={{ padding: '15px', fontWeight: 'bold' }}>Waste Rock</td>
+                                    <td style={{ padding: '15px' }}>Surface dumps</td>
+                                    <td style={{ padding: '15px' }}>Backfilling underground, construction materials</td>
+                                    <td style={{ padding: '15px' }}>Reduces surface footprint, prevents AMD</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div style={{ backgroundColor: '#f8fafc', padding: '30px', borderRadius: '16px', border: '1px solid #e2e8f0', margin: '40px 0' }}>
-                        <h4 style={{ margin: '0 0 20px 0' }}>Policy and Regulatory Frameworks:</h4>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
-                            <div>
-                                <p><strong>EIAs:</strong> Comprehensive studies required before permits are granted.</p>
-                                <p><strong>Financial Assurance:</strong> Bonds for cleanup to prevent taxpayer costs if companies go bankrupt.</p>
+                        <h4 style={{ margin: '0 0 20px 0', color: '#1e293b' }}>Policy and Regulatory Frameworks:</h4>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
+                            <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '12px', border: '1px solid #f1f5f9' }}>
+                                <p style={{ margin: '0 0 10px 0' }}><strong>Environmental Impact Assessments (EIAs):</strong> Comprehensive studies that must be completed before mining permits are granted. EIAs should evaluate alternatives, predict impacts, and propose mitigation measures.</p>
+                                <p style={{ margin: '0' }}><strong>Financial Assurance:</strong> Mining companies should be required to post bonds or other financial guarantees sufficient to cover reclamation costs. This prevents taxpayers from bearing cleanup costs when companies go bankrupt or abandon mines.</p>
                             </div>
-                            <div>
-                                <p><strong>FPIC:</strong> Indigenous communities must give consent before projects proceed.</p>
-                                <p><strong>Producer Responsibility:</strong> Lifecycle accountability for material recovery.</p>
+                            <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '12px', border: '1px solid #f1f5f9' }}>
+                                <p style={{ margin: '0 0 10px 0' }}><strong>Free, Prior, and Informed Consent (FPIC):</strong> The UN Declaration on the Rights of Indigenous Peoples requires that indigenous communities must give consent before projects affecting their lands proceed.</p>
+                                <p style={{ margin: '0' }}><strong>Extended Producer Responsibility:</strong> Making manufacturers responsible for the entire lifecycle of their products—including end-of-life recycling—creates incentives for design that facilitates material recovery and reduces demand for virgin minerals.</p>
                             </div>
                         </div>
                     </div>
@@ -467,17 +510,21 @@ const Module2_4: React.FC = () => {
                             Mineral Resources: Use and Exploitation | Environmental Science | EVS
                         </h4>
                     </div>
-                    <div style={{ maxWidth: '640px', margin: '0 auto 30px auto' }}>
-                        <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                            <iframe
-                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                                src="https://www.youtube.com/embed/zIK_T73tPQ8?si=9G3Rr8cWr0eyzYib"
-                                title="Mineral Resources: Use and Exploitation"
-                                allowFullScreen
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerPolicy="strict-origin-when-cross-origin"
-                            ></iframe>
+                    <div style={{ backgroundColor: '#fff', padding: '25px', borderRadius: '16px', border: '1px solid #ddd', margin: '40px 0' }}>
+                        <h4 style={{ margin: '0 0 15px 0' }}>📺 Additional Resources:</h4>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
+                            <div>
+                                <p style={{ fontWeight: 'bold', margin: '0 0 5px 0' }}>Interactive Simulations:</p>
+                                <p style={{ fontSize: '0.85em' }}>Visit <strong>Visual Law</strong> for mining regulation visualizations</p>
+                            </div>
+                            <div>
+                                <p style={{ fontWeight: 'bold', margin: '0 0 5px 0' }}>Documentary Films:</p>
+                                <p style={{ fontSize: '0.85em' }}>"When Elephants Fight" - mineral trade in DRC</p>
+                            </div>
+                            <div>
+                                <p style={{ fontWeight: 'bold', margin: '0 0 5px 0' }}>Research Database:</p>
+                                <p style={{ fontSize: '0.85em' }}><strong>MiningWatch Canada</strong> case study library</p>
+                            </div>
                         </div>
                     </div>
 
@@ -497,41 +544,57 @@ const Module2_4: React.FC = () => {
                             />
                         </div>
 
+
+
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
                             <div style={{ backgroundColor: '#f8fafc', padding: '30px', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
-                                <h3 style={{ margin: '0 0 20px 0' }}>📘 Easy Problem</h3>
-                                <p style={{ fontSize: '0.95em' }}><strong>Problem:</strong> A lithium mine produces 50 tons/day. Calculate daily water consumption and compare to a family using 400 liters/day.</p>
-                                <details style={{ marginTop: '15px', backgroundColor: '#fff', padding: '20px', borderRadius: '12px' }}>
-                                    <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>Show Solution</summary>
-                                    <p style={{ marginTop: '10px' }}>50 tons * 500,000 liters/ton = 25,000,000 liters daily. <br /> 25,000,000 / 400 = <strong>62,500 families</strong>.</p>
+                                <h3 style={{ margin: '0 0 20px 0', color: '#1e40af' }}>📘 Easy Problem</h3>
+                                <p style={{ fontSize: '0.95em', lineHeight: '1.6' }}><strong>Problem:</strong> A lithium mining operation in the Atacama Desert produces 50 tons of lithium carbonate per day using evaporation pond technology. Calculate the daily water consumption and compare it to the water needs of a typical family of four (using 400 liters per day).</p>
+                                <details style={{ marginTop: '15px', backgroundColor: '#fff', padding: '20px', borderRadius: '12px', border: '1px solid #dbeafe' }}>
+                                    <summary style={{ cursor: 'pointer', fontWeight: 'bold', color: '#1e40af' }}>Show Step-by-Step Solution</summary>
+                                    <div style={{ marginTop: '15px', fontSize: '0.9em', color: '#334155' }}>
+                                        <p><strong>Step 1:</strong> Identify the water consumption rate: 500,000 liters per ton of lithium carbonate.</p>
+                                        <p><strong>Step 2:</strong> Calculate daily water use: 50 tons × 500,000 liters/ton = 25,000,000 liters (25 million liters).</p>
+                                        <p><strong>Step 3:</strong> Calculate family water use: 400 liters/day.</p>
+                                        <p><strong>Step 4:</strong> Compare: 25,000,000 ÷ 400 = 62,500 families.</p>
+                                        <p style={{ marginTop: '10px', fontWeight: 'bold', color: '#1e40af' }}>Final Answer: The mine consumes 25 million liters of water daily, equivalent to the water needs of 62,500 families.</p>
+                                    </div>
                                 </details>
                             </div>
                             <div style={{ backgroundColor: '#f8fafc', padding: '30px', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
-                                <h3 style={{ margin: '0 0 20px 0' }}>📙 Medium Problem</h3>
-                                <p style={{ fontSize: '0.95em' }}><strong>Problem:</strong> Calculate total waste dumped at Ok Tedi over 40 years (80,000 metric tonnes/day).</p>
-                                <details style={{ marginTop: '15px', backgroundColor: '#fff', padding: '20px', borderRadius: '12px' }}>
-                                    <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>Show Solution</summary>
-                                    <p style={{ marginTop: '10px' }}>80,000 * 365 * 40 = <strong>1,168,000,000 tonnes</strong>. (Enough to fill 500k Olympic pools).</p>
+                                <h3 style={{ margin: '0 0 20px 0', color: '#c2410b' }}>📙 Medium Problem</h3>
+                                <p style={{ fontSize: '0.95em', lineHeight: '1.6' }}><strong>Problem:</strong> The Ok Tedi mine has been operating since 1984 (approximately 40 years). Calculate the total amount of waste dumped into the river system over this period (80,000 metric tonnes/day). Express your answer in metric tonnes and compare it to a familiar reference.</p>
+                                <details style={{ marginTop: '15px', backgroundColor: '#fff', padding: '20px', borderRadius: '12px', border: '1px solid #ffedd5' }}>
+                                    <summary style={{ cursor: 'pointer', fontWeight: 'bold', color: '#c2410b' }}>Show Step-by-Step Solution</summary>
+                                    <div style={{ marginTop: '15px', fontSize: '0.9em', color: '#334155' }}>
+                                        <p><strong>Step 1:</strong> Daily waste: 80,000 metric tonnes.</p>
+                                        <p><strong>Step 2:</strong> Days per year: 365.</p>
+                                        <p><strong>Step 3:</strong> Years of operation: 40 years (1984-2024).</p>
+                                        <p><strong>Step 4:</strong> Total waste = 80,000 × 365 × 40 = 1,168,000,000 metric tonnes (1.168 billion tonnes).</p>
+                                        <p><strong>Step 5:</strong> Comparison: Equivalent to 584 million cars or 3,200 Empire State Buildings.</p>
+                                        <p style={{ marginTop: '10px', fontWeight: 'bold', color: '#c2410b' }}>Final Answer: Approximately 1.17 billion metric tonnes of waste have been dumped into the Ok Tedi river system.</p>
+                                    </div>
                                 </details>
                             </div>
                         </div>
                     </div>
 
                     {/* PITFALLS */}
-                    <div style={{ backgroundColor: '#fff7ed', padding: '40px', borderRadius: '24px', border: '1px solid #ffedd5', margin: '40px 0' }}>
-                        <h3 style={{ margin: '0 0 25px 0', color: '#9a3412', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ backgroundColor: '#fff1f2', padding: '40px', borderRadius: '24px', border: '1px solid #ffe4e6', margin: '40px 0' }}>
+                        <h3 style={{ margin: '0 0 25px 0', color: '#9f1239', display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <span>⚠️</span> Common Pitfalls & How to Avoid Them
                         </h3>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
                             {[
-                                { t: "Confusing 'renewable' with 'green mining'", c: "Focus on operational footprint vs end-use benefits. Differentiate supply chain 'dirty' from technology 'green'." },
-                                { t: "Underestimating scale", c: "Impacts extend hundreds of kms via water/air. Consider indirect and cumulative 'footprints'." },
-                                { t: "Trusting tech alone", c: "Approach technology critically (DLE, recycling). Every solution has trade-offs and new problems." },
-                                { t: "Ignoring social dimensions", c: "Environmental justice is integral. Always ask: Who bears costs? Who benefits? Distribution fair?" }
+                                { t: "Confusing 'renewable energy' with 'green mining'", w: "Assume that because minerals like lithium enable clean energy technologies, their extraction must be environmentally friendly.", c: "Always distinguish between the environmental cost of extraction and the benefits of end-use. A technology can be \"green\" in operation while having a \"dirty\" supply chain." },
+                                { t: "Underestimating the scale of mining impacts", w: "Think of mining as a localized activity affecting only the immediate mine site.", c: "Always consider the \"footprint\" of mining—including indirect and cumulative impacts—when analyzing environmental effects. Impacts extend hundreds of kms via water and air." },
+                                { t: "Assuming technology will solve all problems", w: "Believe that new technologies (like Direct Lithium Extraction) will eliminate environmental impacts.", c: "Approach technological solutions critically. Ask: What are the trade-offs? Has this been proven at scale? What new problems might it create?" },
+                                { t: "Ignoring social and justice dimensions", w: "Focus only on ecological impacts while overlooking who bears the costs and who receives the benefits.", c: "Environmental justice is integral. Always ask: Who is affected? Who benefits? Are impacts distributed fairly? Have affected communities given free, prior, and informed consent (FPIC)?" }
                             ].map((p, i) => (
-                                <div key={i} style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '16px' }}>
-                                    <p style={{ color: '#ea580c', fontWeight: 'bold', margin: '0 0 10px 0' }}>🚫 Pitfall #{i + 1}: {p.t}</p>
-                                    <p style={{ fontSize: '0.9em', color: '#4b5563', margin: 0 }}>{p.c}</p>
+                                <div key={i} style={{ backgroundColor: '#fff', padding: '25px', borderRadius: '16px', border: '1px solid #fee2e2' }}>
+                                    <p style={{ color: '#e11d48', fontWeight: 'bold', margin: '0 0 10px 0', fontSize: '1em' }}>🚫 Pitfall #{i + 1}: {p.t}</p>
+                                    <p style={{ fontSize: '0.85em', color: '#4b5563', margin: '0 0 10px 0' }}><strong>What goes wrong:</strong> {p.w}</p>
+                                    <p style={{ fontSize: '0.85em', color: '#059669', margin: 0 }}><strong>✅ How to avoid:</strong> {p.c}</p>
                                 </div>
                             ))}
                         </div>
@@ -540,65 +603,84 @@ const Module2_4: React.FC = () => {
                     {/* CHEAT SHEET & EXAM TIPS */}
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '40px', margin: '60px 0' }}>
                         <div style={{ backgroundColor: '#f8fafc', padding: '30px', borderRadius: '20px', border: '2px dashed #94a3b8' }}>
-                            <h3 style={{ marginTop: 0 }}>📄 Cheat Sheet</h3>
+                            <h3 style={{ marginTop: 0 }}>📄 Quick Reference Cheat Sheet</h3>
                             <div style={{ fontSize: '0.85em', color: '#334155' }}>
-                                <p><strong>🔑 Definitions:</strong> Ore, Tailings, AMD, FPIC</p>
-                                <p><strong>📐 Stats:</strong> Ok Tedi 80k t/day, Lithium 500k L/t</p>
-                                <p><strong>⚙️ Impacts:</strong> Habitat, Water (AMD), Air, Soil</p>
-                                <p><strong>✅ Solutions:</strong> Dry stacking, Urban mining</p>
+                                <p><strong>🔑 Key Definitions:</strong> Ore, Tailings, AMD (Acid Mine Drainage), Overburden, FPIC (Free, Prior, and Informed Consent)</p>
+                                <p style={{ marginTop: '10px' }}><strong>📐 Important Statistics:</strong></p>
+                                <ul style={{ paddingLeft: '20px' }}>
+                                    <li>Ok Tedi: 80,000 tonnes waste/day since 1984</li>
+                                    <li>Lithium: 500,000 L water/tonne produced</li>
+                                    <li>Fish decline: 95% in Ok Tedi River</li>
+                                    <li>Amazon: 10% deforestation from mining</li>
+                                </ul>
+                                <p style={{ marginTop: '10px' }}><strong>⚙️ Major Impacts:</strong> Habitat destruction, Water pollution (AMD), Air pollution (dust, SO₂), Soil contamination, Biodiversity loss</p>
+                                <p style={{ marginTop: '10px' }}><strong>✅ Sustainable Practices:</strong> Dry stacking (80% water reduction), In-pit disposal, Urban mining, Phytoremediation, Renewable energy</p>
                             </div>
                         </div>
                         <div style={{ backgroundColor: '#eff6ff', padding: '30px', borderRadius: '20px', border: '1px solid #dbeafe' }}>
-                            <h3 style={{ marginTop: 0 }}>💡 Exam Tips</h3>
-                            <ul style={{ fontSize: '0.9em', color: '#1e40af', paddingLeft: '20px' }}>
-                                <li>Memorize key stats from Ok Tedi for essays</li>
-                                <li>Practice unit conversions (L to m³, tonnes to kg)</li>
-                                <li>Know precise definitions (FPIC is a popular 2-mark question)</li>
-                                <li>Prepare for 'Traditional vs Sustainable' comparison questions</li>
+                            <h3 style={{ marginTop: 0, color: '#1e40af' }}>💡 Top Exam Tips</h3>
+                            <ul style={{ fontSize: '0.92em', color: '#1e40af', paddingLeft: '20px', lineHeight: '1.6' }}>
+                                <li style={{ marginBottom: '8px' }}><strong>Case studies:</strong> Memorize key facts (dates, locations, statistics) from major case studies like Ok Tedi — they frequently appear in exam questions.</li>
+                                <li style={{ marginBottom: '8px' }}><strong>Calculations:</strong> Practice unit conversions (liters to cubic meters, tonnes to kg) as these often trip up students in mathematical problems.</li>
+                                <li style={{ marginBottom: '8px' }}><strong>Terminology:</strong> Know precise definitions of technical terms (AMD, tailings, overburden, FPIC) as these are commonly tested in 2-mark sections.</li>
+                                <li style={{ marginBottom: '8px' }}><strong>Comparison questions:</strong> Be prepared to compare traditional vs. sustainable methods or different minerals in terms of environmental impact.</li>
+                                <li><strong>Solutions:</strong> Don't just describe problems — be ready to discuss sustainable alternatives and their limitations for higher-mark essays.</li>
                             </ul>
                         </div>
                     </div>
 
-                    {/* ADVANCED TOPICS */}
-                    <h2 style={{ color: '#4338ca' }}>🚀 Go Deeper: Advanced Topics</h2>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', margin: '30px 0' }}>
+                    <h2 style={{ color: '#4338ca', marginTop: '60px' }}>🚀 Go Deeper: Advanced Topics</h2>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', margin: '30px 0' }}>
                         {[
-                            { t: "Circular Economy", d: "Urban mining could reduce demand by 50%. Redwood Materials is building billion-dollar recycle hubs." },
-                            { t: "Deep Sea Mining", d: "ISA governance code challenges. 700+ scientists call for moratorium on seabed extraction." },
-                            { t: "Resource Curse", d: "Why wealth in minerals leads to economic neglect, Dutch Disease, and social conflict." }
+                            { t: "Circular Economy and Urban Mining", d: "The approach seeks to eliminate waste by keeping materials in use. Urban mining could reduce demand for virgin mineral extraction by up to 50% for some metals. EU's Battery Directive now requires minimum recycled content." },
+                            { t: "Deep Sea Mining Governance", d: "ESA (International Seabed Authority) challenges: How do we regulate activities beyond national jurisdiction? Over 700 marine scientists have called for a moratorium until impacts are better understood." },
+                            { t: "The Resource Curse & Justice", d: "The 'paradox of plenty' describes how countries rich in resources often have worse economic outcomes. Mechanisms include Dutch Disease, corruption, and neglect of other sectors." }
                         ].map((at, i) => (
-                            <div key={i} style={{ padding: '20px', backgroundColor: '#eef2ff', borderRadius: '12px', border: '1px solid #c7d2fe' }}>
+                            <div key={i} style={{ padding: '25px', backgroundColor: '#eef2ff', borderRadius: '16px', border: '1px solid #c7d2fe' }}>
                                 <h4 style={{ margin: '0 0 10px 0', color: '#3730a3' }}>{at.t}</h4>
-                                <p style={{ fontSize: '0.85em', color: '#4338ca' }}>{at.d}</p>
+                                <p style={{ fontSize: '0.85em', color: '#4338ca', lineHeight: '1.5' }}>{at.d}</p>
                             </div>
                         ))}
                     </div>
 
-                    {/* UNVERISTY EXAM PRACTICE */}
                     <div style={{ backgroundColor: '#1e293b', padding: '40px', borderRadius: '24px', color: '#f8fafc', margin: '60px 0' }}>
                         <h2 style={{ color: '#fff', marginTop: 0 }}>📝 University Exam Practice</h2>
-                        <div style={{ marginBottom: '30px' }}>
-                            <p style={{ fontWeight: 'bold' }}>Question 1: Short Answer (5 marks)</p>
-                            <p>Define AMD and explain its formation. Describe two impacts.</p>
-                            <details style={{ color: '#94a3b8', fontSize: '0.9em' }}>
-                                <summary style={{ cursor: 'pointer', color: '#3b82f6' }}>Model Answer</summary>
-                                <p style={{ padding: '10px' }}>Formation: Sulfide minerals + water + air = Sulfuric Acid. Impacts: Heavy metal mobilization, destruction of aquatic biology.</p>
+
+                        <div style={{ marginBottom: '40px' }}>
+                            <p style={{ fontWeight: 'bold', fontSize: '1.1em', color: '#60a5fa' }}>Question 1: Short Answer (5 marks) - [Time: 7 minutes]</p>
+                            <p style={{ margin: '10px 0' }}>Define Acid Mine Drainage (AMD) and explain how it forms. Describe two environmental impacts of AMD.</p>
+                            <details style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '12px', overflow: 'hidden' }}>
+                                <summary style={{ cursor: 'pointer', padding: '15px', color: '#3b82f6', fontWeight: 'bold', backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>Show Marking Scheme & Model Answer</summary>
+                                <div style={{ padding: '20px', fontSize: '0.95em', lineHeight: '1.6' }}>
+                                    <p><strong>Marking Scheme:</strong> Definition of AMD: 1 mark | Formation process: 2 marks | Environmental impact 1: 1 mark | Environmental impact 2: 1 mark</p>
+                                    <p style={{ marginTop: '10px' }}><strong>Model Answer:</strong> Acid Mine Drainage (AMD) is the outflow of acidic water from metal or coal mines, typically with elevated concentrations of dissolved heavy metals. It forms when sulfide minerals (particularly pyrite, FeS₂) in waste rock are exposed to oxygen and water. The oxidation reaction produces sulfuric acid (H₂SO₄), which then dissolves other heavy metals from the rock. Impacts: (1) Water pollution of rivers and groundwater. (2) Destruction of aquatic ecosystems as low pH and toxic metals kill fish and plants.</p>
+                                </div>
                             </details>
                         </div>
-                        <div style={{ marginBottom: '30px' }}>
-                            <p style={{ fontWeight: 'bold' }}>Question 2: Problem Solving (10 marks)</p>
-                            <p>Mine treats 50,000t/day ore. Gold grade 3g/t. (a) Daily gold (kg)? (b) Water used? (c) Dry stack savings?</p>
-                            <details style={{ color: '#94a3b8', fontSize: '0.9em' }}>
-                                <summary style={{ cursor: 'pointer', color: '#3b82f6' }}>Solution</summary>
-                                <p style={{ padding: '10px' }}>(a) 50,000 * 3 = 150,000g = 150kg. (b) 50,000 * 2 = 100,000 m³ water. (c) 100k * 80% = 80,000 m³ saved.</p>
+
+                        <div style={{ marginBottom: '40px' }}>
+                            <p style={{ fontWeight: 'bold', fontSize: '1.1em', color: '#60a5fa' }}>Question 2: Problem Solving (10 marks) - [Time: 15 minutes]</p>
+                            <p style={{ margin: '10px 0' }}>A gold mine processes 50,000 tonnes of ore per day with a gold grade of 3 grams per tonne. The mine uses wet tailings disposal with a water-to-ore ratio of 2:1. (a) Daily gold production in kg? (b) Daily water consumption for tailings? (c) Daily savings if switch to 80% water recycling dry stacking?</p>
+                            <details style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '12px', overflow: 'hidden' }}>
+                                <summary style={{ cursor: 'pointer', padding: '15px', color: '#3b82f6', fontWeight: 'bold', backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>Show Solution & Marking Scheme</summary>
+                                <div style={{ padding: '20px', fontSize: '0.95em', lineHeight: '1.6' }}>
+                                    <p><strong>(a) Gold Production:</strong> 50,000 tonnes × 3 g/tonne = 150,000 grams = <strong>150 kg</strong> of gold per day. (3 marks)</p>
+                                    <p><strong>(b) Water consumption:</strong> 50,000 tonnes × 2 m³/tonne = <strong>100,000 m³</strong> per day. (2 marks)</p>
+                                    <p><strong>(c) Water savings:</strong> New use = 100,000 × 0.20 = 20,000 m³/day. Savings = 100,000 - 20,000 = <strong>80,000 m³</strong> per day. (3 marks)</p>
+                                    <p><strong>(d) Benefit:</strong> Elimination of tailings dam failure risk. (2 marks)</p>
+                                </div>
                             </details>
                         </div>
+
                         <div>
-                            <p style={{ fontWeight: 'bold' }}>Question 3: Essay (15 marks)</p>
-                            <p>"Environmental impacts are unavoidable." Critically evaluate with case studies.</p>
-                            <details style={{ color: '#94a3b8', fontSize: '0.9em' }}>
-                                <summary style={{ cursor: 'pointer', color: '#3b82f6' }}>Framework</summary>
-                                <p style={{ padding: '10px' }}>Argue both sides. Use Ok Tedi vs Modern Best Practice. Conclude: Impacts are severe but mitigable through technology and circular economy.</p>
+                            <p style={{ fontWeight: 'bold', fontSize: '1.1em', color: '#60a5fa' }}>Question 3: Essay (15 marks) - [Time: 25 minutes]</p>
+                            <p style={{ margin: '10px 0' }}>"The environmental impacts of mineral extraction are an unavoidable cost of modern civilization." Critically evaluate this statement with reference to specific examples and discuss how these impacts can be minimized.</p>
+                            <details style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '12px', overflow: 'hidden' }}>
+                                <summary style={{ cursor: 'pointer', padding: '15px', color: '#3b82f6', fontWeight: 'bold', backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>Show Essay Structure & Marking Scheme</summary>
+                                <div style={{ padding: '20px', fontSize: '0.95em', lineHeight: '1.6' }}>
+                                    <p><strong>Marking Scheme:</strong> Intro: 2 | Supporting evidence (impacts): 4 | Challenging evidence (alternatives): 4 | Minimization strategies: 3 | Balanced Conclusion: 2</p>
+                                    <p style={{ marginTop: '10px' }}><strong>Framework:</strong> Students should argue both sides. (1) Supporting: Detail the massive scale of minerals in modern life (cars, phones) and the inherent destruction of mining pits and tailings (Ok Tedi, Atacama). (2) Challenging: Discuss the role of the circular economy (urban mining), demand reduction (public transit), and alternative technologies (sodium batteries). (3) Minimization: Technical (dry stacking, DLE) and Regulatory (EIAs, FPIC, bonds). (4) Conclusion: Impacts are severe but not "unavoidable" in their current scale; better governance and shift to circularity can decouple growth from raw extraction.</p>
+                                </div>
                             </details>
                         </div>
                     </div>
