@@ -184,12 +184,12 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Renewable and Non-Renewable Energy Resources</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Energy Resources: Powering Our Digital World</h3>
               <div className="theory-box">
                 <p>Hey future engineers! 👋 Let's talk about energy - the lifeblood of everything you'll build. Every time you charge your phone, run your laptop, or stream Netflix, you're tapping into our global energy system. Understanding energy resources isn't just environmental awareness - it's understanding the foundation of all technology!</p>
-                
+
                 <div className="performance-metrics">
                   <h4>Energy Facts That Matter to Engineers</h4>
                   <ul>
@@ -200,10 +200,10 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-              
+
               <h4>Energy Resource Classification</h4>
               <p>Think of energy resources like software licenses - some are renewable (like open source), others are finite (like proprietary licenses with limited uses).</p>
-              
+
               <h5>Renewable Energy Resources</h5>
               <div className="example-box">
                 <h6>Solar Energy - Nature's Semiconductor</h6>
@@ -237,7 +237,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
 
               <h5>Non-Renewable Energy Resources</h5>
               <p>Non-renewables are like legacy systems - they've powered our development so far, but come with technical debt (environmental costs).</p>
-              
+
               <div className="example-box">
                 <h6>Fossil Fuels - The Legacy Energy System</h6>
                 <ul>
@@ -258,7 +258,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Energy Resource Comparisons</h4>
-              
+
               <div className="comparison-table">
                 <h5>Advantages of Renewables</h5>
                 <ul>
@@ -288,7 +288,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>What This Means for Your Engineering Career</h4>
-              
+
               <div className="career-opportunities">
                 <h5>Software Engineers</h5>
                 <ul>
@@ -331,12 +331,12 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Forest Resources: Use and Over-exploitation</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Forest Resources: Nature's Multi-Purpose Infrastructure</h3>
               <div className="theory-box">
                 <p>Think of forests as nature's data centers - they're complex systems providing multiple services simultaneously! Just like a server hosts websites, processes data, and stores information, forests provide timber, regulate climate, purify water, and support biodiversity all at once. But unlike your backup systems, we can't just restore forests from a snapshot when they're gone! 😅</p>
-                
+
                 <div className="performance-metrics">
                   <h4>Forest Stats That Impact Your World</h4>
                   <ul>
@@ -347,10 +347,10 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-              
+
               <h4>Forest Resource Management</h4>
               <p>Forests provide multiple ecological services and resources, but over-exploitation and deforestation pose significant threats to environmental stability and biodiversity.</p>
-              
+
               <h5>Direct Forest Uses</h5>
               <div className="example-box">
                 <ul>
@@ -376,7 +376,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Deforestation and Over-exploitation</h4>
-              
+
               <h5>Causes of Deforestation</h5>
               <div className="example-box">
                 <ul>
@@ -402,7 +402,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Case Studies of Deforestation</h4>
-              
+
               <div className="case-study">
                 <h5>Amazon Rainforest - The World's Largest Natural Database</h5>
                 <ul>
@@ -435,7 +435,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Solutions for Forest Conservation</h4>
-              
+
               <div className="career-opportunities">
                 <h5>Technology Applications 💻</h5>
                 <ul>
@@ -459,7 +459,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
             <div className="video-embed">
               <h4>Deforestation and Technology Solutions</h4>
               <p>See how technology is being used to monitor and combat deforestation.</p>
-              <iframe width="50%" height="300" src="https://www.youtube.com/embed/S_GuLdbMveQ?si=O-Ufn4Zm4j6M4YR-" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              <iframe width="50%" height="300" src="https://www.youtube.com/embed/S_GuLdbMveQ?si=O-Ufn4Zm4j6M4YR-" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
 
             <Quiz title="Module 2.2: Forest Resources" questions={module2Quiz} subject="ES" unitId={2} moduleId={2} />
@@ -480,12 +480,12 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Water Resources Management</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Water Resources: The Ultimate Shared Resource</h3>
               <div className="theory-box">
                 <p>Water is like bandwidth for life - everyone needs it, there's never enough where you need it most, and managing it efficiently is crucial for everything to work!  As engineers, you'll encounter water in manufacturing (chip production needs ultra-pure water), cooling systems (data centers use millions of gallons), and even in making your devices. Understanding water isn't just environmental awareness - it's understanding a critical constraint in almost every engineering system!</p>
-                
+
                 <div className="performance-metrics">
                   <h4>Water Facts That Affect Your Engineering World</h4>
                   <ul>
@@ -496,10 +496,10 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-              
+
               <h4>Water Resource Management</h4>
               <p>Water is essential for all life forms. Proper management of both surface and groundwater resources is critical for sustainable development and environmental health.</p>
-              
+
               <h5>Surface Water Resources</h5>
               <div className="example-box">
                 <p>Surface water is like the visible internet - you can see it and easily access it, but it's highly variable and can get congested!</p>
@@ -525,7 +525,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Over-Utilization of Water Resources</h4>
-              
+
               <h5>Causes of Over-Utilization</h5>
               <div className="example-box">
                 <ul>
@@ -549,7 +549,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Floods, Drought, Conflicts over Water, Dams</h4>
-              
+
               <h5>Floods: When the System Gets Overwhelmed</h5>
               <div className="example-box">
                 <p>Floods are like DDoS attacks on infrastructure - too much input overwhelms the system's capacity!</p>
@@ -575,7 +575,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Water Conflicts and Dam Projects</h4>
-              
+
               <h5>Water Conflicts</h5>
               <div className="example-box">
                 <ul>
@@ -609,7 +609,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Solutions for Water Management</h4>
-              
+
               <div className="career-opportunities">
                 <h5>Smart Water Systems</h5>
                 <ul>
@@ -653,12 +653,12 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Mineral Resources and Environmental Effects</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Mineral Resources: The Raw Materials of Technology </h3>
               <div className="theory-box">
                 <p>Every device you use - your smartphone, laptop, car, even the building you're sitting in - exists because we can extract and process minerals from the Earth! As engineers, you're essentially mineral transformation specialists, turning raw materials into useful products. But here's the catch: mining these materials often creates environmental problems that future engineers (like you) will need to solve.</p>
-                
+
                 <div className="performance-metrics">
                   <h4>Minerals in Your Tech World</h4>
                   <ul>
@@ -669,10 +669,10 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-              
+
               <h4>Mineral Resource Classification</h4>
               <p>Mineral resources are naturally occurring inorganic substances with economic value. They are essential for industrial development but their extraction and use have significant environmental impacts.</p>
-              
+
               <h5>Classification of Minerals</h5>
               <div className="example-box">
                 <ul>
@@ -696,7 +696,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Environmental Effects of Mining</h4>
-              
+
               <h5>Direct Environmental Impacts </h5>
               <div className="example-box">
                 <ul>
@@ -720,7 +720,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Case Studies of Mining Impacts </h4>
-              
+
               <div className="case-study">
                 <h5>Jharia Coalfields - The Underground Inferno</h5>
                 <ul>
@@ -752,7 +752,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Engineering Solutions for Sustainable Mining</h4>
-              
+
               <div className="career-opportunities">
                 <h5>Technology Applications </h5>
                 <ul>
@@ -796,12 +796,12 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Unit 2 Quiz</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Food Resources: Feeding the World Through Technology</h3>
               <div className="theory-box">
                 <p>Food security might seem unrelated to engineering, but it's actually one of the biggest tech challenges of our time! From precision agriculture using IoT sensors to lab-grown meat using biotechnology, engineers are revolutionizing how we produce, distribute, and consume food. Understanding food systems helps you see opportunities where technology can solve real-world problems that affect billions of people.</p>
-                
+
                 <div className="performance-metrics">
                   <h4>Food System Stats That Matter </h4>
                   <ul>
@@ -812,9 +812,9 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-              
+
               <h4>World Food Problems </h4>
-              
+
               <h5>Changes Caused by Agriculture and Overgrazing</h5>
               <div className="example-box">
                 <ul>
@@ -827,7 +827,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Effects of Modern Agriculture </h4>
-              
+
               <h5>Benefits and Problems </h5>
               <div className="comparison-table">
                 <h6>Benefits </h6>
@@ -848,7 +848,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Fertilizer-Pesticide Problems </h4>
-              
+
               <h5>Fertilizer Issues </h5>
               <div className="example-box">
                 <ul>
@@ -872,7 +872,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Water Logging, Salinity </h4>
-              
+
               <div className="example-box">
                 <ul>
                   <li><strong>Water logging:</strong> Excessive irrigation raising water table</li>
@@ -884,7 +884,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule, setCurrentModule }) => {
               </div>
 
               <h4>Technology Solutions: Engineering the Future of Food</h4>
-              
+
               <div className="career-opportunities">
                 <h5>Precision Agriculture </h5>
                 <ul>

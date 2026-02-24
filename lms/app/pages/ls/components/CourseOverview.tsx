@@ -1,7 +1,19 @@
 'use client';
+
 import React, { useState, useEffect } from 'react';
-import MainSidebar from '@/components/Sidebar';
 import { useSession } from 'next-auth/react';
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  BookOpen,
+  LayoutGrid,
+  ChevronDown,
+  HelpCircle,
+  Menu,
+  CheckCircle2,
+  Cpu,
+  ArrowLeft
+} from "lucide-react";
+import { useRouter } from 'next/navigation';
 
 interface CourseOverviewProps {
   onModuleSelect: (unitId: number, moduleId: number) => void;
@@ -10,36 +22,31 @@ interface CourseOverviewProps {
 const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
   const [activeTab, setActiveTab] = useState('learning-path');
   const [expandedUnit, setExpandedUnit] = useState<number | null>(1);
-  const [dynamicModules, setDynamicModules] = useState([]);
   const { data: session } = useSession();
   const [studentProgress, setStudentProgress] = useState<any[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
-    fetchModules();
     if (session?.user?.email) {
       fetchStudentProgress(session.user.email);
     }
   }, [session]);
 
   const fetchStudentProgress = async (email: string) => {
-    const res = await fetch(`/api/progress?userEmail=${email}&subject=LS`, {
-      cache: 'no-store',
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache'
+    try {
+      const res = await fetch(`/api/progress?userEmail=${email}&subject=LS`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache'
+        }
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStudentProgress(data.data);
       }
-    });
-    const data = await res.json();
-    if (data.success) {
-      setStudentProgress(data.data);
-    }
-  };
-
-  const fetchModules = async () => {
-    const res = await fetch('/api/modules?subject=ls');
-    const data = await res.json();
-    if (data.ok) {
-      setDynamicModules(data.data);
+    } catch (error) {
+      console.error("Failed to fetch progress", error);
     }
   };
 
@@ -49,11 +56,10 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       title: 'Introduction to Language and Linguistics',
       description: 'Understand fundamental concepts of human language, linguistics sub-fields, phonetics, phonology, and morphology.',
       modules: [
-        { id: '1.1', title: 'Overview of Linguistics', description: 'Introduction to linguistics and its major sub-fields' },
+        { id: '1.1', title: 'Overview of Linguistics and its Sub-fields', description: 'Introduction to linguistics and its major sub-fields' },
         { id: '1.2', title: 'Phonetics', description: 'Study of speech sounds and their physical properties' },
         { id: '1.3', title: 'Phonology', description: 'Sound patterns and phonological processes' },
-        { id: '1.4', title: 'Morphology', description: 'Word structure and formation processes' },
-        { id: '1.5', title: 'Unit 1 Quiz', description: 'Test your knowledge of Unit 1 concepts' }
+        { id: '1.4', title: 'Morphology', description: 'The study of word formation and structure.' }
       ]
     },
     {
@@ -63,44 +69,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
       modules: [
         { id: '2.1', title: 'Syntax and Syntactic Structures', description: 'Rules governing sentence formation' },
         { id: '2.2', title: 'Semantics and Semantic Structures', description: 'Meaning in language and semantic relations' },
-        { id: '2.3', title: 'Language Typology', description: 'Classification and comparison of languages' },
-        { id: '2.4', title: 'Unit 2 Quiz', description: 'Test your knowledge of Unit 2 concepts' }
-      ]
-    },
-    {
-      id: 3,
-      title: 'Language Acquisition and Change',
-      description: 'Explore how languages are learned, how they change over time, and historical linguistics.',
-      modules: [
-        { id: '3.1', title: 'First and Second Language Acquisition', description: 'Processes of learning native and additional languages' },
-        { id: '3.2', title: 'Language Change and Contact', description: 'How languages evolve and influence each other' },
-        { id: '3.3', title: 'Historical Linguistics', description: 'Study of language evolution and reconstruction' },
-        { id: '3.4', title: 'Unit 3 Quiz', description: 'Test your knowledge of Unit 3 concepts' }
-      ]
-    },
-    {
-      id: 4,
-      title: 'Sociolinguistics and Applied Linguistics',
-      description: 'Understand social aspects of language, variation, policy, identity, and technology integration.',
-      modules: [
-        { id: '4.1', title: 'Sociolinguistics and Variation', description: 'Language variation across social contexts' },
-        { id: '4.2', title: 'Language Policy and Planning', description: 'Government and institutional language decisions' },
-        { id: '4.3', title: 'Language and Identity', description: 'How language shapes and reflects identity' },
-        { id: '4.4', title: 'Language and Technology', description: 'Computational linguistics and NLP applications' },
-        { id: '4.5', title: 'Unit 4 Quiz', description: 'Test your knowledge of Unit 4 concepts' }
-      ]
-    },
-    {
-      id: 5,
-      title: 'Language in Context and Research',
-      description: 'Analyze language in cultural, social, and global contexts, and explore linguistic research methods.',
-      modules: [
-        { id: '5.1', title: 'Language and Culture', description: 'Relationship between language and cultural practices' },
-        { id: '5.2', title: 'Language and Gender', description: 'Gender differences in language use' },
-        { id: '5.3', title: 'Language and Power', description: 'Language as a tool of power and control' },
-        { id: '5.4', title: 'Language and Globalization', description: 'Impact of globalization on languages' },
-        { id: '5.5', title: 'Research Methods in Linguistics', description: 'Approaches to linguistic research and analysis' },
-        { id: '5.6', title: 'Unit 5 Quiz', description: 'Test your knowledge of Unit 5 concepts' }
+        { id: '2.3', title: 'Language Typology', description: 'Classification and comparison of languages' }
       ]
     }
   ];
@@ -112,127 +81,164 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
   const masteryPercentage = totalModules > 0 ? Math.round((masteryModules / totalModules) * 100) : 0;
 
   return (
-    <div className="flex">
-      <div className="fixed left-0 top-0 h-screen overflow-hidden">
-        <MainSidebar />
-      </div>
-      <div className="flex-1">
-        <div className="lms-dashboard">
-          <div className="lms-container">
-            <div className="lms-header">
-              <div className="header-left">
-                <svg className="megaphone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="#7CB342" strokeWidth="2" fill="none" />
-                </svg>
-                <h1 className="course-title">Language Systems: Principles and Practices</h1>
-              </div>
-              <div className="header-right">
-                <div className="progress-bar-container">
-                  <div className="progress-segments">
-                    {[...Array(20)].map((_, i) => {
-                      const segmentThreshold = (i + 1) * 5;
-                      return (
-                        <div
-                          key={i}
-                          className={`segment ${completedPercentage >= segmentThreshold ? 'completed' :
-                            masteryPercentage >= segmentThreshold ? 'mastery' : ''
-                            }`}
-                        ></div>
-                      );
-                    })}
-                  </div>
-                  <div className="progress-text">{completedPercentage}% Completed • {masteryPercentage}% Mastery</div>
-                </div>
-              </div>
-            </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-10 py-12 font-sans">
+      {/* BACK TO LIVEBOOKS */}
+      <button
+        onClick={() => router.push('/pages/livebooks')}
+        className="flex items-center gap-2 text-sm font-bold text-[#AAA] hover:text-[#121212] transition-colors mb-8 group"
+      >
+        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        Back to Livebooks
+      </button>
 
-            <nav className="tab-navigation">
-              <button className={`tab ${activeTab === 'learning-path' ? 'active' : ''}`} onClick={() => setActiveTab('learning-path')}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M2 3h12M2 8h12M2 13h12" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                </svg>
-                Learning Path
-              </button>
-              <button className={`tab ${activeTab === 'about' ? 'active' : ''}`} onClick={() => setActiveTab('about')}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                </svg>
-                About
-              </button>
-              <button className="tab" onClick={() => window.location.href = '/pages/livebooks'} style={{ marginLeft: 'auto' }}>
-                Go to Livebooks
-              </button>
-            </nav>
-
-            <div className="timeline-content">
-              {units.map((unit) => (
-                <div key={unit.id} className="unit-block">
-                  <div className="unit-header-block" onClick={() => setExpandedUnit(expandedUnit === unit.id ? null : unit.id)}>
-                    <div className="module-badge">
-                      <div className="badge-label">Unit</div>
-                      <div className="badge-number">{unit.id}</div>
-                    </div>
-                    <div className="unit-description">
-                      <h2 className="unit-title">{unit.title}</h2>
-                      <p className="unit-desc">{unit.description}</p>
-                    </div>
-                    <div className="expand-indicator">{expandedUnit === unit.id ? '▼' : '▶'}</div>
-                  </div>
-
-                  {expandedUnit === unit.id && (
-                    <div className="lessons-timeline">
-                      {unit.modules.map((module, idx) => (
-                        <div
-                          key={module.id}
-                          className="lesson-item"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onModuleSelect(unit.id, idx + 1);
-                          }}
-                        >
-                          <div className="lesson-badge">{module.id}</div>
-                          <div className="lesson-content">
-                            <h3 className="lesson-title">{module.title}</h3>
-                            <p className="lesson-desc">{module.description}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              {dynamicModules.length > 0 && (
-                <div className="unit-block">
-                  <div className="unit-header-block" onClick={() => setExpandedUnit(expandedUnit === 6 ? null : 6)}>
-                    <div className="module-badge">
-                      <div className="badge-label">Unit</div>
-                      <div className="badge-number">6</div>
-                    </div>
-                    <div className="unit-description">
-                      <h2 className="unit-title">Additional Resources</h2>
-                      <p className="unit-desc">Uploaded modules and resources</p>
-                    </div>
-                    <div className="expand-indicator">{expandedUnit === 6 ? '▼' : '▶'}</div>
-                  </div>
-                  {expandedUnit === 6 && (
-                    <div className="lessons-timeline">
-                      {dynamicModules.map((module: any, idx) => (
-                        <div key={idx} className="lesson-item" onClick={() => window.open(module.fileUrl, '_blank')}>
-                          <div className="lesson-badge">6.{idx + 1}</div>
-                          <div className="lesson-content">
-                            <h3 className="lesson-title">{module.moduleName}</h3>
-                            <p className="lesson-desc">{module.description}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+      {/* HEADER SECTION */}
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-6 mb-8">
+        <div className="flex items-center gap-4">
+          <div className="w-8 h-8 flex items-center justify-center text-emerald-600 border-2 border-emerald-600 rounded-lg rotate-[30deg]">
+            <div className="-rotate-[30deg]">
+              <BookOpen className="w-4 h-4" />
             </div>
           </div>
+          <h1 className="text-2xl font-bold text-[#2B2B2B] tracking-tight">Language Systems</h1>
+        </div>
+
+        <div className="flex flex-col items-end gap-2">
+          <div className="flex gap-1">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className={`w-2 h-2 rounded-full transition-colors ${(i + 1) * 5 <= completedPercentage ? 'bg-emerald-500' : 'bg-[#E5E2D9]'
+                  }`}
+              />
+            ))}
+          </div>
+          <p className="text-[10px] font-bold text-[#AAA] uppercase">
+            {completedPercentage}% Completed • {masteryPercentage}% Mastery
+          </p>
         </div>
       </div>
+
+      {/* TABS */}
+      <div className="flex items-center justify-between border-b border-[#EEE] mb-12">
+        <div className="flex items-center gap-10">
+          {[
+            { id: 'learning-path', label: 'Learning Path', icon: <Menu className="w-4 h-4" /> },
+            { id: 'about', label: 'About', icon: <HelpCircle className="w-4 h-4" /> }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 py-4 text-sm font-bold transition-all relative ${activeTab === tab.id
+                ? 'text-[#121212]'
+                : 'text-[#888] hover:text-[#121212]'
+                }`}
+            >
+              {tab.icon}
+              {tab.label}
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="activeTabUnderlineLS"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#121212]"
+                />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* CONTENT AREA */}
+      <div className="space-y-16">
+        {activeTab === 'learning-path' ? (
+          units.map((unit) => {
+            const isUnitFinished = unit.modules.every((_, idx) =>
+              studentProgress.some(p => p.unitId === unit.id && p.moduleId === idx + 1 && p.completed)
+            );
+
+            return (
+              <div key={unit.id} className="relative group/unit">
+                {/* UNIT HEADER ROW */}
+                <div className="flex items-start gap-8 mb-12">
+                  <div className={`w-20 h-20 border border-[#E5E2D9] rounded flex flex-col items-center justify-center shrink-0 bg-white transition-colors duration-500 ${isUnitFinished ? 'border-emerald-500 ring-4 ring-emerald-50/50' : ''
+                    }`}>
+                    <span className="text-[10px] font-bold text-[#AAA] uppercase tracking-wider mb-1">UNIT</span>
+                    <span className="text-4xl font-bold text-[#121212] leading-none">{unit.id}</span>
+                  </div>
+
+                  <div className="flex-1">
+                    <div
+                      className="flex items-center justify-between group cursor-pointer"
+                      onClick={() => setExpandedUnit(expandedUnit === unit.id ? null : unit.id)}
+                    >
+                      <h2 className="text-2xl font-bold text-[#121212] group-hover:text-emerald-600 transition-colors">{unit.title}</h2>
+                      <div className={`w-8 h-8 rounded-full border border-[#EEE] flex items-center justify-center transition-all duration-300 ${expandedUnit === unit.id ? 'rotate-180 bg-[#121212] text-white border-[#121212]' : 'text-[#AAA] hover:border-[#CCC]'}`}>
+                        <ChevronDown className="w-4 h-4" />
+                      </div>
+                    </div>
+                    <p className="text-[15px] text-[#888] font-medium leading-relaxed max-w-4xl mt-2">
+                      {unit.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* SUBMODULES TIMELINE */}
+                <AnimatePresence>
+                  {expandedUnit === unit.id && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="relative pl-10 ml-10 border-l border-dashed border-[#E5E2D9] space-y-12 pb-8"
+                    >
+                      {unit.modules.map((module, idx) => {
+                        const moduleRecord = studentProgress.find(p => p.unitId === unit.id && p.moduleId === idx + 1);
+                        const isCompleted = moduleRecord?.completed || false;
+
+                        return (
+                          <div
+                            key={module.id}
+                            className="relative group/module cursor-pointer pt-1"
+                            onClick={() => onModuleSelect(unit.id, idx + 1)}
+                          >
+                            <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[11px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-emerald-500' : 'bg-[#8BC34A]'
+                              }`}>
+                              {module.id}
+                            </div>
+
+                            <div className="flex-1">
+                              <h3 className="text-[17px] font-bold text-[#121212] group-hover/module:translate-x-1 transition-transform inline-block">
+                                {module.title}
+                              </h3>
+                              <p className="text-sm text-[#AAA] font-medium leading-relaxed mt-1 block">
+                                {module.description}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })
+        ) : (
+          <div className="bg-[#FBFAF8] rounded-[3rem] border border-[#EAE8E0] p-32 flex flex-col items-center justify-center text-center">
+            <div className="w-20 h-20 bg-white rounded-[2rem] border border-[#EAE8E0] shadow-sm flex items-center justify-center text-[#CCC] mb-8">
+              <LayoutGrid className="w-10 h-10" />
+            </div>
+            <h3 className="text-2xl font-bold text-[#121212] mb-4 uppercase tracking-tighter">Content coming soon</h3>
+            <p className="text-[#888] font-medium max-w-sm leading-relaxed">
+              We are currently finalizing the high-fidelity materials for this section. Please check back next week.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <style jsx global>{`
+        body {
+          background-color: #FFFFFF !important;
+        }
+      `}</style>
     </div>
   );
 };

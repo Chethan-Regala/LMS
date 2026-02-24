@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Quiz from '../components/Quiz';
+import CompletionButton from '@/components/CompletionButton';
 
 interface Unit1Props {
   currentModule: number;
@@ -184,12 +185,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Introduction to Environmental Science</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Foundations of Environmental Studies</h3>
               <div className="theory-box">
                 <p><strong>Environmental studies</strong> is like the ultimate interdisciplinary team project! It brings together scientists, economists, policymakers, and engineers to tackle our planet's biggest challenges. Think of it as the "Avengers" of academic fields – each discipline contributes its unique superpowers to save the environment.</p>
-                
+
                 <div className="performance-metrics">
                   <h4>What Exactly is "Environment"?</h4>
                   <p>Imagine you're sitting in your room right now. Your environment includes:</p>
@@ -201,7 +202,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-              
+
               <h4>Scope of Environmental Studies</h4>
               <div className="example-box">
                 <p>Environmental studies is like a Swiss Army knife – it has tools for every situation:</p>
@@ -222,7 +223,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                   <li><strong>Resource depletion:</strong> Could make your smartphone more expensive than a car</li>
                   <li><strong>Ecosystem collapse:</strong> No more Instagram-worthy nature photos!</li>
                 </ul>
-                
+
                 <h5>The Good News: You Can Be Part of the Solution!</h5>
                 <p>Every environmental engineer, policy maker, and aware citizen started by learning these basics. Today's knowledge becomes tomorrow's breakthrough solutions.</p>
               </div>
@@ -263,7 +264,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
             <div className="video-embed">
               <h4>Introduction to Environmental Science</h4>
               <p>Understanding the interdisciplinary nature and importance of environmental studies.</p>
-              
+
               <iframe width="50%" height="300" src="https://www.youtube.com/embed/7G3eXI_DPn8?si=FaulseZDH7cEFppZ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>            </div>
 
             <Quiz title="Introduction to Environmental Science Quiz" questions={module1Quiz} subject="ES" unitId={1} moduleId={1} />
@@ -283,12 +284,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Ecosystems and Biodiversity</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Understanding Ecosystems</h3>
               <div className="theory-box">
                 <p>Think of an ecosystem as <strong>nature's ultimate social network</strong> – where every living thing is connected to every other living thing, and they're all constantly posting updates about what they're eating, where they're living, and how they're feeling about the weather!</p>
-                
+
                 <div className="performance-metrics">
                   <h4>What Makes an Ecosystem Tick?</h4>
                   <p>An ecosystem is basically a <strong>biological community</strong> where living organisms (the "users") interact with their physical environment (the "platform"). Here's what makes it special:</p>
@@ -300,7 +301,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                   </ul>
                 </div>
               </div>
-              
+
               <h4>The Two Main Components</h4>
               <div className="example-box">
                 <h5>Biotic Components (The Living Squad)</h5>
@@ -310,7 +311,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                   <li><strong>Consumers:</strong> The followers who eat other organisms (that's us and most animals!)</li>
                   <li><strong>Decomposers:</strong> The cleanup crew (bacteria, fungi) who recycle everything</li>
                 </ul>
-                
+
                 <h5>Abiotic Components (The Platform Infrastructure)</h5>
                 <p>These are the non-living things that provide the "hardware" for life to run on:</p>
                 <ul>
@@ -376,13 +377,13 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Natural Resources</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Trophic Relationships</h3>
               <div className="theory-box">
                 <p>Living organisms in an ecosystem are classified based on their feeding relationships and roles in energy transfer and nutrient cycling.</p>
               </div>
-              
+
               <h4>Producers (Autotrophs)</h4>
               <ul>
                 <li>Photosynthetic organisms (plants, algae, cyanobacteria)</li>
@@ -458,13 +459,13 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Environmental Ethics</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Energy Transfer Networks</h3>
               <div className="theory-box">
                 <p>Food chains, food webs, and ecological pyramids illustrate the flow of energy and nutrients through different trophic levels in an ecosystem.</p>
               </div>
-              
+
               <h4>Food Chains</h4>
               <ul>
                 <li>Linear sequence of energy transfer</li>
@@ -540,13 +541,13 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
                 <h1>Unit 1 Quiz</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Ecosystem Classification</h3>
               <div className="theory-box">
                 <p>Ecosystems can be classified based on various criteria including habitat type, dominant species, and environmental conditions.</p>
               </div>
-              
+
               <h4>Terrestrial Ecosystems</h4>
               <ul>
                 <li><strong>Forests</strong> - tropical, temperate, boreal</li>
@@ -668,7 +669,16 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
     }
   };
 
-  return <div className="unit-container">{renderModule()}</div>;
+  return (
+    <div className="unit-container">
+      {renderModule()}
+      <CompletionButton
+        subject="ES"
+        unitId={1}
+        moduleId={currentModule}
+      />
+    </div>
+  );
 };
 
 export default Unit1;

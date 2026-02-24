@@ -1,239 +1,290 @@
 "use client";
 
-import React from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import OptionCardL from "@/components/OptionCardL";
+import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  BookOpen,
+  Search,
+  Menu,
+  ChevronRight,
+  GraduationCap,
+  Clock,
+  LayoutGrid,
+  Library,
+  ArrowUpRight,
+  Plus
+} from "lucide-react";
 import Sidebar from "@/components/Sidebar";
-import Planet from "@/public/icons/planet-earth.png"
-import Nss from "@/public/icons/nss.png"
-import Os from "@/public/icons/os.png"
-import Eng from "@/public/icons/eng.png"
-import Stu from "@/public/icons/structure.png"
-import Fsm from "@/public/icons/fsm.png"
-const page = () => {
+import { useProgress } from "@/app/pages/useProgress";
+import Footer from "@/components/Footer";
 
-  const options = [
-    { id: 2, name: "National Service Scheme", link: "/pages/nss", description: "National Service Scheme focuses on community service and social responsibility through practical engagement and volunteer work.", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" /><circle cx="9" cy="7" r="4" stroke="#F59E0B" strokeWidth="2" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" /><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" /><circle cx="9" cy="7" r="2" fill="#F59E0B" opacity="0.3" /></svg>, color: "#F59E0B", stats: { Credits: 1, Modules: 25, } },
-    { id: 3, name: "Operating Systems", link: "/pages/os", description: "This course explores the internal structure, services, and design principles of modern operating systems. It introduces processes and threads.", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#8B5CF6" strokeWidth="2" /><rect x="7" y="7" width="4" height="4" fill="#8B5CF6" opacity="0.3" /><rect x="13" y="7" width="4" height="4" fill="#8B5CF6" opacity="0.3" /><rect x="7" y="13" width="4" height="4" fill="#8B5CF6" opacity="0.3" /><rect x="13" y="13" width="4" height="4" fill="#8B5CF6" opacity="0.3" /></svg>, color: "#8B5CF6", stats: { Credits: 3, Modules: 25, } },
-    { id: 4, name: "Language Systems", link: "/pages/ls", description: "Language Systems course covers principles and practices of human communication, focusing on effective written and verbal expression.", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="#EF4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><path d="M8 12h8M12 8v8" stroke="#EF4444" strokeWidth="2" strokeLinecap="round" opacity="0.4" /></svg>, color: "#EF4444", stats: { Credits: 4, Modules: 19, } },
-    { id: 5, name: "Data Structures", link: "/pages/ds", description: "Learn Data Structures and Algorithms through hands-on coding. From arrays to graphs, master problem-solving patterns and optimization.", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5" r="3" stroke="#EC4899" strokeWidth="2" /><circle cx="5" cy="19" r="3" stroke="#EC4899" strokeWidth="2" /><circle cx="19" cy="19" r="3" stroke="#EC4899" strokeWidth="2" /><path d="M12 8v3M10.5 13.5L7 17M13.5 13.5L17 17" stroke="#EC4899" strokeWidth="2" strokeLinecap="round" /><circle cx="12" cy="5" r="1.5" fill="#EC4899" opacity="0.4" /><circle cx="5" cy="19" r="1.5" fill="#EC4899" opacity="0.4" /><circle cx="19" cy="19" r="1.5" fill="#EC4899" opacity="0.4" /></svg>, color: "#EC4899", stats: { Credits: 4, Modules: 156, } },
-    { id: 6, name: "FLAT", link: "/pages/flat", description: "Formal Languages & Automata Theory explores computational models, regular expressions, and the theoretical foundations of computer science.", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="12" r="3" stroke="#3B82F6" strokeWidth="2" /><circle cx="18" cy="12" r="3" stroke="#3B82F6" strokeWidth="2" /><path d="M9 12h6" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" /><path d="M6 9V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" /><circle cx="6" cy="12" r="1.5" fill="#3B82F6" opacity="0.4" /><circle cx="18" cy="12" r="1.5" fill="#3B82F6" opacity="0.4" /></svg>, color: "#3B82F6", stats: { Credits: 4, Modules: 156, } },
-    {
-      id: 1,
-      name: "Environmental Science",
-      link: "/pages/es",
-      description: "This course introduces environmental science principles, highlighting sustainability and ecological balance for Computer Science applications.",
-      icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#10B981" strokeWidth="2" /><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="#10B981" opacity="0.2" /><path d="M8 12c0-2 1-4 4-4s4 2 4 4" stroke="#10B981" strokeWidth="2" strokeLinecap="round" /></svg>,
-      color: "#10B981",
-      stats: { Credits: 2, Modules: 156, }
-    },
-  ];
+interface LivebookCardProps {
+  name: string;
+  code: string;
+  description: string;
+  credits: number;
+  totalModules: number;
+  color: string;
+  icon: React.ReactNode;
+  link: string;
+}
 
+function LivebookCard({ name, code, description, credits, totalModules, color, icon, link }: LivebookCardProps) {
+  const router = useRouter();
+  const { completedPercentage } = useProgress(code, totalModules);
 
   return (
-    <div className="flex h-screen overflow-hidden">
-      <div className="fixed left-0 top-0 h-screen overflow-hidden z-50 w-16">
-        <Sidebar />
-      </div>
-      <div className="flex-1 bg-transparent relative ml-16 overflow-hidden" style={{
-        backgroundImage: 'radial-gradient(circle, #D8D8D8 1px, transparent 1px)',
-        backgroundSize: '20px 20px',
-        backgroundColor: '#FFFFFF'
-      }}>
+    <motion.div
+      onClick={() => router.push(link)}
+      className="bg-white rounded-[2rem] border border-[#E5E2D9] p-8 shadow-sm transition-all group relative overflow-hidden flex flex-col h-full cursor-pointer"
+    >
+      {/* Background Accent */}
+      <div className={`absolute top-0 right-0 w-32 h-32 ${color} opacity-[0.03] rounded-bl-full translate-x-8 -translate-y-8 group-hover:scale-110 transition-transform duration-500`} />
 
-        {/* Top Navigation Bar */}
-        <header className="bg-white h-20 flex items-center justify-between px-8 border-b relative z-10" style={{ borderColor: '#EFEFEF' }}>
-
-          <div className="flex items-center gap-2">
-            <div className="relative">
-              <div className="w-9 h-7 rounded border-2 border-gray-400 bg-white flex items-center justify-center">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="#FF6B6B">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <div className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-gray-300 rounded-b"></div>
-            </div>
-            <span className="font-bold text-2xl" style={{ color: '#1F2933' }}>Livebooks</span>
+      {/* Icon & Title */}
+      <div className="relative z-10 flex items-start justify-between mb-6">
+        <div className={`w-14 h-14 ${color} bg-opacity-10 rounded-2xl flex items-center justify-center`}>
+          {icon}
+        </div>
+        <div className="flex flex-col items-end">
+          <span className="text-[10px] font-black uppercase tracking-widest text-[#AAA] mb-1">{code}</span>
+          <div className="flex items-center gap-1.5 px-3 py-1 bg-[#F8F6F1] rounded-full border border-[#E5E2D9]">
+            <span className="text-[10px] font-black text-[#121212]">{credits} Credits</span>
           </div>
-
-          <div className="flex items-center gap-2 px-4 py-2 rounded-lg" style={{ backgroundColor: '#FAFAFA', width: '320px' }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2">
-              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-            </svg>
-            <input
-              type="text"
-              placeholder="Search courses..."
-              className="bg-transparent outline-none flex-1 text-sm"
-              style={{ color: '#1F2933' }}
-            />
-            <kbd className="px-2 py-0.5 rounded text-xs" style={{ backgroundColor: '#EFEFEF', color: '#6B7280' }}>Ctrl K</kbd>
-          </div>
-        </header>
-
-        <div className="flex flex-1 overflow-hidden h-[calc(100vh-5rem)]">
-          {/* Left Sidebar */}
-          <aside className="w-64 h-full p-6 bg-white bg-opacity-50 overflow-y-auto">
-            <div className="space-y-3">
-              <div className="rounded p-4 relative" style={{ backgroundColor: '#FFF9E6' }}>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-bold text-xs" style={{ color: '#D97706' }}>Semester 4</span>
-                  <div className="flex items-center gap-1 px-2 py-1 rounded-full" style={{ backgroundColor: '#FEF3C7' }}>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="3">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    <span className="text-xs font-medium" style={{ color: '#D97706' }}>Current</span>
-                  </div>
-                </div>
-                <div className="flex -space-x-2">
-                  <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ backgroundColor: '#FCE7F3' }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EC4899" strokeWidth="2">
-                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                    </svg>
-                  </div>
-                  <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ backgroundColor: '#E9D5FF' }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" strokeWidth="2">
-                      <rect x="3" y="3" width="7" height="7" />
-                      <rect x="14" y="3" width="7" height="7" />
-                      <rect x="14" y="14" width="7" height="7" />
-                      <rect x="3" y="14" width="7" height="7" />
-                    </svg>
-                  </div>
-                  <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ backgroundColor: '#FCE7F3' }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EC4899" strokeWidth="2">
-                      <circle cx="12" cy="12" r="3" />
-                      <path d="M12 1v6m0 6v6" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-b border-dashed border-gray-300"></div>
-
-              <div className="rounded-xl p-4 cursor-pointer hover:bg-white transition-colors">
-                <div className="mb-4">
-                  <span className="font-semibold text-base" style={{ color: '#9CA3AF' }}>Semester 3</span>
-                </div>
-                <div className="flex -space-x-2">
-                  <div className="w-11 h-11 rounded-full" style={{ backgroundColor: '#FED7AA' }}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EA580C" strokeWidth="2">
-                        <ellipse cx="12" cy="5" rx="9" ry="3" />
-                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="w-11 h-11 rounded-full" style={{ backgroundColor: '#BFDBFE' }}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
-                        <circle cx="12" cy="12" r="3" />
-                        <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="w-11 h-11 rounded-full" style={{ backgroundColor: '#BAE6FD' }}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-b border-dashed border-gray-300"></div>
-
-              <div className="rounded-xl p-4 cursor-pointer hover:bg-white transition-colors">
-                <div className="mb-4">
-                  <span className="font-semibold text-base" style={{ color: '#9CA3AF' }}>Semester 2</span>
-                </div>
-                <div className="flex -space-x-2">
-                  <div className="w-11 h-11 rounded-full" style={{ backgroundColor: '#E9D5FF' }}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9333EA" strokeWidth="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="w-11 h-11 rounded-full" style={{ backgroundColor: '#D9F99D' }}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#65A30D" strokeWidth="2">
-                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="w-11 h-11 rounded-full" style={{ backgroundColor: '#FBCFE8' }}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DB2777" strokeWidth="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-b border-dashed border-gray-300"></div>
-
-              <div className="rounded-xl p-4 cursor-pointer hover:bg-white transition-colors">
-                <div className="mb-4">
-                  <span className="font-semibold text-base" style={{ color: '#9CA3AF' }}>Semester 1</span>
-                </div>
-                <div className="flex -space-x-2">
-                  <div className="w-11 h-11 rounded-full" style={{ backgroundColor: '#BAE6FD' }}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                        <polyline points="22,6 12,13 2,6" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="w-11 h-11 rounded-full" style={{ backgroundColor: '#FED7AA' }}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EA580C" strokeWidth="2">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="w-11 h-11 rounded-full" style={{ backgroundColor: '#FED7AA' }}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EA580C" strokeWidth="2">
-                        <ellipse cx="12" cy="5" rx="9" ry="3" />
-                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </aside>
-
-          {/* Main Content */}
-          <main className="flex-1 p-8 bg-transparent relative overflow-y-auto">
-            <h1 className="text-2xl font-bold mb-8 relative z-10" style={{ color: '#1F2933' }}>Semester 4</h1>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 relative z-10">
-              {options.map((item) => (
-                <OptionCardL
-                  key={item.id}
-                  name={item.name}
-                  href={item.link}
-                  description={item.description}
-                  icon={item.icon}
-                  stats={item.stats}
-                />
-              ))}
-            </div>
-          </main>
         </div>
       </div>
+
+      <div className="relative z-10 flex flex-col flex-1">
+        <h3 className="text-xl font-black text-[#121212] mb-3">{name}</h3>
+        <p className="text-sm text-[#888] font-medium leading-relaxed mb-6 line-clamp-3">
+          {description}
+        </p>
+
+        {/* Progress Section */}
+        <div className="mt-auto pt-6 border-t border-[#F5F5F5]">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-[10px] font-black text-[#AAA] uppercase">Completion</span>
+            <span className={`text-[10px] font-black ${completedPercentage >= 100 ? 'text-emerald-500' : 'text-blue-600'}`}>
+              {completedPercentage}%
+            </span>
+          </div>
+          <div className="h-2 w-full bg-[#EEEEEE] rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${completedPercentage}%` }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="h-full bg-blue-600 rounded-full"
+            />
+          </div>
+        </div>
+
+        {/* Action Button (Visual only since card is clickable) */}
+        <div className="mt-6 w-full py-3.5 bg-white border-2 border-[#E5E2D9] rounded-xl text-xs font-black text-[#121212] lg:group-hover:bg-blue-600 lg:group-hover:text-white lg:group-hover:border-blue-600 transition-all flex items-center justify-center gap-2 group/btn">
+          Explore Modules
+          <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function LivebooksPage() {
+  const { data: session } = useSession();
+  const [mounted, setMounted] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [activeSemester, setActiveSemester] = useState(4);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const subjects = [
+    {
+      name: "Operating Systems",
+      code: "OS",
+      description: "Explore the internal structure, services, and design principles of modern operating systems. Master kernels, shells, and process management.",
+      credits: 3,
+      totalModules: 58,
+      color: "text-blue-600",
+      icon: <LayoutGrid className="w-6 h-6" />,
+      link: "/pages/os"
+    },
+    {
+      name: "Data Structures",
+      code: "DS",
+      description: "Master the art of organizing and managing data. From elementary arrays to complex graphs and algorithm optimization patterns.",
+      credits: 4,
+      totalModules: 91,
+      color: "text-emerald-600",
+      icon: <Library className="w-6 h-6" />,
+      link: "/pages/ds"
+    },
+    {
+      name: "Formal Lang & Automata",
+      code: "FLAT",
+      description: "Dive into computational models, regular languages, and the mathematical foundations of computer science and compilers.",
+      credits: 4,
+      totalModules: 30,
+      color: "text-amber-600",
+      icon: <Plus className="w-6 h-6 rotate-45" />,
+      link: "/pages/flat"
+    },
+    {
+      name: "Environmental Science",
+      code: "ES",
+      description: "A comprehensive study of ecological balance and sustainability principles tailored for modern engineering applications.",
+      credits: 2,
+      totalModules: 25,
+      color: "text-rose-600",
+      icon: <GraduationCap className="w-6 h-6" />,
+      link: "/pages/es"
+    },
+    {
+      name: "Language Systems",
+      code: "LS",
+      description: "Master the structures of human communication. Explore phonetic patterns, syntactic structures, and cultural linguistics.",
+      credits: 4,
+      totalModules: 24,
+      color: "text-indigo-600",
+      icon: <BookOpen className="w-6 h-6" />,
+      link: "/pages/ls"
+    },
+    {
+      name: "National Service Scheme",
+      code: "NSS",
+      description: "Dedicated to social responsibility and community impact through practical engagement and environmental excellence.",
+      credits: 1,
+      totalModules: 25,
+      color: "text-slate-800",
+      icon: <Menu className="w-6 h-6" />,
+      link: "/pages/nss"
+    }
+  ];
+
+  if (!mounted) return null;
+
+  return (
+    <div className="min-h-screen bg-[#F8F6F1] text-[#121212] font-sans selection:bg-blue-100">
+      <div className="flex relative">
+        <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+
+        <main className="flex-1 sm:ml-[280px] px-6 sm:px-16 py-6 sm:py-10 w-full">
+          {/* TOP NAV BAR */}
+          <div className="flex items-center justify-between mb-8 sm:mb-12">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsSidebarOpen(true)}
+                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-blue-600"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+              <h2 className="text-xl sm:text-2xl font-black tracking-tight flex items-center gap-3">
+                <Library className="w-6 h-6 text-blue-600" />
+                Livebooks
+              </h2>
+            </div>
+            <div className="flex items-center gap-6">
+              <div className="hidden md:relative group md:block">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#AAA] group-focus-within:text-[#121212] transition-colors" />
+                <input
+                  type="text"
+                  placeholder="Search livebooks..."
+                  className="pl-11 pr-6 py-2.5 bg-white border border-[#E5E2D9] rounded-xl text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/20 w-64 lg:w-80 transition-all"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* PAGE HEADER */}
+          <section className="mb-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div>
+                <p className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">Academic Curriculum</p>
+                <h1 className="text-3xl sm:text-4xl font-black text-[#121212]">Explore Your Courses</h1>
+              </div>
+
+              {/* Semester Selector Pills */}
+              <div className="flex p-1.5 bg-white border border-[#E5E2D9] rounded-2xl gap-1">
+                {[1, 2, 3, 4].map((sem) => (
+                  <button
+                    key={sem}
+                    onClick={() => setActiveSemester(sem)}
+                    className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-tighter transition-all ${activeSemester === sem
+                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                      : 'text-[#888] hover:bg-[#F8F6F1] hover:text-[#121212]'
+                      }`}
+                  >
+                    Sem {sem}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* SUBJECT GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-12">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSemester}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="contents"
+              >
+                {activeSemester === 4 ? (
+                  subjects.map((subject, i) => (
+                    <LivebookCard key={i} {...subject} />
+                  ))
+                ) : (
+                  <div className="col-span-full py-20 flex flex-col items-center justify-center text-center">
+                    <div className="w-20 h-20 bg-white rounded-[2rem] border border-[#E5E2D9] flex items-center justify-center mb-6">
+                      <Clock className="w-10 h-10 text-[#AAA]" />
+                    </div>
+                    <h3 className="text-xl font-black text-[#121212] mb-2">Curriculum Locked</h3>
+                    <p className="text-sm text-[#888] font-medium max-w-xs">
+                      Course materials for Semester {activeSemester} are currently archived. View Semester 4 for current content.
+                    </p>
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* FOOTER */}
+          <Footer
+            links={[
+              { label: "Curriculum", href: "#" },
+              { label: "Resources", href: "#" },
+              { label: "Help", href: "#" }
+            ]}
+            copyright="© 2026 GGU GGU LMS • Livebooks Interface"
+          />
+        </main>
+      </div>
+
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        body {
+          font-family: 'Inter', sans-serif;
+          background-color: #F8F6F1;
+          margin: 0;
+          padding: 0;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 0px;
+        }
+
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;  
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
-};
-
-export default page;
+}

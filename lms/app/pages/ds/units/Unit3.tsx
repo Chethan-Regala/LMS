@@ -22,6 +22,7 @@ import Module3_19 from './unit3-modules/Module3_19';
 import Module3_20 from './unit3-modules/Module3_20';
 import Module3_21 from './unit3-modules/Module3_21';
 import Module3_22 from './unit3-modules/Module3_22';
+import CompletionButton from '@/components/CompletionButton';
 
 interface Unit3Props {
   currentModule: number;
@@ -86,6 +87,11 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
   return (
     <div className="unit-container">
       {renderModule()}
+      <CompletionButton
+        subject="DS"
+        unitId={3}
+        moduleId={currentModule}
+      />
       <div className="navigation-buttons" style={{ marginTop: '40px', marginBottom: '40px' }}>
         {currentModule > 1 && (
           <button onClick={() => setCurrentModule(currentModule - 1)} className="prev-module-btn" style={{ fontWeight: 'bold' }}>

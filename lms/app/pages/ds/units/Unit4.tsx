@@ -14,6 +14,7 @@ import Module4_11 from './unit4-modules/Module4_11';
 import Module4_12 from './unit4-modules/Module4_12';
 import Module4_13 from './unit4-modules/Module4_13';
 import Module4_14 from './unit4-modules/Module4_14';
+import CompletionButton from '@/components/CompletionButton';
 
 interface Unit4Props {
   currentModule: number;
@@ -62,6 +63,11 @@ const Unit4: React.FC<Unit4Props> = ({ currentModule, setCurrentModule, onBack }
   return (
     <div className="unit-container">
       {renderModule()}
+      <CompletionButton
+        subject="DS"
+        unitId={4}
+        moduleId={currentModule}
+      />
       <div className="navigation-buttons" style={{ marginTop: '40px', marginBottom: '40px' }}>
         {currentModule > 1 && (
           <button onClick={() => setCurrentModule(currentModule - 1)} className="prev-module-btn" style={{ fontWeight: 'bold' }}>

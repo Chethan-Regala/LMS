@@ -1,91 +1,56 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { OptionCardProps } from "@/types";
 
 export default function OptionCard({ item, className, iconSize }: OptionCardProps) {
   const router = useRouter();
-  const [isPressed, setIsPressed] = useState(false);
 
-  const handleMouseDown = () => {
-    setIsPressed(true);
-  };
-
-  const handleMouseUp = () => {
-    setIsPressed(false);
-  };
-
-  // Default icon sizing logic (for student dashboard compatibility)
-  const defaultIconSize = item.id === 6 ? "h-14 w-14" : "h-9 w-9";
+  // Optimized icon sizing
+  const defaultIconSize = item.id === 6 ? "h-12 w-12" : "h-10 w-10";
   const finalIconSize = iconSize || defaultIconSize;
 
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -5, scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       onClick={() => router.push(item.link)}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      className="relative border overflow-hidden cursor-pointer w-full transition-all duration-100"
-      style={{
-        backgroundColor: "#e1e3e6",
-        boxShadow: isPressed
-          ? "inset 2px 2px 4px rgba(0,0,0,0.6), inset -1px -1px 2px rgba(0,0,0,0.5)"
-          : "4px 4px 0px 0px rgba(0,0,0,0.7)",
-        transform: isPressed ? "translate(3px, 3px)" : "translate(0, 0)",
-      }}
+      className={`group relative bg-white border border-[#E5E2D9] rounded-[2rem] overflow-hidden cursor-pointer p-6 flex flex-col items-center justify-center transition-all duration-300 hover:border-[#3E73C1]/30 ${className}`}
     >
-      {/* TOP PART */}
-      <div className={`relative flex items-center justify-center overflow-hidden ${className || "h-24 w-32"}`}>
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <pattern
-              id={`mesh-${item.id}`}
-              width="3"
-              height="3"
-              patternUnits="userSpaceOnUse"
-              patternTransform="rotate(-30)"
-            >
-              <path
-                d="M 3 0 L 0 0 0 3"
-                fill="none"
-                stroke={item.color}
+      {/* BACKGROUND ACCENT */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500"
+        style={{ backgroundColor: item.color }}
+      />
 
-                strokeWidth="1.3"
-
-              />
-            </pattern>
-          </defs>
-
-          <rect
-            width="100%"
-            height="100%"
-            fill={`url(#mesh-${item.id})`}
-          />
-        </svg>
-
+      {/* ICON/IMAGE CONTAINER */}
+      <div className="relative z-10 mb-4 flex items-center justify-center h-16 w-16 rounded-2xl bg-[#F8F6F1] group-hover:bg-white transition-colors duration-300 shadow-sm border border-transparent group-hover:border-[#E5E2D9]">
         {item.img ? (
           <img
             src={item.img}
             alt=""
-            className={`relative z-10 object-contain ${finalIconSize}`}
-            style={{ marginLeft: iconSize ? "0" : (item.id === 6 ? "-12px" : "-8px") }}
+            className={`object-contain ${finalIconSize} transition-transform duration-500 group-hover:rotate-12`}
           />
         ) : (
-          <span className="relative z-10 text-4xl filter drop-shadow-sm transform group-hover:scale-110 transition-transform">
+          <span className="text-3xl filter transition-transform duration-500 group-hover:scale-110">
             {item.icon}
           </span>
         )}
       </div>
 
-      {/* BOTTOM PART */}
-      <div className="flex items-center justify-center py-2 bg-white border-t-[0.8]">
-        <p className="font-medium text-sm">{item.name}</p>
+      {/* LABEL */}
+      <div className="relative z-10 text-center">
+        <p className="text-[10px] sm:text-[11px] font-bold uppercase text-slate-500 tracking-[0.15em] leading-tight group-hover:text-[#1E3A8A] transition-colors duration-300">
+          {item.name}
+        </p>
       </div>
-    </div>
+
+      {/* DECORATIVE DOT */}
+      <div
+        className="absolute bottom-4 h-1 w-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 scale-0 group-hover:scale-100"
+        style={{ backgroundColor: item.color }}
+      />
+    </motion.div>
   );
 }
