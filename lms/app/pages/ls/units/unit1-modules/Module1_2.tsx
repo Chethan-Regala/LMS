@@ -1,5 +1,11 @@
 import Quiz from '../../components/Quiz';
 import { useEffect } from 'react';
+
+interface Module1_2Props {
+  setCurrentModule: (module: number) => void;
+  onBack: () => void;
+}
+
 const module2Quiz = [
   {
     question: "What is the International Phonetic Alphabet (IPA) used for?",
@@ -53,7 +59,7 @@ const module2Quiz = [
   }
 ];
 
-const Module1_2: React.FC = () => {
+const Module1_2: React.FC<Module1_2Props> = ({ setCurrentModule, onBack }) => {
   useEffect(() => {
     const handleCollapsible = () => {
       const collapsibles = document.querySelectorAll('.collapsible');

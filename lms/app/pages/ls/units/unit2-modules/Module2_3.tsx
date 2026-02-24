@@ -26,8 +26,14 @@ import {
   HelpCircle,
   FlaskConical
 } from 'lucide-react';
+import ModuleNavigation from '../../components/ModuleNavigation';
 
-const Module2_3: React.FC = () => {
+interface Module2_3Props {
+  setCurrentModule?: (id: number) => void;
+  onBack?: () => void;
+}
+
+const Module2_3: React.FC<Module2_3Props> = ({ setCurrentModule = () => { }, onBack }) => {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
 
   const mermaidRef = React.useRef<HTMLDivElement>(null);
@@ -1017,6 +1023,13 @@ const Module2_3: React.FC = () => {
           <div>Advanced AI Augmented Learning Experience © 2026</div>
         </div>
       </footer>
+
+      <ModuleNavigation
+        unitId={2}
+        moduleId={3}
+        setCurrentModule={setCurrentModule}
+        onBack={onBack}
+      />
     </div>
   );
 };

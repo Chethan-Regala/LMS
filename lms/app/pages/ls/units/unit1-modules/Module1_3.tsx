@@ -3,6 +3,11 @@ import React, { useEffect } from 'react';
 import Quiz from '../../components/Quiz';
 import './Module1_1.css';
 
+interface Module1_3Props {
+  setCurrentModule: (module: number) => void;
+  onBack: () => void;
+}
+
 const module3Quiz = [
   {
     question: "How many morphemes are in the word 'antidisestablishmentarianism'?",
@@ -71,7 +76,7 @@ const module3Quiz = [
   }
 ];
 
-const Module1_3: React.FC = () => {
+const Module1_3: React.FC<Module1_3Props> = ({ setCurrentModule, onBack }) => {
   useEffect(() => {
     const handleCollapsible = () => {
       const collapsibles = document.querySelectorAll('.collapsible');

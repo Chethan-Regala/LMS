@@ -4,6 +4,7 @@ import Module1_1 from './unit1-modules/Module1_1';
 import Module1_2 from './unit1-modules/Module1_2';
 import Module1_3 from './unit1-modules/Module1_3';
 import Quiz from '../components/Quiz';
+import ModuleNavigation from '../components/ModuleNavigation';
 
 
 interface Unit1Props {
@@ -268,11 +269,11 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
   const renderModule = () => {
     switch (currentModule) {
       case 1:
-        return <Module1_1 />;
+        return <Module1_1 setCurrentModule={setCurrentModule} onBack={onBack} />;
       case 2:
-        return <Module1_2 />;
+        return <Module1_2 setCurrentModule={setCurrentModule} onBack={onBack} />;
       case 3:
-        return <Module1_3 />;
+        return <Module1_3 setCurrentModule={setCurrentModule} onBack={onBack} />;
 
       case 999:
         return (
@@ -522,10 +523,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
             </div>
 
-            <div className="navigation-buttons">
-              <button onClick={() => setCurrentModule(2)} className="prev-module-btn">← Phonetics</button>
-              <button onClick={() => setCurrentModule(999)} className="next-module-btn">Morphology →</button>
-            </div>
+            <ModuleNavigation
+              unitId={1}
+              moduleId={3}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
           </div>
         );
 
@@ -795,10 +798,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
             </div>
 
-            <div className="navigation-buttons">
-              <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← Phonology</button>
-              <button onClick={() => setCurrentModule(5)} className="next-module-btn">Unit 1 Quiz →</button>
-            </div>
+            <ModuleNavigation
+              unitId={1}
+              moduleId={4}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
           </div>
         );
 
@@ -836,10 +841,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
             </div>
 
-            <div className="navigation-buttons">
-              <button onClick={() => setCurrentModule(4)} className="prev-module-btn">← Morphology</button>
-              <button onClick={onBack} className="next-module-btn">Back to Overview →</button>
-            </div>
+            <ModuleNavigation
+              unitId={1}
+              moduleId={5}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
           </div>
         );
 

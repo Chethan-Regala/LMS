@@ -1,61 +1,93 @@
-import clientPromise from "@/lib/db";
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { getDb } from "@/lib/db";
+
+// Embedded fallback timetable — avoids fs.readFileSync which can fail on Vercel
+const DEFAULT_TIMETABLE = {
+  MON: [
+    { time: "09:30 - 10:30", subject: "Integrated Session" },
+    { time: "10:30 - 11:30", subject: "Integrated Session" },
+    { time: "11:30 - 12:30", subject: "ES" },
+    { time: "12:30 - 01:15", subject: "Lunch Break", description: "Time to refuel and rest." },
+    { time: "01:15 - 02:15", subject: "NSS" },
+    { time: "02:15 - 03:15", subject: "OS" },
+    { time: "03:15 - 04:15", subject: "Free session" },
+  ],
+  TUE: [
+    { time: "09:30 - 10:30", subject: "Free Session" },
+    { time: "10:30 - 11:30", subject: "LS: PPHC" },
+    { time: "11:30 - 12:30", subject: "ES" },
+    { time: "12:30 - 01:15", subject: "Lunch Break", description: "Time to refuel and rest." },
+    { time: "01:15 - 02:15", subject: "LS: PPHC" },
+    { time: "02:15 - 03:15", subject: "Practice Session (DS)" },
+    { time: "03:15 - 04:15", subject: "Practice Session (DS)" },
+  ],
+  WED: [
+    { time: "09:30 - 10:30", subject: "DS" },
+    { time: "10:30 - 11:30", subject: "DS" },
+    { time: "11:30 - 12:30", subject: "NSS" },
+    { time: "12:30 - 01:15", subject: "Lunch Break", description: "Time to refuel and rest." },
+    { time: "01:15 - 02:15", subject: "NSS" },
+    { time: "02:15 - 03:15", subject: "Integrated Session" },
+    { time: "03:15 - 04:15", subject: "Integrated Session" },
+  ],
+  THU: [
+    { time: "09:30 - 10:30", subject: "LS: PPHC" },
+    { time: "10:30 - 11:30", subject: "FLAT" },
+    { time: "11:30 - 12:30", subject: "DS" },
+    { time: "12:30 - 01:15", subject: "Lunch Break", description: "Time to refuel and rest." },
+    { time: "01:15 - 02:15", subject: "FLAT" },
+    { time: "02:15 - 03:15", subject: "Practice Session (DS)" },
+    { time: "03:15 - 04:15", subject: "Practice Session (DS)" },
+  ],
+  FRI: [
+    { time: "09:30 - 10:30", subject: "Practice Session (DS)" },
+    { time: "10:30 - 11:30", subject: "Practice Session (DS)" },
+    { time: "11:30 - 12:30", subject: "FLAT" },
+    { time: "12:30 - 01:15", subject: "Lunch Break", description: "Time to refuel and rest." },
+    { time: "01:15 - 02:15", subject: "LS: PPHC" },
+    { time: "02:15 - 03:15", subject: "OS" },
+    { time: "03:15 - 04:15", subject: "OS" },
+  ],
+  SAT: [
+    { time: "09:30 - 10:30", subject: "Self Study" },
+    { time: "10:30 - 11:30", subject: "Project Work" },
+    { time: "11:30 - 12:30", subject: "Lab Practice" },
+    { time: "12:30 - 01:15", subject: "Lunch Break", description: "Time to refuel and rest." },
+    { time: "01:15 - 02:15", subject: "Extra Classes" },
+    { time: "02:15 - 03:15", subject: "Sports/Activities" },
+    { time: "03:15 - 04:15", subject: "Library" },
+  ],
+  SUN: [
+    { time: "09:30 - 10:30", subject: "Revision" },
+    { time: "10:30 - 11:30", subject: "Assignment Work" },
+    { time: "11:30 - 12:30", subject: "Online Courses" },
+    { time: "12:30 - 01:15", subject: "Lunch Break", description: "Time to refuel and rest." },
+    { time: "01:15 - 02:15", subject: "Group Study" },
+    { time: "02:15 - 03:15", subject: "Hobby/Recreation" },
+    { time: "03:15 - 04:15", subject: "Free Time" },
+  ],
+};
 
 export async function GET() {
   try {
-    const client = await clientPromise;
-    const db = client.db();
+    const db = await getDb();
     const timetable = await db.collection("timetable").findOne({ id: "main" });
 
     if (timetable?.schedule) {
-      const schedule = timetable.schedule;
-      let updated = false;
-
-      // Ensure every day has a Lunch Break inserted at the correct slot
-      Object.keys(schedule).forEach((day) => {
-        const sessions = schedule[day];
-        const hasLunch = sessions.some((p: any) => p.subject === "Lunch Break");
-        if (!hasLunch && sessions.length >= 3) {
-          // Insert Lunch Break after the 11:30 - 12:30 slot
-          sessions.splice(3, 0, {
-            "time": "12:30 - 01:15",
-            "subject": "Lunch Break",
-            "description": "Daily scheduled break for rest and lunch."
-          });
-          updated = true;
-        }
-      });
-
-      if (updated) {
-        await db.collection("timetable").updateOne(
-          { id: "main" },
-          { $set: { schedule } }
-        );
-      }
-      return NextResponse.json({ ok: true, data: schedule });
+      return NextResponse.json({ ok: true, data: timetable.schedule });
     }
 
-    // If no DB data, initialize from JSON
-    const jsonPath = path.join(process.cwd(), "public", "timetable.json");
-    const jsonData = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
-
+    // First time: seed MongoDB with default data
     await db.collection("timetable").updateOne(
       { id: "main" },
-      { $set: { schedule: jsonData } },
+      { $set: { schedule: DEFAULT_TIMETABLE } },
       { upsert: true }
     );
 
-    return NextResponse.json({ ok: true, data: jsonData });
+    return NextResponse.json({ ok: true, data: DEFAULT_TIMETABLE });
   } catch (err: any) {
-    try {
-      const fallbackPath = path.join(process.cwd(), "public", "timetable.json");
-      const fallbackData = JSON.parse(fs.readFileSync(fallbackPath, "utf-8"));
-      return NextResponse.json({ ok: true, data: fallbackData });
-    } catch (fallbackErr: any) {
-      return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
-    }
+    // If DB fails, return embedded fallback — app still works
+    return NextResponse.json({ ok: true, data: DEFAULT_TIMETABLE });
   }
 }
 
@@ -63,17 +95,25 @@ export async function PUT(req: Request) {
   try {
     const { schedule } = await req.json();
 
-    const client = await clientPromise;
-    const db = client.db();
+    if (!schedule || typeof schedule !== "object") {
+      return NextResponse.json(
+        { ok: false, error: "Invalid schedule data" },
+        { status: 400 }
+      );
+    }
 
+    const db = await getDb();
     await db.collection("timetable").updateOne(
       { id: "main" },
-      { $set: { schedule } },
+      { $set: { schedule, updatedAt: new Date() } },
       { upsert: true }
     );
 
     return NextResponse.json({ ok: true });
   } catch (err: any) {
-    return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
+    return NextResponse.json(
+      { ok: false, error: err.message },
+      { status: 500 }
+    );
   }
 }

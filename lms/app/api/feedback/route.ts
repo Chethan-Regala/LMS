@@ -1,40 +1,51 @@
 import { NextResponse } from "next/server";
-import clientPromise from "@/lib/db";
+import { getDb } from "@/lib/db";
 
 export async function POST(req: Request) {
   try {
     const { message } = await req.json();
-    const client = await clientPromise;
-    const db = client.db("lms");
-    
+
+    if (!message || typeof message !== "string" || message.trim().length === 0) {
+      return NextResponse.json(
+        { error: "Message is required" },
+        { status: 400 }
+      );
+    }
+
+    const db = await getDb("lms");
+
     await db.collection("feedback").insertOne({
-      message,
+      message: message.trim(),
       createdAt: new Date(),
-      expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000)
+      expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
     });
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json({ error: "Failed to submit feedback" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to submit feedback" },
+      { status: 500 }
+    );
   }
 }
 
 export async function GET() {
   try {
-    const client = await clientPromise;
-    const db = client.db("lms");
-    
-    await db.collection("feedback").deleteMany({
-      expiresAt: { $lt: new Date() }
-    });
+    const db = await getDb("lms");
 
-    const feedback = await db.collection("feedback")
-      .find({})
+    // TTL index handles cleanup automatically, but also clean up manually as backup
+    const feedback = await db
+      .collection("feedback")
+      .find({ expiresAt: { $gt: new Date() } })
       .sort({ createdAt: -1 })
+      .project({ expiresAt: 0 }) // Don't send internal TTL field to client
       .toArray();
 
     return NextResponse.json(feedback);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch feedback" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch feedback" },
+      { status: 500 }
+    );
   }
 }

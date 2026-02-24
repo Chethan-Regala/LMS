@@ -2,14 +2,21 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Quiz from '../components/Quiz';
+import ModuleNavigation from '../components/ModuleNavigation';
 import Module2_1 from './unit2-modules/Module2_1';
 import Module2_2 from './unit2-modules/Module2_2';
 import Module2_3 from './unit2-modules/Module2_3';
 
-const Unit2: React.FC = () => {
+interface Unit2Props {
+  currentModule: number;
+  setCurrentModule: (module: number) => void;
+  onBack: () => void;
+}
+
+const Unit2: React.FC<Unit2Props> = ({ currentModule: propModule, setCurrentModule: propSetModule, onBack: propOnBack }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [currentModule, setCurrentModuleState] = useState<number>(1);
+  const [currentModule, setCurrentModuleState] = useState<number>(propModule || 1);
 
   const module1Quiz = [
     { question: "What is the primary focus of syntax in linguistics?", options: ["Study of meaning in language", "Study of sound systems", "Study of sentence structure and word arrangement", "Study of language acquisition"], correctAnswer: 2, explanation: "" },
@@ -55,29 +62,43 @@ const Unit2: React.FC = () => {
   };
 
   useEffect(() => {
-    const moduleParam = searchParams?.get('module');
-    const idx = parseModuleParam(moduleParam);
-    setCurrentModuleState(idx);
+    if (propModule) {
+      setCurrentModuleState(propModule);
+    } else {
+      const moduleParam = searchParams?.get('module');
+      const idx = parseModuleParam(moduleParam);
+      setCurrentModuleState(idx);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
+  }, [searchParams, propModule]);
 
   const setCurrentModule = (m: number) => {
     setCurrentModuleState(m);
-    router.push(`/ls?module=2.${m}`);
+    if (propSetModule) {
+      propSetModule(m);
+    } else {
+      router.push(`/pages/ls?module=2.${m}`);
+    }
   };
 
-  const onBack = () => router.push('/ls');
+  const onBack = () => {
+    if (propOnBack) {
+      propOnBack();
+    } else {
+      router.push('/pages/ls');
+    }
+  };
 
   const renderModule = () => {
     switch (currentModule) {
       case 1:
-        return <Module2_1 />;
+        return <Module2_1 setCurrentModule={setCurrentModule} onBack={onBack} />;
 
       case 2:
-        return <Module2_2 />;
+        return <Module2_2 setCurrentModule={setCurrentModule} onBack={onBack} />;
 
       case 3:
-        return <Module2_3 />;
+        return <Module2_3 setCurrentModule={setCurrentModule} onBack={onBack} />;
 
       case 4:
         return (
@@ -104,10 +125,12 @@ const Unit2: React.FC = () => {
               </ul>
             </div>
 
-            <div className="navigation-buttons">
-              <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← Language Typology</button>
-              <button onClick={onBack} className="next-module-btn">Back to Overview →</button>
-            </div>
+            <ModuleNavigation
+              unitId={2}
+              moduleId={4}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
           </div>
         );
 

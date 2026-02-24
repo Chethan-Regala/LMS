@@ -1,17 +1,32 @@
-import clientPromise from "@/lib/db";
 import { NextResponse } from "next/server";
+import { getDb } from "@/lib/db";
 
 export async function DELETE(req: Request) {
   try {
     const { email } = await req.json();
-    
-    const client = await clientPromise;
-    const db = client.db();
-    
-    await db.collection("users").deleteOne({ email });
-    
+
+    if (!email) {
+      return NextResponse.json(
+        { ok: false, error: "Email is required" },
+        { status: 400 }
+      );
+    }
+
+    const db = await getDb();
+    const result = await db.collection("users").deleteOne({ email });
+
+    if (result.deletedCount === 0) {
+      return NextResponse.json(
+        { ok: false, error: "User not found" },
+        { status: 404 }
+      );
+    }
+
     return NextResponse.json({ ok: true });
   } catch (err: any) {
-    return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
+    return NextResponse.json(
+      { ok: false, error: err.message },
+      { status: 500 }
+    );
   }
 }

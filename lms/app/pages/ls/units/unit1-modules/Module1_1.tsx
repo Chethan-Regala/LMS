@@ -92,7 +92,12 @@ const module1Quiz = [
   }
 ];
 
-const Module1_1: React.FC = () => {
+interface Module1_1Props {
+  setCurrentModule: (module: number) => void;
+  onBack: () => void;
+}
+
+const Module1_1: React.FC<Module1_1Props> = ({ setCurrentModule, onBack }) => {
   const [openCollapsible, setOpenCollapsible] = useState<string | null>(null);
   const mermaidRef = useRef<HTMLDivElement>(null);
 
@@ -1039,7 +1044,7 @@ graph TD
               <div className="video-container">
                 <iframe
                   src="https://www.youtube.com/embed/3yLXNzDUH58"
-                  allowFullScreen=""
+                  allowFullScreen
                   title="What is Linguistics?"
                 />
               </div>
@@ -1057,7 +1062,7 @@ graph TD
               <div className="video-container">
                 <iframe
                   src="https://www.youtube.com/embed/xVnMFCHfFiY"
-                  allowFullScreen=""
+                  allowFullScreen
                   title="Branches of Linguistics"
                 />
               </div>
@@ -1075,7 +1080,7 @@ graph TD
               <div className="video-container">
                 <iframe
                   src="https://www.youtube.com/embed/DWCOCpCKKyE"
-                  allowFullScreen=""
+                  allowFullScreen
                   title="Linguistics Sub-fields Overview"
                 />
               </div>

@@ -1,8 +1,14 @@
 'use client';
 import React from 'react';
 import Quiz from '../../components/Quiz';
+import ModuleNavigation from '../../components/ModuleNavigation';
 
-const Module2_2: React.FC = () => {
+interface Module2_2Props {
+  setCurrentModule?: (id: number) => void;
+  onBack?: () => void;
+}
+
+const Module2_2: React.FC<Module2_2Props> = ({ setCurrentModule = () => { }, onBack }) => {
   return (
     <>
       <style jsx>{`
@@ -541,7 +547,7 @@ const Module2_2: React.FC = () => {
             <div className="exam-question">
               <h4>Question 1: Short Answer<span className="marks">5 Marks</span></h4>
               <p>Define semantics and distinguish between denotation and connotation with appropriate examples.</p>
-              <button className="toggle-answer" onClick={() => document.getElementById('answer1').style.display = document.getElementById('answer1').style.display === 'none' ? 'block' : 'none'}>Show Model Answer</button>
+              <button className="toggle-answer" onClick={() => { const el = document.getElementById('answer1'); if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none'; }}>Show Model Answer</button>
               <div className="model-answer" id="answer1">
                 <strong>Model Answer:</strong><br /><br />
                 <strong>Definition of Semantics (2 marks):</strong><br />
@@ -562,7 +568,7 @@ const Module2_2: React.FC = () => {
                 (c) flower / rose / tulip<br />
                 (d) wheel / car / engine
               </p>
-              <button className="toggle-answer" onClick={() => document.getElementById('answer2').style.display = document.getElementById('answer2').style.display === 'none' ? 'block' : 'none'}>Show Model Answer</button>
+              <button className="toggle-answer" onClick={() => { const el = document.getElementById('answer2'); if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none'; }}>Show Model Answer</button>
               <div className="model-answer" id="answer2">
                 <strong>Model Answer:</strong><br /><br />
                 <strong>(a) begin / commence / start (2 marks):</strong><br />
@@ -584,7 +590,7 @@ const Module2_2: React.FC = () => {
                 (b) "The baby broke the vase with a spoon."
               </p>
               <p>For each sentence, identify: (i) semantic features of key nouns, and (ii) semantic roles of all noun phrases.</p>
-              <button className="toggle-answer" onClick={() => document.getElementById('answer3').style.display = document.getElementById('answer3').style.display === 'none' ? 'block' : 'none'}>Show Model Answer</button>
+              <button className="toggle-answer" onClick={() => { const el = document.getElementById('answer3'); if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none'; }}>Show Model Answer</button>
               <div className="model-answer" id="answer3">
                 <strong>Model Answer:</strong><br /><br />
                 <strong>Sentence (a): "The teacher gave a book to the student." (5 marks)</strong><br /><br />
@@ -611,7 +617,7 @@ const Module2_2: React.FC = () => {
             <div className="exam-question">
               <h4>Question 4: Essay<span className="marks">15 Marks</span></h4>
               <p>"Truth-conditional semantics provides the most rigorous framework for analyzing sentence meaning, but it has significant limitations." Discuss this statement with reference to the principles of truth-conditional semantics and at least three limitations of this approach.</p>
-              <button className="toggle-answer" onClick={() => document.getElementById('answer4').style.display = document.getElementById('answer4').style.display === 'none' ? 'block' : 'none'}>Show Model Answer</button>
+              <button className="toggle-answer" onClick={() => { const el = document.getElementById('answer4'); if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none'; }}>Show Model Answer</button>
               <div className="model-answer" id="answer4">
                 <strong>Model Answer:</strong><br /><br />
                 <strong>Introduction (2 marks):</strong><br />
@@ -719,6 +725,13 @@ const Module2_2: React.FC = () => {
           subject="LS"
           unitId={2}
           moduleId={2}
+        />
+
+        <ModuleNavigation
+          unitId={2}
+          moduleId={2}
+          setCurrentModule={setCurrentModule}
+          onBack={onBack}
         />
       </div>
     </>

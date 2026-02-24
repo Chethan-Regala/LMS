@@ -1,8 +1,14 @@
 'use client';
 import React, { useEffect } from 'react';
 import Quiz from '../../components/Quiz';
+import ModuleNavigation from '../../components/ModuleNavigation';
 
-const Module2_1: React.FC = () => {
+interface Module2_1Props {
+  setCurrentModule?: (id: number) => void;
+  onBack?: () => void;
+}
+
+const Module2_1: React.FC<Module2_1Props> = ({ setCurrentModule = () => { }, onBack }) => {
   useEffect(() => {
     const handleCollapsible = () => {
       const collapsibles = document.querySelectorAll('.collapsible');
@@ -1445,6 +1451,13 @@ const Module2_1: React.FC = () => {
           subject="LS"
           unitId={2}
           moduleId={1}
+        />
+
+        <ModuleNavigation
+          unitId={2}
+          moduleId={1}
+          setCurrentModule={setCurrentModule}
+          onBack={onBack}
         />
       </div>
     </>

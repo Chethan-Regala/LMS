@@ -1,7 +1,5 @@
 'use client';
 import React from 'react';
-import Quiz from '../components/Quiz';
-import CompletionButton from '@/components/CompletionButton';
 import Module1_1 from './unit1-modules/Module1_1';
 import Module1_2 from './unit1-modules/Module1_2';
 import Module1_3 from './unit1-modules/Module1_3';
@@ -43,11 +41,6 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule }) => {
   return (
     <div className="unit-container">
       {renderModule()}
-      <CompletionButton
-        subject="ES"
-        unitId={1}
-        moduleId={currentModule}
-      />
       <div className="navigation-buttons" style={{ marginTop: '40px', marginBottom: '40px' }}>
         {currentModule > 1 && (
           <button onClick={() => setCurrentModule(currentModule - 1)} className="prev-module-btn" style={{ fontWeight: 'bold' }}>
