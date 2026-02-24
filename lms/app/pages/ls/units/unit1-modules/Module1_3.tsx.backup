@@ -1,0 +1,4262 @@
+import React, { useEffect } from 'react';
+
+const Module1_3: React.FC = () => {
+  useEffect(() => {
+    const handleCollapsible = () => {
+      const collapsibles = document.querySelectorAll('.collapsible');
+      collapsibles.forEach((button) => {
+        const handleClick = function(this: HTMLElement) {
+          this.classList.toggle('active');
+          const content = this.nextElementSibling as HTMLElement;
+          if (content && content.classList.contains('collapsible-content')) {
+            if (content.style.maxHeight) {
+              content.style.maxHeight = '';
+            } else {
+              content.style.maxHeight = content.scrollHeight + 'px';
+            }
+          }
+        };
+        button.removeEventListener('click', handleClick as any);
+        button.addEventListener('click', handleClick as any);
+      });
+    };
+
+    handleCollapsible();
+    const timer = setTimeout(handleCollapsible, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="container">
+  {/* ==================== HEADER ==================== */}
+  <div className="header">
+    <div className="breadcrumb">
+      📚 Principles and Practices of Human Communication &gt; UNIT-1: Introduction to Language and Linguistics
+    </div>
+    <h1>
+      Morphology: The Study of Word Structure
+    </h1>
+    <div className="meta-info">
+      <div className="meta-card">
+        <div className="meta-icon">
+          ⏱️
+        </div>
+        <div className="meta-content">
+          <strong>
+            Estimated Time
+          </strong>
+          <span>
+            75-90 minutes
+          </span>
+        </div>
+      </div>
+      <div className="meta-card">
+        <div className="meta-icon">
+          📊
+        </div>
+        <div className="meta-content">
+          <strong>
+            Difficulty
+          </strong>
+          <span>
+            Beginner to Intermediate
+          </span>
+        </div>
+      </div>
+      <div className="meta-card">
+        <div className="meta-icon">
+          🎯
+        </div>
+        <div className="meta-content">
+          <strong>
+            Prerequisites
+          </strong>
+          <span>
+            Phonetics, Basic Linguistics
+          </span>
+        </div>
+      </div>
+      <div className="meta-card">
+        <div className="meta-icon">
+          ✅
+        </div>
+        <div className="meta-content">
+          <strong>
+            Pass Score
+          </strong>
+          <span>
+            70% or higher
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/* ==================== SECTION 1: OVERVIEW & MOTIVATION ==================== */}
+  <div className="section" id="overview">
+    <h2 className="section-title">
+      <span className="section-icon">
+        🎯
+      </span>
+      What You'll Master
+    </h2>
+    <div className="objectives-box">
+      <h3>
+        Learning Objectives
+      </h3>
+      <ul className="objectives-list">
+        <li>
+          Define morphology and explain its significance in linguistic analysis, distinguishing it from other levels of linguistic study such as phonology and syntax.
+        </li>
+        <li>
+          Identify and classify morphemes into free vs. bound, and lexical vs. functional categories with 90% accuracy in given word examples.
+        </li>
+        <li>
+          Differentiate between inflectional and derivational morphemes, explaining how each type affects word meaning and grammatical function.
+        </li>
+        <li>
+          Analyze complex words by breaking them down into their constituent morphemes and constructing morphological trees to represent hierarchical structure.
+        </li>
+        <li>
+          Apply morphological analysis skills to identify word formation processes including affixation, compounding, and conversion in English and other languages.
+        </li>
+      </ul>
+    </div>
+    <h3 className="subsection-title">
+      🔥 Why This Topic Matters
+    </h3>
+    <p>
+      Imagine you're reading a book and encounter the word "antidisestablishmentarianism." At first glance, it looks impossibly long and complex. But what if I told you this 28-letter word is actually built from just six smaller, meaningful pieces? This is the magic of morphology—the study of how words are constructed from smaller units of meaning.
+    </p>
+    <p>
+      Morphology is everywhere in our daily lives. When you add an "-s" to make a noun plural, when you add "-ed" to show past tense, or when you transform "happy" into "unhappiness," you're using morphological rules. Understanding morphology helps you decode unfamiliar words, appreciate the systematic nature of language, and recognize patterns across different languages.
+    </p>
+    <p>
+      For students of communication and linguistics, morphology is fundamental because it bridges the gap between sounds (phonology) and sentences (syntax). It explains how languages create new words, how children acquire vocabulary so rapidly, and why some languages have complex word structures while others keep words simple. Whether you're studying language teaching, translation, speech therapy, or computational linguistics, morphology provides essential analytical tools.
+    </p>
+    <div className="alert alert-success">
+      <strong>
+        💡 Real-World Applications:
+      </strong>
+      <ul style={{ 'marginTop': '10px', 'marginLeft': '20px' }}>
+        <li>
+          <strong>
+            Language Teaching:
+          </strong>
+          ESL instructors use morphological analysis to help learners decode unfamiliar vocabulary by recognizing prefixes, suffixes, and roots.
+        </li>
+        <li>
+          <strong>
+            Speech Therapy:
+          </strong>
+          Pathologists analyze morpheme acquisition in children to identify language development delays.
+        </li>
+        <li>
+          <strong>
+            Computational Linguistics:
+          </strong>
+          Natural language processing systems use morphological parsers to understand word forms in search engines and AI.
+        </li>
+        <li>
+          <strong>
+            Lexicography:
+          </strong>
+          Dictionary compilers rely on morphological principles to organize entries and define word families.
+        </li>
+      </ul>
+    </div>
+    {/* Visual: Word Structure Example */}
+    <div className="diagram-container">
+      <h4>
+        Visual Representation: Breaking Down a Complex Word
+      </h4>
+      <svg width="900" height="350" xmlns="http://www.w3.org/2000/svg">
+        {/* Background */}
+        <rect x="0" y="0" width="900" height="350" fill="#f8f9fa" />
+        {/* Title */}
+        <text x="450" y="30" text-anchor="middle" fill="#2c3e50" font-size="18" font-weight="bold">
+          antidisestablishmentarianism
+        </text>
+        {/* Main word box */}
+        <rect x="50" y="50" width="800" height="50" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="5" />
+        <text x="450" y="82" text-anchor="middle" fill="#1565c0" font-size="16" font-family="monospace">
+          anti + dis + establish + ment + arian + ism
+        </text>
+        {/* Morpheme breakdown */}
+        {/* anti */}
+        <rect x="50" y="120" width="100" height="60" fill="#ffebee" stroke="#e53935" stroke-width="2" rx="5" />
+        <text x="100" y="145" text-anchor="middle" fill="#c62828" font-size="14" font-weight="bold">
+          anti-
+        </text>
+        <text x="100" y="165" text-anchor="middle" fill="#c62828" font-size="11">
+          (against)
+        </text>
+        {/* dis */}
+        <rect x="160" y="120" width="100" height="60" fill="#fff3e0" stroke="#fb8c00" stroke-width="2" rx="5" />
+        <text x="210" y="145" text-anchor="middle" fill="#ef6c00" font-size="14" font-weight="bold">
+          dis-
+        </text>
+        <text x="210" y="165" text-anchor="middle" fill="#ef6c00" font-size="11">
+          (remove)
+        </text>
+        {/* establish */}
+        <rect x="270" y="120" width="140" height="60" fill="#e8f5e9" stroke="#43a047" stroke-width="2" rx="5" />
+        <text x="340" y="145" text-anchor="middle" fill="#2e7d32" font-size="14" font-weight="bold">
+          establish
+        </text>
+        <text x="340" y="165" text-anchor="middle" fill="#2e7d32" font-size="11">
+          (root: to set up)
+        </text>
+        {/* ment */}
+        <rect x="420" y="120" width="100" height="60" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2" rx="5" />
+        <text x="470" y="145" text-anchor="middle" fill="#1565c0" font-size="14" font-weight="bold">
+          -ment
+        </text>
+        <text x="470" y="165" text-anchor="middle" fill="#1565c0" font-size="11">
+          (noun-forming)
+        </text>
+        {/* arian */}
+        <rect x="530" y="120" width="100" height="60" fill="#f3e5f5" stroke="#8e24aa" stroke-width="2" rx="5" />
+        <text x="580" y="145" text-anchor="middle" fill="#6a1b9a" font-size="14" font-weight="bold">
+          -arian
+        </text>
+        <text x="580" y="165" text-anchor="middle" fill="#6a1b9a" font-size="11">
+          (person)
+        </text>
+        {/* ism */}
+        <rect x="640" y="120" width="100" height="60" fill="#e0f2f1" stroke="#00897b" stroke-width="2" rx="5" />
+        <text x="690" y="145" text-anchor="middle" fill="#00695c" font-size="14" font-weight="bold">
+          -ism
+        </text>
+        <text x="690" y="165" text-anchor="middle" fill="#00695c" font-size="11">
+          (doctrine)
+        </text>
+        {/* Connecting lines */}
+        <line x1="100" y1="180" x2="100" y2="200" stroke="#666" stroke-width="2" />
+        <line x1="210" y1="180" x2="210" y2="200" stroke="#666" stroke-width="2" />
+        <line x1="340" y1="180" x2="340" y2="200" stroke="#666" stroke-width="2" />
+        <line x1="470" y1="180" x2="470" y2="200" stroke="#666" stroke-width="2" />
+        <line x1="580" y1="180" x2="580" y2="200" stroke="#666" stroke-width="2" />
+        <line x1="690" y1="180" x2="690" y2="200" stroke="#666" stroke-width="2" />
+        {/* Category labels */}
+        <line x1="100" y1="200" x2="690" y2="200" stroke="#666" stroke-width="2" />
+        <text x="155" y="225" text-anchor="middle" fill="#555" font-size="12">
+          PREFIXES
+        </text>
+        <text x="405" y="225" text-anchor="middle" fill="#555" font-size="12">
+          ROOT
+        </text>
+        <text x="610" y="225" text-anchor="middle" fill="#555" font-size="12">
+          SUFFIXES
+        </text>
+        {/* Meaning */}
+        <rect x="150" y="250" width="600" height="70" fill="#fffde7" stroke="#fbc02d" stroke-width="2" rx="5" />
+        <text x="450" y="275" text-anchor="middle" fill="#f57f17" font-size="14" font-weight="bold">
+          Complete Meaning:
+        </text>
+        <text x="450" y="300" text-anchor="middle" fill="#f57f17" font-size="13">
+          "The doctrine/opposition of those against removing the established church"
+        </text>
+      </svg>
+      <p className="diagram-caption">
+        Figure 1: Morphological decomposition of "antidisestablishmentarianism" showing how six morphemes combine to create meaning
+      </p>
+    </div>
+  </div>
+  {/* ==================== SECTION 2: UNDERSTANDING THE CONCEPT ==================== */}
+  <div className="section" id="theory">
+    <h2 className="section-title">
+      <span className="section-icon">
+        📖
+      </span>
+      Deep Dive: Understanding Morphology
+    </h2>
+    <h3 className="subsection-title">
+      Definition & Fundamentals
+    </h3>
+    <p>
+      <strong>
+        Morphology
+      </strong>
+      (from Greek
+      <em>
+        morphe
+      </em>
+      = "form" +
+      <em>
+        logos
+      </em>
+      = "study") is the branch of linguistics that studies the internal structure of words and how words are formed from smaller meaningful units called
+      <strong>
+        morphemes
+      </strong>
+      . While phonology deals with sounds and syntax deals with sentence structure, morphology occupies the crucial middle ground, examining how meaningful units combine to create the words we use every day.
+    </p>
+    <p>
+      A
+      <strong>
+        morpheme
+      </strong>
+      is defined as the smallest unit of language that carries meaning. Unlike syllables, which are purely phonological units, morphemes are the building blocks of meaning. The word "cats" has two syllables (cat-s) but also two morphemes: "cat" (the root meaning a feline animal) and "-s" (the plural marker indicating more than one). Neither "ca" nor "ts" carries independent meaning, so they are not morphemes—they're just syllable divisions.
+    </p>
+    <p>
+      Morphology exists because languages need to expand their vocabulary efficiently. Instead of creating entirely new words for every concept, languages use morphological processes to build new words from existing components. This systematic approach allows speakers to understand unfamiliar words by recognizing familiar parts. When you first hear "unfriendliness," you can deduce its meaning by recognizing "un-" (not), "friend" (companion), "-ly" (characteristic of), and "-ness" (state of being).
+    </p>
+    <div className="alert alert-info">
+      <strong>
+        📌 Key Terminology:
+      </strong>
+      <ul style={{ 'marginTop': '10px', 'marginLeft': '20px' }}>
+        <li>
+          <span className="term">
+            Morpheme
+          </span>
+          : The smallest meaningful unit in a language; cannot be divided into smaller meaningful parts.
+        </li>
+        <li>
+          <span className="term">
+            Root/Stem
+          </span>
+          : The core morpheme that carries the primary lexical meaning of a word; the part to which affixes attach.
+        </li>
+        <li>
+          <span className="term">
+            Affix
+          </span>
+          : A bound morpheme attached to a root or stem, including prefixes (before), suffixes (after), infixes (within), and circumfixes (around).
+        </li>
+        <li>
+          <span className="term">
+            Allomorph
+          </span>
+          : A variant form of a morpheme that appears in specific phonological or morphological contexts (e.g., /s/, /z/, and /ɪz/ are allomorphs of the plural morpheme).
+        </li>
+        <li>
+          <span className="term">
+            Morphological Rule
+          </span>
+          : A systematic pattern governing how morphemes combine to form words in a particular language.
+        </li>
+      </ul>
+    </div>
+    {/* Visual: Types of Morphemes */}
+    <div className="diagram-container">
+      <h4>
+        Classification of Morphemes
+      </h4>
+      <div style={{ padding: '20px', background: '#f8f9fa', borderRadius: '8px' }}>
+        <p><strong>Morpheme Classification:</strong></p>
+        <ul style={{ marginLeft: '20px' }}>
+          <li><strong>Free Morphemes:</strong> Can stand alone (cat, run, happy)</li>
+          <li><strong>Bound Morphemes:</strong> Must attach to other morphemes (-s, -ed, un-)</li>
+          <li><strong>Derivational:</strong> Change word class/meaning (un-, -ness, -ly)</li>
+          <li><strong>Inflectional:</strong> Add grammatical information (-s plural, -ed past)</li>
+        </ul>
+      </div>
+      <p className="diagram-caption">
+        Figure 2: Hierarchical classification of morphemes in English
+      </p>
+    </div>
+    <h3 className="subsection-title">
+      How It Works: The Mechanism of Word Formation
+    </h3>
+    <p>
+      Word formation in morphology follows systematic patterns that speakers internalize as part of their linguistic competence. The process begins with identifying the root morpheme—the semantic core of the word. From there, speakers apply morphological rules to add affixes in a specific order, creating increasingly complex words.
+    </p>
+    <p>
+      Consider the word "unhappiness." The formation process follows a hierarchical structure:
+    </p>
+    <p>
+      <strong>
+        Step 1: Root Selection
+      </strong>
+      - We start with the root "happy," an adjective describing a positive emotional state.
+    </p>
+    <p>
+      <strong>
+        Step 2: First Affixation
+      </strong>
+      - We add the prefix "un-" to create "unhappy." This derivational prefix changes the meaning to its opposite (not happy) while maintaining the adjective category.
+    </p>
+    <p>
+      <strong>
+        Step 3: Second Affixation
+      </strong>
+      - We add the suffix "-ness" to create "unhappiness." This derivational suffix changes the word class from adjective to noun, creating an abstract noun meaning "the state of being unhappy."
+    </p>
+    <p>
+      The order matters significantly. We cannot say "happinessun" or "nessunhappy" because English morphological rules specify that prefixes attach before suffixes, and certain affixes must attach directly to specific word classes. This hierarchical structure can be represented in a morphological tree, showing that "un-" attaches to "happy" first, and then "-ness" attaches to the resulting word "unhappy."
+    </p>
+    <p>
+      <strong>
+        Analogy for Understanding:
+      </strong>
+      Think of word formation like building with LEGO blocks. The root is your base piece—the foundation. Affixes are specialized pieces that attach to the base in specific ways. You can't just attach pieces randomly; they must connect properly. A prefix is like adding a piece to the front of your structure, while a suffix attaches to the back. The order of attachment matters—just as you can't put the roof on a house before building the walls, you can't add certain affixes before others are in place.
+    </p>
+    {/* Visual: Morphological Tree */}
+    <div className="diagram-container">
+      <h4>
+        Morphological Tree Structure
+      </h4>
+      <svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
+        {/* Background */}
+        <rect x="0" y="0" width="700" height="400" fill="#f8f9fa" />
+        {/* Tree for "unhappiness" */}
+        <text x="350" y="30" text-anchor="middle" fill="#2c3e50" font-size="18" font-weight="bold">
+          unhappiness
+        </text>
+        {/* Top level N */}
+        <circle cx="350" cy="60" r="20" fill="#667eea" stroke="#2980b9" stroke-width="2" />
+        <text x="350" y="67" text-anchor="middle" fill="white" font-size="16" font-weight="bold">
+          N
+        </text>
+        {/* Lines from N */}
+        <line x1="350" y1="80" x2="250" y2="140" stroke="#34495e" stroke-width="2" />
+        <line x1="350" y1="80" x2="450" y2="140" stroke="#34495e" stroke-width="2" />
+        {/* Left branch: unhappy (Adj) */}
+        <circle cx="250" cy="160" r="25" fill="#3498db" stroke="#2980b9" stroke-width="2" />
+        <text x="250" y="167" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+          Adj
+        </text>
+        {/* Right branch: ness */}
+        <rect x="420" y="140" width="60" height="40" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5" />
+        <text x="450" y="165" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+          -ness
+        </text>
+        {/* Lines from Adj */}
+        <line x1="250" y1="185" x2="180" y2="250" stroke="#34495e" stroke-width="2" />
+        <line x1="250" y1="185" x2="320" y2="250" stroke="#34495e" stroke-width="2" />
+        {/* Left: un- prefix */}
+        <rect x="140" y="250" width="80" height="40" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5" />
+        <text x="180" y="275" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+          un-
+        </text>
+        {/* Right: happy root */}
+        <rect x="280" y="250" width="80" height="40" fill="#2ecc71" stroke="#27ae60" stroke-width="2" rx="5" />
+        <text x="320" y="275" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+          happy
+        </text>
+        {/* Labels */}
+        <text x="180" y="320" text-anchor="middle" fill="#666" font-size="12">
+          (prefix: not)
+        </text>
+        <text x="320" y="320" text-anchor="middle" fill="#666" font-size="12">
+          (root: joyful)
+        </text>
+        <text x="450" y="210" text-anchor="middle" fill="#666" font-size="12">
+          (suffix: state of)
+        </text>
+        {/* Legend */}
+        <rect x="50" y="340" width="600" height="50" fill="#fff" stroke="#ddd" stroke-width="1" rx="5" />
+        <text x="70" y="360" fill="#2c3e50" font-size="12" font-weight="bold">
+          Legend:
+        </text>
+        <circle cx="150" cy="365" r="10" fill="#667eea" />
+        <text x="170" y="370" fill="#666" font-size="11">
+          Noun category
+        </text>
+        <circle cx="280" cy="365" r="10" fill="#3498db" />
+        <text x="300" y="370" fill="#666" font-size="11">
+          Adjective category
+        </text>
+        <rect x="400" y="355" width="20" height="20" fill="#e74c3c" rx="3" />
+        <text x="430" y="370" fill="#666" font-size="11">
+          Affix (bound morpheme)
+        </text>
+        <rect x="530" y="355" width="20" height="20" fill="#2ecc71" rx="3" />
+        <text x="560" y="370" fill="#666" font-size="11">
+          Root (free morpheme)
+        </text>
+      </svg>
+      <p className="diagram-caption">
+        Figure 3: Morphological tree showing the hierarchical structure of "unhappiness"
+      </p>
+    </div>
+    <h3 className="subsection-title">
+      Key Components: Types of Morphemes
+    </h3>
+    <p>
+      <strong>
+        1. Free Morphemes
+      </strong>
+    </p>
+    <p>
+      Free morphemes can stand alone as independent words. They carry complete meaning without needing to attach to other morphemes. English has thousands of free morphemes, including content words like "book," "run," "blue," and "think." Free morphemes divide into two subcategories:
+      <strong>
+        lexical morphemes
+      </strong>
+      (content words that carry the main meaning—nouns, verbs, adjectives, adverbs) and
+      <strong>
+        functional morphemes
+      </strong>
+      (grammatical words that provide structure—articles, prepositions, conjunctions, pronouns). For example, "the," "and," "in," and "she" are all free morphemes because they can function as independent words, even though they don't carry rich semantic content.
+    </p>
+    <p>
+      <strong>
+        2. Bound Morphemes
+      </strong>
+    </p>
+    <p>
+      Bound morphemes cannot stand alone as independent words. They must attach to other morphemes to convey meaning. All affixes (prefixes, suffixes, infixes, circumfixes) are bound morphemes. The plural "-s," past tense "-ed," comparative "-er," and prefixes like "un-," "re-," and "pre-" are all bound because saying just "-s" or "un-" alone doesn't communicate a complete concept. Some languages also have
+      <strong>
+        bound roots
+      </strong>
+      —roots that cannot stand alone. In English, "ceive" (as in "receive," "perceive," "conceive") is a bound root from Latin that never appears independently.
+    </p>
+    <p>
+      <strong>
+        3. Derivational Morphemes
+      </strong>
+    </p>
+    <p>
+      Derivational morphemes create new words by changing either the meaning, the word class (part of speech), or both. When you add "-ness" to "happy" (adjective), you create "happiness" (noun)—the word class changes. When you add "un-" to "happy," you create "unhappy" with the opposite meaning, but it remains an adjective. Derivational affixes typically apply before inflectional affixes, and they often have more specific, less predictable meanings than inflectional affixes. Each derivational affix can only attach to specific word classes: "-ness" attaches to adjectives, "-ly" can attach to adjectives or nouns, and "un-" primarily attaches to adjectives.
+    </p>
+    <p>
+      <strong>
+        4. Inflectional Morphemes
+      </strong>
+    </p>
+    <p>
+      Inflectional morphemes do not change the word class or create new words; they only add grammatical information required by the syntactic context. English has only eight inflectional morphemes: plural "-s" (cats), possessive "-'s" (cat's), third person singular present "-s" (runs), past tense "-ed" (walked), progressive "-ing" (walking), past participle "-en" (eaten), comparative "-er" (faster), and superlative "-est" (fastest). Unlike derivational morphemes, inflectional morphemes are very regular in meaning and application, and they always appear at the very end of a word (after any derivational affixes).
+    </p>
+    {/* Visual: Inflectional vs Derivational */}
+    <div className="image-grid">
+      <div className="image-card">
+        <img src="https://kimi-web-img.moonshot.cn/img/jenniferfindley.com/3dd57c85de77216c039ee12dbdc0449f3b560c23.png" alt="Inflectional and Derivational Morphemes Chart" className="content-image" />
+        <p className="image-caption">
+          Inflectional vs. Derivational Morphemes Comparison
+        </p>
+      </div>
+      <div className="image-card">
+        <img src="https://kimi-web-img.moonshot.cn/img/semanticsmorphology.weebly.com/6dff67f75925074410741ea864d31d5dfef1d57c.png" alt="English Inflectional Morphemes Table" className="content-image" />
+        <p className="image-caption">
+          English Inflectional Morphemes with Examples
+        </p>
+      </div>
+    </div>
+    <h3 className="subsection-title">
+      Real-World Implementation: Morphology Across Languages
+    </h3>
+    <p>
+      Different languages employ morphology to varying degrees. Linguists classify languages based on their morphological complexity:
+    </p>
+    <p>
+      <strong>
+        Isolating/Analytic Languages
+      </strong>
+      (like Mandarin Chinese and Vietnamese) use very few morphemes per word. Words typically remain in their root form, and grammatical relationships are shown through word order and separate particles rather than affixation. A Mandarin sentence might use separate words for "I," "eat," "rice," and "finished" rather than inflecting a verb for tense.
+    </p>
+    <p>
+      <strong>
+        Fusional Languages
+      </strong>
+      (like Spanish, Russian, and Arabic) pack multiple grammatical meanings into single morphemes. A Spanish verb ending like "-aron" in "hablaron" (they spoke) simultaneously encodes past tense, third person, plural, and indicative mood—all in one suffix.
+    </p>
+    <p>
+      <strong>
+        Agglutinative Languages
+      </strong>
+      (like Turkish, Finnish, and Japanese) string together many morphemes, each with a single, clear meaning. Turkish is famous for extremely long words like "Çekoslovakyalilastiramadiklarimizdanmissiniz" ("You are apparently one of those whom we could not make Czechoslovakian"), where each morpheme adds one discrete meaning.
+    </p>
+    <p>
+      <strong>
+        Polysynthetic Languages
+      </strong>
+      (like Inuktitut and Mohawk) can express entire sentences in single words by incorporating nouns, verbs, and affixes together. An Inuktitut word might mean "He wants to get a big boat," with morphemes for "boat," "big," "get," "want," and subject agreement all combined.
+    </p>
+    <div className="example-box">
+      <h4>
+        💻 Example: Morphological Analysis in Action
+      </h4>
+      <p>
+        <strong>
+          Word:
+        </strong>
+        "unfriendliness"
+      </p>
+      <p>
+        <strong>
+          Step-by-step breakdown:
+        </strong>
+      </p>
+      <div className="example-steps">
+        <div className="step">
+          Identify the root: "friend" (noun, meaning companion)
+        </div>
+        <div className="step">
+          Add derivational suffix "-ly": "friendly" (adjective, meaning having the characteristics of a friend)
+        </div>
+        <div className="step">
+          Add derivational prefix "un-": "unfriendly" (adjective, meaning not friendly)
+        </div>
+        <div className="step">
+          Add derivational suffix "-ness": "unfriendliness" (noun, meaning the state of being unfriendly)
+        </div>
+      </div>
+      <p>
+        <strong>
+          Result:
+        </strong>
+        4 morphemes total (1 root + 3 affixes), word class changed from noun → adjective → adjective → noun
+      </p>
+    </div>
+    <h3 className="subsection-title">
+      ⚠️ Common Misconceptions
+    </h3>
+    <div className="alert alert-danger">
+      <strong>
+        Misconception #1:
+      </strong>
+      "Morphemes are the same as syllables."
+      <p>
+        <strong>
+          Reality:
+        </strong>
+        Morphemes are units of
+        <em>
+          meaning
+        </em>
+        , while syllables are units of
+        <em>
+          sound
+        </em>
+        . The word "cats" has one syllable but two morphemes (cat + -s). Conversely, "banana" has three syllables (ba-na-na) but only one morpheme.
+      </p>
+    </div>
+    <div className="alert alert-danger">
+      <strong>
+        Misconception #2:
+      </strong>
+      "All prefixes and suffixes are the same type."
+      <p>
+        <strong>
+          Reality:
+        </strong>
+        Affixes serve different functions. Derivational affixes create new words and can change word class (happy → happiness), while inflectional affixes only add grammatical information and never change word class (cat → cats).
+      </p>
+    </div>
+    <div className="alert alert-danger">
+      <strong>
+        Misconception #3:
+      </strong>
+      "Longer words always have more morphemes."
+      <p>
+        <strong>
+          Reality:
+        </strong>
+        Word length doesn't determine morpheme count. "Antidisestablishmentarianism" has 6 morphemes despite being 28 letters, while "strengths" has only 2 morphemes (strong + -th + -s = actually 3: strong + -th + -s) despite being 8 letters.
+      </p>
+    </div>
+    <div className="alert alert-danger">
+      <strong>
+        Misconception #4:
+      </strong>
+      "Every word must contain at least one bound morpheme."
+      <p>
+        <strong>
+          Reality:
+        </strong>
+        Many words consist entirely of free morphemes. Simple words like "cat," "run," "blue," and "book" are single free morphemes with no bound morphemes attached.
+      </p>
+    </div>
+  </div>
+  {/* ==================== SECTION 3: VIDEO LEARNING ==================== */}
+  <div className="section" id="videos">
+    <h2 className="section-title">
+      <span className="section-icon">
+        🎥
+      </span>
+      Learn Through Videos
+    </h2>
+    <p>
+      Watch these carefully selected videos to reinforce your understanding with visual explanations and animations.
+    </p>
+    <div className="video-grid">
+      {/* Video 1: Crash Course Morphology */}
+      <div className="video-card">
+        <div className="video-container">
+          <iframe src="https://www.youtube.com/embed/93sK4jTGrss" allowFullScreen={true} />
+        </div>
+        <div className="video-info">
+          <div className="video-title">
+            📚 Morphology: Crash Course Linguistics #2
+          </div>
+          <div className="video-description">
+            CrashCourse • 10:49 • 690K+ views
+          </div>
+          <div className="video-description" style={{ 'marginTop': '5px' }}>
+            What you'll learn: Comprehensive overview of morphemes, bound vs. free morphemes, infixes, circumfixes, fusional morphology, and suppletion. Engaging animations and clear explanations.
+          </div>
+        </div>
+      </div>
+      {/* Video 2: Evan Ashworth Morphology */}
+      <div className="video-card">
+        <div className="video-container">
+          <iframe src="https://www.youtube.com/embed/mv7t6Q0uebY" allowFullScreen={true} />
+        </div>
+        <div className="video-info">
+          <div className="video-title">
+            🎬 Morphology (Part 1)
+          </div>
+          <div className="video-description">
+            Evan Ashworth • 14:19 • 460K+ views
+          </div>
+          <div className="video-description" style={{ 'marginTop': '5px' }}>
+            What you'll learn: Introduction to morphemes, free vs. bound morphemes, lexical vs. functional morphemes, derivational vs. inflectional morphemes with detailed examples.
+          </div>
+        </div>
+      </div>
+      {/* Video 3: MIT OpenCourseWare */}
+      <div className="video-card">
+        <div className="video-container">
+          <iframe src="https://www.youtube.com/embed/Mvy5hjAWeZw" allowFullScreen={true} />
+        </div>
+        <div className="video-info">
+          <div className="video-title">
+            💻 Lecture 2: Morphology, Part 1
+          </div>
+          <div className="video-description">
+            MIT OpenCourseWare • 1:16:16 • 190K+ views
+          </div>
+          <div className="video-description" style={{ 'marginTop': '5px' }}>
+            What you'll learn: University-level lecture covering morphological analysis, allomorphy, morphophonemics, and problem-solving techniques. Perfect for deeper understanding.
+          </div>
+        </div>
+      </div>
+      {/* Video 4: Language Science */}
+      <div className="video-card">
+        <div className="video-container">
+          <iframe src="https://www.youtube.com/embed/MAwSrc6qMTQ" allowFullScreen={true} />
+        </div>
+        <div className="video-info">
+          <div className="video-title">
+            🎓 Introduction to Linguistics: Morphology 1
+          </div>
+          <div className="video-description">
+            Language Science • 28:32 • 35K+ views
+          </div>
+          <div className="video-description" style={{ 'marginTop': '5px' }}>
+            What you'll learn: Academic lecture on morphological concepts, word formation processes, and practical analysis techniques with worked examples.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="alert alert-info">
+      <strong>
+        📺 Additional Resources:
+      </strong>
+      <ul style={{ 'marginTop': '10px', 'marginLeft': '20px' }}>
+        <li>
+          <strong>
+            Online Simulators:
+          </strong>
+          Visit the "All About Morphology" website for interactive morpheme identification exercises
+        </li>
+        <li>
+          <strong>
+            Interactive Tutorials:
+          </strong>
+          Check out the SIL International Glossary of Linguistic Terms for comprehensive definitions
+        </li>
+        <li>
+          <strong>
+            Practice Problems:
+          </strong>
+          Search for "morphology problem sets" from university linguistics courses (MIT, UCLA, Stanford)
+        </li>
+      </ul>
+    </div>
+  </div>
+  {/* ==================== SECTION 4: ALGORITHM & WORKED EXAMPLES ==================== */}
+  <div className="section" id="algorithm">
+    <h2 className="section-title">
+      <span className="section-icon">
+        ⚙️
+      </span>
+      See It In Action: Morphological Analysis
+    </h2>
+    <h3 className="subsection-title">
+      The Morphological Analysis Algorithm
+    </h3>
+    <p>
+      Morphological analysis follows a systematic procedure for breaking down words into their constituent morphemes. This algorithm can be applied to any word in any language to identify its morphological structure.
+    </p>
+    <div className="code-container">
+      <div className="code-header">
+        <span>
+          Morphological Analysis Procedure
+        </span>
+        <span className="code-language">
+          Algorithm
+        </span>
+      </div>
+      <div className="code-block">
+        <code>
+          <span className="comment">
+            // ============================================
+          </span>
+          <span className="comment">
+            // MORPHOLOGICAL ANALYSIS ALGORITHM
+          </span>
+          <span className="comment">
+            // Input: A word to analyze
+          </span>
+          <span className="comment">
+            // Output: List of morphemes with their types
+          </span>
+          <span className="comment">
+            // ============================================
+          </span>
+          <span className="keyword">
+            ALGORITHM
+          </span>
+          <span className="function">
+            AnalyzeWord
+          </span>
+          (word)
+          <span className="keyword">
+            BEGIN
+          </span>
+          <span className="comment">
+            // Step 1: Check if word is already in dictionary as simple word
+          </span>
+          <span className="keyword">
+            IF
+          </span>
+          word
+          <span className="keyword">
+            is
+          </span>
+          a simple root word
+          <span className="keyword">
+            THEN
+          </span>
+          <span className="keyword">
+            RETURN
+          </span>
+          [word: FREE ROOT]
+          <span className="keyword">
+            END IF
+          </span>
+          <span className="comment">
+            // Step 2: Identify and strip inflectional suffixes (outermost layer)
+          </span>
+          inflectional_suffixes = [
+          <span className="string">
+            "-s"
+          </span>
+          ,
+          <span className="string">
+            "-es"
+          </span>
+          ,
+          <span className="string">
+            "-ed"
+          </span>
+          ,
+          <span className="string">
+            "-ing"
+          </span>
+          ,
+          <span className="string">
+            "-er"
+          </span>
+          ,
+          <span className="string">
+            "-est"
+          </span>
+          ,
+          <span className="string">
+            "-en"
+          </span>
+          ]
+          <span className="keyword">
+            FOR EACH
+          </span>
+          suffix
+          <span className="keyword">
+            in
+          </span>
+          inflectional_suffixes
+          <span className="keyword">
+            DO
+          </span>
+          <span className="keyword">
+            IF
+          </span>
+          word ends_with suffix
+          <span className="keyword">
+            THEN
+          </span>
+          stem = remove_suffix(word, suffix)
+            morphemes.add(suffix: INFLECTIONAL)
+            word = stem
+          <span className="keyword">
+            BREAK
+          </span>
+          <span className="keyword">
+            END IF
+          </span>
+          <span className="keyword">
+            END FOR
+          </span>
+          <span className="comment">
+            // Step 3: Identify derivational suffixes (working inward)
+          </span>
+          derivational_suffixes = [
+          <span className="string">
+            "-ness"
+          </span>
+          ,
+          <span className="string">
+            "-ly"
+          </span>
+          ,
+          <span className="string">
+            "-tion"
+          </span>
+          ,
+          <span className="string">
+            "-able"
+          </span>
+          ,
+          <span className="string">
+            "-ful"
+          </span>
+          ,
+          <span className="string">
+            "-less"
+          </span>
+          ,
+          <span className="string">
+            "-ment"
+          </span>
+          ]
+          <span className="keyword">
+            WHILE
+          </span>
+          word matches any derivational_suffix
+          <span className="keyword">
+            DO
+          </span>
+          suffix = find_matching_suffix(word)
+        stem = remove_suffix(word, suffix)
+        morphemes.add(suffix: DERIVATIONAL)
+        word = stem
+          <span className="keyword">
+            END WHILE
+          </span>
+          <span className="comment">
+            // Step 4: Identify prefixes (working from beginning)
+          </span>
+          prefixes = [
+          <span className="string">
+            "un-"
+          </span>
+          ,
+          <span className="string">
+            "re-"
+          </span>
+          ,
+          <span className="string">
+            "pre-"
+          </span>
+          ,
+          <span className="string">
+            "dis-"
+          </span>
+          ,
+          <span className="string">
+            "mis-"
+          </span>
+          ,
+          <span className="string">
+            "over-"
+          </span>
+          ,
+          <span className="string">
+            "under-"
+          </span>
+          ]
+          <span className="keyword">
+            WHILE
+          </span>
+          word starts_with any prefix
+          <span className="keyword">
+            DO
+          </span>
+          prefix = find_matching_prefix(word)
+        stem = remove_prefix(word, prefix)
+        morphemes.add(prefix: DERIVATIONAL PREFIX)
+        word = stem
+          <span className="keyword">
+            END WHILE
+          </span>
+          <span className="comment">
+            // Step 5: What remains is the root
+          </span>
+          <span className="keyword">
+            IF
+          </span>
+          word
+          <span className="keyword">
+            is
+          </span>
+          a recognizable root
+          <span className="keyword">
+            THEN
+          </span>
+          morphemes.add(word: FREE ROOT)
+          <span className="keyword">
+            ELSE IF
+          </span>
+          word
+          <span className="keyword">
+            is
+          </span>
+          a bound root
+          <span className="keyword">
+            THEN
+          </span>
+          morphemes.add(word: BOUND ROOT)
+          <span className="keyword">
+            ELSE
+          </span>
+          morphemes.add(word: UNKNOWN - consult etymology)
+          <span className="keyword">
+            END IF
+          </span>
+          <span className="comment">
+            // Step 6: Return morphemes in order (prefixes + root + suffixes)
+          </span>
+          <span className="keyword">
+            RETURN
+          </span>
+          morphemes
+          <span className="keyword">
+            END
+          </span>
+        </code>
+      </div>
+    </div>
+    <div className="alert alert-info">
+      <strong>
+        ⏱️ Complexity Analysis:
+      </strong>
+      <br />
+      <strong>
+        Time Complexity:
+      </strong>
+      O(n × m) where n = word length, m = number of affixes to check
+      <br />
+      <strong>
+        Space Complexity:
+      </strong>
+      O(k) where k = number of morphemes found
+      <br />
+      <strong>
+        Best Case:
+      </strong>
+      O(1) for simple root words already in dictionary
+      <br />
+      <strong>
+        Worst Case:
+      </strong>
+      O(n²) for words with multiple nested affixes requiring recursive analysis
+    </div>
+    {/* Algorithm Flowchart */}
+    <div className="diagram-container">
+      <h4>
+        Morphological Analysis Flowchart
+      </h4>
+      <div style={{ padding: '20px', background: '#f8f9fa', borderRadius: '8px' }}>
+        <p><strong>Morphological Analysis Steps:</strong></p>
+        <ol style={{ marginLeft: '20px' }}>
+          <li>Check if word is in dictionary as simple word → Return: FREE ROOT</li>
+          <li>Strip inflectional suffixes (outermost layer)</li>
+          <li>Strip derivational suffixes (working inward)</li>
+          <li>Strip prefixes (from beginning)</li>
+          <li>Identify the root (what remains)</li>
+          <li>Compile morpheme list</li>
+        </ol>
+      </div>
+      <p className="diagram-caption">
+        Figure 4: Complete flowchart for morphological analysis algorithm
+      </p>
+    </div>
+    <h3 className="subsection-title">
+      Worked Example 1: Basic Analysis
+    </h3>
+    <div className="example-box">
+      <h4>
+        📝 Problem Statement
+      </h4>
+      <p>
+        Analyze the word "unhappiness" into its constituent morphemes. Identify each morpheme's type (free/bound, derivational/inflectional) and explain the hierarchical structure.
+      </p>
+      <h4>
+        🔍 Step-by-Step Solution
+      </h4>
+      <div className="example-steps">
+        <div className="step">
+          <strong>
+            Step 1: Check for inflectional suffixes
+          </strong>
+          <p>
+            The word ends with "-ness," which is not an inflectional suffix. Inflectional suffixes in English are: -s, -es, -ed, -ing, -er, -est, -en. No inflectional suffix found.
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 2: Identify derivational suffixes (working from the end)
+          </strong>
+          <p>
+            "-ness" is a derivational suffix that forms nouns from adjectives. Remove "-ness" → stem is "unhappy."
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 3: Continue with remaining word "unhappy"
+          </strong>
+          <p>
+            "unhappy" ends with "-y," which is part of the root, not a suffix. Check for prefixes: "un-" is a derivational prefix meaning "not." Remove "un-" → stem is "happy."
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 4: Identify the root
+          </strong>
+          <p>
+            "happy" is a free lexical morpheme (adjective) that can stand alone as a word.
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 5: Compile results
+          </strong>
+          <p>
+            Morphemes in order: "un-" (bound derivational prefix) + "happy" (free lexical root) + "-ness" (bound derivational suffix)
+          </p>
+        </div>
+      </div>
+      {/* Visual representation of analysis */}
+      <div className="diagram-container">
+        <h4>
+          Visual Analysis
+        </h4>
+        <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="800" height="300" fill="#f8f9fa" />
+          {/* Word breakdown */}
+          <rect x="50" y="20" width="700" height="50" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="5" />
+          <text x="400" y="52" text-anchor="middle" fill="#1565c0" font-size="20" font-weight="bold">
+            unhappiness
+          </text>
+          {/* Arrows down */}
+          <line x1="150" y1="70" x2="150" y2="100" stroke="#666" stroke-width="2" />
+          <line x1="400" y1="70" x2="400" y2="100" stroke="#666" stroke-width="2" />
+          <line x1="650" y1="70" x2="650" y2="100" stroke="#666" stroke-width="2" />
+          {/* Morpheme boxes */}
+          <rect x="80" y="100" width="140" height="60" fill="#ffebee" stroke="#e53935" stroke-width="2" rx="5" />
+          <text x="150" y="125" text-anchor="middle" fill="#c62828" font-size="14" font-weight="bold">
+            un-
+          </text>
+          <text x="150" y="145" text-anchor="middle" fill="#c62828" font-size="11">
+            PREFIX
+          </text>
+          <rect x="320" y="100" width="160" height="60" fill="#e8f5e9" stroke="#43a047" stroke-width="2" rx="5" />
+          <text x="400" y="125" text-anchor="middle" fill="#2e7d32" font-size="14" font-weight="bold">
+            happy
+          </text>
+          <text x="400" y="145" text-anchor="middle" fill="#2e7d32" font-size="11">
+            ROOT
+          </text>
+          <rect x="580" y="100" width="140" height="60" fill="#fff3e0" stroke="#fb8c00" stroke-width="2" rx="5" />
+          <text x="650" y="125" text-anchor="middle" fill="#ef6c00" font-size="14" font-weight="bold">
+            -ness
+          </text>
+          <text x="650" y="145" text-anchor="middle" fill="#ef6c00" font-size="11">
+            SUFFIX
+          </text>
+          {/* Properties */}
+          <rect x="50" y="180" width="200" height="100" fill="#fff" stroke="#ddd" stroke-width="1" rx="5" />
+          <text x="150" y="205" text-anchor="middle" fill="#c62828" font-size="12" font-weight="bold">
+            un-
+          </text>
+          <text x="150" y="225" text-anchor="middle" fill="#666" font-size="11">
+            Type: Bound
+          </text>
+          <text x="150" y="242" text-anchor="middle" fill="#666" font-size="11">
+            Function: Derivational
+          </text>
+          <text x="150" y="259" text-anchor="middle" fill="#666" font-size="11">
+            Meaning: "not"
+          </text>
+          <rect x="300" y="180" width="200" height="100" fill="#fff" stroke="#ddd" stroke-width="1" rx="5" />
+          <text x="400" y="205" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">
+            happy
+          </text>
+          <text x="400" y="225" text-anchor="middle" fill="#666" font-size="11">
+            Type: Free
+          </text>
+          <text x="400" y="242" text-anchor="middle" fill="#666" font-size="11">
+            Function: Lexical Root
+          </text>
+          <text x="400" y="259" text-anchor="middle" fill="#666" font-size="11">
+            POS: Adjective
+          </text>
+          <rect x="550" y="180" width="200" height="100" fill="#fff" stroke="#ddd" stroke-width="1" rx="5" />
+          <text x="650" y="205" text-anchor="middle" fill="#ef6c00" font-size="12" font-weight="bold">
+            -ness
+          </text>
+          <text x="650" y="225" text-anchor="middle" fill="#666" font-size="11">
+            Type: Bound
+          </text>
+          <text x="650" y="242" text-anchor="middle" fill="#666" font-size="11">
+            Function: Derivational
+          </text>
+          <text x="650" y="259" text-anchor="middle" fill="#666" font-size="11">
+            Creates: Noun
+          </text>
+        </svg>
+        <p className="diagram-caption">
+          Figure 5: Complete morphological breakdown of "unhappiness"
+        </p>
+      </div>
+      <h4>
+        ✅ Final Answer
+      </h4>
+      <div style={{ 'background': '#d4edda', 'padding': '15px', 'borderRadius': '5px', 'borderLeft': '4px solid #28a745' }}>
+        <p>
+          <strong>
+            Total morphemes: 3
+          </strong>
+        </p>
+        <p>
+          1.
+          <strong>
+            un-
+          </strong>
+          (bound derivational prefix: "not")
+        </p>
+        <p>
+          2.
+          <strong>
+            happy
+          </strong>
+          (free lexical root: adjective meaning "joyful")
+        </p>
+        <p>
+          3.
+          <strong>
+            -ness
+          </strong>
+          (bound derivational suffix: creates abstract noun)
+        </p>
+        <p>
+          <strong>
+            Word class transformation:
+          </strong>
+          Adjective → Noun
+        </p>
+      </div>
+      <h4>
+        💡 Key Insights
+      </h4>
+      <ul style={{ 'marginLeft': '20px' }}>
+        <li>
+          The order of affixation matters: "un-" attaches to "happy" first, then "-ness" attaches to "unhappy"
+        </li>
+        <li>
+          Both affixes are derivational, changing meaning and word class
+        </li>
+        <li>
+          No inflectional morphemes are present in this word
+        </li>
+        <li>
+          The hierarchical structure shows "-ness" attaches at the highest level
+        </li>
+      </ul>
+    </div>
+    <h3 className="subsection-title">
+      Worked Example 2: Complex Analysis with Inflection
+    </h3>
+    <div className="example-box">
+      <h4>
+        📝 Problem Statement
+      </h4>
+      <p>
+        Analyze the word "nationalizations" into its constituent morphemes. Identify each morpheme's type and determine whether it is inflectional or derivational.
+      </p>
+      <h4>
+        🔍 Step-by-Step Solution
+      </h4>
+      <div className="example-steps">
+        <div className="step">
+          <strong>
+            Step 1: Check for inflectional suffixes (always outermost)
+          </strong>
+          <p>
+            The word ends with "-s." This is the plural inflectional suffix. Remove "-s" → stem is "nationalization."
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 2: Identify derivational suffixes
+          </strong>
+          <p>
+            "nationalization" ends with "-tion" (actually "-ation" or "-ion"), a derivational suffix that forms nouns from verbs. Remove "-tion" → stem is "nationalize."
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 3: Continue identifying derivational suffixes
+          </strong>
+          <p>
+            "nationalize" ends with "-ize," a derivational suffix that forms verbs from adjectives/nouns. Remove "-ize" → stem is "national."
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 4: Identify remaining derivational suffix
+          </strong>
+          <p>
+            "national" ends with "-al," a derivational suffix that forms adjectives from nouns. Remove "-al" → stem is "nation."
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 5: Identify the root
+          </strong>
+          <p>
+            "nation" is a free lexical morpheme (noun) that can stand alone as a word.
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 6: Compile results in order
+          </strong>
+          <p>
+            Morphemes: "nation" (root) + "-al" (derivational) + "-ize" (derivational) + "-tion" (derivational) + "-s" (inflectional)
+          </p>
+        </div>
+      </div>
+      <h4>
+        ✅ Final Answer
+      </h4>
+      <div style={{ 'background': '#d4edda', 'padding': '15px', 'borderRadius': '5px', 'borderLeft': '4px solid #28a745' }}>
+        <p>
+          <strong>
+            Total morphemes: 5
+          </strong>
+        </p>
+        <table style={{ 'marginTop': '10px' }}>
+          <thead>
+            <tr>
+              <th>
+                Morpheme
+              </th>
+              <th>
+                Type
+              </th>
+              <th>
+                Category
+              </th>
+              <th>
+                Function
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                nation
+              </td>
+              <td>
+                Free
+              </td>
+              <td>
+                Root
+              </td>
+              <td>
+                Core meaning (noun)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                -al
+              </td>
+              <td>
+                Bound
+              </td>
+              <td>
+                Derivational
+              </td>
+              <td>
+                Forms adjective
+              </td>
+            </tr>
+            <tr>
+              <td>
+                -ize
+              </td>
+              <td>
+                Bound
+              </td>
+              <td>
+                Derivational
+              </td>
+              <td>
+                Forms verb
+              </td>
+            </tr>
+            <tr>
+              <td>
+                -tion
+              </td>
+              <td>
+                Bound
+              </td>
+              <td>
+                Derivational
+              </td>
+              <td>
+                Forms noun
+              </td>
+            </tr>
+            <tr>
+              <td>
+                -s
+              </td>
+              <td>
+                Bound
+              </td>
+              <td>
+                Inflectional
+              </td>
+              <td>
+                Plural marker
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p style={{ 'marginTop': '10px' }}>
+          <strong>
+            Word class transformation:
+          </strong>
+          Noun → Adjective → Verb → Noun (plural)
+        </p>
+      </div>
+      <h4>
+        💡 Key Insights
+      </h4>
+      <ul style={{ 'marginLeft': '20px' }}>
+        <li>
+          Inflectional morphemes always appear at the very end (outermost layer)
+        </li>
+        <li>
+          Multiple derivational suffixes can stack together (-al + -ize + -tion)
+        </li>
+        <li>
+          Each derivational suffix changes the word class: nation(N) → national(Adj) → nationalize(V) → nationalization(N)
+        </li>
+        <li>
+          This demonstrates how English creates complex abstract nouns through multiple derivational steps
+        </li>
+      </ul>
+    </div>
+    <h3 className="subsection-title">
+      Worked Example 3: Edge Case with Cranberry Morph
+    </h3>
+    <div className="example-box">
+      <h4>
+        📝 Problem Statement
+      </h4>
+      <p>
+        Analyze the word "cranberry." What makes this word morphologically interesting? Identify all morphemes and explain any special considerations.
+      </p>
+      <h4>
+        🔍 Step-by-Step Solution
+      </h4>
+      <div className="example-steps">
+        <div className="step">
+          <strong>
+            Step 1: Initial observation
+          </strong>
+          <p>
+            The word appears to have two parts: "cran-" and "berry." "Berry" is clearly a free morpheme meaning a small fruit.
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 2: Analyze "cran-"
+          </strong>
+          <p>
+            "Cran-" appears to be a morpheme because it recurs in words like "cranberry." However, "cran" cannot stand alone as an independent word in modern English, and it doesn't appear in any other words.
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 3: Identify the special case
+          </strong>
+          <p>
+            "Cran" is what linguists call a
+            <strong>
+              cranberry morph
+            </strong>
+            (or unique morph)—a bound morpheme that appears in only one word and has no identifiable independent meaning. It gets its name from this very example.
+          </p>
+        </div>
+        <div className="step">
+          <strong>
+            Step 4: Historical context
+          </strong>
+          <p>
+            "Cran" actually comes from Middle Low German "kraan" or "kraon" (crane, the bird), referring to the stamens' resemblance to a crane's beak. But this etymology is not accessible to modern English speakers, making "cran" meaningless in synchronic analysis.
+          </p>
+        </div>
+      </div>
+      <h4>
+        ✅ Final Answer
+      </h4>
+      <div style={{ 'background': '#d4edda', 'padding': '15px', 'borderRadius': '5px', 'borderLeft': '4px solid #28a745' }}>
+        <p>
+          <strong>
+            Total morphemes: 2
+          </strong>
+        </p>
+        <p>
+          1.
+          <strong>
+            cran-
+          </strong>
+          (bound morpheme, cranberry morph—unique to this word, no independent meaning)
+        </p>
+        <p>
+          2.
+          <strong>
+            berry
+          </strong>
+          (free lexical root meaning small fruit)
+        </p>
+        <p>
+          <strong>
+            Special consideration:
+          </strong>
+          This is a compound word where the first element has lost its independent meaning.
+        </p>
+      </div>
+      <div className="alert alert-warning">
+        <strong>
+          ⚠️ Common Mistake:
+        </strong>
+        <p>
+          Many students try to assign meaning to "cran" or treat it as a prefix. Remember: a morpheme must carry meaning, and "cran" has no identifiable meaning for modern English speakers. Other cranberry morphs include "luke-" in "lukewarm" and "-ceive" in words like "receive" and "conceive."
+        </p>
+      </div>
+    </div>
+  </div>
+  {/* ==================== SECTION 5: COMPARISON & ANALYSIS ==================== */}
+  <div className="section" id="comparison">
+    <h2 className="section-title">
+      <span className="section-icon">
+        📊
+      </span>
+      Comparison & Analysis
+    </h2>
+    <p>
+      Understanding the differences between types of morphemes is crucial for accurate morphological analysis. This comparison table highlights the key distinctions you need to master.
+    </p>
+    <div className="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Feature
+            </th>
+            <th>
+              Free Morphemes
+            </th>
+            <th>
+              Bound Morphemes
+            </th>
+            <th>
+              Derivational Affixes
+            </th>
+            <th>
+              Inflectional Affixes
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>
+                Definition
+              </strong>
+            </td>
+            <td>
+              Can stand alone as words
+            </td>
+            <td>
+              Must attach to other morphemes
+            </td>
+            <td>
+              Create new words with new meanings
+            </td>
+            <td>
+              Add grammatical information only
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                Examples
+              </strong>
+            </td>
+            <td>
+              cat, run, happy, blue, book
+            </td>
+            <td>
+              -s, -ed, un-, -ness, -ly
+            </td>
+            <td>
+              un-, re-, -ness, -ly, -tion, -able
+            </td>
+            <td>
+              -s (plural), -ed (past), -ing, -er, -est
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                Changes Word Class?
+              </strong>
+            </td>
+            <td>
+              N/A
+            </td>
+            <td>
+              N/A
+            </td>
+            <td>
+              <span className="pro">
+                ✓
+              </span>
+              Often changes word class
+              <br />
+              (happy Adj → happiness N)
+            </td>
+            <td>
+              <span className="con">
+                ✗
+              </span>
+              Never changes word class
+              <br />
+              (cat N → cats N)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                Position in Word
+              </strong>
+            </td>
+            <td>
+              Can be root or standalone
+            </td>
+            <td>
+              Always attached to root/stem
+            </td>
+            <td>
+              Closer to root (inner layer)
+            </td>
+            <td>
+              Outermost layer (last to attach)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                Number in English
+              </strong>
+            </td>
+            <td>
+              Thousands
+            </td>
+            <td>
+              Hundreds
+            </td>
+            <td>
+              Approximately 100+ common ones
+            </td>
+            <td>
+              Only 8 total
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                Productivity
+              </strong>
+            </td>
+            <td>
+              N/A
+            </td>
+            <td>
+              N/A
+            </td>
+            <td>
+              Varies; some very productive (-ness), others limited
+            </td>
+            <td>
+              Highly productive; apply to almost all words in category
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                Meaning
+              </strong>
+            </td>
+            <td>
+              Rich semantic content
+            </td>
+            <td>
+              Grammatical or modifying
+            </td>
+            <td>
+              Often change/extend meaning significantly
+            </td>
+            <td>
+              Regular, predictable grammatical meaning
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                Creates New Word?
+              </strong>
+            </td>
+            <td>
+              N/A
+            </td>
+            <td>
+              N/A
+            </td>
+            <td>
+              <span className="pro">
+                ✓
+              </span>
+              Yes, creates new dictionary entry
+            </td>
+            <td>
+              <span className="con">
+                ✗
+              </span>
+              No, same word, different grammatical form
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 className="subsection-title">
+      When to Use What?
+    </h3>
+    <div className="alert alert-info">
+      <strong>
+        Decision Guide for Morphological Analysis:
+      </strong>
+      <ul style={{ 'marginTop': '10px', 'marginLeft': '20px' }}>
+        <li>
+          <strong>
+            Start with inflectional morphemes:
+          </strong>
+          Always check for plural -s, past tense -ed, comparative -er, etc. first. These are always at the outermost layer.
+        </li>
+        <li>
+          <strong>
+            Work inward for derivational suffixes:
+          </strong>
+          After removing inflectional suffixes, check for derivational suffixes like -ness, -ly, -tion working from the end toward the root.
+        </li>
+        <li>
+          <strong>
+            Check for prefixes last:
+          </strong>
+          Prefixes attach at the beginning, so identify them after stripping suffixes.
+        </li>
+        <li>
+          <strong>
+            What remains is the root:
+          </strong>
+          After removing all affixes, the remaining element should be a recognizable root (free or bound).
+        </li>
+      </ul>
+    </div>
+    {/* Visual: Language Types Comparison */}
+    <div className="diagram-container">
+      <h4>
+        Morphological Typology: Languages of the World
+      </h4>
+      <div style={{ padding: '20px', background: '#f8f9fa', borderRadius: '8px' }}>
+        <p><strong>Morphological Language Types:</strong></p>
+        <ul style={{ marginLeft: '20px' }}>
+          <li><strong>Isolating/Analytic (e.g., Chinese, Vietnamese):</strong> One word = One morpheme, word order crucial, few or no affixes</li>
+          <li><strong>Agglutinative (e.g., Turkish, Finnish):</strong> Many morphemes per word, each morpheme = one meaning, clear boundaries</li>
+          <li><strong>Fusional (e.g., Spanish, Russian):</strong> Single morpheme = multiple meanings, complex inflectional systems, difficult to segment</li>
+          <li><strong>Polysynthetic (e.g., Inuktitut, Mohawk):</strong> Entire sentence in one word, many incorporated elements, extremely long words</li>
+        </ul>
+      </div>
+      <p className="diagram-caption">
+        Figure 6: Four major morphological types of languages
+      </p>
+    </div>
+  </div>
+  {/* ==================== SECTION 6: INTERACTIVE PRACTICE ==================== */}
+  <div className="section" id="practice">
+    <h2 className="section-title">
+      <span className="section-icon">
+        🎯
+      </span>
+      Practice & Apply Your Knowledge
+    </h2>
+    <p>
+      Test your understanding with these interactive questions. Answer each question by clicking on your choice, then submit to see if you're correct!
+    </p>
+    <h3 className="subsection-title">
+      Quick Concept Checks (Interactive MCQs)
+    </h3>
+    {/* MCQ 1 */}
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 1 of 5
+        </strong>
+        <span id="score-mcq-1" />
+      </div>
+      <div className="mcq-question">
+        How many morphemes are in the word "antidisestablishmentarianism"?
+      </div>
+      <ul className="mcq-options" id="options-1">
+        <li className="mcq-option" onClick="selectOption(1, 'A')" data-correct="false">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            4 morphemes
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(1, 'B')" data-correct="false">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            5 morphemes
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(1, 'C')" data-correct="true">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            6 morphemes
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(1, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            7 morphemes
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(1)" id="submit-1">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-1" />
+      <div className="mcq-explanation" id="explanation-1" style={{ 'display': 'none' }}>
+        <strong>
+          Detailed Explanation:
+        </strong>
+        <p>
+          The correct answer is
+          <strong>
+            C (6 morphemes)
+          </strong>
+          . The word breaks down as: anti- (against) + dis- (remove) + establish (root: to set up) + -ment (noun-forming) + -arian (person) + -ism (doctrine). Each of these is a distinct morpheme carrying its own meaning.
+        </p>
+        <p>
+          <strong>
+            Why A is wrong:
+          </strong>
+          4 morphemes would miss several affixes in this complex word.
+        </p>
+        <p>
+          <strong>
+            Why B is wrong:
+          </strong>
+          5 morphemes still misses one affix (likely forgetting either -arian or -ism).
+        </p>
+        <p>
+          <strong>
+            Why D is wrong:
+          </strong>
+          7 morphemes overcounts—there is no separate morpheme between establish and -ment.
+        </p>
+      </div>
+    </div>
+    {/* MCQ 2 */}
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 2 of 5
+        </strong>
+        <span id="score-mcq-2" />
+      </div>
+      <div className="mcq-question">
+        Which of the following is a FREE morpheme?
+      </div>
+      <ul className="mcq-options" id="options-2">
+        <li className="mcq-option" onClick="selectOption(2, 'A')" data-correct="false">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            -ness (as in "happiness")
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(2, 'B')" data-correct="true">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            book (as in "bookstore")
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(2, 'C')" data-correct="false">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            un- (as in "unhappy")
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(2, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            -ceive (as in "receive")
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(2)" id="submit-2">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-2" />
+      <div className="mcq-explanation" id="explanation-2" style={{ 'display': 'none' }}>
+        <strong>
+          Detailed Explanation:
+        </strong>
+        <p>
+          The correct answer is
+          <strong>
+            B (book)
+          </strong>
+          . A free morpheme can stand alone as an independent word. "Book" is a complete word that can function independently, even though it can also appear in compounds like "bookstore."
+        </p>
+        <p>
+          <strong>
+            Why A is wrong:
+          </strong>
+          "-ness" is a bound morpheme—it cannot stand alone as a word. It must attach to an adjective.
+        </p>
+        <p>
+          <strong>
+            Why C is wrong:
+          </strong>
+          "un-" is a bound prefix—it cannot stand alone and must attach to the beginning of a word.
+        </p>
+        <p>
+          <strong>
+            Why D is wrong:
+          </strong>
+          "-ceive" is a bound root from Latin—it never appears as an independent word in English.
+        </p>
+      </div>
+    </div>
+    {/* MCQ 3 */}
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 3 of 5
+        </strong>
+        <span id="score-mcq-3" />
+      </div>
+      <div className="mcq-question">
+        Which suffix is INFLECTIONAL rather than derivational?
+      </div>
+      <ul className="mcq-options" id="options-3">
+        <li className="mcq-option" onClick="selectOption(3, 'A')" data-correct="false">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            -ness (as in "kindness")
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(3, 'B')" data-correct="false">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            -ly (as in "quickly")
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(3, 'C')" data-correct="true">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            -s (as in "cats")
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(3, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            -tion (as in "nation")
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(3)" id="submit-3">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-3" />
+      <div className="mcq-explanation" id="explanation-3" style={{ 'display': 'none' }}>
+        <strong>
+          Detailed Explanation:
+        </strong>
+        <p>
+          The correct answer is
+          <strong>
+            C (-s)
+          </strong>
+          . The plural "-s" is one of only eight inflectional morphemes in English. It adds grammatical information (plurality) without changing the word class—"cat" (noun) becomes "cats" (still a noun). It doesn't create a new word, just a grammatical variant.
+        </p>
+        <p>
+          <strong>
+            Why A is wrong:
+          </strong>
+          "-ness" is derivational—it changes an adjective (kind) to a noun (kindness), creating a new word with a new meaning.
+        </p>
+        <p>
+          <strong>
+            Why B is wrong:
+          </strong>
+          "-ly" is derivational—it typically changes an adjective (quick) to an adverb (quickly), changing word class.
+        </p>
+        <p>
+          <strong>
+            Why D is wrong:
+          </strong>
+          "-tion" is derivational—it changes a verb (create → creation) to a noun, creating a new word.
+        </p>
+      </div>
+    </div>
+    {/* MCQ 4 */}
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 4 of 5
+        </strong>
+        <span id="score-mcq-4" />
+      </div>
+      <div className="mcq-question">
+        In the word "nationalizations," which morpheme attaches LAST (outermost layer)?
+      </div>
+      <ul className="mcq-options" id="options-4">
+        <li className="mcq-option" onClick="selectOption(4, 'A')" data-correct="false">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            -tion
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(4, 'B')" data-correct="false">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            -ize
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(4, 'C')" data-correct="true">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            -s
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(4, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            -al
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(4)" id="submit-4">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-4" />
+      <div className="mcq-explanation" id="explanation-4" style={{ 'display': 'none' }}>
+        <strong>
+          Detailed Explanation:
+        </strong>
+        <p>
+          The correct answer is
+          <strong>
+            C (-s)
+          </strong>
+          . Inflectional morphemes always attach AFTER derivational morphemes. The structure is: nation + -al + -ize + -tion + -s. The plural "-s" is inflectional, so it attaches at the very end as the outermost layer.
+        </p>
+        <p>
+          <strong>
+            Why A is wrong:
+          </strong>
+          "-tion" is derivational and attaches before the inflectional suffix.
+        </p>
+        <p>
+          <strong>
+            Why B is wrong:
+          </strong>
+          "-ize" is derivational and attaches closer to the root.
+        </p>
+        <p>
+          <strong>
+            Why D is wrong:
+          </strong>
+          "-al" is the first derivational suffix attached to the root "nation."
+        </p>
+      </div>
+    </div>
+    {/* MCQ 5 */}
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 5 of 5
+        </strong>
+        <span id="score-mcq-5" />
+      </div>
+      <div className="mcq-question">
+        What is a "cranberry morph"?
+      </div>
+      <ul className="mcq-options" id="options-5">
+        <li className="mcq-option" onClick="selectOption(5, 'A')" data-correct="false">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            A morpheme that can only attach to fruit names
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(5, 'B')" data-correct="false">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            A morpheme that is red in color
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(5, 'C')" data-correct="true">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            A unique morpheme that appears in only one word
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(5, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            A morpheme that is always a prefix
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(5)" id="submit-5">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-5" />
+      <div className="mcq-explanation" id="explanation-5" style={{ 'display': 'none' }}>
+        <strong>
+          Detailed Explanation:
+        </strong>
+        <p>
+          The correct answer is
+          <strong>
+            C
+          </strong>
+          . A cranberry morph (named after "cran-" in "cranberry") is a bound morpheme that appears in only one word and has no identifiable independent meaning. "Cran" doesn't appear in any other English word, and most speakers don't know it originally meant "crane" (the bird).
+        </p>
+        <p>
+          <strong>
+            Why A is wrong:
+          </strong>
+          This is a made-up definition with no linguistic basis.
+        </p>
+        <p>
+          <strong>
+            Why B is wrong:
+          </strong>
+          The name comes from the example word "cranberry," not from any color property.
+        </p>
+        <p>
+          <strong>
+            Why D is wrong:
+          </strong>
+          Cranberry morphs can appear in any position. "-ceive" in "receive" and "conceive" is a cranberry morph that appears at the end of words.
+        </p>
+      </div>
+    </div>
+    <h3 className="subsection-title">
+      Problem-Solving Practice
+    </h3>
+    <div className="example-box">
+      <h4>
+        📘 Easy Problem
+      </h4>
+      <p>
+        <strong>
+          Problem:
+        </strong>
+        Break down the word "unfriendly" into its morphemes. Identify the type of each morpheme and the order of affixation.
+      </p>
+      <button className="collapsible">
+        Show Solution
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <h4>
+            Solution:
+          </h4>
+          <div className="example-steps">
+            <div className="step">
+              Identify the root: "friend" (free lexical morpheme, noun)
+            </div>
+            <div className="step">
+              Add "-ly" (bound derivational suffix) → "friendly" (adjective)
+            </div>
+            <div className="step">
+              Add "un-" (bound derivational prefix) → "unfriendly" (adjective)
+            </div>
+          </div>
+          <div style={{ 'background': '#d4edda', 'padding': '15px', 'borderRadius': '5px', 'marginTop': '15px' }}>
+            <strong>
+              Final Answer:
+            </strong>
+            3 morphemes total: un- (prefix) + friend (root) + -ly (suffix). Both affixes are derivational. Word class: Noun → Adjective → Adjective.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="example-box">
+      <h4>
+        📙 Medium Problem
+      </h4>
+      <p>
+        <strong>
+          Problem:
+        </strong>
+        Analyze "deinstitutionalization" into its constituent morphemes. How many morphemes are present? What is the word class at each stage of derivation?
+      </p>
+      <button className="collapsible">
+        Show Solution
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <h4>
+            Solution:
+          </h4>
+          <div className="example-steps">
+            <div className="step">
+              Root: "institute" (verb: to establish)
+            </div>
+            <div className="step">
+              Add "-tion" → "institution" (noun: an established organization)
+            </div>
+            <div className="step">
+              Add "-al" → "institutional" (adjective: relating to an institution)
+            </div>
+            <div className="step">
+              Add "-ize" → "institutionalize" (verb: to make institutional)
+            </div>
+            <div className="step">
+              Add "de-" → "deinstitutionalize" (verb: to remove from institutional setting)
+            </div>
+            <div className="step">
+              Add "-tion" → "deinstitutionalization" (noun: the process of deinstitutionalizing)
+            </div>
+          </div>
+          <div style={{ 'background': '#d4edda', 'padding': '15px', 'borderRadius': '5px', 'marginTop': '15px' }}>
+            <strong>
+              Final Answer:
+            </strong>
+            6 morphemes: de- + institute + -tion + -al + -ize + -tion. Word class changes: V → N → Adj → V → V → N.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="example-box">
+      <h4>
+        📕 Hard Problem
+      </h4>
+      <p>
+        <strong>
+          Problem:
+        </strong>
+        The word "blackberry" can be analyzed in two different ways. Provide both analyses and explain the difference in meaning between them.
+      </p>
+      <button className="collapsible">
+        Show Solution
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <h4>
+            Solution:
+          </h4>
+          <p>
+            <strong>
+              Analysis 1: Compound Word (most common)
+            </strong>
+          </p>
+          <div className="example-steps">
+            <div className="step">
+              "black" (free morpheme, adjective) + "berry" (free morpheme, noun)
+            </div>
+            <div className="step">
+              This is a compound noun referring to a specific type of dark-colored berry
+            </div>
+            <div className="step">
+              Both elements are free morphemes that can stand alone
+            </div>
+          </div>
+          <p>
+            <strong>
+              Analysis 2: Proper Noun (brand name)
+            </strong>
+          </p>
+          <div className="example-steps">
+            <div className="step">
+              When capitalized as "BlackBerry," this is a proper noun (brand name for smartphones)
+            </div>
+            <div className="step">
+              As a brand name, it functions as a single, unanalyzable unit
+            </div>
+            <div className="step">
+              The morphological structure is irrelevant to its meaning as a trademark
+            </div>
+          </div>
+          <div style={{ 'background': '#d4edda', 'padding': '15px', 'borderRadius': '5px', 'marginTop': '15px' }}>
+            <strong>
+              Key Insight:
+            </strong>
+            The same string of letters can have different morphological analyses depending on context. Lowercase "blackberry" = compound of two free morphemes. Capitalized "BlackBerry" = proper noun with no internal morphological structure relevant to its meaning.
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3 className="subsection-title">
+      Short Answer Questions
+    </h3>
+    <div className="example-box">
+      <h4>
+        Question 1:
+      </h4>
+      <p>
+        Explain the difference between a morpheme and a syllable, providing specific examples to illustrate your answer.
+      </p>
+      <button className="collapsible">
+        Show Sample Answer
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <p>
+            A morpheme is the smallest unit of
+            <strong>
+              meaning
+            </strong>
+            in a language, while a syllable is a unit of
+            <strong>
+              sound
+            </strong>
+            (pronunciation). These are completely different concepts from different levels of linguistic analysis.
+          </p>
+          <p>
+            <strong>
+              Example 1:
+            </strong>
+            The word "cats" has one syllable (the vowel sound /æ/ forms one syllable nucleus) but two morphemes: "cat" (meaning feline animal) and "-s" (meaning plural). The syllable division is /kæts/ (one syllable), but the morpheme division is cat + -s.
+          </p>
+          <p>
+            <strong>
+              Example 2:
+            </strong>
+            The word "banana" has three syllables (ba-na-na) based on its three vowel sounds, but only one morpheme because the entire word carries a single meaning and cannot be broken into smaller meaningful parts.
+          </p>
+          <p>
+            <strong>
+              Key distinction:
+            </strong>
+            Morphemes are about meaning and can be identified by asking "does this part have a meaning I can identify?" Syllables are about pronunciation and can be identified by counting vowel sounds.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div className="example-box">
+      <h4>
+        Question 2:
+      </h4>
+      <p>
+        Why do linguists say that English has only eight inflectional morphemes? List them and explain why other suffixes like "-ly" and "-ness" are not considered inflectional.
+      </p>
+      <button className="collapsible">
+        Show Sample Answer
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <p>
+            Linguists identify only eight inflectional morphemes in English because these are the only suffixes that:
+          </p>
+          <ul style={{ 'marginLeft': '20px', 'marginBottom': '15px' }}>
+            <li>
+              Add purely grammatical information (not new lexical meaning)
+            </li>
+            <li>
+              Never change the word class (part of speech)
+            </li>
+            <li>
+              Are completely productive (apply to all words in a category)
+            </li>
+            <li>
+              Appear at the outermost layer of word structure
+            </li>
+          </ul>
+          <p>
+            <strong>
+              The Eight English Inflectional Morphemes:
+            </strong>
+          </p>
+          <ol style={{ 'marginLeft': '20px', 'marginBottom': '15px' }}>
+            <li>
+              -s (plural): cat → cats
+            </li>
+            <li>
+              -'s (possessive): cat → cat's
+            </li>
+            <li>
+              -s (3rd person singular present): walk → walks
+            </li>
+            <li>
+              -ed (past tense): walk → walked
+            </li>
+            <li>
+              -ing (progressive): walk → walking
+            </li>
+            <li>
+              -en (past participle): eat → eaten
+            </li>
+            <li>
+              -er (comparative): fast → faster
+            </li>
+            <li>
+              -est (superlative): fast → fastest
+            </li>
+          </ol>
+          <p>
+            <strong>
+              Why "-ly" and "-ness" are derivational:
+            </strong>
+          </p>
+          <p>
+            "-ly" changes adjectives to adverbs (quick → quickly), changing word class. "-ness" changes adjectives to nouns (happy → happiness), also changing word class and creating a new word with new meaning. These are derivational because they create new dictionary entries, not just grammatical variants of the same word.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div className="example-box">
+      <h4>
+        Question 3:
+      </h4>
+      <p>
+        Describe the hierarchical structure of the word "unbelievably" using a morphological tree diagram and explain the order of affixation.
+      </p>
+      <button className="collapsible">
+        Show Sample Answer
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <p>
+            The word "unbelievably" has the following structure:
+          </p>
+          <div style={{ 'background': '#f8f9fa', 'padding': '15px', 'margin': '15px 0', 'borderRadius': '5px' }}>
+            <pre style={{ 'fontFamily': 'monospace', 'lineHeight': '1.5' }}>
+              Adv
+                               |
+                    +----------+----------+
+                    |                     |
+                  Adj                   -ly
+                    |
+          +---------+---------+
+          |                   |
+         un-               N/Adj
+                            |
+                  +---------+---------+
+                  |                   |
+               believe              -able
+            </pre>
+          </div>
+          <p>
+            <strong>
+              Order of Affixation:
+            </strong>
+          </p>
+          <ol style={{ 'marginLeft': '20px' }}>
+            <li>
+              Start with root: "believe" (verb)
+            </li>
+            <li>
+              Add "-able" → "believable" (adjective, meaning "able to be believed")
+            </li>
+            <li>
+              Add "un-" → "unbelievable" (adjective, meaning "not able to be believed")
+            </li>
+            <li>
+              Add "-ly" → "unbelievably" (adverb, meaning "in an unbelievable manner")
+            </li>
+          </ol>
+          <p>
+            The prefix "un-" attaches to the adjective "believable," not directly to the root "believe." This is shown in the tree where "un-" branches from the Adj node, which itself contains "believe" + "-able."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/* ==================== SECTION 7: HANDS-ON LAB ==================== */}
+  <div className="lab-exercise">
+    <h3>
+      🛠️ Hands-On Lab Exercise
+    </h3>
+    <h2>
+      Morphological Analysis Workshop
+    </h2>
+    <div className="lab-objective">
+      <strong>
+        📋 Objective:
+      </strong>
+      <p>
+        In this lab, you will practice analyzing words from various sources (newspaper articles, academic texts, social media) to identify their constituent morphemes. You will create morphological trees and explain the hierarchical structure of complex words.
+      </p>
+    </div>
+    <div className="lab-objective">
+      <strong>
+        ⏱️ Estimated Time:
+      </strong>
+      45-60 minutes
+    </div>
+    <div className="lab-objective">
+      <strong>
+        🎯 Learning Goals:
+      </strong>
+      <ul style={{ 'marginLeft': '20px', 'marginTop': '10px' }}>
+        <li>
+          Accurately identify and classify morphemes in unfamiliar words
+        </li>
+        <li>
+          Create proper morphological tree diagrams
+        </li>
+        <li>
+          Distinguish between derivational and inflectional affixes
+        </li>
+        <li>
+          Recognize allomorphs and cranberry morphs
+        </li>
+      </ul>
+    </div>
+    <div className="lab-steps">
+      <h4>
+        📝 Instructions:
+      </h4>
+      <ol>
+        <li>
+          <strong>
+            Collect Your Data
+          </strong>
+          <p>
+            Find a paragraph from a newspaper article or academic text. Select 10 words that appear to have multiple morphemes (avoid simple words like "cat," "run," "book").
+          </p>
+        </li>
+        <li>
+          <strong>
+            Initial Analysis
+          </strong>
+          <p>
+            For each word, write down your initial guess about how many morphemes it contains and what they might be.
+          </p>
+        </li>
+        <li>
+          <strong>
+            Systematic Breakdown
+          </strong>
+          <p>
+            Apply the morphological analysis algorithm: (a) strip inflectional suffixes first, (b) identify derivational suffixes working inward, (c) identify prefixes, (d) identify the root.
+          </p>
+        </li>
+        <li>
+          <strong>
+            Classification
+          </strong>
+          <p>
+            For each morpheme you identify, classify it as: free/bound, root/affix, derivational/inflectional (if affix).
+          </p>
+        </li>
+        <li>
+          <strong>
+            Tree Construction
+          </strong>
+          <p>
+            Draw a morphological tree for at least 3 of your most complex words, showing the hierarchical structure and order of affixation.
+          </p>
+        </li>
+        <li>
+          <strong>
+            Reflection
+          </strong>
+          <p>
+            Write a brief paragraph answering: Which words were easiest to analyze? Which were most difficult? Did you encounter any cranberry morphs or allomorphs?
+          </p>
+        </li>
+      </ol>
+    </div>
+    <div className="lab-objective">
+      <strong>
+        📦 Sample Words to Analyze:
+      </strong>
+      <p>
+        If you cannot find your own text, analyze these words:
+      </p>
+      <ol style={{ 'marginLeft': '20px', 'marginTop': '10px' }}>
+        <li>
+          internationalization
+        </li>
+        <li>
+          uncharacteristically
+        </li>
+        <li>
+          misunderstanding
+        </li>
+        <li>
+          biodegradability
+        </li>
+        <li>
+          counterproductive
+        </li>
+        <li>
+          disproportionately
+        </li>
+        <li>
+          incomprehensibility
+        </li>
+        <li>
+          multidisciplinary
+        </li>
+        <li>
+          overgeneralization
+        </li>
+        <li>
+          unpredictability
+        </li>
+      </ol>
+    </div>
+    <div className="lab-objective">
+      <strong>
+        ✅ Expected Output:
+      </strong>
+      <p>
+        A completed worksheet showing:
+      </p>
+      <ul style={{ 'marginLeft': '20px', 'marginTop': '10px' }}>
+        <li>
+          10 analyzed words with morpheme breakdowns
+        </li>
+        <li>
+          Classification for each morpheme
+        </li>
+        <li>
+          3 morphological tree diagrams
+        </li>
+        <li>
+          1 reflection paragraph (150-200 words)
+        </li>
+      </ul>
+    </div>
+    <div className="lab-objective">
+      <strong>
+        🎓 Grading Rubric:
+      </strong>
+      <ul style={{ 'marginLeft': '20px', 'marginTop': '10px' }}>
+        <li>
+          Accuracy of morpheme identification: 40 points
+        </li>
+        <li>
+          Correct classification of morphemes: 20 points
+        </li>
+        <li>
+          Quality of tree diagrams: 20 points
+        </li>
+        <li>
+          Thoughtful reflection: 10 points
+        </li>
+        <li>
+          Presentation and organization: 10 points
+        </li>
+      </ul>
+    </div>
+  </div>
+  {/* ==================== SECTION 8: COMPREHENSIVE QUIZ ==================== */}
+  <div className="section" id="quiz">
+    <h2 className="section-title">
+      <span className="section-icon">
+        ✅
+      </span>
+      Section Mastery Quiz
+    </h2>
+    <div className="quiz-header">
+      <h3>
+        Test Your Understanding
+      </h3>
+      <p>
+        Complete this 10-question quiz to test your mastery of morphology.
+      </p>
+      <p>
+        <strong>
+          Passing Score: 70% (7 out of 10 questions)
+        </strong>
+      </p>
+      <div className="quiz-score" id="final-score" style={{ 'display': 'none' }}>
+        Score:
+        <span id="score-display">
+          0
+        </span>
+        /10
+      </div>
+    </div>
+    <p>
+      <strong>
+        Instructions:
+      </strong>
+    </p>
+    <ul style={{ 'marginLeft': '20px', 'marginBottom': '30px' }}>
+      <li>
+        Answer all 10 questions
+      </li>
+      <li>
+        Click "Submit Quiz" when you're done
+      </li>
+      <li>
+        You'll see your score and detailed feedback for each question
+      </li>
+      <li>
+        You can retake the quiz as many times as you need
+      </li>
+    </ul>
+    {/* QUIZ QUESTIONS 6-10: MCQs */}
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 6 of 10
+        </strong>
+      </div>
+      <div className="mcq-question">
+        Which of the following words contains a BOUND ROOT?
+      </div>
+      <ul className="mcq-options" id="options-6">
+        <li className="mcq-option" onClick="selectOption(6, 'A')" data-correct="false">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            happiness
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(6, 'B')" data-correct="true">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            receive
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(6, 'C')" data-correct="false">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            bookstore
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(6, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            running
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(6)" id="submit-6">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-6" />
+      <div className="mcq-explanation" id="explanation-6" style={{ 'display': 'none' }}>
+        <strong>
+          Explanation:
+        </strong>
+        <p>
+          <strong>
+            B (receive)
+          </strong>
+          is correct. "-ceive" is a bound root from Latin that cannot stand alone. It appears in words like "receive," "conceive," "perceive," and "deceive" but never as an independent word. "Re-" is a prefix attached to this bound root.
+        </p>
+      </div>
+    </div>
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 7 of 10
+        </strong>
+      </div>
+      <div className="mcq-question">
+        What is the correct order of morphemes in "nationalizations" from root to outermost affix?
+      </div>
+      <ul className="mcq-options" id="options-7">
+        <li className="mcq-option" onClick="selectOption(7, 'A')" data-correct="true">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            nation + -al + -ize + -tion + -s
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(7, 'B')" data-correct="false">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            nation + -ize + -al + -tion + -s
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(7, 'C')" data-correct="false">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            nation + -s + -al + -ize + -tion
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(7, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            nation + -tion + -al + -ize + -s
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(7)" id="submit-7">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-7" />
+      <div className="mcq-explanation" id="explanation-7" style={{ 'display': 'none' }}>
+        <strong>
+          Explanation:
+        </strong>
+        <p>
+          <strong>
+            A
+          </strong>
+          is correct. The order is: nation (root, noun) → national (adjective, with -al) → nationalize (verb, with -ize) → nationalization (noun, with -tion) → nationalizations (plural noun, with -s). Each derivational suffix changes the word class.
+        </p>
+      </div>
+    </div>
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 8 of 10
+        </strong>
+      </div>
+      <div className="mcq-question">
+        Which language type combines MANY morphemes into single words, with each morpheme having ONE clear meaning?
+      </div>
+      <ul className="mcq-options" id="options-8">
+        <li className="mcq-option" onClick="selectOption(8, 'A')" data-correct="false">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            Isolating (e.g., Chinese)
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(8, 'B')" data-correct="true">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            Agglutinative (e.g., Turkish)
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(8, 'C')" data-correct="false">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            Fusional (e.g., Spanish)
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(8, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            Polysynthetic (e.g., Inuktitut)
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(8)" id="submit-8">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-8" />
+      <div className="mcq-explanation" id="explanation-8" style={{ 'display': 'none' }}>
+        <strong>
+          Explanation:
+        </strong>
+        <p>
+          <strong>
+            B (Agglutinative)
+          </strong>
+          is correct. Agglutinative languages like Turkish and Finnish string together many morphemes, each with a single, clear meaning. The morpheme boundaries are clear and each adds one discrete meaning.
+        </p>
+      </div>
+    </div>
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 9 of 10
+        </strong>
+      </div>
+      <div className="mcq-question">
+        The word "lukewarm" contains which type of special morpheme?
+      </div>
+      <ul className="mcq-options" id="options-9">
+        <li className="mcq-option" onClick="selectOption(9, 'A')" data-correct="false">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            An allomorph
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(9, 'B')" data-correct="true">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            A cranberry morph
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(9, 'C')" data-correct="false">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            A fusional morpheme
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(9, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            An inflectional suffix
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(9)" id="submit-9">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-9" />
+      <div className="mcq-explanation" id="explanation-9" style={{ 'display': 'none' }}>
+        <strong>
+          Explanation:
+        </strong>
+        <p>
+          <strong>
+            B (cranberry morph)
+          </strong>
+          is correct. "Luke" in "lukewarm" is a cranberry morph—it appears only in this word and has no identifiable independent meaning for modern English speakers. Historically it meant "tepid" or "slightly warm," but this meaning is not accessible to contemporary speakers.
+        </p>
+      </div>
+    </div>
+    <div className="mcq-container">
+      <div className="mcq-header">
+        <strong>
+          Question 10 of 10
+        </strong>
+      </div>
+      <div className="mcq-question">
+        How many morphemes are in "replaying"?
+      </div>
+      <ul className="mcq-options" id="options-10">
+        <li className="mcq-option" onClick="selectOption(10, 'A')" data-correct="false">
+          <span className="option-label">
+            A
+          </span>
+          <span>
+            2 morphemes
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(10, 'B')" data-correct="true">
+          <span className="option-label">
+            B
+          </span>
+          <span>
+            3 morphemes
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(10, 'C')" data-correct="false">
+          <span className="option-label">
+            C
+          </span>
+          <span>
+            4 morphemes
+          </span>
+        </li>
+        <li className="mcq-option" onClick="selectOption(10, 'D')" data-correct="false">
+          <span className="option-label">
+            D
+          </span>
+          <span>
+            5 morphemes
+          </span>
+        </li>
+      </ul>
+      <button className="submit-quiz-btn" style={{ 'padding': '10px 25px', 'margin': '15px 0' }} onClick="checkMCQ(10)" id="submit-10">
+        Check Answer
+      </button>
+      <div className="mcq-feedback" id="feedback-10" />
+      <div className="mcq-explanation" id="explanation-10" style={{ 'display': 'none' }}>
+        <strong>
+          Explanation:
+        </strong>
+        <p>
+          <strong>
+            B (3 morphemes)
+          </strong>
+          is correct. The breakdown is: re- (prefix, meaning "again") + play (free root, verb) + -ing (inflectional suffix, progressive aspect). Note: "play" is a single morpheme even though it has two syllables.
+        </p>
+      </div>
+    </div>
+    <button className="submit-quiz-btn" onClick="submitFinalQuiz()" id="submit-final-quiz">
+      📊 Submit Complete Quiz
+    </button>
+    <div id="quiz-results" style={{ 'display': 'none', 'marginTop': '30px' }}>
+      <div className="alert alert-success" id="pass-message" style={{ 'display': 'none' }}>
+        <strong>
+          🎉 Congratulations! You passed!
+        </strong>
+        <p>
+          Your score:
+          <span id="final-score-text" />
+        </p>
+        <p>
+          You've demonstrated mastery of morphology. Great work!
+        </p>
+      </div>
+      <div className="alert alert-danger" id="fail-message" style={{ 'display': 'none' }}>
+        <strong>
+          📚 Keep Learning!
+        </strong>
+        <p>
+          Your score:
+          <span id="final-score-text-fail" />
+        </p>
+        <p>
+          You need 70% to pass. Review the material and try again!
+        </p>
+        <button className="submit-quiz-btn" onClick="location.reload()">
+          🔄 Retake Quiz
+        </button>
+      </div>
+    </div>
+  </div>
+  {/* ==================== SECTION 9: COMMON PITFALLS ==================== */}
+  <div className="section" id="pitfalls">
+    <h2 className="section-title">
+      <span className="section-icon">
+        ⚠️
+      </span>
+      Common Pitfalls & How to Avoid Them
+    </h2>
+    <p>
+      Learn from common mistakes students make when learning morphology. Understanding these pitfalls will help you avoid them in exams and practical applications.
+    </p>
+    <div className="alert alert-danger">
+      <strong>
+        🚫 Pitfall #1: Confusing Syllables with Morphemes
+      </strong>
+      <p>
+        <strong>
+          What students do wrong:
+        </strong>
+        Count syllables instead of meaningful units. For example, thinking "banana" has 3 morphemes because it has 3 syllables (ba-na-na).
+      </p>
+      <p>
+        <strong>
+          Why it's wrong:
+        </strong>
+        Syllables are units of sound/pronunciation; morphemes are units of meaning. A word can have many syllables but only one morpheme.
+      </p>
+      <p>
+        <strong>
+          Consequences:
+        </strong>
+        Incorrect morpheme counts, failure to identify actual morphological structure.
+      </p>
+      <p>
+        <strong>
+          ✅ How to avoid it:
+        </strong>
+        Always ask "Does this part have a meaning I can identify?" If you can't assign a meaning to a segment, it's not a separate morpheme.
+      </p>
+      <p>
+        <strong>
+          Example:
+        </strong>
+        "Watermelon" has 4 syllables (wa-ter-me-lon) but only 2 morphemes (water + melon).
+      </p>
+    </div>
+    <div className="alert alert-danger">
+      <strong>
+        🚫 Pitfall #2: Treating All Affixes as the Same Type
+      </strong>
+      <p>
+        <strong>
+          What students do wrong:
+        </strong>
+        Failing to distinguish between derivational and inflectional affixes, or assuming all prefixes/suffixes work the same way.
+      </p>
+      <p>
+        <strong>
+          Why it's wrong:
+        </strong>
+        Derivational and inflectional morphemes have different functions, positions, and properties. Confusing them leads to incorrect analysis.
+      </p>
+      <p>
+        <strong>
+          Consequences:
+        </strong>
+        Wrong classification, failure to understand word formation processes.
+      </p>
+      <p>
+        <strong>
+          ✅ How to avoid it:
+        </strong>
+        Memorize the eight English inflectional morphemes (-s plural, -'s possessive, -s 3rd person, -ed past, -ing progressive, -en past participle, -er comparative, -est superlative). Everything else is likely derivational.
+      </p>
+      <p>
+        <strong>
+          Remember:
+        </strong>
+        Inflectional morphemes are always at the outermost layer and never change word class.
+      </p>
+    </div>
+    <div className="alert alert-danger">
+      <strong>
+        🚫 Pitfall #3: Forgetting the Order of Affixation
+      </strong>
+      <p>
+        <strong>
+          What students do wrong:
+        </strong>
+        Listing morphemes in alphabetical or random order instead of hierarchical order.
+      </p>
+      <p>
+        <strong>
+          Why it's wrong:
+        </strong>
+        The order of affixation matters for understanding word structure. Some affixes attach to stems that already have other affixes.
+      </p>
+      <p>
+        <strong>
+          Consequences:
+        </strong>
+        Incorrect morphological trees, failure to understand how complex words are built.
+      </p>
+      <p>
+        <strong>
+          ✅ How to avoid it:
+        </strong>
+        Always work from the outside in: inflectional suffixes first, then derivational suffixes, then prefixes. What remains is the root.
+      </p>
+      <p>
+        <strong>
+          Example:
+        </strong>
+        In "unhappiness," "-ness" attaches to "unhappy," not directly to "happy." The tree structure shows this hierarchy.
+      </p>
+    </div>
+    <div className="alert alert-danger">
+      <strong>
+        🚫 Pitfall #4: Assigning Meaning to Cranberry Morphs
+      </strong>
+      <p>
+        <strong>
+          What students do wrong:
+        </strong>
+        Trying to find meaning in cranberry morphs like "cran-" or "luke-" or treating them as productive morphemes.
+      </p>
+      <p>
+        <strong>
+          Why it's wrong:
+        </strong>
+        Cranberry morphs have no identifiable meaning for modern speakers and appear in only one word.
+      </p>
+      <p>
+        <strong>
+          Consequences:
+        </strong>
+        Incorrect analysis, invented etymologies.
+      </p>
+      <p>
+        <strong>
+          ✅ How to avoid it:
+        </strong>
+        If a morpheme appears in only one word and you can't define it, it's likely a cranberry morph. Don't force a meaning.
+      </p>
+      <p>
+        <strong>
+          Common cranberry morphs:
+        </strong>
+        "cran-" (cranberry), "luke-" (lukewarm), "-ceive" (receive, conceive, perceive).
+      </p>
+    </div>
+    <div className="alert alert-warning">
+      <strong>
+        💡 Exam Tips:
+      </strong>
+      <ul style={{ 'marginTop': '10px', 'marginLeft': '20px' }}>
+        <li>
+          <strong>
+            Always start with inflectional morphemes
+          </strong>
+          when analyzing a word—they're at the outermost layer.
+        </li>
+        <li>
+          <strong>
+            Check if the remaining stem is a real word
+          </strong>
+          after removing affixes—if yes, it's likely a free root.
+        </li>
+        <li>
+          <strong>
+            Count the morphemes in "antidisestablishmentarianism"
+          </strong>
+          as a practice question—it's a classic exam favorite.
+        </li>
+        <li>
+          <strong>
+            Remember: English has only 8 inflectional morphemes
+          </strong>
+          —if it's not one of those, it's derivational.
+        </li>
+        <li>
+          <strong>
+            Draw tree diagrams clearly
+          </strong>
+          showing the hierarchical structure, not just a flat list.
+        </li>
+      </ul>
+    </div>
+  </div>
+  {/* ==================== SECTION 10: QUICK REFERENCE ==================== */}
+  <div className="quick-ref">
+    <h2 className="section-title">
+      <span className="section-icon">
+        📄
+      </span>
+      Quick Reference Cheat Sheet
+    </h2>
+    <p>
+      Save this page for quick review! Here's everything you need to remember at a glance.
+    </p>
+    <div className="quick-ref-grid">
+      <div className="quick-ref-card">
+        <h4>
+          🔑 Key Definitions
+        </h4>
+        <ul style={{ 'marginLeft': '20px' }}>
+          <li>
+            <strong>
+              Morpheme:
+            </strong>
+            Smallest unit of meaning
+          </li>
+          <li>
+            <strong>
+              Free morpheme:
+            </strong>
+            Can stand alone as a word
+          </li>
+          <li>
+            <strong>
+              Bound morpheme:
+            </strong>
+            Must attach to other morphemes
+          </li>
+          <li>
+            <strong>
+              Root:
+            </strong>
+            Core morpheme carrying main meaning
+          </li>
+          <li>
+            <strong>
+              Affix:
+            </strong>
+            Bound morpheme attached to root
+          </li>
+          <li>
+            <strong>
+              Allomorph:
+            </strong>
+            Variant form of a morpheme
+          </li>
+        </ul>
+      </div>
+      <div className="quick-ref-card">
+        <h4>
+          📐 The 8 Inflectional Morphemes
+        </h4>
+        <ul style={{ 'marginLeft': '20px' }}>
+          <li>
+            <strong>
+              -s
+            </strong>
+            (plural): cats
+          </li>
+          <li>
+            <strong>
+              -'s
+            </strong>
+            (possessive): cat's
+          </li>
+          <li>
+            <strong>
+              -s
+            </strong>
+            (3rd person): walks
+          </li>
+          <li>
+            <strong>
+              -ed
+            </strong>
+            (past): walked
+          </li>
+          <li>
+            <strong>
+              -ing
+            </strong>
+            (progressive): walking
+          </li>
+          <li>
+            <strong>
+              -en
+            </strong>
+            (past participle): eaten
+          </li>
+          <li>
+            <strong>
+              -er
+            </strong>
+            (comparative): faster
+          </li>
+          <li>
+            <strong>
+              -est
+            </strong>
+            (superlative): fastest
+          </li>
+        </ul>
+      </div>
+      <div className="quick-ref-card">
+        <h4>
+          ⚙️ Analysis Algorithm
+        </h4>
+        <ol>
+          <li>
+            Strip inflectional suffixes (outermost)
+          </li>
+          <li>
+            Identify derivational suffixes (inward)
+          </li>
+          <li>
+            Identify prefixes (beginning)
+          </li>
+          <li>
+            What remains is the root
+          </li>
+          <li>
+            Classify each morpheme
+          </li>
+          <li>
+            Draw hierarchical tree
+          </li>
+        </ol>
+      </div>
+      <div className="quick-ref-card">
+        <h4>
+          ✅ Derivational vs. Inflectional
+        </h4>
+        <p>
+          <strong>
+            Derivational:
+          </strong>
+        </p>
+        <ul style={{ 'marginLeft': '20px' }}>
+          <li>
+            Creates new words
+          </li>
+          <li>
+            May change word class
+          </li>
+          <li>
+            Closer to root
+          </li>
+        </ul>
+        <p>
+          <strong>
+            Inflectional:
+          </strong>
+        </p>
+        <ul style={{ 'marginLeft': '20px' }}>
+          <li>
+            Same word, different form
+          </li>
+          <li>
+            Never changes word class
+          </li>
+          <li>
+            Outermost layer
+          </li>
+        </ul>
+      </div>
+      <div className="quick-ref-card">
+        <h4>
+          ⚠️ Common Cranberry Morphs
+        </h4>
+        <ul style={{ 'marginLeft': '20px' }}>
+          <li>
+            "cran-" (cranberry)
+          </li>
+          <li>
+            "luke-" (lukewarm)
+          </li>
+          <li>
+            "-ceive" (receive, conceive)
+          </li>
+          <li>
+            "kith-" (kith and kin)
+          </li>
+          <li>
+            "-kempt" (unkempt)
+          </li>
+        </ul>
+      </div>
+      <div className="quick-ref-card">
+        <h4>
+          🌍 Language Types
+        </h4>
+        <ul style={{ 'marginLeft': '20px' }}>
+          <li>
+            <strong>
+              Isolating:
+            </strong>
+            One morpheme per word (Chinese)
+          </li>
+          <li>
+            <strong>
+              Agglutinative:
+            </strong>
+            Many morphemes, clear boundaries (Turkish)
+          </li>
+          <li>
+            <strong>
+              Fusional:
+            </strong>
+            One morpheme, multiple meanings (Spanish)
+          </li>
+          <li>
+            <strong>
+              Polysynthetic:
+            </strong>
+            Sentence in one word (Inuktitut)
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {/* ==================== SECTION 11: GO DEEPER ==================== */}
+  <div className="section" id="further">
+    <h2 className="section-title">
+      <span className="section-icon">
+        🚀
+      </span>
+      Go Deeper: Advanced Topics & Resources
+    </h2>
+    <h3 className="subsection-title">
+      Advanced Concepts
+    </h3>
+    <p>
+      Ready to go beyond the basics? Here are related advanced topics:
+    </p>
+    <div className="example-box">
+      <h4>
+        🔬 Advanced Topic 1: Morphophonemics and Allomorphy
+      </h4>
+      <p>
+        Morphophonemics studies how morphemes change their phonological form depending on their environment. The English plural morpheme has three allomorphs: /s/ (cats), /z/ (dogs), and /ɪz/ (boxes). Understanding these patterns requires knowledge of phonological rules like voicing assimilation and syllable structure constraints.
+      </p>
+      <p>
+        <strong>
+          Learn more:
+        </strong>
+        Search for "English plural allomorphy" or "morphophonological rules"
+      </p>
+    </div>
+    <div className="example-box">
+      <h4>
+        🔬 Advanced Topic 2: Optimality Theory in Morphology
+      </h4>
+      <p>
+        Optimality Theory (OT) applies to morphology as well as phonology. OT-morphology explains how languages select the optimal allomorph in a given context through ranked constraints. This framework helps explain why certain morpheme combinations are preferred over others.
+      </p>
+      <p>
+        <strong>
+          Learn more:
+        </strong>
+        Read "Optimality Theory" by Prince and Smolensky; search for "OT morphology"
+      </p>
+    </div>
+    <div className="example-box">
+      <h4>
+        🔬 Advanced Topic 3: Distributed Morphology
+      </h4>
+      <p>
+        Distributed Morphology (DM) is a theoretical framework that posits a single generative engine for both syntax and morphology. In DM, morphemes are abstract features that are spelled out as phonological forms post-syntactically. This theory blurs the traditional boundary between syntax and morphology.
+      </p>
+      <p>
+        <strong>
+          Learn more:
+        </strong>
+        Read Halle and Marantz's foundational papers on Distributed Morphology
+      </p>
+    </div>
+    <h3 className="subsection-title">
+      📚 Recommended Resources
+    </h3>
+    <div className="alert alert-info">
+      <strong>
+        Books:
+      </strong>
+      <ul style={{ 'marginTop': '10px', 'marginLeft': '20px' }}>
+        <li>
+          <strong>
+            "The Structure of English Words"
+          </strong>
+          by Stanley E. Payne - Comprehensive introduction to English morphology
+        </li>
+        <li>
+          <strong>
+            "Morphology"
+          </strong>
+          by Peter Matthews - Classic textbook on morphological theory
+        </li>
+        <li>
+          <strong>
+            "English Words and Their Structure"
+          </strong>
+          by Donka Minkova and Robert Stockwell - Focus on English word formation
+        </li>
+      </ul>
+      <strong style={{ 'display': 'block', 'marginTop': '15px' }}>
+        Research Papers:
+      </strong>
+      <ul style={{ 'marginTop': '10px', 'marginLeft': '20px' }}>
+        <li>
+          "The English Inflectional Suffixes" - Key paper on English inflectional morphology
+        </li>
+        <li>
+          "Distributed Morphology and the Pieces of Inflection" by Halle & Marantz
+        </li>
+      </ul>
+      <strong style={{ 'display': 'block', 'marginTop': '15px' }}>
+        Online Courses:
+      </strong>
+      <ul style={{ 'marginTop': '10px', 'marginLeft': '20px' }}>
+        <li>
+          <strong>
+            Coursera:
+          </strong>
+          "Introduction to Linguistics" (various universities)
+        </li>
+        <li>
+          <strong>
+            MIT OpenCourseWare:
+          </strong>
+          24.900 Introduction to Linguistics (free)
+        </li>
+        <li>
+          <strong>
+            YouTube:
+          </strong>
+          Crash Course Linguistics full playlist
+        </li>
+      </ul>
+      <strong style={{ 'display': 'block', 'marginTop': '15px' }}>
+        Interactive Tools:
+      </strong>
+      <ul style={{ 'marginTop': '10px', 'marginLeft': '20px' }}>
+        <li>
+          <strong>
+            All About Morphology:
+          </strong>
+          Interactive exercises and quizzes
+        </li>
+        <li>
+          <strong>
+            VisuWords:
+          </strong>
+          Visual dictionary showing word relationships
+        </li>
+        <li>
+          <strong>
+            Wordnik:
+          </strong>
+          Comprehensive word resource with etymology
+        </li>
+      </ul>
+    </div>
+    <h3 className="subsection-title">
+      💼 Interview Preparation
+    </h3>
+    <p>
+      This topic is commonly tested in linguistics program interviews and language teaching certifications. Here are typical questions:
+    </p>
+    <div className="example-box">
+      <h4>
+        Interview Question 1:
+      </h4>
+      <p>
+        "How would you explain the difference between derivational and inflectional morphology to a non-linguist?"
+      </p>
+      <button className="collapsible">
+        Show Approach
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <p>
+            <strong>
+              How to approach:
+            </strong>
+            Use concrete examples and analogies. Avoid jargon.
+          </p>
+          <p>
+            <strong>
+              Key points to mention:
+            </strong>
+          </p>
+          <ul style={{ 'marginLeft': '20px' }}>
+            <li>
+              Derivational = creating new words (like building new LEGO structures)
+            </li>
+            <li>
+              Inflectional = changing form of same word for grammar (like changing the color of the same LEGO piece)
+            </li>
+            <li>
+              Example: "happy" → "happiness" (new word, derivational) vs. "cat" → "cats" (same word, just plural, inflectional)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div className="example-box">
+      <h4>
+        Interview Question 2:
+      </h4>
+      <p>
+        "Analyze the word 'uncharacteristically' and explain the order of morpheme attachment."
+      </p>
+      <button className="collapsible">
+        Show Approach
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <p>
+            <strong>
+              Sample answer:
+            </strong>
+          </p>
+          <p>
+            The word has 6 morphemes: un- + character + -istic + -al + -ly
+          </p>
+          <p>
+            <strong>
+              Order of attachment:
+            </strong>
+          </p>
+          <ol style={{ 'marginLeft': '20px' }}>
+            <li>
+              Root: "character" (noun)
+            </li>
+            <li>
+              Add "-istic" → "characteristic" (adjective)
+            </li>
+            <li>
+              Add "-al" → "characteristical" (adjective - though rare, this is the structure)
+            </li>
+            <li>
+              Add "un-" → "uncharacteristical" (adjective, negated)
+            </li>
+            <li>
+              Add "-ly" → "uncharacteristically" (adverb)
+            </li>
+          </ol>
+          <p>
+            The hierarchical tree shows "-ly" attaching at the highest level to the adjective "uncharacteristical."
+          </p>
+        </div>
+      </div>
+    </div>
+    <div className="example-box">
+      <h4>
+        Interview Question 3:
+      </h4>
+      <p>
+        "Why is it important for language teachers to understand morphology?"
+      </p>
+      <button className="collapsible">
+        Show Approach
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <p>
+            <strong>
+              Key points:
+            </strong>
+          </p>
+          <ul style={{ 'marginLeft': '20px' }}>
+            <li>
+              Helps students decode unfamiliar vocabulary by recognizing word parts
+            </li>
+            <li>
+              Enables teaching of word families (happy, unhappy, happiness, happily)
+            </li>
+            <li>
+              Supports spelling instruction (understanding why "happiness" drops the 'y')
+            </li>
+            <li>
+              Aids in teaching grammar (understanding how -ed marks past tense)
+            </li>
+            <li>
+              Particularly valuable for academic vocabulary instruction
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/* ==================== SECTION 12: EXAM PRACTICE ==================== */}
+  <div className="section" id="exam">
+    <h2 className="section-title">
+      <span className="section-icon">
+        📝
+      </span>
+      University Exam Practice
+    </h2>
+    <p>
+      Practice with these university-style exam questions. These reflect the format and difficulty of actual linguistics exams.
+    </p>
+    <div className="example-box">
+      <h4>
+        Question 1: Short Answer (5 marks) - [Time: 7 minutes]
+      </h4>
+      <p>
+        Define the term "morpheme" and explain how morphemes differ from syllables. Provide two examples to illustrate your answer.
+      </p>
+      <button className="collapsible">
+        Show Marking Scheme & Model Answer
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <h4>
+            Marking Scheme:
+          </h4>
+          <ul style={{ 'marginLeft': '20px' }}>
+            <li>
+              Correct definition of morpheme: 1 mark
+            </li>
+            <li>
+              Clear distinction between morphemes and syllables: 2 marks
+            </li>
+            <li>
+              First appropriate example: 1 mark
+            </li>
+            <li>
+              Second appropriate example: 1 mark
+            </li>
+          </ul>
+          <h4>
+            Model Answer:
+          </h4>
+          <p>
+            A
+            <strong>
+              morpheme
+            </strong>
+            is the smallest unit of language that carries meaning (1 mark). While morphemes are units of
+            <em>
+              meaning
+            </em>
+            , syllables are units of
+            <em>
+              sound
+            </em>
+            or pronunciation (1 mark). A word can have multiple syllables but only one morpheme, or multiple morphemes in a single syllable (1 mark).
+          </p>
+          <p>
+            <strong>
+              Example 1:
+            </strong>
+            The word "cats" has one syllable but two morphemes: "cat" (meaning feline) and "-s" (meaning plural) (1 mark).
+          </p>
+          <p>
+            <strong>
+              Example 2:
+            </strong>
+            The word "banana" has three syllables (ba-na-na) but only one morpheme because no smaller part carries independent meaning (1 mark).
+          </p>
+        </div>
+      </div>
+    </div>
+    <div className="example-box">
+      <h4>
+        Question 2: Problem Solving (10 marks) - [Time: 15 minutes]
+      </h4>
+      <p>
+        Analyze the following words into their constituent morphemes. For each morpheme, identify whether it is free or bound, and whether it is derivational or inflectional (if applicable).
+      </p>
+      <p>
+        <strong>
+          Words to analyze:
+        </strong>
+      </p>
+      <ol style={{ 'marginLeft': '20px' }}>
+        <li>
+          internationalization
+        </li>
+        <li>
+          unhappier
+        </li>
+        <li>
+          bookstores
+        </li>
+      </ol>
+      <button className="collapsible">
+        Show Marking Scheme & Complete Solution
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <h4>
+            Marking Scheme (per word):
+          </h4>
+          <ul style={{ 'marginLeft': '20px' }}>
+            <li>
+              Correct morpheme identification: 2 marks
+            </li>
+            <li>
+              Correct classification (free/bound): 1 mark
+            </li>
+            <li>
+              Correct classification (derivational/inflectional): 1 mark
+            </li>
+            <li>
+              Partial credit for partially correct answers
+            </li>
+          </ul>
+          <h4>
+            Complete Solution:
+          </h4>
+          <p>
+            <strong>
+              1. internationalization (6 morphemes)
+            </strong>
+          </p>
+          <table style={{ 'margin': '10px 0' }}>
+            <tbody>
+              <tr>
+                <th>
+                  Morpheme
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Category
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  inter-
+                </td>
+                <td>
+                  bound
+                </td>
+                <td>
+                  derivational prefix
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  nation
+                </td>
+                <td>
+                  free
+                </td>
+                <td>
+                  root
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  -al
+                </td>
+                <td>
+                  bound
+                </td>
+                <td>
+                  derivational suffix
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  -ize
+                </td>
+                <td>
+                  bound
+                </td>
+                <td>
+                  derivational suffix
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  -tion
+                </td>
+                <td>
+                  bound
+                </td>
+                <td>
+                  derivational suffix
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  -s
+                </td>
+                <td>
+                  bound
+                </td>
+                <td>
+                  inflectional suffix
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            <strong>
+              2. unhappier (4 morphemes)
+            </strong>
+          </p>
+          <table style={{ 'margin': '10px 0' }}>
+            <tbody>
+              <tr>
+                <th>
+                  Morpheme
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Category
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  un-
+                </td>
+                <td>
+                  bound
+                </td>
+                <td>
+                  derivational prefix
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  happy
+                </td>
+                <td>
+                  free
+                </td>
+                <td>
+                  root
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  -i-
+                </td>
+                <td>
+                  bound
+                </td>
+                <td>
+                  connecting element (allomorph of -y)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  -er
+                </td>
+                <td>
+                  bound
+                </td>
+                <td>
+                  inflectional suffix (comparative)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            <strong>
+              3. bookstores (3 morphemes)
+            </strong>
+          </p>
+          <table style={{ 'margin': '10px 0' }}>
+            <tbody>
+              <tr>
+                <th>
+                  Morpheme
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Category
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  book
+                </td>
+                <td>
+                  free
+                </td>
+                <td>
+                  root (compound element)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  store
+                </td>
+                <td>
+                  free
+                </td>
+                <td>
+                  root (compound element)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  -s
+                </td>
+                <td>
+                  bound
+                </td>
+                <td>
+                  inflectional suffix (plural)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div className="example-box">
+      <h4>
+        Question 3: Analytical/Comparison (15 marks) - [Time: 20 minutes]
+      </h4>
+      <p>
+        Compare and contrast derivational and inflectional morphemes in English. Your answer should include:
+      </p>
+      <ul style={{ 'marginLeft': '20px' }}>
+        <li>
+          Definitions of each type
+        </li>
+        <li>
+          At least three differences between them
+        </li>
+        <li>
+          Examples illustrating each difference
+        </li>
+        <li>
+          A discussion of why this distinction matters for linguistic analysis
+        </li>
+      </ul>
+      <button className="collapsible">
+        Show Marking Scheme & Model Answer
+      </button>
+      <div className="collapsible-content">
+        <div className="collapsible-content-inner">
+          <h4>
+            Marking Scheme:
+          </h4>
+          <ul style={{ 'marginLeft': '20px' }}>
+            <li>
+              Clear definitions: 2 marks
+            </li>
+            <li>
+              Difference 1 with examples: 3 marks
+            </li>
+            <li>
+              Difference 2 with examples: 3 marks
+            </li>
+            <li>
+              Difference 3 with examples: 3 marks
+            </li>
+            <li>
+              Discussion of significance: 3 marks
+            </li>
+            <li>
+              Organization and clarity: 1 mark
+            </li>
+          </ul>
+          <h4>
+            Model Answer:
+          </h4>
+          <p>
+            <strong>
+              Definitions:
+            </strong>
+          </p>
+          <p>
+            <strong>
+              Derivational morphemes
+            </strong>
+            are affixes that create new words by changing the meaning, word class, or both (1 mark).
+            <strong>
+              Inflectional morphemes
+            </strong>
+            are affixes that add grammatical information without changing word class or creating new words (1 mark).
+          </p>
+          <p>
+            <strong>
+              Difference 1: Word Class Change
+            </strong>
+            (3 marks)
+          </p>
+          <p>
+            Derivational morphemes often change word class, while inflectional morphemes never do. For example, adding "-ness" to "happy" (adjective) creates "happiness" (noun)—the word class changes. In contrast, adding "-s" to "cat" (noun) creates "cats" (still a noun)—the word class remains the same.
+          </p>
+          <p>
+            <strong>
+              Difference 2: Position in Word
+            </strong>
+            (3 marks)
+          </p>
+          <p>
+            Inflectional morphemes always appear at the outermost layer of a word, while derivational morphemes appear closer to the root. In "nationalizations," the derivational suffixes "-al," "-ize," and "-tion" attach before the inflectional "-s." You cannot have "nationsalize"—the order is fixed by morphological rules.
+          </p>
+          <p>
+            <strong>
+              Difference 3: Number and Productivity
+            </strong>
+            (3 marks)
+          </p>
+          <p>
+            English has only eight inflectional morphemes, all highly productive and applicable to entire word classes. In contrast, there are hundreds of derivational morphemes with varying productivity. The plural "-s" applies to virtually all count nouns, while derivational affixes like "-th" (warm → warmth) have limited applicability.
+          </p>
+          <p>
+            <strong>
+              Significance for Linguistic Analysis
+            </strong>
+            (3 marks)
+          </p>
+          <p>
+            This distinction matters because it reveals the modular nature of word formation. Derivational morphology expands the lexicon by creating new words, while inflectional morphology adapts existing words to grammatical contexts. This separation helps linguists understand how languages balance creativity (making new words) with systematicity (applying grammatical rules consistently). It also explains why dictionaries list derivational forms as separate entries but treat inflected forms as variants of the same word.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/* ==================== FOOTER ==================== */}
+  <div className="footer">
+    <h3>
+      🎓 Congratulations on Completing This Module!
+    </h3>
+    <p>
+      You've covered all aspects of Morphology. Make sure to practice regularly and review the quick reference sheet.
+    </p>
+    <div className="footer-links">
+      <a href="#overview" className="footer-link">
+        ↑ Back to Top
+      </a>
+      <a href="#theory" className="footer-link">
+        📖 Review Theory
+      </a>
+      <a href="#practice" className="footer-link">
+        🎯 More Practice
+      </a>
+      <a href="#quiz" className="footer-link">
+        ✅ Retake Quiz
+      </a>
+    </div>
+    <p style={{ 'marginTop': '20px', 'fontSize': '0.9em' }}>
+      Part of Principles and Practices of Human Communication | UNIT-1: Introduction to Language and Linguistics
+      <br />
+      Generated learning material for self-paced study
+    </p>
+  </div>
+</div>
+
+    </div>
+  );
+};
+
+export default Module1_3;
