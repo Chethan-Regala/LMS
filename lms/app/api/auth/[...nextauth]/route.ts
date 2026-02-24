@@ -46,9 +46,17 @@ export const authOptions: NextAuthOptions = {
         signIn: "/pages/login",
     },
     callbacks: {
-        async signIn({ account }) {
-            // Allow all Google sign-ins; admin credentials handled in authorize()
-            if (account?.provider === "google") {
+        async signIn({ account, user }) {
+            // Admin credentials handled in authorize()
+            if (account?.provider === "credentials") {
+                return true;
+            }
+            
+            // For Google sign-ins, only allow @ggu.edu.in emails for students
+            if (account?.provider === "google" && user?.email) {
+                if (!user.email.endsWith("@ggu.edu.in")) {
+                    return false;
+                }
                 return true;
             }
             return true;
