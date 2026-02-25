@@ -51,7 +51,6 @@ export const authOptions: NextAuthOptions = {
             if (account?.provider === "credentials") {
                 return true;
             }
-
             // For Google sign-ins, check if the user is allowed
             if (account?.provider === "google" && user?.email) {
                 // Always allow @ggu.edu.in emails (students)

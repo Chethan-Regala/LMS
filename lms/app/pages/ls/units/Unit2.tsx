@@ -69,7 +69,7 @@ const Unit2: React.FC<Unit2Props> = ({ currentModule: propModule, setCurrentModu
       const idx = parseModuleParam(moduleParam);
       setCurrentModuleState(idx);
     }
-     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, propModule]);
 
   const setCurrentModule = (m: number) => {

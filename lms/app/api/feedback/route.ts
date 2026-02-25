@@ -38,6 +38,7 @@ export async function GET() {
       .collection("feedback")
       .find({ expiresAt: { $gt: new Date() } })
       .sort({ createdAt: -1 })
+      .project({ expiresAt: 0 }) // Don't send internal TTL field to client
       .toArray();
 
     return NextResponse.json(feedback);
@@ -82,3 +83,4 @@ export async function DELETE(req: Request) {
     );
   }
 }
+

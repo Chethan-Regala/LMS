@@ -444,7 +444,31 @@ export default function AdminDashboard() {
                 </div>
               </div>
 
-
+              {/* ROW 3: SUBJECTS (Added from main) */}
+              <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm">
+                <div className="flex items-center justify-between mb-8">
+                  <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase">Subject Analytical Overview</h3>
+                  <BarChart3 className="w-5 h-5 text-slate-300" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                  {subjectCompletion.slice(0, 6).map((subject) => (
+                    <div key={subject.subject} className="space-y-4">
+                      <div className="flex justify-between items-center text-[10px] font-bold">
+                        <span className="text-[#121212] uppercase tracking-widest">{subject.subject}</span>
+                        <span className="text-[#3E73C1] bg-blue-50 px-2 py-1 rounded-md border border-blue-100">{subject.avgScore}%</span>
+                      </div>
+                      <div className="h-2 w-full bg-[#EEEEEE] rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: `${subject.avgScore}%` }}
+                          transition={{ duration: 1.2, ease: "easeOut" }}
+                          className="h-full bg-[#3E73C1] rounded-full"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* RIGHT COLUMN: QUICK NAV */}
@@ -476,8 +500,9 @@ export default function AdminDashboard() {
             ]}
             copyright="© 2026 GGU LMS • Administrative Interface"
           />
-        </main >
-      </div >
-    </div >
+        </main>
+      </div>
+    </div>
   );
 }
+

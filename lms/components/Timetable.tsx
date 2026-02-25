@@ -214,7 +214,7 @@ export default function Timetable() {
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-[#121212] tracking-tighter">It's Lunch Break</h2>
-                <p className="text-xs text-[#AAA] font-bold uppercase tracking-widest mt-2">Time to refuel and recharge</p>
+                <p className="text-xs text-[#AAA] font-bold uppercase tracking-widest mt-2" > Time to refuel and recharge</p>
               </div>
               <div className="px-6 py-2 bg-[#F8F6F1] border border-[#E5E2D9] rounded-full text-[10px] font-bold text-[#7096CC]">
                 RESUMING AT 01:15 PM
