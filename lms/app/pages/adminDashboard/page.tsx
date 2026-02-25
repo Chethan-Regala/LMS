@@ -158,7 +158,7 @@ export default function AdminDashboard() {
         fetch("/api/users/students"),
         fetch("/api/leaves"),
         fetch("/api/feedback"),
-        fetch("/api/progress")
+        fetch("/api/progress?all=true")
       ]);
 
       const usersData = await usersRes.json();
