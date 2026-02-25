@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Clock, BookOpen, User, Edit3, X, Menu, Save, Info } from "lucide-react";
 import AdminSidebar from "../../../components/AdminSidebar";
+import Footer from "@/components/Footer";
 
 export default function AdminTimetable() {
     const { data: session } = useSession();
@@ -98,7 +99,7 @@ export default function AdminTimetable() {
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => setIsSidebarOpen(true)}
-                                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1]"
+                                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1] cursor-pointer"
                             >
                                 <Menu className="w-5 h-5" />
                             </button>
@@ -215,7 +216,7 @@ export default function AdminTimetable() {
 
                                     <button
                                         onClick={() => openSubjectModal(subjectData)}
-                                        className="w-full flex items-center justify-center gap-3 bg-white border border-[#E5E2D9] hover:bg-[#1E3A8A] hover:border-[#1E3A8A] hover:text-white px-4 py-4 rounded-xl transition-all font-bold text-[10px] uppercase tracking-[0.2em] shadow-sm active:scale-95"
+                                        className="w-full flex items-center justify-center gap-3 bg-white border border-[#E5E2D9] hover:bg-[#1E3A8A] hover:border-[#1E3A8A] hover:text-white px-4 py-4 rounded-xl transition-all font-bold text-[10px] uppercase tracking-[0.2em] shadow-sm active:scale-95 cursor-pointer"
                                     >
                                         <Edit3 className="w-4 h-4" />
                                         Edit Details
@@ -251,7 +252,7 @@ export default function AdminTimetable() {
                                         </div>
                                         <button
                                             onClick={() => setEditSubject(null)}
-                                            className="p-3 hover:bg-[#F8F6F1] rounded-2xl transition-colors group"
+                                            className="p-3 hover:bg-[#F8F6F1] rounded-2xl transition-colors group cursor-pointer"
                                         >
                                             <X className="w-6 h-6 text-slate-400 group-hover:text-rose-500 transition-colors" />
                                         </button>
@@ -281,14 +282,14 @@ export default function AdminTimetable() {
                                         <div className="flex gap-4 pt-4">
                                             <button
                                                 onClick={updateSubject}
-                                                className="flex-1 flex items-center justify-center gap-3 bg-[#3E73C1] text-white py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#1E3A8A] transition-all shadow-md active:scale-95"
+                                                className="flex-1 flex items-center justify-center gap-3 bg-[#3E73C1] text-white py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#1E3A8A] transition-all shadow-md active:scale-95 cursor-pointer"
                                             >
                                                 <Save className="w-4 h-4" />
                                                 Save Changes
                                             </button>
                                             <button
                                                 onClick={() => setEditSubject(null)}
-                                                className="flex-1 bg-white border border-[#E5E2D9] text-slate-500 py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#F8F6F1] hover:text-[#121212] transition-all active:scale-95"
+                                                className="flex-1 bg-white border border-[#E5E2D9] text-slate-500 py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#F8F6F1] hover:text-[#121212] transition-all active:scale-95 cursor-pointer"
                                             >
                                                 Cancel
                                             </button>
@@ -298,6 +299,14 @@ export default function AdminTimetable() {
                             </div>
                         )}
                     </AnimatePresence>
+                    <Footer
+                        links={[
+                            { label: "Admin Panel", href: "#" },
+                            { label: "System Logs", href: "#" },
+                            { label: "Support", href: "#" }
+                        ]}
+                        copyright="© 2026 GGU LMS • Administrative Interface"
+                    />
                 </main>
             </div>
         </div>

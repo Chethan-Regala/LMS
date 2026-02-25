@@ -16,15 +16,13 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const isGuest = (session?.user as any)?.isGuest;
+  const isGGU = (session?.user as any)?.isGGU || (session?.user as any)?.isAdmin;
 
   const menuItems = [
     { icon: <LayoutGrid className="w-5 h-5" />, label: "Dashboard", path: "/" },
-    { icon: <BookOpen className="w-5 h-5" />, label: "Livebooks", path: "/pages/livebooks" },
-    ...(!isGuest ? [
-      { icon: <MessageSquare className="w-5 h-5" />, label: "Feedback", path: "/pages/feedback" },
-      { icon: <CheckSquare className="w-5 h-5" />, label: "Leave", path: "/pages/attendance" },
-    ] : []),
+    { icon: <BookOpen className="w-5 h-5" />, label: "Livebooks", path: "/pages/livebooks", restricted: !isGGU },
+    { icon: <MessageSquare className="w-5 h-5" />, label: "Feedback", path: "/pages/feedback", restricted: !isGGU },
+    { icon: <CheckSquare className="w-5 h-5" />, label: "Leave", path: "/pages/attendance", restricted: !isGGU },
   ];
 
   const sidebarContent = (
@@ -70,7 +68,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           </div>
           <div>
             <p className="text-[#3E73C1] font-black text-base truncate max-w-[120px]">{session?.user?.name || "Student"}</p>
-            <p className="text-slate-400 font-bold text-xs">{isGuest ? "Guest" : "Student"}</p>
+            <p className="text-slate-400 font-bold text-xs">{isGGU ? "Student" : "Guest"}</p>
           </div>
         </div>
       </div>
@@ -82,21 +80,32 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           <nav className="space-y-2">
             {menuItems.map((item) => {
               const isActive = pathname === item.path;
+              const isLocked = item.restricted;
               return (
-                <div key={item.path} className="relative pl-8 ">
+                <div key={item.path} className="relative pl-8">
                   <button
                     onClick={() => {
+                      if (isLocked) return;
                       router.push(item.path);
                       if (onClose) onClose();
                     }}
-                    className={`w-full flex items-center gap-5 px-6 py-4 transition-all duration-300 ${isActive
-                      ? "bg-[#F0F4F9] text-[#3E73C1] rounded-l-[1.5rem] shadow-lg shadow-blue-900/10"
-                      : "text-white/90 hover:text-white cursor-pointer"}`}
+                    className={`w-full flex items-center gap-5 px-6 py-4 transition-all duration-300 ${isLocked
+                        ? "text-white/30 cursor-not-allowed"
+                        : isActive
+                          ? "bg-[#F0F4F9] text-[#3E73C1] rounded-l-[1.5rem] shadow-lg shadow-blue-900/10"
+                          : "text-white/90 hover:text-white cursor-pointer"
+                      }`}
                   >
-                    <span className={`${isActive ? 'text-[#3E73C1]' : 'text-white'}`}>
+                    <span className={`${isLocked ? 'text-white/30' : isActive ? 'text-[#3E73C1]' : 'text-white'
+                      }`}>
                       {item.icon}
                     </span>
                     <span className="text-base font-bold tracking-tight">{item.label}</span>
+                    {isLocked && (
+                      <svg className="w-3.5 h-3.5 ml-auto text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                    )}
                   </button>
                 </div>
               );

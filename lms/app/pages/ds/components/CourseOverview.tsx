@@ -264,7 +264,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
                             className="relative group/module cursor-pointer pt-1"
                             onClick={() => onModuleSelect(unit.id, idx + 1)}
                           >
-                            <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[10px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-emerald-500' : 'bg-[#8BC34A]'
+                            <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[10px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-emerald-500' : 'bg-[#121212]'
                               }`}>
                               {unit.id}.{idx + 1}
                             </div>

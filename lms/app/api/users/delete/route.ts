@@ -12,6 +12,13 @@ export async function DELETE(req: Request) {
       );
     }
 
+    if (email === "admin@ggu.edu.in") {
+      return NextResponse.json(
+        { ok: false, error: "Primary admin account cannot be deleted" },
+        { status: 403 }
+      );
+    }
+
     const db = await getDb();
     const result = await db.collection("users").deleteOne({ email });
 

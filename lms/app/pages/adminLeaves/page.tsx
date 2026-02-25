@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Calendar, Trash2, Menu, AlertCircle, Clock } from "lucide-react";
 import AdminSidebar from "../../../components/AdminSidebar";
+import Footer from "@/components/Footer";
 
 export default function AdminLeaves() {
     const { data: session } = useSession();
@@ -49,7 +50,7 @@ export default function AdminLeaves() {
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => setIsSidebarOpen(true)}
-                                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1]"
+                                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1] cursor-pointer"
                             >
                                 <Menu className="w-5 h-5" />
                             </button>
@@ -141,7 +142,7 @@ export default function AdminLeaves() {
                                         <div className="flex gap-2">
                                             <button
                                                 onClick={() => deleteLeave(leave._id)}
-                                                className="group/del w-full flex items-center justify-center gap-3 bg-rose-50 border border-rose-100 hover:bg-rose-600 hover:border-rose-600 py-4 rounded-2xl transition-all"
+                                                className="group/del w-full flex items-center justify-center gap-3 bg-rose-50 border border-rose-100 hover:bg-rose-600 hover:border-rose-600 py-4 rounded-2xl transition-all cursor-pointer"
                                             >
                                                 <Trash2 className="w-4 h-4 text-rose-600 group-hover/del:text-white" />
                                                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-rose-600 group-hover/del:text-white">Delete Request</span>
@@ -152,6 +153,14 @@ export default function AdminLeaves() {
                             </div>
                         )}
                     </div>
+                    <Footer
+                        links={[
+                            { label: "Admin Panel", href: "#" },
+                            { label: "System Logs", href: "#" },
+                            { label: "Support", href: "#" }
+                        ]}
+                        copyright="© 2026 GGU LMS • Administrative Interface"
+                    />
                 </main>
             </div>
         </div>

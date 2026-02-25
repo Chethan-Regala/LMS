@@ -235,7 +235,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
                                 onClick={() => onModuleSelect(unit.id, idx + 1)}
                               >
                                 {/* Module badge with number */}
-                                <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[11px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-indigo-600' : 'bg-indigo-400'
+                                <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[11px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-indigo-600' : 'bg-[#121212]'
                                   }`}>
                                   {module.id}
                                 </div>

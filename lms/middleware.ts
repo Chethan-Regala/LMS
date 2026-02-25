@@ -8,34 +8,23 @@ export default withAuth(
     const email = token?.email as string | undefined;
     const path = req.nextUrl.pathname;
 
-    // Check if student has valid college email
-    const hasValidStudentEmail = email?.endsWith("@ggu.edu.in");
+    // GGU students have @ggu.edu.in email
+    const isGGU = email?.endsWith("@ggu.edu.in");
 
-    // Redirect admins from root to admin dashboard
+    // Admins: redirect from root to admin dashboard
     if (path === "/" && isAdmin) {
       return NextResponse.redirect(new URL("/pages/adminDashboard", req.url));
     }
 
-    // Prevent non-admins from accessing admin dashboard
+    // Block non-admins from admin pages
     if (path.startsWith("/pages/adminDashboard") && !isAdmin) {
       return NextResponse.redirect(new URL("/", req.url));
     }
-
-    // Prevent non-admins from accessing admin progress page
     if (path.startsWith("/pages/adminProgress") && !isAdmin) {
       return NextResponse.redirect(new URL("/", req.url));
     }
 
-    // Prevent students without valid college email from accessing student pages
-    // EXCEPT if they are a Guest user
-    const isGuest = token?.isGuest;
-    if (!isAdmin && !isGuest && !hasValidStudentEmail && path.startsWith("/pages/") &&
-      !path.startsWith("/pages/login") &&
-      !path.startsWith("/pages/adminLogin")) {
-      return NextResponse.redirect(new URL("/pages/login", req.url));
-    }
-
-    // Prevent admins from accessing student pages (except livebooks and subjects)
+    // Block admins from student pages (except subject/livebooks pages)
     if (isAdmin && path.startsWith("/pages/") &&
       !path.startsWith("/pages/admin") &&
       !path.startsWith("/pages/livebooks") &&
@@ -46,6 +35,14 @@ export default withAuth(
       !path.startsWith("/pages/ls") &&
       !path.startsWith("/pages/flat")) {
       return NextResponse.redirect(new URL("/pages/adminDashboard", req.url));
+    }
+
+    // Non-GGU, non-admin users: block ALL /pages/* routes
+    // They can only see the home page (/)
+    if (!isAdmin && !isGGU && path.startsWith("/pages/") &&
+      !path.startsWith("/pages/login") &&
+      !path.startsWith("/pages/adminLogin")) {
+      return NextResponse.redirect(new URL("/", req.url));
     }
 
     return NextResponse.next();

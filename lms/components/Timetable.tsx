@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { ExternalLink, Calendar, ArrowUpRight, Clock } from "lucide-react";
 
 interface Period {
@@ -12,9 +13,22 @@ interface Period {
 }
 
 export default function Timetable() {
+  const router = useRouter();
   const [data, setData] = useState<Period[]>([]);
   const [selected, setSelected] = useState<Period | null>(null);
   const [currentPeriod, setCurrentPeriod] = useState<Period | null>(null);
+
+  const handleNavigation = () => {
+    if (!selected) return;
+    const subject = selected.subject.toUpperCase();
+    if (subject.includes("OS")) router.push("/pages/os");
+    else if (subject.includes("DS")) router.push("/pages/ds");
+    else if (subject.includes("FLAT")) router.push("/pages/flat");
+    else if (subject.includes("ES")) router.push("/pages/es");
+    else if (subject.includes("LS")) router.push("/pages/ls");
+    else if (subject.includes("NSS")) router.push("/pages/nss");
+    else router.push("/pages/livebooks");
+  };
 
   useEffect(() => {
     loadData();
@@ -170,7 +184,7 @@ export default function Timetable() {
                   <button
                     key={i}
                     onClick={() => setSelected(period)}
-                    className={`w-full p-5 text-left transition-colors relative ${isSelected ? "bg-[#F8F6F1]" : "hover:bg-[#FAF9F6]"
+                    className={`w-full p-5 text-left transition-colors relative cursor-pointer ${isSelected ? "bg-[#F8F6F1]" : "hover:bg-[#FAF9F6]"
                       }`}
                   >
                     <p className={`text-[10px] font-bold mb-1 ${isCurrent ? "text-rose-500" : "text-[#AAA]"}`}>
@@ -255,7 +269,10 @@ export default function Timetable() {
                     )}
                   </div>
                 </div>
-                <button className="p-3 bg-white border border-[#E5E2D9] rounded-xl hover:bg-[#F8F6F1] transition-all shadow-sm group">
+                <button
+                  onClick={handleNavigation}
+                  className="p-3 bg-white border border-[#E5E2D9] rounded-xl hover:bg-[#F8F6F1] transition-all shadow-sm group cursor-pointer"
+                >
                   <ArrowUpRight className="w-6 h-6 text-[#121212] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
               </div>
@@ -274,7 +291,10 @@ export default function Timetable() {
                     <p className="text-[10px] font-bold text-[#AAA] tracking-tight">No additional descriptions were provided for this session yet.</p>
                   </div>
                 )}
-                <button className="w-full py-3 bg-[#121212] text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-[#333] transition-all">
+                <button
+                  onClick={handleNavigation}
+                  className="w-full py-3 bg-[#121212] text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-[#333] transition-all cursor-pointer"
+                >
                   Enter Integrated Session
                 </button>
               </div>
