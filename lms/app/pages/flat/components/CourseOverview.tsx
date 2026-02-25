@@ -64,8 +64,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
         { id: '1.5', title: 'Non-deterministic Finite Automata (NFA)', description: 'Exploring non-deterministic computation' },
         { id: '1.6', title: 'Text Search using Finite Automata', description: 'KMP algorithm and pattern matching' },
         { id: '1.7', title: 'Regular Expressions', description: 'Formal notation and construction rules' },
-        { id: '1.8', title: 'Finite Automata with ε-Transitions', description: 'ε-NFA and epsilon elimination' },
-        { id: '1.9', title: 'Unit 1 Final Synthesis', description: 'Comprehensive review and assessment' }
+        { id: '1.8', title: 'Finite Automata with ε-Transitions', description: 'ε-NFA and epsilon elimination' }
       ]
     },
     {

@@ -9,7 +9,6 @@ import {
   Mail,
   Video,
   Calendar,
-  Sparkles,
   MessageSquare,
   Clock,
   ArrowRight,
@@ -70,6 +69,9 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // True if the user has full access (GGU student or admin)
+  const hasFullAccess = (session?.user as any)?.isAdmin || (session?.user as any)?.isGGU;
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -105,22 +107,41 @@ export default function Home() {
             </div>
           </div>
 
+          {/* MAIN CONTENT */}
           <div className="grid grid-cols-12 gap-8 items-start">
 
             {/* LEFT COLUMN: 8 Units */}
             <div className="col-span-12 lg:col-span-8 space-y-8">
 
-              {/* HERO CARD */}
+              {/* HERO CARD - always visible */}
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="relative bg-[#E0F2FE] rounded-[2.5rem] p-6 sm:p-12 overflow-hidden flex flex-col md:flex-row items-center justify-between border border-blue-200/50"
               >
                 <div className="relative z-10 max-w-lg">
-                  <h1 className="text-2xl sm:text-3xl font-black text-[#1E3A8A] mb-4 text-center md:text-left">Hello {session?.user?.name?.split(' ')[0] || "Student"},</h1>
-                  <p className="text-[#1E3A8A]/70 text-sm sm:text-base font-semibold leading-relaxed mb-8 text-center md:text-left">
-                    This university learning platform helps you stay on track with courses, assignments, and academic progress.
-                  </p>
+                  {hasFullAccess ? (
+                    <>
+                      <h1 className="text-2xl sm:text-3xl font-black text-[#1E3A8A] mb-4 text-center md:text-left">Hello {session?.user?.name?.split(' ')[0] || "Student"},</h1>
+                      <p className="text-[#1E3A8A]/70 text-sm sm:text-base font-semibold leading-relaxed mb-8 text-center md:text-left">
+                        This university learning platform helps you stay on track with courses, assignments, and academic progress.
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <h1 className="text-2xl sm:text-3xl font-black text-[#1E3A8A] mb-4 text-center md:text-left">Hi {session?.user?.name?.split(' ')[0] || "there"},</h1>
+                      <p className="text-[#1E3A8A]/80 text-sm sm:text-base font-semibold leading-relaxed mb-6 text-center md:text-left">
+                        You don&apos;t have permission to access this content. Contact your administrator to request access.
+                      </p>
+                      <button
+                        onClick={() => signOut({ callbackUrl: '/pages/login' })}
+                        className="flex items-center gap-2 bg-white/80 border border-blue-200 text-[#1E3A8A] px-5 py-2.5 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-white transition-all"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Sign Out
+                      </button>
+                    </>
+                  )}
                 </div>
                 <div className="relative mt-8 md:mt-0">
                   <HeroIllustration />
@@ -130,8 +151,9 @@ export default function Home() {
                 <div className="absolute bottom-[-20%] left-[-10%] w-64 h-64 bg-blue-300/10 blur-[100px] rounded-full" />
               </motion.section>
 
-              {/* TIMELINE SECTION */}
-              <section className="bg-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 border border-[#E5E2D9] shadow-sm">
+              {/* TIMETABLE - greyed for non-GGU */}
+              <section className={`bg-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 border border-[#E5E2D9] shadow-sm ${!hasFullAccess ? 'opacity-30 pointer-events-none grayscale' : ''
+                }`}>
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="text-base sm:text-lg font-black tracking-tight text-[#1E3A8A]">Class Schedule</h3>
                   <div className="flex gap-4">
@@ -139,7 +161,6 @@ export default function Home() {
                     <Layout className="w-4 h-4 text-[#AAA]" />
                   </div>
                 </div>
-
                 <div className="w-full">
                   <Timetable />
                 </div>
@@ -147,7 +168,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT COLUMN: 4 Units */}
-            <div className="col-span-12 lg:col-span-4 space-y-8">
+            <div className={`col-span-12 lg:col-span-4 space-y-8 ${!hasFullAccess ? 'opacity-30 pointer-events-none' : ''}`}>
 
               {/* COURSE PROGRESS */}
               <section className="bg-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 border border-[#E5E2D9] shadow-sm">
@@ -169,8 +190,8 @@ export default function Home() {
                 </div>
               </section>
 
-              {/* QUICK ACTION CARDS - Hidden for Guests */}
-              {!(session?.user as any)?.isGuest && (
+              {/* QUICK ACTION CARDS - Only for GGU students */}
+              {hasFullAccess && (
                 <div className="grid grid-cols-1 gap-4">
                   <button className="flex items-center justify-between p-6 bg-[#E0F2FE] rounded-[2rem] border border-blue-200/50 group hover:shadow-lg transition-all text-left hover:cursor-pointer"
                     onClick={() => router.push('/pages/attendance')}>
@@ -202,17 +223,7 @@ export default function Home() {
                 </div>
               )}
 
-              {(session?.user as any)?.isGuest && (
-                <div className="p-8 bg-emerald-50 rounded-[2rem] border border-emerald-100 flex flex-col items-center text-center">
-                  <div className="p-3 bg-white rounded-2xl shadow-sm mb-4">
-                    <Sparkles className="w-6 h-6 text-emerald-600" />
-                  </div>
-                  <h4 className="text-sm font-black text-emerald-900 mb-2">Guest Access Active</h4>
-                  <p className="text-[10px] font-bold text-emerald-700/60 leading-relaxed uppercase tracking-wider">
-                    You have view-only access to course materials. Contact admin for full enrollment.
-                  </p>
-                </div>
-              )}
+
             </div>
           </div>
 

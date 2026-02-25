@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, RefreshCw, GraduationCap, LayoutGrid, CheckCircle2, User, Menu, Search, TrendingUp } from "lucide-react";
 import AdminSidebar from "../../../components/AdminSidebar";
+import Footer from "@/components/Footer";
 
 export default function AdminProgress() {
   const { data: session } = useSession();
@@ -452,7 +453,7 @@ export default function AdminProgress() {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setIsSidebarOpen(true)}
-                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1]"
+                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1] cursor-pointer"
               >
                 <Menu className="w-5 h-5" />
               </button>
@@ -499,7 +500,7 @@ export default function AdminProgress() {
                     <button
                       key={student._id}
                       onClick={() => fetchProgress(student.email)}
-                      className={`w-full text-left p-4 rounded-2xl transition-all border ${selectedStudent === student.email
+                      className={`w-full text-left p-4 rounded-2xl transition-all border cursor-pointer ${selectedStudent === student.email
                         ? "bg-[#3E73C1] border-[#3E73C1] text-white"
                         : "bg-[#F8F6F1] border-transparent text-[#121212] hover:bg-white hover:border-[#E5E2D9]"
                         }`}
@@ -540,7 +541,7 @@ export default function AdminProgress() {
                     </div>
                     <button
                       onClick={() => fetchProgress(selectedStudent!)}
-                      className="flex items-center justify-center gap-3 bg-[#F8F6F1] border border-[#E5E2D9] px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:border-[#3E73C1] transition-all group"
+                      className="flex items-center justify-center gap-3 bg-[#F8F6F1] border border-[#E5E2D9] px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:border-[#3E73C1] transition-all group cursor-pointer"
                     >
                       <RefreshCw className="w-4 h-4 text-slate-400 group-hover:rotate-180 transition-transform duration-700" />
                       Refresh
@@ -593,7 +594,7 @@ export default function AdminProgress() {
                     <div className="flex items-center gap-6">
                       <button
                         onClick={() => setSelectedSubject(null)}
-                        className="p-4 bg-[#F8F6F1] border border-[#E5E2D9] rounded-2xl hover:bg-white hover:border-[#3E73C1] transition-all group"
+                        className="p-4 bg-[#F8F6F1] border border-[#E5E2D9] rounded-2xl hover:bg-white hover:border-[#3E73C1] transition-all group cursor-pointer"
                       >
                         <ArrowLeft className="w-5 h-5 text-slate-500 group-hover:text-[#3E73C1]" />
                       </button>
@@ -611,7 +612,7 @@ export default function AdminProgress() {
                       </div>
                       <button
                         onClick={() => fetchProgress(selectedStudent!)}
-                        className="p-4 bg-[#3E73C1] rounded-2xl group active:scale-95 transition-all"
+                        className="p-4 bg-[#3E73C1] rounded-2xl group active:scale-95 transition-all cursor-pointer"
                       >
                         <RefreshCw className="w-5 h-5 text-white group-hover:rotate-180 transition-transform duration-700" />
                       </button>
@@ -689,7 +690,15 @@ export default function AdminProgress() {
               )}
             </div>
           </div>
-        </main >
+          <Footer
+            links={[
+              { label: "Admin Panel", href: "#" },
+              { label: "System Logs", href: "#" },
+              { label: "Support", href: "#" }
+            ]}
+            copyright="© 2026 GGU LMS • Administrative Interface"
+          />
+        </main>
       </div >
     </div >
   );

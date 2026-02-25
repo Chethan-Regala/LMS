@@ -98,7 +98,11 @@ export default function LivebooksPage() {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    if (session?.user) {
+      const userSem = (session.user as any).currentSemester;
+      if (userSem) setActiveSemester(userSem);
+    }
+  }, [session]);
 
   const subjects = [
     {

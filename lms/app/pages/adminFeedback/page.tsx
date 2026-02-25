@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { MessageSquare, Sparkles, Clock, Trash2, ShieldCheck, Menu, AlertTriangle } from "lucide-react";
 import AdminSidebar from "../../../components/AdminSidebar";
+import Footer from "@/components/Footer";
 
 export default function AdminFeedback() {
     const { data: session } = useSession();
@@ -55,7 +56,7 @@ export default function AdminFeedback() {
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => setIsSidebarOpen(true)}
-                                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#F97316]"
+                                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#F97316] cursor-pointer"
                             >
                                 <Menu className="w-5 h-5" />
                             </button>
@@ -138,7 +139,7 @@ export default function AdminFeedback() {
                                             </div>
                                             <button
                                                 onClick={() => deleteFeedback(item._id)}
-                                                className="p-2 rounded-xl hover:bg-rose-50 border border-transparent hover:border-rose-200 transition-all group/del"
+                                                className="p-2 rounded-xl hover:bg-rose-50 border border-transparent hover:border-rose-200 transition-all group/del cursor-pointer"
                                                 title="Delete feedback"
                                             >
                                                 <Trash2 className="w-3.5 h-3.5 text-slate-300 group-hover/del:text-rose-500 transition-colors" />
@@ -149,6 +150,14 @@ export default function AdminFeedback() {
                             </div>
                         )}
                     </div>
+                    <Footer
+                        links={[
+                            { label: "Admin Panel", href: "#" },
+                            { label: "System Logs", href: "#" },
+                            { label: "Support", href: "#" }
+                        ]}
+                        copyright="© 2026 GGU LMS • Administrative Interface"
+                    />
                 </main>
             </div>
         </div>

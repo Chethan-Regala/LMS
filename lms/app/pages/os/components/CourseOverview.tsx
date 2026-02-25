@@ -284,7 +284,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({ onModuleSelect }) => {
                             onClick={() => onModuleSelect(unit.id, idx + 1)}
                           >
                             {/* Green square badge with number */}
-                            <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[11px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-emerald-500' : 'bg-[#8BC34A]'
+                            <div className={`absolute -left-[57px] top-0 w-8 h-8 rounded flex items-center justify-center text-[11px] font-bold text-white transition-all shadow-sm ${isCompleted ? 'bg-emerald-500' : 'bg-[#121212]'
                               }`}>
                               {module.id}
                             </div>

@@ -103,9 +103,9 @@ export default function AdminSidebar({ isOpen, onClose }: SidebarProps) {
                       router.push(item.path);
                       if (onClose) onClose();
                     }}
-                    className={`w-full flex items-center gap-5 px-6 py-4 transition-all duration-300 ${isActive
+                    className={`w-full flex items-center gap-5 px-6 py-4 transition-all duration-300 cursor-pointer ${isActive
                       ? "bg-[#F8F6F1] text-[#3E73C1] rounded-l-[1.5rem]"
-                      : "text-white/90 hover:text-white cursor-pointer"}`}
+                      : "text-white/90 hover:text-white"}`}
                   >
                     <span className={`${isActive ? 'text-[#3E73C1]' : 'text-white'}`}>
                       {item.icon}
@@ -121,7 +121,7 @@ export default function AdminSidebar({ isOpen, onClose }: SidebarProps) {
             <div className="pl-8 cursor-pointer">
               <button
                 onClick={() => signOut({ callbackUrl: "/pages/adminLogin" })}
-                className="w-full flex items-center gap-5 px-6 py-5 text-rose-300 hover:text-rose-100 transition-all border-t border-white/10"
+                className="w-full flex items-center gap-5 px-6 py-5 text-rose-300 hover:text-rose-100 transition-all border-t border-white/10 cursor-pointer"
               >
                 <LogOut className="w-5 h-5" />
                 <span className="text-sm font-bold tracking-tight uppercase">Sign Out</span>

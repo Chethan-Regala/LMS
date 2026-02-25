@@ -51,41 +51,23 @@ export const authOptions: NextAuthOptions = {
             if (account?.provider === "credentials") {
                 return true;
             }
-            // For Google sign-ins, check if the user is allowed
-            if (account?.provider === "google" && user?.email) {
-                // Always allow @ggu.edu.in emails (students)
-                if (user.email.endsWith("@ggu.edu.in")) {
-                    return true;
-                }
-
-                // Check if this email is registered as an admin or guest
-                const db = await getDb();
-                const allowedUser = await db.collection("users").findOne({
-                    email: user.email,
-                    $or: [{ isAdmin: true }, { isGuest: true }],
-                });
-                if (allowedUser) {
-                    return true;
-                }
-
-                return false;
+            // For Google sign-ins — allow everyone to sign in
+            // Access control is handled at the page/middleware level
+            if (account?.provider === "google") {
+                return true;
             }
             return true;
         },
 
         async jwt({ token, user }) {
-            if (user) {
-                const db = await getDb();
+            const db = await getDb();
+            const email = user?.email || token.email;
 
-                // Preserve Google profile picture
-                if (user.image) {
-                    token.picture = user.image;
-                }
-
-                // Single query: find all records for this email
+            if (email) {
+                // Fetch all records for this email to determine roles and get latest name
                 const userRecords = await db
                     .collection("users")
-                    .find({ email: user.email })
+                    .find({ email: email })
                     .project({ _id: 1, isAdmin: 1, isGuest: 1, email: 1, fullName: 1 })
                     .toArray();
 
@@ -95,47 +77,51 @@ export const authOptions: NextAuthOptions = {
 
                 if (dbUser) {
                     token.isAdmin = dbUser.isAdmin || false;
-                    token.isGuest = dbUser.isGuest || false;
                     token.id = dbUser._id.toString();
                     token.email = dbUser.email;
                     token.hasAdminRecord = !!adminUser;
                     token.hasStudentRecord = !!studentUser;
+                    token.currentSemester = dbUser.currentSemester;
+                    token.phoneNumber = dbUser.phoneNumber;
 
-                    // Sync Google name to DB if fullName is empty
-                    if (user.name && !dbUser.fullName) {
+                    // Prioritize database fullName, sync from Google if empty
+                    if (dbUser.fullName) {
+                        token.name = dbUser.fullName;
+                    } else if (user?.name) {
                         await db.collection("users").updateOne(
                             { _id: dbUser._id },
                             { $set: { fullName: user.name } }
                         );
                         token.name = user.name;
                     }
-                } else {
-                    // Auto-register new student on first Google sign-in
-                    const result = await db.collection("users").insertOne({
-                        email: user.email,
-                        fullName: user.name || "",
-                        isAdmin: false,
-                        currentSemester: 1,
-                        createdAt: new Date(),
-                    });
+                } else if (user) {
+                    // Non-GGU user logic - only relevant during sign-in
                     token.isAdmin = false;
-                    token.id = result.insertedId.toString();
                     token.email = user.email;
                     token.hasAdminRecord = false;
-                    token.hasStudentRecord = true;
+                    token.hasStudentRecord = false;
+                    token.name = user.name;
                 }
             }
+
+            if (user && user.image) {
+                token.picture = user.image;
+            }
+
             return token;
         },
 
         async session({ session, token }) {
             if (token && session.user) {
                 session.user.id = token.id as string;
+                session.user.name = token.name as string;
                 session.user.image = (token.picture as string) || session.user.image;
                 (session.user as any).isAdmin = token.isAdmin;
-                (session.user as any).isGuest = token.isGuest;
+                (session.user as any).isGGU = (token.email as string)?.endsWith("@ggu.edu.in") || token.isAdmin;
                 (session.user as any).hasAdminRecord = token.hasAdminRecord;
                 (session.user as any).hasStudentRecord = token.hasStudentRecord;
+                (session.user as any).currentSemester = token.currentSemester;
+                (session.user as any).phoneNumber = token.phoneNumber;
             }
             return session;
         },

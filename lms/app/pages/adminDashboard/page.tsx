@@ -30,7 +30,7 @@ export default function AdminDashboard() {
   const [lowPerformers, setLowPerformers] = useState<any[]>([]);
   const [topPerformers, setTopPerformers] = useState<any[]>([]);
   const [subjectCompletion, setSubjectCompletion] = useState<any[]>([]);
-  const [totalQuizAttempts, setTotalQuizAttempts] = useState(0);
+
 
   useEffect(() => {
     if (session === null) return;
@@ -181,7 +181,7 @@ export default function AdminDashboard() {
       setRecentFeedback(Array.isArray(feedbackData) ? feedbackData.slice(0, 3) : []);
 
       if (progressData.success && Array.isArray(progressData.data)) {
-        setTotalQuizAttempts(progressData.data.length);
+
 
         const studentScores: any = {};
         const subjectStats: any = {};
@@ -259,7 +259,7 @@ export default function AdminDashboard() {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setIsSidebarOpen(true)}
-                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1]"
+                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1] cursor-pointer"
               >
                 <Menu className="w-5 h-5" />
               </button>
@@ -285,7 +285,7 @@ export default function AdminDashboard() {
 
           {/* MAIN STATS GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
-            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
+            <div onClick={() => router.push('/pages/adminUsers')} className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group cursor-pointer">
               <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Total Users</p>
               <div className="flex items-end justify-between">
                 <div>
@@ -296,7 +296,7 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
+            <div onClick={() => router.push('/pages/adminUsers')} className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group cursor-pointer">
               <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Students</p>
               <div className="flex items-end justify-between">
                 <div>
@@ -307,18 +307,18 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
-              <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Quiz Attempts</p>
+            <div onClick={() => router.push('/pages/adminUsers')} className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group cursor-pointer">
+              <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Admins</p>
               <div className="flex items-end justify-between">
                 <div>
-                  <h3 className="text-3xl font-bold text-[#1E3A8A] tracking-tighter">{totalQuizAttempts}</h3>
-                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Total</p>
+                  <h3 className="text-3xl font-bold text-[#1E3A8A] tracking-tighter">{stats.admins}</h3>
+                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Accounts</p>
                 </div>
-                <TrendingUp className="w-5 h-5 text-indigo-600 mb-1 opacity-20 group-hover:opacity-100 transition-opacity" />
+                <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse mb-3" />
               </div>
             </div>
 
-            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
+            <div onClick={() => router.push('/pages/adminLeaves')} className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group cursor-pointer">
               <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Leave Requests</p>
               <div className="flex items-end justify-between">
                 <div>
@@ -329,7 +329,7 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
+            <div onClick={() => router.push('/pages/adminFeedback')} className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group cursor-pointer">
               <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Feedback</p>
               <div className="flex items-end justify-between">
                 <div>
@@ -349,7 +349,7 @@ export default function AdminDashboard() {
                 <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm h-[380px] flex flex-col">
                   <div className="flex items-center justify-between mb-8">
                     <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase">Recent Leave Requests</h3>
-                    <button onClick={() => router.push('/pages/adminLeaves')} className="p-2 hover:bg-[#F8F6F1] rounded-full transition-colors">
+                    <button onClick={() => router.push('/pages/adminLeaves')} className="p-2 hover:bg-[#F8F6F1] rounded-full transition-colors cursor-pointer">
                       <ChevronRight className="w-5 h-5 text-slate-300" />
                     </button>
                   </div>
@@ -375,7 +375,7 @@ export default function AdminDashboard() {
                 <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm h-[380px] flex flex-col">
                   <div className="flex items-center justify-between mb-8">
                     <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase">Recent Feedback</h3>
-                    <button onClick={() => router.push('/pages/adminFeedback')} className="p-2 hover:bg-[#F8F6F1] rounded-full transition-colors">
+                    <button onClick={() => router.push('/pages/adminFeedback')} className="p-2 hover:bg-[#F8F6F1] rounded-full transition-colors cursor-pointer">
                       <ChevronRight className="w-5 h-5 text-slate-300" />
                     </button>
                   </div>
@@ -447,7 +447,7 @@ export default function AdminDashboard() {
               {/* ROW 3: SUBJECTS (Added from main) */}
               <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm">
                 <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase">Subject Analytical Overview</h3>
+                  <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase">Subject Performance Overview</h3>
                   <BarChart3 className="w-5 h-5 text-slate-300" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">

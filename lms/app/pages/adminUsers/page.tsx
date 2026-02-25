@@ -4,8 +4,9 @@ import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Users, UserPlus, ShieldPlus, Search, Edit2, Trash2, Phone, GraduationCap, X, Menu, Globe } from "lucide-react";
+import { Users, UserPlus, ShieldPlus, Search, Edit2, Trash2, Phone, GraduationCap, X, Menu } from "lucide-react";
 import AdminSidebar from "../../../components/AdminSidebar";
+import Footer from "@/components/Footer";
 
 export default function AdminUsers() {
     const { data: session } = useSession();
@@ -13,7 +14,6 @@ export default function AdminUsers() {
     const [users, setUsers] = useState<any[]>([]);
     const [newUserEmail, setNewUserEmail] = useState("");
     const [newAdminEmail, setNewAdminEmail] = useState("");
-    const [newGuestEmail, setNewGuestEmail] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
     const [editUser, setEditUser] = useState<any>(null);
     const [editForm, setEditForm] = useState({ fullName: "", phoneNumber: "", currentSemester: 1 });
@@ -68,23 +68,6 @@ export default function AdminUsers() {
         }
     };
 
-    const addGuest = async () => {
-        if (!newGuestEmail.trim()) {
-            alert("Please enter an email");
-            return;
-        }
-        const res = await fetch("/api/users/add", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: newGuestEmail, isGuest: true })
-        });
-        if (res.ok) {
-            alert("Guest added!");
-            setNewGuestEmail("");
-            fetchUsers();
-        }
-    };
-
     const openEditModal = (user: any) => {
         setEditUser(user);
         setEditForm({
@@ -93,6 +76,7 @@ export default function AdminUsers() {
             currentSemester: user.currentSemester || 1
         });
     };
+
 
     const updateUser = async () => {
         if (!editForm.fullName.trim() || !editForm.phoneNumber.trim()) {
@@ -112,6 +96,10 @@ export default function AdminUsers() {
     };
 
     const deleteUser = async (email: string) => {
+        if (email === "admin@ggu.edu.in") {
+            alert("The primary admin account cannot be deleted.");
+            return;
+        }
         if (!confirm(`Delete user ${email}?`)) return;
         const res = await fetch("/api/users/delete", {
             method: "DELETE",
@@ -137,7 +125,7 @@ export default function AdminUsers() {
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => setIsSidebarOpen(true)}
-                                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1]"
+                                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1] cursor-pointer"
                             >
                                 <Menu className="w-5 h-5" />
                             </button>
@@ -183,7 +171,7 @@ export default function AdminUsers() {
                                 </div>
                                 <button
                                     onClick={addUser}
-                                    className="bg-[#3E73C1] text-white px-8 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-[#1E3A8A] transition-all active:scale-95 whitespace-nowrap"
+                                    className="bg-[#3E73C1] text-white px-8 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-[#1E3A8A] transition-all active:scale-95 whitespace-nowrap cursor-pointer"
                                 >
                                     Add Student
                                 </button>
@@ -210,7 +198,7 @@ export default function AdminUsers() {
                                 </div>
                                 <button
                                     onClick={addAdmin}
-                                    className="bg-[#1E3A8A] text-white px-8 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-black transition-all active:scale-95 whitespace-nowrap"
+                                    className="bg-[#1E3A8A] text-white px-8 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-black transition-all active:scale-95 whitespace-nowrap cursor-pointer"
                                 >
                                     Add Admin
                                 </button>
@@ -218,35 +206,6 @@ export default function AdminUsers() {
                         </div>
                     </div>
 
-                    {/* ADD GUEST - Full Width */}
-                    <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm hover:border-emerald-400/30 transition-all group mb-12">
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="p-3 bg-emerald-50 rounded-2xl">
-                                <Globe className="w-6 h-6 text-emerald-600" />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase">Add Guest</h3>
-                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">Accepts Gmail, Outlook, and other email providers</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <div className="relative flex-1">
-                                <input
-                                    type="email"
-                                    placeholder="guest@gmail.com"
-                                    value={newGuestEmail}
-                                    onChange={(e) => setNewGuestEmail(e.target.value)}
-                                    className="w-full bg-[#F8F6F1] border border-[#E5E2D9] p-4 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-emerald-200 outline-none transition-all placeholder:text-slate-400"
-                                />
-                            </div>
-                            <button
-                                onClick={addGuest}
-                                className="bg-emerald-600 text-white px-8 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-emerald-700 transition-all active:scale-95 whitespace-nowrap"
-                            >
-                                Add Guest
-                            </button>
-                        </div>
-                    </div>
 
                     {/* USER REGISTRY SECTION */}
                     <div className="bg-white border border-[#E5E2D9] rounded-[2.5rem] p-8 shadow-sm">
@@ -300,23 +259,36 @@ export default function AdminUsers() {
 
                                     <div className="flex gap-2">
                                         <button
-                                            onClick={() => openEditModal(user)}
-                                            className="flex-1 flex items-center justify-center gap-2 bg-white border border-[#E5E2D9] hover:border-[#3E73C1] hover:text-[#3E73C1] text-slate-600 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all"
+                                            onClick={() => user.email !== "admin@ggu.edu.in" && openEditModal(user)}
+                                            className={`flex-1 flex items-center justify-center gap-2 bg-white border border-[#E5E2D9] text-slate-600 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all ${user.email === "admin@ggu.edu.in"
+                                                ? "opacity-50 cursor-not-allowed"
+                                                : "hover:border-[#3E73C1] hover:text-[#3E73C1] cursor-pointer"}`}
+                                            disabled={user.email === "admin@ggu.edu.in"}
                                         >
                                             <Edit2 className="w-3.5 h-3.5" />
-                                            Edit
+                                            {user.email === "admin@ggu.edu.in" ? "Protected" : "Edit"}
                                         </button>
-                                        <button
-                                            onClick={() => deleteUser(user.email)}
-                                            className="group/del flex items-center justify-center bg-rose-50 border border-rose-100 hover:bg-rose-600 hover:border-rose-600 p-3 rounded-xl transition-all"
-                                        >
-                                            <Trash2 className="w-4 h-4 text-rose-600 group-hover/del:text-white" />
-                                        </button>
+                                        {user.email !== "admin@ggu.edu.in" && (
+                                            <button
+                                                onClick={() => deleteUser(user.email)}
+                                                className="group/del flex items-center justify-center bg-rose-50 border border-rose-100 hover:bg-rose-600 hover:border-rose-600 p-3 rounded-xl transition-all cursor-pointer"
+                                            >
+                                                <Trash2 className="w-4 h-4 text-rose-600 group-hover/del:text-white" />
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
+                    <Footer
+                        links={[
+                            { label: "Admin Panel", href: "#" },
+                            { label: "System Logs", href: "#" },
+                            { label: "Support", href: "#" }
+                        ]}
+                        copyright="© 2026 GGU LMS • Administrative Interface"
+                    />
                 </main>
             </div>
 
@@ -342,7 +314,7 @@ export default function AdminUsers() {
                                     <h2 className="text-2xl font-bold text-[#1E3A8A] tracking-tighter uppercase mb-1">Edit User</h2>
                                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Editing {editUser.email}</p>
                                 </div>
-                                <button onClick={() => setEditUser(null)} className="p-3 bg-[#F8F6F1] rounded-2xl hover:bg-rose-50 hover:text-rose-600 transition-colors">
+                                <button onClick={() => setEditUser(null)} className="p-3 bg-[#F8F6F1] rounded-2xl hover:bg-rose-50 hover:text-rose-600 transition-colors cursor-pointer">
                                     <X className="w-6 h-6" />
                                 </button>
                             </div>
@@ -374,7 +346,7 @@ export default function AdminUsers() {
                                                 <button
                                                     key={sem}
                                                     onClick={() => setEditForm({ ...editForm, currentSemester: sem })}
-                                                    className={`py-3 rounded-xl text-xs font-bold transition-all border ${editForm.currentSemester === sem
+                                                    className={`py-3 rounded-xl text-xs font-bold transition-all border cursor-pointer ${editForm.currentSemester === sem
                                                         ? 'bg-[#3E73C1] border-[#3E73C1] text-white'
                                                         : 'bg-[#F8F6F1] border-[#E5E2D9] text-slate-600 hover:border-[#3E73C1]/30'
                                                         }`}
@@ -388,13 +360,13 @@ export default function AdminUsers() {
                                 <div className="flex gap-4 pt-6">
                                     <button
                                         onClick={updateUser}
-                                        className="flex-[2] bg-[#3E73C1] text-white py-5 rounded-[1.5rem] font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#1E3A8A] transition-all active:scale-95"
+                                        className="flex-[2] bg-[#3E73C1] text-white py-5 rounded-[1.5rem] font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#1E3A8A] transition-all active:scale-95 cursor-pointer"
                                     >
                                         Save Changes
                                     </button>
                                     <button
                                         onClick={() => setEditUser(null)}
-                                        className="flex-1 bg-[#F8F6F1] border border-[#E5E2D9] text-slate-600 py-5 rounded-[1.5rem] font-bold text-xs uppercase tracking-widest hover:bg-slate-100 transition-all active:scale-95"
+                                        className="flex-1 bg-[#F8F6F1] border border-[#E5E2D9] text-slate-600 py-5 rounded-[1.5rem] font-bold text-xs uppercase tracking-widest hover:bg-slate-100 transition-all active:scale-95 cursor-pointer"
                                     >
                                         Cancel
                                     </button>
