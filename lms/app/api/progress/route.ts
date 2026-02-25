@@ -60,7 +60,9 @@ export async function GET(req: NextRequest) {
     const userEmail = searchParams.get("userEmail");
     const subject = searchParams.get("subject");
 
-    if (!userEmail) {
+    const all = searchParams.get("all");
+
+    if (!userEmail && !all) {
       return NextResponse.json(
         { error: "userEmail is required" },
         { status: 400 }
@@ -68,7 +70,8 @@ export async function GET(req: NextRequest) {
     }
 
     const db = await getDb();
-    const query: Record<string, string> = { userEmail };
+    const query: Record<string, string> = {};
+    if (userEmail) query.userEmail = userEmail;
     if (subject) query.subject = subject;
 
     const progress = await db
@@ -76,6 +79,7 @@ export async function GET(req: NextRequest) {
       .find(query)
       .project({ _id: 0 }) // Don't serialize ObjectId — saves bandwidth
       .toArray();
+
 
     return NextResponse.json(
       { success: true, data: progress },
