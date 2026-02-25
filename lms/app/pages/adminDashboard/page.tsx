@@ -3,9 +3,21 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import {
+  Menu,
+  Users,
+  TrendingUp,
+  FileText,
+  MessageSquare,
+  ChevronRight,
+  BarChart3,
+  Sparkles
+} from "lucide-react";
 import AdminSidebar from "../../../components/AdminSidebar";
 import OptionCard from "@/components/OptionCard";
 import { OptionItem } from "@/types";
+import Footer from "@/components/Footer";
 
 export default function AdminDashboard() {
   const { data: session } = useSession();
@@ -31,6 +43,115 @@ export default function AdminDashboard() {
     }
   }, [session, router]);
 
+  const CustomIcons = {
+    LiveBooks: () => (
+      <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <rect x="6" y="8" width="18" height="20" rx="3" className="fill-[#3E73C1]/10 stroke-[#3E73C1]" strokeWidth="1.5" />
+        <rect x="10" y="4" width="18" height="20" rx="3" className="fill-white stroke-[#3E73C1]" strokeWidth="1.5" />
+        <path d="M15 10H23" stroke="#E5E2D9" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M15 14H23" stroke="#E5E2D9" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M15 18H20" stroke="#E5E2D9" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="23" cy="19" r="4" className="fill-[#3E73C1] animate-pulse" />
+        <path d="M22 19L24 19" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      </svg>
+    ),
+    Users: () => (
+      <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <circle cx="16" cy="11" r="5" className="fill-[#3E73C1]/20 stroke-[#3E73C1]" strokeWidth="1.5" />
+        <path d="M7 26C7 21.0294 11.0294 17 16 17C20.9706 17 25 21.0294 25 26" className="stroke-[#3E73C1]" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="23" cy="22" r="4" className="fill-white stroke-[#3E73C1]" strokeWidth="1" />
+        <path d="M21 22H25M23 20V24" stroke="#3E73C1" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+    Leave: () => (
+      <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <path d="M8 4H20L26 10V26C26 27.1046 25.1046 28 24 28H8C6.89543 28 6 27.1046 6 26V6C6 4.89543 6.89543 4 8 4Z" className="fill-[#3E73C1]/10 stroke-[#3E73C1]" strokeWidth="1.5" />
+        <path d="M20 4V10H26" className="stroke-[#3E73C1]" strokeWidth="1.5" strokeLinejoin="round" />
+        <rect x="10" y="14" width="12" height="1.5" rx="0.75" fill="#E5E2D9" />
+        <rect x="10" y="18" width="10" height="1.5" rx="0.75" fill="#E5E2D9" />
+        <rect x="10" y="22" width="6" height="1.5" rx="0.75" fill="#A8C4EB" />
+        <path d="M22 22L24 24L28 20" stroke="#3E73C1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    Timetable: () => (
+      <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <rect x="4" y="6" width="24" height="20" rx="3" className="fill-white stroke-[#3E73C1]" strokeWidth="1.5" />
+        <path d="M4 12H28" className="stroke-[#3E73C1]" strokeWidth="1.5" />
+        <path d="M10 4V8M22 4V8" className="stroke-[#3E73C1]" strokeWidth="1.5" strokeLinecap="round" />
+        <rect x="8" y="16" width="3" height="3" rx="1" className="fill-[#3E73C1]" />
+        <rect x="14" y="16" width="3" height="3" rx="1" fill="#E5E2D9" />
+        <rect x="20" y="16" width="3" height="3" rx="1" fill="#E5E2D9" />
+        <rect x="8" y="21" width="3" height="3" rx="1" fill="#E5E2D9" />
+        <rect x="14" y="21" width="3" height="3" rx="1" className="fill-[#3E73C1]/40" />
+      </svg>
+    ),
+    Progress: () => (
+      <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <path d="M6 26L12 18L18 22L26 10" className="stroke-[#3E73C1]/20" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M6 26L12 18L18 22L26 10" className="stroke-[#3E73C1]" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="26" cy="10" r="3" className="fill-[#3E73C1]" />
+        <rect x="6" y="22" width="4" height="4" rx="1" className="fill-[#3E73C1]/10" />
+        <rect x="12" y="16" width="4" height="10" rx="1" className="fill-[#3E73C1]/30" />
+        <rect x="18" y="10" width="4" height="16" rx="1" className="fill-[#3E73C1]/60" />
+        <rect x="24" y="4" width="4" height="22" rx="1" className="fill-[#3E73C1]" />
+      </svg>
+    ),
+    Feedback: () => (
+      <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <path d="M6 8C6 6.89543 6.89543 6 8 6H24C25.1046 6 26 6.89543 26 8V20C26 21.1046 25.1046 22 24 22H14L8 27V22H8C6.89543 22 6 21.1046 6 20V8Z" className="fill-[#3E73C1]/10 stroke-[#3E73C1]" strokeWidth="1.5" />
+        <circle cx="11" cy="14" r="1.5" fill="#3E73C1" />
+        <circle cx="16" cy="14" r="1.5" fill="#3E73C1" opacity="0.6" />
+        <circle cx="21" cy="14" r="1.5" fill="#3E73C1" opacity="0.3" />
+        <path d="M22 24C23.6569 24 25 22.6569 25 21" stroke="#3E73C1" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="2 4" />
+      </svg>
+    ),
+  };
+
+  const quickLinks: OptionItem[] = [
+    {
+      id: 1,
+      name: "LiveBooks",
+      link: "/pages/livebooks",
+      icon: <CustomIcons.LiveBooks />,
+      color: "#8CAAAF"
+    },
+    {
+      id: 2,
+      name: "Manage Users",
+      link: "/pages/adminUsers",
+      icon: <CustomIcons.Users />,
+      color: "#B9A2A7"
+    },
+    {
+      id: 3,
+      name: "Leave Applications",
+      link: "/pages/adminLeaves",
+      icon: <CustomIcons.Leave />,
+      color: "#97ABC3"
+    },
+    {
+      id: 4,
+      name: "Timetable",
+      link: "/pages/adminTimetable",
+      icon: <CustomIcons.Timetable />,
+      color: "#8B869B"
+    },
+    {
+      id: 5,
+      name: "Student Progress",
+      link: "/pages/adminProgress",
+      icon: <CustomIcons.Progress />,
+      color: "#8CAAAF"
+    },
+    {
+      id: 6,
+      name: "Feedback",
+      link: "/pages/adminFeedback",
+      icon: <CustomIcons.Feedback />,
+      color: "#FFA07A"
+    },
+  ];
+
   const fetchStats = async () => {
     try {
       const [usersRes, leavesRes, feedbackRes, progressRes] = await Promise.all([
@@ -52,39 +173,39 @@ export default function AdminDashboard() {
           admins: usersData.data.filter((u: any) => u.isAdmin).length
         });
       }
-      
+
       setLeavesCount(Array.isArray(leavesData) ? leavesData.length : 0);
       setRecentLeaves(Array.isArray(leavesData) ? leavesData.slice(0, 3) : []);
-      
+
       setFeedbackCount(Array.isArray(feedbackData) ? feedbackData.length : 0);
       setRecentFeedback(Array.isArray(feedbackData) ? feedbackData.slice(0, 3) : []);
-      
+
       if (progressData.success && Array.isArray(progressData.data)) {
         setTotalQuizAttempts(progressData.data.length);
-        
+
         const studentScores: any = {};
         const subjectStats: any = {};
         const studentUniqueAttempts: any = {};
-        
+
         progressData.data.forEach((p: any) => {
           if (!p.subject) return;
-          
+
           const key = `${p.userEmail}-${p.subject}-${p.unitId}-${p.moduleId}`;
-          
+
           if (!studentUniqueAttempts[p.userEmail]) {
             studentUniqueAttempts[p.userEmail] = new Set();
           }
-          
+
           if (!studentUniqueAttempts[p.userEmail].has(key)) {
             studentUniqueAttempts[p.userEmail].add(key);
-            
+
             if (!studentScores[p.userEmail]) {
               studentScores[p.userEmail] = { email: p.userEmail, total: 0, count: 0 };
             }
             studentScores[p.userEmail].total += p.percentage;
             studentScores[p.userEmail].count++;
           }
-          
+
           const subjectKey = `${p.userEmail}-${p.subject}-${p.unitId}-${p.moduleId}`;
           if (!subjectStats[p.subject]) {
             subjectStats[p.subject] = { subject: p.subject, uniqueAttempts: new Set(), totalScore: 0 };
@@ -94,27 +215,27 @@ export default function AdminDashboard() {
             subjectStats[p.subject].totalScore += p.percentage;
           }
         });
-        
+
         const lowPerformersData = Object.values(studentScores)
           .map((s: any) => ({ ...s, avg: s.total / s.count }))
           .filter((s: any) => s.avg < 60)
           .sort((a: any, b: any) => a.avg - b.avg)
           .slice(0, 5);
-        
+
         const topPerformersData = Object.values(studentScores)
           .map((s: any) => ({ ...s, avg: s.total / s.count }))
           .filter((s: any) => s.count >= 3)
           .sort((a: any, b: any) => b.avg - a.avg)
           .slice(0, 5);
-        
+
         const subjectCompletionData = Object.values(subjectStats)
-          .map((s: any) => ({ 
-            subject: s.subject, 
+          .map((s: any) => ({
+            subject: s.subject,
             attempts: s.uniqueAttempts.size,
-            avgScore: (s.totalScore / s.uniqueAttempts.size).toFixed(1) 
+            avgScore: (s.totalScore / s.uniqueAttempts.size).toFixed(1)
           }))
           .sort((a: any, b: any) => b.attempts - a.attempts);
-        
+
         setLowPerformers(lowPerformersData);
         setTopPerformers(topPerformersData);
         setSubjectCompletion(subjectCompletionData);
@@ -124,222 +245,239 @@ export default function AdminDashboard() {
     }
   };
 
-  const quickLinks: OptionItem[] = [
-    {
-      id: 1,
-      name: "LiveBooks",
-      link: "/pages/livebooks",
-      img: "https://kalvium.community/assets/launcher-livebooks-logo-13706a15.svg",
-      color: "#8CAAAF"
-    },
-    {
-      id: 2,
-      name: "Manage Users",
-      link: "/pages/adminUsers",
-      img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23374151'%3E%3Cpath d='M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z'/%3E%3C/svg%3E",
-      color: "#B9A2A7"
-    },
-    {
-      id: 3,
-      name: "Leave Applications",
-      link: "/pages/adminLeaves",
-      img: "https://kalvium.community/assets/launcher-attendance-logo-b26e5d0b.svg",
-      color: "#97ABC3"
-    },
-    {
-      id: 4,
-      name: "Timetable",
-      link: "/pages/adminTimetable",
-      img: "https://kalvium.community/assets/launcher-calendar-logo-3350606d.svg",
-      color: "#8B869B"
-    },
-    {
-      id: 5,
-      name: "Student Progress",
-      link: "/pages/adminProgress",
-      img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23374151'%3E%3Cpath d='M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75ZM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 0 1-1.875-1.875V8.625ZM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 0 1 3 19.875v-6.75Z'/%3E%3C/svg%3E",
-      color: "#8CAAAF"
-    },
-    {
-      id: 6,
-      name: "Feedback",
-      link: "/pages/adminFeedback",
-      img: "https://storage.googleapis.com/nucleus_public_assets_community/assets/livebooksV2/kalvi_support_icon.svg",
-      color: "#FFA07A"
-    },
-    {
-      id: 7,
-      name: "Analytics",
-      link: "/pages/adminAnalytics",
-      img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23374151'%3E%3Cpath d='M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75ZM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 0 1-1.875-1.875V8.625ZM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 0 1 3 19.875v-6.75Z'/%3E%3C/svg%3E",
-      color: "#97ABC3"
-    },
-  ];
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white flex">
-      <AdminSidebar />
-      <div className="flex-1 ml-14 bg-transparent pt-6 relative" style={{
-        backgroundImage: 'radial-gradient(circle, #D8D8D8 1px, transparent 1px)',
-        backgroundSize: '20px 20px',
-        backgroundColor: '#FFFFFF'
-      }}>
-        <div className="max-w-[1050px] mx-auto px-6 py-6 relative z-10">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Admin Dashboard</h1>
-          <p className="text-gray-600">Welcome back, {session?.user?.name || "Access user"}! Here's your system overview.</p>
-        </div>
+    <div className="min-h-screen bg-[#F8F6F1] text-[#121212] font-sans">
+      <div className="flex relative">
+        <AdminSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-10">
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
-            <p className="text-gray-500 text-sm font-medium mb-1">Total Users</p>
-            <p className="text-3xl font-bold text-gray-800">{stats.total}</p>
-            <p className="text-xs text-green-600 mt-2 font-medium">Active accounts</p>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
-            <p className="text-gray-500 text-sm font-medium mb-1">Students</p>
-            <p className="text-3xl font-bold text-gray-800">{stats.students}</p>
-            <div className="flex items-center gap-2 mt-2">
-              <div className="w-full bg-gray-100 rounded-full h-1.5">
-                <div className="bg-blue-500 h-1.5 rounded-full" style={{ width: `${(stats.students / (stats.total || 1)) * 100}%` }}></div>
+        <main className="flex-1 sm:ml-[280px] px-6 sm:px-16 py-6 sm:py-10 min-w-0 overflow-x-hidden relative z-10">
+          {/* TOP NAV BAR */}
+          <div className="flex items-center justify-between mb-8 sm:mb-12">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsSidebarOpen(true)}
+                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1]"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#1E3A8A]">Admin Dashboard</h2>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex flex-col items-end">
+                <p className="text-[10px] font-bold uppercase text-[#888] tracking-widest leading-none">Admin Panel</p>
+                <p className="text-sm font-bold text-[#3E73C1] mt-1">{session?.user?.email}</p>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
-            <p className="text-gray-500 text-sm font-medium mb-1">Quiz Attempts</p>
-            <p className="text-3xl font-bold text-gray-800">{totalQuizAttempts}</p>
-            <p className="text-xs text-blue-600 mt-2 font-medium">Total submissions</p>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
-            <p className="text-gray-500 text-sm font-medium mb-1">Pending Leaves</p>
-            <p className="text-3xl font-bold text-gray-800">{leavesCount}</p>
-            <p className="text-xs text-orange-500 mt-2 font-medium">Requires attention</p>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
-            <p className="text-gray-500 text-sm font-medium mb-1">New Feedback</p>
-            <p className="text-3xl font-bold text-gray-800">{feedbackCount}</p>
-            <p className="text-xs text-gray-500 mt-2">Total submissions</p>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-          <div className="bg-white p-6 shadow-sm border border-gray-100 hover:shadow-md transition cursor-pointer h-[280px] flex flex-col" onClick={() => router.push('/pages/adminLeaves')}>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Recent Leave Applications</h3>
-            <div className="flex-1 overflow-y-auto">
-              {recentLeaves.length === 0 ? (
-                <p className="text-gray-500 text-sm">No recent leaves</p>
-              ) : (
-                <div className="space-y-3">
-                  {recentLeaves.map((leave) => (
-                    <div key={leave._id} className="p-3 border-2 border-dotted border-gray-400">
-                      <p className="font-medium text-sm text-gray-800">{leave.userName}</p>
-                      <p className="text-xs text-gray-600">{new Date(leave.startDate).toLocaleDateString()} - {new Date(leave.endDate).toLocaleDateString()}</p>
-                      <p className="text-xs text-gray-500 mt-1">{leave.leaveType}</p>
-                    </div>
-                  ))}
+          {/* WELCOME SECTION */}
+          <div className="mb-12 px-2">
+            <h1 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tighter mb-4">
+              Welcome back, {session?.user?.name || "Admin"}
+            </h1>
+            <p className="text-slate-500 font-semibold text-sm sm:text-lg max-w-2xl leading-relaxed">
+              Here's an overview of your institution. Manage students, track progress, and stay updated.
+            </p>
+          </div>
+
+          {/* MAIN STATS GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
+              <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Total Users</p>
+              <div className="flex items-end justify-between">
+                <div>
+                  <h3 className="text-3xl font-bold text-[#1E3A8A] tracking-tighter">{stats.total}</h3>
+                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Users</p>
                 </div>
-              )}
+                <Users className="w-5 h-5 text-blue-600 mb-1 opacity-20 group-hover:opacity-100 transition-opacity" />
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
+              <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Students</p>
+              <div className="flex items-end justify-between">
+                <div>
+                  <h3 className="text-3xl font-bold text-blue-600 tracking-tighter">{stats.students}</h3>
+                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Enrolled</p>
+                </div>
+                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse mb-3" />
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
+              <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Quiz Attempts</p>
+              <div className="flex items-end justify-between">
+                <div>
+                  <h3 className="text-3xl font-bold text-[#1E3A8A] tracking-tighter">{totalQuizAttempts}</h3>
+                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Total</p>
+                </div>
+                <TrendingUp className="w-5 h-5 text-indigo-600 mb-1 opacity-20 group-hover:opacity-100 transition-opacity" />
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
+              <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Leave Requests</p>
+              <div className="flex items-end justify-between">
+                <div>
+                  <h3 className="text-3xl font-bold text-rose-600 tracking-tighter">{leavesCount}</h3>
+                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Pending</p>
+                </div>
+                <FileText className="w-5 h-5 text-rose-600 mb-1 opacity-20 group-hover:opacity-100 transition-opacity" />
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
+              <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Feedback</p>
+              <div className="flex items-end justify-between">
+                <div>
+                  <h3 className="text-3xl font-bold text-emerald-600 tracking-tighter">{feedbackCount}</h3>
+                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Responses</p>
+                </div>
+                <MessageSquare className="w-5 h-5 text-emerald-600 mb-1 opacity-20 group-hover:opacity-100 transition-opacity" />
+              </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 shadow-sm border border-gray-100 hover:shadow-md transition cursor-pointer h-[280px] flex flex-col" onClick={() => router.push('/pages/adminFeedback')}>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Latest Feedback</h3>
-            <div className="flex-1 overflow-y-auto">
-              {recentFeedback.length === 0 ? (
-                <p className="text-gray-500 text-sm">No recent feedback</p>
-              ) : (
-                <div className="space-y-3">
-                  {recentFeedback.map((fb) => (
-                    <div key={fb._id} className="p-3 border-2 border-dotted border-gray-400">
-                      <p className="text-sm text-gray-800 line-clamp-2">{fb.message}</p>
-                      <p className="text-xs text-gray-500 mt-1">{new Date(fb.createdAt).toLocaleDateString()}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="bg-white p-6 shadow-sm border border-gray-100 hover:shadow-md transition cursor-pointer h-[280px] flex flex-col" onClick={() => router.push('/pages/adminProgress')}>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Students Needing Attention</h3>
-            <div className="flex-1 overflow-y-auto">
-              {lowPerformers.length === 0 ? (
-                <p className="text-gray-500 text-sm">All students performing well</p>
-              ) : (
-                <div className="space-y-3">
-                  {lowPerformers.map((student) => (
-                    <div key={student.email} className="p-3 border-2 border-dotted border-gray-400">
-                      <p className="font-medium text-sm text-gray-800">{student.email}</p>
-                      <p className="text-xs text-red-600 font-semibold">Avg: {student.avg.toFixed(1)}%</p>
-                      <p className="text-xs text-gray-500">{student.count} attempts</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
-          <div className="bg-white p-6 shadow-sm border border-gray-100 hover:shadow-md transition cursor-pointer h-[320px] flex flex-col" onClick={() => router.push('/pages/adminProgress')}>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">🏆 Top Performing Students</h3>
-            <div className="flex-1 overflow-y-auto">
-              {topPerformers.length === 0 ? (
-                <p className="text-gray-500 text-sm">No data available</p>
-              ) : (
-                <div className="space-y-3">
-                  {topPerformers.map((student, idx) => (
-                    <div key={student.email} className="p-3 border-2 border-dotted border-gray-400 flex items-center justify-between">
-                      <div>
-                        <p className="font-medium text-sm text-gray-800">{student.email}</p>
-                        <p className="text-xs text-gray-500">{student.count} attempts</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-lg font-bold text-green-600">{student.avg.toFixed(1)}%</p>
-                        <p className="text-xs text-gray-500">#{idx + 1}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="bg-white p-6 shadow-sm border border-gray-100 hover:shadow-md transition cursor-pointer h-[320px] flex flex-col" onClick={() => router.push('/pages/adminProgress')}>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">📊 Subject-wise Quiz Completion</h3>
-            <div className="flex-1 overflow-y-auto">
-              {subjectCompletion.length === 0 ? (
-                <p className="text-gray-500 text-sm">No data available</p>
-              ) : (
-                <div className="space-y-3">
-                  {subjectCompletion.map((subject) => (
-                    <div key={subject.subject} className="p-3 border-2 border-dotted border-gray-400">
-                      <div className="flex items-center justify-between mb-1">
-                        <p className="font-medium text-sm text-gray-800">{subject.subject}</p>
-                        <p className="text-sm font-semibold text-purple-600">{subject.avgScore}%</p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-gray-200 rounded-full h-2">
-                          <div className="bg-purple-500 h-2 rounded-full" style={{ width: `${subject.avgScore}%` }}></div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+            {/* LEFT COLUMN: ACTIVITY & PERFORMANCE */}
+            <div className="lg:col-span-8 space-y-8">
+              {/* ROW 1: LEAVES & FEEDBACK */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm h-[380px] flex flex-col">
+                  <div className="flex items-center justify-between mb-8">
+                    <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase">Recent Leave Requests</h3>
+                    <button onClick={() => router.push('/pages/adminLeaves')} className="p-2 hover:bg-[#F8F6F1] rounded-full transition-colors">
+                      <ChevronRight className="w-5 h-5 text-slate-300" />
+                    </button>
+                  </div>
+                  <div className="flex-1 overflow-y-auto space-y-3 no-scrollbar pr-1">
+                    {recentLeaves.length === 0 ? (
+                      <p className="text-slate-400 font-bold text-sm">No leave requests yet</p>
+                    ) : (
+                      recentLeaves.map((leave) => (
+                        <div key={leave._id} className="p-4 bg-[#F9F9F9] border border-[#E5E2D9] rounded-2xl group hover:border-[#3E73C1]/30 transition-colors">
+                          <p className="font-bold text-sm text-[#121212] mb-1">{leave.userName}</p>
+                          <div className="flex justify-between items-center">
+                            <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{leave.leaveType}</p>
+                            <p className="text-[9px] font-bold text-[#3E73C1] uppercase tracking-widest bg-white px-2 py-1 rounded-full border border-[#E5E2D9]">
+                              {new Date(leave.startDate).toLocaleDateString()}
+                            </p>
+                          </div>
                         </div>
-                        <p className="text-xs text-gray-500">{subject.attempts} attempts</p>
-                      </div>
-                    </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+
+                <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm h-[380px] flex flex-col">
+                  <div className="flex items-center justify-between mb-8">
+                    <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase">Recent Feedback</h3>
+                    <button onClick={() => router.push('/pages/adminFeedback')} className="p-2 hover:bg-[#F8F6F1] rounded-full transition-colors">
+                      <ChevronRight className="w-5 h-5 text-slate-300" />
+                    </button>
+                  </div>
+                  <div className="flex-1 overflow-y-auto space-y-3 no-scrollbar pr-1">
+                    {recentFeedback.length === 0 ? (
+                      <p className="text-slate-400 font-bold text-sm">No feedback received yet</p>
+                    ) : (
+                      recentFeedback.map((fb) => (
+                        <div key={fb._id} className="p-4 bg-[#F9F9F9] border border-[#E5E2D9] rounded-2xl group hover:border-emerald-500/20 transition-colors">
+                          <p className="text-xs font-bold text-slate-600 line-clamp-2 leading-relaxed mb-2">"{fb.message}"</p>
+                          <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">Received {new Date(fb.createdAt).toLocaleDateString()}</p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* ROW 2: PERFORMANCE WATCH */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm h-[380px] flex flex-col">
+                  <div className="flex items-center justify-between mb-8">
+                    <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase text-rose-600 underline underline-offset-8 decoration-rose-200">Low Performers</h3>
+                    <TrendingUp className="w-5 h-5 text-rose-300" />
+                  </div>
+                  <div className="flex-1 overflow-y-auto space-y-3 no-scrollbar pr-1">
+                    {lowPerformers.length === 0 ? (
+                      <p className="text-slate-400 font-bold text-sm">All students performing well</p>
+                    ) : (
+                      lowPerformers.map((student) => (
+                        <div key={student.email} className="p-4 bg-rose-50/30 border border-rose-100 rounded-2xl flex items-center justify-between group hover:bg-rose-50/50 transition-colors">
+                          <div className="truncate pr-4">
+                            <p className="font-bold text-xs text-[#121212] truncate uppercase tracking-tight">{student.email}</p>
+                            <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{student.count} quizzes taken</p>
+                          </div>
+                          <span className="text-rose-600 font-bold text-lg">{student.avg.toFixed(1)}%</span>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+
+                <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm h-[380px] flex flex-col">
+                  <div className="flex items-center justify-between mb-8">
+                    <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase text-emerald-600 underline underline-offset-8 decoration-emerald-200">Top Performers</h3>
+                    <Sparkles className="w-5 h-5 text-emerald-300" />
+                  </div>
+                  <div className="flex-1 overflow-y-auto space-y-3 no-scrollbar pr-1">
+                    {topPerformers.length === 0 ? (
+                      <p className="text-slate-400 font-bold text-sm">Not enough data yet</p>
+                    ) : (
+                      topPerformers.map((student, idx) => (
+                        <div key={student.email} className="p-4 bg-emerald-50/30 border border-emerald-100 rounded-2xl flex items-center justify-between group hover:bg-emerald-50/50 transition-colors">
+                          <div className="truncate pr-4 flex items-center gap-3">
+                            <span className="text-[10px] font-bold text-emerald-600/40">0{idx + 1}</span>
+                            <div className="truncate">
+                              <p className="font-bold text-xs text-[#121212] truncate uppercase tracking-tight">{student.email}</p>
+                              <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{student.count} quizzes taken</p>
+                            </div>
+                          </div>
+                          <span className="text-emerald-600 font-bold text-lg">{student.avg.toFixed(1)}%</span>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+            {/* RIGHT COLUMN: QUICK NAV */}
+            <div className="lg:col-span-4 space-y-8">
+              <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm h-fit flex flex-col lg:sticky lg:top-10">
+                <h3 className="text-lg font-bold text-[#1E3A8A] tracking-tight uppercase mb-8">Quick Actions</h3>
+                <div className="grid grid-cols-2 gap-4 pb-4">
+                  {quickLinks.map((link) => (
+                    <OptionCard key={link.id} item={link} className="h-40 w-full" />
                   ))}
                 </div>
-              )}
+                <div className="mt-8 p-6 bg-[#3E73C1] border border-blue-400 rounded-[1.5rem] relative overflow-hidden group transition-all">
+                  <div className="relative z-10 text-white">
+                    <p className="text-[10px] font-bold uppercase text-white/60 tracking-widest mb-1">System Status</p>
+                    <p className="text-sm font-bold text-white mb-3">All Systems Running</p>
+                    <p className="text-xs font-bold text-white/80 leading-tight">GGU Learning Management System is online and functioning normally.</p>
+                  </div>
+                  <Sparkles className="absolute -bottom-2 -right-2 w-16 h-16 text-white/10 rotate-12 group-hover:scale-125 transition-transform" />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <h2 className="text-xl font-bold text-gray-800 mb-6">Quick Actions</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6 mb-10">
-          {quickLinks.map((link) => (
-            <OptionCard key={link.id} item={link} className="h-36 w-full" iconSize="h-12 w-12" />
-          ))}
-        </div>
-        </div>
-      </div>
-    </div>
+          <Footer
+            links={[
+              { label: "Admin Panel", href: "#" },
+              { label: "System Logs", href: "#" },
+              { label: "Support", href: "#" }
+            ]}
+            copyright="© 2026 GGU LMS • Administrative Interface"
+          />
+        </main >
+      </div >
+    </div >
   );
 }

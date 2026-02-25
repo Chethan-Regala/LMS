@@ -12,6 +12,8 @@ import Module3_10 from './unit3-modules/Module3_10';
 import Module3_11 from './unit3-modules/Module3_11';
 import Module3_12 from './unit3-modules/Module3_12';
 
+import CompletionButton from '@/components/CompletionButton';
+
 interface Unit3Props {
   currentModule: number;
   setCurrentModule: (module: number) => void;
@@ -35,36 +37,31 @@ const Unit3: React.FC<Unit3Props> = ({ currentModule, setCurrentModule, onBack }
 
   const renderModule = () => {
     switch (currentModule) {
-      case 1:
-        return <Module3_1 />;
-      case 2:
-        return <Module3_2 />;
-      case 3:
-        return <Module3_3 />;
-      case 4:
-        return <Module3_4 />;
-      case 5:
-        return <Module3_5 />;
-      case 6:
-        return <Module3_6 />;
-      case 7:
-        return <Module3_7 />;
-      case 8:
-        return <Module3_8 />;
-      case 9:
-        return <Module3_10 />;
-      case 10:
-        return <Module3_11 />;
-      case 11:
-        return <Module3_12 />;
-      default:
-        return <div>Module not found</div>;
+      case 1: return <Module3_1 />;
+      case 2: return <Module3_2 />;
+      case 3: return <Module3_3 />;
+      case 4: return <Module3_4 />;
+      case 5: return <Module3_5 />;
+      case 6: return <Module3_6 />;
+      case 7: return <Module3_7 />;
+      case 8: return <Module3_8 />;
+      case 9: return <Module3_10 />;
+      case 10: return <Module3_11 />;
+      case 11: return <Module3_12 />;
+      default: return <div>Module not found</div>;
     }
   };
 
   return (
     <div className="unit-container">
       {renderModule()}
+
+      <CompletionButton
+        subject="OS"
+        unitId={3}
+        moduleId={currentModule}
+      />
+
       <div className="navigation-buttons" style={{ marginTop: '40px', marginBottom: '40px' }}>
         {currentModule > 1 && (
           <button onClick={() => setCurrentModule(currentModule - 1)} className="prev-module-btn" style={{ fontWeight: 'bold' }}>

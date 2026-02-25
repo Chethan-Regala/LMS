@@ -13,26 +13,29 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedModule, onModuleSelect, isOpe
   const units = [
     {
       id: 1,
-      title: 'Unit 1: Introduction to Formal Languages',
+      title: 'Unit-1: Automata Methods and Finite Automata',
       modules: [
-        'Alphabets and Strings',
-        'Language Operations',
-        'Finite State Machines',
-        'DFA and NFA',
-        'Transition Diagrams',
-        'Unit 1 Quiz'
+        'Foundations of Automata Theory',
+        'Additional Forms of Proof',
+        'Inductive Proofs',
+        'Deterministic Finite Automata (DFA)',
+        'Non-deterministic Finite Automata (NFA)',
+        'Text Search using Finite Automata',
+        'Regular Expressions',
+        'Finite Automata with ε-Transitions',
+        'Unit 1 Final Synthesis'
       ]
     },
     {
       id: 2,
-      title: 'Unit 2: Finite Automata',
+      title: 'Unit-2: Regular Languages and Context Free Languages',
       modules: [
-        'Acceptance of Languages',
-        'DFA and NFA Equivalence',
-        'NFA to DFA Conversion',
-        'Epsilon Transitions',
-        'Automata Minimization',
-        'Unit 2 Quiz'
+        'Regular Expressions',
+        'Identities & Algebraic Laws',
+        'Pumping Lemma',
+        'Closure Properties',
+        'Decision Properties',
+        'Minimization of FA'
       ]
     },
     {
@@ -52,7 +55,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedModule, onModuleSelect, isOpe
       title: 'Unit 4: Context-Free Languages',
       modules: [
         'Context-Free Grammars',
-        'Leftmost and Rightmost Derivations',
+        'Derivations & Ambiguity',
         'Normal Forms',
         'Pushdown Automata',
         'CFG-PDA Equivalence',

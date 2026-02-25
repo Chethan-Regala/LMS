@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Module1_1 from './unit1-modules/Module1_1';
 import Module1_2 from './unit1-modules/Module1_2';
 import Module1_4 from './unit1-modules/Module1_4';
@@ -8,6 +8,7 @@ import Module1_8 from './unit1-modules/Module1_8';
 import Module1_10 from './unit1-modules/Module1_10';
 import Module1_11 from './unit1-modules/Module1_11';
 import Module1_14 from './unit1-modules/Module1_14';
+import CompletionButton from '@/components/CompletionButton';
 
 interface Unit1Props {
   currentModule: number;
@@ -29,30 +30,28 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
 
   const renderModule = () => {
     switch (currentModule) {
-      case 1:
-        return <Module1_1 />;
-      case 2:
-        return <Module1_2 />;
-      case 3:
-        return <Module1_4 />;
-      case 4:
-        return <Module1_6 />;
-      case 5:
-        return <Module1_8 />;
-      case 6:
-        return <Module1_10 />;
-      case 7:
-        return <Module1_11 />;
-      case 8:
-        return <Module1_14 />;
-      default:
-        return <div>Module not found</div>;
+      case 1: return <Module1_1 />;
+      case 2: return <Module1_2 />;
+      case 3: return <Module1_4 />;
+      case 4: return <Module1_6 />;
+      case 5: return <Module1_8 />;
+      case 6: return <Module1_10 />;
+      case 7: return <Module1_11 />;
+      case 8: return <Module1_14 />;
+      default: return <div>Module not found</div>;
     }
   };
 
   return (
     <div className="unit-container">
       {renderModule()}
+
+      <CompletionButton
+        subject="OS"
+        unitId={1}
+        moduleId={currentModule}
+      />
+
       <div className="navigation-buttons" style={{ marginTop: '40px', marginBottom: '40px' }}>
         {currentModule > 1 && (
           <button onClick={() => setCurrentModule(currentModule - 1)} className="prev-module-btn" style={{ fontWeight: 'bold' }}>

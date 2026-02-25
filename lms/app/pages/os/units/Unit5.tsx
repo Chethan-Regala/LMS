@@ -13,6 +13,8 @@ import Module5_10 from './unit5-modules/Module5_10';
 import Module5_11 from './unit5-modules/Module5_11';
 import Module5_12 from './unit5-modules/Module5_12';
 
+import CompletionButton from '@/components/CompletionButton';
+
 interface Unit5Props {
   currentModule: number;
   setCurrentModule: (module: number) => void;
@@ -56,6 +58,13 @@ const Unit5: React.FC<Unit5Props> = ({ currentModule, setCurrentModule, onBack }
   return (
     <div className="unit-container">
       {renderModule()}
+
+      <CompletionButton
+        subject="OS"
+        unitId={5}
+        moduleId={currentModule}
+      />
+
       <div className="navigation-buttons" style={{ marginTop: '40px', marginBottom: '40px' }}>
         {currentModule > 1 && (
           <button onClick={() => setCurrentModule(currentModule - 1)} className="prev-module-btn" style={{ fontWeight: 'bold' }}>

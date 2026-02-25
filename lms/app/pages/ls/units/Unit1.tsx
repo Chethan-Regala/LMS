@@ -1,6 +1,11 @@
 'use client';
 import React from 'react';
+import Module1_1 from './unit1-modules/Module1_1';
+import Module1_2 from './unit1-modules/Module1_2';
+import Module1_3 from './unit1-modules/Module1_3';
 import Quiz from '../components/Quiz';
+import ModuleNavigation from '../components/ModuleNavigation';
+
 
 interface Unit1Props {
   currentModule: number;
@@ -9,7 +14,7 @@ interface Unit1Props {
 }
 
 const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }) => {
-  
+
   const module1Quiz = [
     {
       question: "What is the primary focus of linguistics?",
@@ -264,440 +269,13 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
   const renderModule = () => {
     switch (currentModule) {
       case 1:
-        return (
-          <div className="module-content">
-            <div className="lesson-header">
-              <div className="lesson-number-badge">1.1</div>
-              <div className="lesson-title-main">
-                <h1>Overview of Linguistics and its Sub-fields</h1>
-              </div>
-            </div>
-            
-            <section className="content-section">
-              <h3>What is Linguistics?</h3>
-              <p>Imagine you're learning a new language or wondering why we say "I am" but "he is". Linguistics is the science that answers these questions! It's the systematic study of how human language works - from the sounds we make to the meanings we create.</p>
-              
-              
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/3yLXNzDUH58?si=KCHYH7vkcUsesNjZ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen style={{width: '550px', height: '325px'}}></iframe>
-              
-
-              <h4>What Do Linguists Study?</h4>
-              <ul>
-                <li><strong>How we make sounds:</strong> Why "p" and "b" sound different</li>
-                <li><strong>How we form words:</strong> Why "unhappiness" makes sense but "happyunness" doesn't</li>
-                <li><strong>How we build sentences:</strong> Why "The cat chased the mouse" is correct but "Cat the mouse the chased" isn't</li>
-                <li><strong>How we create meaning:</strong> Why "bank" can mean a financial institution or a river edge</li>
-                <li><strong>How languages change:</strong> Why Shakespeare's English sounds different from ours</li>
-                <li><strong>How we learn languages:</strong> Why children pick up languages so easily</li>
-              </ul>
-
-              <h4>Key Ideas About Language</h4>
-              <ul>
-                <li><strong>Language follows rules:</strong> Every language has patterns. In English, we say "two cats" not "cats two"</li>
-                <li><strong>Words are arbitrary:</strong> There's no reason "dog" means dog - it's just what English speakers agreed on. That's why French says "chien" and Spanish says "perro"</li>
-                <li><strong>Language is creative:</strong> You can make sentences you've never heard before, like "The purple elephant danced on Mars"</li>
-                <li><strong>Language is structured:</strong> It has levels - sounds combine into words, words into sentences</li>
-                <li><strong>Language changes:</strong> New words appear ("selfie", "google"), old words disappear</li>
-                <li><strong>All humans can learn language:</strong> But each language is unique</li>
-              </ul>
-
-              <div className="theory-analysis">
-                <h5>Linguistic Analysis Framework</h5>
-                <p>Examine how different linguistic branches analyze the same phenomenon:</p>
-                <div className="analysis-grid">
-                  <div className="analysis-item">
-                    <h6>Morphological Analysis</h6>
-                    <p><strong>"unhappiness"</strong> → un- (negation) + happy (root) + -ness (nominalization)</p>
-                    <p>Demonstrates derivational morphology and word formation processes</p>
-                  </div>
-                  <div className="analysis-item">
-                    <h6>Phonological Analysis</h6>
-                    <p><strong>/ʌnˈhæpɪnəs/</strong> → Shows stress placement and vowel reduction</p>
-                    <p>Illustrates prosodic patterns and phonological processes</p>
-                  </div>
-                  <div className="analysis-item">
-                    <h6>Semantic Analysis</h6>
-                    <p><strong>Compositional meaning:</strong> [NOT [STATE OF BEING HAPPY]]</p>
-                    <p>Demonstrates how morphemes contribute to overall word meaning</p>
-                  </div>
-                  <div className="analysis-item">
-                    <h6>Syntactic Analysis</h6>
-                    <p><strong>"Her unhappiness was evident"</strong> → [NP [Det Her] [N unhappiness]]</p>
-                    <p>Shows how morphologically complex words function syntactically</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="linguistic-universals">
-                <h5>Universal Properties of Human Language</h5>
-                <div className="universals-grid">
-                  <div className="universal-item">
-                    <h6>Arbitrariness</h6>
-                    <p>No inherent connection between form and meaning</p>
-                    <div className="evidence">Cross-linguistic variation: water/agua/eau/mizu</div>
-                  </div>
-                  <div className="universal-item">
-                    <h6>Productivity</h6>
-                    <p>Infinite expression from finite elements</p>
-                    <div className="evidence">Novel sentence generation and comprehension</div>
-                  </div>
-                  <div className="universal-item">
-                    <h6>Displacement</h6>
-                    <p>Reference to non-present entities and events</p>
-                    <div className="evidence">Past/future tense, hypothetical scenarios</div>
-                  </div>
-                  <div className="universal-item">
-                    <h6>Cultural Transmission</h6>
-                    <p>Learned through social interaction</p>
-                    <div className="evidence">Language acquisition in social contexts</div>
-                  </div>
-                </div>
-              </div>
-
-              <h4>Branches of Linguistics (What Linguists Focus On)</h4>
-              
-              <h5>1. Phonetics - The Sounds of Speech</h5>
-              <ul>
-                <li><strong>What it studies:</strong> How we physically make speech sounds</li>
-                <li><strong>Example:</strong> When you say "p", you close your lips and release air. When you say "b", you do the same but your vocal cords vibrate</li>
-                <li><strong>Why it matters:</strong> Helps with pronunciation, speech therapy, and understanding accents</li>
-              </ul>
-
-              <h5>2. Phonology - Sound Patterns</h5>
-              <ul>
-                <li><strong>What it studies:</strong> How sounds work in specific languages</li>
-                <li><strong>Example:</strong> In English, "p" sounds different in "pin" (with a puff of air) vs "spin" (no puff), but we think of them as the same sound</li>
-                <li><strong>Why it matters:</strong> Explains why some sound combinations are impossible in your language</li>
-              </ul>
-
-              <h5>3. Morphology - Word Structure</h5>
-              <ul>
-                <li><strong>What it studies:</strong> How words are built from smaller parts</li>
-                <li><strong>Example:</strong> "unhappiness" = un (not) + happy + ness (state of being)</li>
-                <li><strong>Why it matters:</strong> Helps you understand new words and learn vocabulary faster</li>
-              </ul>
-
-              <h5>4. Syntax - Sentence Structure</h5>
-              <ul>
-                <li><strong>What it studies:</strong> How words combine to form sentences</li>
-                <li><strong>Example:</strong> "The dog bit the man" vs "The man bit the dog" - same words, different meaning!</li>
-                <li><strong>Why it matters:</strong> Explains grammar rules and why sentences make sense</li>
-              </ul>
-
-              <h5>5. Semantics - Meaning</h5>
-              <ul>
-                <li><strong>What it studies:</strong> What words and sentences mean</li>
-                <li><strong>Example:</strong> "Bachelor" means "unmarried man" - you can't be a married bachelor</li>
-                <li><strong>Why it matters:</strong> Helps understand how we communicate ideas</li>
-              </ul>
-
-              <h5>6. Pragmatics - Language in Context</h5>
-              <ul>
-                <li><strong>What it studies:</strong> How we use language in real situations</li>
-                <li><strong>Example:</strong> "Can you pass the salt?" is technically a yes/no question, but we understand it as a request</li>
-                <li><strong>Why it matters:</strong> Explains how we understand implied meanings and social cues</li>
-              </ul>
-
-              <div className="example-box">
-                <h5>Universal Features of All Languages</h5>
-                <p>Despite thousands of different languages, they all share some features:</p>
-                <ul>
-                  <li><strong>All have vowels and consonants:</strong> Though the specific sounds differ</li>
-                  <li><strong>All distinguish nouns and verbs:</strong> Things vs actions</li>
-                  <li><strong>All can ask questions:</strong> And say "no"</li>
-                  <li><strong>All can talk about time:</strong> Past, present, future</li>
-                  <li><strong>All can be infinitely creative:</strong> You can always make a longer sentence</li>
-                </ul>
-              </div>
-
-              <h4>Special Language Abilities</h4>
-              <ul>
-                <li><strong>Displacement:</strong> We can talk about things not here and now
-                  <ul>
-                    <li>Example: "Yesterday I saw a movie" (past)</li>
-                    <li>Example: "Tomorrow I'll visit Paris" (future)</li>
-                    <li>Example: "Unicorns don't exist" (imaginary)</li>
-                  </ul>
-                </li>
-                <li><strong>Recursion:</strong> We can put sentences inside sentences forever
-                  <ul>
-                    <li>Example: "The cat that chased the mouse that ate the cheese that sat in the house..."</li>
-                    <li>This is what makes human language so powerful!</li>
-                  </ul>
-                </li>
-              </ul>
-            </section>
-
-            <Quiz title="Module 1.1 Quiz: Overview of Linguistics" questions={module1Quiz} subject="LS" unitId={1} moduleId={1} />
-
-            <div className="reference-section">
-              <h3>Reference Materials</h3>
-              <ul>
-                <li><a href="https://www.linguisticsociety.org/what-linguistics" target="_blank" rel="noopener noreferrer">Linguistic Society of America - What is Linguistics?</a></li>
-                <li><a href="https://www.sil.org/linguistics" target="_blank" rel="noopener noreferrer">SIL International - Linguistics Resources</a></li>
-                <li><a href="https://www.cambridge.org/core/what-we-publish/textbooks/linguistics" target="_blank" rel="noopener noreferrer">Cambridge University Press - Linguistics Textbooks</a></li>
-              </ul>
-            </div>
-
-            <div className="navigation-buttons">
-              <button onClick={onBack} className="prev-module-btn">← Back to Overview</button>
-              <button onClick={() => setCurrentModule(2)} className="next-module-btn">Phonetics →</button>
-            </div>
-          </div>
-        );
-
+        return <Module1_1 setCurrentModule={setCurrentModule} onBack={onBack} />;
       case 2:
-        return (
-          <div className="module-content">
-            <div className="lesson-header">
-              <div className="lesson-number-badge">1.2</div>
-              <div className="lesson-title-main">
-                <h1>Phonetics</h1>
-              </div>
-            </div>
-            
-            <section className="content-section">
-              <h3>What is Phonetics?</h3>
-              <p>Have you ever wondered how we actually make the sounds when we speak? Or why "p" and "b" sound similar but different? Phonetics is the study of speech sounds - how we produce them, what they sound like physically, and how we hear them.</p>
-              
-              <p><strong>Think of it this way:</strong> When you say "pat" and "bat", your mouth does almost the same thing. The only difference? Your vocal cords vibrate for "b" but not for "p". Try it - put your hand on your throat and feel the difference!</p>
-              
-             
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ugppjNn8uIE?si=kTCEuvmkZnpyclin" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen 
-             style={{width: '550px', height: '325px'}}></iframe>
-
-              <h4>Three Ways to Study Speech Sounds</h4>
-              
-              <h5>1. Articulatory Phonetics - How We Make Sounds</h5>
-              <ul>
-                <li><strong>What it studies:</strong> The physical process of producing speech</li>
-                <li><strong>Your speech organs:</strong>
-                  <ul>
-                    <li>Lungs (provide air)</li>
-                    <li>Vocal cords (vibrate to make voice)</li>
-                    <li>Tongue (most flexible articulator)</li>
-                    <li>Lips, teeth, roof of mouth (shape the sounds)</li>
-                  </ul>
-                </li>
-                <li><strong>Try this:</strong> Say "k" and "t". Notice how "k" is made in the back of your mouth, but "t" is made at the front?</li>
-              </ul>
-
-              <h5>2. Acoustic Phonetics - What Sounds Look Like</h5>
-              <ul>
-                <li><strong>What it studies:</strong> Sound waves and their physical properties</li>
-                <li><strong>Key concepts:</strong>
-                  <ul>
-                    <li>Frequency = how high or low a sound is (pitch)</li>
-                    <li>Amplitude = how loud a sound is</li>
-                    <li>Duration = how long a sound lasts</li>
-                  </ul>
-                </li>
-                <li><strong>Cool fact:</strong> Scientists can see your voice! They use spectrograms (like pictures of sound waves)</li>
-              </ul>
-
-              <h5>3. Auditory Phonetics - How We Hear Sounds</h5>
-              <ul>
-                <li><strong>What it studies:</strong> How our ears and brain process speech</li>
-                <li><strong>Interesting fact:</strong> Your brain automatically groups similar sounds together, which is why you can understand different accents</li>
-              </ul>
-
-              <div className="example-box">
-                <h5>The International Phonetic Alphabet (IPA)</h5>
-                <p>English spelling is confusing! "Tough", "through", and "though" all have "ough" but sound different. The IPA solves this:</p>
-                <ul>
-                  <li><strong>One symbol = one sound</strong> (unlike English spelling)</li>
-                  <li>"ship" = [ʃɪp] and "sheep" = [ʃip] - you can see the vowel difference!</li>
-                  <li>Used by linguists worldwide</li>
-                  <li>Covers sounds from ALL languages</li>
-                </ul>
-              </div>
-
-              <h4>Understanding Consonants</h4>
-              <p>Consonants are sounds where air is blocked or restricted. We classify them by THREE features:</p>
-              
-              <h5>Feature 1: WHERE in your mouth (Place of Articulation)</h5>
-              <ul>
-                <li><strong>Bilabial (both lips):</strong> p, b, m
-                  <ul><li>Try it: "pat", "bat", "mat" - your lips come together</li></ul>
-                </li>
-                <li><strong>Labiodental (lip + teeth):</strong> f, v
-                  <ul><li>Try it: "fat", "vat" - your top teeth touch your bottom lip</li></ul>
-                </li>
-                <li><strong>Alveolar (tongue + ridge behind teeth):</strong> t, d, s, z, n, l
-                  <ul><li>Try it: "tap" - your tongue touches the bumpy ridge behind your teeth</li></ul>
-                </li>
-                <li><strong>Velar (tongue + soft palate):</strong> k, g
-                  <ul><li>Try it: "cat", "gap" - made in the back of your mouth</li></ul>
-                </li>
-              </ul>
-
-              <h5>Feature 2: HOW air flows (Manner of Articulation)</h5>
-              <ul>
-                <li><strong>Stops:</strong> Air completely blocked then released (p, t, k, b, d, g)
-                  <ul><li>Like popping a balloon!</li></ul>
-                </li>
-                <li><strong>Fricatives:</strong> Air squeezed through narrow gap (f, s, sh, h, v, z)
-                  <ul><li>Makes a hissing or buzzing sound</li></ul>
-                </li>
-                <li><strong>Nasals:</strong> Air goes through your nose (m, n, ng)
-                  <ul><li>Try saying "m" while pinching your nose - you can't!</li></ul>
-                </li>
-                <li><strong>Liquids:</strong> Air flows around tongue (l, r)
-                  <ul><li>These are the "smooth" consonants</li></ul>
-                </li>
-              </ul>
-
-              <h5>Feature 3: Voice or No Voice (Voicing)</h5>
-              <ul>
-                <li><strong>Voiced:</strong> Vocal cords vibrate (b, d, g, v, z)
-                  <ul><li>Put your hand on your throat - you'll feel buzzing!</li></ul>
-                </li>
-                <li><strong>Voiceless:</strong> No vibration (p, t, k, f, s)
-                  <ul><li>Just air, no buzzing</li></ul>
-                </li>
-                <li><strong>Pairs:</strong> p/b, t/d, k/g, f/v, s/z - same mouth position, different voicing!</li>
-              </ul>
-
-              <h4>Understanding Vowels</h4>
-              <p>Vowels are sounds where air flows freely. We classify them by tongue position:</p>
-              
-              <h5>Feature 1: Tongue Height (How high is your tongue?)</h5>
-              <ul>
-                <li><strong>High vowels:</strong> "beet" [i], "boot" [u]
-                  <ul><li>Tongue is close to the roof of your mouth</li></ul>
-                </li>
-                <li><strong>Mid vowels:</strong> "bait" [e], "boat" [o]
-                  <ul><li>Tongue is in the middle</li></ul>
-                </li>
-                <li><strong>Low vowels:</strong> "bat" [æ], "bot" [ɑ]
-                  <ul><li>Tongue is low, mouth is open</li></ul>
-                </li>
-              </ul>
-
-              <h5>Feature 2: Tongue Position (Front or Back?)</h5>
-              <ul>
-                <li><strong>Front vowels:</strong> "beet" [i], "bit" [ɪ]
-                  <ul><li>Tongue pushed forward</li></ul>
-                </li>
-                <li><strong>Back vowels:</strong> "boot" [u], "boat" [o]
-                  <ul><li>Tongue pulled back</li></ul>
-                </li>
-                <li><strong>Central vowels:</strong> "but" [ʌ], "about" [ə]
-                  <ul><li>Tongue in neutral position</li></ul>
-                </li>
-              </ul>
-
-              <h5>Feature 3: Lip Rounding</h5>
-              <ul>
-                <li><strong>Rounded:</strong> "boot" [u], "boat" [o]
-                  <ul><li>Lips form a circle</li></ul>
-                </li>
-                <li><strong>Unrounded:</strong> "beet" [i], "bat" [æ]
-                  <ul><li>Lips spread or neutral</li></ul>
-                </li>
-              </ul>
-
-              <h5>Special Vowels</h5>
-              <ul>
-                <li><strong>Diphthongs:</strong> Two vowel sounds glide together
-                  <ul>
-                    <li>"boy" = [ɔɪ] (starts with "o", ends with "i")</li>
-                    <li>"cow" = [aʊ] (starts with "a", ends with "u")</li>
-                  </ul>
-                </li>
-              </ul>
-
-              <div className="phonetic-analysis">
-                <h5>Articulatory Analysis Framework</h5>
-                <p>Systematic approach to analyzing speech sound production:</p>
-                
-                <div className="analysis-table">
-                  <h6>Consonant Classification Matrix</h6>
-                  <table>
-                    <thead>
-                      <tr><th>Sound</th><th>Place</th><th>Manner</th><th>Voicing</th><th>Example</th></tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>/p/</td><td>Bilabial</td><td>Stop</td><td>Voiceless</td><td>"pat" [pʰæt]</td></tr>
-                      <tr><td>/b/</td><td>Bilabial</td><td>Stop</td><td>Voiced</td><td>"bat" [bæt]</td></tr>
-                      <tr><td>/f/</td><td>Labiodental</td><td>Fricative</td><td>Voiceless</td><td>"fat" [fæt]</td></tr>
-                      <tr><td>/v/</td><td>Labiodental</td><td>Fricative</td><td>Voiced</td><td>"vat" [væt]</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div className="vowel-space">
-                  <h6>Vowel Classification System</h6>
-                  <div className="vowel-chart">
-                    <div className="vowel-row">
-                      <span className="vowel-label">High:</span>
-                      <span className="vowel-item">/i/ "beat"</span>
-                      <span className="vowel-item">/ɪ/ "bit"</span>
-                      <span className="vowel-item">/u/ "boot"</span>
-                      <span className="vowel-item">/ʊ/ "book"</span>
-                    </div>
-                    <div className="vowel-row">
-                      <span className="vowel-label">Mid:</span>
-                      <span className="vowel-item">/e/ "bait"</span>
-                      <span className="vowel-item">/ɛ/ "bet"</span>
-                      <span className="vowel-item">/o/ "boat"</span>
-                      <span className="vowel-item">/ɔ/ "bought"</span>
-                    </div>
-                    <div className="vowel-row">
-                      <span className="vowel-label">Low:</span>
-                      <span className="vowel-item">/æ/ "bat"</span>
-                      <span className="vowel-item">/ɑ/ "bot"</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="transcription-practice">
-                <h5>IPA Transcription Analysis</h5>
-                <p>Systematic phonetic transcription demonstrates sound-symbol correspondence:</p>
-                <div className="transcription-examples">
-                  <div className="transcription-pair">
-                    <span className="orthography">"thought"</span>
-                    <span className="ipa">[θɔt]</span>
-                    <span className="analysis">Shows /θ/ fricative, /ɔ/ back vowel</span>
-                  </div>
-                  <div className="transcription-pair">
-                    <span className="orthography">"psychology"</span>
-                    <span className="ipa">[saɪˈkɑlədʒi]</span>
-                    <span className="analysis">Demonstrates silent letters, stress placement</span>
-                  </div>
-                  <div className="transcription-pair">
-                    <span className="orthography">"strength"</span>
-                    <span className="ipa">[strɛŋkθ]</span>
-                    <span className="analysis">Complex consonant clusters, velar nasal</span>
-                  </div>
-                </div>
-              </div>
-
-              
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/2pxrDWjEBoE?si=LnLs5_dL82hCKELO" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen style={{width: '550px', height: '325px'}}></iframe>
-            
-            </section>
-
-            <Quiz title="Module 1.2 Quiz: Phonetics" questions={module2Quiz} subject="LS" unitId={1} moduleId={2} />
-
-            <div className="reference-section">
-              <h3>Reference Materials</h3>
-              <ul>
-                <li><a href="https://www.internationalphoneticassociation.org/" target="_blank" rel="noopener noreferrer">International Phonetic Association</a></li>
-                <li><a href="https://www.ipachart.com/" target="_blank" rel="noopener noreferrer">Interactive IPA Chart</a></li>
-                <li><a href="https://www.phonetics.ucla.edu/" target="_blank" rel="noopener noreferrer">UCLA Phonetics Lab</a></li>
-              </ul>
-            </div>
-
-            <div className="navigation-buttons">
-              <button onClick={() => setCurrentModule(1)} className="prev-module-btn">← Overview of Linguistics</button>
-              <button onClick={() => setCurrentModule(3)} className="next-module-btn">Phonology →</button>
-            </div>
-          </div>
-        );
-
+        return <Module1_2 setCurrentModule={setCurrentModule} onBack={onBack} />;
       case 3:
+        return <Module1_3 setCurrentModule={setCurrentModule} onBack={onBack} />;
+
+      case 999:
         return (
           <div className="module-content">
             <div className="lesson-header">
@@ -706,19 +284,19 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Phonology</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Understanding Phonology</h3>
               <p>Phonology is the study of sound systems in languages, examining how sounds function and pattern within particular linguistic systems. Unlike phonetics (which studies physical sounds), phonology studies abstract sound patterns.</p>
-              
-           
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/imH7hdOgxrU?si=JaT_sZx0WLvZdIdz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
-                  style={{width: '550px', height: '325px'}}
-                ></iframe>
-          
+
+
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/imH7hdOgxrU?si=JaT_sZx0WLvZdIdz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
+                style={{ width: '550px', height: '325px' }}
+              ></iframe>
+
 
               <h4>Basic Phonological Concepts</h4>
-              
+
               <h5>Phoneme</h5>
               <ul>
                 <li><strong>Definition:</strong> Abstract sound unit that distinguishes meaning in a language</li>
@@ -784,7 +362,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
 
               <h4>Phonological Processes</h4>
-              
+
               <h5>Assimilation</h5>
               <ul>
                 <li><strong>Definition:</strong> Sounds become more similar to neighboring sounds</li>
@@ -847,7 +425,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Syllable Structure</h4>
-              
+
               <h5>Components</h5>
               <ul>
                 <li><strong>Onset:</strong> Initial consonant(s) - optional ("cat" = /k/)</li>
@@ -884,7 +462,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Prosodic Features</h4>
-              
+
               <h5>Stress</h5>
               <ul>
                 <li><strong>Definition:</strong> Prominence given to syllables</li>
@@ -945,10 +523,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
             </div>
 
-            <div className="navigation-buttons">
-              <button onClick={() => setCurrentModule(2)} className="prev-module-btn">← Phonetics</button>
-              <button onClick={() => setCurrentModule(4)} className="next-module-btn">Morphology →</button>
-            </div>
+            <ModuleNavigation
+              unitId={1}
+              moduleId={3}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
           </div>
         );
 
@@ -961,19 +541,19 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Morphology</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Understanding Morphology</h3>
               <p>Morphology is the study of word structure and the rules governing word formation in languages. It examines how morphemes (smallest meaningful units) combine to create words.</p>
-              
-             
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/93sK4jTGrss?si=7KPZLNEzyPsKZT7I" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
-                  style={{width: '550px', height: '325px'}}
-                ></iframe>
-              
+
+
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/93sK4jTGrss?si=7KPZLNEzyPsKZT7I" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
+                style={{ width: '550px', height: '325px' }}
+              ></iframe>
+
 
               <h4>Basic Morphological Concepts</h4>
-              
+
               <h5>Morpheme</h5>
               <ul>
                 <li><strong>Definition:</strong> Smallest meaningful unit in language</li>
@@ -1029,7 +609,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
 
               <h4>Word Formation Processes</h4>
-              
+
               <h5>Derivational Morphology</h5>
               <ul>
                 <li><strong>Creates new words:</strong> Or changes word class</li>
@@ -1133,7 +713,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Morphological Typology</h4>
-              
+
               <h5>Isolating Languages</h5>
               <ul>
                 <li><strong>Characteristic:</strong> One morpheme per word</li>
@@ -1218,10 +798,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
             </div>
 
-            <div className="navigation-buttons">
-              <button onClick={() => setCurrentModule(3)} className="prev-module-btn">← Phonology</button>
-              <button onClick={() => setCurrentModule(5)} className="next-module-btn">Unit 1 Quiz →</button>
-            </div>
+            <ModuleNavigation
+              unitId={1}
+              moduleId={4}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
           </div>
         );
 
@@ -1234,7 +816,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Unit 1 Comprehensive Assessment</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <h3>Test Your Knowledge of Unit 1</h3>
               <p>This comprehensive quiz covers all topics from Unit 1: Introduction to Linguistics. It includes questions from:</p>
@@ -1259,10 +841,12 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
             </div>
 
-            <div className="navigation-buttons">
-              <button onClick={() => setCurrentModule(4)} className="prev-module-btn">← Morphology</button>
-              <button onClick={onBack} className="next-module-btn">Back to Overview →</button>
-            </div>
+            <ModuleNavigation
+              unitId={1}
+              moduleId={5}
+              setCurrentModule={setCurrentModule}
+              onBack={onBack}
+            />
           </div>
         );
 

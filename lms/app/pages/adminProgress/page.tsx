@@ -3,6 +3,8 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, RefreshCw, GraduationCap, LayoutGrid, CheckCircle2, User, Menu, Search, TrendingUp } from "lucide-react";
 import AdminSidebar from "../../../components/AdminSidebar";
 
 export default function AdminProgress() {
@@ -272,11 +274,58 @@ export default function AdminProgress() {
       name: "Language Systems",
       color: "#EF4444",
       units: [
-        { id: 1, name: "Introduction to Language and Linguistics", modules: ["Overview of Linguistics", "Phonetics", "Phonology", "Morphology", "Unit 1 Quiz"] },
-        { id: 2, name: "Syntax and Semantics", modules: ["Syntax and Syntactic Structures", "Semantics and Semantic Structures", "Language Typology", "Unit 2 Quiz"] },
-        { id: 3, name: "Language Acquisition and Change", modules: ["First and Second Language Acquisition", "Language Change and Contact", "Historical Linguistics", "Unit 3 Quiz"] },
-        { id: 4, name: "Sociolinguistics and Applied Linguistics", modules: ["Sociolinguistics and Variation", "Language Policy and Planning", "Language and Identity", "Language and Technology", "Unit 4 Quiz"] },
-        { id: 5, name: "Language in Context and Research", modules: ["Language and Culture", "Language and Gender", "Language and Power", "Language and Globalization", "Research Methods in Linguistics", "Unit 5 Quiz"] }
+        {
+          id: 1,
+          name: "Foundations of Language",
+          modules: [
+            "Overview of Linguistics and its Sub-fields",
+            "Phonetics and Phonology",
+            "Morphology: The Study of Word Structure",
+            "Unit 1 Mastery Quiz"
+          ]
+        },
+        {
+          id: 2,
+          name: "Meaning and Structure",
+          modules: [
+            "Syntax and Syntactic Structures",
+            "Semantics and Semantic Structures",
+            "Language Typology",
+            "Unit 2 Mastery Quiz"
+          ]
+        },
+        {
+          id: 3,
+          name: "Evolution and Growth",
+          modules: [
+            "Learning to Speak",
+            "The Changing Word",
+            "Tracing the Past",
+            "Unit 3 Mastery Quiz"
+          ]
+        },
+        {
+          id: 4,
+          name: "Language in Society",
+          modules: [
+            "Social Variation",
+            "Policy and Power",
+            "Language and Identity",
+            "Digital Linguistics",
+            "Unit 4 Mastery Quiz"
+          ]
+        },
+        {
+          id: 5,
+          name: "Culture and Globalization",
+          modules: [
+            "Language and Culture",
+            "Gendered Expression",
+            "The Global Stage",
+            "Research Masterclass",
+            "Unit 5 Mastery Quiz"
+          ]
+        }
       ]
     },
     FLAT: {
@@ -373,182 +422,275 @@ export default function AdminProgress() {
     return { completed, total, percentage: total > 0 ? Math.round((completed / total) * 100) : 0 };
   };
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [studentSearch, setStudentSearch] = useState("");
+
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    return (
+      <div className="min-h-screen bg-[#F8F6F1] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[#3E73C1] border-t-transparent rounded-full animate-spin" />
+          <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Synchronizing Nodes...</p>
+        </div>
+      </div>
+    );
   }
 
+  const filteredStudents = students.filter(s =>
+    s.fullName?.toLowerCase().includes(studentSearch.toLowerCase()) ||
+    s.email?.toLowerCase().includes(studentSearch.toLowerCase())
+  );
+
   return (
-    <div className="min-h-screen w-full flex bg-white">
-      <AdminSidebar />
+    <div className="min-h-screen bg-[#F8F6F1] text-[#121212] font-sans">
+      <div className="flex relative">
+        <AdminSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-      <div className="flex-1 bg-transparent pt-8 relative ml-14" style={{
-        backgroundImage: 'radial-gradient(circle, #D8D8D8 1px, transparent 1px)',
-        backgroundSize: '20px 20px',
-        backgroundColor: '#FFFFFF'
-      }}>
-        <div className="max-w-[1400px] mx-auto px-6 py-6">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2" style={{ color: '#8B869B' }}>Student Progress Tracking</h1>
-            <p className="text-gray-600">Monitor module completion across all subjects</p>
-          </div>
-
-          <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-3 bg-white rounded-lg border p-4 max-h-[calc(100vh-200px)] overflow-y-auto" style={{ borderColor: '#8B869B' }}>
-              <h2 className="text-lg font-semibold mb-4" style={{ color: '#5A6B80' }}>Students</h2>
-              <div className="space-y-2">
-                {students.map((student) => (
-                  <div
-                    key={student._id}
-                    onClick={() => fetchProgress(student.email)}
-                    className={`p-3 rounded-lg cursor-pointer transition border-2 ${selectedStudent === student.email
-                      ? "bg-purple-50"
-                      : "bg-gray-50 hover:bg-gray-100 border-transparent"
-                      }`}
-                    style={selectedStudent === student.email ? { borderColor: '#8B869B' } : {}}
-                  >
-                    <div className="font-semibold text-gray-800 text-sm">{student.fullName || "No Name"}</div>
-                    <div className="text-xs text-gray-600">{student.email}</div>
-                    <div className="text-xs text-gray-500 mt-1">Sem {student.currentSemester}</div>
-                  </div>
-                ))}
+        <main className="flex-1 sm:ml-[280px] px-6 sm:px-16 py-6 sm:py-10 min-w-0 overflow-x-hidden relative z-10">
+          {/* TOP NAV BAR */}
+          <div className="flex items-center justify-between mb-8 sm:mb-12">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsSidebarOpen(true)}
+                className="sm:hidden p-2 bg-white border border-[#E5E2D9] rounded-xl text-[#3E73C1]"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#1E3A8A]">Student Progress</h2>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex flex-col items-end">
+                <p className="text-[10px] font-bold uppercase text-[#888] tracking-widest leading-none">Status</p>
+                <p className="text-sm font-bold text-[#3E73C1] mt-1">Real-time Analytics</p>
               </div>
             </div>
+          </div>
 
-            {!selectedStudent ? (
-              <div className="col-span-9 bg-white rounded-lg border border-gray-200 p-6 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                  <p className="text-lg">Select a student to view progress</p>
-                </div>
-              </div>
-            ) : !selectedSubject ? (
-              <div className="col-span-9 bg-white rounded-lg border border-gray-200 p-6 max-h-[calc(100vh-200px)] overflow-y-auto">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-bold text-gray-800">
-                    {students.find(s => s.email === selectedStudent)?.fullName}'s Progress
-                  </h2>
-                  <button
-                    onClick={() => fetchProgress(selectedStudent!)}
-                    className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition"
-                    title="Refresh progress"
-                  >
-                    ↻ Refresh
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  {Object.entries(courseStructure).map(([code, subject]: [string, any]) => {
-                    const prog = getSubjectProgress(code);
-                    return (
-                      <div
-                        key={code}
-                        onClick={() => setSelectedSubject(code)}
-                        className="border-2 rounded-lg p-5 cursor-pointer hover:shadow-lg transition"
-                        style={{ borderColor: subject.color }}
-                      >
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="flex items-center gap-3">
-                            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: subject.color }} />
-                            <h3 className="font-bold text-gray-800">{subject.name}</h3>
-                          </div>
-                          <div className="text-2xl font-bold" style={{ color: subject.color }}>
-                            {prog.percentage}%
-                          </div>
-                        </div>
-                        <div className="text-sm text-gray-600 mb-2">
-                          {prog.completed} of {prog.total} modules completed
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div
-                            className="h-2 rounded-full transition-all"
-                            style={{ width: `${prog.percentage}%`, backgroundColor: subject.color }}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ) : (
-              <div className="col-span-9 bg-white rounded-lg border border-gray-200 p-6 max-h-[calc(100vh-200px)] overflow-y-auto">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => setSelectedSubject(null)}
-                      className="text-gray-600 hover:text-gray-800"
-                    >
-                      ← Back
-                    </button>
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: courseStructure[selectedSubject].color }} />
-                    <h2 className="text-xl font-bold text-gray-800">{courseStructure[selectedSubject].name}</h2>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => fetchProgress(selectedStudent!)}
-                      className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition"
-                      title="Refresh progress"
-                    >
-                      ↻ Refresh
-                    </button>
-                    <div className="text-2xl font-bold" style={{ color: courseStructure[selectedSubject].color }}>
-                      {getSubjectProgress(selectedSubject).percentage}%
-                    </div>
+          {/* PAGE HEADER */}
+          <div className="mb-12 px-2">
+            <h1 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tighter mb-4 flex items-center gap-4">
+              <TrendingUp className="w-10 h-10 sm:w-12 sm:h-12 text-[#3E73C1]" />
+              Student Progress
+            </h1>
+            <p className="text-slate-500 font-semibold text-sm sm:text-lg max-w-2xl leading-relaxed">
+              Track student quiz scores, module completion, and overall academic progress across all subjects.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-12 gap-8 items-start">
+            {/* STUDENT ROSTER */}
+            <div className="col-span-12 lg:col-span-3 space-y-4">
+              <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-6 shadow-sm flex flex-col h-[700px]">
+                <div className="mb-6">
+                  <h3 className="text-xs font-bold text-[#1E3A8A] tracking-widest uppercase mb-4 ml-1">Students</h3>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                    <input
+                      type="text"
+                      placeholder="Filter..."
+                      value={studentSearch}
+                      onChange={(e) => setStudentSearch(e.target.value)}
+                      className="w-full bg-[#F8F6F1] border border-[#E5E2D9] pl-10 pr-4 py-2.5 rounded-xl text-xs font-bold outline-none focus:ring-2 focus:ring-[#3E73C1]/10 transition-all"
+                    />
                   </div>
                 </div>
-
-                <div className="space-y-6">
-                  {courseStructure[selectedSubject].units.map((unit: any) => (
-                    <div key={unit.id} className="border rounded-lg p-4">
-                      <h3 className="font-semibold text-gray-800 mb-3">
-                        Unit {unit.id}: {unit.name}
-                      </h3>
-                      <div className="grid grid-cols-1 gap-2">
-                        {unit.modules.map((moduleName: string, idx: number) => {
-                          const moduleId = idx + 1;
-                          const completed = isModuleCompleted(selectedSubject, unit.id, moduleId);
-                          const score = getModuleScore(selectedSubject, unit.id, moduleId);
-
-                          return (
-                            <div
-                              key={moduleId}
-                              className={`flex items-center justify-between p-3 rounded-lg border-2 ${completed ? "bg-green-50 border-green-300" : "bg-gray-50 border-gray-200"
-                                }`}
-                            >
-                              <div className="flex items-center gap-3">
-                                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${completed ? "bg-green-500 text-white" : "bg-gray-300 text-gray-600"
-                                  }`}>
-                                  {completed ? "✓" : moduleId}
-                                </div>
-                                <span className="text-sm font-medium text-gray-800">
-                                  {unit.id}.{moduleId} - {moduleName}
-                                </span>
-                              </div>
-                              {completed && score && (
-                                <div className="flex items-center gap-2">
-                                  <span className="text-sm font-bold" style={{ color: courseStructure[selectedSubject].color }}>
-                                    {score.percentage}%
-                                  </span>
-                                  <span className="text-xs text-gray-600">
-                                    ({score.score}/{score.totalQuestions})
-                                  </span>
-                                </div>
-                              )}
-                              {!completed && (
-                                <span className="text-xs text-gray-500">Not attempted</span>
-                              )}
-                            </div>
-                          );
-                        })}
+                <div className="flex-1 overflow-y-auto pr-2 space-y-2 custom-scrollbar no-scrollbar">
+                  {filteredStudents.map((student) => (
+                    <button
+                      key={student._id}
+                      onClick={() => fetchProgress(student.email)}
+                      className={`w-full text-left p-4 rounded-2xl transition-all border ${selectedStudent === student.email
+                        ? "bg-[#3E73C1] border-[#3E73C1] text-white"
+                        : "bg-[#F8F6F1] border-transparent text-[#121212] hover:bg-white hover:border-[#E5E2D9]"
+                        }`}
+                    >
+                      <div className="font-bold text-[11px] uppercase tracking-tight truncate">{student.fullName || "Not Set"}</div>
+                      <div className={`text-[9px] font-bold truncate mt-0.5 ${selectedStudent === student.email ? 'text-white/70' : 'text-slate-400'}`}>
+                        {student.email}
                       </div>
-                    </div>
+                      <div className={`text-[8px] font-bold uppercase tracking-[0.15em] mt-2 inline-block px-2 py-0.5 rounded-full border ${selectedStudent === student.email ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-[#E5E2D9] text-[#3E73C1]'
+                        }`}>
+                        Semester {student.currentSemester}
+                      </div>
+                    </button>
                   ))}
                 </div>
               </div>
-            )}
+            </div>
+
+            {/* ANALYTICS VIEWPORT */}
+            <div className="col-span-12 lg:col-span-9">
+              {!selectedStudent ? (
+                <div className="bg-white border border-[#E5E2D9] rounded-[2.5rem] p-12 h-[700px] flex flex-col items-center justify-center text-center opacity-60">
+                  <div className="w-24 h-24 bg-[#F8F6F1] rounded-[2rem] flex items-center justify-center mb-6">
+                    <User className="w-10 h-10 text-slate-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#121212] tracking-tighter uppercase mb-2">Select a Student</h3>
+                  <p className="text-sm font-semibold text-slate-400 max-w-sm leading-relaxed">Choose a student from the list to view their quiz scores and module completion status.</p>
+                </div>
+              ) : !selectedSubject ? (
+                <div className="bg-white border border-[#E5E2D9] rounded-[2.5rem] p-8 sm:p-12 shadow-sm min-h-[700px]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase text-[#3E73C1] tracking-[0.2em] mb-2 leading-none">Progress Overview</p>
+                      <h2 className="text-2xl sm:text-3xl font-bold text-[#121212] tracking-tighter uppercase mr-4 flex items-center gap-3">
+                        <GraduationCap className="w-8 h-8 text-[#3E73C1]" />
+                        {students.find(s => s.email === selectedStudent)?.fullName}
+                      </h2>
+                    </div>
+                    <button
+                      onClick={() => fetchProgress(selectedStudent!)}
+                      className="flex items-center justify-center gap-3 bg-[#F8F6F1] border border-[#E5E2D9] px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:border-[#3E73C1] transition-all group"
+                    >
+                      <RefreshCw className="w-4 h-4 text-slate-400 group-hover:rotate-180 transition-transform duration-700" />
+                      Refresh
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {Object.entries(courseStructure).map(([code, subject]: [string, any]) => {
+                      const prog = getSubjectProgress(code);
+                      return (
+                        <motion.div
+                          key={code}
+                          onClick={() => setSelectedSubject(code)}
+                          className="group bg-[#F8F6F1]/50 border border-[#E5E2D9] rounded-[2rem] p-8 cursor-pointer hover:bg-white hover:border-[#3E73C1]/30 transition-all duration-300"
+                        >
+                          <div className="flex items-center justify-between mb-8">
+                            <div className="flex items-center gap-4">
+                              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm border border-[#E5E2D9] group-hover:border-transparent group-hover:bg-white transition-all bg-white" style={{ color: subject.color }}>
+                                <LayoutGrid className="w-6 h-6" />
+                              </div>
+                              <h3 className="text-sm font-bold text-[#121212] uppercase tracking-tight">{subject.name}</h3>
+                            </div>
+                            <div className="text-3xl font-bold" style={{ color: subject.color }}>
+                              {prog.percentage}%
+                            </div>
+                          </div>
+
+                          <div className="space-y-4">
+                            <div className="flex justify-between items-end">
+                              <p className="text-[10px] font-bold uppercase tracking-widest text-[#3E73C1] group-hover:tracking-[0.2em] transition-all">Quiz Score</p>
+                              <p className="text-[10px] font-bold text-slate-400">{prog.completed} / {prog.total} Completed</p>
+                            </div>
+                            <div className="w-full bg-[#E5E2D9]/50 rounded-full h-3 overflow-hidden">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: `${prog.percentage}%` }}
+                                className="h-full transition-all duration-1000"
+                                style={{ backgroundColor: subject.color }}
+                              />
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-white border border-[#E5E2D9] rounded-[2.5rem] p-8 sm:p-12 shadow-sm min-h-[700px]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
+                    <div className="flex items-center gap-6">
+                      <button
+                        onClick={() => setSelectedSubject(null)}
+                        className="p-4 bg-[#F8F6F1] border border-[#E5E2D9] rounded-2xl hover:bg-white hover:border-[#3E73C1] transition-all group"
+                      >
+                        <ArrowLeft className="w-5 h-5 text-slate-500 group-hover:text-[#3E73C1]" />
+                      </button>
+                      <div>
+                        <p className="text-[10px] font-bold uppercase text-[#3E73C1] tracking-widest mb-1">Module Details</p>
+                        <h2 className="text-2xl font-bold text-[#121212] tracking-tighter uppercase">{courseStructure[selectedSubject].name}</h2>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-6">
+                      <div className="text-right">
+                        <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest">Overall Score</p>
+                        <div className="text-3xl font-bold" style={{ color: courseStructure[selectedSubject].color }}>
+                          {getSubjectProgress(selectedSubject).percentage}%
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => fetchProgress(selectedStudent!)}
+                        className="p-4 bg-[#3E73C1] rounded-2xl group active:scale-95 transition-all"
+                      >
+                        <RefreshCw className="w-5 h-5 text-white group-hover:rotate-180 transition-transform duration-700" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-8">
+                    {courseStructure[selectedSubject].units.map((unit: any) => (
+                      <div key={unit.id} className="relative">
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="h-px bg-[#E5E2D9] flex-1" />
+                          <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#3E73C1] whitespace-nowrap">
+                            Unit S{unit.id}: {unit.name}
+                          </h3>
+                          <div className="h-px bg-[#E5E2D9] flex-1" />
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4">
+                          {unit.modules.map((moduleName: string, idx: number) => {
+                            const moduleId = idx + 1;
+                            const completed = isModuleCompleted(selectedSubject, unit.id, moduleId);
+                            const score = getModuleScore(selectedSubject, unit.id, moduleId);
+
+                            return (
+                              <div
+                                key={moduleId}
+                                className={`flex items-center justify-between p-5 rounded-[1.5rem] border transition-all duration-300 ${completed
+                                  ? "bg-white border-[#3E73C1]/20 shadow-sm"
+                                  : "bg-[#F8F6F1]/40 border-[#E5E2D9]/60 grayscale-[0.5] opacity-70"
+                                  }`}
+                              >
+                                <div className="flex items-center gap-5">
+                                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${completed
+                                    ? "bg-[#3E73C1] text-white"
+                                    : "bg-[#E5E2D9] text-slate-400"
+                                    }`}>
+                                    {completed ? <CheckCircle2 className="w-5 h-5" /> : <span className="text-[10px] font-bold">{moduleId}</span>}
+                                  </div>
+                                  <div>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-[#3E73C1] leading-none mb-1.5 grayscale-0">Module {unit.id}.{moduleId}</p>
+                                    <h4 className={`text-xs font-bold uppercase tracking-tight ${completed ? 'text-[#121212]' : 'text-slate-500'}`}>
+                                      {moduleName}
+                                    </h4>
+                                  </div>
+                                </div>
+                                {completed && score && (
+                                  <div className="flex items-center gap-8 px-6 border-l border-slate-100">
+                                    <div className="flex flex-col items-end">
+                                      <p className="text-[9px] font-bold uppercase tracking-widest text-slate-300 mb-1">Score</p>
+                                      <span className="text-xl font-bold" style={{ color: courseStructure[selectedSubject].color }}>
+                                        {score.percentage}%
+                                      </span>
+                                    </div>
+                                    <div className="flex flex-col items-end">
+                                      <p className="text-[9px] font-bold uppercase tracking-widest text-slate-300 mb-1">Correct Answers</p>
+                                      <span className="text-xs font-bold text-[#121212] bg-[#F8F6F1] px-3 py-1.5 rounded-lg border border-[#E5E2D9]">
+                                        {score.score} / {score.totalQuestions}
+                                      </span>
+                                    </div>
+                                  </div>
+                                )}
+                                {!completed && (
+                                  <div className="px-6 border-l border-slate-200">
+                                    <span className="text-[9px] font-bold uppercase tracking-widest text-slate-300">Not Attempted</span>
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </main >
+      </div >
+    </div >
   );
 }

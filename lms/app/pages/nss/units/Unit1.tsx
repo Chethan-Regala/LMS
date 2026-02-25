@@ -184,16 +184,16 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Career Orientation & Future Planning</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <div className="module-image">
                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students in career orientation session" className="content-image" />
                 <p className="image-caption">Career orientation and planning session</p>
               </div>
-              
+
               <h3>Conducting Orientation Programs for Students</h3>
               <p>Orientation programs are essential for helping students understand their future plans, activities, and creating a roadmap for their career journey.</p>
-              
+
               <h4>Objectives of Career Orientation:</h4>
               <ul>
                 <li><strong>Future Planning:</strong> Help students identify their career goals and aspirations</li>
@@ -276,16 +276,16 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Ice Breaking & Personal Skills</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <div className="module-image">
                 <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students participating in ice breaking activities" className="content-image" />
                 <p className="image-caption">Ice breaking and team building activities</p>
               </div>
-              
+
               <h3>Ice Breaking Sessions</h3>
               <p>Ice breaking activities help students feel comfortable, build connections, and create a positive learning environment.</p>
-              
+
               <h4>Purpose of Ice Breaking:</h4>
               <ul>
                 <li>Reduce anxiety and nervousness among participants</li>
@@ -296,19 +296,19 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Popular Ice Breaking Activities:</h4>
-              
+
               <h5>1. Two Truths and a Lie</h5>
               <p>Each participant shares three statements about themselves - two true and one false. Others guess which is the lie.</p>
-              
+
               <h5>2. Human Bingo</h5>
               <p>Create bingo cards with characteristics or experiences. Participants find people who match each square.</p>
-              
+
               <h5>3. Speed Networking</h5>
               <p>Participants pair up for quick 2-minute conversations, then rotate to meet new people.</p>
-              
+
               <h5>4. Common Ground</h5>
               <p>Groups find things they all have in common, fostering connection and understanding.</p>
-              
+
               <h5>5. Name Game</h5>
               <p>Creative ways to remember names while learning about each person's background.</p>
 
@@ -389,16 +389,16 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Success Stories & Motivation</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <div className="module-image">
                 <img src="data:image/jpeg;base64,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" alt="Success and achievement celebration" className="content-image" />
                 <p className="image-caption">Celebrating success stories and achievements</p>
               </div>
-              
+
               <h3>Displaying Success Stories</h3>
               <p>Success stories inspire and motivate students to pursue their dreams and overcome challenges.</p>
-              
+
               <h4>Why Success Stories Matter:</h4>
               <ul>
                 <li>Provide real-life examples of achievement</li>
@@ -409,7 +409,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Types of Success Stories to Share:</h4>
-              
+
               <h5>1. Academic Success Stories</h5>
               <ul>
                 <li>Students who overcame learning difficulties</li>
@@ -452,17 +452,17 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                   <p>Breaking gender barriers in sports</p>
                 </div>
               </div>
-              
+
               <div className="video-section">
                 <h6>Inspirational Video: Success Stories</h6>
                 <div className="video-container">
-                  <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://www.youtube.com/embed/Tuw8hxrFBH8?si=nZ8doSEJukMOiar5" 
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/Tuw8hxrFBH8?si=nZ8doSEJukMOiar5"
                     title="Success Stories - Motivational Video"
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
                 </div>
@@ -476,7 +476,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Award-Winning Movies on Societal Issues:</h4>
-              
+
               <h5>Environmental Issues:</h5>
               <ul>
                 <li><strong>An Inconvenient Truth:</strong> Climate change awareness</li>
@@ -551,16 +551,16 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Talent Show Activities</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <div className="module-image">
                 <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students performing in talent show" className="content-image" />
                 <p className="image-caption">Students showcasing their talents on stage</p>
               </div>
-              
+
               <h3>Conducting Talent Shows</h3>
               <p>Talent shows provide a platform for students to showcase their abilities, build confidence, and celebrate diversity.</p>
-              
+
               <h4>Objectives of Talent Shows:</h4>
               <ul>
                 <li>Encourage self-expression and creativity</li>
@@ -573,7 +573,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
 
               <h4>Singing Patriotic Songs:</h4>
               <p>Patriotic songs instill national pride, unity, and cultural awareness.</p>
-              
+
               <div className="activity-gallery">
                 <div className="activity-image">
                   <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Students singing patriotic songs" className="activity-photo" />
@@ -584,17 +584,17 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                   <p>Art and painting competitions</p>
                 </div>
               </div>
-              
+
               <div className="video-section">
                 <h6>Patriotic Songs Performance</h6>
                 <div className="video-container">
-                  <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://www.youtube.com/embed/R-sPdcvKV0s?si=P3DsxpiF3JH5qm51" 
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/R-sPdcvKV0s?si=P3DsxpiF3JH5qm51"
                     title="Vande Mataram - Patriotic Song Performance"
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
                 </div>
@@ -655,7 +655,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </div>
 
               <h4>Other Contribution Activities:</h4>
-              
+
               <h5>1. Poetry and Creative Writing</h5>
               <ul>
                 <li>Patriotic poetry recitation</li>
@@ -729,16 +729,16 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
                 <h1>Environmental Literature</h1>
               </div>
             </div>
-            
+
             <section className="content-section">
               <div className="module-image">
                 <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Environmental books and literature" className="content-image" />
                 <p className="image-caption">Environmental literature and reading materials</p>
               </div>
-              
+
               <h3>Writing Summary on Environmental Books</h3>
               <p>Reading and analyzing environmental literature helps develop awareness about ecological issues and sustainable practices.</p>
-              
+
               <h4>Importance of Environmental Literature:</h4>
               <ul>
                 <li>Raises awareness about environmental challenges</li>
@@ -749,7 +749,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>Recommended Environmental Books:</h4>
-              
+
               <h5>Classic Environmental Literature:</h5>
               <ul>
                 <li><strong>Silent Spring by Rachel Carson:</strong> Impact of pesticides on environment</li>
@@ -779,7 +779,7 @@ const Unit1: React.FC<Unit1Props> = ({ currentModule, setCurrentModule, onBack }
               </ul>
 
               <h4>How to Write an Effective Book Summary:</h4>
-              
+
               <h5>Structure of a Book Summary:</h5>
               <ol>
                 <li><strong>Introduction:</strong>

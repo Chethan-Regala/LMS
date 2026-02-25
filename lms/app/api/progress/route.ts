@@ -1,41 +1,56 @@
 import { NextRequest, NextResponse } from "next/server";
-import clientPromise from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { getModuleName } from "@/lib/moduleNames";
+
+export const dynamic = "force-dynamic"; // Never cache progress data
 
 export async function POST(req: NextRequest) {
   try {
-    const { userEmail, subject, unitId, moduleId, score, totalQuestions, completed } = await req.json();
-    
-    console.log('POST /api/progress received:', { userEmail, subject, unitId, moduleId, score, totalQuestions });
-    
-    const client = await clientPromise;
-    const db = client.db();
-    
+    const {
+      userEmail,
+      subject,
+      unitId,
+      moduleId,
+      score,
+      totalQuestions,
+      completed,
+    } = await req.json();
+
+    if (!userEmail || !subject || unitId === undefined || moduleId === undefined) {
+      return NextResponse.json(
+        { error: "Missing required fields: userEmail, subject, unitId, moduleId" },
+        { status: 400 }
+      );
+    }
+
+    const db = await getDb();
     const moduleName = getModuleName(subject, unitId, moduleId);
-    const percentage = Math.round((score / totalQuestions) * 100);
-    
-    const result = await db.collection("progress").updateOne(
+    const percentage =
+      totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
+
+    await db.collection("progress").updateOne(
       { userEmail, subject, unitId, moduleId },
-      { 
-        $set: { 
-          score, 
+      {
+        $set: {
+          score,
           totalQuestions,
           moduleName,
           percentage,
           completed: completed || percentage >= 60,
           completedAt: new Date(),
-          updatedAt: new Date()
-        } 
+          updatedAt: new Date(),
+        },
       },
       { upsert: true }
     );
-    
-    console.log('Database update result:', result);
-    
+
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('POST /api/progress error:', error);
-    return NextResponse.json({ error: "Failed to save progress" }, { status: 500 });
+    console.error("POST /api/progress error:", error);
+    return NextResponse.json(
+      { error: "Failed to save progress" },
+      { status: 500 }
+    );
   }
 }
 
@@ -44,24 +59,39 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const userEmail = searchParams.get("userEmail");
     const subject = searchParams.get("subject");
-    
-    const client = await clientPromise;
-    const db = client.db();
-    
-    const query: any = {};
-    if (userEmail) query.userEmail = userEmail;
+
+    if (!userEmail) {
+      return NextResponse.json(
+        { error: "userEmail is required" },
+        { status: 400 }
+      );
+    }
+
+    const db = await getDb();
+    const query: Record<string, string> = { userEmail };
     if (subject) query.subject = subject;
-    
-    const progress = await db.collection("progress").find(query).toArray();
-    
-    return NextResponse.json({ success: true, data: progress }, {
-      headers: {
-        'Cache-Control': 'no-store, no-cache, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
+
+    const progress = await db
+      .collection("progress")
+      .find(query)
+      .project({ _id: 0 }) // Don't serialize ObjectId — saves bandwidth
+      .toArray();
+
+    return NextResponse.json(
+      { success: true, data: progress },
+      {
+        headers: {
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
       }
-    });
+    );
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch progress" }, { status: 500 });
+    console.error("GET /api/progress error:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch progress" },
+      { status: 500 }
+    );
   }
 }

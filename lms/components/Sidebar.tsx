@@ -2,55 +2,153 @@
 
 import { useSession, signOut } from "next-auth/react";
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { LayoutGrid, BookOpen, MessageSquare, CheckSquare, LogOut } from "lucide-react";
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const { data: session } = useSession();
   const router = useRouter();
-  const [showProfile, setShowProfile] = useState(false);
-  const profileRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
-        setShowProfile(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const isGuest = (session?.user as any)?.isGuest;
 
-  const handleHomeClick = () => {
-    router.push("/");
-  };
+  const menuItems = [
+    { icon: <LayoutGrid className="w-5 h-5" />, label: "Dashboard", path: "/" },
+    { icon: <BookOpen className="w-5 h-5" />, label: "Livebooks", path: "/pages/livebooks" },
+    ...(!isGuest ? [
+      { icon: <MessageSquare className="w-5 h-5" />, label: "Feedback", path: "/pages/feedback" },
+      { icon: <CheckSquare className="w-5 h-5" />, label: "Leave", path: "/pages/attendance" },
+    ] : []),
+  ];
 
-  return (
-    <aside className="fixed left-0 top-0 h-screen w-14 bg-white border-r-2 border-gray-700 flex flex-col justify-between py-4 overflow-hidden">
-     
-      <div className="flex flex-col items-center">
-        <button onClick={handleHomeClick} className="p-3 hover:bg-gray-100    cursor-pointer">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-          </svg>
-        </button>
-      </div>
-
-      
-      <div ref={profileRef} className="relative flex flex-col items-center">
-        <button onClick={() => setShowProfile(!showProfile)} className="p-2 hover:bg-gray-100 rounded cursor-pointer">
-          <svg className="w-8 h-8" fill="#000000" viewBox="0 0 24 24">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-          </svg>
-        </button>
-        
-        {showProfile && (
-          <div className="fixed bottom-4 left-20 bg-white border-2 border-black z-50" style={{boxShadow: '3px 3px 0px 0px #454545'}}>
-            <button onClick={() => signOut({ callbackUrl: "/pages/login" })} className="w-full text-center px-4 py-2 hover:bg-gray-100 text-black font-bold uppercase text-sm">
-              LOGOUT
-            </button>
+  const sidebarContent = (
+    <div className="flex h-full w-[280px] flex-col bg-white font-sans border-r border-[#E5E2D9]">
+      {/* LOGO SECTION */}
+      <div className="pt-12 pb-10 px-10 flex items-center justify-between">
+        <div className="flex items-center">
+          <div className="w-40">
+            <img
+              src="/images/ggu-logo.png"
+              alt="GGU Logo"
+              className="w-full h-auto"
+            />
           </div>
+        </div>
+        {onClose && (
+          <button onClick={onClose} className="sm:hidden p-2 hover:bg-slate-100 rounded-full transition-colors">
+            <LayoutGrid className="w-5 h-5 text-slate-400 rotate-45" />
+          </button>
         )}
       </div>
-    </aside>
+
+      {/* PROFILE SECTION */}
+      <div className="px-10 mb-8 py-2">
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            <div className="w-14 h-14 rounded-full border-2 border-[#3E73C1] p-0.5 overflow-hidden">
+              {session?.user?.image ? (
+                <img
+                  src={session.user.image}
+                  className="w-full h-full rounded-full object-cover bg-slate-50"
+                  alt="Profile"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden'); }}
+                />
+              ) : null}
+              <div className={`w-full h-full rounded-full bg-[#3E73C1] flex items-center justify-center ${session?.user?.image ? 'hidden' : ''}`}>
+                <span className="text-white font-bold text-lg">
+                  {session?.user?.name?.charAt(0)?.toUpperCase() || "S"}
+                </span>
+              </div>
+            </div>
+            <div className="absolute top-1/2 -right-0.5 w-3.5 h-3.5 bg-[#4ADE80] rounded-full border-2 border-white shadow-sm -translate-y-1/2" />
+          </div>
+          <div>
+            <p className="text-[#3E73C1] font-black text-base truncate max-w-[120px]">{session?.user?.name || "Student"}</p>
+            <p className="text-slate-400 font-bold text-xs">{isGuest ? "Guest" : "Student"}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* BLUE NAVIGATION SECTION */}
+      <div className="flex-1 bg-[#3E73C1] rounded-tr-[3.5rem] mt-2 flex flex-col pt-10 px-0 overflow-y-auto custom-scrollbar">
+        <div className="space-y-4">
+          <p className="px-10 text-sm font-bold text-white mb-6 uppercase tracking-widest opacity-60">General Navigation</p>
+          <nav className="space-y-2">
+            {menuItems.map((item) => {
+              const isActive = pathname === item.path;
+              return (
+                <div key={item.path} className="relative pl-8 ">
+                  <button
+                    onClick={() => {
+                      router.push(item.path);
+                      if (onClose) onClose();
+                    }}
+                    className={`w-full flex items-center gap-5 px-6 py-4 transition-all duration-300 ${isActive
+                      ? "bg-[#F0F4F9] text-[#3E73C1] rounded-l-[1.5rem] shadow-lg shadow-blue-900/10"
+                      : "text-white/90 hover:text-white cursor-pointer"}`}
+                  >
+                    <span className={`${isActive ? 'text-[#3E73C1]' : 'text-white'}`}>
+                      {item.icon}
+                    </span>
+                    <span className="text-base font-bold tracking-tight">{item.label}</span>
+                  </button>
+                </div>
+              );
+            })}
+          </nav>
+
+          <div className="pt-8 px-0">
+            <div className="pl-8 cursor-pointer">
+              <button
+                onClick={() => signOut({ callbackUrl: "/pages/login" })}
+                className="w-full flex items-center gap-5 px-6 py-5 text-red-500 hover:text-red-500/50 transition-all mt-4 border-t border-white/10"
+              >
+                <LogOut className="w-5 h-5" />
+                <span className="text-base font-bold tracking-tight">Sign Out</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <>
+      {/* DESKTOP SIDEBAR */}
+      <aside className="hidden sm:flex fixed left-0 top-0 h-screen w-[280px] flex-col z-[50]">
+        {sidebarContent}
+      </aside>
+
+      {/* MOBILE SIDEBAR */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={onClose}
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] sm:hidden"
+            />
+            <motion.aside
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed left-0 top-0 h-screen w-[280px] z-[70] sm:hidden overflow-hidden"
+            >
+              {sidebarContent}
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

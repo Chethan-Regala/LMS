@@ -1,20 +1,29 @@
-import clientPromise from "@/lib/db";
 import { NextResponse } from "next/server";
+import { getDb } from "@/lib/db";
 
 export async function PUT(req: Request) {
   try {
     const { email, fullName, phoneNumber, currentSemester } = await req.json();
-    
-    const client = await clientPromise;
-    const db = client.db();
-    
+
+    if (!email) {
+      return NextResponse.json(
+        { ok: false, error: "Email is required" },
+        { status: 400 }
+      );
+    }
+
+    const db = await getDb();
+
     await db.collection("users").updateOne(
       { email },
-      { $set: { fullName, phoneNumber, currentSemester } }
+      { $set: { fullName, phoneNumber, currentSemester, updatedAt: new Date() } }
     );
-    
+
     return NextResponse.json({ ok: true });
   } catch (err: any) {
-    return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
+    return NextResponse.json(
+      { ok: false, error: err.message },
+      { status: 500 }
+    );
   }
 }
