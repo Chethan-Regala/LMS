@@ -31,12 +31,15 @@ const Footer: React.FC<FooterProps> = ({
                 ))}
             </div>
 
-            <Image
-                src={TechWing}
-                alt="Techwing Logo"
-                className='h-8 w-auto   hover:cursor-pointer transition-all duration-300'
-                onClick={() => router.push("https://techwing.org/")}
-            />
+            <div className="flex items-center gap-4">
+                <span className="text-[10px] font-bold text-[#888] uppercase tracking-widest">Powered by</span>
+                <Image
+                    src={TechWing}
+                    alt="Techwing Logo"
+                    className='h-8 w-auto hover:cursor-pointer transition-all duration-300'
+                    onClick={() => router.push("https://techwing.org/")}
+                />
+            </div>
         </footer>
     );
 };

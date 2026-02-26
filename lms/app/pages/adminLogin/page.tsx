@@ -45,7 +45,7 @@ export default function AdminLogin() {
         className="w-full max-w-lg bg-white border border-[#E5E2D9] rounded-[2.5rem] p-8 sm:p-12 shadow-sm relative z-10"
       >
         <div className="flex flex-col items-center mb-8 text-center">
-          <img src="/images/ggu-logo.png" alt="University Logo" className="h-10 mb-6" />
+          <img src="/images/ggu-techwing.png" alt="University Logo" className="h-12 mb-8" />
           <h1 className="text-2xl font-bold text-[#1E3A8A] tracking-tight mb-2">Admin Login</h1>
           <p className="text-[#1E3A8A]/60 text-sm font-semibold max-w-xs">
             Sign in to access the admin dashboard.

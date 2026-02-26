@@ -30,9 +30,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       {/* LOGO SECTION */}
       <div className="pt-12 pb-10 px-10 flex items-center justify-between">
         <div className="flex items-center">
-          <div className="w-40">
+          <div className="w-52">
             <img
-              src="/images/ggu-logo.png"
+              src="/images/ggu-techwing.png"
               alt="GGU Logo"
               className="w-full h-auto"
             />
@@ -90,10 +90,10 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                       if (onClose) onClose();
                     }}
                     className={`w-full flex items-center gap-5 px-6 py-4 transition-all duration-300 ${isLocked
-                        ? "text-white/30 cursor-not-allowed"
-                        : isActive
-                          ? "bg-[#F0F4F9] text-[#3E73C1] rounded-l-[1.5rem] shadow-lg shadow-blue-900/10"
-                          : "text-white/90 hover:text-white cursor-pointer"
+                      ? "text-white/30 cursor-not-allowed"
+                      : isActive
+                        ? "bg-[#F0F4F9] text-[#3E73C1] rounded-l-[1.5rem] shadow-lg shadow-blue-900/10"
+                        : "text-white/90 hover:text-white cursor-pointer"
                       }`}
                   >
                     <span className={`${isLocked ? 'text-white/30' : isActive ? 'text-[#3E73C1]' : 'text-white'

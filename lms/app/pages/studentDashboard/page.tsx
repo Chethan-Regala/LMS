@@ -14,7 +14,7 @@ const page = () => {
         <div className='h-100vwh'>
             <section>
                 <div className='w-100vw border-1 h-[10vh] flex items-center justify-between'>
-                    <img src="/images/ggu-logo.png" alt="" className=" h-[5vh] m-3 " />
+                    <img src="/images/ggu-techwing.png" alt="" className=" h-[8vh] m-3 " />
 
                     <button className='m-10 border-red-600-1 text-white p-2 w-[8vw] rounded-2xl bg-red-600'>SignOut</button>
                 </div>
