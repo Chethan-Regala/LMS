@@ -22,7 +22,7 @@ import Footer from "@/components/Footer";
 export default function AdminDashboard() {
   const { data: session } = useSession();
   const router = useRouter();
-  const [stats, setStats] = useState({ total: 0, students: 0, admins: 0 });
+  const [stats, setStats] = useState({ total: 0, students: 0, onlineStudents: 0, offlineStudents: 0, admins: 0, guests: 0 });
   const [leavesCount, setLeavesCount] = useState(0);
   const [feedbackCount, setFeedbackCount] = useState(0);
   const [recentLeaves, setRecentLeaves] = useState<any[]>([]);
@@ -40,6 +40,8 @@ export default function AdminDashboard() {
     }
     if (session) {
       fetchStats();
+      const interval = setInterval(fetchStats, 30000); // Refresh every 30s for live feel
+      return () => clearInterval(interval);
     }
   }, [session, router]);
 
@@ -167,10 +169,33 @@ export default function AdminDashboard() {
       const progressData = await progressRes.json();
 
       if (usersData.ok) {
+        const studentUsers = usersData.data.filter((u: any) =>
+          !u.isAdmin &&
+          u.email?.toLowerCase().endsWith("@ggu.edu.in") &&
+          u.email?.toLowerCase() !== "admin@ggu.edu.in"
+        );
+
+        const guestUsers = usersData.data.filter((u: any) =>
+          !u.isAdmin &&
+          !u.email?.toLowerCase().endsWith("@ggu.edu.in") &&
+          u.email?.toLowerCase() !== "admin@ggu.edu.in"
+        );
+
+        const now = new Date();
+        const onlineThreshold = 5 * 60 * 1000; // 5 minutes
+
+        const onlineCount = studentUsers.filter((u: any) => {
+          if (!u.lastActive) return false;
+          return (now.getTime() - new Date(u.lastActive).getTime()) < onlineThreshold;
+        }).length;
+
         setStats({
           total: usersData.data.length,
-          students: usersData.data.filter((u: any) => !u.isAdmin).length,
-          admins: usersData.data.filter((u: any) => u.isAdmin).length
+          students: studentUsers.length,
+          onlineStudents: onlineCount,
+          offlineStudents: studentUsers.length - onlineCount,
+          admins: usersData.data.filter((u: any) => u.isAdmin || u.email?.toLowerCase() === "admin@ggu.edu.in").length,
+          guests: guestUsers.length
         });
       }
 
@@ -296,14 +321,21 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div onClick={() => router.push('/pages/adminUsers')} className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group cursor-pointer">
+            <div onClick={() => router.push('/pages/adminUsers')} className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group cursor-pointer relative overflow-hidden">
               <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Students</p>
               <div className="flex items-end justify-between">
                 <div>
                   <h3 className="text-3xl font-bold text-blue-600 tracking-tighter">{stats.students}</h3>
-                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Enrolled</p>
+                  <div className="flex items-center gap-2 mt-1">
+                    <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-tight bg-emerald-50 px-1.5 py-0.5 rounded-md border border-emerald-100">
+                      {stats.onlineStudents} Online
+                    </p>
+                    <p className="text-[9px] font-bold text-slate-400 uppercase tracking-tight bg-slate-50 px-1.5 py-0.5 rounded-md border border-slate-100">
+                      {stats.offlineStudents} Offline
+                    </p>
+                  </div>
                 </div>
-                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse mb-3" />
+                <div className={`w-2 h-2 rounded-full mb-2 ${stats.onlineStudents > 0 ? 'bg-emerald-500 animate-pulse' : 'bg-slate-300'}`} />
               </div>
             </div>
 
@@ -330,13 +362,13 @@ export default function AdminDashboard() {
             </div>
 
             <div onClick={() => router.push('/pages/adminFeedback')} className="bg-white border border-[#E5E2D9] rounded-[1.8rem] p-6 shadow-sm hover:border-[#3E73C1]/30 transition-all group cursor-pointer">
-              <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Feedback</p>
+              <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3">Guests</p>
               <div className="flex items-end justify-between">
                 <div>
-                  <h3 className="text-3xl font-bold text-emerald-600 tracking-tighter">{feedbackCount}</h3>
-                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Responses</p>
+                  <h3 className="text-3xl font-bold text-emerald-600 tracking-tighter">{stats.guests}</h3>
+                  <p className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tight">Active Guests</p>
                 </div>
-                <MessageSquare className="w-5 h-5 text-emerald-600 mb-1 opacity-20 group-hover:opacity-100 transition-opacity" />
+                <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mb-3" />
               </div>
             </div>
           </div>

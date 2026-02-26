@@ -84,6 +84,12 @@ export const authOptions: NextAuthOptions = {
                     token.currentSemester = dbUser.currentSemester;
                     token.phoneNumber = dbUser.phoneNumber;
 
+                    // UPDATED: Track online status
+                    await db.collection("users").updateOne(
+                        { _id: dbUser._id },
+                        { $set: { lastActive: new Date() } }
+                    );
+
                     // Prioritize database fullName, sync from Google if empty
                     if (dbUser.fullName) {
                         token.name = dbUser.fullName;

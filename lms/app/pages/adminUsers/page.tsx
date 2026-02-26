@@ -17,12 +17,26 @@ export default function AdminUsers() {
     const [searchQuery, setSearchQuery] = useState("");
     const [editUser, setEditUser] = useState<any>(null);
     const [editForm, setEditForm] = useState({ fullName: "", phoneNumber: "", currentSemester: 1 });
+    const [currentTime, setCurrentTime] = useState(new Date());
+
+    useEffect(() => {
+        const timer = setInterval(() => setCurrentTime(new Date()), 30000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const isUserOnline = (user: any) => {
+        if (!user.lastActive) return false;
+        const onlineThreshold = 5 * 60 * 1000; // Give them 5 mins buffer
+        return (currentTime.getTime() - new Date(user.lastActive).getTime()) < onlineThreshold;
+    };
 
     useEffect(() => {
         if (session?.user?.isAdmin === false) {
             router.push("/");
         } else if (session?.user?.isAdmin) {
             fetchUsers();
+            const interval = setInterval(fetchUsers, 30000);
+            return () => clearInterval(interval);
         }
     }, [session, router]);
 
@@ -150,6 +164,42 @@ export default function AdminUsers() {
                         </p>
                     </div>
 
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+                        <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-6 shadow-sm flex items-center gap-4">
+                            <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
+                                <Users className="w-6 h-6 text-[#3E73C1]" />
+                            </div>
+                            <div>
+                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Students</p>
+                                <h3 className="text-2xl font-bold text-[#121212] tracking-tighter">
+                                    {users.filter(u => !u.isAdmin && u.email?.toLowerCase().endsWith("@ggu.edu.in") && u.email?.toLowerCase() !== "admin@ggu.edu.in").length}
+                                </h3>
+                            </div>
+                        </div>
+                        <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-6 shadow-sm flex items-center gap-4">
+                            <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center">
+                                <ShieldPlus className="w-6 h-6 text-indigo-600" />
+                            </div>
+                            <div>
+                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Admins</p>
+                                <h3 className="text-2xl font-bold text-[#121212] tracking-tighter">
+                                    {users.filter(u => u.isAdmin || u.email?.toLowerCase() === "admin@ggu.edu.in").length}
+                                </h3>
+                            </div>
+                        </div>
+                        <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-6 shadow-sm flex items-center gap-4">
+                            <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center">
+                                <Users className="w-6 h-6 text-emerald-600" />
+                            </div>
+                            <div>
+                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Guests</p>
+                                <h3 className="text-2xl font-bold text-[#121212] tracking-tighter">
+                                    {users.filter(u => !u.isAdmin && !u.email?.toLowerCase().endsWith("@ggu.edu.in") && u.email?.toLowerCase() !== "admin@ggu.edu.in").length}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                         {/* ADD STUDENT */}
                         <div className="bg-white border border-[#E5E2D9] rounded-[2rem] p-8 shadow-sm hover:border-[#3E73C1]/30 transition-all group">
@@ -207,18 +257,19 @@ export default function AdminUsers() {
                     </div>
 
 
-                    {/* USER REGISTRY SECTION */}
-                    <div className="bg-white border border-[#E5E2D9] rounded-[2.5rem] p-8 shadow-sm">
+                    {/* LIVE USER REGISTRY SECTION */}
+                    <div className="bg-white border border-[#E5E2D9] rounded-[2.5rem] p-8 shadow-sm mb-12">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10">
                             <div className="flex items-center gap-3">
-                                <div className="w-2 h-8 bg-[#3E73C1] rounded-full" />
-                                <h3 className="text-xl font-bold text-[#121212] tracking-tight uppercase">All Users</h3>
+                                <div className="w-2 h-8 bg-emerald-500 rounded-full animate-pulse" />
+                                <h3 className="text-xl font-bold text-[#121212] tracking-tight uppercase">Logged In Users</h3>
+                                <span className="bg-emerald-50 text-emerald-600 text-[10px] px-2 py-0.5 rounded-full border border-emerald-100 font-bold uppercase tracking-widest ml-2">Live Monitor</span>
                             </div>
                             <div className="relative max-w-md w-full">
                                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                                 <input
                                     type="text"
-                                    placeholder="Search by email or name..."
+                                    placeholder="Search live users..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     className="w-full bg-[#F8F6F1] border border-[#E5E2D9] pl-12 pr-4 py-3 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#3E73C1]/20 outline-none transition-all"
@@ -227,7 +278,10 @@ export default function AdminUsers() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {users.filter(user => user.fullName?.toLowerCase().includes(searchQuery.toLowerCase()) || user.email.toLowerCase().includes(searchQuery.toLowerCase())).map((user) => (
+                            {users.filter(user => {
+                                const matchesSearch = user.fullName?.toLowerCase().includes(searchQuery.toLowerCase()) || user.email.toLowerCase().includes(searchQuery.toLowerCase());
+                                return matchesSearch && isUserOnline(user);
+                            }).map((user) => (
                                 <div key={user._id} className="group relative bg-[#F8F6F1]/50 border border-[#E5E2D9] rounded-[2rem] p-6 hover:bg-white hover:border-[#3E73C1]/30 transition-all duration-300">
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="flex-1 min-w-0">
@@ -277,6 +331,56 @@ export default function AdminUsers() {
                                             </button>
                                         )}
                                     </div>
+                                </div>
+                            ))}
+                            {users.filter(user => isUserOnline(user)).length === 0 && (
+                                <div className="col-span-full py-20 flex flex-col items-center justify-center bg-[#F8F6F1]/50 rounded-[2rem] border-2 border-dashed border-[#E5E2D9]">
+                                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+                                        <Users className="w-8 h-8 text-slate-300" />
+                                    </div>
+                                    <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">No users online right now</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* ALL USERS IN DATABASE SECTION */}
+                    <div className="bg-white border border-[#E5E2D9] rounded-[2.5rem] p-8 shadow-sm">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10">
+                            <div className="flex items-center gap-3">
+                                <div className="w-2 h-8 bg-[#3E73C1] rounded-full" />
+                                <h3 className="text-xl font-bold text-[#121212] tracking-tight uppercase">Total Users Present In Database</h3>
+                                <span className="bg-blue-50 text-[#3E73C1] text-[10px] px-2 py-0.5 rounded-full border border-blue-100 font-bold uppercase tracking-widest ml-2">{users.length} Total</span>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {users.map((user) => (
+                                <div key={`db-${user._id}`} className="flex items-center gap-4 bg-[#F8F6F1]/30 border border-[#E5E2D9] p-5 rounded-2xl hover:bg-white hover:border-[#3E73C1]/20 transition-all group">
+                                    <div className="w-12 h-12 rounded-full bg-white border border-[#E5E2D9] flex items-center justify-center text-[12px] font-bold text-[#3E73C1] shrink-0 shadow-sm">
+                                        {user.fullName?.charAt(0) || user.email.charAt(0).toUpperCase()}
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                        <h4 className="font-bold text-[12px] text-[#121212] uppercase tracking-tight leading-tight mb-1">{user.fullName || "User"}</h4>
+                                        <div className="flex flex-wrap items-center gap-2">
+                                            <p className="text-[10px] font-bold text-slate-400 lowercase break-all">{user.email}</p>
+                                            {(() => {
+                                                const isAdmin = user.isAdmin || user.email?.toLowerCase() === 'admin@ggu.edu.in';
+                                                const isStudent = !isAdmin && user.email?.toLowerCase().endsWith("@ggu.edu.in");
+
+                                                if (isAdmin) return (
+                                                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-md border bg-indigo-50 border-indigo-100 text-indigo-600 shrink-0">ADMIN</span>
+                                                );
+                                                if (isStudent) return (
+                                                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-md border bg-blue-50 border-blue-100 text-blue-600 shrink-0">STUDENT</span>
+                                                );
+                                                return (
+                                                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-md border bg-emerald-50 border-emerald-100 text-emerald-600 shrink-0">GUEST</span>
+                                                );
+                                            })()}
+                                        </div>
+                                    </div>
+                                    <div className={`w-2 h-2 rounded-full shrink-0 ${isUserOnline(user) ? 'bg-emerald-500 animate-pulse' : 'bg-slate-300'}`} />
                                 </div>
                             ))}
                         </div>
