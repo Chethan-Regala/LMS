@@ -20,7 +20,7 @@ const options: MongoClientOptions = {
 
 // Global singleton to survive hot-module-replacement in dev AND cold starts in Vercel
 declare global {
-  // eslint-disable-next-line no-var
+   
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 

@@ -120,7 +120,12 @@ export default function AdminSidebar({ isOpen, onClose }: SidebarProps) {
           <div className="mt-auto pt-8 pb-10">
             <div className="pl-8 cursor-pointer">
               <button
-                onClick={() => signOut({ callbackUrl: "/pages/adminLogin" })}
+                onClick={async () => {
+                  try {
+                    await fetch("/api/users/logout", { method: "POST" });
+                  } catch (e) { }
+                  signOut({ callbackUrl: "/pages/adminLogin" });
+                }}
                 className="w-full flex items-center gap-5 px-6 py-5 text-rose-300 hover:text-rose-100 transition-all border-t border-white/10 cursor-pointer"
               >
                 <LogOut className="w-5 h-5" />

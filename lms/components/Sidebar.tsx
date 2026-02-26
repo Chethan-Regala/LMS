@@ -115,7 +115,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           <div className="pt-8 px-0">
             <div className="pl-8 cursor-pointer">
               <button
-                onClick={() => signOut({ callbackUrl: "/pages/login" })}
+                onClick={async () => {
+                  try {
+                    await fetch("/api/users/logout", { method: "POST" });
+                  } catch (e) { }
+                  signOut({ callbackUrl: "/pages/login" });
+                }}
                 className="w-full flex items-center gap-5 px-6 py-5 text-red-500 hover:text-red-500/50 transition-all mt-4 border-t border-white/10"
               >
                 <LogOut className="w-5 h-5" />

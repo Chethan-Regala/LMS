@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ExternalLink, Calendar, ArrowUpRight, Clock } from "lucide-react";
@@ -30,9 +30,43 @@ export default function Timetable() {
     else router.push("/pages/livebooks");
   };
 
+  const loadData = useCallback(async () => {
+    const res = await fetch("/api/timetable");
+    const json = await res.json();
+    if (json.ok) {
+      const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+      const today = days[new Date().getDay()];
+      const todayData = json.data[today] || [];
+      setData(todayData);
+    }
+  }, []);
+
+  const parseTime = (timeStr: string) => {
+    const [hoursStr, minutesStr] = timeStr.split(":");
+    let hours = Number(hoursStr);
+    const minutes = Number(minutesStr);
+    if (hours < 9) hours += 12; // Simple heuristic for PM if before 9 (school hours)
+    const date = new Date();
+    date.setHours(hours, minutes, 0, 0);
+    return date;
+  };
+
+  const getCurrentPeriod = useCallback(() => {
+    const now = new Date();
+    for (const period of data) {
+      const [start, end] = period.time.split(" - ");
+      const startTime = parseTime(start);
+      const endTime = parseTime(end);
+      if (now >= startTime && now <= endTime) {
+        return period;
+      }
+    }
+    return null;
+  }, [data]);
+
   useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   useEffect(() => {
     if (data.length > 0) {
@@ -47,39 +81,7 @@ export default function Timetable() {
       }, 60000);
       return () => clearInterval(interval);
     }
-  }, [data]);
-
-  const loadData = async () => {
-    const res = await fetch("/api/timetable");
-    const json = await res.json();
-    if (json.ok) {
-      const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-      const today = days[new Date().getDay()];
-      const todayData = json.data[today] || [];
-      setData(todayData);
-    }
-  };
-
-  const parseTime = (timeStr: string) => {
-    let [hours, minutes] = timeStr.split(":").map(Number);
-    if (hours < 9) hours += 12; // Simple heuristic for PM if before 9 (school hours)
-    const date = new Date();
-    date.setHours(hours, minutes, 0, 0);
-    return date;
-  };
-
-  const getCurrentPeriod = () => {
-    const now = new Date();
-    for (const period of data) {
-      const [start, end] = period.time.split(" - ");
-      const startTime = parseTime(start);
-      const endTime = parseTime(end);
-      if (now >= startTime && now <= endTime) {
-        return period;
-      }
-    }
-    return null;
-  };
+  }, [data, getCurrentPeriod]);
 
   if (data.length === 0) {
     return (
@@ -227,7 +229,7 @@ export default function Timetable() {
                 <Clock className="w-10 h-10 text-blue-300 animate-pulse" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-[#121212] tracking-tighter">It's Lunch Break</h2>
+                <h2 className="text-2xl font-bold text-[#121212] tracking-tighter">It&apos;s Lunch Break</h2>
                 <p className="text-xs text-[#AAA] font-bold uppercase tracking-widest mt-2" > Time to refuel and recharge</p>
               </div>
               <div className="px-6 py-2 bg-[#F8F6F1] border border-[#E5E2D9] rounded-full text-[10px] font-bold text-[#7096CC]">
