@@ -173,9 +173,9 @@ const login = () => {
       {/* Main login card */}
       <div className="w-full bg-white border border-gray-300 px-12 py-10 relative z-10" style={{ maxWidth: '600px' }}>
         <img
-          src="/images/ggu-logo.png"
+          src="/images/ggu-techwing.png"
           alt="University Logo"
-          className="h-20 mb-8"
+          className="h-12 mb-10"
         />
 
         <p className="text-gray-800 text-base font-semibold mb-8 leading-relaxed">

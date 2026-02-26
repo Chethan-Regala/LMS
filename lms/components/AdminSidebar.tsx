@@ -43,9 +43,9 @@ export default function AdminSidebar({ isOpen, onClose }: SidebarProps) {
       {/* LOGO SECTION */}
       <div className="pt-12 pb-10 px-10 flex items-center justify-between">
         <div className="flex items-center">
-          <div className="w-40">
+          <div className="w-52">
             <img
-              src="/images/ggu-logo.png"
+              src="/images/ggu-techwing.png"
               alt="GGU Logo"
               className="w-full h-auto cursor-pointer"
               onClick={() => router.push("/pages/adminDashboard")}
